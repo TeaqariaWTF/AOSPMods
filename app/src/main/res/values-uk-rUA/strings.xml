@@ -328,7 +328,7 @@
     <string name="overscroll_on_summary">Важливо: ОБОВ\'ЯЗКОВО увімкніть програми, для яких ви хочете вимкнути прокрутку в LSPosed</string>
     <string name="control_flashlight_with_volume_keys">Керувати ліхтариком за допомогою кнопок гучності</string>
     <string name="milliseconds">мілісекунди</string>
-    <string name="duration_seconds">%d Seconds</string>
+    <string name="duration_seconds">%d секунд</string>
     <string name="hours">Години</string>
     <string name="system_time_title">Системний час</string>
     <string name="sync_ntp_time_title">Використовувати NTP для синхронізації часу</string>
