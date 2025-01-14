@@ -1,3 +1,6 @@
+**canary-425**  
+- Fixed a flashlight tile appearance bug  
+  
 **canary-424**  
 - improved dashed circle battery drawable colors  
 - Fixed in-call vibration mods  
