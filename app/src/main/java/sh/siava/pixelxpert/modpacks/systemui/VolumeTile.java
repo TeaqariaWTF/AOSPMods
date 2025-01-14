@@ -27,7 +27,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -39,8 +38,9 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.modpacks.Constants;
 import sh.siava.pixelxpert.modpacks.XPLauncher;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
+import sh.siava.pixelxpert.modpacks.utils.BoundsControllerLayerDrawable;
 import sh.siava.pixelxpert.modpacks.utils.SystemUtils.ChangeListener;
-import sh.siava.pixelxpert.modpacks.utils.TilePercentageDrawable;
+import sh.siava.pixelxpert.modpacks.utils.LeveledTileDrawable;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings({"RedundantThrows", "ConstantConditions"})
@@ -51,7 +51,7 @@ public class VolumeTile extends XposedModPack {
 	private int currentPct = 50;
 	private static int unMuteVolumePCT = 50;
 	private static boolean lightQSHeaderEnabled = false;
-	TilePercentageDrawable mVolumePercentageDrawable = null;
+	LeveledTileDrawable mVolumePercentageDrawable = null;
 	private static int minVol = -1;
 	private static int maxVol = -1;
 	private boolean moved = false;
@@ -80,7 +80,7 @@ public class VolumeTile extends XposedModPack {
 			maxVol = AudioManager().getStreamMaxVolume(STREAM_MUSIC);
 		}).start();
 
-		mVolumePercentageDrawable = new TilePercentageDrawable(mContext);
+		mVolumePercentageDrawable = new LeveledTileDrawable(mContext);
 		mVolumePercentageDrawable.setAlpha(64);
 
 		ReflectedClass QSTileViewImplClass = ReflectedClass.of("com.android.systemui.qs.tileimpl.QSTileViewImpl");
@@ -202,15 +202,15 @@ public class VolumeTile extends XposedModPack {
 							? Color.WHITE
 							: Color.BLACK);
 
-			LayerDrawable layerDrawable;
+			BoundsControllerLayerDrawable BoundsAwareLayerDrawable;
 			try { //A14 AP11
-				layerDrawable = new LayerDrawable(new Drawable[]{(Drawable) getObjectField(tileView, "backgroundDrawable"), mVolumePercentageDrawable});
+				BoundsAwareLayerDrawable = new BoundsControllerLayerDrawable(new Drawable[]{(Drawable) getObjectField(tileView, "backgroundDrawable"), mVolumePercentageDrawable});
 			} catch (Throwable ignored) { //Older
-				layerDrawable = new LayerDrawable(new Drawable[]{(Drawable) getObjectField(tileView, "colorBackgroundDrawable"), mVolumePercentageDrawable});
+				BoundsAwareLayerDrawable = new BoundsControllerLayerDrawable(new Drawable[]{(Drawable) getObjectField(tileView, "colorBackgroundDrawable"), mVolumePercentageDrawable});
 			}
-			if (layerDrawable == null) return; //something is wrong
+			if (BoundsAwareLayerDrawable == null) return; //something is wrong
 
-			tileView.setBackground(layerDrawable);
+			tileView.setBackground(BoundsAwareLayerDrawable);
 
 			TextView label = (TextView) getObjectField(tileView, "label");
 

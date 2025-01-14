@@ -12,7 +12,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.graphics.drawable.LayerDrawable;
 import android.os.VibrationAttributes;
 import android.os.VibrationEffect;
 import android.view.MotionEvent;
@@ -24,8 +23,9 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.modpacks.Constants;
 import sh.siava.pixelxpert.modpacks.XPLauncher;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
+import sh.siava.pixelxpert.modpacks.utils.BoundsControllerLayerDrawable;
 import sh.siava.pixelxpert.modpacks.utils.SystemUtils;
-import sh.siava.pixelxpert.modpacks.utils.TilePercentageDrawable;
+import sh.siava.pixelxpert.modpacks.utils.LeveledTileDrawable;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
@@ -34,7 +34,7 @@ public class FlashLightLevel extends XposedModPack {
 	private static boolean leveledFlashTile = false;
 	private float currentPct = .5f;
 	private static boolean lightQSHeaderEnabled = false;
-	TilePercentageDrawable mFlashPercentageDrawable = null;
+	LeveledTileDrawable mFlashPercentageDrawable = null;
 
 	public FlashLightLevel(Context context) {
 		super(context);
@@ -56,7 +56,7 @@ public class FlashLightLevel extends XposedModPack {
 	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		if (!lpParam.packageName.equals(listenPackage)) return;
 
-		mFlashPercentageDrawable = new TilePercentageDrawable(mContext);
+		mFlashPercentageDrawable = new LeveledTileDrawable(mContext);
 		mFlashPercentageDrawable.setAlpha(64);
 
 		ReflectedClass QSTileViewImplClass = ReflectedClass.of("com.android.systemui.qs.tileimpl.QSTileViewImpl");
@@ -157,11 +157,11 @@ public class FlashLightLevel extends XposedModPack {
 											? Color.WHITE
 											: Color.BLACK);
 
-							LayerDrawable layerDrawable;
+							BoundsControllerLayerDrawable layerDrawable;
 							try { //A14 AP11
-								layerDrawable = new LayerDrawable(new Drawable[]{(Drawable) getObjectField(tileView, "backgroundDrawable"), mFlashPercentageDrawable});
+								layerDrawable = new BoundsControllerLayerDrawable(new Drawable[]{(Drawable) getObjectField(tileView, "backgroundDrawable"), mFlashPercentageDrawable});
 							} catch (Throwable ignored) { //Older
-								layerDrawable = new LayerDrawable(new Drawable[]{(Drawable) getObjectField(tileView, "colorBackgroundDrawable"), mFlashPercentageDrawable});
+								layerDrawable = new BoundsControllerLayerDrawable(new Drawable[]{(Drawable) getObjectField(tileView, "colorBackgroundDrawable"), mFlashPercentageDrawable});
 							}
 							if(layerDrawable == null) return; //something is wrong
 
