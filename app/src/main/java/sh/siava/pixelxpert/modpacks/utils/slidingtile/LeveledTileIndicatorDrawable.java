@@ -1,4 +1,4 @@
-package sh.siava.pixelxpert.modpacks.utils;
+package sh.siava.pixelxpert.modpacks.utils.slidingtile;
 
 import static android.graphics.Bitmap.createBitmap;
 import static java.lang.Math.round;
@@ -16,12 +16,12 @@ import android.graphics.drawable.Drawable;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public class LeveledTileDrawable extends Drawable {
+public class LeveledTileIndicatorDrawable extends Drawable {
 	final Drawable shape;
 	private int currentPct = 0;
 
 	@SuppressLint({"UseCompatLoadingForDrawables", "DiscouragedApi"})
-	public LeveledTileDrawable(Context context) {
+	public LeveledTileIndicatorDrawable(Context context) {
 		shape = context.getDrawable(context.getResources().getIdentifier("qs_tile_background_shape", "drawable", context.getPackageName()));
 	}
 

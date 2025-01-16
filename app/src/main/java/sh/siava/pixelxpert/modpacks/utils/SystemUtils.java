@@ -70,7 +70,6 @@ public class SystemUtils {
 	int maxFlashLevel = -1;
 	static boolean isTorchOn = false;
 
-	ArrayList<ChangeListener> mFlashlightLevelListeners = new ArrayList<>();
 	ArrayList<ChangeListener> mVolumeChangeListeners = new ArrayList<>();
 	private WifiManager mWifiManager;
 	private WindowManager mWindowManager;
@@ -273,11 +272,6 @@ public class SystemUtils {
 		mContext.registerReceiver(volChangeReceiver, volumeFilter, RECEIVER_EXPORTED);
 	}
 
-	public static void registerFlashlightLevelListener(ChangeListener listener)
-	{
-		instance.mFlashlightLevelListeners.add(listener);
-	}
-
 	public static void registerVolumeChangeListener(ChangeListener listener)
 	{
 		if(instance != null)
@@ -288,14 +282,6 @@ public class SystemUtils {
 	{
 		if(instance != null)
 			instance.mVolumeChangeListeners.remove(listener);
-	}
-
-	public static void setFlashlightLevel(int level)
-	{
-		for(ChangeListener listener : instance.mFlashlightLevelListeners)
-		{
-			listener.onChanged(level);
-		}
 	}
 
 	private void setFlashInternal(boolean enabled) {
@@ -420,7 +406,9 @@ public class SystemUtils {
 	private String getFlashID(@NonNull CameraManager cameraManager) throws CameraAccessException {
 		String[] ids = cameraManager.getCameraIdList();
 		for (String id : ids) {
+			//noinspection DataFlowIssue
 			if (cameraManager.getCameraCharacteristics(id).get(CameraCharacteristics.LENS_FACING) == CameraMetadata.LENS_FACING_BACK) {
+				//noinspection DataFlowIssue
 				if (cameraManager.getCameraCharacteristics(id).get(CameraCharacteristics.FLASH_INFO_AVAILABLE)) {
 					return id;
 				}
