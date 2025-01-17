@@ -297,7 +297,7 @@ public class SystemUtils {
 					&& Xprefs.getBoolean("leveledFlashTile", false)
 					&& Xprefs.getBoolean("isFlashLevelGlobal", false)
 					&& supportsFlashLevelsInternal()) {
-				float currentPct = Xprefs.getFloat("flashPCT", 0.5f);
+				float currentPct = Xprefs.getInt("flashPCT", 50) / 100f;
 				setFlashInternal(true, getFlashlightLevelInternal(currentPct));
 				return;
 			}
