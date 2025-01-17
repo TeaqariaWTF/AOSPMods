@@ -1,3 +1,6 @@
+**canary-426**  
+- QS sliding tiles internal redesign  
+  
 **canary-425**  
 - Fixed a flashlight tile appearance bug  
   
