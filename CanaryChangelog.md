@@ -1,3 +1,6 @@
+**canary-427**  
+- A15QPR2b3: compatible  
+  
 **canary-426**  
 - QS sliding tiles internal redesign  
   

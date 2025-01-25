@@ -113,6 +113,10 @@
 			</intent-filter>
 		</receiver>
 
+		<receiver android:name=".receivers.NotificationActionHandler"
+			android:exported="true"
+            tools:ignore="ExportedReceiver" />
+
 		<provider
 			android:name=".utils.RemotePrefProvider"
 			android:authorities="sh.siava.pixelxpert"
