@@ -1,3 +1,6 @@
+**canary-428**  
+- A15QPR2 + A16b1: Fixed taskbar in recents mode  
+  
 **canary-427**  
 - A15QPR2b3: compatible  
   
