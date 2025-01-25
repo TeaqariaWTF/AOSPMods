@@ -1,3 +1,6 @@
+**canary-429**  
+- A16b1: Fixed keyguard mods  
+  
 **canary-428**  
 - A15QPR2 + A16b1: Fixed taskbar in recents mode  
   
