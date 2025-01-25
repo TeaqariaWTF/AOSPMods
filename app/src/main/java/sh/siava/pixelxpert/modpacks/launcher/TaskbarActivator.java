@@ -74,6 +74,7 @@ public class TaskbarActivator extends XposedModPack {
 	private Object TaskbarModelCallbacks;
 	private int mItemsLength = 0;
 	private int mUpdateHotseatParams = 2;
+	private String mUpdateItemsMethodName;
 
 	public TaskbarActivator(Context context) {
 		super(context);
@@ -244,12 +245,19 @@ public class TaskbarActivator extends XposedModPack {
 					}
 				});
 
-		mUpdateHotseatParams = ReflectionTools.findMethod(TaskbarViewClass.getClazz(), "updateHotseatItems").getParameterCount();
+		Method updateItemsMethod = ReflectionTools.findMethod(TaskbarViewClass.getClazz(), "updateItems"); //A15QPR2+16
+		if(updateItemsMethod == null)
+		{ //up to A15QPR1
+			updateItemsMethod = ReflectionTools.findMethod(TaskbarViewClass.getClazz(), "updateHotseatItems");
+		}
+		mUpdateItemsMethodName = updateItemsMethod.getName();
+
+		mUpdateHotseatParams = updateItemsMethod.getParameterCount();
 
 		RecentTasksListClass.afterConstruction().run(param -> recentTasksList = param.thisObject);
 
 		TaskbarViewClass
-				.after("updateHotseatItems")
+				.after(mUpdateItemsMethodName)
 				.run(param -> {
 					if(TaskbarAsRecents) {
 						try {
@@ -345,9 +353,9 @@ public class TaskbarActivator extends XposedModPack {
 
 								if (mUpdateHotseatParams == 2) //A15QPR1
 								{
-									callMethod(taskBarView, "updateHotseatItems", itemInfos, new ArrayList<>());
+									callMethod(taskBarView, mUpdateItemsMethodName, itemInfos, new ArrayList<>());
 								} else { //Older
-									callMethod(taskBarView, "updateHotseatItems", new Object[]{itemInfos});
+									callMethod(taskBarView, mUpdateItemsMethodName, new Object[]{itemInfos});
 								}
 
 								int startPoint = taskBarView.getChildAt(0).getClass().getName().endsWith("SearchDelegateView") ? 1 : 0;
