@@ -16,7 +16,7 @@ import java.util.zip.ZipFile;
 import sh.siava.pixelxpert.modpacks.Constants;
 
 public class AppUtils {
-	public static void Restart(String what) {
+	public static void restart(String what) {
 		switch (what.toLowerCase())
 		{
 			case "systemui":

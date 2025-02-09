@@ -44,6 +44,7 @@ import sh.siava.pixelxpert.modpacks.systemui.KeyguardMods;
 import sh.siava.pixelxpert.modpacks.systemui.MultiStatusbarRows;
 import sh.siava.pixelxpert.modpacks.systemui.NotificationExpander;
 import sh.siava.pixelxpert.modpacks.systemui.NotificationManager;
+import sh.siava.pixelxpert.modpacks.systemui.PowerMenu;
 import sh.siava.pixelxpert.modpacks.systemui.QSFooterManager;
 import sh.siava.pixelxpert.modpacks.systemui.QSTileGrid;
 import sh.siava.pixelxpert.modpacks.systemui.ScreenGestures;
@@ -134,6 +135,7 @@ public class ModPacks {
 					modPacks.add(VolumeDialog.class);
 					modPacks.add(DepthWallpaper.class);
 					modPacks.add(KSURootReceiver.class);
+					modPacks.add(PowerMenu.class);
 				}
 				break;
 

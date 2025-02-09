@@ -78,17 +78,36 @@ public class SystemUtils {
 	public static void restartSystemUI() {
 		BootLoopProtector.resetCounter("com.android.systemui");
 
-		XPLauncher.enqueueProxyCommand(proxy -> {
-			try {
-				proxy.runCommand("killall com.android.systemui");
-			} catch (Throwable ignored) {}
-		});
+		restart("systemUI");
 	}
 
-	public static void restart() {
+	public static void restart(String what) {
+		switch (what.toLowerCase())
+		{
+			case "systemui":
+				runRootCommand("killall com.android.systemui");
+				break;
+			case "system":
+				runRootCommand("am start -a android.intent.action.REBOOT");
+				break;
+			case "zygote":
+			case "android":
+				runRootCommand("kill $(pidof zygote)");
+				runRootCommand("kill $(pidof zygote64)");
+				break;
+			case "bootloader":
+				runRootCommand("reboot bootloader");
+				break;
+			default:
+				runRootCommand(String.format("killall %s", what));
+		}
+	}
+
+	private static void runRootCommand(String command)
+	{
 		XPLauncher.enqueueProxyCommand(proxy -> {
 			try {
-				proxy.runCommand("am start -a android.intent.action.REBOOT");
+				proxy.runCommand(command);
 			} catch (Throwable ignored) {}
 		});
 	}
