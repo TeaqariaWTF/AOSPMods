@@ -349,6 +349,7 @@
     <string name="doze_header">While screen is off…</string>
     <string name="custom_themed_icons_title">Custom themed icons</string>
     <string name="px_in_settings_title">Add PixelXpert to settings items</string>
+    <string name="advanced_power_menu_title">Advanced power menu</string>
     <string name="sleep_on_flat_screen_title">Turn off the screen on flat surface</string>
     <string name="sleep_on_flat_screen_tile_title">Sleep on surface</string>
     <string name="flat_screen_timeout_title">Screen timeout on flat surface</string>
