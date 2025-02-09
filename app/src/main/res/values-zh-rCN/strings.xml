@@ -20,6 +20,7 @@
     <string name="notification_channel_update_desc">此频道会展示最新更新的通知。</string>
     <string name="new_update_title">有可用更新</string>
     <string name="new_update_desc">有新本的 PixelXpert 可用</string>
+    <string name="skip_this_update">Skip this update</string>
     <string name="browser_not_found">未找到浏览器</string>
     <string name="settings_general_section_title">通用</string>
     <string name="settings_update_section_title">更新</string>

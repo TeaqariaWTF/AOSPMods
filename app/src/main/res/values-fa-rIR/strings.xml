@@ -20,6 +20,7 @@
     <string name="notification_channel_update_desc">این کانال اطلاع رسانی در مورد آخرین به روز رسانی ها را نشان می دهد.</string>
     <string name="new_update_title">نسخه جدید داریم</string>
     <string name="new_update_desc">نسخه جدید PixelXpert آماده است</string>
+    <string name="skip_this_update">Skip this update</string>
     <string name="browser_not_found">مرورگر یافت نشد</string>
     <string name="settings_general_section_title">عمومی</string>
     <string name="settings_update_section_title">به‌روزرسانی</string>

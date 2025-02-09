@@ -20,6 +20,7 @@
     <string name="notification_channel_update_desc">Bu kanal, en son güncellemeler hakkında bildirim gösterir.</string>
     <string name="new_update_title">Güncelleme mevcut</string>
     <string name="new_update_desc">PixelXpert\'in yeni bir sürümü mevcut</string>
+    <string name="skip_this_update">Bu güncelleştirmeyi atla</string>
     <string name="browser_not_found">Tarayıcı bulunamadı</string>
     <string name="settings_general_section_title">Genel</string>
     <string name="settings_update_section_title">Güncelleme</string>

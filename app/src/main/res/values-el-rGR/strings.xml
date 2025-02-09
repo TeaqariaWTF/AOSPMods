@@ -20,6 +20,7 @@
     <string name="notification_channel_update_desc">Αυτό το κανάλι εμφανίζει ειδοποιήσεις για τις πιο πρόσφατες ενημερώσεις.</string>
     <string name="new_update_title">Διαθέσιμη ενημέρωση</string>
     <string name="new_update_desc">Μια νέα έκδοση του PixelXpert είναι διαθέσιμη</string>
+    <string name="skip_this_update">Skip this update</string>
     <string name="browser_not_found">Το πρόγραμμα περιήγησης δεν βρέθηκε</string>
     <string name="settings_general_section_title">Γενικός</string>
     <string name="settings_update_section_title">Εκσυγχρονίζω</string>

@@ -20,6 +20,7 @@
     <string name="notification_channel_update_desc">Ez a csatorna értesítéseket jelenít meg a legújabb frissítésekről.</string>
     <string name="new_update_title">Frissítés elérhető</string>
     <string name="new_update_desc">Megjelent a PixelXpert új verziója</string>
+    <string name="skip_this_update">Skip this update</string>
     <string name="browser_not_found">A böngésző nem található</string>
     <string name="settings_general_section_title">Általános</string>
     <string name="settings_update_section_title">Frissítés</string>

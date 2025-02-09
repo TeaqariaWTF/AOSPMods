@@ -20,6 +20,7 @@
     <string name="notification_channel_update_desc">Denne kanalen viser varsler om de siste oppdateringene.</string>
     <string name="new_update_title">Oppdatering tilgjengelig</string>
     <string name="new_update_desc">En ny versjon av PixelXpert er tilgjengelig</string>
+    <string name="skip_this_update">Skip this update</string>
     <string name="browser_not_found">Finner ikke nettleseren</string>
     <string name="settings_general_section_title">Generell</string>
     <string name="settings_update_section_title">Oppdater</string>

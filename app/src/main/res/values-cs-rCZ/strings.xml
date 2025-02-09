@@ -20,6 +20,7 @@
     <string name="notification_channel_update_desc">Tento kanál zobrazuje upozornění na nejnovější aktualizace.</string>
     <string name="new_update_title">Aktualizace k dispozici</string>
     <string name="new_update_desc">K dispozici je nová verze PixelXpert</string>
+    <string name="skip_this_update">Skip this update</string>
     <string name="browser_not_found">Prohlížeč nenalezen</string>
     <string name="settings_general_section_title">Všeobecné</string>
     <string name="settings_update_section_title">Aktualizace</string>

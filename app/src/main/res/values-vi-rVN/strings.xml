@@ -20,6 +20,7 @@
     <string name="notification_channel_update_desc">Kênh này hiển thị thông báo về các bản cập nhật mới nhất.</string>
     <string name="new_update_title">Đã có bản cập nhật</string>
     <string name="new_update_desc">Đã có phiên bản PixelXpert mới</string>
+    <string name="skip_this_update">Bỏ qua bản cập nhật này</string>
     <string name="browser_not_found">Không tìm thấy trình duyệt</string>
     <string name="settings_general_section_title">Tổng quan</string>
     <string name="settings_update_section_title">Cập nhật</string>
