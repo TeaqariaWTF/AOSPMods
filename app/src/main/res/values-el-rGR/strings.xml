@@ -287,7 +287,7 @@
     <string name="force_no_cutout">Αγνοήστε την αποκοπή της κάμερας</string>
     <string name="clear_all_reposition_title">Προσθέστε ένα προσβάσιμο κουμπί διαγραφής όλων στη σελίδα πρόσφατων</string>
     <string name="force_themed_icons_title">Αυτόματη δημιουργία εικονιδίων θεμάτων που λείπουν (μόνο για εκκινητή ixel)</string>
-    <string name="reapply_themed_config">Ενεργοποιήστε ξανά τα εικονίδια με θέμα για εφαρμογή</string>
+    <string name="force_themed_icons_summary">Ενεργοποιήστε ξανά τα εικονίδια με θέμα για εφαρμογή</string>
     <string name="volume_button_step_title">Βήματα έντασης (0 έως 100%)</string>
     <string name="display_resolution_switch_title">Τροποποίηση ανάλυσης οθόνης</string>
     <string name="display_resolution_switch_summary">Πριν ενεργοποιήσετε αυτό, βεβαιωθείτε ότι επαναφέρετε όλα τα μεγέθη οθόνης/dpi αλλαγές στην προεπιλογή</string>

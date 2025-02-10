@@ -287,7 +287,7 @@
     <string name="force_no_cutout">Hagyja figyelmen kívül a kamera kivágását</string>
     <string name="clear_all_reposition_title">Adjon hozzá egy hozzáférhető, minden törlése gombot a legutóbbi oldalhoz</string>
     <string name="force_themed_icons_title">Automatikusan hozza létre a hiányzó témázott ikonokat (csak Pixel Launcher-re működik)</string>
-    <string name="reapply_themed_config">Az alkalmazáshoz engedélyezze újra a tematikus ikonokat</string>
+    <string name="force_themed_icons_summary">Az alkalmazáshoz engedélyezze újra a tematikus ikonokat</string>
     <string name="volume_button_step_title">Hangerő lépések (0-100%)</string>
     <string name="display_resolution_switch_title">Képernyő felbontás módosítása</string>
     <string name="display_resolution_switch_summary">Mielőtt engedélyeznéd ezt, győződj meg róla, hogy minden képernyő méret/dpi változásokat az eredeti értékekre visszaállítottál</string>

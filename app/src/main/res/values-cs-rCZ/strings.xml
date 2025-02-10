@@ -287,7 +287,7 @@
     <string name="force_no_cutout">Ignorujte výřez fotoaparátu</string>
     <string name="clear_all_reposition_title">Přidejte dostupné tlačítko pro vymazání všeho na stránku s posledními</string>
     <string name="force_themed_icons_title">Automaticky generovat chybějící ikony motivů (pouze spouštěč pixelů)</string>
-    <string name="reapply_themed_config">Znovu povolte tematické ikony, které se mají použít</string>
+    <string name="force_themed_icons_summary">Znovu povolte tematické ikony, které se mají použít</string>
     <string name="volume_button_step_title">Kroky hlasitosti (0 až 100 %)</string>
     <string name="display_resolution_switch_title">Upravit rozlišení displeje</string>
     <string name="display_resolution_switch_summary">Před povolením se ujistěte, že resetujete všechny změny velikosti displeje/dpi na výchozí nastavení</string>

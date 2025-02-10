@@ -287,7 +287,7 @@
     <string name="force_no_cutout">Ignora el recorte de la cámara</string>
     <string name="clear_all_reposition_title">Agregar un botón de borrar todo en aplicaciones recientes</string>
     <string name="force_themed_icons_title">Generar automáticamente íconos temáticos faltantes (Solo Android - Pixel launcher)</string>
-    <string name="reapply_themed_config">Vuelva a habilitar los iconos temáticos para aplicar</string>
+    <string name="force_themed_icons_summary">Vuelva a habilitar los iconos temáticos para aplicar</string>
     <string name="volume_button_step_title">Pasos de volumen (0 a 100%)</string>
     <string name="display_resolution_switch_title">Modificar resolución de pantalla</string>
     <string name="display_resolution_switch_summary">Antes de activar esto, asegúrese de reiniciar todos los cambios de tamaño de pantalla/dpi por defecto</string>

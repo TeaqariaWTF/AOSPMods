@@ -287,7 +287,7 @@
     <string name="force_no_cutout">Negeer de camera-uitsparing</string>
     <string name="clear_all_reposition_title">Voeg een toegankelijke \'Alles wissen\'-knop toe aan de recentspagina</string>
     <string name="force_themed_icons_title">Genereer automatisch ontbrekende iconen (Pixel launcher alleen)</string>
-    <string name="reapply_themed_config">Schakel themapictogrammen opnieuw in om toe te passen</string>
+    <string name="force_themed_icons_summary">Schakel themapictogrammen opnieuw in om toe te passen</string>
     <string name="volume_button_step_title">Volumestappen (0 tot 100%)</string>
     <string name="display_resolution_switch_title">Weergaveresolutie wijzigen</string>
     <string name="display_resolution_switch_summary">Voordat u dit inschakelt, zorg ervoor dat alle instellingen voor grootte/dpi-weergave worden hersteld naar de standaardwaarde</string>

@@ -287,7 +287,7 @@
     <string name="force_no_cutout">Ignorer kameraets udskæring</string>
     <string name="clear_all_reposition_title">Føj en tilgængelig knap til at rydde alt til siden for seneste nyheder</string>
     <string name="force_themed_icons_title">Auto-generere manglende tematiserede ikoner (kun (Pixel launcher)</string>
-    <string name="reapply_themed_config">Genaktiver temaikoner for at anvende</string>
+    <string name="force_themed_icons_summary">Genaktiver temaikoner for at anvende</string>
     <string name="volume_button_step_title">Lydstyrketrin (0 til 100 %)</string>
     <string name="display_resolution_switch_title">Ændr skærmopløsning</string>
     <string name="display_resolution_switch_summary">Før du aktiverer dette, skal du sørge for at nulstille alle visningsstørrelse/dpi ændringer til standard</string>

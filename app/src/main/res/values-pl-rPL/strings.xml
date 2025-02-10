@@ -287,7 +287,7 @@
     <string name="force_no_cutout">Zignoruj ​​wycięcie aparatu</string>
     <string name="clear_all_reposition_title">Dodaj dostępny przycisk czyszczenia wszystkiego do strony ostatnich</string>
     <string name="force_themed_icons_title">Automatycznie generuj brakujące ikony motywu (tylko launcher ixel)</string>
-    <string name="reapply_themed_config">Włącz ponownie ikony tematyczne, aby je zastosować</string>
+    <string name="force_themed_icons_summary">Włącz ponownie ikony tematyczne, aby je zastosować</string>
     <string name="volume_button_step_title">Kroki głośności (0 do 100%)</string>
     <string name="display_resolution_switch_title">Modyfikuj rozdzielczość ekranu</string>
     <string name="display_resolution_switch_summary">Przed włączeniem tej opcji upewnij się, że wszystkie zmiany rozmiaru wyświetlacza/dpi do domyślnych</string>

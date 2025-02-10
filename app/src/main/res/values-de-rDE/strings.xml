@@ -287,7 +287,7 @@
     <string name="force_no_cutout">Kameraausschnitt ignorieren</string>
     <string name="clear_all_reposition_title">Fügen Sie \'alles löschen\' unten auf die Recents-Leiste</string>
     <string name="force_themed_icons_title">Fehlende Themensymbole automatisch generieren (nur Pixel Launcher)</string>
-    <string name="reapply_themed_config">Thematische Symbole wieder aktivieren und anwenden </string>
+    <string name="force_themed_icons_summary">Thematische Symbole wieder aktivieren und anwenden </string>
     <string name="volume_button_step_title">Lautstärkeschritte (0 bis 100%)</string>
     <string name="display_resolution_switch_title">Bildschirmauflösung ändern</string>
     <string name="display_resolution_switch_summary">Bevor Sie dies aktivieren, stellen Sie sicher, dass alle Displaygrößen/dpi-Änderungen auf Standard zurückgesetzt wurden</string>

@@ -287,7 +287,7 @@
     <string name="force_no_cutout">فرض کن صفحه نمایش بریدگی دوربین ندارد</string>
     <string name="clear_all_reposition_title">دکمه بستن تمام برنامه ها در پایین صفحه Recent اضافه شود</string>
     <string name="force_themed_icons_title">ایجاد خودکار نمادهای تک رنگ ناقص (فقط راه‌انداز پیکسل)</string>
-    <string name="reapply_themed_config">مجدداً نمادهای مضمون را فعال کنید تا اعمال شوند</string>
+    <string name="force_themed_icons_summary">مجدداً نمادهای مضمون را فعال کنید تا اعمال شوند</string>
     <string name="volume_button_step_title">مراحل صدای موزیک (0 تا 100%)</string>
     <string name="display_resolution_switch_title">تغییر رزولوشن صفحه نمایش</string>
     <string name="display_resolution_switch_summary">قبل از فعال کردن این، لطفاً تمام تنظیمات مربوط به اندازه/dpi صفحه نمایش را به حالت پیش‌فرض برگردانید</string>

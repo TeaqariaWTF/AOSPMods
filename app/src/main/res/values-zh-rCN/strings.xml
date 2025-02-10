@@ -287,7 +287,7 @@
     <string name="force_no_cutout">无视屏幕开孔</string>
     <string name="clear_all_reposition_title">最近任务右侧添加 清除所有 按钮</string>
     <string name="force_themed_icons_title">自动生成缺少的主题图标 (只适配 Pixel 启动器)</string>
-    <string name="reapply_themed_config">重新启用主题图标以应用</string>
+    <string name="force_themed_icons_summary">重新启用主题图标以应用</string>
     <string name="volume_button_step_title">音量步进 (0至100%)</string>
     <string name="display_resolution_switch_title">修改显示分辨率</string>
     <string name="display_resolution_switch_summary">启用前，请确保将所有的 显示大小/DPI 更改 重置为默认值</string>

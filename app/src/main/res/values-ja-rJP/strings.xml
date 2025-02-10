@@ -287,7 +287,7 @@
     <string name="force_no_cutout">Ignore the camera cutout</string>
     <string name="clear_all_reposition_title">Add an accessible clear-all button to recents page</string>
     <string name="force_themed_icons_title">非対応のテーマアイコンを自動生成（Pixel Launcherのみ）</string>
-    <string name="reapply_themed_config">テーマアイコンの適用を再度有効化します</string>
+    <string name="force_themed_icons_summary">テーマアイコンの適用を再度有効化します</string>
     <string name="volume_button_step_title">ボリュームステップ (0から100%)</string>
     <string name="display_resolution_switch_title">ディスプレイの解像度を変更</string>
     <string name="display_resolution_switch_summary">これを有効にする前に、すべての表示サイズ/dpiの変更をデフォルトに設定してください</string>

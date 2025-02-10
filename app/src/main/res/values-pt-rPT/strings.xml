@@ -287,7 +287,7 @@
     <string name="force_no_cutout">Ignorar o <i>notch</i> da câmara</string>
     <string name="clear_all_reposition_title">Mostrar botão limpar tudo no ecrã das apps recentes</string>
     <string name="force_themed_icons_title">Gerar ícones temáticos automaticamente (Apenas para Pixel launcher)</string>
-    <string name="reapply_themed_config">Requer reativar a opção de ícones temáticos</string>
+    <string name="force_themed_icons_summary">Requer reativar a opção de ícones temáticos</string>
     <string name="volume_button_step_title">Níveis de volume (0 a 100%)</string>
     <string name="display_resolution_switch_title">Modificar resolução da exibição</string>
     <string name="display_resolution_switch_summary">Antes de ativar esta opção, certifique-se que redefiniu todas as alterações de exibição/dpi para os valores padrão</string>

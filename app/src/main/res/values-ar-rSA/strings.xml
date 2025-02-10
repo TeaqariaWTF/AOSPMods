@@ -287,7 +287,7 @@
     <string name="force_no_cutout">تجاهل قطع الكاميرا</string>
     <string name="clear_all_reposition_title">إضافة زر واضح الوصول إلى صفحة التطبيقات الأخيرة</string>
     <string name="force_themed_icons_title">الإنشاء التلقائي للأيقونات ذات السمات المفقودة (Pixel Launcher فقط)</string>
-    <string name="reapply_themed_config">إعادة تمكين الأيقونات الثيم لتطبيق</string>
+    <string name="force_themed_icons_summary">إعادة تمكين الأيقونات الثيم لتطبيق</string>
     <string name="volume_button_step_title">درجات الصوت (0 إلى 100%)</string>
     <string name="display_resolution_switch_title">تعديل دقة العرض</string>
     <string name="display_resolution_switch_summary">قبل تمكين هذا، تحقق من إعادة ضبط جميع تغييرات حجم العرض / dpi إلى الافتراضي</string>

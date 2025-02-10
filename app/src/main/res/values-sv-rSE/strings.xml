@@ -287,7 +287,7 @@
     <string name="force_no_cutout">Ignorera kamerautskärningen</string>
     <string name="clear_all_reposition_title">Lägg till en tillgänglig rensa-allt-knapp på sidan Senaste</string>
     <string name="force_themed_icons_title">Auto-generera saknade teman ikoner (endast Pixel launcher)</string>
-    <string name="reapply_themed_config">Återaktivera temaikoner för att tillämpa</string>
+    <string name="force_themed_icons_summary">Återaktivera temaikoner för att tillämpa</string>
     <string name="volume_button_step_title">Volymsteg (0 till 100 %)</string>
     <string name="display_resolution_switch_title">Ändra skärmupplösning</string>
     <string name="display_resolution_switch_summary">Innan du aktiverar detta, se till att återställa alla visningsstorlek/dpi ändringar till standard</string>

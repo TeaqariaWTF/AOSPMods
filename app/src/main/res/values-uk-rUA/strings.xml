@@ -287,7 +287,7 @@
     <string name="force_no_cutout">Не звертайте уваги на виріз камери</string>
     <string name="clear_all_reposition_title">Додайте доступну кнопку очищення всього на сторінку останніх</string>
     <string name="force_themed_icons_title">Автоматично створювати відсутні іконки теми (тільки в Pixel launcher)</string>
-    <string name="reapply_themed_config">Знову ввімкніть тематичні значки, щоб застосувати їх</string>
+    <string name="force_themed_icons_summary">Знову ввімкніть тематичні значки, щоб застосувати їх</string>
     <string name="volume_button_step_title">Кроки гучності (від 0 до 100%)</string>
     <string name="display_resolution_switch_title">Змінити роздільну здатність дисплею</string>
     <string name="display_resolution_switch_summary">Перш ніж увімкнути це, переконайтеся, що скинули зміни всіх розмірів/dpi до типових</string>

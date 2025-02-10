@@ -287,7 +287,7 @@
     <string name="force_no_cutout">Занемарите изрез камере</string>
     <string name="clear_all_reposition_title">Додајте доступно дугме за брисање свега на страницу са најновијим информацијама</string>
     <string name="force_themed_icons_title">Аутоматски генериши тематске иконе које недостају (само на Pixel Launcher-у)</string>
-    <string name="reapply_themed_config">Поново омогућите тематске иконе за примену</string>
+    <string name="force_themed_icons_summary">Поново омогућите тематске иконе за примену</string>
     <string name="volume_button_step_title">Кораци јачине звука (0 до 100%)</string>
     <string name="display_resolution_switch_title">Modify display resolution</string>
     <string name="display_resolution_switch_summary">Before enabling this, make sure to reset all display size/dpi changes to default</string>

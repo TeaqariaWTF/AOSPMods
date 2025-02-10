@@ -287,7 +287,7 @@
     <string name="force_no_cutout">Ignoreer die kamera-uitsny</string>
     <string name="clear_all_reposition_title">Voeg \'n toeganklike skoon-alles-knoppie by onlangse bladsy</string>
     <string name="force_themed_icons_title">Auto-generate missing themed icons (Pixel launcher only)</string>
-    <string name="reapply_themed_config">Aktiveer tema-ikone weer om toe te pas</string>
+    <string name="force_themed_icons_summary">Aktiveer tema-ikone weer om toe te pas</string>
     <string name="volume_button_step_title">Volumestappe (0 tot 100%)</string>
     <string name="display_resolution_switch_title">Modify display resolution</string>
     <string name="display_resolution_switch_summary">Before enabling this, make sure to reset all display size/dpi changes to default</string>

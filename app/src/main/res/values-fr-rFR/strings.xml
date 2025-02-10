@@ -287,7 +287,7 @@
     <string name="force_no_cutout">Ne pas prendre en compte l’encoche de l’appareil photo</string>
     <string name="clear_all_reposition_title">Ajouter un bouton pour retirer toutes les applications récentes facilement</string>
     <string name="force_themed_icons_title">Générer automatiquement les icônes thématiques manquantes (lanceur Pixel seulement)</string>
-    <string name="reapply_themed_config">Réactiver les icônes thématiques à appliquer</string>
+    <string name="force_themed_icons_summary">Réactiver les icônes thématiques à appliquer</string>
     <string name="volume_button_step_title">Pas du volume (0% à 100%)</string>
     <string name="display_resolution_switch_title">Modifier la résolution d\'affichage</string>
     <string name="display_resolution_switch_summary">Avant de l\'activer, assurez-vous de réinitialiser toutes les modifications de taille d\'affichage/dpi par défaut</string>

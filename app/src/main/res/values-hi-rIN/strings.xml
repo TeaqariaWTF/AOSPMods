@@ -287,7 +287,7 @@
     <string name="force_no_cutout">कैमरा कटआउट पर ध्यान न दें</string>
     <string name="clear_all_reposition_title">हालिया बार के नीचे \'सभी साफ़ करें\' पेस्ट करें</string>
     <string name="force_themed_icons_title">Auto-generate missing themed icons (Pixel launcher only)</string>
-    <string name="reapply_themed_config">लागू करने के लिए थीम वाले आइकन पुनः सक्षम करें</string>
+    <string name="force_themed_icons_summary">लागू करने के लिए थीम वाले आइकन पुनः सक्षम करें</string>
     <string name="volume_button_step_title">वॉल्यूम चरण (0 से 100%)</string>
     <string name="display_resolution_switch_title">Modify display resolution</string>
     <string name="display_resolution_switch_summary">Before enabling this, make sure to reset all display size/dpi changes to default</string>

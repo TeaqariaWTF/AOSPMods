@@ -287,7 +287,7 @@
     <string name="force_no_cutout">Kamera kesimini yok say</string>
     <string name="clear_all_reposition_title">Son sayfaya erişilebilir bir \"Tümünü temizle\" düğmesi ekle</string>
     <string name="force_themed_icons_title">Eksik temalı simgeleri otomatik oluştur (Yalnızca Pixel başlatıcı)</string>
-    <string name="reapply_themed_config">Temalı simgeleri yeniden etkinleştir</string>
+    <string name="force_themed_icons_summary">Temalı simgeleri yeniden etkinleştir</string>
     <string name="volume_button_step_title">Ses adımları (0\'dan %100\'e)</string>
     <string name="display_resolution_switch_title">Ekran çözünürlüğünü değiştir</string>
     <string name="display_resolution_switch_summary">Bunu etkinleştirmeden önce tüm ekran boyutu/dpi değişikliklerini varsayılana sıfırladığınızdan emin olun</string>

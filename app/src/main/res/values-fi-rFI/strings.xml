@@ -287,7 +287,7 @@
     <string name="force_no_cutout">Ohita kameran katkaisu</string>
     <string name="clear_all_reposition_title">Lisää käytettävissä oleva tyhjennä kaikki -painike viimeisimmät sivulle</string>
     <string name="force_themed_icons_title">Luo puuttuvat teemakuvakkeet automaattisesti (vain Pixel- käynnistysohjelma)</string>
-    <string name="reapply_themed_config">Ota teemakuvakkeet uudelleen käyttöön</string>
+    <string name="force_themed_icons_summary">Ota teemakuvakkeet uudelleen käyttöön</string>
     <string name="volume_button_step_title">Äänenvoimakkuuden portaat (0–100 %)</string>
     <string name="display_resolution_switch_title">Muokkaa näytön resoluutiota</string>
     <string name="display_resolution_switch_summary">Ennen kuin otat tämän käyttöön, varmista, että nollaa kaikki näytön koko/dpi muutokset oletusarvoihin</string>
