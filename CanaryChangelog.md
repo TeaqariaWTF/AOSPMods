@@ -1,3 +1,6 @@
+**canary-430**  
+- advanced power menu  
+  
 **canary-429**  
 - A16b1: Fixed keyguard mods  
   
