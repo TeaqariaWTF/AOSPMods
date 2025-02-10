@@ -26,7 +26,8 @@
 		<activity
 			android:name=".ui.activities.SplashScreenActivity"
 			android:exported="true"
-			android:label="@string/title_activity_settings" />
+			android:label="@string/title_activity_settings"
+			android:theme="@style/AppTheme.PixelXpert" />
 
 		<activity-alias
 			android:name=".FakeSplashActivityAlternateIcon"
