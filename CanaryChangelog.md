@@ -1,3 +1,7 @@
+**canary-431**  
+- Themed icons toggle doesn't require manual reset anymore (Thanks to DrDisagree)  
+- advanced power menu improved  
+  
 **canary-430**  
 - advanced power menu  
   
