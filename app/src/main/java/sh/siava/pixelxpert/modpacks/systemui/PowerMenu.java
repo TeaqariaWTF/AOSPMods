@@ -1,14 +1,13 @@
 package sh.siava.pixelxpert.modpacks.systemui;
 
 import static android.graphics.Color.BLACK;
-import static android.graphics.Color.RED;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
+import static de.robv.android.xposed.XposedHelpers.setObjectField;
 import static sh.siava.pixelxpert.modpacks.XPrefs.Xprefs;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +23,9 @@ import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.modpacks.Constants;
+import sh.siava.pixelxpert.modpacks.ResourceManager;
 import sh.siava.pixelxpert.modpacks.XPLauncher;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.SystemUtils;
@@ -52,19 +53,40 @@ public class PowerMenu extends XposedModPack {
 	@Override
 	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		ReflectedClass GlobalActionsDialogLiteClass = ReflectedClass.of("com.android.systemui.globalactions.GlobalActionsDialogLite");
+		ReflectedClass PowerOptionsAction = ReflectedClass.of("com.android.systemui.globalactions.GlobalActionsDialogLite$PowerOptionsAction");
 		mLongPressActionInterface = ReflectedClass.of("com.android.systemui.globalactions.GlobalActionsDialogLite$LongPressAction");
+
+		PowerOptionsAction
+				.afterConstruction()
+				.run(param -> {
+					if(!advancedPowerMenu) return;
+
+					setObjectField(param.thisObject, "mMessageResId", 0);
+					setObjectField(param.thisObject, "mMessage", getString(R.string.advanced_option_button_title));
+				});
 
 		GlobalActionsDialogLiteClass
 				.after("createActionItems")
 				.run(param -> {
 					if(!advancedPowerMenu) return;
 
+
 					//noinspection unchecked
 					ArrayList<Object> mItems = (ArrayList<Object>) getObjectField(param.thisObject, "mItems");
-					mItems.add(getAction(new BootloaderAction()));
-					mItems.add(getAction(new SoftRebootAction()));
-					mItems.add(getAction(new SystemUIRebootAction()));
+					mItems.add(PowerOptionsAction.getClazz().getConstructors()[0].newInstance(param.thisObject));
+
+					//noinspection unchecked
+					ArrayList<Object> mPowerItems = (ArrayList<Object>) getObjectField(param.thisObject, "mPowerItems");
+
+					mPowerItems.add(getAction(new BootloaderAction()));
+					mPowerItems.add(getAction(new SoftRebootAction()));
+					mPowerItems.add(getAction(new SystemUIRebootAction()));
 				});
+	}
+
+	private String getString(int id)
+	{
+		return ResourceManager.modRes.getString(id);
 	}
 
 	private Object getAction(PXCustomAction action)
@@ -88,7 +110,7 @@ public class PowerMenu extends XposedModPack {
 
 		@Override
 		String getText() {
-			return "Reboot Bootloader";
+			return getString(R.string.reboot_bootloader_title);
 		}
 
 		@SuppressLint("DiscouragedApi")
@@ -113,7 +135,7 @@ public class PowerMenu extends XposedModPack {
 
 		@Override
 		String getText() {
-			return "Soft Reboot";
+			return getString(R.string.soft_reboot_title);
 		}
 
 		@SuppressLint("DiscouragedApi")
@@ -138,7 +160,7 @@ public class PowerMenu extends XposedModPack {
 
 		@Override
 		String getText() {
-			return "Reboot SystemUI";
+			return getString(R.string.restart_systemui_title);
 		}
 
 		@SuppressLint("DiscouragedApi")
@@ -161,27 +183,8 @@ public class PowerMenu extends XposedModPack {
 					LayoutInflater layoutInflater = (LayoutInflater) args[3];
 					Resources res = mContext.getResources();
 
-					@SuppressLint("DiscouragedApi")
-					View view = layoutInflater.inflate(res.getIdentifier("global_actions_grid_item_lite", "layout", mContext.getPackageName()), parent, false);
+					return create(parent, layoutInflater, res);
 
-					@SuppressLint("DiscouragedApi")
-					ImageView iconView = view.findViewById(res.getIdentifier("icon", "id", "android"));
-
-					iconView.setImageDrawable(getIcon());
-					iconView.setScaleType(ImageView.ScaleType.CENTER_CROP);
-
-					@SuppressLint("DiscouragedApi")
-					TextView messageView = view.findViewById(res.getIdentifier("message", "id", "android"));
-					messageView.setSelected(true);
-					messageView.setText(getText());
-
-					if(enablePowerMenuTheme && !SystemUtils.isDarkMode())
-					{
-						messageView.setTextColor(BLACK);
-					}
-
-					view.setId(View.generateViewId());
-					return view;
 				case "onPress": //main action
 					onPress();
 					return null;
@@ -194,28 +197,50 @@ public class PowerMenu extends XposedModPack {
 				case "getLabelForAccessibility": //haven't seen usage
 					return "";
 				case "showDuringKeyguard": //didn't see usage
-					return false;
 				case "showBeforeProvisioning": //didn't see usage
+				case "shouldBeSeparated": //didn't see usage
 					return false;
 				case "isEnabled": //didn't see usage
 					return true;
-				case "shouldBeSeparated": //didn't see usage
-					return false;
 				case "getMessageResId": //not used
 					return 0;
 				case "getIcon": //not used
-					return new ColorDrawable(RED);
+					return getIcon();
 				case "getMessage": //not used
-					return "";
+					return getText();
 				//general object methods
 				case "equals":
 					return this.equals(args[0]);
 				case "hashCode":
 					return this.hashCode();
 				case "toString":
-					return "";
+					return this.toString();
 			}
 			return null;
+		}
+
+		private View create(ViewGroup parent, LayoutInflater layoutInflater, Resources res) {
+			@SuppressLint("DiscouragedApi")
+			View view = layoutInflater.inflate(res.getIdentifier("global_actions_grid_item_lite", "layout", mContext.getPackageName()), parent, false);
+
+			@SuppressLint("DiscouragedApi")
+			ImageView iconView = view.findViewById(res.getIdentifier("icon", "id", "android"));
+
+			iconView.setImageDrawable(getIcon());
+			iconView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+
+			@SuppressLint("DiscouragedApi")
+			TextView messageView = view.findViewById(res.getIdentifier("message", "id", "android"));
+			messageView.setSelected(true);
+			messageView.setText(getText());
+
+			if(enablePowerMenuTheme && !SystemUtils.isDarkMode())
+			{
+				messageView.setTextColor(BLACK);
+			}
+
+			view.setId(View.generateViewId());
+			return view;
 		}
 
 		protected abstract boolean onLongPress();
