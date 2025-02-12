@@ -57,8 +57,16 @@ public class FeatureFlags extends XposedModPack {
 			BaseIconCacheClass
 					.afterConstruction()
 					.run(param -> {
-						mIconDb = getObjectField(param.thisObject, "mIconDb");
-						mCache = getObjectField(param.thisObject, "mCache");
+						try {
+							mIconDb = getObjectField(param.thisObject, "mIconDb");
+						} catch (Throwable ignored) {
+							mIconDb = getObjectField(param.thisObject, "iconDb");
+						}
+						try {
+							mCache = getObjectField(param.thisObject, "mCache");
+						} catch (Throwable ignored) {
+							mCache = getObjectField(param.thisObject, "cache");
+						}
 					});
 
 			LauncherAppStateClass
