@@ -1,3 +1,6 @@
+**canary-432**  
+- A16: Fixed auto-generated themed icons  
+  
 **canary-431**  
 - Themed icons toggle doesn't require manual reset anymore (Thanks to DrDisagree)  
 - advanced power menu improved  
