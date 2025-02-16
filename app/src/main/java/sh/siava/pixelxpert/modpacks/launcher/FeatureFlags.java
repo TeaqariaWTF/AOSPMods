@@ -1,6 +1,7 @@
 package sh.siava.pixelxpert.modpacks.launcher;
 
 import static de.robv.android.xposed.XposedHelpers.callMethod;
+import static de.robv.android.xposed.XposedHelpers.findFieldIfExists;
 import static de.robv.android.xposed.XposedHelpers.getAdditionalInstanceField;
 import static de.robv.android.xposed.XposedHelpers.getIntField;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
@@ -23,9 +24,8 @@ public class FeatureFlags extends XposedModPack {
 	private static final String listenPackage = Constants.LAUNCHER_PACKAGE;
 	private static boolean ForceThemedLauncherIcons = false;
 	private int mIconBitmapSize;
-	private Object mIconDb;
-	private Object mCache;
 	private Object mModel;
+	private Object LAS;
 
 	public FeatureFlags(Context context) {
 		super(context);
@@ -51,21 +51,11 @@ public class FeatureFlags extends XposedModPack {
 	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		try {
 			ReflectedClass BaseIconFactoryClass = ReflectedClass.of("com.android.launcher3.icons.BaseIconFactory");
-			ReflectedClass BaseIconCacheClass = ReflectedClass.of("com.android.launcher3.icons.cache.BaseIconCache");
 			ReflectedClass LauncherAppStateClass = ReflectedClass.of("com.android.launcher3.LauncherAppState");
-
-			BaseIconCacheClass
-					.afterConstruction()
-					.run(param -> {
-						mIconDb = getObjectField(param.thisObject, "mIconDb");
-						mCache = getObjectField(param.thisObject, "mCache");
-					});
 
 			LauncherAppStateClass
 					.afterConstruction()
-					.run(param -> {
-						mModel = getObjectField(param.thisObject, "mModel");
-					});
+					.run(param -> LAS = param.thisObject);
 
 			BaseIconFactoryClass
 					.afterConstruction()
@@ -98,11 +88,23 @@ public class FeatureFlags extends XposedModPack {
 	}
 
 	private void reloadIcons() {
-		if (mIconDb == null || mCache == null || mModel == null) return;
+		Object iconCache = getObjectField(LAS, "mIconCache");
+
+		boolean isA16 = (findFieldIfExists(iconCache.getClass(), "cache") != null);
+
+		Object cache = isA16
+				? getObjectField(iconCache, "cache")
+				: getObjectField(iconCache, "mCache");
+
+		Object iconDb = isA16
+				? getObjectField(iconCache, "iconDb")
+				: getObjectField(iconCache, "mIconDb");
+
+		mModel = getObjectField(LAS, "mModel");
 
 		new Handler(Looper.getMainLooper()).post(() -> {
-			callMethod(mCache, "clear");
-			callMethod(mIconDb, "clear");
+			callMethod(cache, "clear");
+			callMethod(iconDb, "clear");
 			callMethod(mModel, "forceReload");
 		});
 	}
