@@ -1,3 +1,6 @@
+**canary-434**  
+- A16: Fixed taskbar in recents mode  
+  
 **canary-433**  
 - A16: Fixed launcher themed icons getting re-themed  
   
