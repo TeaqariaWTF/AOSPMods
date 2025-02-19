@@ -184,8 +184,7 @@ public class TaskbarActivator extends XposedModPack {
 						"startActivityFromRecents",
 						id,
 						null);
-			} catch (Throwable ignored) {
-			}
+			} catch (Throwable ignored) {}
 		};
 
 		String taskbarHeightField = findFieldIfExists(DeviceProfileClass.getClazz(), "taskbarSize") != null
@@ -241,8 +240,7 @@ public class TaskbarActivator extends XposedModPack {
 						if (taskbarMode == TASKBAR_ON && TaskbarHideAllAppsIcon) {
 							mTaskBarViews.forEach(view -> setObjectField(view, "mAllAppsButton", null));
 						}
-					} catch (Throwable ignored) {
-					}
+					} catch (Throwable ignored) {}
 				});
 
 		Method updateItemsMethod = ReflectionTools.findMethod(TaskbarViewClass.getClazz(), "updateItems"); //A15QPR2+16
@@ -302,9 +300,14 @@ public class TaskbarActivator extends XposedModPack {
 								}
 								if (mTasksFieldName == null) {
 									for (Field f : recentTaskList.get(0).getClass().getDeclaredFields()) {
-										if (f.getType().getName().contains("List")) {
-											mTasksFieldName = f.getName();
-											mTasksIsList = true;
+										if (f.getType().getName().contains("List"))
+										{
+											//noinspection unchecked
+											List<Object> list = (List<Object>) f.get(recentTaskList.get(0));
+											if(list != null && findFieldIfExists(list.get(0).getClass(), "isFocused") != null) {
+												mTasksFieldName = f.getName();
+												mTasksIsList = true;
+											}
 										}
 									}
 								}
@@ -367,8 +370,7 @@ public class TaskbarActivator extends XposedModPack {
 										if (getAdditionalInstanceField(iconView, "taskId")
 												.equals(getAdditionalInstanceField(itemInfos[itemInfos.length - i - 1], "taskId")))
 											continue;
-									} catch (Throwable ignored) {
-									}
+									} catch (Throwable ignored) {}
 
 									setAdditionalInstanceField(iconView, "taskId", getAdditionalInstanceField(itemInfos[itemInfos.length - i - 1], "taskId"));
 									callMethod(iconView, "applyFromApplicationInfo", itemInfos[itemInfos.length - i - 1]);
@@ -424,8 +426,7 @@ public class TaskbarActivator extends XposedModPack {
 				if (thisOne != null) {
 					try {
 						action.accept(thisOne);
-					} catch (Throwable ignored) {
-					}
+					} catch (Throwable ignored) {}
 				}
 			}
 		}
