@@ -1,3 +1,6 @@
+**canary-433**  
+- A16: Fixed launcher themed icons getting re-themed  
+  
 **canary-432**  
 - A16: Fixed auto-generated themed icons  
   
