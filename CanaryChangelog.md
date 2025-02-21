@@ -1,3 +1,6 @@
+**canary-435**  
+- Fixed app crash in certain situations  
+  
 **canary-434**  
 - A16: Fixed taskbar in recents mode  
   
