@@ -136,6 +136,7 @@ public class ModPacks {
 					modPacks.add(DepthWallpaper.class);
 					modPacks.add(KSURootReceiver.class);
 					modPacks.add(PowerMenu.class);
+					modPacks.add(StatusIconTuner.class);
 				}
 				break;
 
