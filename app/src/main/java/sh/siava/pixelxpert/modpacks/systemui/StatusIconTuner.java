@@ -1,4 +1,4 @@
-package sh.siava.pixelxpert.modpacks;
+package sh.siava.pixelxpert.modpacks.systemui;
 
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static sh.siava.pixelxpert.modpacks.XPrefs.Xprefs;
@@ -11,9 +11,12 @@ import java.util.ArrayList;
 import java.util.Set;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import sh.siava.pixelxpert.modpacks.Constants;
+import sh.siava.pixelxpert.modpacks.XPLauncher;
+import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
-public class StatusIconTuner extends XposedModPack{
+public class StatusIconTuner extends XposedModPack {
 	private static final String listenPackage = Constants.SYSTEM_UI_PACKAGE;
 
 	private static Set<String> SBIgnoredIcons = new ArraySet<>();

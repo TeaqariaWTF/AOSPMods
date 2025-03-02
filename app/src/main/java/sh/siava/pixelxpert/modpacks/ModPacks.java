@@ -50,6 +50,7 @@ import sh.siava.pixelxpert.modpacks.systemui.QSTileGrid;
 import sh.siava.pixelxpert.modpacks.systemui.ScreenGestures;
 import sh.siava.pixelxpert.modpacks.systemui.ScreenRecord;
 import sh.siava.pixelxpert.modpacks.systemui.ScreenshotManager;
+import sh.siava.pixelxpert.modpacks.systemui.StatusIconTuner;
 import sh.siava.pixelxpert.modpacks.systemui.StatusbarGestures;
 import sh.siava.pixelxpert.modpacks.systemui.StatusbarMods;
 import sh.siava.pixelxpert.modpacks.systemui.ThemeManager_13;
