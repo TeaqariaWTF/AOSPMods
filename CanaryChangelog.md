@@ -1,3 +1,7 @@
+**canary-436**  
+- Added option to choose which system icons to show on statusbar / QS / lockscreen  
+- A15QPR2 + A16: Fixed swipe up to FC  
+  
 **canary-435**  
 - Fixed app crash in certain situations  
   
