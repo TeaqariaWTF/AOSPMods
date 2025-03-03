@@ -254,6 +254,7 @@
     <string name="status_bar_airplane">Airplane Mode</string>
     <string name="status_bar_battery">Battery Level</string>
     <string name="status_bar_sensors_off">Sensors Off</string>
+    <string name="status_bar_clock">Clock</string>
 
     <string name="sunday">Sunday</string>
     <string name="monday">Monday</string>

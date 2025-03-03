@@ -2,6 +2,7 @@ package sh.siava.pixelxpert.modpacks.systemui;
 
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static sh.siava.pixelxpert.modpacks.XPrefs.Xprefs;
+import static sh.siava.pixelxpert.modpacks.systemui.StatusbarMods.APP_SWITCH_SLOT;
 
 import android.content.Context;
 import android.util.ArraySet;
@@ -35,6 +36,8 @@ public class StatusIconTuner extends XposedModPack {
 		KGIgnoredIcons = Xprefs.getStringSet("KGIgnoredIcons", new ArraySet<>());
 		QSIgnoredIcons = Xprefs.getStringSet("QSIgnoredIcons", new ArraySet<>());
 
+		KGIgnoredIcons.add(APP_SWITCH_SLOT); //we don't need it on keyguard
+
 		setIgnoredIcons(mSBIconContainer, SBIgnoredIcons);
 		setIgnoredIcons(mKGIconContainer, KGIgnoredIcons);
 		setIgnoredIcons(mQSIconContainer, QSIgnoredIcons);
@@ -47,6 +50,7 @@ public class StatusIconTuner extends XposedModPack {
 		{
 			IconManagerClass = ReflectedClass.ofIfPossible("com.android.systemui.statusbar.phone.StatusBarIconController$IconManager");
 		}
+//		ReflectedClass StatusIconContainerClass = ReflectedClass.of("com.android.systemui.statusbar.phone.StatusIconContainer");
 
 		IconManagerClass
 				.beforeConstruction()

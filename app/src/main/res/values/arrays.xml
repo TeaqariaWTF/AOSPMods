@@ -585,47 +585,47 @@
 	<string-array name="ignored_icons_values">
 		<item>volte</item>
 		<item>vowifi</item>
+		<item>no_calling</item>
+		<item>call_strength</item>
+		<item>alarm_clock</item>
 		<item>rotate</item>
 		<item>headset</item>
 		<item>data_saver</item>
-		<item>managed_profile</item>
 		<item>ime</item>
 		<item>sync_failing</item>
 		<item>sync_active</item>
-		<item>cast</item>
-		<item>connected_display</item>
-		<item>hotspot</item>
-		<item>location</item>
-		<item>bluetooth</item>
 		<item>nfc</item>
 		<item>tty</item>
 		<item>speakerphone</item>
-		<item>zen</item>
-		<item>mute</item>
-		<item>volume</item>
-		<item>wifi</item>
 		<item>cdma_eri</item>
 		<item>data_connection</item>
 		<item>phone_evdo_signal</item>
 		<item>phone_signal</item>
-		<item>battery</item>
-		<item>alarm_clock</item>
 		<item>secure</item>
-		<item>clock</item>
-		<item>mobile</item>
+		<item>managed_profile</item>
+		<item>connected_display</item>
 		<item>vpn</item>
-		<item>ethernet</item>
-		<item>microphone</item>
+		<item>bluetooth</item>
 		<item>camera</item>
-		<item>airplane</item>
-		<item>no_calling</item>
-		<item>call_strength</item>
-		<item>sensors_off</item>
+		<item>microphone</item>
+		<item>location</item>
+		<item>mute</item>
+		<item>volume</item>
+		<item>zen</item>
 		<item>screen_record</item>
+		<item>cast</item>
+		<item>ethernet</item>
 		<item>satellite</item>
+		<item>wifi</item>
+		<item>hotspot</item>
+		<item>mobile</item>
+		<item>airplane</item>
+		<item>battery</item>
+		<item>sensors_off</item>
+		<!--item>clock</item-->
 	</string-array>
 	
-	<string-array name="ignored_icons_entires">
+	<string-array name="ignored_icons_entries">
 		<item>@string/status_bar_volte</item>
 		<item>@string/status_bar_vowifi</item>
 		<item>@string/status_bar_no_calling</item>
@@ -665,6 +665,7 @@
 		<item>@string/status_bar_airplane</item>
 		<item>@string/status_bar_battery</item>
 		<item>@string/status_bar_sensors_off</item>
+		<!--item>@string/status_bar_clock</item-->
 	</string-array>
 
 </resources>

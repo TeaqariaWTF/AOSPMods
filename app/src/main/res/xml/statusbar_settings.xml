@@ -218,7 +218,7 @@
         app:iconSpaceReserved="false">
 
         <sh.siava.pixelxpert.ui.preferences.MaterialMultiSelectListPreference
-            android:entries="@array/ignored_icons_entires"
+            android:entries="@array/ignored_icons_entries"
             android:entryValues="@array/ignored_icons_values"
             android:key="SBIgnoredIcons"
             android:summary="@string/sb_ignored_icons_statusbar"
@@ -226,7 +226,7 @@
             app:iconSpaceReserved="false" />
 
         <sh.siava.pixelxpert.ui.preferences.MaterialMultiSelectListPreference
-            android:entries="@array/ignored_icons_entires"
+            android:entries="@array/ignored_icons_entries"
             android:entryValues="@array/ignored_icons_values"
             android:key="KGIgnoredIcons"
             android:summary="@string/sb_ignored_icons_kg"
@@ -234,7 +234,7 @@
             app:iconSpaceReserved="false" />
 
         <sh.siava.pixelxpert.ui.preferences.MaterialMultiSelectListPreference
-            android:entries="@array/ignored_icons_entires"
+            android:entries="@array/ignored_icons_entries"
             android:entryValues="@array/ignored_icons_values"
             android:key="QSIgnoredIcons"
             android:summary="@string/sb_ignored_icons_qs"
