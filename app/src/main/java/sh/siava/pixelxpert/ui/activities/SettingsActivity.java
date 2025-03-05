@@ -109,7 +109,8 @@ public class SettingsActivity extends BaseActivity implements PreferenceFragment
 			}
 		}
 
-		if (!isLikelyPixelBuild() && !BuildConfig.DEBUG) {
+		//noinspection ConstantValue
+		if (!isLikelyPixelBuild() && !BuildConfig.VERSION_NAME.contains("canary")) {
 			new MaterialAlertDialogBuilder(this, R.style.MaterialComponents_MaterialAlertDialog)
 					.setTitle(R.string.incompatible_alert_title)
 					.setMessage(R.string.incompatible_alert_body)
