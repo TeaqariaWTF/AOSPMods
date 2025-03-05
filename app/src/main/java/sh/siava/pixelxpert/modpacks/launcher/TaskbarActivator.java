@@ -30,6 +30,7 @@ import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 import java.util.function.Consumer;
 
 import de.robv.android.xposed.XposedHelpers;
@@ -76,12 +77,43 @@ public class TaskbarActivator extends XposedModPack {
 	private int mUpdateHotseatParams = 2;
 	private String mUpdateItemsMethodName;
 
+	private boolean ThreeButtonLayoutMod;
+	private String ThreeButtonLeft, ThreeButtonCenter, ThreeButtonRight;
+
 	public TaskbarActivator(Context context) {
 		super(context);
 	}
 
 	@Override
 	public void updatePrefs(String... Key) {
+
+		//3button nav has moved to taskbar since 15QPR2
+		ThreeButtonLayoutMod = Xprefs.getBoolean("ThreeButtonLayoutMod", false);
+		ThreeButtonLeft = Xprefs.getString("ThreeButtonLeft", "back").replace("recent", "recent_apps");
+		ThreeButtonCenter = Xprefs.getString("ThreeButtonCenter", "home").replace("recent", "recent_apps");
+		ThreeButtonRight = Xprefs.getString("ThreeButtonRight", "recent").replace("recent", "recent_apps");
+
+		boolean noToggle = false;
+		try
+		{
+			//noinspection ResultOfMethodCallIgnored
+			Set.of(ThreeButtonLeft, ThreeButtonCenter, ThreeButtonRight);
+		}
+		catch (Throwable ignored){
+			noToggle = true;
+			ThreeButtonLayoutMod = false;
+		}
+
+		List<String> darkToggleKeys = Arrays.asList(
+				"ThreeButtonLayoutMod",
+				"ThreeButtonLeft",
+				"ThreeButtonCenter",
+				"ThreeButtonRight");
+
+		if (Key.length > 0 && !noToggle && darkToggleKeys.contains(Key[0])) {
+			SystemUtils.doubleToggleDarkMode();
+		}
+
 
 		List<String> restartKeys = Arrays.asList(
 				"taskBarMode",
@@ -132,6 +164,24 @@ public class TaskbarActivator extends XposedModPack {
 		ReflectedClass DisplayControllerClass = ReflectedClass.of("com.android.launcher3.util.DisplayController");
 		ReflectedClass DisplayControllerInfoClass = ReflectedClass.of("com.android.launcher3.util.DisplayController$Info");
 		Method commitItemsToUIMethod = findMethodExact(TaskbarModelCallbacksClass.getClazz(), "commitItemsToUI");
+		ReflectedClass AbstractNavButtonLayoutterClass = ReflectedClass.of("com.android.launcher3.taskbar.navbutton.AbstractNavButtonLayoutter");
+
+		AbstractNavButtonLayoutterClass
+				.afterConstruction()
+				.run(param -> {
+					if(!ThreeButtonLayoutMod) return;
+
+					ViewGroup navButtonContainer = (ViewGroup) getObjectField(param.thisObject, "navButtonContainer");
+					Resources res = mContext.getResources();
+
+					int backButtonId = res.getIdentifier( ThreeButtonLeft, "id", mContext.getPackageName());
+					int centerButtonId = res.getIdentifier( ThreeButtonCenter, "id", mContext.getPackageName());
+					int rightButtonId = res.getIdentifier( ThreeButtonRight, "id", mContext.getPackageName());
+
+					setObjectField(param.thisObject, "backButton", navButtonContainer.findViewById(backButtonId));
+					setObjectField(param.thisObject, "homeButton", navButtonContainer.findViewById(centerButtonId));
+					setObjectField(param.thisObject, "recentsButton", navButtonContainer.findViewById(rightButtonId));
+				});
 
 		DisplayControllerInfoClass
 				.before("isTablet")
