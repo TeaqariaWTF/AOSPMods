@@ -1,3 +1,6 @@
+**canary-437**  
+- A15QPR2 + A16: Fixed re-ordering mod for 3-button navbar  
+  
 **canary-436**  
 - Added option to choose which system icons to show on statusbar / QS / lockscreen  
 - A15QPR2 + A16: Fixed swipe up to FC  
