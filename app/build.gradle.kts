@@ -14,7 +14,7 @@ android {
 	defaultConfig {
 		applicationId = "sh.siava.pixelxpert"
 		minSdk = 33
-		targetSdk = 34
+		targetSdk = 35
 		versionCode = 437
 		versionName = "canary-437"
 		setProperty("archivesBaseName", "PixelXpert.apk")
@@ -39,7 +39,7 @@ android {
 			storeFile = rootProject.file(keystoreProperties.getProperty("storeFile"))
 			storePassword = keystoreProperties.getProperty("storePassword")
 		}
-	} catch (ignored: Exception) {
+	} catch (_: Exception) {
 	}
 
 	buildTypes {
