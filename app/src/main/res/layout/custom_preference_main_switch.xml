@@ -35,7 +35,7 @@
 
 		<com.google.android.material.textview.MaterialTextView
 			android:id="@android:id/title"
-			style="@style/TextAppearance.Material3.TitleMedium"
+			style="@style/TextAppearance.Preference.Title"
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
 			android:textColor="?attr/colorOnPrimaryContainer"

@@ -39,7 +39,7 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@android:id/summary"
-            style="@style/TextAppearance.Material3.BodyMedium"
+            style="@style/TextAppearance.Preference.Summary"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@android:id/title"
