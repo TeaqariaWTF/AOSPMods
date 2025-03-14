@@ -27,6 +27,8 @@ package sh.siava.pixelxpert.ui.preferences.preferencesearch;
  *
  */
 
+import static sh.siava.pixelxpert.utils.MiscUtils.setupToolbar;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -170,15 +172,7 @@ public class SearchPreferenceFragment extends Fragment implements SearchPreferen
 		AppCompatActivity baseContext = (AppCompatActivity) getContext();
 		Toolbar toolbar = view.findViewById(R.id.toolbar);
 
-		if (baseContext != null) {
-			if (toolbar != null) {
-				baseContext.setSupportActionBar(toolbar);
-				toolbar.setTitle(R.string.searchpreference_title);
-			}
-			if (baseContext.getSupportActionBar() != null) {
-				baseContext.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-			}
-		}
+		setupToolbar(baseContext, toolbar, getString(R.string.searchpreference_title), true);
 	}
 
 	private void loadHistory() {

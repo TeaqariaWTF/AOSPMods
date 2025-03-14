@@ -5,6 +5,8 @@
 	android:layout_height="wrap_content"
 	android:clickable="true"
 	android:focusable="true"
+	android:layout_marginHorizontal="@dimen/ui_container_margin_side"
+	android:layout_marginBottom="2dp"
 	android:foreground="?android:selectableItemBackgroundBorderless"
 	android:minHeight="?android:attr/listPreferredItemHeight"
 	android:paddingHorizontal="@dimen/preference_padding_horizontal"

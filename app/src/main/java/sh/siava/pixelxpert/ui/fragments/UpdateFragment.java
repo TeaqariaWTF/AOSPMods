@@ -24,6 +24,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -204,7 +207,24 @@ public class UpdateFragment extends BaseFragment {
 							css.addRule("kbd", "border-color: " + intToHex(requireContext().getColor(R.color.changelog_bg)));
 							css.addRule("kbd", "color: " + intToHex(getColorFromAttribute(requireContext(), R.attr.colorOnSurface)));
 							css.addRule("a", "color: " + intToHex(getColorFromAttribute(requireContext(), R.attr.colorPrimary)));
+							css.addRule(".container", "padding-right: 5px", "padding-left: 5px", "margin-right: auto", "margin-left: auto");
 							mMarkdownView.addStyleSheet(css);
+							mMarkdownView.setWebViewClient(new WebViewClient() {
+								@Override
+								public void onPageFinished(WebView view, String url) {
+									view.postVisualStateCallback(0, new WebView.VisualStateCallback() {
+										@Override
+										public void onComplete(long requestId) {
+											if (binding.progressBar != null) {
+												binding.progressBar.post(() -> binding.progressBar.setVisibility(View.GONE));
+											}
+										}
+									});
+								}
+							});
+							mMarkdownView.getSettings().setJavaScriptEnabled(false);
+							mMarkdownView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
+							mMarkdownView.getSettings().setDomStorageEnabled(false);
 							mMarkdownView.loadMarkdownFromUrl((String) result.get("changelog"));
 						} catch (Throwable ignored) {
 						}

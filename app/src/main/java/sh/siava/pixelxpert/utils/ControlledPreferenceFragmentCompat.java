@@ -2,6 +2,7 @@ package sh.siava.pixelxpert.utils;
 
 import static androidx.preference.PreferenceManager.getDefaultSharedPreferences;
 import static sh.siava.pixelxpert.ui.preferences.preferencesearch.SearchPreferenceResult.highlightPreference;
+import static sh.siava.pixelxpert.utils.MiscUtils.setupToolbar;
 
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
@@ -80,15 +81,7 @@ public abstract class ControlledPreferenceFragmentCompat extends PreferenceFragm
 		AppCompatActivity baseContext = (AppCompatActivity) getContext();
 		Toolbar toolbar = view.findViewById(R.id.toolbar);
 
-		if (baseContext != null) {
-			if (toolbar != null) {
-				baseContext.setSupportActionBar(toolbar);
-				toolbar.setTitle(getTitle());
-			}
-			if (baseContext.getSupportActionBar() != null) {
-				baseContext.getSupportActionBar().setDisplayHomeAsUpEnabled(getBackButtonEnabled());
-			}
-		}
+		setupToolbar(baseContext, toolbar, getTitle(), getBackButtonEnabled());
 
 		if (getArguments() != null) {
 			Bundle bundle = getArguments();

@@ -1,5 +1,7 @@
 package sh.siava.pixelxpert.ui.fragments;
 
+import static sh.siava.pixelxpert.utils.MiscUtils.setupToolbar;
+
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -51,14 +53,6 @@ public abstract class BaseFragment extends Fragment {
 		AppCompatActivity baseContext = (AppCompatActivity) getContext();
 		Toolbar toolbar = view.findViewById(R.id.toolbar);
 
-		if (baseContext != null) {
-			if (toolbar != null) {
-				baseContext.setSupportActionBar(toolbar);
-				toolbar.setTitle(getTitle());
-			}
-			if (baseContext.getSupportActionBar() != null) {
-				baseContext.getSupportActionBar().setDisplayHomeAsUpEnabled(getBackButtonEnabled());
-			}
-		}
+		setupToolbar(baseContext, toolbar, getTitle(), getBackButtonEnabled());
 	}
 }
