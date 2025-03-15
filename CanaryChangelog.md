@@ -1,3 +1,6 @@
+**canary-439**  
+- Fixed crash caused by range slider preference  
+  
 **canary-438**  
 - App UI updated to match the upcoming Google style  
 - A16b3: QS light theme: fixed footer  
