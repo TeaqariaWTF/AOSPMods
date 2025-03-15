@@ -4,7 +4,7 @@
 	<!-- outline -->
 	<item>
 		<shape android:shape="rectangle">
-			<solid android:color="?attr/colorSurface" />
+			<solid android:color="?attr/colorSurfaceBright" />
 			<corners android:bottomLeftRadius="4dp"
 				android:bottomRightRadius="4dp"
 				android:topLeftRadius="@dimen/ui_container_radius"
@@ -17,7 +17,7 @@
 		<shape android:shape="rectangle">
 			<stroke
 				android:width="2dp"
-				android:color="?attr/colorSurface" />
+				android:color="?attr/colorSurfaceBright" />
 			<corners android:bottomLeftRadius="4dp"
 				android:bottomRightRadius="4dp"
 				android:topLeftRadius="@dimen/ui_container_radius"

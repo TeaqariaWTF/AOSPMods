@@ -161,6 +161,7 @@
 				app:layout_constraintTop_toBottomOf="@id/updateBtn">
 
 				<LinearLayout
+					android:background="@color/changelog_bg"
 					android:layout_width="match_parent"
 					android:layout_height="match_parent"
 					android:orientation="vertical">
@@ -171,9 +172,16 @@
 						android:padding="12dp"
 						android:text="@string/changelog_title"
 						android:textAlignment="center"
+						android:background="?attr/colorSurfaceBright"
 						android:textColor="?attr/colorOnSurface"
 						android:textSize="16sp"
 						android:textStyle="bold" />
+
+					<com.google.android.material.progressindicator.LinearProgressIndicator
+						android:id="@+id/progressBar"
+						android:layout_width="match_parent"
+						android:layout_height="wrap_content"
+						android:indeterminate="true" />
 
 					<androidx.core.widget.NestedScrollView
 						android:id="@+id/changelogScrollView"
