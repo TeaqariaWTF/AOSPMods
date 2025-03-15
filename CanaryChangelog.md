@@ -1,3 +1,8 @@
+**canary-438**  
+- App UI updated to match the upcoming Google style  
+- A16b3: QS light theme: fixed footer  
+- A16b3: fixed heads-up notifications  
+  
 **canary-437**  
 - A15QPR2 + A16: Fixed re-ordering mod for 3-button navbar  
   
