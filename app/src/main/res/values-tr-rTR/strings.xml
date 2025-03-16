@@ -63,6 +63,7 @@
     <string name="hotspot_disable_approval_title">Hotspot bağlantı sorunları için çözüm</string>
     <string name="hotspot_disable_approval_summary">\"Önceden onaylanmamış\" istemcilerin sorunsuz bağlanmasına izin ver</string>
     <!--Lock screen related-->
+    <string name="depth_wallpaper_options">Derinlik efektli duvar kağıdı</string>
     <string name="depth_wallpaper_title">Derinlik efektli duvar kağıdı</string>
     <string name="depth_wallpaper_summary">Duvar kağıdının ön planını saatle dinamik olarak birleştirin</string>
     <string name="depth_wallpaper_ai_model_title">Tercih edilen yapay zeka modeli</string>
@@ -73,6 +74,7 @@
     <string name="disable_unlock_hint_title">Kilit açma ipucu animasyonunu devre dışı bırak</string>
     <string name="ls_general_options">Kilit ekranı seçenekleri</string>
     <string name="hide_avatar_title">Kullanıcı avatarını kaldır (çoklu kullanıcı modu)</string>
+    <string name="fingerprint_options">Parmak izi</string>
     <string name="transparent_fingerprint_circle">Ekran altı parmak izi için arka plan çemberini kaldır</string>
     <string name="transparent_fingerprint_circle_off">Parmak izi simgesi etrafındaki çember etkin</string>
     <string name="transparent_fingerprint_circle_on">Parmak izi simgesi etrafındaki çember gizlenecek</string>
@@ -479,6 +481,7 @@
     <string name="download_channel_name">İndirmeler</string>
     <string name="assets_download_title">Dosyalar İndiriliyor</string>
     <string name="assets_download_body">Eşlik eden dosyalar indiriliyor</string>
+    <string name="assets_download_size_body">İlerleme: %s</string>
     <string name="update_notification_title">Güncelleme indirildi</string>
     <string name="update_notification_text">Yüklemek için buraya dokunun</string>
     <string name="download_failed">Güncelleme indirilemedi</string>

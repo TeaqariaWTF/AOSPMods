@@ -63,6 +63,7 @@
     <string name="hotspot_disable_approval_title">حل مشکلات اتصال هات اسپات</string>
     <string name="hotspot_disable_approval_summary">به مشتریان غیر\"از قبل تایید شده\" اجازه دهید به طور یکپارچه متصل شوند</string>
     <!--Lock screen related-->
+    <string name="depth_wallpaper_options">Depth effect wallpaper</string>
     <string name="depth_wallpaper_title">والپیپر افکت عمق</string>
     <string name="depth_wallpaper_summary">پیش زمینه کاغذ دیواری را به صورت پویا با ساعت ادغام کنید</string>
     <string name="depth_wallpaper_ai_model_title">مدل ترجیحی هوش مصنوعی</string>
@@ -73,6 +74,7 @@
     <string name="disable_unlock_hint_title">حذف انیمیشن راهنمایی باز کردن قفل</string>
     <string name="ls_general_options">تنظیمات قفل صفحه</string>
     <string name="hide_avatar_title">حذف نمایه کاربر (حالت چند کاربره)</string>
+    <string name="fingerprint_options">Fingerprint</string>
     <string name="transparent_fingerprint_circle">پنهان کردن دایره اثر انگشت زیر نمایشگر</string>
     <string name="transparent_fingerprint_circle_off">دایره اطراف نماد اثر انگشت فعال است</string>
     <string name="transparent_fingerprint_circle_on">دایره اطراف نماد اثر انگشت پنهان شد</string>
@@ -479,6 +481,7 @@
     <string name="download_channel_name">دانلودها</string>
     <string name="assets_download_title">دانلود فایل ها</string>
     <string name="assets_download_body">دانلود فایل های همراه</string>
+    <string name="assets_download_size_body">Progress: %s</string>
     <string name="update_notification_title">به روز رسانی دانلود شد</string>
     <string name="update_notification_text">برای نصب اینجا ضربه بزنید</string>
     <string name="download_failed">نسخه جدید دریافت نشد</string>

@@ -63,6 +63,7 @@
     <string name="hotspot_disable_approval_title">Hotspot Verbindungsprobleme Umweg</string>
     <string name="hotspot_disable_approval_summary">Erlauben nicht gestattete Klienten sich zu verbinden</string>
     <!--Lock screen related-->
+    <string name="depth_wallpaper_options">Depth effect wallpaper</string>
     <string name="depth_wallpaper_title">Tiefeffekt bei Hintergrundbild</string>
     <string name="depth_wallpaper_summary">Vordergrund des Hintergrundbildes dynamisch mit der Uhr integrieren</string>
     <string name="depth_wallpaper_ai_model_title">Bevorzugtes KI-Modell</string>
@@ -73,6 +74,7 @@
     <string name="disable_unlock_hint_title">Animation des Entsperrungshinweises deaktivieren </string>
     <string name="ls_general_options">Sperrbildschirm-Optionen</string>
     <string name="hide_avatar_title">Benutzer-Avatar entfernen (Mehrbenutzermodus)</string>
+    <string name="fingerprint_options">Fingerprint</string>
     <string name="transparent_fingerprint_circle">Verstecke den Kreis um das Fingerabdrucksymbol</string>
     <string name="transparent_fingerprint_circle_off">Kreis um das Fingerabdrucksymbol wird angezeigt</string>
     <string name="transparent_fingerprint_circle_on">Kreis um das Fingerabdrucksymbol wird versteckt</string>
@@ -479,6 +481,7 @@
     <string name="download_channel_name">Downloads</string>
     <string name="assets_download_title">Dateien herunterladen</string>
     <string name="assets_download_body">Begleitdateien werden heruntergeladen</string>
+    <string name="assets_download_size_body">Progress: %s</string>
     <string name="update_notification_title">Update heruntergeladen</string>
     <string name="update_notification_text">Zum Installieren hier tippen</string>
     <string name="download_failed">Der Download des Updates ist fehlgeschlagen </string>

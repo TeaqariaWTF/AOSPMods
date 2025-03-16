@@ -63,6 +63,7 @@
     <string name="hotspot_disable_approval_title">Solução alternativa para problemas de conectividade de ponto de acesso</string>
     <string name="hotspot_disable_approval_summary">Permitir que clientes não \"pré-aprovados\" se conectem perfeitamente</string>
     <!--Lock screen related-->
+    <string name="depth_wallpaper_options">Papel de parede com efeito de profundidade</string>
     <string name="depth_wallpaper_title">Papel de parede com efeito de profundidade</string>
     <string name="depth_wallpaper_summary">Integre dinamicamente o primeiro plano do papel de parede com o relógio</string>
     <string name="depth_wallpaper_ai_model_title">Modelo de IA preferencial</string>
@@ -73,6 +74,7 @@
     <string name="disable_unlock_hint_title">Desativar animação da dica de desbloqueio</string>
     <string name="ls_general_options">Opções do ecrã de bloqueio</string>
     <string name="hide_avatar_title">Remover avatar do utilizador (modo multi-utilizador)</string>
+    <string name="fingerprint_options">Impressão digital</string>
     <string name="transparent_fingerprint_circle">Esconder círculo no ícone da impressão digital</string>
     <string name="transparent_fingerprint_circle_off">O círculo está ativado</string>
     <string name="transparent_fingerprint_circle_on">O círculo será escondido</string>
@@ -479,6 +481,7 @@
     <string name="download_channel_name">Transferências</string>
     <string name="assets_download_title">A transferir ficheiros</string>
     <string name="assets_download_body">A transferir ficheiros adicionais</string>
+    <string name="assets_download_size_body">Progresso: %s</string>
     <string name="update_notification_title">Atualização descarregada</string>
     <string name="update_notification_text">Toque aqui para instalar</string>
     <string name="download_failed">Falha ao descarregar atualização</string>

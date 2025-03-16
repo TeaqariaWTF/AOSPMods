@@ -63,6 +63,7 @@
     <string name="hotspot_disable_approval_title">Θέματα συνδεσιμότητας Hotspot λειτουργούν γύρω</string>
     <string name="hotspot_disable_approval_summary">Επιτρέψτε στους μη-\"προ-εγκεκριμένους\" πελάτες να συνδεθούν απρόσκοπτα</string>
     <!--Lock screen related-->
+    <string name="depth_wallpaper_options">Depth effect wallpaper</string>
     <string name="depth_wallpaper_title">Ταπετσαρία εφέ βάθους</string>
     <string name="depth_wallpaper_summary">Δυναμική ενσωμάτωση του προσκηνίου της ταπετσαρίας με το ρολόι</string>
     <string name="depth_wallpaper_ai_model_title">Προτιμώμενο μοντέλο τεχνητής νοημοσύνης</string>
@@ -73,6 +74,7 @@
     <string name="disable_unlock_hint_title">Απενεργοποιήστε το κινούμενο σχέδιο υποδείξεων ξεκλειδώματος</string>
     <string name="ls_general_options">Επιλογές κλειδώματος οθόνης</string>
     <string name="hide_avatar_title">Κατάργηση avatar χρήστη (λειτουργία πολλαπλών χρηστών)</string>
+    <string name="fingerprint_options">Fingerprint</string>
     <string name="transparent_fingerprint_circle">Αφαιρέστε τον κύκλο φόντου από το δακτυλικό αποτύπωμα κάτω από την οθόνη</string>
     <string name="transparent_fingerprint_circle_off">Το εικονίδιο του κύκλου γύρω από το δακτυλικό αποτύπωμα είναι ενεργό</string>
     <string name="transparent_fingerprint_circle_on">Το εικονίδιο του κύκλου γύρω από το δακτυλικό αποτύπωμα θα είναι κρυφό</string>
@@ -479,6 +481,7 @@
     <string name="download_channel_name">Λήψεις</string>
     <string name="assets_download_title">Λήψη Αρχείων</string>
     <string name="assets_download_body">Λήψη αρχείων σύντροφου</string>
+    <string name="assets_download_size_body">Progress: %s</string>
     <string name="update_notification_title">Έγινε λήψη της ενημέρωσης</string>
     <string name="update_notification_text">Πατήστε εδώ για εγκατάσταση</string>
     <string name="download_failed">Η λήψη της ενημέρωσης απέτυχε</string>

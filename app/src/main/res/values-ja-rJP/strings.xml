@@ -63,6 +63,7 @@
     <string name="hotspot_disable_approval_title">回避策としてホットスポット接続の問題</string>
     <string name="hotspot_disable_approval_summary">「事前承認済み」以外のクライアントがシームレスに接続できるようにする</string>
     <!--Lock screen related-->
+    <string name="depth_wallpaper_options">Depth effect wallpaper</string>
     <string name="depth_wallpaper_title">被写体深度エフェクト</string>
     <string name="depth_wallpaper_summary">壁紙の背景と時計を統合</string>
     <string name="depth_wallpaper_ai_model_title">優先AIモデル</string>
@@ -73,6 +74,7 @@
     <string name="disable_unlock_hint_title">ロック解除ヒントのアニメーションを無効にする</string>
     <string name="ls_general_options">ロック画面のオプション</string>
     <string name="hide_avatar_title">ユーザーアバター表示を削除 (マルチユーザーモード)</string>
+    <string name="fingerprint_options">Fingerprint</string>
     <string name="transparent_fingerprint_circle">ディスプレイ下部の指紋認証の円の表示を削除</string>
     <string name="transparent_fingerprint_circle_off">指紋認証アイコンを囲む円は表示されています</string>
     <string name="transparent_fingerprint_circle_on">指紋認証アイコンを囲む円は非表示です</string>
@@ -479,6 +481,7 @@
     <string name="download_channel_name">ダウンロード</string>
     <string name="assets_download_title">ファイルをダウンロード中</string>
     <string name="assets_download_body">コンパニオンファイルのダウンロード</string>
+    <string name="assets_download_size_body">Progress: %s</string>
     <string name="update_notification_title">アップデートのダウンロード</string>
     <string name="update_notification_text">タップでインストール</string>
     <string name="download_failed">アップデートのダウンロードに失敗しました</string>

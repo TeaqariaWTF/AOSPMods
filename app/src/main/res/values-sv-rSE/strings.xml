@@ -63,6 +63,7 @@
     <string name="hotspot_disable_approval_title">Hotspot konnektivitet problem workaround</string>
     <string name="hotspot_disable_approval_summary">Tillåt icke-\"förgodkända\" klienter att ansluta sömlöst</string>
     <!--Lock screen related-->
+    <string name="depth_wallpaper_options">Depth effect wallpaper</string>
     <string name="depth_wallpaper_title">Djup effekt bakgrundsbild</string>
     <string name="depth_wallpaper_summary">Dynamiskt integrera tapetens förgrund med klockan</string>
     <string name="depth_wallpaper_ai_model_title">Föredragen AI-modell</string>
@@ -73,6 +74,7 @@
     <string name="disable_unlock_hint_title">Inaktivera upplåsningstipsanimeringen</string>
     <string name="ls_general_options">Alternativ för låsskärm</string>
     <string name="hide_avatar_title">Ta bort användaravatar (fleranvändarläge)</string>
+    <string name="fingerprint_options">Fingerprint</string>
     <string name="transparent_fingerprint_circle">Ta bort bakgrundscirkeln från fingeravtrycket under skärmen</string>
     <string name="transparent_fingerprint_circle_off">Cirkel runt fingeravtrycksikonen är aktiv</string>
     <string name="transparent_fingerprint_circle_on">Cirkel runt fingeravtrycksikonen döljs</string>
@@ -479,6 +481,7 @@
     <string name="download_channel_name">Nedladdningar</string>
     <string name="assets_download_title">Laddar ner filer</string>
     <string name="assets_download_body">Laddar ner kompanjonfiler</string>
+    <string name="assets_download_size_body">Progress: %s</string>
     <string name="update_notification_title">Uppdatering nedladdad</string>
     <string name="update_notification_text">Tryck här för att installera</string>
     <string name="download_failed">Det gick inte att ladda ner uppdateringen</string>

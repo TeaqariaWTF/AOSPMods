@@ -63,6 +63,7 @@
     <string name="hotspot_disable_approval_title">Hotspot forbindelsesproblemer virker omkring</string>
     <string name="hotspot_disable_approval_summary">Tillad ikke-\"forhåndsgodkendte\" kunder at forbinde problemfrit</string>
     <!--Lock screen related-->
+    <string name="depth_wallpaper_options">Depth effect wallpaper</string>
     <string name="depth_wallpaper_title">Dybde effekt baggrund</string>
     <string name="depth_wallpaper_summary">Integrer tapetets forgrund dynamisk med uret</string>
     <string name="depth_wallpaper_ai_model_title">Foretrukken AI-model</string>
@@ -73,6 +74,7 @@
     <string name="disable_unlock_hint_title">Deaktiver oplåsningshint-animationen</string>
     <string name="ls_general_options">Indstillinger for låseskærm</string>
     <string name="hide_avatar_title">Fjern brugeravatar (multibrugertilstand)</string>
+    <string name="fingerprint_options">Fingerprint</string>
     <string name="transparent_fingerprint_circle">Fjern baggrundscirkel fra fingeraftryk under skærmen</string>
     <string name="transparent_fingerprint_circle_off">Cirkel omkring fingeraftryksikonet er aktivt</string>
     <string name="transparent_fingerprint_circle_on">Cirkel omkring fingeraftryksikonet vil blive skjult</string>
@@ -479,6 +481,7 @@
     <string name="download_channel_name">Downloads</string>
     <string name="assets_download_title">Downloader Filer</string>
     <string name="assets_download_body">Downloader følgefiler</string>
+    <string name="assets_download_size_body">Progress: %s</string>
     <string name="update_notification_title">Opdatering downloadet</string>
     <string name="update_notification_text">Tryk her for at installere</string>
     <string name="download_failed">Kunne ikke downloade opdateringen</string>

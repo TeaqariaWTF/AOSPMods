@@ -63,6 +63,7 @@
     <string name="hotspot_disable_approval_title">Проблемы подключения к точке доступа</string>
     <string name="hotspot_disable_approval_summary">Разрешить не \"предварительно одобренные\" клиенты для бесшовного подключения</string>
     <!--Lock screen related-->
+    <string name="depth_wallpaper_options">Depth effect wallpaper</string>
     <string name="depth_wallpaper_title">Обои с эффектом глубины</string>
     <string name="depth_wallpaper_summary">Динамическая интеграция переднего плана обоев с часами</string>
     <string name="depth_wallpaper_ai_model_title">Предпочтительная модель ИИ</string>
@@ -73,6 +74,7 @@
     <string name="disable_unlock_hint_title">Отключить анимацию подсказки разблокировки </string>
     <string name="ls_general_options">Опции экрана блокировки </string>
     <string name="hide_avatar_title">Удалить аватар пользователя (многопользовательский режим)</string>
+    <string name="fingerprint_options">Fingerprint</string>
     <string name="transparent_fingerprint_circle">Скрыть фон под индикатором отпечатков пальцев</string>
     <string name="transparent_fingerprint_circle_off">Круг вокруг значка отпечатка пальца активен</string>
     <string name="transparent_fingerprint_circle_on">Круг вокруг значка отпечатка пальца будет скрыт</string>
@@ -479,6 +481,7 @@
     <string name="download_channel_name">Загрузки</string>
     <string name="assets_download_title">Загрузка файлов</string>
     <string name="assets_download_body">Загрузка сопутствующих файлов</string>
+    <string name="assets_download_size_body">Progress: %s</string>
     <string name="update_notification_title">Обновление загружено</string>
     <string name="update_notification_text">Нажмите здесь, чтобы установить</string>
     <string name="download_failed">Не удалось загрузить обновление </string>

@@ -63,6 +63,7 @@
     <string name="hotspot_disable_approval_title">Yhteyteen liittyvät ongelmat häiriintyivät</string>
     <string name="hotspot_disable_approval_summary">Salli ei-\"ennalta hyväksytty\" asiakkaiden yhdistää saumattomasti</string>
     <!--Lock screen related-->
+    <string name="depth_wallpaper_options">Depth effect wallpaper</string>
     <string name="depth_wallpaper_title">Syvyysefektin taustakuva</string>
     <string name="depth_wallpaper_summary">Dynaamisesti integroida taustakuva n edessä kellon</string>
     <string name="depth_wallpaper_ai_model_title">Ensisijainen AI-malli</string>
@@ -73,6 +74,7 @@
     <string name="disable_unlock_hint_title">Poista lukituksen avausvihje animaatio käytöstä</string>
     <string name="ls_general_options">Lukitusnäytön asetukset</string>
     <string name="hide_avatar_title">Poista käyttäjän avatar (monen käyttäjän tila)</string>
+    <string name="fingerprint_options">Fingerprint</string>
     <string name="transparent_fingerprint_circle">Poista taustaympyrä näytön alta sormenjäljestä</string>
     <string name="transparent_fingerprint_circle_off">Sormenjälkikuvakkeen ympärillä oleva ympyrä on aktiivinen</string>
     <string name="transparent_fingerprint_circle_on">Sormenjälkikuvakkeen ympärillä oleva ympyrä piilotetaan</string>
@@ -479,6 +481,7 @@
     <string name="download_channel_name">Lataukset</string>
     <string name="assets_download_title">Ladataan Tiedostoja</string>
     <string name="assets_download_body">Ladataan kumppanitiedostoja</string>
+    <string name="assets_download_size_body">Progress: %s</string>
     <string name="update_notification_title">Päivitys ladattu</string>
     <string name="update_notification_text">Asenna napauttamalla tätä</string>
     <string name="download_failed">Päivityksen lataaminen epäonnistui</string>

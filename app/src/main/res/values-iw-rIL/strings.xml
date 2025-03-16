@@ -63,6 +63,7 @@
     <string name="hotspot_disable_approval_title">Hotspot connectivity issues workaround</string>
     <string name="hotspot_disable_approval_summary">Allow non-\"pre-approved\" clients to connect seamlessly</string>
     <!--Lock screen related-->
+    <string name="depth_wallpaper_options">Depth effect wallpaper</string>
     <string name="depth_wallpaper_title">Depth effect wallpaper</string>
     <string name="depth_wallpaper_summary">Dynamically integrate wallpaper\'s foreground with the clock</string>
     <string name="depth_wallpaper_ai_model_title">Preferred AI model</string>
@@ -73,6 +74,7 @@
     <string name="disable_unlock_hint_title">השבת את הנפשת הרמז לביטול הנעילה</string>
     <string name="ls_general_options">אפשרויות מסך נעילה</string>
     <string name="hide_avatar_title">הסרת דמות משתמש (מצב ריבוי משתמשים)</string>
+    <string name="fingerprint_options">Fingerprint</string>
     <string name="transparent_fingerprint_circle">הסר את עיגול הרקע מטביעת האצבע מתחת לתצוגה</string>
     <string name="transparent_fingerprint_circle_off">מעגל סביב סמל טביעת האצבע פעיל</string>
     <string name="transparent_fingerprint_circle_on">מעגל סביב סמל טביעת האצבע יוסתר</string>
@@ -479,6 +481,7 @@
     <string name="download_channel_name">Downloads</string>
     <string name="assets_download_title">Downloading Files</string>
     <string name="assets_download_body">Downloading companion files</string>
+    <string name="assets_download_size_body">Progress: %s</string>
     <string name="update_notification_title">העדכון הורד</string>
     <string name="update_notification_text">הקש כאן כדי להתקין</string>
     <string name="download_failed">הורדת העדכון נכשלה</string>

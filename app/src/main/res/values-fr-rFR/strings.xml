@@ -63,6 +63,7 @@
     <string name="hotspot_disable_approval_title">Solution aux problèmes de connectivité du hotspot</string>
     <string name="hotspot_disable_approval_summary">Permettre aux clients non \"pré-approuvés\" de se connecter de manière transparente</string>
     <!--Lock screen related-->
+    <string name="depth_wallpaper_options">Depth effect wallpaper</string>
     <string name="depth_wallpaper_title">Effet de profondeur du fond d\'écran</string>
     <string name="depth_wallpaper_summary">Intégration dynamique du fond d\'écran avec l\'horloge</string>
     <string name="depth_wallpaper_ai_model_title">Modèle IA préféré</string>
@@ -73,6 +74,7 @@
     <string name="disable_unlock_hint_title">Désactiver l\'animation des indices de déverrouillage</string>
     <string name="ls_general_options">Options de l\'écran de verrouillage</string>
     <string name="hide_avatar_title">Retirer l’avatar d’utilisateur (mode utilisateurs multiples)</string>
+    <string name="fingerprint_options">Fingerprint</string>
     <string name="transparent_fingerprint_circle">Retirer le disque autour du détecteur d’empreintes</string>
     <string name="transparent_fingerprint_circle_off">Le disque autour du détecteur d’empreintes est visible</string>
     <string name="transparent_fingerprint_circle_on">Le disque autour du détecteur d’empreintes est caché</string>
@@ -479,6 +481,7 @@
     <string name="download_channel_name">Téléchargements</string>
     <string name="assets_download_title">Téléchargement des fichiers</string>
     <string name="assets_download_body">Téléchargement des fichiers compagnons</string>
+    <string name="assets_download_size_body">Progress: %s</string>
     <string name="update_notification_title">Mise à jour téléchargée</string>
     <string name="update_notification_text">Installer</string>
     <string name="download_failed">Échec du téléchargement de la mise à jour</string>

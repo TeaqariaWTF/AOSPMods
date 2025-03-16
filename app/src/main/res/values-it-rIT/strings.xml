@@ -63,6 +63,7 @@
     <string name="hotspot_disable_approval_title">Problemi di connettività hotspot</string>
     <string name="hotspot_disable_approval_summary">Consenti ai client non \"pre-approvati\" di connettersi senza problemi</string>
     <!--Lock screen related-->
+    <string name="depth_wallpaper_options">Sfondo con effetto profondità</string>
     <string name="depth_wallpaper_title">Sfondo effetto profondità</string>
     <string name="depth_wallpaper_summary">Integra dinamicamente il primo piano dello sfondo con l\'orologio</string>
     <string name="depth_wallpaper_ai_model_title">Modello AI preferito</string>
@@ -73,6 +74,7 @@
     <string name="disable_unlock_hint_title">Disabilita animazione suggerimento di sblocco</string>
     <string name="ls_general_options">Opzioni schermata di blocco</string>
     <string name="hide_avatar_title">Rimuovi avatar utente (modalità multiutente)</string>
+    <string name="fingerprint_options">Impronta digitale</string>
     <string name="transparent_fingerprint_circle">Rimuovi il background dall\'icona del sensore d\'impronte sotto il display</string>
     <string name="transparent_fingerprint_circle_off">Background icona sensore d\'impronte attivo</string>
     <string name="transparent_fingerprint_circle_on">Background icona sensore d\'impronte disattivo</string>
@@ -479,6 +481,7 @@
     <string name="download_channel_name">Download</string>
     <string name="assets_download_title">Download files in corso</string>
     <string name="assets_download_body">Download file compagni in corso</string>
+    <string name="assets_download_size_body">Avanzamento: %s</string>
     <string name="update_notification_title">Aggiornamento scaricato</string>
     <string name="update_notification_text">Tocca qui per installare</string>
     <string name="download_failed">Errore download aggiornamento</string>

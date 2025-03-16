@@ -63,6 +63,7 @@
     <string name="hotspot_disable_approval_title">Betingelser for tilkoblingsproblemer løsnet</string>
     <string name="hotspot_disable_approval_summary">Tillat \"forhåndsgodkjente\" klienter å koble sømløst</string>
     <!--Lock screen related-->
+    <string name="depth_wallpaper_options">Depth effect wallpaper</string>
     <string name="depth_wallpaper_title">Dybde bakgrunn</string>
     <string name="depth_wallpaper_summary">Dynamisk integrere bakgrunnsbilde forgrunn med klokke</string>
     <string name="depth_wallpaper_ai_model_title">Foretrukket AI-modell</string>
@@ -73,6 +74,7 @@
     <string name="disable_unlock_hint_title">Deaktiver opplåsningshintanimasjonen</string>
     <string name="ls_general_options">Alternativer for låseskjerm</string>
     <string name="hide_avatar_title">Fjern brukeravatar (flerbrukermodus)</string>
+    <string name="fingerprint_options">Fingerprint</string>
     <string name="transparent_fingerprint_circle">Fjern bakgrunnssirkelen fra fingeravtrykket under skjermen</string>
     <string name="transparent_fingerprint_circle_off">Sirkel rundt fingeravtrykkikonet er aktivt</string>
     <string name="transparent_fingerprint_circle_on">Sirkelen rundt fingeravtrykkikonet skjules</string>
@@ -479,6 +481,7 @@
     <string name="download_channel_name">Nedlastinger</string>
     <string name="assets_download_title">Laster ned filer</string>
     <string name="assets_download_body">Laster ned kameratfiler</string>
+    <string name="assets_download_size_body">Progress: %s</string>
     <string name="update_notification_title">Oppdatering lastet ned</string>
     <string name="update_notification_text">Trykk her for å installere</string>
     <string name="download_failed">Kunne ikke laste ned oppdateringen</string>

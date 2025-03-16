@@ -63,6 +63,7 @@
     <string name="hotspot_disable_approval_title">Hotspot 連線問題的解決方法</string>
     <string name="hotspot_disable_approval_summary">允許非\"預先批准\"的客戶端無縫連接</string>
     <!--Lock screen related-->
+    <string name="depth_wallpaper_options">Depth effect wallpaper</string>
     <string name="depth_wallpaper_title">深度效果壁紙</string>
     <string name="depth_wallpaper_summary">動態整合壁紙前景與時鐘</string>
     <string name="depth_wallpaper_ai_model_title">首選的AI模型</string>
@@ -73,6 +74,7 @@
     <string name="disable_unlock_hint_title">Disable the unlock hint animation</string>
     <string name="ls_general_options">自定鎖定畫面</string>
     <string name="hide_avatar_title">隱藏使用者頭像(多使用者模式)</string>
+    <string name="fingerprint_options">Fingerprint</string>
     <string name="transparent_fingerprint_circle">隱藏螢幕下指紋背景圓</string>
     <string name="transparent_fingerprint_circle_off">指紋圖示背景被啟用</string>
     <string name="transparent_fingerprint_circle_on">指紋圖示背景被隱藏</string>
@@ -479,6 +481,7 @@
     <string name="download_channel_name">下載</string>
     <string name="assets_download_title">檔案下載中</string>
     <string name="assets_download_body">Downloading companion files</string>
+    <string name="assets_download_size_body">Progress: %s</string>
     <string name="update_notification_title">已下載更新</string>
     <string name="update_notification_text">點此安裝</string>
     <string name="download_failed">Failed to download the update</string>

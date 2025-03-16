@@ -63,6 +63,7 @@
     <string name="hotspot_disable_approval_title">Problémy s připojením hotspotu fungují</string>
     <string name="hotspot_disable_approval_summary">Povolit ne\"předběžně schválený\" klientům bezproblémové spojení</string>
     <!--Lock screen related-->
+    <string name="depth_wallpaper_options">Depth effect wallpaper</string>
     <string name="depth_wallpaper_title">Hloubkový efekt tapety</string>
     <string name="depth_wallpaper_summary">Dynamicky integrovat pozadí s hodinami</string>
     <string name="depth_wallpaper_ai_model_title">Upřednostňovaný model AI</string>
@@ -73,6 +74,7 @@
     <string name="disable_unlock_hint_title">Zakázat animaci nápovědy pro odemknutí</string>
     <string name="ls_general_options">Možnosti uzamčení obrazovky</string>
     <string name="hide_avatar_title">Odebrat avatara uživatele (režim pro více uživatelů)</string>
+    <string name="fingerprint_options">Fingerprint</string>
     <string name="transparent_fingerprint_circle">Odstraňte kruh na pozadí z otisku prstu pod displejem</string>
     <string name="transparent_fingerprint_circle_off">Kruh kolem ikony otisku prstu je aktivní</string>
     <string name="transparent_fingerprint_circle_on">Kruh kolem ikony otisku prstu bude skrytý</string>
@@ -479,6 +481,7 @@
     <string name="download_channel_name">Stahování</string>
     <string name="assets_download_title">Stahování souborů</string>
     <string name="assets_download_body">Stahování doprovodných souborů</string>
+    <string name="assets_download_size_body">Progress: %s</string>
     <string name="update_notification_title">Aktualizace stažena</string>
     <string name="update_notification_text">Klepnutím sem nainstalujte</string>
     <string name="download_failed">Stažení aktualizace se nezdařilo</string>

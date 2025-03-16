@@ -63,6 +63,7 @@
     <string name="hotspot_disable_approval_title">Problemas de conectividad de punto de acceso</string>
     <string name="hotspot_disable_approval_summary">Permitir que los clientes no \"pre-aprobados\" se conecten sin problemas</string>
     <!--Lock screen related-->
+    <string name="depth_wallpaper_options">Fondo de pantalla de efecto profundo</string>
     <string name="depth_wallpaper_title">Fondo de pantalla de efecto profundo</string>
     <string name="depth_wallpaper_summary">Integrar dinámicamente el fondo de pantalla con el reloj</string>
     <string name="depth_wallpaper_ai_model_title">Modelo preferido de IA</string>
@@ -73,6 +74,7 @@
     <string name="disable_unlock_hint_title">Deshabilitar la animación de pantalla de desbloqueo</string>
     <string name="ls_general_options">Opciones de pantalla de bloqueo</string>
     <string name="hide_avatar_title">Eliminar avatar de usuario (modo multiusuario)</string>
+    <string name="fingerprint_options">Huella digital</string>
     <string name="transparent_fingerprint_circle">Ocultar círculo del icono de la huella digital</string>
     <string name="transparent_fingerprint_circle_off">El círculo se activará</string>
     <string name="transparent_fingerprint_circle_on">El círculo se ocultará</string>
@@ -479,6 +481,7 @@
     <string name="download_channel_name">Descargas</string>
     <string name="assets_download_title">Descargando archivos</string>
     <string name="assets_download_body">Descargar archivos adicionales</string>
+    <string name="assets_download_size_body">Progress: %s</string>
     <string name="update_notification_title">Actualización descargada</string>
     <string name="update_notification_text">Toque aquí para instalar</string>
     <string name="download_failed">Error al descargar la actualización</string>

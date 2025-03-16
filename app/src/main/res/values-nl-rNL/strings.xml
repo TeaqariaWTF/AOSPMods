@@ -63,6 +63,7 @@
     <string name="hotspot_disable_approval_title">Hotspot connectiviteit problemen werken</string>
     <string name="hotspot_disable_approval_summary">Niet-\"vooraf goedgekeurde\" clients toestaan om naadloos verbinding te maken</string>
     <!--Lock screen related-->
+    <string name="depth_wallpaper_options">Depth effect wallpaper</string>
     <string name="depth_wallpaper_title">Diepte-effect achtergrond</string>
     <string name="depth_wallpaper_summary">Dynamische integratie van wallpaper\'s voorgrond met de klok</string>
     <string name="depth_wallpaper_ai_model_title">AI model voorkeur</string>
@@ -73,6 +74,7 @@
     <string name="disable_unlock_hint_title">Schakel de ontgrendelingshintanimatie uit</string>
     <string name="ls_general_options">Opties voor vergrendelscherm</string>
     <string name="hide_avatar_title">Gebruikersavatar verwijderen (modus voor meerdere gebruikers)</string>
+    <string name="fingerprint_options">Fingerprint</string>
     <string name="transparent_fingerprint_circle">Vingerafdrukcirkel onder het scherm verbergen</string>
     <string name="transparent_fingerprint_circle_off">Cirkel rond vingerafdrukpictogram is actief</string>
     <string name="transparent_fingerprint_circle_on">Cirkel rond vingerafdrukpictogram wordt verborgen</string>
@@ -479,6 +481,7 @@
     <string name="download_channel_name">downloads</string>
     <string name="assets_download_title">Bestanden downloaden</string>
     <string name="assets_download_body">Downloaden metgezel bestanden</string>
+    <string name="assets_download_size_body">Progress: %s</string>
     <string name="update_notification_title">Update gedownload</string>
     <string name="update_notification_text">Tik hier om te installeren</string>
     <string name="download_failed">Kan de update niet downloaden</string>
