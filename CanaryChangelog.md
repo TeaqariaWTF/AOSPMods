@@ -1,3 +1,6 @@
+**canary-440**  
+- A16b3: Fixed launcher mods  
+  
 **canary-439**  
 - Fixed crash caused by range slider preference  
   
