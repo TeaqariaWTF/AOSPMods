@@ -182,6 +182,7 @@ public class PyTorchSegmentor {
 		if(new File(libPath).exists())
 		{
 			try {
+				System.loadLibrary("fbjni");
 				System.load(libPath);
 				return true;
 			} catch (Throwable throwable) {
