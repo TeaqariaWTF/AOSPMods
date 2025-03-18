@@ -2,6 +2,7 @@ package sh.siava.pixelxpert.utils;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.FileUtils;
 import android.util.Log;
 
@@ -38,7 +39,12 @@ public class AppUtils {
 	public static void runKSURootActivity(Context context, boolean launchApp)
 	{
 		try {
-			Intent launchIntent = context.getPackageManager().getLaunchIntentForPackage(Constants.KSU_PACKAGE);
+			PackageManager pm = context.getPackageManager();
+			Intent launchIntent = pm.getLaunchIntentForPackage(Constants.KSU_PACKAGE);
+
+			if (launchIntent == null) {
+				launchIntent = pm.getLaunchIntentForPackage(Constants.KSU_NEXT_PACKAGE);
+			}
 			//noinspection DataFlowIssue
 			launchIntent.putExtra(Constants.PX_ROOT_EXTRA, 1);
 			if (launchApp) {

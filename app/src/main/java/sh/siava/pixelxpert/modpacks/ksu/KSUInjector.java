@@ -26,22 +26,22 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
  * @noinspection RedundantThrows
  */
 public class KSUInjector extends XposedModPack {
-	private static final String listenPackage = Constants.KSU_PACKAGE;
+	private static final String listenPackage1 = Constants.KSU_PACKAGE;
+	private static final String listenPackage2 = Constants.KSU_NEXT_PACKAGE;
 
 	public KSUInjector(Context context) {
 		super(context);
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {
-
-	}
+	public void updatePrefs(String... Key) {}
 
 	@Override
 	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
-		ReflectedClass MainActivityClass = ReflectedClass.of("me.weishu.kernelsu.ui.MainActivity");
-		ReflectedClass NativesClass = ReflectedClass.of("me.weishu.kernelsu.Natives");
-		ReflectedClass ProfileClass = ReflectedClass.of("me.weishu.kernelsu.Natives$Profile");
+		String packageName = lpParam.packageName; // Can be KSU or KSU Next
+		ReflectedClass MainActivityClass = ReflectedClass.of(packageName + ".ui.MainActivity");
+		ReflectedClass NativesClass = ReflectedClass.of(packageName + ".Natives");
+		ReflectedClass ProfileClass = ReflectedClass.of(packageName + ".Natives$Profile");
 
 		MainActivityClass
 				.after("onCreate")
@@ -90,6 +90,6 @@ public class KSUInjector extends XposedModPack {
 
 	@Override
 	public boolean listensTo(String packageName) {
-		return listenPackage.equals(packageName);
+		return listenPackage1.equals(packageName) || listenPackage2.equals(packageName);
 	}
 }
