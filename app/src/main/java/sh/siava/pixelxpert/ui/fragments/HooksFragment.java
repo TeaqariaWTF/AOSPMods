@@ -3,6 +3,8 @@ package sh.siava.pixelxpert.ui.fragments;
 import static android.content.Context.RECEIVER_EXPORTED;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
+import static sh.siava.pixelxpert.modpacks.Constants.KSU_NEXT_PACKAGE;
+import static sh.siava.pixelxpert.modpacks.Constants.KSU_PACKAGE;
 import static sh.siava.pixelxpert.modpacks.Constants.SYSTEM_FRAMEWORK_PACKAGE;
 import static sh.siava.pixelxpert.modpacks.Constants.SYSTEM_UI_PACKAGE;
 import static sh.siava.pixelxpert.modpacks.utils.BootLoopProtector.PACKAGE_STRIKE_KEY_KEY;
@@ -211,7 +213,8 @@ public class HooksFragment extends BaseFragment {
 
 		for (int i = 0; i < pack.size(); i++) {
 			View list = LayoutInflater.from(requireContext()).inflate(R.layout.view_hooked_package_list, binding.content, false);
-			boolean isAppInstalled = isAppInstalled(pack.get(i));
+			String packageName = pack.get(i);
+			boolean isAppInstalled = isAppInstalled(packageName);
 
 			LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) list.getLayoutParams();
 			if (i == 0) {
@@ -225,10 +228,10 @@ public class HooksFragment extends BaseFragment {
 			}
 
 			ImageView preview = list.findViewById(R.id.icon);
-			preview.setImageDrawable(getAppIcon(pack.get(i)));
+			preview.setImageDrawable(getAppIcon(packageName));
 
 			TextView title = list.findViewById(R.id.title);
-			title.setText(pack.get(i));
+			title.setText(packageName);
 
 			TextView desc = list.findViewById(R.id.desc);
 			if (isAppInstalled) {
@@ -239,6 +242,10 @@ public class HooksFragment extends BaseFragment {
 				preview.setAlpha(0.4f);
 				title.setAlpha(0.4f);
 				desc.setAlpha(0.4f);
+
+				if (packageName.equals(KSU_PACKAGE) || packageName.equals(KSU_NEXT_PACKAGE)) {
+					list.setVisibility(GONE);
+				}
 			}
 
 			int finalI = i;
