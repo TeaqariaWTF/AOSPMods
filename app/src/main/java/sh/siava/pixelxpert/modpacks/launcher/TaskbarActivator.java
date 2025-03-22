@@ -64,6 +64,7 @@ public class TaskbarActivator extends XposedModPack {
 	private Object recentTasksList;
 	private static boolean TaskbarAsRecents = false;
 	private static boolean TaskbarTransient = false;
+	private static boolean TaskbarOnLauncher = false;
 	private boolean refreshing = false;
 	private static float taskbarHeightOverride = 1f;
 	private static float TaskbarRadiusOverride = 1f;
@@ -140,6 +141,8 @@ public class TaskbarActivator extends XposedModPack {
 
 		TaskbarTransient = Xprefs.getBoolean("TaskbarTransient", false);
 
+		TaskbarOnLauncher = Xprefs.getBoolean("TaskbarOnLauncher", false);
+
 	}
 
 	@Override
@@ -163,6 +166,7 @@ public class TaskbarActivator extends XposedModPack {
 		ReflectedClass BaseActivityClass = ReflectedClass.of("com.android.launcher3.BaseActivity");
 		ReflectedClass DisplayControllerClass = ReflectedClass.of("com.android.launcher3.util.DisplayController");
 		ReflectedClass DisplayControllerInfoClass = ReflectedClass.of("com.android.launcher3.util.DisplayController$Info");
+		ReflectedClass StateControllerClass = ReflectedClass.of("com.android.launcher3.taskbar.TaskbarLauncherStateController");
 		Method commitItemsToUIMethod = findMethodExact(TaskbarModelCallbacksClass.getClazz(), "commitItemsToUI");
 		ReflectedClass AbstractNavButtonLayoutterClass = ReflectedClass.of("com.android.launcher3.taskbar.navbutton.AbstractNavButtonLayoutter");
 
@@ -203,6 +207,14 @@ public class TaskbarActivator extends XposedModPack {
 				.run(param -> {
 					if (taskbarMode == TASKBAR_ON && model != null) {
 						XposedHelpers.callMethod(model, "onAppIconChanged", BuildConfig.APPLICATION_ID, UserHandle.getUserHandleForUid(0));
+					}
+				});
+
+		StateControllerClass
+				.after("isInLauncher")
+				.run(param -> {
+					if (TaskbarOnLauncher) {
+						param.setResult(false);
 					}
 				});
 
