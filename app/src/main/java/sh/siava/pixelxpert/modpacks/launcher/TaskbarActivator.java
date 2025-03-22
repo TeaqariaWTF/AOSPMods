@@ -131,7 +131,7 @@ public class TaskbarActivator extends XposedModPack {
 		taskbarMode = Integer.parseInt(Xprefs.getString("taskBarMode", String.valueOf(TASKBAR_DEFAULT)));
 
 		TaskbarAsRecents = Xprefs.getBoolean("TaskbarAsRecents", false);
-		TaskbarHideAllAppsIcon = true;//Xprefs.getBoolean("TaskbarHideAllAppsIcon", false);
+		TaskbarHideAllAppsIcon = Xprefs.getBoolean("TaskbarHideAllAppsIcon", true);
 
 		TaskbarRadiusOverride = Xprefs.getSliderFloat("TaskbarRadiusOverride", 1f);
 
@@ -319,7 +319,7 @@ public class TaskbarActivator extends XposedModPack {
 		TaskbarViewClass
 				.after(mUpdateItemsMethodName)
 				.run(param -> {
-					if(TaskbarAsRecents) {
+					if(TaskbarAsRecents && TaskbarHideAllAppsIcon) {
 						try {
 							View container = (View) getObjectField(param.thisObject, "mAllAppsButtonContainer");
 							ViewGroup taskbarView = (ViewGroup) param.thisObject;
@@ -423,7 +423,8 @@ public class TaskbarActivator extends XposedModPack {
 									callMethod(taskBarView, mUpdateItemsMethodName, new Object[]{itemInfos});
 								}
 
-								int startPoint = taskBarView.getChildAt(0).getClass().getName().endsWith("SearchDelegateView") ? 1 : 0;
+								int firstAppIcon = TaskbarHideAllAppsIcon ? 0 : 2;
+								int startPoint = taskBarView.getChildAt(firstAppIcon).getClass().getName().endsWith("SearchDelegateView") ? firstAppIcon + 1 : firstAppIcon;
 
 								for (int i = 0; i < itemInfos.length; i++) {
 									View iconView = taskBarView.getChildAt(i + startPoint);

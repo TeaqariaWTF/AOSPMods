@@ -343,6 +343,7 @@
     <string name="pill_width_summary" translatable="false">@string/percent_of_default_size</string>
     <string name="hide_navbar_title">Hide navigation bar</string>
     <string name="taskbar_as_recents_title">Convert Taskbar to recents bar</string>
+    <string name="taskbar_hide_allapps_title">Hide All apps button</string>
     <string name="taskbar_height_title">Taskbar height</string>
     <string name="taskbar_radius_title">Taskbar corner curve</string>
     <string name="colorpill">Accent colored gesture pill</string>

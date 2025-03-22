@@ -86,6 +86,9 @@ public class PreferenceHelper {
 				int taskBarMode = Integer.parseInt(instance.mPreferences.getString("taskBarMode", "0"));
 				return taskBarMode == 1;
 
+			case "TaskbarHideAllAppsIcon":
+                return instance.mPreferences.getBoolean("TaskbarAsRecents", false);
+
 			case "gsans_override":
 			case "FontsOverlayEx":
 				if (!showFonts)

@@ -44,13 +44,6 @@
 		android:title="@string/taskbar_status_title"
 		app:iconSpaceReserved="false" />
 
-	<!--SwitchPreference
-		android:defaultValue="false"
-		android:key="TaskbarHideAllAppsIcon"
-		android:summaryOff="@string/general_off"
-		android:summaryOn="@string/general_on"
-		android:title="@string/taskbar_hide_allapps_title" /-->
-
 	<sh.siava.pixelxpert.ui.preferences.MaterialSwitchPreference
 		android:defaultValue="false"
 		android:key="TaskbarTransient"
@@ -68,12 +61,20 @@
 		app:iconSpaceReserved="false" />
 
 	<sh.siava.pixelxpert.ui.preferences.MaterialSwitchPreference
-		android:defaultValue="false"
+		android:defaultValue="true"
 		android:key="TaskbarAsRecents"
 		android:summaryOff="@string/general_off"
 		android:summaryOn="@string/general_on"
 		android:title="@string/taskbar_as_recents_title"
 		app:iconSpaceReserved="false" />
+
+	<sh.siava.pixelxpert.ui.preferences.MaterialSwitchPreference
+		android:defaultValue="true"
+		android:key="TaskbarHideAllAppsIcon"
+		android:summaryOff="@string/general_off"
+		android:summaryOn="@string/general_on"
+		android:title="@string/taskbar_hide_allapps_title"
+		app:iconSpaceReserved="false"/>
 
 	<sh.siava.pixelxpert.ui.preferences.MaterialRangeSliderPreference
 		android:key="taskbarHeightOverride"
