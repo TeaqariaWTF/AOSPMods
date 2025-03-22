@@ -65,6 +65,7 @@ public class TaskbarActivator extends XposedModPack {
 	private static boolean TaskbarAsRecents = false;
 	private static boolean TaskbarTransient = false;
 	private static boolean TaskbarOnLauncher = false;
+	private static boolean GoogleRecents = false;
 	private boolean refreshing = false;
 	private static float taskbarHeightOverride = 1f;
 	private static float TaskbarRadiusOverride = 1f;
@@ -122,7 +123,8 @@ public class TaskbarActivator extends XposedModPack {
 				"TaskbarTransient",
 				"taskbarHeightOverride",
 				"TaskbarRadiusOverride",
-				"TaskbarHideAllAppsIcon");
+				"TaskbarHideAllAppsIcon",
+				"EnableGoogleRecents");
 
 		if (Key.length > 0 && restartKeys.contains(Key[0])) {
 			SystemUtils.killSelf();
@@ -143,6 +145,7 @@ public class TaskbarActivator extends XposedModPack {
 
 		TaskbarOnLauncher = Xprefs.getBoolean("TaskbarOnLauncher", false);
 
+		GoogleRecents = Xprefs.getBoolean("EnableGoogleRecents", false);
 	}
 
 	@Override
@@ -169,6 +172,7 @@ public class TaskbarActivator extends XposedModPack {
 		ReflectedClass StateControllerClass = ReflectedClass.of("com.android.launcher3.taskbar.TaskbarLauncherStateController");
 		Method commitItemsToUIMethod = findMethodExact(TaskbarModelCallbacksClass.getClazz(), "commitItemsToUI");
 		ReflectedClass AbstractNavButtonLayoutterClass = ReflectedClass.of("com.android.launcher3.taskbar.navbutton.AbstractNavButtonLayoutter");
+		ReflectedClass RecentAppsControllerClass = ReflectedClass.of("com.android.launcher3.taskbar.TaskbarRecentAppsController");
 
 		AbstractNavButtonLayoutterClass
 				.afterConstruction()
@@ -461,6 +465,12 @@ public class TaskbarActivator extends XposedModPack {
 					});
 					param.setResult(null);
 				});
+
+		RecentAppsControllerClass.afterConstruction().run(param -> {
+			if (GoogleRecents) {
+				ReflectionTools.findMethod(RecentAppsControllerClass.getClazz(), "setCanShowRecentApps").invoke(param.thisObject, true);
+			}
+		});
 		//endregion
 	}
 
