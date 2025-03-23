@@ -201,11 +201,11 @@
     <string name="nt_stat_mode_week">今週</string>
     <string name="nt_stat_mode_month">今月</string>
     <string name="sb_ignored_icons_category">Status Bar ignored icons</string>
-    <string name="sb_ignored_icons">Status Bar</string>
+    <string name="sb_ignored_icons">ステータスバー</string>
     <string name="sb_ignored_icons_statusbar">Select which icon will be hidden in statusbar</string>
-    <string name="sb_kg_ignored_icons">Lockscreen</string>
+    <string name="sb_kg_ignored_icons">ロック画面</string>
     <string name="sb_ignored_icons_kg">Select which icon will be hidden in keyguard statusbar</string>
-    <string name="sb_qs_ignored_icons">Quick Settings</string>
+    <string name="sb_qs_ignored_icons">クイック設定</string>
     <string name="sb_ignored_icons_qs">Select which icon will be hidden in quick settings</string>
     <string name="status_bar_volte">VoLTE</string>
     <string name="status_bar_vowifi">VoWiFi</string>
