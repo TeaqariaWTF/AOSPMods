@@ -22,6 +22,8 @@ import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.android.material.appbar.AppBarLayout;
+
 import java.util.Objects;
 
 import sh.siava.pixelxpert.R;
@@ -82,6 +84,13 @@ public abstract class ControlledPreferenceFragmentCompat extends PreferenceFragm
 		Toolbar toolbar = view.findViewById(R.id.toolbar);
 
 		setupToolbar(baseContext, toolbar, getTitle(), getBackButtonEnabled());
+
+		if (baseContext != null) {
+			AppBarLayout appBarLayout = baseContext.findViewById(R.id.appBarLayout);
+			if (appBarLayout != null && Objects.equals(getTitle(), getString(R.string.app_name))) {
+				appBarLayout.setExpanded(true, false);
+			}
+		}
 
 		if (getArguments() != null) {
 			Bundle bundle = getArguments();
