@@ -163,6 +163,8 @@ public class SettingsActivity extends BaseActivity implements PreferenceFragment
 
 	@Override
 	protected void attachBaseContext(Context newBase) {
+		super.attachBaseContext(newBase);
+
 		SharedPreferences prefs = getDefaultSharedPreferences(newBase.createDeviceProtectedStorageContext());
 
 		String localeCode = prefs.getString("appLanguage", "");
@@ -177,7 +179,7 @@ public class SettingsActivity extends BaseActivity implements PreferenceFragment
 		LocaleList.setDefault(localeList);
 		configuration.setLocales(localeList);
 
-		super.attachBaseContext(newBase.createConfigurationContext(configuration));
+		applyOverrideConfiguration(configuration);
 	}
 
 	private void createNotificationChannel() {
