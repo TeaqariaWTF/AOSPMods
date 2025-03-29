@@ -1,7 +1,13 @@
 package sh.siava.pixelxpert.ui.activities;
 
+import static androidx.preference.PreferenceManager.getDefaultSharedPreferences;
+
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.LocaleList;
 import android.view.ViewGroup;
 import android.view.Window;
 
@@ -14,6 +20,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.shape.MaterialShapeDrawable;
+
+import java.util.Locale;
 
 import sh.siava.pixelxpert.R;
 
@@ -53,5 +61,26 @@ public class BaseActivity extends AppCompatActivity {
 				return windowInsets;
 			});
 		}
+	}
+
+	@Override
+	protected void attachBaseContext(Context newBase) {
+		super.attachBaseContext(newBase);
+
+		SharedPreferences prefs = getDefaultSharedPreferences(newBase.createDeviceProtectedStorageContext());
+
+		String localeCode = prefs.getString("appLanguage", "");
+		Locale locale = !localeCode.isEmpty() ? Locale.forLanguageTag(localeCode) : Locale.getDefault();
+
+		Resources res = newBase.getResources();
+		Configuration configuration = res.getConfiguration();
+
+		configuration.setLocale(locale);
+
+		LocaleList localeList = new LocaleList(locale);
+		LocaleList.setDefault(localeList);
+		configuration.setLocales(localeList);
+
+		applyOverrideConfiguration(configuration);
 	}
 }
