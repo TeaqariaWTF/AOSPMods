@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+	android:color="?attr/colorControlHighlight">
 	<!-- outline -->
 	<item>
 		<shape android:shape="rectangle">
@@ -11,7 +11,6 @@
 				android:topRightRadius="@dimen/ui_container_radius"  />
 		</shape>
 	</item>
-
 	<!-- bg -->
 	<item>
 		<shape android:shape="rectangle">
@@ -25,4 +24,4 @@
 			<solid android:color="@android:color/transparent" />
 		</shape>
 	</item>
-</layer-list>
+</ripple>

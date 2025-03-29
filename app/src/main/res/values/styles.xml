@@ -36,7 +36,6 @@
 	</style>
 
 	<style name="Material3.SeekBar" parent="Widget.AppCompat.SeekBar">
-		<item name="android:progressBackgroundTint">@color/color_accent_0_80_overlay</item>
 		<item name="android:progressTint">?attr/colorPrimary</item>
 		<item name="android:thumbTint">@null</item>
 		<item name="android:layout_width">match_parent</item>
