@@ -468,9 +468,18 @@ public class PreferenceHelper {
 				return instance.mPreferences.getSliderFloat("swipeUpPercentage", 20f) + "%";
 
 			case "appLanguage":
-				int current_language_code = Arrays.asList(fragmentCompat.getResources().getStringArray(R.array.languages_values)).indexOf(instance.mPreferences.getString("appLanguage", fragmentCompat.getResources().getConfiguration().getLocales().get(0).getLanguage()));
-				int selected_language_code = current_language_code < 0 ? Arrays.asList(fragmentCompat.getResources().getStringArray(R.array.languages_values)).indexOf("en") : current_language_code;
-				return Arrays.asList(fragmentCompat.getResources().getStringArray(R.array.languages_names)).get(selected_language_code);
+				boolean default_language_selected = instance.mPreferences.getString("appLanguage", null) != null;
+				String[] languages_names = fragmentCompat.getResources().getStringArray(R.array.languages_names);
+				String[] languages_values = fragmentCompat.getResources().getStringArray(R.array.languages_values);
+
+				int current_language_code_index = Arrays.asList(languages_values).indexOf(instance.mPreferences.getString("appLanguage", fragmentCompat.getResources().getConfiguration().getLocales().get(0).getLanguage()));
+				int selected_language_code_index = current_language_code_index < 0 ? Arrays.asList(languages_values).indexOf("en") : current_language_code_index;
+
+				if (!default_language_selected) {
+					instance.mPreferences.edit().putString("appLanguage", languages_values[selected_language_code_index]).apply();
+				}
+
+				return Arrays.asList(languages_names).get(selected_language_code_index);
 
 			case "CheckForUpdate":
 				return fragmentCompat.getString(R.string.current_version, BuildConfig.VERSION_NAME);
