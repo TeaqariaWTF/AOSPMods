@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-
-	<!-- outline -->
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+	android:color="?attr/colorControlHighlight">
+	<!-- bg -->
 	<item>
 		<shape android:shape="rectangle">
 			<solid android:color="?attr/colorSurfaceBright" />
@@ -11,8 +11,7 @@
 				android:topRightRadius="4dp"  />
 		</shape>
 	</item>
-
-	<!-- bg -->
+	<!-- outline -->
 	<item>
 		<shape android:shape="rectangle">
 			<stroke
@@ -25,4 +24,4 @@
 			<solid android:color="@android:color/transparent" />
 		</shape>
 	</item>
-</layer-list>
+</ripple>

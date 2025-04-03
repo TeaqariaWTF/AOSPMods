@@ -142,9 +142,6 @@ dependencies {
 	implementation (libs.play.services.mlkit.subject.segmentation)
 	implementation (libs.play.services.base)
 
-  // Collapsing Toolbar with subtitle
-	implementation (libs.collapsingtoolbarlayout.subtitle)
-
 	// Splash screen
 	implementation (libs.androidx.core.splashscreen)
 

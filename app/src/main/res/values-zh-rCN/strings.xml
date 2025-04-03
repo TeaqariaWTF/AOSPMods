@@ -63,7 +63,7 @@
     <string name="hotspot_disable_approval_title">已绕过热点的问题</string>
     <string name="hotspot_disable_approval_summary">允许非“预先批准”客户端无缝连接</string>
     <!--Lock screen related-->
-    <string name="depth_wallpaper_options">Depth effect wallpaper</string>
+    <string name="depth_wallpaper_options">深度效果的壁纸</string>
     <string name="depth_wallpaper_title">深度效果壁纸</string>
     <string name="depth_wallpaper_summary">动态整合壁纸的前景和时钟</string>
     <string name="depth_wallpaper_ai_model_title">首选的 AI 模型</string>
@@ -74,7 +74,7 @@
     <string name="disable_unlock_hint_title">禁用解锁提示动画</string>
     <string name="ls_general_options">锁屏选项</string>
     <string name="hide_avatar_title">隐藏用户头像 (多用户模式)</string>
-    <string name="fingerprint_options">Fingerprint</string>
+    <string name="fingerprint_options">指纹</string>
     <string name="transparent_fingerprint_circle">隐藏屏下指纹背景</string>
     <string name="transparent_fingerprint_circle_off">指纹背景启用</string>
     <string name="transparent_fingerprint_circle_on">指纹背景隐藏</string>
@@ -481,7 +481,7 @@
     <string name="download_channel_name">下载</string>
     <string name="assets_download_title">正在下载文件</string>
     <string name="assets_download_body">正在下载配套文件</string>
-    <string name="assets_download_size_body">Progress: %s</string>
+    <string name="assets_download_size_body">进度：%s</string>
     <string name="update_notification_title">已下载更新</string>
     <string name="update_notification_text">点此安装</string>
     <string name="download_failed">下载更新失败</string>

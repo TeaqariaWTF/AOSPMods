@@ -12,15 +12,11 @@ import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.ComponentName;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.LocaleList;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.method.LinkMovementMethod;
@@ -44,7 +40,6 @@ import androidx.transition.TransitionManager;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import java.util.Locale;
 import java.util.Objects;
 
 import sh.siava.pixelxpert.BuildConfig;
@@ -159,25 +154,6 @@ public class SettingsActivity extends BaseActivity implements PreferenceFragment
 	public void onSearchResultClicked(@NonNull final SearchPreferenceResult result, NavController navController) {
 		headerFragment = new HeaderFragment();
 		new Handler(getMainLooper()).post(() -> headerFragment.onSearchResultClicked(result, navController));
-	}
-
-	@Override
-	protected void attachBaseContext(Context newBase) {
-		SharedPreferences prefs = getDefaultSharedPreferences(newBase.createDeviceProtectedStorageContext());
-
-		String localeCode = prefs.getString("appLanguage", "");
-		Locale locale = !localeCode.isEmpty() ? Locale.forLanguageTag(localeCode) : Locale.getDefault();
-
-		Resources res = newBase.getResources();
-		Configuration configuration = res.getConfiguration();
-
-		configuration.setLocale(locale);
-
-		LocaleList localeList = new LocaleList(locale);
-		LocaleList.setDefault(localeList);
-		configuration.setLocales(localeList);
-
-		super.attachBaseContext(newBase.createConfigurationContext(configuration));
 	}
 
 	private void createNotificationChannel() {

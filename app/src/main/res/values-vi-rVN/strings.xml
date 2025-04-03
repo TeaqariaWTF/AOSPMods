@@ -63,7 +63,7 @@
     <string name="hotspot_disable_approval_title">Giải quyết tạm vấn đề kết nối điểm phát sóng</string>
     <string name="hotspot_disable_approval_summary">Cho phép máy khách \"chưa được phê duyệt trước\" kết nối liền mạch</string>
     <!--Lock screen related-->
-    <string name="depth_wallpaper_options">Depth effect wallpaper</string>
+    <string name="depth_wallpaper_options">Hình nền hiệu ứng chiều sâu</string>
     <string name="depth_wallpaper_title">Hình nền hiệu ứng chiều sâu</string>
     <string name="depth_wallpaper_summary">Tích hợp động hình nền với đồng hồ</string>
     <string name="depth_wallpaper_ai_model_title">Chọn mô hình AI theo sở thích</string>
@@ -74,7 +74,7 @@
     <string name="disable_unlock_hint_title">Tắt hoạt ảnh gợi ý mở khóa</string>
     <string name="ls_general_options">Tùy chọn màn hình khóa</string>
     <string name="hide_avatar_title">Xóa hình đại diện người dùng (chế độ nhiều người dùng)</string>
-    <string name="fingerprint_options">Fingerprint</string>
+    <string name="fingerprint_options">Vân tay</string>
     <string name="transparent_fingerprint_circle">Ẩn vòng tròn dấu vân tay dưới màn hình</string>
     <string name="transparent_fingerprint_circle_off">Biểu tượng vòng tròn dấu vân tay đang hoạt động</string>
     <string name="transparent_fingerprint_circle_on">Biểu tượng vòng tròn dấu vân tay sẽ bị ẩn</string>
@@ -481,7 +481,7 @@
     <string name="download_channel_name">Tải xuống</string>
     <string name="assets_download_title">Các tệp đang tải xuống</string>
     <string name="assets_download_body">Đồng hành tải xuống các tệp tin</string>
-    <string name="assets_download_size_body">Progress: %s</string>
+    <string name="assets_download_size_body">Tiến trình: %s</string>
     <string name="update_notification_title">Đã tải xuống cập nhật</string>
     <string name="update_notification_text">Nhấn vào đây để cài đặt</string>
     <string name="download_failed">Không thể tải xuống bản cập nhật</string>
