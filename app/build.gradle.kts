@@ -84,8 +84,6 @@ android {
 		jniLibs.excludes += setOf(
 			"**/libpytorch_jni_lite.so"
 		)
-
-		jniLibs.useLegacyPackaging = true
 	}
 }
 
