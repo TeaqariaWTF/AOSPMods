@@ -64,6 +64,8 @@ public class TaskbarActivator extends XposedModPack {
 	private Object recentTasksList;
 	private static boolean TaskbarAsRecents = false;
 	private static boolean TaskbarTransient = false;
+	private static boolean TaskbarOnLauncher = false;
+	private static boolean GoogleRecents = false;
 	private boolean refreshing = false;
 	private static float taskbarHeightOverride = 1f;
 	private static float TaskbarRadiusOverride = 1f;
@@ -121,7 +123,8 @@ public class TaskbarActivator extends XposedModPack {
 				"TaskbarTransient",
 				"taskbarHeightOverride",
 				"TaskbarRadiusOverride",
-				"TaskbarHideAllAppsIcon");
+				"TaskbarHideAllAppsIcon",
+				"EnableGoogleRecents");
 
 		if (Key.length > 0 && restartKeys.contains(Key[0])) {
 			SystemUtils.killSelf();
@@ -130,7 +133,7 @@ public class TaskbarActivator extends XposedModPack {
 		taskbarMode = Integer.parseInt(Xprefs.getString("taskBarMode", String.valueOf(TASKBAR_DEFAULT)));
 
 		TaskbarAsRecents = Xprefs.getBoolean("TaskbarAsRecents", false);
-		TaskbarHideAllAppsIcon = true;//Xprefs.getBoolean("TaskbarHideAllAppsIcon", false);
+		TaskbarHideAllAppsIcon = Xprefs.getBoolean("TaskbarHideAllAppsIcon", true);
 
 		TaskbarRadiusOverride = Xprefs.getSliderFloat("TaskbarRadiusOverride", 1f);
 
@@ -140,6 +143,9 @@ public class TaskbarActivator extends XposedModPack {
 
 		TaskbarTransient = Xprefs.getBoolean("TaskbarTransient", false);
 
+		TaskbarOnLauncher = Xprefs.getBoolean("TaskbarOnLauncher", false);
+
+		GoogleRecents = Xprefs.getBoolean("EnableGoogleRecents", false);
 	}
 
 	@Override
@@ -163,8 +169,10 @@ public class TaskbarActivator extends XposedModPack {
 		ReflectedClass BaseActivityClass = ReflectedClass.of("com.android.launcher3.BaseActivity");
 		ReflectedClass DisplayControllerClass = ReflectedClass.of("com.android.launcher3.util.DisplayController");
 		ReflectedClass DisplayControllerInfoClass = ReflectedClass.of("com.android.launcher3.util.DisplayController$Info");
+		ReflectedClass StateControllerClass = ReflectedClass.of("com.android.launcher3.taskbar.TaskbarLauncherStateController");
 		Method commitItemsToUIMethod = findMethodExact(TaskbarModelCallbacksClass.getClazz(), "commitItemsToUI");
 		ReflectedClass AbstractNavButtonLayoutterClass = ReflectedClass.of("com.android.launcher3.taskbar.navbutton.AbstractNavButtonLayoutter");
+		ReflectedClass RecentAppsControllerClass = ReflectedClass.of("com.android.launcher3.taskbar.TaskbarRecentAppsController");
 
 		AbstractNavButtonLayoutterClass
 				.afterConstruction()
@@ -203,6 +211,14 @@ public class TaskbarActivator extends XposedModPack {
 				.run(param -> {
 					if (taskbarMode == TASKBAR_ON && model != null) {
 						XposedHelpers.callMethod(model, "onAppIconChanged", BuildConfig.APPLICATION_ID, UserHandle.getUserHandleForUid(0));
+					}
+				});
+
+		StateControllerClass
+				.after("isInLauncher")
+				.run(param -> {
+					if (TaskbarOnLauncher) {
+						param.setResult(false);
 					}
 				});
 
@@ -307,7 +323,7 @@ public class TaskbarActivator extends XposedModPack {
 		TaskbarViewClass
 				.after(mUpdateItemsMethodName)
 				.run(param -> {
-					if(TaskbarAsRecents) {
+					if(TaskbarAsRecents && TaskbarHideAllAppsIcon) {
 						try {
 							View container = (View) getObjectField(param.thisObject, "mAllAppsButtonContainer");
 							ViewGroup taskbarView = (ViewGroup) param.thisObject;
@@ -411,7 +427,8 @@ public class TaskbarActivator extends XposedModPack {
 									callMethod(taskBarView, mUpdateItemsMethodName, new Object[]{itemInfos});
 								}
 
-								int startPoint = taskBarView.getChildAt(0).getClass().getName().endsWith("SearchDelegateView") ? 1 : 0;
+								int firstAppIcon = TaskbarHideAllAppsIcon ? 0 : 2;
+								int startPoint = taskBarView.getChildAt(firstAppIcon).getClass().getName().endsWith("SearchDelegateView") ? firstAppIcon + 1 : firstAppIcon;
 
 								for (int i = 0; i < itemInfos.length; i++) {
 									View iconView = taskBarView.getChildAt(i + startPoint);
@@ -448,6 +465,12 @@ public class TaskbarActivator extends XposedModPack {
 					});
 					param.setResult(null);
 				});
+
+		RecentAppsControllerClass.afterConstruction().run(param -> {
+			if (GoogleRecents) {
+				ReflectionTools.findMethod(RecentAppsControllerClass.getClazz(), "setCanShowRecentApps").invoke(param.thisObject, true);
+			}
+		});
 		//endregion
 	}
 
