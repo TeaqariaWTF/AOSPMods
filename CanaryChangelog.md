@@ -1,3 +1,7 @@
+**canary-441**  
+- Added option to show "All apps" button on the taskbar, show/hide taskbar on home page, and show recent icons on the default taskbar (Thanks to matejdro@Github)  
+- Add support for KernelSU Next  
+  
 **canary-440**  
 - A16b3: Fixed launcher mods  
   
