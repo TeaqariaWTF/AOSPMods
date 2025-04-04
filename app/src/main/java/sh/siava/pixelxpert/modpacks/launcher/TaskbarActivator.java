@@ -215,7 +215,7 @@ public class TaskbarActivator extends XposedModPack {
 				});
 
 		StateControllerClass
-				.after("isInLauncher")
+				.before("isInLauncher")
 				.run(param -> {
 					if (TaskbarOnLauncher) {
 						param.setResult(false);
