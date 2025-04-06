@@ -309,7 +309,9 @@
     <string name="three_button_center_title">मध्य बटन</string>
     <string name="three_button_right_title">दायां बटन</string>
     <string name="hide_navbar_title">जेस्चर नेविगेशन बार छुपाएं</string>
-    <string name="taskbar_as_recents_title">टास्कबार को हाल के बार में बदलें</string>
+    <string name="taskbar_as_recents_title">Convert Taskbar to PixelXpert recents bar</string>
+    <string name="taskbar_hide_allapps_title">Hide All apps button</string>
+    <string name="taskbar_enable_google_recents">Enable Android recents on the Taskbar</string>
     <string name="taskbar_height_title">टास्कबार की ऊंचाई</string>
     <string name="taskbar_radius_title">टास्कबार कॉर्नर का दायरा</string>
     <string name="colorpill">एक्सेंट के रंग में जेस्चर नेविगेशन बार</string>
@@ -319,6 +321,7 @@
     <string name="taskbar_force_enable_title">बलपूर्वक चालू करें</string>
     <string name="taskbar_force_disable_title">बलपूर्वक बंद करें</string>
     <string name="taskbar_transient_title">खुद से छिपना</string>
+    <string name="taskbar_on_launcher_title">Show on home</string>
     <string name="remap_physical_buttons_title">Remap physical buttons</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">पैकेज सिग्नेचर चेक को बायपास करना</string>

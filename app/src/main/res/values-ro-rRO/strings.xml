@@ -63,7 +63,7 @@
     <string name="hotspot_disable_approval_title">Soluție pentru problemele de conectivitate hotspot</string>
     <string name="hotspot_disable_approval_summary">Permite clienților care nu sunt „pre-aprobați” să se conecteze fără probleme</string>
     <!--Lock screen related-->
-    <string name="depth_wallpaper_options">Depth effect wallpaper</string>
+    <string name="depth_wallpaper_options">Fundal cu efect de adâncime</string>
     <string name="depth_wallpaper_title">Fundal cu efect de adâncime</string>
     <string name="depth_wallpaper_summary">Integrare dinamică a imaginii de fundal cu ceasul</string>
     <string name="depth_wallpaper_ai_model_title">Modelul AI preferat</string>
@@ -74,7 +74,7 @@
     <string name="disable_unlock_hint_title">Dezactivează animația de indiciu a deblocării</string>
     <string name="ls_general_options">Opțiuni pentru ecranul de blocare</string>
     <string name="hide_avatar_title">Elimină avatarul utilizatorului (mod utilizatori multipli)</string>
-    <string name="fingerprint_options">Fingerprint</string>
+    <string name="fingerprint_options">Amprentă</string>
     <string name="transparent_fingerprint_circle">Elimină cercul de fundal a amprentei de sub afișaj</string>
     <string name="transparent_fingerprint_circle_off">Cercul în jurul pictogramei amprentei este activat</string>
     <string name="transparent_fingerprint_circle_on">Cercul din jurul imaginii amprentei va fi ascuns</string>
@@ -309,7 +309,9 @@
     <string name="three_button_center_title">Butonul de mijloc</string>
     <string name="three_button_right_title">Butonul din dreapta</string>
     <string name="hide_navbar_title">Ascunde bara de navigare</string>
-    <string name="taskbar_as_recents_title">Convertește bara de activități în bara de recente</string>
+    <string name="taskbar_as_recents_title">Convertește bara de activități în bara de recente PixelXpert</string>
+    <string name="taskbar_hide_allapps_title">Ascunde butonul Toate Aplicațiile</string>
+    <string name="taskbar_enable_google_recents">Activează Recente Android pe bara de activități</string>
     <string name="taskbar_height_title">Înălțime bară de activități</string>
     <string name="taskbar_radius_title">Curba colțului barei de activități</string>
     <string name="colorpill">Bara de navigare nuanțată</string>
@@ -319,6 +321,7 @@
     <string name="taskbar_force_enable_title">Activată forțat</string>
     <string name="taskbar_force_disable_title">Dezactivată forțat</string>
     <string name="taskbar_transient_title">Ascundere automată</string>
+    <string name="taskbar_on_launcher_title">Afișare pe pagina principală</string>
     <string name="remap_physical_buttons_title">Realocare butoane fizice</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">Ignoră verificarea semnăturii pachetului</string>

@@ -309,7 +309,9 @@
     <string name="three_button_center_title">Bouton central</string>
     <string name="three_button_right_title">Bouton droit</string>
     <string name="hide_navbar_title">Cacher la barre de navigation</string>
-    <string name="taskbar_as_recents_title">Transformer la TaskBar en applications récentes</string>
+    <string name="taskbar_as_recents_title">Convert Taskbar to PixelXpert recents bar</string>
+    <string name="taskbar_hide_allapps_title">Hide All apps button</string>
+    <string name="taskbar_enable_google_recents">Enable Android recents on the Taskbar</string>
     <string name="taskbar_height_title">Hauteur de la TaskBar</string>
     <string name="taskbar_radius_title">Courbure des angles de la TaskBar</string>
     <string name="colorpill">Trait coloré avec la couleur secondaire</string>
@@ -319,6 +321,7 @@
     <string name="taskbar_force_enable_title">Forcer l’activation</string>
     <string name="taskbar_force_disable_title">Forcer la désactivation</string>
     <string name="taskbar_transient_title">Masquage automatique</string>
+    <string name="taskbar_on_launcher_title">Show on home</string>
     <string name="remap_physical_buttons_title">Redéfinir les boutons physiques</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">Contourner la vérification des signatures des paquets</string>

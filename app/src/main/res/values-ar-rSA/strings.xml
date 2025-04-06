@@ -309,7 +309,9 @@
     <string name="three_button_center_title">زر الوسط</string>
     <string name="three_button_right_title">زر اليمين</string>
     <string name="hide_navbar_title">إخفاء شريط التنقل</string>
-    <string name="taskbar_as_recents_title">تحويل شريط المهام إلى شريط التطبيقات الأخيرة</string>
+    <string name="taskbar_as_recents_title">Convert Taskbar to PixelXpert recents bar</string>
+    <string name="taskbar_hide_allapps_title">Hide All apps button</string>
+    <string name="taskbar_enable_google_recents">Enable Android recents on the Taskbar</string>
     <string name="taskbar_height_title">ارتفاع شريط المهام</string>
     <string name="taskbar_radius_title">منحنى زاوية شريط المهام</string>
     <string name="colorpill">حزمة إيماءات ملونة</string>
@@ -319,6 +321,7 @@
     <string name="taskbar_force_enable_title">تمكين إجباري</string>
     <string name="taskbar_force_disable_title">تعطيل إجباري</string>
     <string name="taskbar_transient_title">إخفاء تلقائي</string>
+    <string name="taskbar_on_launcher_title">Show on home</string>
     <string name="remap_physical_buttons_title">إعادة تعيين الأزرار الفيزيائية</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">تجاوز التحقق من توقيع الحزمة</string>

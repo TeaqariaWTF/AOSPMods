@@ -310,6 +310,8 @@
     <string name="three_button_right_title">Botão da direita</string>
     <string name="hide_navbar_title">Esconder a barra de navegação</string>
     <string name="taskbar_as_recents_title">Converter barra de tarefas para apps recentes</string>
+    <string name="taskbar_hide_allapps_title">Ocultar botão Todas apps</string>
+    <string name="taskbar_enable_google_recents">Ativar Apos Recentes na Barra de Tarefas</string>
     <string name="taskbar_height_title">Altura da barra de tarefas</string>
     <string name="taskbar_radius_title">Curva dos cantos na barra de tarefas</string>
     <string name="colorpill">Aplicar cor de destaque na barra</string>
@@ -319,6 +321,7 @@
     <string name="taskbar_force_enable_title">Forçar ativar</string>
     <string name="taskbar_force_disable_title">Forçar desativar</string>
     <string name="taskbar_transient_title">Ocultar automaticamente</string>
+    <string name="taskbar_on_launcher_title">Mostrar no ecrã inicial</string>
     <string name="remap_physical_buttons_title">Remapear botões físicos</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">Ignorar a assinatura das aplicações</string>

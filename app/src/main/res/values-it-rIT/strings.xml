@@ -309,7 +309,9 @@
     <string name="three_button_center_title">Pulsante centrale</string>
     <string name="three_button_right_title">Pulsante destro</string>
     <string name="hide_navbar_title">Nascondi NavBar</string>
-    <string name="taskbar_as_recents_title">Converti taskbar in barra app recenti</string>
+    <string name="taskbar_as_recents_title">Converti la barra delle applicazioni nella barra delle applicazioni recenti PixelXpert</string>
+    <string name="taskbar_hide_allapps_title">Nascondi il pulsante Tutte le app</string>
+    <string name="taskbar_enable_google_recents">Enable Android recents on the Taskbar</string>
     <string name="taskbar_height_title">Altezza taskbar</string>
     <string name="taskbar_radius_title">Angolo curvatura taskbar</string>
     <string name="colorpill">Pillola con colore accento</string>
@@ -319,6 +321,7 @@
     <string name="taskbar_force_enable_title">Forza abilitata</string>
     <string name="taskbar_force_disable_title">Forza disabilitata</string>
     <string name="taskbar_transient_title">Nascondi automaticamente</string>
+    <string name="taskbar_on_launcher_title">Mostra nella home</string>
     <string name="remap_physical_buttons_title">Rimappa pulsanti fisici</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">Ignora controllo firma pacchetto</string>

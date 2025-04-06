@@ -309,7 +309,9 @@
     <string name="three_button_center_title">Orta düğme</string>
     <string name="three_button_right_title">Sağ düğme</string>
     <string name="hide_navbar_title">Gezinme çubuğunu gizle</string>
-    <string name="taskbar_as_recents_title">Görev çubuğunu son kullanılanlar çubuğuna dönüştür</string>
+    <string name="taskbar_as_recents_title">Görev çubuğunu PixelXpert\'in son kullanılanlar çubuğuna çevir</string>
+    <string name="taskbar_hide_allapps_title">Tüm uygulamalar düğmesini gizle</string>
+    <string name="taskbar_enable_google_recents">Görev çubuğunda Android son kullanılanlarını etkinleştir</string>
     <string name="taskbar_height_title">Görev çubuğu yüksekliği</string>
     <string name="taskbar_radius_title">Görev çubuğu köşe eğrisi</string>
     <string name="colorpill">Vurgu renkli hareket hapı</string>
@@ -319,6 +321,7 @@
     <string name="taskbar_force_enable_title">Zorla Etkinleştir</string>
     <string name="taskbar_force_disable_title">Zorla Devre Dışı Bırak</string>
     <string name="taskbar_transient_title">Otomatik gizle</string>
+    <string name="taskbar_on_launcher_title">Ana ekranda göster</string>
     <string name="remap_physical_buttons_title">Fiziksel düğmeleri yeniden eşleştir</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">Paket imza kontrolünü atla</string>

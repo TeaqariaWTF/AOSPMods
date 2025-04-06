@@ -309,7 +309,9 @@
     <string name="three_button_center_title">Центральна кнопка</string>
     <string name="three_button_right_title">Права кнопка</string>
     <string name="hide_navbar_title">Сховати панель навігації</string>
-    <string name="taskbar_as_recents_title">Перетворіть панель завдань на панель останніх</string>
+    <string name="taskbar_as_recents_title">Convert Taskbar to PixelXpert recents bar</string>
+    <string name="taskbar_hide_allapps_title">Hide All apps button</string>
+    <string name="taskbar_enable_google_recents">Enable Android recents on the Taskbar</string>
     <string name="taskbar_height_title">Висота панелі завдань</string>
     <string name="taskbar_radius_title">Крива кута панелі завдань</string>
     <string name="colorpill">Колір акценту таблетки жестів</string>
@@ -319,6 +321,7 @@
     <string name="taskbar_force_enable_title">Примусово ввімкнено</string>
     <string name="taskbar_force_disable_title">Примусово вимкнено</string>
     <string name="taskbar_transient_title">Автоматичне приховування</string>
+    <string name="taskbar_on_launcher_title">Show on home</string>
     <string name="remap_physical_buttons_title">Переналаштування фізичних кнопок</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">Обійти перевірку підпису пакета</string>

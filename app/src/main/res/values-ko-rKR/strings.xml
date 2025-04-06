@@ -309,7 +309,9 @@
     <string name="three_button_center_title">가운데 버튼</string>
     <string name="three_button_right_title">오른쪽 버튼</string>
     <string name="hide_navbar_title">네비게이션 바 숨기기</string>
-    <string name="taskbar_as_recents_title">작업표시줄을 최근 앱으로 바꾸기</string>
+    <string name="taskbar_as_recents_title">Convert Taskbar to PixelXpert recents bar</string>
+    <string name="taskbar_hide_allapps_title">Hide All apps button</string>
+    <string name="taskbar_enable_google_recents">Enable Android recents on the Taskbar</string>
     <string name="taskbar_height_title">작업표시줄 높이</string>
     <string name="taskbar_radius_title">작업표시줄 곡률</string>
     <string name="colorpill">제스쳐 알약 강조 색상으로 설정</string>
@@ -319,6 +321,7 @@
     <string name="taskbar_force_enable_title">강제 활성화</string>
     <string name="taskbar_force_disable_title">강제 비활성화</string>
     <string name="taskbar_transient_title">자동 숨김</string>
+    <string name="taskbar_on_launcher_title">Show on home</string>
     <string name="remap_physical_buttons_title">Remap physical buttons</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">패키지 인증서 확인 절차 우회</string>

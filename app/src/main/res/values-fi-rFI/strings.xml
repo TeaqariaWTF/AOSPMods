@@ -309,7 +309,9 @@
     <string name="three_button_center_title">Keskipainike</string>
     <string name="three_button_right_title">Oikea painike</string>
     <string name="hide_navbar_title">Piilota navigointipalkki</string>
-    <string name="taskbar_as_recents_title">Muunna tehtäväpalkki viimeisimmät palkkiksi</string>
+    <string name="taskbar_as_recents_title">Convert Taskbar to PixelXpert recents bar</string>
+    <string name="taskbar_hide_allapps_title">Hide All apps button</string>
+    <string name="taskbar_enable_google_recents">Enable Android recents on the Taskbar</string>
     <string name="taskbar_height_title">Tehtäväpalkin korkeus</string>
     <string name="taskbar_radius_title">Tehtäväpalkin kulmakäyrä</string>
     <string name="colorpill">Korostusvärinen elepilleri</string>
@@ -319,6 +321,7 @@
     <string name="taskbar_force_enable_title">Pakota käytössä</string>
     <string name="taskbar_force_disable_title">Pakota käytöstä</string>
     <string name="taskbar_transient_title">Automaattinen piilotus</string>
+    <string name="taskbar_on_launcher_title">Show on home</string>
     <string name="remap_physical_buttons_title">Remap fyysiset painikkeet</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">Ohita paketin allekirjoituksen tarkistus</string>

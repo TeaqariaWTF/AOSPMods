@@ -309,7 +309,9 @@
     <string name="three_button_center_title">Middel knoppie</string>
     <string name="three_button_right_title">Regs knoppie</string>
     <string name="hide_navbar_title">Versteek navigasiebalk</string>
-    <string name="taskbar_as_recents_title">Skakel taakbalk om na onlangse balk</string>
+    <string name="taskbar_as_recents_title">Convert Taskbar to PixelXpert recents bar</string>
+    <string name="taskbar_hide_allapps_title">Hide All apps button</string>
+    <string name="taskbar_enable_google_recents">Enable Android recents on the Taskbar</string>
     <string name="taskbar_height_title">Taakbalk hoogte</string>
     <string name="taskbar_radius_title">Taakbalk hoekkurwe</string>
     <string name="colorpill">Aksentkleurige gebaarpil</string>
@@ -319,6 +321,7 @@
     <string name="taskbar_force_enable_title">Force geaktiveer</string>
     <string name="taskbar_force_disable_title">Dwing gedeaktiveer</string>
     <string name="taskbar_transient_title">Versteek outomaties</string>
+    <string name="taskbar_on_launcher_title">Show on home</string>
     <string name="remap_physical_buttons_title">Remap physical buttons</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">Omseil pakkethandtekeningkontrole</string>

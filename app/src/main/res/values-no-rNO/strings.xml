@@ -309,7 +309,9 @@
     <string name="three_button_center_title">Midtknapp</string>
     <string name="three_button_right_title">Høyre knapp</string>
     <string name="hide_navbar_title">Skjul navigasjonslinjen</string>
-    <string name="taskbar_as_recents_title">Konverter oppgavelinjen til siste linje</string>
+    <string name="taskbar_as_recents_title">Convert Taskbar to PixelXpert recents bar</string>
+    <string name="taskbar_hide_allapps_title">Hide All apps button</string>
+    <string name="taskbar_enable_google_recents">Enable Android recents on the Taskbar</string>
     <string name="taskbar_height_title">Høyde på oppgavelinjen</string>
     <string name="taskbar_radius_title">Hjørnekurve på oppgavelinjen</string>
     <string name="colorpill">Aksentfarget gestpille</string>
@@ -319,6 +321,7 @@
     <string name="taskbar_force_enable_title">Tving aktivert</string>
     <string name="taskbar_force_disable_title">Tving deaktivert</string>
     <string name="taskbar_transient_title">Skjul automatisk</string>
+    <string name="taskbar_on_launcher_title">Show on home</string>
     <string name="remap_physical_buttons_title">Fjern fysiske knapper</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">Omgå pakkens signatursjekk</string>

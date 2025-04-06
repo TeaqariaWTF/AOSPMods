@@ -309,7 +309,9 @@
     <string name="three_button_center_title">Botón central</string>
     <string name="three_button_right_title">Botón derecho</string>
     <string name="hide_navbar_title">Ocultar barra de navegación</string>
-    <string name="taskbar_as_recents_title">Convertir barra de tareas en barra de recientes</string>
+    <string name="taskbar_as_recents_title">Convierte la barra de tareas a la barra de recientes PixelXpert</string>
+    <string name="taskbar_hide_allapps_title">Ocultar botón de todas las aplicaciones</string>
+    <string name="taskbar_enable_google_recents">Activar recientes de Android en la barra de tareas</string>
     <string name="taskbar_height_title">Altura de la barra de tareas</string>
     <string name="taskbar_radius_title">Curva de la esquina de la barra de tareas</string>
     <string name="colorpill">Color del acento en la píldora de gestos</string>
@@ -319,6 +321,7 @@
     <string name="taskbar_force_enable_title">Forzar activada</string>
     <string name="taskbar_force_disable_title">Forzar desactivada</string>
     <string name="taskbar_transient_title">Esconder automáticamente</string>
+    <string name="taskbar_on_launcher_title">Mostrar en Inicio</string>
     <string name="remap_physical_buttons_title">Mapear botones físicos</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">Pasar por alto la verificación de la firma del paquete</string>

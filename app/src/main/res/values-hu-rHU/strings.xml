@@ -309,7 +309,9 @@
     <string name="three_button_center_title">Középső gomb</string>
     <string name="three_button_right_title">Jobb gomb</string>
     <string name="hide_navbar_title">Navigációs sáv elrejtése</string>
-    <string name="taskbar_as_recents_title">Tálca konvertálása legutóbbi sávra</string>
+    <string name="taskbar_as_recents_title">Convert Taskbar to PixelXpert recents bar</string>
+    <string name="taskbar_hide_allapps_title">Hide All apps button</string>
+    <string name="taskbar_enable_google_recents">Enable Android recents on the Taskbar</string>
     <string name="taskbar_height_title">Tálca magassága</string>
     <string name="taskbar_radius_title">Tálca sarokgörbe</string>
     <string name="colorpill">Kiemelés színű gesztus pirula</string>
@@ -319,6 +321,7 @@
     <string name="taskbar_force_enable_title">Kényszer engedélyezve</string>
     <string name="taskbar_force_disable_title">Kényszer letiltva</string>
     <string name="taskbar_transient_title">Automatikus elrejtés</string>
+    <string name="taskbar_on_launcher_title">Show on home</string>
     <string name="remap_physical_buttons_title">Remap physical buttons</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">Csomag aláírás-ellenőrzés megkerülése</string>

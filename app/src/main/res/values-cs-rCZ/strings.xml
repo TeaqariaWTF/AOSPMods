@@ -309,7 +309,9 @@
     <string name="three_button_center_title">Středové tlačítko</string>
     <string name="three_button_right_title">Pravé tlačítko</string>
     <string name="hide_navbar_title">Skrýt navigační lištu</string>
-    <string name="taskbar_as_recents_title">Převést hlavní panel na panel nedávných zpráv</string>
+    <string name="taskbar_as_recents_title">Convert Taskbar to PixelXpert recents bar</string>
+    <string name="taskbar_hide_allapps_title">Hide All apps button</string>
+    <string name="taskbar_enable_google_recents">Enable Android recents on the Taskbar</string>
     <string name="taskbar_height_title">Výška hlavního panelu</string>
     <string name="taskbar_radius_title">Rohová křivka hlavního panelu</string>
     <string name="colorpill">Akcent barevné gesto pilulka</string>
@@ -319,6 +321,7 @@
     <string name="taskbar_force_enable_title">Force Enabled</string>
     <string name="taskbar_force_disable_title">Force Disabled</string>
     <string name="taskbar_transient_title">Automatické skrytí</string>
+    <string name="taskbar_on_launcher_title">Show on home</string>
     <string name="remap_physical_buttons_title">Odstranit fyzická tlačítka</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">Obejít kontrolu podpisu balíčku</string>

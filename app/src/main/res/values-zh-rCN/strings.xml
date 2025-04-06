@@ -309,7 +309,9 @@
     <string name="three_button_center_title">中按钮</string>
     <string name="three_button_right_title">右按钮</string>
     <string name="hide_navbar_title">隐藏小白条</string>
-    <string name="taskbar_as_recents_title">将任务栏替换为最近任务栏</string>
+    <string name="taskbar_as_recents_title">将任务栏替换为 PixelXpert 最近任务栏</string>
+    <string name="taskbar_hide_allapps_title">隐藏所有应用按钮</string>
+    <string name="taskbar_enable_google_recents">在任务栏上启用 Android 最近任务</string>
     <string name="taskbar_height_title">任务栏高度</string>
     <string name="taskbar_radius_title">任务栏圆角</string>
     <string name="colorpill">小白条强调色</string>
@@ -319,6 +321,7 @@
     <string name="taskbar_force_enable_title">强制开启</string>
     <string name="taskbar_force_disable_title">强制关闭</string>
     <string name="taskbar_transient_title">Auto hide</string>
+    <string name="taskbar_on_launcher_title">在首页显示</string>
     <string name="remap_physical_buttons_title">重映射物理按钮</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">绕过应用签名检查</string>

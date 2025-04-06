@@ -309,7 +309,9 @@
     <string name="three_button_center_title">Централно дугме</string>
     <string name="three_button_right_title">Десно дугме</string>
     <string name="hide_navbar_title">Сакриј траку за навигацију</string>
-    <string name="taskbar_as_recents_title">Претворите траку задатака у траку недавно</string>
+    <string name="taskbar_as_recents_title">Convert Taskbar to PixelXpert recents bar</string>
+    <string name="taskbar_hide_allapps_title">Hide All apps button</string>
+    <string name="taskbar_enable_google_recents">Enable Android recents on the Taskbar</string>
     <string name="taskbar_height_title">Висина траке задатака</string>
     <string name="taskbar_radius_title">Угаона крива траке задатака</string>
     <string name="colorpill">Пилула за гесте у боји акцента</string>
@@ -319,6 +321,7 @@
     <string name="taskbar_force_enable_title">Форце Енаблед</string>
     <string name="taskbar_force_disable_title">Форце Дисаблед</string>
     <string name="taskbar_transient_title">Аутоматско сакривање</string>
+    <string name="taskbar_on_launcher_title">Show on home</string>
     <string name="remap_physical_buttons_title">Remap physical buttons</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">Заобиђите проверу потписа пакета</string>

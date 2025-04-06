@@ -309,7 +309,9 @@
     <string name="three_button_center_title">中央のボタン</string>
     <string name="three_button_right_title">右のボタン</string>
     <string name="hide_navbar_title">ナビゲーションバーを非表示</string>
-    <string name="taskbar_as_recents_title">Convert Taskbar to recents bar</string>
+    <string name="taskbar_as_recents_title">Convert Taskbar to PixelXpert recents bar</string>
+    <string name="taskbar_hide_allapps_title">Hide All apps button</string>
+    <string name="taskbar_enable_google_recents">Enable Android recents on the Taskbar</string>
     <string name="taskbar_height_title">タスクバーの高さ</string>
     <string name="taskbar_radius_title">タスクバーの角の丸み</string>
     <string name="colorpill">Accent colored gesture pill</string>
@@ -319,6 +321,7 @@
     <string name="taskbar_force_enable_title">強制的に有効</string>
     <string name="taskbar_force_disable_title">強制的に無効</string>
     <string name="taskbar_transient_title">自動非表示</string>
+    <string name="taskbar_on_launcher_title">Show on home</string>
     <string name="remap_physical_buttons_title">Remap physical button</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">パッケージ署名チェックをバイパスする</string>
