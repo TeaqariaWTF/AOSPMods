@@ -311,7 +311,7 @@
     <string name="hide_navbar_title">Nascondi NavBar</string>
     <string name="taskbar_as_recents_title">Converti la barra delle applicazioni nella barra delle applicazioni recenti PixelXpert</string>
     <string name="taskbar_hide_allapps_title">Nascondi il pulsante Tutte le app</string>
-    <string name="taskbar_enable_google_recents">Enable Android recents on the Taskbar</string>
+    <string name="taskbar_enable_google_recents">Abilita i recenti di Android sulla barra delle applicazioni</string>
     <string name="taskbar_height_title">Altezza taskbar</string>
     <string name="taskbar_radius_title">Angolo curvatura taskbar</string>
     <string name="colorpill">Pillola con colore accento</string>

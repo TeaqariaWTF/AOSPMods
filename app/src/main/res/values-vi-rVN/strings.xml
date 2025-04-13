@@ -309,9 +309,9 @@
     <string name="three_button_center_title">Phím trung tâm</string>
     <string name="three_button_right_title">Phím bên phải</string>
     <string name="hide_navbar_title">Ẩn thanh điều hướng</string>
-    <string name="taskbar_as_recents_title">Convert Taskbar to PixelXpert recents bar</string>
-    <string name="taskbar_hide_allapps_title">Hide All apps button</string>
-    <string name="taskbar_enable_google_recents">Enable Android recents on the Taskbar</string>
+    <string name="taskbar_as_recents_title">Chuyển đổi Thanh tác vụ thành Thanh gần đây PixelXpert</string>
+    <string name="taskbar_hide_allapps_title">Ẩn nút Tất cả ứng dụng</string>
+    <string name="taskbar_enable_google_recents">Bật ứng dụng gần đây trên Thanh tác vụ</string>
     <string name="taskbar_height_title">Chiều cao thanh tác vụ</string>
     <string name="taskbar_radius_title">Đường cong góc của thanh tác vụ</string>
     <string name="colorpill">Thanh điều hướng có màu nhấn</string>
@@ -321,7 +321,7 @@
     <string name="taskbar_force_enable_title">Bật</string>
     <string name="taskbar_force_disable_title">Tắt</string>
     <string name="taskbar_transient_title">Tự động ẩn</string>
-    <string name="taskbar_on_launcher_title">Show on home</string>
+    <string name="taskbar_on_launcher_title">Hiển thị trên trang chính(home)</string>
     <string name="remap_physical_buttons_title">Sửa lại các nút vật lý</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">Bỏ qua kiểm tra chữ ký gói</string>

@@ -309,9 +309,9 @@
     <string name="three_button_center_title">دکمه وسط</string>
     <string name="three_button_right_title">دکمه سمت راست</string>
     <string name="hide_navbar_title">پنهان کردن نوار ناوبری</string>
-    <string name="taskbar_as_recents_title">Convert Taskbar to PixelXpert recents bar</string>
-    <string name="taskbar_hide_allapps_title">Hide All apps button</string>
-    <string name="taskbar_enable_google_recents">Enable Android recents on the Taskbar</string>
+    <string name="taskbar_as_recents_title">تبدیل نوار وظیفه را به نوار اخیر PixelXpert</string>
+    <string name="taskbar_hide_allapps_title">دکمه پنهان کردن همه برنامه‌ها</string>
+    <string name="taskbar_enable_google_recents">فعال کردن اخیراً اندروید در نوار وظیفه</string>
     <string name="taskbar_height_title">ارتفاع نوار برنامه</string>
     <string name="taskbar_radius_title">گردی پایین نوار برنامه</string>
     <string name="colorpill">رنگ نوار ناوبری بر اساس رنگبندی سیستم</string>
@@ -321,7 +321,7 @@
     <string name="taskbar_force_enable_title">فعال باشد</string>
     <string name="taskbar_force_disable_title">غیر فعال باشد</string>
     <string name="taskbar_transient_title">پنهان کردن خودکار</string>
-    <string name="taskbar_on_launcher_title">Show on home</string>
+    <string name="taskbar_on_launcher_title">نمایش در خانه</string>
     <string name="remap_physical_buttons_title">دکمه های فیزیکی را مجدداً نقشه برداری کنید</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">دور زدن چک امضای بسته</string>
