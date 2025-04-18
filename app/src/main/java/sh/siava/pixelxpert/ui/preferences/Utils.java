@@ -27,7 +27,7 @@ public class Utils {
             if (holder.getBindingAdapter() != null) {
                 // Set margin for the last item
                 if (holder.getBindingAdapterPosition() == holder.getBindingAdapter().getItemCount() - 1) {
-                    layoutParams.bottomMargin = dpToPx(16);
+                    layoutParams.bottomMargin = dpToPx(18);
                 } else {
                     layoutParams.topMargin = 0;
                     layoutParams.bottomMargin = dpToPx(2);
