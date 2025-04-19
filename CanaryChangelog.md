@@ -1,3 +1,7 @@
+**canary-442**  
+- App menu now matches the upcoming Google style  
+- A16b4: Fixed forced themed icons  
+  
 **canary-441**  
 - Added option to show "All apps" button on the taskbar, show/hide taskbar on home page, and show recent icons on the default taskbar (Thanks to matejdro@Github)  
 - Add support for KernelSU Next  
