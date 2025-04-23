@@ -303,6 +303,8 @@ public class SettingsActivity extends BaseActivity implements PreferenceFragment
 					navigateTo(navController, R.id.action_statusbarFragment_to_networkFragment);
 			case "threebutton_header" ->
 					navigateTo(navController, R.id.action_navFragment_to_threeButtonNavFragment);
+			case "taskbar_header" ->
+					navigateTo(navController, R.id.action_navFragment_to_taskbarNavFragment);
 			case "gesturenav_header" ->
 					navigateTo(navController, R.id.action_navFragment_to_gestureNavFragment);
 			case "remap_physical_buttons" ->

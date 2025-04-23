@@ -352,6 +352,12 @@ public class PreferenceHelper {
 						? taskbarHeightOverride + "%"
 						: fragmentCompat.getString(R.string.word_default);
 
+			case "TaskbarRadiusOverride":
+				int TaskbarRadiusOverride = instance.mPreferences.getSliderInt("TaskbarRadiusOverride", 1);
+				return TaskbarRadiusOverride != 1
+						? TaskbarRadiusOverride + "x"
+						: fragmentCompat.getString(R.string.word_default);
+
 			case "KeyGuardDimAmount":
 				int KeyGuardDimAmount = instance.mPreferences.getSliderInt("KeyGuardDimAmount", -1);
 				return KeyGuardDimAmount < 0
