@@ -108,6 +108,11 @@ public class ReflectedClass
 		return XposedHelpers.callStaticMethod(clazz, methodName, args);
 	}
 
+	public Set<Method> findMethods(Pattern namePattern)
+	{
+		return findMethods(clazz, namePattern);
+	}
+	
 	private static class MethodData
 	{
 		String methodName;
@@ -331,7 +336,7 @@ public class ReflectedClass
 	{
 		Set<Method> result = new ArraySet<>();
 
-		Method[] methods = clazz.getMethods();
+		Method[] methods = clazz.getDeclaredMethods();
 
 		for(Method method : methods)
 		{
