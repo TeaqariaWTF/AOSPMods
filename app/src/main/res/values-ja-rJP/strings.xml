@@ -304,6 +304,7 @@
     <string name="gesture_nav_pill_width_title">Width compared to standard size</string>
     <string name="gesture_nav_pill_height_title">Height compared to standard size</string>
     <string name="threebutton_header_title">3-Button navigation</string>
+    <string name="taskbar_header_title">Taskbar navigation</string>
     <string name="modify_3button_title">Modify the buttons order</string>
     <string name="three_button_left_title">左のボタン</string>
     <string name="three_button_center_title">中央のボタン</string>

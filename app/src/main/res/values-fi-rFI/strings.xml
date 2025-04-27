@@ -304,6 +304,7 @@
     <string name="gesture_nav_pill_width_title">Leveys verrattuna standardikokoon</string>
     <string name="gesture_nav_pill_height_title">Korkeus verrattuna standardikokoon</string>
     <string name="threebutton_header_title">3-painikkeen navigointi</string>
+    <string name="taskbar_header_title">Taskbar navigation</string>
     <string name="modify_3button_title">Muokkaa painikkeiden järjestystä</string>
     <string name="three_button_left_title">Vasen nappi</string>
     <string name="three_button_center_title">Keskipainike</string>

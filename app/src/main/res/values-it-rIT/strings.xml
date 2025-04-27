@@ -304,6 +304,7 @@
     <string name="gesture_nav_pill_width_title">Larghezza rispetto alla misura standard</string>
     <string name="gesture_nav_pill_height_title">Altezza rispetto alla misura standard</string>
     <string name="threebutton_header_title">Navigazione 3-Pulsanti</string>
+    <string name="taskbar_header_title">Navigazione taskbar</string>
     <string name="modify_3button_title">Modifica l\'ordine dei pulsanti</string>
     <string name="three_button_left_title">Pulsante sinistro</string>
     <string name="three_button_center_title">Pulsante centrale</string>

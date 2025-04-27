@@ -304,6 +304,7 @@
     <string name="gesture_nav_pill_width_title">Ширина у порівнянні з оригінальним розміром</string>
     <string name="gesture_nav_pill_height_title">Висота у порівнянні з оригінальним розміром</string>
     <string name="threebutton_header_title">Навігація з трьома кнопками</string>
+    <string name="taskbar_header_title">Taskbar navigation</string>
     <string name="modify_3button_title">Змінити порядок кнопок</string>
     <string name="three_button_left_title">Ліва кнопка</string>
     <string name="three_button_center_title">Центральна кнопка</string>

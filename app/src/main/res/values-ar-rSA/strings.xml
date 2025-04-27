@@ -304,6 +304,7 @@
     <string name="gesture_nav_pill_width_title">العرض مقارنة بالحجم القياسي</string>
     <string name="gesture_nav_pill_height_title">الارتفاع مقارنة بالحجم القياسي</string>
     <string name="threebutton_header_title">3-أزرار التنقل</string>
+    <string name="taskbar_header_title">Taskbar navigation</string>
     <string name="modify_3button_title">تعديل ترتيب الأزرار</string>
     <string name="three_button_left_title">زر اليسار</string>
     <string name="three_button_center_title">زر الوسط</string>

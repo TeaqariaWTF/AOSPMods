@@ -115,6 +115,9 @@
 		<action
 			android:id="@+id/action_navFragment_to_gestureNavFragment"
 			app:destination="@id/gestureNavFragment" />
+		<action
+			android:id="@+id/action_navFragment_to_taskbarNavFragment"
+			app:destination="@id/taskbarNavFragment" />
 	</fragment>
 	<fragment
 		android:id="@+id/dialerFragment"
@@ -195,6 +198,9 @@
 			android:id="@+id/action_searchPreferenceFragment_to_threeButtonNavFragment"
 			app:destination="@id/threeButtonNavFragment" />
 		<action
+			android:id="@+id/action_searchPreferenceFragment_to_taskbarNavFragment"
+			app:destination="@id/taskbarNavFragment" />
+		<action
 			android:id="@+id/action_searchPreferenceFragment_to_gestureNavFragment"
 			app:destination="@id/gestureNavFragment" />
 		<action
@@ -209,6 +215,9 @@
 		<action
 			android:id="@+id/action_searchPreferenceFragment_to_quickSettingsFragment"
 			app:destination="@id/quickSettingsFragment" />
+		<action
+			android:id="@+id/action_searchPreferenceFragment_to_sleepOnFlatFragment"
+			app:destination="@id/sleepOnFlatFragment" />
 	</fragment>
 	<fragment
 		android:id="@+id/QSTileQtyFragment"
@@ -234,6 +243,10 @@
 		android:id="@+id/threeButtonNavFragment"
 		android:name="sh.siava.pixelxpert.ui.fragments.ThreeButtonNavFragment"
 		android:label="ThreeButtonNavFragment" />
+	<fragment
+		android:id="@+id/taskbarNavFragment"
+		android:name="sh.siava.pixelxpert.ui.fragments.TaskbarNavFragment"
+		android:label="TaskbarNavFragment" />
 	<fragment
 		android:id="@+id/gestureNavFragment"
 		android:name="sh.siava.pixelxpert.ui.fragments.GestureNavFragment"

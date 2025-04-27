@@ -304,6 +304,7 @@
     <string name="gesture_nav_pill_width_title">Πλάτος σε σύγκριση με το τυπικό μέγεθος</string>
     <string name="gesture_nav_pill_height_title">Ύψος σε σύγκριση με το τυπικό μέγεθος</string>
     <string name="threebutton_header_title">Πλοήγηση με 3 κουμπιά</string>
+    <string name="taskbar_header_title">Taskbar navigation</string>
     <string name="modify_3button_title">Τροποποιήστε τη σειρά των κουμπιών</string>
     <string name="three_button_left_title">Αριστερό κουμπί</string>
     <string name="three_button_center_title">Κεντρικό κουμπί</string>

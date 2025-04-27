@@ -304,6 +304,7 @@
     <string name="gesture_nav_pill_width_title">Ширина по сравнению со стандартным размером</string>
     <string name="gesture_nav_pill_height_title">Высота по сравнению со стандартным размером</string>
     <string name="threebutton_header_title">Навигация с помощью трех кнопок</string>
+    <string name="taskbar_header_title">Навигация по панели задач</string>
     <string name="modify_3button_title">Изменить порядок кнопок</string>
     <string name="three_button_left_title">Левая кнопка</string>
     <string name="three_button_center_title">Центральная кнопка</string>

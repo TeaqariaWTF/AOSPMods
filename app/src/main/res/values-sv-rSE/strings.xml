@@ -304,6 +304,7 @@
     <string name="gesture_nav_pill_width_title">Bredd jämfört med standardstorlek</string>
     <string name="gesture_nav_pill_height_title">Höjd jämfört med standardstorlek</string>
     <string name="threebutton_header_title">3-knapps navigering</string>
+    <string name="taskbar_header_title">Taskbar navigation</string>
     <string name="modify_3button_title">Ändra knapparnas ordning</string>
     <string name="three_button_left_title">Vänster knapp</string>
     <string name="three_button_center_title">Mittknappen</string>

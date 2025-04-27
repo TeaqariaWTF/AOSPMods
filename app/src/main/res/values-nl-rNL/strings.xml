@@ -304,6 +304,7 @@
     <string name="gesture_nav_pill_width_title">Breedte vergeleken met standaard maat</string>
     <string name="gesture_nav_pill_height_title">Hoogte vergeleken met standaard maat</string>
     <string name="threebutton_header_title">3-knops navigatie</string>
+    <string name="taskbar_header_title">Taskbar navigation</string>
     <string name="modify_3button_title">Wijzig de volgorde van de knoppen</string>
     <string name="three_button_left_title">Linker knop</string>
     <string name="three_button_center_title">Middelste knop</string>

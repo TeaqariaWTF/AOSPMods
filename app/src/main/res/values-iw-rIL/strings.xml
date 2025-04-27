@@ -304,6 +304,7 @@
     <string name="gesture_nav_pill_width_title">רוחב בהשוואה לגודל סטנדרטי</string>
     <string name="gesture_nav_pill_height_title">גובה בהשוואה לגודל סטנדרטי</string>
     <string name="threebutton_header_title">ניווט באמצעות 3 לחצנים</string>
+    <string name="taskbar_header_title">Taskbar navigation</string>
     <string name="modify_3button_title">שנה את סדר הכפתורים</string>
     <string name="three_button_left_title">כפתור שמאל</string>
     <string name="three_button_center_title">כפתור מרכז</string>

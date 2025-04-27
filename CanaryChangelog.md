@@ -1,3 +1,6 @@
+**canary-443**  
+- A16b4: fixed taskbar mods  
+  
 **canary-442**  
 - App menu now matches the upcoming Google style  
 - A16b4: Fixed forced themed icons  

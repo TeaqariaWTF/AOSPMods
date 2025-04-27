@@ -304,6 +304,7 @@
     <string name="gesture_nav_pill_width_title">Standart boyuta göre genişlik</string>
     <string name="gesture_nav_pill_height_title">Standart boyuta göre yükseklik</string>
     <string name="threebutton_header_title">3 Düğmeli gezinme</string>
+    <string name="taskbar_header_title">Görev çubuğu gezintisi</string>
     <string name="modify_3button_title">Düğmelerin sırasını değiştir</string>
     <string name="three_button_left_title">Sol düğme</string>
     <string name="three_button_center_title">Orta düğme</string>

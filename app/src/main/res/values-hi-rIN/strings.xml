@@ -304,6 +304,7 @@
     <string name="gesture_nav_pill_width_title">डिफ़ॉल्ट चौड़ाई की तुलना में चौड़ाई</string>
     <string name="gesture_nav_pill_height_title">डिफ़ॉल्ट चौड़ाई की तुलना में ऊंचाई</string>
     <string name="threebutton_header_title">3-बटन नेविगेशन</string>
+    <string name="taskbar_header_title">Taskbar navigation</string>
     <string name="modify_3button_title">बटनों का क्रम बदलें</string>
     <string name="three_button_left_title">बायां बटन</string>
     <string name="three_button_center_title">मध्य बटन</string>
