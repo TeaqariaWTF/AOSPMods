@@ -304,6 +304,7 @@
     <string name="gesture_nav_pill_width_title">Szélesség a szabványos mérethez képest</string>
     <string name="gesture_nav_pill_height_title">Magassága a standard mérethez képest</string>
     <string name="threebutton_header_title">3 gombos navigáció</string>
+    <string name="taskbar_header_title">Taskbar navigation</string>
     <string name="modify_3button_title">Módosítsa a gombok sorrendjét</string>
     <string name="three_button_left_title">Bal gomb</string>
     <string name="three_button_center_title">Középső gomb</string>

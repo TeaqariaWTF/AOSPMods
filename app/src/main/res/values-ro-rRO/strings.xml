@@ -304,6 +304,7 @@
     <string name="gesture_nav_pill_width_title">Lățime comparată cu dimensiunea standard</string>
     <string name="gesture_nav_pill_height_title">Înălțimea comparată cu dimensiunea standard</string>
     <string name="threebutton_header_title">Navigare cu 3 butoane</string>
+    <string name="taskbar_header_title">Navigare cu bară de activități</string>
     <string name="modify_3button_title">Modifică ordinea butoanelor</string>
     <string name="three_button_left_title">Butonul din stânga</string>
     <string name="three_button_center_title">Butonul de mijloc</string>

@@ -304,6 +304,7 @@
     <string name="gesture_nav_pill_width_title">Breite im Vergleich zu der Standartbreite</string>
     <string name="gesture_nav_pill_height_title">Höhe im Vergleich zu der Standartbreite</string>
     <string name="threebutton_header_title">3-Schaltflächen Navigation</string>
+    <string name="taskbar_header_title">Taskbar navigation</string>
     <string name="modify_3button_title">Ändern Sie die Reihenfolge der Schaltflächen</string>
     <string name="three_button_left_title">Linker Knopf</string>
     <string name="three_button_center_title">Mittler Knopf</string>

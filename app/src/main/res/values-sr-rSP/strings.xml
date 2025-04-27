@@ -304,6 +304,7 @@
     <string name="gesture_nav_pill_width_title">Ширина у поређењу са стандардном величином</string>
     <string name="gesture_nav_pill_height_title">Висина у поређењу са стандардном величином</string>
     <string name="threebutton_header_title">Навигација са 3 дугмета</string>
+    <string name="taskbar_header_title">Taskbar navigation</string>
     <string name="modify_3button_title">Промените редослед дугмади</string>
     <string name="three_button_left_title">Лево дугме</string>
     <string name="three_button_center_title">Централно дугме</string>

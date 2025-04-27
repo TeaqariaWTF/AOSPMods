@@ -304,6 +304,7 @@
     <string name="gesture_nav_pill_width_title">Šířka oproti standardní velikosti</string>
     <string name="gesture_nav_pill_height_title">Výška oproti standardní velikosti</string>
     <string name="threebutton_header_title">3tlačítková navigace</string>
+    <string name="taskbar_header_title">Taskbar navigation</string>
     <string name="modify_3button_title">Upravte pořadí tlačítek</string>
     <string name="three_button_left_title">Levé tlačítko</string>
     <string name="three_button_center_title">Středové tlačítko</string>

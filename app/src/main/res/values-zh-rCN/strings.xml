@@ -304,6 +304,7 @@
     <string name="gesture_nav_pill_width_title">对比标准大小的宽度</string>
     <string name="gesture_nav_pill_height_title">对比标准大小的高度</string>
     <string name="threebutton_header_title">三按钮导航</string>
+    <string name="taskbar_header_title">Taskbar navigation</string>
     <string name="modify_3button_title">更改按钮顺序</string>
     <string name="three_button_left_title">左按钮</string>
     <string name="three_button_center_title">中按钮</string>

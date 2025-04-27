@@ -304,6 +304,7 @@
     <string name="gesture_nav_pill_width_title">기본값 대비 너비 설정</string>
     <string name="gesture_nav_pill_height_title">기본값 대비 높이 설정</string>
     <string name="threebutton_header_title">3-버튼 네비게이션 바</string>
+    <string name="taskbar_header_title">Taskbar navigation</string>
     <string name="modify_3button_title">버튼 순서 수정하기</string>
     <string name="three_button_left_title">왼쪽 버튼</string>
     <string name="three_button_center_title">가운데 버튼</string>

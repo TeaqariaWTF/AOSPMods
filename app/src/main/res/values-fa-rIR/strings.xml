@@ -304,6 +304,7 @@
     <string name="gesture_nav_pill_width_title">عرض در نسبت به اندازه استاندارد</string>
     <string name="gesture_nav_pill_height_title">ارتفاع نسبت به اندازه استاندارد</string>
     <string name="threebutton_header_title">نوار ناوبری 3 کلیده</string>
+    <string name="taskbar_header_title">Taskbar navigation</string>
     <string name="modify_3button_title">تنظیم محل دکمه های ناوبری</string>
     <string name="three_button_left_title">دکمه سمت چپ</string>
     <string name="three_button_center_title">دکمه وسط</string>

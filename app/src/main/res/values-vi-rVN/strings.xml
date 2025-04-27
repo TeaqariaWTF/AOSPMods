@@ -304,6 +304,7 @@
     <string name="gesture_nav_pill_width_title">Chiều rộng so với kích thước tiêu chuẩn</string>
     <string name="gesture_nav_pill_height_title">Chiều cao so với kích thước tiêu chuẩn</string>
     <string name="threebutton_header_title">Điều hướng 3 nút</string>
+    <string name="taskbar_header_title">Thanh điều hướng</string>
     <string name="modify_3button_title">Đổi thứ tự phím điều hướng</string>
     <string name="three_button_left_title">Phím bên trái</string>
     <string name="three_button_center_title">Phím trung tâm</string>

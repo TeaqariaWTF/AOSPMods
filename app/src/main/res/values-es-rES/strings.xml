@@ -304,6 +304,7 @@
     <string name="gesture_nav_pill_width_title">Altura en comparación con el tamaño estándar</string>
     <string name="gesture_nav_pill_height_title">Altura en comparación con el tamaño estándar</string>
     <string name="threebutton_header_title">Navegación con 3 botones</string>
+    <string name="taskbar_header_title">Barra de Tareas</string>
     <string name="modify_3button_title">Modificar el orden de los botones</string>
     <string name="three_button_left_title">Botón izquierdo</string>
     <string name="three_button_center_title">Botón central</string>
