@@ -1,3 +1,6 @@
+**canary-444**  
+- A16b4: Fixed lockscreen text  
+  
 **canary-443**  
 - A16b4: fixed taskbar mods  
   
