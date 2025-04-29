@@ -236,7 +236,13 @@ public class KeyguardMods extends XposedModPack {
 						mComposeKGMiddleCustomTextView.setLetterSpacing(.03f);
 						mComposeKGMiddleCustomTextView.setId(View.generateViewId());
 
-						mComposeSmartSpaceContainer = (LinearLayout) getObjectField(param.thisObject, "dateWeatherView");
+						try {
+							mComposeSmartSpaceContainer = (LinearLayout) getObjectField(param.thisObject, "dateView"); //A16
+						}
+						catch (Throwable ignored) {
+							mComposeSmartSpaceContainer = (LinearLayout) getObjectField(param.thisObject, "dateWeatherView"); //A15-
+						}
+
 						mComposeSmartSpaceContainer.setOrientation(LinearLayout.VERTICAL);
 
 						LinearLayout l = new LinearLayout(mContext);
