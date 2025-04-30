@@ -65,6 +65,7 @@ public class TaskbarActivator extends XposedModPack {
 	private static boolean TaskbarAsRecents = false;
 	private static boolean TaskbarTransient = false;
 	private static boolean TaskbarOnLauncher = false;
+	private static boolean TaskbarOnIme = false;
 	private static boolean GoogleRecents = false;
 	private boolean refreshing = false;
 	private static float taskbarHeightOverride = 1f;
@@ -144,6 +145,8 @@ public class TaskbarActivator extends XposedModPack {
 
 		TaskbarOnLauncher = Xprefs.getBoolean("TaskbarOnLauncher", false);
 
+		TaskbarOnIme = Xprefs.getBoolean("TaskbarOnIme", false);
+
 		GoogleRecents = Xprefs.getBoolean("EnableGoogleRecents", false);
 	}
 
@@ -164,6 +167,7 @@ public class TaskbarActivator extends XposedModPack {
 		ReflectedClass StateControllerClass = ReflectedClass.of("com.android.launcher3.taskbar.TaskbarLauncherStateController");
 		ReflectedClass AbstractNavButtonLayoutterClass = ReflectedClass.of("com.android.launcher3.taskbar.navbutton.AbstractNavButtonLayoutter");
 		ReflectedClass RecentAppsControllerClass = ReflectedClass.of("com.android.launcher3.taskbar.TaskbarRecentAppsController");
+		ReflectedClass TaskbarStashControllerClass = ReflectedClass.of("com.android.launcher3.taskbar.TaskbarStashController");
 
 		mIsA16Plus = !RecentAppsControllerClass.findMethods(Pattern.compile("computeShownRecentTasks")).isEmpty();
 
@@ -300,6 +304,13 @@ public class TaskbarActivator extends XposedModPack {
 						param.setResult(allRecentTasks.subList(Math.max(0, allRecentTasks.size() - numShownHotseatIcons - 1), Math.max(allRecentTasks.size() - 1, 0)));
 					}
 				});
+
+		// Show taskbar even with keyboard displayed
+		TaskbarStashControllerClass.after("shouldStashForIme").run (param -> {
+			if (TaskbarOnIme) {
+				param.setResult(false);
+			}
+		});
 
 		if(mIsA16Plus) return; //from this point on, only A15- devices will be targeted
 
