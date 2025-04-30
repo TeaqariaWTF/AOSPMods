@@ -168,6 +168,8 @@ public class TaskbarActivator extends XposedModPack {
 		ReflectedClass AbstractNavButtonLayoutterClass = ReflectedClass.of("com.android.launcher3.taskbar.navbutton.AbstractNavButtonLayoutter");
 		ReflectedClass RecentAppsControllerClass = ReflectedClass.of("com.android.launcher3.taskbar.TaskbarRecentAppsController");
 		ReflectedClass TaskbarStashControllerClass = ReflectedClass.of("com.android.launcher3.taskbar.TaskbarStashController");
+		ReflectedClass QuickSwitchStateClass = ReflectedClass.of("com.android.launcher3.uioverrides.states.QuickSwitchState");
+		ReflectedClass TaskbarUiControllerClass = ReflectedClass.of("com.android.launcher3.taskbar.FallbackTaskbarUIController");
 
 		mIsA16Plus = !RecentAppsControllerClass.findMethods(Pattern.compile("computeShownRecentTasks")).isEmpty();
 
@@ -221,6 +223,20 @@ public class TaskbarActivator extends XposedModPack {
 		//hide on home screen
 		StateControllerClass
 				.before("isInLauncher")
+				.run(param -> {
+					if (TaskbarOnLauncher) {
+						param.setResult(false);
+					}
+				});
+		QuickSwitchStateClass
+				.before("isTaskbarStashed")
+				.run(param -> {
+					if (TaskbarOnLauncher) {
+						param.setResult(false);
+					}
+				});
+		TaskbarUiControllerClass
+				.before("isIn3pHomeOrRecents")
 				.run(param -> {
 					if (TaskbarOnLauncher) {
 						param.setResult(false);
