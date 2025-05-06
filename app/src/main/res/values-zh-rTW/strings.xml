@@ -61,9 +61,9 @@
     <string name="hotspot_inactivity_timeout_title">自動關閉時間</string>
     <string name="hotspot_max_client_title">最大接入數</string>
     <string name="hotspot_disable_approval_title">Hotspot 連線問題的解決方法</string>
-    <string name="hotspot_disable_approval_summary">允許非\"預先批准\"的客戶端無縫連接</string>
+    <string name="hotspot_disable_approval_summary">允許非「預先批准」客戶端無縫連線</string>
     <!--Lock screen related-->
-    <string name="depth_wallpaper_options">深度效果的桌布</string>
+    <string name="depth_wallpaper_options">深度效果的壁紙</string>
     <string name="depth_wallpaper_title">深度效果壁紙</string>
     <string name="depth_wallpaper_summary">動態整合壁紙前景與時鐘</string>
     <string name="depth_wallpaper_ai_model_title">首選的AI模型</string>
@@ -203,13 +203,13 @@
     <string name="sb_ignored_icons_category">狀態列忽略圖示</string>
     <string name="sb_ignored_icons">狀態列​​​​​​​</string>
     <string name="sb_ignored_icons_statusbar">選擇在狀態列隱藏哪個圖示</string>
-    <string name="sb_kg_ignored_icons">鎖屏</string>
-    <string name="sb_ignored_icons_kg">選擇在鎖屏狀態列隱藏哪個圖示</string>
+    <string name="sb_kg_ignored_icons">鎖定畫面</string>
+    <string name="sb_ignored_icons_kg">選擇在鎖定畫面狀態列隱藏哪個圖示</string>
     <string name="sb_qs_ignored_icons">快速設定</string>
     <string name="sb_ignored_icons_qs">選擇在快速設定中隱藏哪個圖示</string>
     <string name="status_bar_volte">VoLTE</string>
     <string name="status_bar_vowifi">VoWiFi</string>
-    <string name="status_bar_no_calling">無呼叫</string>
+    <string name="status_bar_no_calling">沒有來電</string>
     <string name="status_bar_call_strength">通話強度</string>
     <string name="status_bar_alarm_clock">鬧鐘</string>
     <string name="status_bar_rotate">自動旋轉</string>
@@ -241,7 +241,7 @@
     <string name="status_bar_ethernet">乙太網已連線</string>
     <string name="status_bar_oem_satellite">衛星連線</string>
     <string name="status_bar_wifi">Wi-Fi 已連線</string>
-    <string name="status_bar_hotspot">熱點已開啟</string>
+    <string name="status_bar_hotspot">無線基地台已開啟</string>
     <string name="status_bar_mobile">移動資料</string>
     <string name="status_bar_airplane">飛航模式</string>
     <string name="status_bar_battery">電池電量</string>
@@ -364,7 +364,7 @@
     <string name="doze_header">鎖定畫面時</string>
     <string name="custom_themed_icons_title">自訂帶主題的圖示</string>
     <string name="px_in_settings_title">將 PixelXpert 加入設定選項</string>
-    <string name="advanced_power_menu_title">高階電源選單</string>
+    <string name="advanced_power_menu_title">進階電源選單</string>
     <string name="sleep_on_flat_screen_title">在平坦表面上時關閉螢幕</string>
     <string name="sleep_on_flat_screen_tile_title">在平坦表面休眠</string>
     <string name="flat_screen_timeout_title">在平坦表面時的螢幕超時時間</string>
@@ -543,7 +543,7 @@
     <string name="package_activation_failed">Package activation failed</string>
     <string name="activate_in_lsposed">Activate in LSPosed</string>
     <string name="package_not_hook_enabled_info">應用已安裝，但 LSPosed 中沒有啟用 hook。點選\'%s \'啟用。</string>
-    <string name="package_hook_bootlooped_info">應用的 hook 導致啟動迴圈，因此它已被禁用，以防產生更多問題。</string>
+    <string name="package_hook_bootlooped_info">應用的 hook 導致啟動迴圈，因此它已被停用，以防產生更多問題。</string>
     <string name="package_hook_no_response_info">該應用沒有響應 hook 狀態。它可能沒有執行，或者可能沒有 hook 到我們的連線。</string>
     <string name="whats_wrong">遇到了什麼問題嗎？</string>
     <string name="package_not_launchable">應用包無法啟動</string>
@@ -592,10 +592,10 @@
     <string name="icon_pack_pack_reset">重設圖示</string>
     <string name="icon_pack_info">圖示包資訊</string>
     <string name="no_icon_pack_installed">沒有已安裝的圖示包</string>
-    <string name="icon_pack_disclaimer_title">免責宣告</string>
+    <string name="icon_pack_disclaimer_title">免責聲明</string>
     <string name="icon_pack_disclaimer_desc">圖示包不是由 PixelXpert 開發或分發的。因此，PixelXpert 團隊無法為圖示包提供支援。有關 PixelXpert 如何處理圖示包的支援將僅提供給相應的包開發人員。\n\n關於如何編譯圖示包的說明，請參閱這裡的指南： %s</string>
     <!--Advanced power options-->
-    <string name="advanced_option_button_title">高階…</string>
+    <string name="advanced_option_button_title">進階…</string>
     <string name="reboot_bootloader_title">重啟到 BootLoader</string>
     <string name="soft_reboot_title">軟重啟</string>
     <string name="restart_systemui_title">重啟系統介面</string>
