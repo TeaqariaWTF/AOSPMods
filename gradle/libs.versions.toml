@@ -10,6 +10,7 @@ commonsText = "1.12.0"
 concurrentFutures = "1.2.0"
 constraintlayout = "2.2.1"
 coreSplashscreen = "1.0.1"
+desugar_jdk_libs = "2.1.5"
 fragmentKtx = "1.8.6"
 gson = "2.11.0"
 lottie = "6.6.2"
@@ -52,6 +53,7 @@ androidx-concurrent-futures = { module = "androidx.concurrent:concurrent-futures
 collapsingtoolbarlayout-subtitle = { module = "com.hendraanggrian.material:collapsingtoolbarlayout-subtitle", version.ref = "collapsingtoolbarlayoutSubtitle" }
 colorpicker = { module = "com.jaredrummler:colorpicker", version.ref = "colorpicker" }
 apache-commons-text = { module = "org.apache.commons:commons-text", version.ref = "commonsText" }
+desugar_jdk_libs = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugar_jdk_libs" }
 gson = { module = "com.google.code.gson:gson", version.ref = "gson" }
 lottie = { module = "com.airbnb.android:lottie", version.ref = "lottie" }
 markdown = { module = "com.github.tiagohm.MarkdownView:library", version.ref = "markdown" }
