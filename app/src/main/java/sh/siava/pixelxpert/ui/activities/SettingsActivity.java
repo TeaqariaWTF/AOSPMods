@@ -136,30 +136,6 @@ public class SettingsActivity extends BaseActivity implements PreferenceFragment
 			NavigationUI.setupWithNavController(binding.bottomNavigationView, navControllerMain);
 		}
 
-//		getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
-//			@Override
-//			public void handleOnBackPressed() {
-//				if (isTabletDevice &&
-//						navControllerDetails != null &&
-//						navControllerDetails.getCurrentDestination() != null &&
-//						navControllerDetails.popBackStack()) {
-//					// Handled by details NavController
-//					return;
-//				}
-//
-//				if (navControllerMain != null &&
-//						navControllerMain.getCurrentDestination() != null &&
-//						navControllerMain.popBackStack()) {
-//					// Handled by main NavController
-//					return;
-//				}
-//
-//				// Nothing to pop — let system handle it (e.g. finish activity)
-//				setEnabled(false); // Temporarily disable to avoid infinite loop
-//				getOnBackPressedDispatcher().onBackPressed();
-//			}
-//		});
-
 		ViewCompat.setOnApplyWindowInsetsListener(binding.getRoot(), (view, windowInsets) -> {
 			Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.displayCutout());
 			boolean isRtl = view.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
