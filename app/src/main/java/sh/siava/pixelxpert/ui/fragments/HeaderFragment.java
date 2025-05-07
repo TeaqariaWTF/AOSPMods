@@ -3,6 +3,7 @@ package sh.siava.pixelxpert.ui.fragments;
 
 import static sh.siava.pixelxpert.utils.NavigationExtensionKt.navigateTo;
 
+import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +16,7 @@ import sh.siava.pixelxpert.ui.preferences.preferencesearch.SearchConfiguration;
 import sh.siava.pixelxpert.ui.preferences.preferencesearch.SearchPreference;
 import sh.siava.pixelxpert.ui.preferences.preferencesearch.SearchPreferenceResult;
 import sh.siava.pixelxpert.utils.ControlledPreferenceFragmentCompat;
+import sh.siava.pixelxpert.utils.DisplayUtils;
 
 public class HeaderFragment extends ControlledPreferenceFragmentCompat {
 
@@ -58,12 +60,21 @@ public class HeaderFragment extends ControlledPreferenceFragmentCompat {
 		}
 	}
 
-	public void onSearchResultClicked(SearchPreferenceResult result, NavController navController) {
+	public void onSearchResultClicked(SearchPreferenceResult result, NavController navController, Activity activity) {
 		for (SearchPreferenceItem searchItem : searchItems) {
 			if (searchItem.getXml() == result.getResourceFile()) {
+				int newActionId = searchItem.getActionId();
+				boolean isTabletDevice = DisplayUtils.isTablet();
+
+				if (isTabletDevice) {
+					String originalActionName = activity.getResources().getResourceEntryName(searchItem.getActionId());
+					String newActionName = originalActionName.replace("searchPreferenceFragment", "headerFragment");
+					newActionId = activity.getResources().getIdentifier(newActionName, "id", activity.getPackageName());
+				}
+
 				Bundle bundle = new Bundle();
 				bundle.putString("searchKey", result.getKey());
-				navigateTo(navController, searchItem.getActionId(), bundle);
+				navigateTo(navController, newActionId, bundle);
 				break;
 			}
 		}

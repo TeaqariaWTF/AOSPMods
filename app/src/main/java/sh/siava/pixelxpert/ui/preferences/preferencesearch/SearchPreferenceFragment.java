@@ -46,9 +46,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.NavController;
 import androidx.navigation.fragment.NavHostFragment;
@@ -169,10 +167,7 @@ public class SearchPreferenceFragment extends Fragment implements SearchPreferen
 	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 
-		AppCompatActivity baseContext = (AppCompatActivity) getContext();
-		Toolbar toolbar = view.findViewById(R.id.toolbar);
-
-		setupToolbar(baseContext, toolbar, getString(R.string.searchpreference_title), true);
+		setupToolbar(this, view, getString(R.string.searchpreference_title), true);
 	}
 
 	private void loadHistory() {
