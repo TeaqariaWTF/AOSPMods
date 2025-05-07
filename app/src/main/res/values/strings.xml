@@ -40,6 +40,7 @@
     <string name="usage_summary">Open wiki page</string>
     <string name="crowdin_title">Translate to your language</string>
     <string name="crowdin_summary">Help us in translating %s into your own language</string>
+    <string name="nothing_to_show">Nothing to show</string>
     <string name="shrug" translatable="false">¯\\_(シ)_/¯</string>
 
     <!--Category titles-->

@@ -15,6 +15,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Configuration;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
@@ -58,6 +59,7 @@ import sh.siava.pixelxpert.databinding.UpdateFragmentBinding;
 import sh.siava.pixelxpert.modpacks.utils.ModuleFolderOperations;
 import sh.siava.pixelxpert.ui.activities.SettingsActivity;
 import sh.siava.pixelxpert.utils.AppUtils;
+import sh.siava.pixelxpert.utils.DisplayUtils;
 import sh.siava.pixelxpert.utils.ExtendedSharedPreferences;
 import sh.siava.pixelxpert.utils.PreferenceHelper;
 
@@ -139,9 +141,19 @@ public class UpdateFragment extends BaseFragment {
 		//noinspection ConstantConditions
 		downloadManager = (DownloadManager) requireContext().getSystemService(Context.DOWNLOAD_SERVICE);
 
+		boolean isTabletDevice = DisplayUtils.isTablet();
+		View rootView;
 
-		//finally
-		binding = UpdateFragmentBinding.inflate(inflater, container, false);
+		if (isTabletDevice) {
+			View view = inflater.inflate(R.layout.update_fragment, container, false);
+			binding = UpdateFragmentBinding.bind(view);
+			rootView = view;
+		} else {
+			boolean isLandscape = getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
+			View view = inflater.inflate(isLandscape ? R.layout.update_fragment_land : R.layout.update_fragment, container, false);
+			binding = UpdateFragmentBinding.bind(view);
+			rootView = view;
+		}
 
 		if (getArguments() != null && getArguments().getBoolean("updateTapped", false)) {
 			String downloadPath = getArguments().getString("filePath");
@@ -152,7 +164,7 @@ public class UpdateFragment extends BaseFragment {
 			applyPrefsToUpdate();
 		}
 
-		return binding.getRoot();
+		return rootView;
 	}
 
 	private void applyPrefsToUpdate() {
@@ -215,7 +227,7 @@ public class UpdateFragment extends BaseFragment {
 									view.postVisualStateCallback(0, new WebView.VisualStateCallback() {
 										@Override
 										public void onComplete(long requestId) {
-											if (binding.progressBar != null) {
+											if (binding != null) {
 												binding.progressBar.post(() -> binding.progressBar.setVisibility(View.GONE));
 											}
 										}
