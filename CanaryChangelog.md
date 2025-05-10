@@ -1,3 +1,6 @@
+**canary-445**  
+- A16b4: Fixed "kill foreground app" feature  
+  
 **canary-444**  
 - A16b4: Fixed lockscreen text  
   
