@@ -6,61 +6,27 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.LocaleList;
-import android.view.ViewGroup;
-import android.view.Window;
 
+import androidx.activity.EdgeToEdge;
+import androidx.activity.SystemBarStyle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowCompat;
-import androidx.core.view.WindowInsetsCompat;
-
-import com.google.android.material.appbar.AppBarLayout;
-import com.google.android.material.shape.MaterialShapeDrawable;
 
 import java.util.Locale;
-
-import sh.siava.pixelxpert.R;
 
 public class BaseActivity extends AppCompatActivity {
 
 	@Override
 	protected void onCreate(@Nullable Bundle savedInstanceState) {
+		EdgeToEdge.enable(
+				this,
+				SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT),
+				SystemBarStyle.auto(Color.TRANSPARENT, Color.TRANSPARENT)
+		);
 		super.onCreate(savedInstanceState);
-
-		setupEdgeToEdge();
-	}
-
-	private void setupEdgeToEdge() {
-		try {
-			((AppBarLayout) findViewById(R.id.appBarLayout)).setStatusBarForeground(MaterialShapeDrawable.createWithElevationOverlay(getApplicationContext()));
-		} catch (Exception ignored) {
-		}
-
-		Window window = getWindow();
-		WindowCompat.setDecorFitsSystemWindows(window, false);
-
-		if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-			ViewGroup viewGroup = getWindow().getDecorView().findViewById(android.R.id.content);
-			ViewCompat.setOnApplyWindowInsetsListener(viewGroup, (v, windowInsets) -> {
-				Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.systemBars());
-
-				ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) v.getLayoutParams();
-				v.setPadding(
-						params.leftMargin + insets.left,
-						0,
-						params.rightMargin + insets.right,
-						0
-				);
-				params.bottomMargin = 0;
-				v.setLayoutParams(params);
-
-				return windowInsets;
-			});
-		}
 	}
 
 	@Override

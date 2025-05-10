@@ -2,22 +2,21 @@ package sh.siava.pixelxpert.utils;
 
 import static androidx.preference.PreferenceManager.getDefaultSharedPreferences;
 import static sh.siava.pixelxpert.ui.preferences.preferencesearch.SearchPreferenceResult.highlightPreference;
+import static sh.siava.pixelxpert.utils.MiscUtils.setOnBackPressedDispatcherCallback;
 import static sh.siava.pixelxpert.utils.MiscUtils.setupToolbar;
 
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.navigation.NavController;
-import androidx.navigation.fragment.NavHostFragment;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.PreferenceScreen;
 import androidx.recyclerview.widget.RecyclerView;
@@ -32,7 +31,7 @@ public abstract class ControlledPreferenceFragmentCompat extends PreferenceFragm
 
 	public ExtendedSharedPreferences mPreferences;
 	private final OnSharedPreferenceChangeListener changeListener = (sharedPreferences, key) -> updateScreen(key);
-	public NavController navController;
+	private static boolean firstAppLaunch = true;
 
 	protected boolean isBackButtonEnabled() {
 		return true;
@@ -54,21 +53,6 @@ public abstract class ControlledPreferenceFragmentCompat extends PreferenceFragm
 		return getDefaultThemeResource();
 	}
 
-	@SuppressWarnings("deprecation")
-	@Override
-	public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-		super.onCreateOptionsMenu(menu, inflater);
-		inflater.inflate(R.menu.main_menu, menu);
-	}
-
-	@SuppressWarnings("deprecation")
-	@Override
-	public void onCreate(@Nullable Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setHasOptionsMenu(!Objects.equals(getTitle(), getString(R.string.app_name)));
-		navController = NavHostFragment.findNavController(this);
-	}
-
 	@NonNull
 	@Override
 	public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -80,16 +64,38 @@ public abstract class ControlledPreferenceFragmentCompat extends PreferenceFragm
 	public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
 		super.onViewCreated(view, savedInstanceState);
 
-		AppCompatActivity baseContext = (AppCompatActivity) getContext();
-		Toolbar toolbar = view.findViewById(R.id.toolbar);
+		AppCompatActivity baseContext = (AppCompatActivity) getActivity();
 
-		setupToolbar(baseContext, toolbar, getTitle(), getBackButtonEnabled());
+		setupToolbar(this, view, getTitle(), getBackButtonEnabled());
+
+		setOnBackPressedDispatcherCallback(requireActivity(), this);
 
 		if (baseContext != null) {
 			AppBarLayout appBarLayout = baseContext.findViewById(R.id.appBarLayout);
-			if (appBarLayout != null && Objects.equals(getTitle(), getString(R.string.app_name))) {
+			if (appBarLayout != null && Objects.equals(getTitle(), getString(R.string.app_name)) && firstAppLaunch) {
 				appBarLayout.setExpanded(true, false);
+				firstAppLaunch = false;
 			}
+		}
+
+		RecyclerView recyclerView = view.findViewById(androidx.preference.R.id.recycler_view);
+
+		if (recyclerView != null) {
+			ViewCompat.setOnApplyWindowInsetsListener(view, (v, windowInsets) -> {
+				Insets insets = windowInsets.getInsets(WindowInsetsCompat.Type.displayCutout());
+				boolean isRtl = view.getLayoutDirection() == View.LAYOUT_DIRECTION_RTL;
+
+				if (insets.left > 0 || insets.right > 0) {
+					int endInset = isRtl ? insets.left : insets.right;
+
+					ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) recyclerView.getLayoutParams();
+					if (isRtl) params.leftMargin = endInset;
+					else params.rightMargin = endInset;
+					recyclerView.setLayoutParams(params);
+				}
+
+				return windowInsets;
+			});
 		}
 
 		if (getArguments() != null) {
