@@ -37,6 +37,7 @@
     <string name="usage_summary">Open wikipagina</string>
     <string name="crowdin_title">Vertaal naar je eigen taal</string>
     <string name="crowdin_summary">Help ons om %s naar je eigen taal te vertalen</string>
+    <string name="nothing_to_show">Nothing to show</string>
     <!--Category titles-->
     <string name="lockscreen_header_title">Vergrendel scherm</string>
     <string name="lockscreen_header_summary">Verander je toetsblokkering zodat deze overeenkomt met je smaak</string>

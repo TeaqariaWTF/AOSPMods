@@ -37,6 +37,7 @@
     <string name="usage_summary">Άνοιγμα σελίδας wiki</string>
     <string name="crowdin_title">Μεταφράστε στη γλώσσα σας</string>
     <string name="crowdin_summary">Βοηθήστε μας να μεταφράσουμε το %s στη δική σας γλώσσα</string>
+    <string name="nothing_to_show">Nothing to show</string>
     <!--Category titles-->
     <string name="lockscreen_header_title">Κλείδωμα οθόνης</string>
     <string name="lockscreen_header_summary">Αλλάξτε το keyguard σας για να ταιριάζει με το γούστο σας</string>

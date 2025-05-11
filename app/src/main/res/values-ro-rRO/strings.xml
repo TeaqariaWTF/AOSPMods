@@ -37,6 +37,7 @@
     <string name="usage_summary">Deschide pagina wiki</string>
     <string name="crowdin_title">Tradu în limba ta</string>
     <string name="crowdin_summary">Ajută-ne să traducem %s în limba ta</string>
+    <string name="nothing_to_show">Nimic de afișat</string>
     <!--Category titles-->
     <string name="lockscreen_header_title">Ecran de blocare</string>
     <string name="lockscreen_header_summary">Schimbă aspectul pe gustul tău</string>

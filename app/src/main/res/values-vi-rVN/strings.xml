@@ -37,6 +37,7 @@
     <string name="usage_summary">Mở trang wiki</string>
     <string name="crowdin_title">Dịch sang ngôn ngữ của bạn</string>
     <string name="crowdin_summary">Hãy giúp chúng tôi dịch %s sang ngôn ngữ của bạn</string>
+    <string name="nothing_to_show">Không có gì để hiển thị</string>
     <!--Category titles-->
     <string name="lockscreen_header_title">Màn hình khóa</string>
     <string name="lockscreen_header_summary">Cài đặt màn hình khóa theo sở thích của bạn</string>
@@ -322,7 +323,7 @@
     <string name="taskbar_force_enable_title">Bật</string>
     <string name="taskbar_force_disable_title">Tắt</string>
     <string name="taskbar_transient_title">Tự động ẩn</string>
-    <string name="taskbar_on_launcher_title">Hiển thị trên trang chính(home)</string>
+    <string name="taskbar_on_launcher_title">Hiển thị trên trang chính</string>
     <string name="remap_physical_buttons_title">Sửa lại các nút vật lý</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">Bỏ qua kiểm tra chữ ký gói</string>

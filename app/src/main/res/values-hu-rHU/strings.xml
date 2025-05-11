@@ -37,6 +37,7 @@
     <string name="usage_summary">Nyissa meg a wiki oldalt</string>
     <string name="crowdin_title">Fordítsd le a saját nyelvedre</string>
     <string name="crowdin_summary">Segíts lefordítani a %s a saját nyelvedre</string>
+    <string name="nothing_to_show">Nothing to show</string>
     <!--Category titles-->
     <string name="lockscreen_header_title">Lezárási képernyő</string>
     <string name="lockscreen_header_summary">Change your keyguard to match your taste</string>

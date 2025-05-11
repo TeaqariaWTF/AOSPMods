@@ -37,6 +37,7 @@
     <string name="usage_summary">Ouvrir la page wiki</string>
     <string name="crowdin_title">Traduire dans votre langue</string>
     <string name="crowdin_summary">Aidez-nous à traduire %s dans votre propre langue</string>
+    <string name="nothing_to_show">Nothing to show</string>
     <!--Category titles-->
     <string name="lockscreen_header_title">Écran de verrouillage</string>
     <string name="lockscreen_header_summary">Changez votre déverrouillage pour qu\'il corresponde à votre goût</string>

@@ -37,6 +37,7 @@
     <string name="usage_summary">فتح صفحة wiki</string>
     <string name="crowdin_title">ترجم إلى لغتك</string>
     <string name="crowdin_summary">ساعدنا في تَرْجَمَة خبير بيكسل إلي لغتك الخاصة</string>
+    <string name="nothing_to_show">Nothing to show</string>
     <!--Category titles-->
     <string name="lockscreen_header_title">قفل الشاشة</string>
     <string name="lockscreen_header_summary"></string>

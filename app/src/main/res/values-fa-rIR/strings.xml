@@ -37,6 +37,7 @@
     <string name="usage_summary">صفحه ویکی را باز کنید</string>
     <string name="crowdin_title">همکاری در ترجمه این برنامه</string>
     <string name="crowdin_summary">کمک کنید که ترجمه %s تکمیل شود</string>
+    <string name="nothing_to_show">Nothing to show</string>
     <!--Category titles-->
     <string name="lockscreen_header_title">صفحه قفل</string>
     <string name="lockscreen_header_summary">صفحه قفل رو جوری عوض کن که میخوای</string>

@@ -37,6 +37,7 @@
     <string name="usage_summary">Wiki sayfasını aç</string>
     <string name="crowdin_title">Kendi dilinize çevirin</string>
     <string name="crowdin_summary">%s\'i kendi dilinize çevirmemize yardımcı olun</string>
+    <string name="nothing_to_show">Gösterilecek bir şey yok</string>
     <!--Category titles-->
     <string name="lockscreen_header_title">Kilit ekranı</string>
     <string name="lockscreen_header_summary">Kilit ekranınızı zevkinize göre değiştirin</string>

@@ -37,6 +37,7 @@
     <string name="usage_summary">Открыть wiki страницу</string>
     <string name="crowdin_title">Помогите с переводом</string>
     <string name="crowdin_summary">Помогите нам в переводе %s на ваш язык</string>
+    <string name="nothing_to_show">Нечего показывать</string>
     <!--Category titles-->
     <string name="lockscreen_header_title">Экран блокировки</string>
     <string name="lockscreen_header_summary">Изменить клавиатуру по своему вкусу</string>

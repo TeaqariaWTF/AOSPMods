@@ -37,6 +37,7 @@
     <string name="usage_summary">Open wiki page</string>
     <string name="crowdin_title">翻譯成你的語言</string>
     <string name="crowdin_summary">幫助我們將 %s 翻譯成自己的語言</string>
+    <string name="nothing_to_show">Nothing to show</string>
     <!--Category titles-->
     <string name="lockscreen_header_title">鎖定畫面</string>
     <string name="lockscreen_header_summary">自訂鎖定螢幕風格</string>

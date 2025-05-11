@@ -37,6 +37,7 @@
     <string name="usage_summary">Öppna wikisidan</string>
     <string name="crowdin_title">Översätt till ditt språk</string>
     <string name="crowdin_summary">Hjälp oss att översätta %s till ditt eget språk</string>
+    <string name="nothing_to_show">Nothing to show</string>
     <!--Category titles-->
     <string name="lockscreen_header_title">Låsskärm</string>
     <string name="lockscreen_header_summary">Ändra din målvakt för att matcha din smak</string>

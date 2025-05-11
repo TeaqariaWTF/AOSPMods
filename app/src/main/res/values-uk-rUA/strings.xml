@@ -37,6 +37,7 @@
     <string name="usage_summary">Відкрити вікі-сторінку</string>
     <string name="crowdin_title">Перекладіть на свою мову</string>
     <string name="crowdin_summary">Допоможіть нам перекласти %s на вашу рідну мову</string>
+    <string name="nothing_to_show">Nothing to show</string>
     <!--Category titles-->
     <string name="lockscreen_header_title">Екран блокування</string>
     <string name="lockscreen_header_summary">Змінюйте клавіатуру на свій смак</string>

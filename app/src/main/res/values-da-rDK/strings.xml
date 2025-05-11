@@ -37,6 +37,7 @@
     <string name="usage_summary">Åbn wiki-side</string>
     <string name="crowdin_title">Oversæt til dit sprog</string>
     <string name="crowdin_summary">Hjælp os med at oversætte %s til dit eget sprog</string>
+    <string name="nothing_to_show">Nothing to show</string>
     <!--Category titles-->
     <string name="lockscreen_header_title">Låse skærm</string>
     <string name="lockscreen_header_summary">Skift din keyguard for at matche din smag</string>

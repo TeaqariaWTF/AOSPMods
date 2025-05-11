@@ -37,6 +37,7 @@
     <string name="usage_summary">Otevřete stránku wiki</string>
     <string name="crowdin_title">Přeložit do svého jazyka</string>
     <string name="crowdin_summary">Pomozte nám přeložit %s do vašeho jazyka</string>
+    <string name="nothing_to_show">Nothing to show</string>
     <!--Category titles-->
     <string name="lockscreen_header_title">Uzamknout obrazovku</string>
     <string name="lockscreen_header_summary">Změňte svou klávesnici tak, aby odpovídala vaší chuti</string>

@@ -37,6 +37,7 @@
     <string name="usage_summary">위키 페이지 열기</string>
     <string name="crowdin_title">당신의 언어로 번역하세요</string>
     <string name="crowdin_summary">%s를 당신의 언어로 번역하는것을 도와주세요</string>
+    <string name="nothing_to_show">Nothing to show</string>
     <!--Category titles-->
     <string name="lockscreen_header_title">잠금 화면</string>
     <string name="lockscreen_header_summary">Change your keyguard to match your taste</string>

@@ -37,6 +37,7 @@
     <string name="usage_summary">Otwórz stronę wiki</string>
     <string name="crowdin_title">Przetłumacz na swój język</string>
     <string name="crowdin_summary">Pomóż nam w tłumaczeniu %s na swój własny język</string>
+    <string name="nothing_to_show">Nothing to show</string>
     <!--Category titles-->
     <string name="lockscreen_header_title">Ekran blokady</string>
     <string name="lockscreen_header_summary">Zmień swój ekran blokady aby pasował do swojego smaku</string>

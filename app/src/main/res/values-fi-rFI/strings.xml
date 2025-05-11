@@ -37,6 +37,7 @@
     <string name="usage_summary">Avaa wikisivu</string>
     <string name="crowdin_title">Käännä kielellesi</string>
     <string name="crowdin_summary">Auta meitä kääntämään %s omalle kielellesi</string>
+    <string name="nothing_to_show">Nothing to show</string>
     <!--Category titles-->
     <string name="lockscreen_header_title">Lukitusnäyttö</string>
     <string name="lockscreen_header_summary">Vaihda näppäimistösi niin, että se vastaa makuasi</string>

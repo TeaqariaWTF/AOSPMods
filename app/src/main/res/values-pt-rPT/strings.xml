@@ -37,6 +37,7 @@
     <string name="usage_summary">Abrir página wiki</string>
     <string name="crowdin_title">Traduza para o seu idioma</string>
     <string name="crowdin_summary">Ajude-nos a traduzir %s para o seu idioma</string>
+    <string name="nothing_to_show">Nada a mostrar</string>
     <!--Category titles-->
     <string name="lockscreen_header_title">Tela de bloqueio</string>
     <string name="lockscreen_header_summary">Mude sua proteção de teclado para corresponder ao seu gosto</string>

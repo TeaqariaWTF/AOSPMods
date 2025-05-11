@@ -37,6 +37,7 @@
     <string name="usage_summary">Apri la pagina wiki</string>
     <string name="crowdin_title">Traduci nella tua lingua</string>
     <string name="crowdin_summary">Aiutaci a tradurre %s nella tua lingua</string>
+    <string name="nothing_to_show">Niente da mostrare</string>
     <!--Category titles-->
     <string name="lockscreen_header_title">Blocco schermo</string>
     <string name="lockscreen_header_summary">Cambia il tuo keyguard in base al tuo gusto</string>
