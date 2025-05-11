@@ -1,5 +1,9 @@
 package sh.siava.pixelxpert.utils;
 
+import android.content.Context;
+import android.util.DisplayMetrics;
+import android.view.WindowManager;
+
 import sh.siava.pixelxpert.PixelXpert;
 
 public class DisplayUtils {
