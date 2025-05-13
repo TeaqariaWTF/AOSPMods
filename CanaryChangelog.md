@@ -1,3 +1,7 @@
+**canary-446**  
+- A15+: lockscreen flashlight shortcut now follows the global flashlight brightness value  
+- Added option to enable flashlight on/off fade effect  
+  
 **canary-445**  
 - A16b4: Fixed "kill foreground app" feature  
   
