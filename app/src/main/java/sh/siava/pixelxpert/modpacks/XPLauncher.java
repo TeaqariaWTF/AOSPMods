@@ -32,6 +32,7 @@ import sh.siava.pixelxpert.IRootProviderProxy;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.modpacks.utils.SystemUtils;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.service.RootProviderProxy;
 
 @SuppressWarnings("RedundantThrows")
 public class XPLauncher implements ServiceConnection {
@@ -182,7 +183,7 @@ public class XPLauncher implements ServiceConnection {
 	private void connectRootService() {
 		try {
 			Intent intent = new Intent();
-			intent.setComponent(new ComponentName(APPLICATION_ID, APPLICATION_ID + ".service.RootProviderProxy"));
+			intent.setComponent(new ComponentName(APPLICATION_ID, RootProviderProxy.class.getName()));
 			mContext.bindService(intent, instance, Context.BIND_AUTO_CREATE | Context.BIND_ADJUST_WITH_ACTIVITY);
 		} catch (Throwable t) {
 			log(t);
@@ -214,9 +215,9 @@ public class XPLauncher implements ServiceConnection {
 			}
 		}
 
-		log("PixelXpert Version: " + BuildConfig.VERSION_NAME);
+		log(String.format("Loading PixelXpert version: %s on %s", BuildConfig.VERSION_NAME, lpParam.packageName));
 		try {
-			log("PixelXpert Records: " + Xprefs.getAll().keySet().size());
+			log("PixelXpert Records: " + Xprefs.getAll().size());
 		} catch (Throwable ignored) {
 		}
 
