@@ -383,6 +383,7 @@
     <string name="disable_overscroll">禁用過度滾動效果</string>
     <string name="overscroll_on_summary">重要:你必須在 LSPosed 作用域中勾選你要禁用的應用程式</string>
     <string name="control_flashlight_with_volume_keys">使用音量按鍵控制手電筒</string>
+    <string name="flashlight_fade_effect">Flashlight fade effect</string>
     <string name="milliseconds">毫秒</string>
     <string name="duration_seconds">%d 秒</string>
     <string name="hours">小時</string>

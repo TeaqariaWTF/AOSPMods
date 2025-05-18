@@ -383,6 +383,7 @@
     <string name="disable_overscroll">Poista elastinen ylivieritystehoste käytöstä</string>
     <string name="overscroll_on_summary">Tärkeää: sinun TÄYTYY ottaa käyttöön sovellukset, joiden ylivierityksen haluat poistaa käytöstä LSPosedissa</string>
     <string name="control_flashlight_with_volume_keys">Ohjaa taskulamppua äänenvoimakkuuden painikkeilla</string>
+    <string name="flashlight_fade_effect">Flashlight fade effect</string>
     <string name="milliseconds">Millisekuntia</string>
     <string name="duration_seconds">%d Sekuntia</string>
     <string name="hours">Tuntia</string>

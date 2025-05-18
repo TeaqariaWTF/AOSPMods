@@ -383,6 +383,7 @@
     <string name="disable_overscroll">Вимкнути еластичний ефект прокрутки</string>
     <string name="overscroll_on_summary">Важливо: ОБОВ\'ЯЗКОВО увімкніть програми, для яких ви хочете вимкнути прокрутку в LSPosed</string>
     <string name="control_flashlight_with_volume_keys">Керувати ліхтариком за допомогою кнопок гучності</string>
+    <string name="flashlight_fade_effect">Flashlight fade effect</string>
     <string name="milliseconds">мілісекунди</string>
     <string name="duration_seconds">%d секунд</string>
     <string name="hours">Години</string>

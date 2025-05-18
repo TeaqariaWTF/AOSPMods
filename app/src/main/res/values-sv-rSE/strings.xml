@@ -383,6 +383,7 @@
     <string name="disable_overscroll">Inaktivera elastisk överrullningseffekt</string>
     <string name="overscroll_on_summary">Viktigt: du MÅSTE aktivera de appar du vill inaktivera överrullning för inom LSPosed</string>
     <string name="control_flashlight_with_volume_keys">Styr ficklampan med volymknappar</string>
+    <string name="flashlight_fade_effect">Flashlight fade effect</string>
     <string name="milliseconds">Millisekunder</string>
     <string name="duration_seconds">%d sekunder</string>
     <string name="hours">Timmar</string>

@@ -383,6 +383,7 @@
     <string name="disable_overscroll">Elastisch overscroll-effect uitschakelen</string>
     <string name="overscroll_on_summary">Belangrijk: je MOET de apps inschakelen waarvoor je overscroll wilt uitschakelen, in LSPosed</string>
     <string name="control_flashlight_with_volume_keys">Zaklamp met volumeknoppen bedienen</string>
+    <string name="flashlight_fade_effect">Flashlight fade effect</string>
     <string name="milliseconds">Milliseconden</string>
     <string name="duration_seconds">%d Seconden</string>
     <string name="hours">Uren</string>

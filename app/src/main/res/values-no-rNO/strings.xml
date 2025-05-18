@@ -383,6 +383,7 @@
     <string name="disable_overscroll">Deaktiver elastisk overrullingseffekt</string>
     <string name="overscroll_on_summary">Viktig: du MÅ aktivere appene du vil deaktivere overscroll for i LSPosed</string>
     <string name="control_flashlight_with_volume_keys">Kontrollér lommelykt med volumknappene</string>
+    <string name="flashlight_fade_effect">Flashlight fade effect</string>
     <string name="milliseconds">Millisekunder</string>
     <string name="duration_seconds">%d sekunder</string>
     <string name="hours">Timer</string>

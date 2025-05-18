@@ -383,6 +383,7 @@
     <string name="disable_overscroll">オーバースクロール効果を無効化</string>
     <string name="overscroll_on_summary">重要事項: LSPosedでオーバースクロールを無効化するアプリをスコープに追加をする必要があります</string>
     <string name="control_flashlight_with_volume_keys">音量ボタンでライトを制御</string>
+    <string name="flashlight_fade_effect">Flashlight fade effect</string>
     <string name="milliseconds">ミリ秒</string>
     <string name="duration_seconds">%d 秒</string>
     <string name="hours">時間</string>

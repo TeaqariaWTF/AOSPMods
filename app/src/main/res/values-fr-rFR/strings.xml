@@ -383,6 +383,7 @@
     <string name="disable_overscroll">Désactiver l’effet elastique de fin de défilement</string>
     <string name="overscroll_on_summary">Important : les applications dans lesquelles l’effet sera actif sont celles activées dans LSPosed</string>
     <string name="control_flashlight_with_volume_keys">Contrôlez la lampe de poche avec les boutons de volume</string>
+    <string name="flashlight_fade_effect">Flashlight fade effect</string>
     <string name="milliseconds">Millisecondes</string>
     <string name="duration_seconds">%d Secondes</string>
     <string name="hours">Heures</string>
