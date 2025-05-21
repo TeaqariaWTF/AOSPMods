@@ -383,6 +383,7 @@
     <string name="disable_overscroll">Dezactivare efect de derulare elastică</string>
     <string name="overscroll_on_summary">Important: TREBUIE să activezi aplicațiile pentru care dorești să dezactivezi derularea elastică în LSPosed</string>
     <string name="control_flashlight_with_volume_keys">Controlează lanterna cu butoanele de volum</string>
+    <string name="flashlight_fade_effect">Efect de estompare a lanternei</string>
     <string name="milliseconds">Milisecunde</string>
     <string name="duration_seconds">%d secunde</string>
     <string name="hours">Ore</string>

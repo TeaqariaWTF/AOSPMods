@@ -383,6 +383,7 @@
     <string name="disable_overscroll">Elastik aşırı kaydırma efektini devre dışı bırak</string>
     <string name="overscroll_on_summary">Önemli: Aşırı kaydırmayı devre dışı bırakmak istediğiniz uygulamaları LSPosed içinde etkinleştirmeniz GEREKİR</string>
     <string name="control_flashlight_with_volume_keys">Ses düğmeleriyle el fenerini kontrol et</string>
+    <string name="flashlight_fade_effect">El feneri solma efekti</string>
     <string name="milliseconds">Milisaniye</string>
     <string name="duration_seconds">%d Saniye</string>
     <string name="hours">Saat</string>

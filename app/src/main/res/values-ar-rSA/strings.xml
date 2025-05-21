@@ -383,6 +383,7 @@
     <string name="disable_overscroll">تعطيل تأثير التمرير المرن</string>
     <string name="overscroll_on_summary">هام: يمكنك تمكين التطبيقات التي تريد تعطيل التمرير الزائد داخل LSPosed</string>
     <string name="control_flashlight_with_volume_keys">تحكم في الكشاف باستخدام أزرار الصوت</string>
+    <string name="flashlight_fade_effect">Flashlight fade effect</string>
     <string name="milliseconds">المللي ثانية</string>
     <string name="duration_seconds">%d ثانية</string>
     <string name="hours">ساعات</string>

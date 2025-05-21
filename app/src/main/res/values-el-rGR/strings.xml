@@ -383,6 +383,7 @@
     <string name="disable_overscroll">Απενεργοποιήστε το ελαστικό εφέ υπερκύλισης</string>
     <string name="overscroll_on_summary">Σημαντικό: ΠΡΕΠΕΙ να ενεργοποιήσετε τις εφαρμογές για τις οποίες θέλετε να απενεργοποιήσετε την υπερκύλιση εντός LSPosed</string>
     <string name="control_flashlight_with_volume_keys">Έλεγχος φακού με κουμπιά έντασης</string>
+    <string name="flashlight_fade_effect">Flashlight fade effect</string>
     <string name="milliseconds">χιλιοστά του δευτερολέπτου</string>
     <string name="duration_seconds">%d Seconds</string>
     <string name="hours">Ώρες</string>

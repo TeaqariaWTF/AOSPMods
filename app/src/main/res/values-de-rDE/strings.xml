@@ -383,6 +383,7 @@
     <string name="disable_overscroll">Deaktiviere elastischen Überscrolling Effekt</string>
     <string name="overscroll_on_summary">Wichtig: Sie MÜSSEN die Apps, für die Sie Overscroll deaktivieren möchten, in LSPosed aktivieren</string>
     <string name="control_flashlight_with_volume_keys">Taschenlampe mit Lautstärketasten steuern</string>
+    <string name="flashlight_fade_effect">Flashlight fade effect</string>
     <string name="milliseconds">Millisekunden</string>
     <string name="duration_seconds">%d Sekunden</string>
     <string name="hours">Stunden</string>

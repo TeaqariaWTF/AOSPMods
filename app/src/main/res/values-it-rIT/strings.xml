@@ -383,6 +383,7 @@
     <string name="disable_overscroll">Disattiva l\'effetto di overscroll elastico</string>
     <string name="overscroll_on_summary">Importante: DEVI abilitare le app per le quali desideri disabilitare l\'overscroll all\'interno di LSPosed</string>
     <string name="control_flashlight_with_volume_keys">Controllo torcia con pulsanti volume</string>
+    <string name="flashlight_fade_effect">Effetto dissolvenza torcia</string>
     <string name="milliseconds">Milliseconds</string>
     <string name="duration_seconds">%d Secondi</string>
     <string name="hours">Ore</string>

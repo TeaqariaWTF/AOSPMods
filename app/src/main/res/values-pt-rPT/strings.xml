@@ -201,7 +201,7 @@
     <string name="nt_stat_mode_today">Hoje</string>
     <string name="nt_stat_mode_week">Semana atual</string>
     <string name="nt_stat_mode_month">Mês atual</string>
-    <string name="sb_ignored_icons_category">Status Bar ignored icons</string>
+    <string name="sb_ignored_icons_category">Ícones ignorados na barra de estado</string>
     <string name="sb_ignored_icons">Status Bar</string>
     <string name="sb_ignored_icons_statusbar">Select which icon will be hidden in statusbar</string>
     <string name="sb_kg_ignored_icons">Lockscreen</string>
@@ -383,6 +383,7 @@
     <string name="disable_overscroll">Desativar o efeito elástico no final da navegação</string>
     <string name="overscroll_on_summary">Nota: Requer ativar as apps, para as quais pretende desativar o efeito elástico, no gestor da LSposed</string>
     <string name="control_flashlight_with_volume_keys">Controlar lanterna com botões de volume</string>
+    <string name="flashlight_fade_effect">Flashlight fade effect</string>
     <string name="milliseconds">Milissegundos</string>
     <string name="duration_seconds">%d Segundos</string>
     <string name="hours">Horas</string>

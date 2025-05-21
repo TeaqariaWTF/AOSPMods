@@ -383,6 +383,7 @@
     <string name="disable_overscroll">ביטול אפקט גלילה גמישה</string>
     <string name="overscroll_on_summary">חשוב: עליך להפעיל את האפליקציות שברצונך להשבית עבורן גלישת יתר בתוך LSPosed</string>
     <string name="control_flashlight_with_volume_keys">Control flashlight with volume buttons</string>
+    <string name="flashlight_fade_effect">Flashlight fade effect</string>
     <string name="milliseconds">אלפיות השנייה</string>
     <string name="duration_seconds">%d Seconds</string>
     <string name="hours">Hours</string>

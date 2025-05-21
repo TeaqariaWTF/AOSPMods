@@ -383,6 +383,7 @@
     <string name="disable_overscroll">Онемогућите ефекат еластичног премотавања</string>
     <string name="overscroll_on_summary">Важно: МОРАТЕ да омогућите апликације за које желите да онемогућите прекомерно померање у оквиру ЛПосед</string>
     <string name="control_flashlight_with_volume_keys">Control flashlight with volume buttons</string>
+    <string name="flashlight_fade_effect">Flashlight fade effect</string>
     <string name="milliseconds">Милисекунде</string>
     <string name="duration_seconds">%d Seconds</string>
     <string name="hours">Hours</string>

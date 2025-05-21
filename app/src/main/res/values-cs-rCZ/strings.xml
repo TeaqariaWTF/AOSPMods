@@ -383,6 +383,7 @@
     <string name="disable_overscroll">Zakázat efekt elastického přetažení</string>
     <string name="overscroll_on_summary">Důležité: MUSÍTE povolit aplikace, u kterých chcete zakázat přetáčení v rámci LSPosed</string>
     <string name="control_flashlight_with_volume_keys">Ovládání svítilny pomocí tlačítek hlasitosti</string>
+    <string name="flashlight_fade_effect">Flashlight fade effect</string>
     <string name="milliseconds">milisekundy</string>
     <string name="duration_seconds">%d sekund</string>
     <string name="hours">Hodiny</string>
