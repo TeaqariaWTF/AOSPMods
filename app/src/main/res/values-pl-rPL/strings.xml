@@ -20,7 +20,7 @@
     <string name="notification_channel_update_desc">Na tym kanale wyświetlane są powiadomienia o najnowszych aktualizacjach.</string>
     <string name="new_update_title">Dostępna aktualizacja</string>
     <string name="new_update_desc">Dostępna jest nowa wersja PixelXpert</string>
-    <string name="skip_this_update">Skip this update</string>
+    <string name="skip_this_update">Pomiń tę aktualizację</string>
     <string name="browser_not_found">Nie znaleziono przeglądarki</string>
     <string name="settings_general_section_title">Ogólny</string>
     <string name="settings_update_section_title">Aktualizacja</string>
@@ -37,7 +37,7 @@
     <string name="usage_summary">Otwórz stronę wiki</string>
     <string name="crowdin_title">Przetłumacz na swój język</string>
     <string name="crowdin_summary">Pomóż nam w tłumaczeniu %s na swój własny język</string>
-    <string name="nothing_to_show">Nothing to show</string>
+    <string name="nothing_to_show">Nie ma nic do pokazania</string>
     <!--Category titles-->
     <string name="lockscreen_header_title">Ekran blokady</string>
     <string name="lockscreen_header_summary">Zmień swój ekran blokady aby pasował do swojego smaku</string>
@@ -75,7 +75,7 @@
     <string name="disable_unlock_hint_title">Wyłącz animację podpowiedzi odblokowania</string>
     <string name="ls_general_options">Opcje ekranu blokady</string>
     <string name="hide_avatar_title">Usuń awatar użytkownika (tryb wielu użytkowników)</string>
-    <string name="fingerprint_options">Fingerprint</string>
+    <string name="fingerprint_options">Odcisk palca</string>
     <string name="transparent_fingerprint_circle">Usuń okrąg tła z odcisku palca pod wyświetlaczem</string>
     <string name="transparent_fingerprint_circle_off">Okrąg wokół ikony odcisku palca jest aktywny</string>
     <string name="transparent_fingerprint_circle_on">Okrąg wokół ikony odcisku palca zostanie ukryty</string>
@@ -202,18 +202,18 @@
     <string name="nt_stat_mode_week">Obecny tydzień</string>
     <string name="nt_stat_mode_month">Obecny miesiąc</string>
     <string name="sb_ignored_icons_category">Status Bar ignored icons</string>
-    <string name="sb_ignored_icons">Status Bar</string>
-    <string name="sb_ignored_icons_statusbar">Select which icon will be hidden in statusbar</string>
-    <string name="sb_kg_ignored_icons">Lockscreen</string>
+    <string name="sb_ignored_icons">Pasek stanu</string>
+    <string name="sb_ignored_icons_statusbar">Wybierz ikony do ukrycia na pasku stanu</string>
+    <string name="sb_kg_ignored_icons">Ekran blokady</string>
     <string name="sb_ignored_icons_kg">Select which icon will be hidden in keyguard statusbar</string>
-    <string name="sb_qs_ignored_icons">Quick Settings</string>
-    <string name="sb_ignored_icons_qs">Select which icon will be hidden in quick settings</string>
+    <string name="sb_qs_ignored_icons">Szybkie ustawienia</string>
+    <string name="sb_ignored_icons_qs">Wybierz ikony do ukrycia w panelu szybkich ustawień</string>
     <string name="status_bar_volte">VoLTE</string>
     <string name="status_bar_vowifi">VoWiFi</string>
     <string name="status_bar_no_calling">No Calling</string>
     <string name="status_bar_call_strength">Call Strength</string>
-    <string name="status_bar_alarm_clock">Alarm Clock</string>
-    <string name="status_bar_rotate">Auto Rotate</string>
+    <string name="status_bar_alarm_clock">Alarm</string>
+    <string name="status_bar_rotate">Autoobracanie</string>
     <string name="status_bar_headset">Headset Connected</string>
     <string name="status_bar_data_saver">Data Saver</string>
     <string name="status_bar_ime">Input Method</string>
