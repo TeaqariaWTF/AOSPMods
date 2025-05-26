@@ -41,6 +41,7 @@ public class QSTileGrid extends XposedModPack {
 	private static boolean QSHapticEnabled = false;
 
 	private static int QQSTileRows = NOT_SET;
+	private static int QQSTileRowsL = NOT_SET;
 
 	public QSTileGrid(Context context) {
 		super(context);
@@ -64,15 +65,13 @@ public class QSTileGrid extends XposedModPack {
 		QSRowQty = Xprefs.getSliderInt( "QSRowQty", NOT_SET);
 		QSColQty = Xprefs.getSliderInt( "QSColQty", QS_COL_NOT_SET);
 		if(QSColQty < QS_COL_NOT_SET) QSColQty = QS_COL_NOT_SET;
-//		QQSTileQty = Xprefs.getSliderInt( "QQSTileQty", QQS_NOT_SET);
 
 		QSRowQtyL = Xprefs.getSliderInt( "QSRowQtyL", NOT_SET);
 		QSColQtyL = Xprefs.getSliderInt( "QSColQtyL", QS_COL_NOT_SET);
 		if(QSColQtyL < QS_COL_NOT_SET) QSColQtyL = QS_COL_NOT_SET;
-//		QQSTileQtyL = Xprefs.getSliderInt( "QQSTileQtyL", QQS_NOT_SET);
 
-		//TODO Add this pref
 		QQSTileRows = Xprefs.getSliderInt( "QQSRows", NOT_SET);
+		QQSTileRowsL = Xprefs.getSliderInt( "QQSRowsL", NOT_SET);
 
 		QSLabelScaleFactor = (Xprefs.getSliderFloat( "QSLabelScaleFactor", 0) + 100) / 100f;
 		QSSecondaryLabelScaleFactor = (Xprefs.getSliderFloat( "QSSecondaryLabelScaleFactor", 0) + 100) / 100f;
@@ -156,12 +155,11 @@ public class QSTileGrid extends XposedModPack {
 							public int getInteger(int id) {
 								if(mContext.getResources().getResourceName(id).endsWith("quick_settings_infinite_grid_num_columns")) {
 									boolean isLandscape = mContext.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
-									//TODO must remove *2 after UI supported it
 									if (isLandscape && QSColQtyL != NOT_SET) {
-										return 8; //QSColQtyL;
+										return QSColQtyL;
 									}
 									if (!isLandscape && QSColQty != NOT_SET) {
-										return 5; //QSColQty;
+										return QSColQty;
 									}
 								}
 
@@ -177,9 +175,13 @@ public class QSTileGrid extends XposedModPack {
 					param.args[0] = new FakeIntegerResource(mContext) {
 						@Override
 						public int getInteger(int id) {
-							if(getResourceName(id).endsWith("quick_qs_paginated_grid_num_rows") && QQSTileRows != NOT_SET)
+							if(getResourceName(id).endsWith("quick_qs_paginated_grid_num_rows"))
 							{
-								return QQSTileRows;
+								boolean isLandscape = mContext.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
+								if(isLandscape && QQSTileRowsL != NOT_SET)
+									return QQSTileRowsL;
+								else if(!isLandscape && QQSTileRows != NOT_SET)
+									return QQSTileRows;
 							}
 							return mContext.getResources().getInteger(id);
 						}
