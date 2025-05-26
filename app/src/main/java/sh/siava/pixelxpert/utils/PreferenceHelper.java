@@ -451,11 +451,11 @@ public class PreferenceHelper {
 
 			case "QSLabelScaleFactor":
 				float QSLabelScaleFactor = instance.mPreferences.getSliderFloat( "QSLabelScaleFactor", 0f);
-				return (QSLabelScaleFactor + 100) + "% " + fragmentCompat.getString(R.string.toggle_dark_apply);
+				return (QSLabelScaleFactor + 100) + "% " + "(" + fragmentCompat.getString(R.string.sysui_restart_needed) + ")";
 
 			case "QSSecondaryLabelScaleFactor":
 				float QSSecondaryLabelScaleFactor = instance.mPreferences.getSliderFloat( "QSSecondaryLabelScaleFactor", 0f);
-				return (QSSecondaryLabelScaleFactor + 100) + "% " + fragmentCompat.getString(R.string.toggle_dark_apply);
+				return (QSSecondaryLabelScaleFactor + 100) + "% " + "(" + fragmentCompat.getString(R.string.sysui_restart_needed) + ")";
 
 			case "GesPillWidthModPos":
 				return instance.mPreferences.getSliderInt("GesPillWidthModPos", 50) * 2 + fragmentCompat.getString(R.string.pill_width_summary);
