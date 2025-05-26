@@ -9,12 +9,12 @@ plugins {
 android {
 
 	namespace = "sh.siava.pixelxpert"
-	compileSdk = 35
+	compileSdk = 36
 
 	defaultConfig {
 		applicationId = "sh.siava.pixelxpert"
-		minSdk = 33
-		targetSdk = 35
+		minSdk = 36
+		targetSdk = 36
 		versionCode = 446
 		versionName = "canary-446"
 		setProperty("archivesBaseName", "PixelXpert.apk")
