@@ -10,6 +10,8 @@ import de.robv.android.xposed.XposedHelpers
 
 class ComposeFontUtils {
 	companion object {
+		var TILE_LABEL_STYLE = "TextAppearance.QS.TileLabel"
+		var TILE_SUBTITLE_STYLE = "TextAppearance.TileDetailsEntrySubTitle"
 		@SuppressLint("DiscouragedApi")
 		fun scaleTileFont(
 			context: Context,
@@ -18,8 +20,6 @@ class ComposeFontUtils {
 			secondaryLabelScale: Float
 		) : Long
 		{
-			var res = context.resources
-
 			var originalSpanStyle = SpanStyle(fontSize = 1.sp)
 			XposedHelpers.setObjectField(originalSpanStyle, "fontSize", currentSize)
 
@@ -27,11 +27,11 @@ class ComposeFontUtils {
 
 			var scaledFontSizeSP = originalFontSizeSP
 
-			if(originalFontSizeSP == getSpFromDimen(res, res.getIdentifier("content_text_size_for_large", "dimen", context.packageName)))
+			if(originalFontSizeSP == ResourceTools.getSpTextSizeFromStyle(context, TILE_LABEL_STYLE))
 			{
 				scaledFontSizeSP = originalFontSizeSP * labelScale
 			}
-			else if(originalFontSizeSP == getSpFromDimen(res, res.getIdentifier("content_text_size_for_medium", "dimen", context.packageName)))
+			else if(originalFontSizeSP == ResourceTools.getSpTextSizeFromStyle(context, TILE_SUBTITLE_STYLE))
 			{
 				scaledFontSizeSP = originalFontSizeSP * secondaryLabelScale
 			}
@@ -39,23 +39,6 @@ class ComposeFontUtils {
 			var scaledSpanStyle = SpanStyle(fontSize = scaledFontSizeSP.sp)
 
 			return XposedHelpers.getObjectField(scaledSpanStyle.fontSize, "packedValue") as Long
-		}
-
-		fun getSpFromDimen(
-			res: Resources,
-			dimenResId: Int
-		): Float? {
-			var typedValue = TypedValue()
-			try {
-				res.getValue(dimenResId, typedValue, true)
-				if (typedValue.type == TypedValue.TYPE_DIMENSION &&
-					typedValue.complexUnit == TypedValue.COMPLEX_UNIT_SP) {
-					return TypedValue.complexToFloat(typedValue.data)
-				}
-			} catch (_ : Throwable) {
-				return null
-			}
-			return null
 		}
 	}
 }
