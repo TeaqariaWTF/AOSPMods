@@ -115,12 +115,6 @@ public class PreferenceHelper {
 			case "displayOverride":
 				return instance.mPreferences.getBoolean("displayOverrideEnabled", false);
 
-			case "leftKeyguardShortcut":
-			case "leftKeyguardShortcutLongClick":
-			case "rightKeyguardShortcut":
-			case "rightKeyguardShortcutLongClick":
-				return Build.VERSION.SDK_INT < Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
-
 			case "carrierTextValue":
 				return instance.mPreferences.getBoolean("carrierTextMod", false);
 
