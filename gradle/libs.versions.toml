@@ -4,20 +4,19 @@ activity = "1.10.1"
 annotation = "1.9.1"
 appcompat = "1.7.0"
 cardview = "1.0.0"
-collapsingtoolbarlayoutSubtitle = "1.5.0"
 colorpicker = "1.1.0"
 commonsText = "1.12.0"
 concurrentFutures = "1.2.0"
 constraintlayout = "2.2.1"
 coreSplashscreen = "1.0.1"
 desugar_jdk_libs = "2.1.5"
-fragmentKtx = "1.8.6"
+fragmentKtx = "1.8.7"
 gson = "2.11.0"
 lottie = "6.6.2"
 markdown = "0.19.0"
 libsuVersion = "5.2.2"
 android-material = "1.12.0"
-navigationFragmentKtx = "2.8.9"
+navigationFragmentKtx = "2.9.0"
 objenesis = "3.3"
 ntpClient = "0.0.1-alpha11"
 persianDateTime = "4.2.1"
@@ -30,7 +29,7 @@ preferenceKtx = "1.2.1"
 remotepreferences = "0.8"
 swiperefreshlayout = "1.2.0-beta01"
 transition = "1.6.0"
-uiGeometry = "1.8.0"
+uiGeometry = "1.8.2"
 workRuntime = "2.10.1"
 kotlin = "2.0.21"
 
@@ -51,7 +50,6 @@ androidx-ui = { module = "androidx.compose.ui:ui" }
 androidx-ui-geometry = { module = "androidx.compose.ui:ui-geometry", version.ref = "uiGeometry" }
 androidx-work-runtime = { module = "androidx.work:work-runtime", version.ref = "workRuntime" }
 androidx-concurrent-futures = { module = "androidx.concurrent:concurrent-futures", version.ref = "concurrentFutures" }
-collapsingtoolbarlayout-subtitle = { module = "com.hendraanggrian.material:collapsingtoolbarlayout-subtitle", version.ref = "collapsingtoolbarlayoutSubtitle" }
 colorpicker = { module = "com.jaredrummler:colorpicker", version.ref = "colorpicker" }
 apache-commons-text = { module = "org.apache.commons:commons-text", version.ref = "commonsText" }
 desugar_jdk_libs = { module = "com.android.tools:desugar_jdk_libs", version.ref = "desugar_jdk_libs" }
