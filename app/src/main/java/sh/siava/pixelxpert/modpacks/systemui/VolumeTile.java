@@ -1,10 +1,10 @@
 package sh.siava.pixelxpert.modpacks.systemui;
 
 import static android.media.AudioManager.STREAM_MUSIC;
+import static android.service.quicksettings.Tile.STATE_ACTIVE;
 import static android.service.quicksettings.Tile.STATE_INACTIVE;
 import static java.lang.Math.round;
 import static sh.siava.pixelxpert.modpacks.XPrefs.Xprefs;
-import static sh.siava.pixelxpert.modpacks.systemui.ThemeManager_13.STATE_ACTIVE;
 import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.AudioManager;
 
 import android.annotation.SuppressLint;
