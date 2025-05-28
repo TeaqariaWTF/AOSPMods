@@ -1,3 +1,12 @@
+**canary-447**  
+- CAUTION: STARING THIS CANARY RELEASE, ANDROID VERSIONS PRIOR TO 16-QPR1 ARE NOT SUPPORTED ANYMORE. IF YOU ARE ON OLDER ANDROID VERSIONS, USE OLDER CANARY VERSIONS OR APPROPRIATE STABLE VERSIONS  
+- A16qpr1b1: Fixed keyguard text appearance  
+- A16qpr1b1: 1. Fixed quick settings quick pull down/up 2. Fixed statusbar longpress profile switch  
+- A16qpr1b1: Fixed double tap to sleep  
+- Update minimum SDK to API 36 (Android 16)  
+- A16qpr1b1: 1. dropped support for vertical tile layout 2. dropped support for QQS tile count 3. dropped support for QS haptic feedback mod 4. fixed tile column/row/label mods  
+- A16qpr1b1: Fixed notification expand buttons  
+  
 **canary-446**  
 - A15+: lockscreen flashlight shortcut now follows the global flashlight brightness value  
 - Added option to enable flashlight on/off fade effect  
