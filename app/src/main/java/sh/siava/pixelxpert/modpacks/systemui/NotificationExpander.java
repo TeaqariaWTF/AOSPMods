@@ -2,6 +2,7 @@ package sh.siava.pixelxpert.modpacks.systemui;
 
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static sh.siava.pixelxpert.modpacks.XPrefs.Xprefs;
@@ -11,6 +12,9 @@ import static sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectionTools.reAddVi
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Color;
+import android.graphics.PorterDuff;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -22,6 +26,7 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.core.graphics.ColorUtils;
 
 import java.util.Collection;
 import java.util.regex.Pattern;
@@ -51,6 +56,7 @@ public class NotificationExpander extends XposedModPack {
 	private LinearLayout BtnLayout;
 	private Object Scroller;
 	private Object NotifCollection = null;
+	private LinearLayout mDismissContainer;
 
 	public NotificationExpander(Context context) {
 		super(context);
@@ -114,7 +120,7 @@ public class NotificationExpander extends XposedModPack {
 					BtnLayout = new LinearLayout(mContext);
 					BtnLayout.setClipChildren(false);
 
-					LinearLayout.LayoutParams BtnFrameParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+					LinearLayout.LayoutParams BtnFrameParams = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, WRAP_CONTENT);
 					BtnFrameParams.gravity = Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM;
 					BtnLayout.setLayoutParams(BtnFrameParams);
 
@@ -126,7 +132,11 @@ public class NotificationExpander extends XposedModPack {
 
 					BtnLayout.addView(ExpandBtn);
 
-					reAddView(BtnLayout, FooterView.findViewById(idOf("dismiss_text")));
+
+					mDismissContainer = new LinearLayout(mContext);
+					reAddView(mDismissContainer, FooterView.findViewById(idOf("dismiss_text")));
+
+					BtnLayout.addView(mDismissContainer);
 
 					ExpandBtn.setOnClickListener(v -> expandAll(true));
 
@@ -175,16 +185,41 @@ public class NotificationExpander extends XposedModPack {
 
 		Button clearAllButton = BtnLayout.findViewById(idOf("dismiss_text"));
 
-		LinearLayout.LayoutParams dismissParams = (LinearLayout.LayoutParams) clearAllButton.getLayoutParams();
-		dismissParams.width = 0;
-		dismissParams.weight = 1;
+		clearAllButton.getLayoutParams().width = -1;
+
+		LinearLayout.LayoutParams dismissContainerParams = new LinearLayout.LayoutParams(0, WRAP_CONTENT);
+		dismissContainerParams.weight = 1;
+		mDismissContainer.setLayoutParams(dismissContainerParams);
 
 		@SuppressLint({"UseCompatLoadingForDrawables", "DiscouragedApi"})
-		Drawable backgroundShape = res.getDrawable(res.getIdentifier("notif_footer_btn_background", "drawable", mContext.getPackageName()), mContext.getTheme());
+		Drawable backgroundShape = res.getDrawable(
+				res.getIdentifier(
+						"notif_footer_btn_background",
+						"drawable",
+						mContext.getPackageName()),
+				mContext.getTheme());
+
+		@SuppressLint("DiscouragedApi")
+		Color foregroundColor = Color.valueOf(
+				res.getColor(
+						res.getIdentifier(
+								"surface_effect_1",
+								"color",
+								"android"),
+						mContext.getTheme()));
+
+		backgroundShape.setAlpha((int) (foregroundColor.alpha() * 255.0f));
+
+		PorterDuffColorFilter porterDuffColorFilter = new PorterDuffColorFilter(
+				ColorUtils.setAlphaComponent(
+						foregroundColor.toArgb(),
+						255),
+				PorterDuff.Mode.SRC_ATOP);
+
+		backgroundShape.setColorFilter(porterDuffColorFilter);
 
 		ExpandBtn.setBackground(backgroundShape);
 		CollapseBtn.setBackground(backgroundShape);
-
 
 		int textColor =  clearAllButton.getCurrentTextColor();
 		ExpandBtn.getForeground().setTint(textColor);
