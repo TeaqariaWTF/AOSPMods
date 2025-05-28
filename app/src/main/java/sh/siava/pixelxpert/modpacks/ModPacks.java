@@ -107,7 +107,7 @@ public class ModPacks {
 					modPacks.add(EasyUnlock.class);
 					modPacks.add(MultiStatusbarRows.class);
 //					modPacks.add(StatusbarMods.class);
-					modPacks.add(BatteryStyleManager.class);
+//					modPacks.add(BatteryStyleManager.class);
 					modPacks.add(GestureNavbarManager.class);
 					modPacks.add(QSFooterManager.class);
 					modPacks.add(KeyGuardPinScrambler.class);
