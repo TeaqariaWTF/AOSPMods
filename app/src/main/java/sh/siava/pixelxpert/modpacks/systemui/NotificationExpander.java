@@ -212,7 +212,7 @@ public class NotificationExpander extends XposedModPack {
 		else
 			btnParams.setMarginEnd(margin);
 
-		button.setLayoutParams(btnParams);
+		button.post(() -> button.setLayoutParams(btnParams));
 	}
 
 	public void expandAll(boolean expand) {
