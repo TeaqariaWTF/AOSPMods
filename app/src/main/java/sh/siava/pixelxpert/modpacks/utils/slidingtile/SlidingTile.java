@@ -13,7 +13,6 @@ import static de.robv.android.xposed.XposedHelpers.getIntField;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static de.robv.android.xposed.XposedHelpers.setObjectField;
 import static sh.siava.pixelxpert.modpacks.XPrefs.Xprefs;
-import static sh.siava.pixelxpert.modpacks.systemui.QSTileGrid.isQSHapticEnabled;
 import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.isDarkMode;
 import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.vibrate;
 
@@ -265,8 +264,6 @@ public abstract class SlidingTile extends XposedModPack {
 							mIsSliding = false;
 							saveCurrentState(mState, currentLevel);
 						} else {
-							if (isQSHapticEnabled())
-								vibrate(EFFECT_CLICK, USAGE_TOUCH);
 							handleClick(currentLevel);
 						}
 						return true;

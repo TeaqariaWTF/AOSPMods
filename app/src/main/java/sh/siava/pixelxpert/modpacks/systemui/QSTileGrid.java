@@ -38,7 +38,6 @@ public class QSTileGrid extends XposedModPack {
 	private static int QSColQtyL = QS_COL_NOT_SET;
 
 	private static float QSLabelScaleFactor = 1, QSSecondaryLabelScaleFactor = 1;
-	private static boolean QSHapticEnabled = false;
 
 	private static int QQSTileRows = NOT_SET;
 	private static int QQSTileRowsL = NOT_SET;
@@ -47,10 +46,6 @@ public class QSTileGrid extends XposedModPack {
 		super(context);
 	}
 
-	public static boolean isQSHapticEnabled()
-	{
-		return QSHapticEnabled;
-	}
 	@Override
 	public void updatePrefs(String... Key) {
 		if (Xprefs == null) return;
@@ -59,8 +54,6 @@ public class QSTileGrid extends XposedModPack {
 		{
 			SystemUtils.doubleToggleDarkMode();
 		}
-
-		QSHapticEnabled = Xprefs.getBoolean("QSHapticEnabled", false);
 
 		QSRowQty = Xprefs.getSliderInt( "QSRowQty", NOT_SET);
 		QSColQty = Xprefs.getSliderInt( "QSColQty", QS_COL_NOT_SET);
@@ -155,10 +148,10 @@ public class QSTileGrid extends XposedModPack {
 							public int getInteger(int id) {
 								if(mContext.getResources().getResourceName(id).endsWith("quick_settings_infinite_grid_num_columns")) {
 									boolean isLandscape = mContext.getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE;
-									if (isLandscape && QSColQtyL != NOT_SET) {
+									if (isLandscape && QSColQtyL != QS_COL_NOT_SET) {
 										return QSColQtyL;
 									}
-									if (!isLandscape && QSColQty != NOT_SET) {
+									if (!isLandscape && QSColQty != QS_COL_NOT_SET) {
 										return QSColQty;
 									}
 								}
