@@ -52,14 +52,9 @@ import sh.siava.pixelxpert.modpacks.systemui.ScreenRecord;
 import sh.siava.pixelxpert.modpacks.systemui.ScreenshotManager;
 import sh.siava.pixelxpert.modpacks.systemui.StatusIconTuner;
 import sh.siava.pixelxpert.modpacks.systemui.StatusbarGestures;
-import sh.siava.pixelxpert.modpacks.systemui.StatusbarMods;
-import sh.siava.pixelxpert.modpacks.systemui.ThemeManager_13;
-import sh.siava.pixelxpert.modpacks.systemui.ThemeManager_14;
 import sh.siava.pixelxpert.modpacks.systemui.ThermalProvider;
 import sh.siava.pixelxpert.modpacks.systemui.ThreeButtonNavMods;
 import sh.siava.pixelxpert.modpacks.systemui.UDFPSManager;
-import sh.siava.pixelxpert.modpacks.systemui.VolumeDialog;
-import sh.siava.pixelxpert.modpacks.systemui.VolumeTile;
 import sh.siava.pixelxpert.modpacks.telecom.CallVibrator;
 
 
@@ -96,33 +91,22 @@ public class ModPacks {
 				{
 					//load before others
 					modPacks.add(ThermalProvider.class);
-
-					if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE)
-					{
-						setOverlay("QSLightThemeOverlay", false, true, true);
-						modPacks.add(ThemeManager_14.class);
-					}
-					else
-					{
-						modPacks.add(ThemeManager_13.class);
-					}
-
-					modPacks.add(BatteryDataProvider.class);
-					modPacks.add(IconPacks.class);
-					modPacks.add(BrightnessRange.class);
-					modPacks.add(NotificationExpander.class);
-					modPacks.add(QSTileGrid.class);
-					modPacks.add(BrightnessSlider.class);
+					modPacks.add(BatteryDataProvider.class); //not checked yet
+					modPacks.add(IconPacks.class); //not checked yet
+					modPacks.add(BrightnessRange.class); //already good
+					modPacks.add(NotificationExpander.class); //good
+					modPacks.add(QSTileGrid.class); //counts are ok, prefs must be revised: no vertical, and counts should be fixed
+					modPacks.add(BrightnessSlider.class); //doesn't look good at all
 					modPacks.add(FeatureFlagsMods.class);
 					modPacks.add(ThreeButtonNavMods.class);
-					modPacks.add(ScreenGestures.class);
+					modPacks.add(ScreenGestures.class); //seems ok
 					modPacks.add(MiscSettings.class);
-					modPacks.add(StatusbarGestures.class);
-					modPacks.add(KeyguardMods.class);
+					modPacks.add(StatusbarGestures.class); //good
+					modPacks.add(KeyguardMods.class); //good
 					modPacks.add(UDFPSManager.class);
 					modPacks.add(EasyUnlock.class);
 					modPacks.add(MultiStatusbarRows.class);
-					modPacks.add(StatusbarMods.class);
+//					modPacks.add(StatusbarMods.class);
 					modPacks.add(BatteryStyleManager.class);
 					modPacks.add(GestureNavbarManager.class);
 					modPacks.add(QSFooterManager.class);
@@ -131,9 +115,9 @@ public class ModPacks {
 					modPacks.add(StatusbarSize.class);
 					modPacks.add(FlashLightLevel.class);
 					modPacks.add(NotificationManager.class);
-					modPacks.add(VolumeTile.class);
+//					modPacks.add(VolumeTile.class);
 					modPacks.add(ScreenRecord.class);
-					modPacks.add(VolumeDialog.class);
+//					modPacks.add(VolumeDialog.class);
 					modPacks.add(DepthWallpaper.class);
 					modPacks.add(KSURootReceiver.class);
 					modPacks.add(PowerMenu.class);
