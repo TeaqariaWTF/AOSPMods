@@ -181,55 +181,57 @@ public class NotificationExpander extends XposedModPack {
 	private void updateFooterBtn() {
 		if(FooterView == null) return; //Footer not inflated yet
 
-		Resources res = mContext.getResources();
+		FooterView.post(() -> {
+			Resources res = mContext.getResources();
 
-		Button clearAllButton = BtnLayout.findViewById(idOf("dismiss_text"));
+			Button clearAllButton = BtnLayout.findViewById(idOf("dismiss_text"));
 
-		clearAllButton.getLayoutParams().width = -1;
+			clearAllButton.getLayoutParams().width = -1;
 
-		LinearLayout.LayoutParams dismissContainerParams = new LinearLayout.LayoutParams(0, WRAP_CONTENT);
-		dismissContainerParams.weight = 1;
-		mDismissContainer.setLayoutParams(dismissContainerParams);
+			LinearLayout.LayoutParams dismissContainerParams = new LinearLayout.LayoutParams(0, WRAP_CONTENT);
+			dismissContainerParams.weight = 1;
+			mDismissContainer.setLayoutParams(dismissContainerParams);
 
-		@SuppressLint({"UseCompatLoadingForDrawables", "DiscouragedApi"})
-		Drawable backgroundShape = res.getDrawable(
-				res.getIdentifier(
-						"notif_footer_btn_background",
-						"drawable",
-						mContext.getPackageName()),
-				mContext.getTheme());
+			@SuppressLint({"UseCompatLoadingForDrawables", "DiscouragedApi"})
+			Drawable backgroundShape = res.getDrawable(
+					res.getIdentifier(
+							"notif_footer_btn_background",
+							"drawable",
+							mContext.getPackageName()),
+					mContext.getTheme());
 
-		@SuppressLint("DiscouragedApi")
-		Color foregroundColor = Color.valueOf(
-				res.getColor(
-						res.getIdentifier(
-								"surface_effect_1",
-								"color",
-								"android"),
-						mContext.getTheme()));
+			@SuppressLint("DiscouragedApi")
+			Color foregroundColor = Color.valueOf(
+					res.getColor(
+							res.getIdentifier(
+									"surface_effect_1",
+									"color",
+									"android"),
+							mContext.getTheme()));
 
-		backgroundShape.setAlpha((int) (foregroundColor.alpha() * 255.0f));
+			backgroundShape.setAlpha((int) (foregroundColor.alpha() * 255.0f));
 
-		PorterDuffColorFilter porterDuffColorFilter = new PorterDuffColorFilter(
-				ColorUtils.setAlphaComponent(
-						foregroundColor.toArgb(),
-						255),
-				PorterDuff.Mode.SRC_ATOP);
+			PorterDuffColorFilter porterDuffColorFilter = new PorterDuffColorFilter(
+					ColorUtils.setAlphaComponent(
+							foregroundColor.toArgb(),
+							255),
+					PorterDuff.Mode.SRC_ATOP);
 
-		backgroundShape.setColorFilter(porterDuffColorFilter);
+			backgroundShape.setColorFilter(porterDuffColorFilter);
 
-		ExpandBtn.setBackground(backgroundShape);
-		CollapseBtn.setBackground(backgroundShape);
+			ExpandBtn.setBackground(backgroundShape);
+			CollapseBtn.setBackground(backgroundShape);
 
-		int textColor =  clearAllButton.getCurrentTextColor();
-		ExpandBtn.getForeground().setTint(textColor);
-		CollapseBtn.getForeground().setTint(textColor);
+			int textColor =  clearAllButton.getCurrentTextColor();
+			ExpandBtn.getForeground().setTint(textColor);
+			CollapseBtn.getForeground().setTint(textColor);
 
-		setLayouParams(ExpandBtn, true);
-		setLayouParams(CollapseBtn, false);
+			setLayouParams(ExpandBtn, true);
+			setLayouParams(CollapseBtn, false);
 
-		ExpandBtn.setVisibility(notificationExpandallEnabled ? VISIBLE : GONE);
-		CollapseBtn.setVisibility(ExpandBtn.getVisibility());
+			ExpandBtn.setVisibility(notificationExpandallEnabled ? VISIBLE : GONE);
+			CollapseBtn.setVisibility(ExpandBtn.getVisibility());
+		});
 	}
 
 	private void setLayouParams(Button button, boolean marginToLeft) {
