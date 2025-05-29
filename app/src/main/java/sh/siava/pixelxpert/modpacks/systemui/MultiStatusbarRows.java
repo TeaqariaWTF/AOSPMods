@@ -46,8 +46,6 @@ public class MultiStatusbarRows extends XposedModPack {
 
 	@Override
 	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
-		if (!lpParam.packageName.equals(listenPackage)) return;
-
 		ReflectedClass IconManagerClass = ReflectedClass.ofIfPossible("com.android.systemui.statusbar.phone.ui.IconManager");
 		if(IconManagerClass.getClazz() == null) //pre 15beta3
 		{
