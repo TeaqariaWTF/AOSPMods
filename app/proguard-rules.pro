@@ -21,6 +21,9 @@
     <init>(android.content.Context);
 }
 
+# AndroidX
+-keepnames class androidx.compose.ui.**
+
 #pytorch library
 -keep class org.pytorch.** { *; }
 -keep class com.facebook.** { *; }
