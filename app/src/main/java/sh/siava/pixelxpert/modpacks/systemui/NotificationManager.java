@@ -11,7 +11,6 @@ import sh.siava.pixelxpert.modpacks.Constants;
 import sh.siava.pixelxpert.modpacks.XPLauncher;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
-import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass.ReflectionConsumer;
 
 @SuppressWarnings("RedundantThrows")
 public class NotificationManager extends XposedModPack {
@@ -37,30 +36,14 @@ public class NotificationManager extends XposedModPack {
 
 	@Override
 	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
-		ReflectionConsumer headsupFinder = param -> {
-			HeadsUpManager = param.thisObject;
+		ReflectedClass HeadsUpManagerClass = ReflectedClass.of("com.android.systemui.statusbar.notification.headsup.HeadsUpManagerImpl");
 
-			applyDurations();
-		};
-
-		try
-		{ //A15 QPR2
-			ReflectedClass HeadsUpManagerClass = ReflectedClass.of("com.android.systemui.statusbar.notification.headsup.HeadsUpManagerImpl");
-			HeadsUpManagerClass.afterConstruction().run(headsupFinder);
-		}
-		catch (Throwable ignored){}
-
-		try { //A15 QPR1 and older
-			ReflectedClass HeadsUpManagerClass = ReflectedClass.of("com.android.systemui.statusbar.policy.HeadsUpManager");
-			HeadsUpManagerClass.afterConstruction().run(headsupFinder); //interface in 14QPR2, class in older
-		} catch (Throwable ignored){}
-
-		try //A14 QPR2
-		{
-			ReflectedClass BaseHeadsUpManagerClass = ReflectedClass.of("com.android.systemui.statusbar.policy.BaseHeadsUpManager");
-			BaseHeadsUpManagerClass.afterConstruction().run(headsupFinder);
-		}
-		catch (Throwable ignored){}
+		HeadsUpManagerClass
+				.afterConstruction()
+				.run(param -> {
+					HeadsUpManager = param.thisObject;
+					applyDurations();
+				});
 
 		ReflectedClass.of(StatusBarNotification.class)
 				.after("isNonDismissable")
@@ -74,22 +57,8 @@ public class NotificationManager extends XposedModPack {
 	private void applyDurations() {
 		if(HeadsUpManager != null && HeadupAutoDismissNotificationDecay > 0)
 		{
-			try { //A16
-				setObjectField(HeadsUpManager, "mMinimumDisplayTimeDefault", Math.round(HeadupAutoDismissNotificationDecay / 2.5f));
-			}
-			catch (Throwable ignored) { //Older
-				setObjectField(HeadsUpManager, "mMinimumDisplayTime", Math.round(HeadupAutoDismissNotificationDecay / 2.5f));
-			}
-
-
-			try //A14 QPR2B3
-			{
-				setObjectField(HeadsUpManager, "mAutoDismissTime", HeadupAutoDismissNotificationDecay);
-			}
-			catch (Throwable ignored) //Older
-			{
-				setObjectField(HeadsUpManager, "mAutoDismissNotificationDecay", HeadupAutoDismissNotificationDecay);
-			}
+			setObjectField(HeadsUpManager, "mMinimumDisplayTimeDefault", Math.round(HeadupAutoDismissNotificationDecay / 2.5f));
+			setObjectField(HeadsUpManager, "mAutoDismissTime", HeadupAutoDismissNotificationDecay);
 		}
 	}
 
