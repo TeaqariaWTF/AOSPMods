@@ -278,6 +278,7 @@
     <string name="qs_tile_qty_landscape">W orientacji poziomej</string>
     <string name="qs_mod_category_misc_title">Różne</string>
     <string name="charging_info_on_qs">Pokaż informacje o ładowaniu w panelu szybkich ustawień</string>
+    <string name="qqs_rows_number">Number of quick QS rows</string>
     <string name="qs_rows_number">Liczba rzędów QS</string>
     <string name="qs_cols_number">Liczba kolumn QS</string>
     <string name="qqs_tiles_number">Maksymalna liczba płytek w Quick QS (maks. 2 rzędy)</string>

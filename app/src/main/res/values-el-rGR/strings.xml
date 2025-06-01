@@ -278,6 +278,7 @@
     <string name="qs_tile_qty_landscape">Σε οριζόντιο προσανατολισμό</string>
     <string name="qs_mod_category_misc_title">Διάφορα</string>
     <string name="charging_info_on_qs">Εμφάνιση πληροφοριών φόρτισης στον πίνακα γρήγορων ρυθμίσεων</string>
+    <string name="qqs_rows_number">Number of quick QS rows</string>
     <string name="qs_rows_number">Αριθμός σειρών QS</string>
     <string name="qs_cols_number">Αριθμός στηλών QS</string>
     <string name="qqs_tiles_number">Μέγιστα πλακίδια στο Quick QS (μέγιστο 2 σειρές)</string>

@@ -278,6 +278,7 @@
     <string name="qs_tile_qty_landscape">橫屏時</string>
     <string name="qs_mod_category_misc_title">雜項</string>
     <string name="charging_info_on_qs">在快速設定面板上顯示充電信息</string>
+    <string name="qqs_rows_number">Number of quick QS rows</string>
     <string name="qs_rows_number">方塊面板行數</string>
     <string name="qs_cols_number">方塊面板列數</string>
     <string name="qqs_tiles_number">方塊面板最大方塊數量 (最大2行)</string>

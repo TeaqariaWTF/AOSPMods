@@ -278,6 +278,7 @@
     <string name="qs_tile_qty_landscape">В горизонтальной ориентации</string>
     <string name="qs_mod_category_misc_title">Разное</string>
     <string name="charging_info_on_qs">Отображать информацию о зарядке в панели быстрых настроек</string>
+    <string name="qqs_rows_number">Number of quick QS rows</string>
     <string name="qs_rows_number">Количество рядов быстрых настроек</string>
     <string name="qs_cols_number">Количество столбцов быстрых настроек</string>
     <string name="qqs_tiles_number">Максимальное количество плиток в полураскрытых быстрых настройках (максимум 2 строки)</string>

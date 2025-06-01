@@ -278,6 +278,7 @@
     <string name="qs_tile_qty_landscape">横屏时</string>
     <string name="qs_mod_category_misc_title">杂项</string>
     <string name="charging_info_on_qs">在快速设置面板上显示充电信息</string>
+    <string name="qqs_rows_number">Number of quick QS rows</string>
     <string name="qs_rows_number">磁贴面板行数</string>
     <string name="qs_cols_number">磁贴面板列数</string>
     <string name="qqs_tiles_number">磁贴面板最大磁贴数量 (最大2行)</string>

@@ -278,6 +278,7 @@
     <string name="qs_tile_qty_landscape">Yatay yönlendirmede</string>
     <string name="qs_mod_category_misc_title">Çeşitli</string>
     <string name="charging_info_on_qs">Hızlı Ayarlar panelinde şarj bilgisini göster</string>
+    <string name="qqs_rows_number">Hızlı Ayarlar satırlarının sayısı</string>
     <string name="qs_rows_number">Hızlı Ayarlar satır sayısı</string>
     <string name="qs_cols_number">Hızlı Ayarlar sütun sayısı</string>
     <string name="qqs_tiles_number">Hızlı Hızlı Ayarlarda maksimum kutucuk sayısı (maks 2 satır)</string>
