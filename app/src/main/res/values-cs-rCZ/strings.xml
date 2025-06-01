@@ -278,6 +278,7 @@
     <string name="qs_tile_qty_landscape">V orientaci na šířku</string>
     <string name="qs_mod_category_misc_title">Ostatní</string>
     <string name="charging_info_on_qs">Zobrazit informace o nabíjení na panelu QS</string>
+    <string name="qqs_rows_number">Number of quick QS rows</string>
     <string name="qs_rows_number">Počet řádků QS</string>
     <string name="qs_cols_number">Počet sloupců QS</string>
     <string name="qqs_tiles_number">Maximální počet dlaždic v rychlém QS (max. 2 řádky)</string>

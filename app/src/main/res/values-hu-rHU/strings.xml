@@ -278,6 +278,7 @@
     <string name="qs_tile_qty_landscape">Fekvő tájolásban</string>
     <string name="qs_mod_category_misc_title">Egyebek</string>
     <string name="charging_info_on_qs">Töltési információk kijelzése a gyors beállítások panelen</string>
+    <string name="qqs_rows_number">Number of quick QS rows</string>
     <string name="qs_rows_number">QS-sorok száma</string>
     <string name="qs_cols_number">QS oszlopok száma</string>
     <string name="qqs_tiles_number">Maximális csempék a Quick QS-ben (max. 2 sor)</string>

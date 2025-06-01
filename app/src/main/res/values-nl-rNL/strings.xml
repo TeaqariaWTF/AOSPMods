@@ -278,6 +278,7 @@
     <string name="qs_tile_qty_landscape">In landschapsoriëntatie</string>
     <string name="qs_mod_category_misc_title">Diverse</string>
     <string name="charging_info_on_qs">Laat oplaadniveau zien op QS scherm</string>
+    <string name="qqs_rows_number">Number of quick QS rows</string>
     <string name="qs_rows_number">QS Rijen nummer</string>
     <string name="qs_cols_number">Aantal QS-kolommen</string>
     <string name="qqs_tiles_number">Maximum aantal tegels in Quick QS (max. 2 rijen)</string>

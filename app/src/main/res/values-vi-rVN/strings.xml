@@ -278,6 +278,7 @@
     <string name="qs_tile_qty_landscape">Theo hướng ngang</string>
     <string name="qs_mod_category_misc_title">Tuỳ chỉnh nhỏ khác</string>
     <string name="charging_info_on_qs">Hiển thị thông tin sạc trên bảng QS</string>
+    <string name="qqs_rows_number">Number of quick QS rows</string>
     <string name="qs_rows_number">Số hàng bảng cài đặt nhanh</string>
     <string name="qs_cols_number">Số cột bảng cài đặt nhanh</string>
     <string name="qqs_tiles_number">Tối đa số ô trong bảng cài đặt nhanh (tối đa 2 hàng)</string>

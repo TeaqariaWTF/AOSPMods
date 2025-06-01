@@ -278,6 +278,7 @@
     <string name="qs_tile_qty_landscape">I landskapsorientering</string>
     <string name="qs_mod_category_misc_title">Diverse</string>
     <string name="charging_info_on_qs">Vis ladeinfo i QS-panelet</string>
+    <string name="qqs_rows_number">Number of quick QS rows</string>
     <string name="qs_rows_number">Antall QS-rader</string>
     <string name="qs_cols_number">Antall QS-kolonner</string>
     <string name="qqs_tiles_number">Maksimalt antall fliser i Quick QS (maks 2 rader)</string>

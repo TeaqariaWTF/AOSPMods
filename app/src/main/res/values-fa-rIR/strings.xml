@@ -278,6 +278,7 @@
     <string name="qs_tile_qty_landscape">در جهت گیری منظره</string>
     <string name="qs_mod_category_misc_title">متفرقه</string>
     <string name="charging_info_on_qs">نمایش اطلاعات شارژ در پنل QS</string>
+    <string name="qqs_rows_number">Number of quick QS rows</string>
     <string name="qs_rows_number">تعداد ردیفهای تنظیمات سریع</string>
     <string name="qs_cols_number">تعداد ستونهای تنظیمات سریع</string>
     <string name="qqs_tiles_number">حداکثر آیتمهای تنظیمات سریع در QQS (حداکثر 2 ردیف)</string>

@@ -278,6 +278,7 @@
     <string name="qs_tile_qty_landscape">В альбомній орієнтації</string>
     <string name="qs_mod_category_misc_title">Різне</string>
     <string name="charging_info_on_qs">Показати інформацію про заряджання на панелі швидких налаштувань</string>
+    <string name="qqs_rows_number">Number of quick QS rows</string>
     <string name="qs_rows_number">Номер рядків Швидких налаштувань</string>
     <string name="qs_cols_number">Кількість колонок QS</string>
     <string name="qqs_tiles_number">Максимальна кількість плиток у Quick QS (максимум 2 рядки)</string>

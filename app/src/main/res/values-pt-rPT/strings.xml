@@ -278,6 +278,7 @@
     <string name="qs_tile_qty_landscape">Em modo paisagem</string>
     <string name="qs_mod_category_misc_title">Diversos</string>
     <string name="charging_info_on_qs">Mostrar informações de carregamento no painel das DR</string>
+    <string name="qqs_rows_number">Número de linhas no topo das QS</string>
     <string name="qs_rows_number">Número de linhas</string>
     <string name="qs_cols_number">Número de colunas das DR</string>
     <string name="qqs_tiles_number">Número de atalhos no painel rápido das DR (2 linhas máx.)</string>

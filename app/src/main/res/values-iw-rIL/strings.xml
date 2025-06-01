@@ -278,6 +278,7 @@
     <string name="qs_tile_qty_landscape">בכיוון נוף</string>
     <string name="qs_mod_category_misc_title">Miscellaneous</string>
     <string name="charging_info_on_qs">Show charging info on QS panel</string>
+    <string name="qqs_rows_number">Number of quick QS rows</string>
     <string name="qs_rows_number">מספר שורות QS</string>
     <string name="qs_cols_number">מספר עמודות QS</string>
     <string name="qqs_tiles_number">מספר מרבי של אריחים ב- QS מהיר (עד 2 שורות)</string>

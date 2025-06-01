@@ -278,6 +278,7 @@
     <string name="qs_tile_qty_landscape">가로 화면 설정</string>
     <string name="qs_mod_category_misc_title">Miscellaneous</string>
     <string name="charging_info_on_qs">빠른 설정창에 충전 정보 표시</string>
+    <string name="qqs_rows_number">Number of quick QS rows</string>
     <string name="qs_rows_number">빠른 설정 가로 행 개수</string>
     <string name="qs_cols_number">빠른 설정 세로 열 개수</string>
     <string name="qqs_tiles_number">최대 타일 개수 (최대 2 가로 행)</string>

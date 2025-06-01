@@ -278,6 +278,7 @@
     <string name="qs_tile_qty_landscape">Im Querformat</string>
     <string name="qs_mod_category_misc_title">Verschiedenes</string>
     <string name="charging_info_on_qs">Ladeinformationen im QS-Panel anzeigen</string>
+    <string name="qqs_rows_number">Number of quick QS rows</string>
     <string name="qs_rows_number">Anzahl Reihen in den Schnelleinstellungen</string>
     <string name="qs_cols_number">Anzahl der QS-Spalten</string>
     <string name="qqs_tiles_number">Maximale Kacheln in Quick QS (max. 2 Zeilen)</string>
