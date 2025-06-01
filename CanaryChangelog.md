@@ -1,3 +1,10 @@
+**canary-448**  
+- Fixed Statusbar Mods, excluding battery icon  
+- A16qpr1b1: Fixed heads-up notification timer  
+- Fixed showing security input on device wake  
+- Fixed notification expand/collapse button placement and color  
+- Fixed systemui crash on certain preferences  
+  
 **canary-447**  
 - CAUTION: STARING THIS CANARY RELEASE, ANDROID VERSIONS PRIOR TO 16-QPR1 ARE NOT SUPPORTED ANYMORE. IF YOU ARE ON OLDER ANDROID VERSIONS, USE OLDER CANARY VERSIONS OR APPROPRIATE STABLE VERSIONS  
 - A16qpr1b1: Fixed keyguard text appearance  
