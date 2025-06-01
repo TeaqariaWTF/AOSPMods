@@ -265,7 +265,7 @@ public class NetworkTraffic extends FrameLayout {
 		mContext.getResources().getValue(mContext.getResources().getIdentifier("status_bar_icon_scale_factor", "dimen", mContext.getPackageName()), typedValue, true);
 		float iconScaleFactor = typedValue.getFloat() * .65f;
 
-		int Height = mContext.getResources().getDimensionPixelSize(mContext.getResources().getIdentifier("status_bar_battery_icon_height", "dimen", mContext.getPackageName()));
+		int Height = mContext.getResources().getDimensionPixelSize(mContext.getResources().getIdentifier("status_bar_battery_unified_icon_height", "dimen", mContext.getPackageName()));
 		ImageView iconR = new ImageView(mContext);
 		iconR.setImageDrawable(ResourcesCompat.getDrawable(res, R.drawable.ic_chevron_down, mContext.getTheme()));
 		iconR.setLayoutParams(new LinearLayout.LayoutParams((int) (Height * iconScaleFactor), (int) (Height * iconScaleFactor)));

@@ -52,6 +52,7 @@ import sh.siava.pixelxpert.modpacks.systemui.ScreenRecord;
 import sh.siava.pixelxpert.modpacks.systemui.ScreenshotManager;
 import sh.siava.pixelxpert.modpacks.systemui.StatusIconTuner;
 import sh.siava.pixelxpert.modpacks.systemui.StatusbarGestures;
+import sh.siava.pixelxpert.modpacks.systemui.StatusbarMods;
 import sh.siava.pixelxpert.modpacks.systemui.ThermalProvider;
 import sh.siava.pixelxpert.modpacks.systemui.ThreeButtonNavMods;
 import sh.siava.pixelxpert.modpacks.systemui.UDFPSManager;
@@ -90,38 +91,38 @@ public class ModPacks {
 				else
 				{
 					//load before others
-					modPacks.add(ThermalProvider.class);
+					modPacks.add(ThermalProvider.class); //good already
 					modPacks.add(BatteryDataProvider.class); //not checked yet
 					modPacks.add(IconPacks.class); //not checked yet
 					modPacks.add(BrightnessRange.class); //already good
 					modPacks.add(NotificationExpander.class); //good
-					modPacks.add(QSTileGrid.class); //counts are ok, prefs must be revised: no vertical, and counts should be fixed
-					modPacks.add(BrightnessSlider.class); //doesn't look good at all
+					modPacks.add(QSTileGrid.class); //good
+//					modPacks.add(BrightnessSlider.class); //doesn't look good at all
 					modPacks.add(FeatureFlagsMods.class);
 					modPacks.add(ThreeButtonNavMods.class);
 					modPacks.add(ScreenGestures.class); //seems ok
 					modPacks.add(MiscSettings.class);
 					modPacks.add(StatusbarGestures.class); //good
 					modPacks.add(KeyguardMods.class); //good
-					modPacks.add(UDFPSManager.class);
-					modPacks.add(EasyUnlock.class);
-					modPacks.add(MultiStatusbarRows.class);
-//					modPacks.add(StatusbarMods.class);
+					modPacks.add(UDFPSManager.class); //good
+					modPacks.add(EasyUnlock.class); //good
+					modPacks.add(MultiStatusbarRows.class); //good already
+					modPacks.add(StatusbarMods.class);
 //					modPacks.add(BatteryStyleManager.class);
-					modPacks.add(GestureNavbarManager.class);
+					modPacks.add(GestureNavbarManager.class); //good already
 					modPacks.add(QSFooterManager.class);
-					modPacks.add(KeyGuardPinScrambler.class);
-					modPacks.add(FingerprintWhileDozing.class);
+					modPacks.add(KeyGuardPinScrambler.class); //good already
+					modPacks.add(FingerprintWhileDozing.class); //good already
 					modPacks.add(StatusbarSize.class);
-					modPacks.add(FlashLightLevel.class);
+//					modPacks.add(FlashLightLevel.class); //dead!
 					modPacks.add(NotificationManager.class);
 //					modPacks.add(VolumeTile.class);
 					modPacks.add(ScreenRecord.class);
 //					modPacks.add(VolumeDialog.class);
-					modPacks.add(DepthWallpaper.class);
+//					modPacks.add(DepthWallpaper.class); //nope
 					modPacks.add(KSURootReceiver.class);
-					modPacks.add(PowerMenu.class);
-					modPacks.add(StatusIconTuner.class);
+					modPacks.add(PowerMenu.class); //good already
+					modPacks.add(StatusIconTuner.class); //good already
 				}
 				break;
 

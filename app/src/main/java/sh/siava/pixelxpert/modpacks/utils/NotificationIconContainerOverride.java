@@ -151,19 +151,6 @@ public class NotificationIconContainerOverride {
 				setObjectField(iconState, xTranslationField, thisObject.getWidth() - xTranslation - view.getWidth());
 			}
 		}
-		Object mIsolatedIcon = getObjectField(thisObject, "mIsolatedIcon");
-		if (mIsolatedIcon != null) {
-			Object iconState = callMethod(mIconStates, "get", mIsolatedIcon);
-			if (iconState != null) {
-				// Most of the time the icon isn't yet added when this is called but only happening
-				// later. The isolated icon position left should equal to the mIsolatedIconLocation
-				// to ensure the icon be put at the center of the HUN icon placeholder,
-				// {@See HeadsUpAppearanceController#updateIsolatedIconLocation}.
-				setObjectField(iconState, "visibleState", STATE_ICON);
-				setObjectField(iconState, xTranslationField, getIntField(getObjectField(thisObject, "mIsolatedIconLocation"), "left") - ((int[]) getObjectField(thisObject, "mAbsolutePosition"))[0]
-						- (1 - getFloatField(getObjectField(thisObject, "mIsolatedIcon"), "mIconScale")) * (int) callMethod(mIsolatedIcon, "getWidth") / 2.0f);
-			}
-		}
 	}
 
 	private static boolean shouldForceOverflow(int i, int speedBumpIndex, float iconAppearAmount,
