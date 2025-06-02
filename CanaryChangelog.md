@@ -1,3 +1,6 @@
+**canary-449**  
+- A16qpr1b1: Fixed depth effect on lockscreen wallpaper  
+  
 **canary-448**  
 - Fixed Statusbar Mods, excluding battery icon  
 - A16qpr1b1: Fixed heads-up notification timer  
