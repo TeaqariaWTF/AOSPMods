@@ -12,7 +12,6 @@ import static sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectionTools.reAddVi
 import android.annotation.SuppressLint;
 import android.app.WallpaperManager;
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.Rect;
@@ -70,29 +69,38 @@ public class DepthWallpaper extends XposedModPack {
 
 	@Override
 	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
-		ReflectedClass QSImplClass = ReflectedClass.ofIfPossible("com.android.systemui.qs.QSImpl");
-		if(QSImplClass.getClazz() == null) //Older versions of QS
-		{
-			QSImplClass = ReflectedClass.of("com.android.systemui.qs.QSFragment");
-		}
-
 		ReflectedClass CanvasEngineClass = ReflectedClass.of("com.android.systemui.wallpapers.ImageWallpaper$CanvasEngine");
-		ReflectedClass CentralSurfacesImplClass = ReflectedClass.of("com.android.systemui.statusbar.phone.CentralSurfacesImpl");
 		ReflectedClass ScrimControllerClass = ReflectedClass.of("com.android.systemui.statusbar.phone.ScrimController");
 		ReflectedClass ScrimViewClass = ReflectedClass.of("com.android.systemui.scrim.ScrimView");
-
-
 		ReflectedClass AodBurnInLayerClass = ReflectedClass.ofIfPossible("com.android.systemui.keyguard.ui.view.layout.sections.AodBurnInLayer");
+		ReflectedClass FlexClockViewClass = ReflectedClass.of("com.android.systemui.shared.clocks.view.FlexClockView");
 
-		//A15 compose keyguard
+		FlexClockViewClass
+				.afterConstruction()
+				.run(param -> {
+					View thisView = (View) param.thisObject;
+					thisView.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+						@Override
+						public void onViewAttachedToWindow(@NonNull View v) {
+							v.setZ(-1);
+						}
+
+						@Override
+						public void onViewDetachedFromWindow(@NonNull View v) {
+
+						}
+					});
+
+					thisView.addOnLayoutChangeListener((v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) ->
+							v.setZ(-1));
+				});
+
 		AodBurnInLayerClass
 				.afterConstruction()
 				.run(param -> {
 					View entryV = (View) param.thisObject;
 
 					if(!DWallpaperEnabled) return;
-
-					Resources res = mContext.getResources();
 
 					entryV.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
 						@SuppressLint("DiscouragedApi")
@@ -105,9 +113,7 @@ public class DepthWallpaper extends XposedModPack {
 									createLayers();
 								}
 
-								reAddView(rootView, mLockScreenSubject, 0);
-								reAddView(rootView, rootView.findViewById(res.getIdentifier("lockscreen_clock_view_large", "id", mContext.getPackageName())), 0);
-								reAddView(rootView, rootView.findViewById(res.getIdentifier("lockscreen_clock_view", "id", mContext.getPackageName())),0);
+								reAddView(rootView, mLockScreenSubject);
 							});
 						}
 
@@ -122,6 +128,7 @@ public class DepthWallpaper extends XposedModPack {
 				.run(param -> {
 					if(!mLayersCreated) return;
 
+					//noinspection ConstantValue
 					if(DWonAOD
 							&& !getObjectField(mScrimController, "mState").toString().equals("KEYGUARD")) {
 						mLockScreenSubject.post(() -> mLockScreenSubject.setAlpha(DWOpacity));
@@ -141,28 +148,6 @@ public class DepthWallpaper extends XposedModPack {
 
 						mLockScreenSubject.post(() -> mLockScreenSubject.setAlpha(subjectAlpha));
 					}
-				});
-
-		CentralSurfacesImplClass
-				.after("start")
-				.run(param -> {
-					if(!DWallpaperEnabled) return;
-
-					Resources res = mContext.getResources();
-
-					View scrimBehind = (View) getObjectField(mScrimController, "mScrimBehind");
-					ViewGroup rootView = (ViewGroup) scrimBehind.getParent();
-
-					@SuppressLint("DiscouragedApi")
-					ViewGroup targetView = rootView.findViewById(res.getIdentifier("notification_container_parent", "id", mContext.getPackageName()));
-
-					if(!mLayersCreated) {
-						createLayers();
-					}
-
-					reAddView(rootView, mWallpaperBackground, 0);
-
-					targetView.addView(mLockScreenSubject,1);
 				});
 
 		CanvasEngineClass
@@ -260,15 +245,6 @@ public class DepthWallpaper extends XposedModPack {
 		ScrimControllerClass
 				.after("applyAndDispatchState")
 				.run(param -> setDepthWallpaper());
-
-		QSImplClass
-				.before("setQsExpansion")
-				.run(param -> {
-					if((boolean) callMethod(param.thisObject, "isKeyguardState"))
-					{
-						setDepthWallpaper();
-					}
-				});
 	}
 	private boolean assertCache(Bitmap wallpaperBitmap) {
 

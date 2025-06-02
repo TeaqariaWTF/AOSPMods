@@ -119,7 +119,7 @@ public class ModPacks {
 //					modPacks.add(VolumeTile.class);
 					modPacks.add(ScreenRecord.class);
 //					modPacks.add(VolumeDialog.class);
-//					modPacks.add(DepthWallpaper.class); //nope
+					modPacks.add(DepthWallpaper.class); //nope
 					modPacks.add(KSURootReceiver.class);
 					modPacks.add(PowerMenu.class); //good already
 					modPacks.add(StatusIconTuner.class); //good already

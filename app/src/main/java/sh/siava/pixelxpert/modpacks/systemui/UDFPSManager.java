@@ -10,7 +10,10 @@ import static sh.siava.pixelxpert.modpacks.utils.toolkit.ColorUtils.getColorAttr
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.drawable.ShapeDrawable;
+import android.view.View;
 import android.widget.ImageView;
+
+import androidx.annotation.NonNull;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.modpacks.Constants;
@@ -26,7 +29,7 @@ public class UDFPSManager extends XposedModPack {
 	private static final int OPAQUE = 255;
 	private static boolean transparentBG = false;
 	private static boolean transparentFG = false;
-	private Object mDeviceEntryIconView;
+	private View mDeviceEntryIconView;
 	private ReflectedClass StateFlowImplClass;
 	private ReflectedClass ReadonlyStateFlowClass;
 
@@ -84,9 +87,26 @@ public class UDFPSManager extends XposedModPack {
 			DeviceEntryIconViewClass
 					.afterConstruction()
 					.run(param -> {
-						mDeviceEntryIconView = param.thisObject;
+						mDeviceEntryIconView = (View) param.thisObject;
 
 						setUDFPSGraphics(false);
+
+
+						//making sure it remains on top on wallpaper subject
+						mDeviceEntryIconView.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+							@Override
+							public void onViewAttachedToWindow(@NonNull View v) {
+								v.setZ(100);
+							}
+
+							@Override
+							public void onViewDetachedFromWindow(@NonNull View v) {
+
+							}
+						});
+
+						mDeviceEntryIconView.addOnLayoutChangeListener((v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) ->
+								v.setZ(100));
 					});
 		}
 		else

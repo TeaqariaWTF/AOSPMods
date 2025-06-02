@@ -219,6 +219,7 @@ public class KeyguardMods extends XposedModPack {
 							mComposeKGMiddleCustomTextView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
 							mComposeKGMiddleCustomTextView.setLetterSpacing(.03f);
 							mComposeKGMiddleCustomTextView.setId(View.generateViewId());
+							mComposeKGMiddleCustomTextView.setZ(100f);
 						}
 
 						try {

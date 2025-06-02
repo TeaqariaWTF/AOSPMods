@@ -99,6 +99,9 @@ public class ReflectionTools {
 		}).start();
 	}
 
+	/**
+	 Takes the view, removes it from wherever it is, and adds it to the parent we ask
+	 */
 	public static void reAddView(ViewGroup parentView, View childView) {
 		if(childView == null) return;
 
@@ -107,6 +110,10 @@ public class ReflectionTools {
 		} catch (Throwable ignored) {}
 		parentView.addView(childView);
 	}
+
+	/**
+	Takes the view, removes it from wherever it is, and adds it to the parent we ask for the index we ask
+	*/
 	public static void reAddView(ViewGroup parentView, View childView, int index)
 	{
 		if(childView == null) return;
