@@ -113,6 +113,7 @@ public class DepthWallpaper extends XposedModPack {
 									createLayers();
 								}
 
+								reAddView((ViewGroup) rootView.getRootView(), mWallpaperBackground, 0);
 								reAddView(rootView, mLockScreenSubject);
 							});
 						}
@@ -128,6 +129,7 @@ public class DepthWallpaper extends XposedModPack {
 				.run(param -> {
 					if(!mLayersCreated) return;
 
+					setDepthWallpaper();
 					//noinspection ConstantValue
 					if(DWonAOD
 							&& !getObjectField(mScrimController, "mState").toString().equals("KEYGUARD")) {
@@ -243,7 +245,7 @@ public class DepthWallpaper extends XposedModPack {
 				.run(param -> mScrimController = param.thisObject);
 
 		ScrimControllerClass
-				.after("applyAndDispatchState")
+				.after("applyAndDispatchState1")
 				.run(param -> setDepthWallpaper());
 	}
 	private boolean assertCache(Bitmap wallpaperBitmap) {
@@ -287,6 +289,7 @@ public class DepthWallpaper extends XposedModPack {
 
 	private void createLayers() {
 		mWallpaperBackground = new FrameLayout(mContext);
+		mWallpaperBackground.setId(View.generateViewId());
 		mWallpaperDimmingOverlay = new FrameLayout(mContext);
 		mWallpaperBitmapContainer = new FrameLayout(mContext);
 		FrameLayout.LayoutParams lpw = new FrameLayout.LayoutParams(-1, -1);
@@ -369,6 +372,7 @@ public class DepthWallpaper extends XposedModPack {
 				mWallpaperBackground.setVisibility(GONE);
 			}
 		}
+		mLockScreenSubject.setZ(-.5f);
 	}
 
 	private boolean isSubjectCacheAvailable() {
