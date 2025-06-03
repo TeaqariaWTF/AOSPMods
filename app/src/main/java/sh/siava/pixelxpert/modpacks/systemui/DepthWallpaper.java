@@ -3,10 +3,13 @@ package sh.siava.pixelxpert.modpacks.systemui;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 import static de.robv.android.xposed.XposedHelpers.callMethod;
+import static de.robv.android.xposed.XposedHelpers.getAdditionalInstanceField;
 import static de.robv.android.xposed.XposedHelpers.getFloatField;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
+import static de.robv.android.xposed.XposedHelpers.setAdditionalInstanceField;
 import static sh.siava.pixelxpert.modpacks.Constants.AI_METHOD_MLKIT;
 import static sh.siava.pixelxpert.modpacks.XPrefs.Xprefs;
+import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.idOf;
 import static sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectionTools.reAddView;
 
 import android.annotation.SuppressLint;
@@ -73,27 +76,6 @@ public class DepthWallpaper extends XposedModPack {
 		ReflectedClass ScrimControllerClass = ReflectedClass.of("com.android.systemui.statusbar.phone.ScrimController");
 		ReflectedClass ScrimViewClass = ReflectedClass.of("com.android.systemui.scrim.ScrimView");
 		ReflectedClass AodBurnInLayerClass = ReflectedClass.ofIfPossible("com.android.systemui.keyguard.ui.view.layout.sections.AodBurnInLayer");
-		ReflectedClass FlexClockViewClass = ReflectedClass.of("com.android.systemui.shared.clocks.view.FlexClockView");
-
-		FlexClockViewClass
-				.afterConstruction()
-				.run(param -> {
-					View thisView = (View) param.thisObject;
-					thisView.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
-						@Override
-						public void onViewAttachedToWindow(@NonNull View v) {
-							v.setZ(-1);
-						}
-
-						@Override
-						public void onViewDetachedFromWindow(@NonNull View v) {
-
-						}
-					});
-
-					thisView.addOnLayoutChangeListener((v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) ->
-							v.setZ(-1));
-				});
 
 		AodBurnInLayerClass
 				.afterConstruction()
@@ -108,6 +90,18 @@ public class DepthWallpaper extends XposedModPack {
 						public void onViewAttachedToWindow(@NonNull View v) {
 							ReflectionTools.runDelayedOnMainThread(entryV, 1000, () -> {
 								ViewGroup rootView = (ViewGroup) entryV.getParent();
+
+								rootView.setOnHierarchyChangeListener(new ViewGroup.OnHierarchyChangeListener() {
+									@Override
+									public void onChildViewAdded(View parent, View child) {
+										hookClocks(rootView);
+									}
+
+									@Override
+									public void onChildViewRemoved(View parent, View child) {
+									}
+								});
+								hookClocks(rootView.getRootView());
 
 								if(!mLayersCreated) {
 									createLayers();
@@ -243,11 +237,42 @@ public class DepthWallpaper extends XposedModPack {
 		ScrimControllerClass
 				.afterConstruction()
 				.run(param -> mScrimController = param.thisObject);
-
-		ScrimControllerClass
-				.after("applyAndDispatchState1")
-				.run(param -> setDepthWallpaper());
 	}
+
+	private void hookClocks(View rootView) {
+		ViewGroup keyguardRoot = rootView.findViewById(idOf("keyguard_root_view"));
+		for(int i = 0; i < keyguardRoot.getChildCount(); i++)
+		{
+			View child = keyguardRoot.getChildAt(i);
+			if(child.getClass().getName().startsWith("com.android.systemui.clocks") || child.getClass().getName().startsWith("com.android.systemui.shared.clocks.view"))
+			{
+				setSendBackListeners(child);
+				child.setZ(-1);
+			}
+		}
+	}
+
+	private void setSendBackListeners(View thisView) {
+		if(getAdditionalInstanceField(thisView, "DepthHooked") != null)
+			return;
+
+		setAdditionalInstanceField(thisView, "DepthHooked", true);
+		thisView.addOnAttachStateChangeListener(new View.OnAttachStateChangeListener() {
+			@Override
+			public void onViewAttachedToWindow(@NonNull View v) {
+				v.setZ(-1);
+			}
+
+			@Override
+			public void onViewDetachedFromWindow(@NonNull View v) {
+
+			}
+		});
+
+		thisView.addOnLayoutChangeListener((v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) ->
+				v.setZ(-1));
+	}
+
 	private boolean assertCache(Bitmap wallpaperBitmap) {
 
 		boolean cacheIsValid = false;
