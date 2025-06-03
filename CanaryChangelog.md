@@ -1,3 +1,6 @@
+**canary-450**  
+- A16qpr1b1: Fixed wallpaper depth effect bugs  
+  
 **canary-449**  
 - A16qpr1b1: Fixed depth effect on lockscreen wallpaper  
   
