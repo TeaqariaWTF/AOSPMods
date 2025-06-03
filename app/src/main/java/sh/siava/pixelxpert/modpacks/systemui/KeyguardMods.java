@@ -9,6 +9,7 @@ import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static de.robv.android.xposed.XposedHelpers.setObjectField;
 import static sh.siava.pixelxpert.modpacks.XPrefs.Xprefs;
 import static sh.siava.pixelxpert.modpacks.systemui.BatteryDataProvider.isCharging;
+import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.idOf;
 import static sh.siava.pixelxpert.modpacks.utils.toolkit.ColorUtils.getColorAttrDefaultColor;
 
 import android.annotation.SuppressLint;
@@ -358,11 +359,6 @@ public class KeyguardMods extends XposedModPack {
 						setMiddleColor();
 					}
 				});
-	}
-
-	@SuppressLint("DiscouragedApi")
-	private int idOf(String name) {
-		return mContext.getResources().getIdentifier(name, "id", mContext.getPackageName());
 	}
 
 	private void setMiddleColor() {

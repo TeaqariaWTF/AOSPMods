@@ -14,6 +14,9 @@ import static de.robv.android.xposed.XposedHelpers.setAdditionalInstanceField;
 import static de.robv.android.xposed.XposedHelpers.setObjectField;
 import static sh.siava.pixelxpert.modpacks.ResourceManager.modRes;
 import static sh.siava.pixelxpert.modpacks.XPrefs.Xprefs;
+import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.dimenIdOf;
+import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.idOf;
+import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.resourceIdOf;
 import static sh.siava.pixelxpert.modpacks.utils.toolkit.ColorUtils.getColorAttrDefaultColor;
 
 import android.animation.LayoutTransition;
@@ -887,19 +890,6 @@ public class StatusbarMods extends XposedModPack {
 		lp.gravity = Gravity.CENTER;
 		mCenteredIconArea.setLayoutParams(lp);
 		mPhoneStatusbarView.addView(mCenteredIconArea);
-	}
-
-	private int idOf(String name) {
-		return resourceIdOf(name, "id");
-	}
-	private int dimenIdOf(String name)
-	{
-		return resourceIdOf(name, "dimen");
-	}
-	@SuppressLint("DiscouragedApi")
-	private int resourceIdOf(String name, String type)
-	{
-		return mContext.getResources().getIdentifier(name, type, mContext.getPackageName());
 	}
 
 	private void updateClockColor() {

@@ -3,6 +3,7 @@ package sh.siava.pixelxpert.modpacks.settings;
 import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static de.robv.android.xposed.XposedHelpers.setObjectField;
+import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.idOf;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -57,7 +58,7 @@ public class AppCloneEnabler extends XposedModPack {
 					if (getObjectField(param.thisObject, "mListType").equals(LIST_TYPE_CLONED_APPS) && getCloneUserID() > 0) {
 						Menu mOptionsMenu = (Menu) getObjectField(param.thisObject, "mOptionsMenu");
 						if (mOptionsMenu != null) {
-							mOptionsMenu.findItem(mContext.getResources().getIdentifier("delete_all_app_clones", "id", mContext.getPackageName())).setVisible(true);
+							mOptionsMenu.findItem(idOf("delete_all_app_clones")).setVisible(true);
 						}
 					}
 				});

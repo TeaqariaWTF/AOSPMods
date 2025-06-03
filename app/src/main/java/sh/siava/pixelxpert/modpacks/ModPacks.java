@@ -113,13 +113,13 @@ public class ModPacks {
 					modPacks.add(QSFooterManager.class);
 					modPacks.add(KeyGuardPinScrambler.class); //good already
 					modPacks.add(FingerprintWhileDozing.class); //good already
-					modPacks.add(StatusbarSize.class);
+					modPacks.add(StatusbarSize.class); //good already
 //					modPacks.add(FlashLightLevel.class); //dead!
-					modPacks.add(NotificationManager.class);
-//					modPacks.add(VolumeTile.class);
-					modPacks.add(ScreenRecord.class);
+					modPacks.add(NotificationManager.class); //good
+//					modPacks.add(VolumeTile.class); //dead
+					modPacks.add(ScreenRecord.class); //good already
 //					modPacks.add(VolumeDialog.class);
-					modPacks.add(DepthWallpaper.class); //nope
+					modPacks.add(DepthWallpaper.class); //good
 					modPacks.add(KSURootReceiver.class);
 					modPacks.add(PowerMenu.class); //good already
 					modPacks.add(StatusIconTuner.class); //good already

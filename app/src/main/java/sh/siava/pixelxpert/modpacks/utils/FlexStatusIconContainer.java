@@ -5,6 +5,8 @@ import static de.robv.android.xposed.XposedBridge.log;
 import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.findFieldIfExists;
 import static de.robv.android.xposed.XposedHelpers.setObjectField;
+import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.dimenIdOf;
+import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.idOf;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -119,17 +121,14 @@ public class FlexStatusIconContainer extends LinearLayout {
 	private void initDimens() {
 		Resources res = getResources();
 
-		mTagID = res.getIdentifier("status_bar_view_state_tag", "id", getContext().getPackageName());
+		mTagID = idOf("status_bar_view_state_tag");
 		// This is the same value that StatusBarIconView uses
 		mIconDotFrameWidth = res.getDimensionPixelSize(
 				res.getIdentifier("status_bar_icon_size", "dimen", "android"));
 		mIconSize = mIconDotFrameWidth;
-		int mDotPadding = res.getDimensionPixelSize(
-				res.getIdentifier("overflow_icon_dot_padding", "dimen", getContext().getPackageName()));
-		mIconSpacing = res.getDimensionPixelSize(
-				res.getIdentifier("status_bar_system_icon_spacing", "dimen", getContext().getPackageName()));
-		int radius = res.getDimensionPixelSize(
-				res.getIdentifier("overflow_dot_radius", "dimen", getContext().getPackageName()));
+		int mDotPadding = res.getDimensionPixelSize(dimenIdOf("overflow_icon_dot_padding"));
+		mIconSpacing = res.getDimensionPixelSize(dimenIdOf("status_bar_system_icon_spacing"));
+		int radius = res.getDimensionPixelSize(dimenIdOf("overflow_dot_radius"));
 		int mStaticDotDiameter = 2 * radius;
 		mUnderflowWidth = mIconDotFrameWidth + mStaticDotDiameter + mDotPadding;
 	}

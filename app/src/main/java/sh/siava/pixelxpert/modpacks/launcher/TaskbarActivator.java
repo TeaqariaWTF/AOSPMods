@@ -11,6 +11,8 @@ import static de.robv.android.xposed.XposedHelpers.getStaticObjectField;
 import static de.robv.android.xposed.XposedHelpers.setAdditionalInstanceField;
 import static de.robv.android.xposed.XposedHelpers.setObjectField;
 import static sh.siava.pixelxpert.modpacks.XPrefs.Xprefs;
+import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.dimenIdOf;
+import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.idOf;
 
 import android.annotation.SuppressLint;
 import android.app.TaskInfo;
@@ -174,15 +176,10 @@ public class TaskbarActivator extends XposedModPack {
 					if(!ThreeButtonLayoutMod) return;
 
 					ViewGroup navButtonContainer = (ViewGroup) getObjectField(param.thisObject, "navButtonContainer");
-					Resources res = mContext.getResources();
 
-					int backButtonId = res.getIdentifier( ThreeButtonLeft, "id", mContext.getPackageName());
-					int centerButtonId = res.getIdentifier( ThreeButtonCenter, "id", mContext.getPackageName());
-					int rightButtonId = res.getIdentifier( ThreeButtonRight, "id", mContext.getPackageName());
-
-					setObjectField(param.thisObject, "backButton", navButtonContainer.findViewById(backButtonId));
-					setObjectField(param.thisObject, "homeButton", navButtonContainer.findViewById(centerButtonId));
-					setObjectField(param.thisObject, "recentsButton", navButtonContainer.findViewById(rightButtonId));
+					setObjectField(param.thisObject, "backButton", navButtonContainer.findViewById(idOf(ThreeButtonLeft)));
+					setObjectField(param.thisObject, "homeButton", navButtonContainer.findViewById(idOf( ThreeButtonCenter)));
+					setObjectField(param.thisObject, "recentsButton", navButtonContainer.findViewById(idOf( ThreeButtonRight)));
 				});
 
 		//enable taskbar
@@ -261,8 +258,8 @@ public class TaskbarActivator extends XposedModPack {
 
 						Resources res = mContext.getResources();
 
-						setObjectField(param.thisObject, taskbarHeightField, res.getDimensionPixelSize(res.getIdentifier("taskbar_size", "dimen", mContext.getPackageName())));
-						setObjectField(param.thisObject, stashedTaskbarHeightField, res.getDimensionPixelSize(res.getIdentifier("taskbar_stashed_size", "dimen", mContext.getPackageName())));
+						setObjectField(param.thisObject, taskbarHeightField, res.getDimensionPixelSize(dimenIdOf("taskbar_size")));
+						setObjectField(param.thisObject, stashedTaskbarHeightField, res.getDimensionPixelSize(dimenIdOf("taskbar_stashed_size")));
 
 						if (taskbarHeightOverride != 1f) {
 							setObjectField(param.thisObject, taskbarHeightField, Math.round(getIntField(param.thisObject, taskbarHeightField) * taskbarHeightOverride));

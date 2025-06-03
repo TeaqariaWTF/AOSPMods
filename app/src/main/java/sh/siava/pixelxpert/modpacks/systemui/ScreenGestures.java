@@ -12,6 +12,7 @@ import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.getBooleanField;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static sh.siava.pixelxpert.modpacks.XPrefs.Xprefs;
+import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.idOf;
 import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.sleep;
 
 import android.annotation.SuppressLint;
@@ -183,7 +184,7 @@ public class ScreenGestures extends XposedModPack {
 			View mView = (View) getObjectField(NotificationPanelViewController, "mView");
 
 			@SuppressLint("DiscouragedApi")
-			View longPressReceiver = mView.findViewById(mContext.getResources().getIdentifier("keyguard_long_press", "id", mContext.getPackageName()));
+			View longPressReceiver = mView.findViewById(idOf("keyguard_long_press"));
 			ReflectedClass.of(longPressReceiver.getClass())
 					.before("onTouchEvent")
 					.run(param -> {

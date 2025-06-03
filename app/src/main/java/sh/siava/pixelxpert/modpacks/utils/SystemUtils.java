@@ -744,4 +744,24 @@ public class SystemUtils {
 	{
 		void onChanged(int newVal);
 	}
+
+	public static int idOf(String name) {
+		return resourceIdOf(name, "id");
+	}
+	public static int dimenIdOf(String name)
+	{
+		return resourceIdOf(name, "dimen");
+	}
+
+	public static int resourceIdOf(String name, String type)
+	{
+		return instance.resourceIdOfInternal(name, type);
+	}
+
+	@SuppressLint("DiscouragedApi")
+	private int resourceIdOfInternal(String name, String type)
+	{
+		return mContext.getResources().getIdentifier(name, type, mContext.getPackageName());
+	}
+
 }

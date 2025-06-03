@@ -6,6 +6,7 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static sh.siava.pixelxpert.modpacks.XPrefs.Xprefs;
+import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.idOf;
 import static sh.siava.pixelxpert.modpacks.utils.toolkit.ObjectTools.tryParseInt;
 import static sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectionTools.reAddView;
 
@@ -171,11 +172,6 @@ public class NotificationExpander extends XposedModPack {
 		NotificationStackScrollLayoutClass
 				.afterConstruction()
 				.run(param -> Scroller = param.thisObject);
-	}
-
-	@SuppressLint("DiscouragedApi")
-	private int idOf(String name) {
-		return mContext.getResources().getIdentifier(name, "id", mContext.getPackageName());
 	}
 
 	private void updateFooterBtn() {
