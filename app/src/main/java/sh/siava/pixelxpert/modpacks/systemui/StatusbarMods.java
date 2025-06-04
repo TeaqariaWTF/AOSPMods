@@ -106,10 +106,8 @@ public class StatusbarMods extends XposedModPack {
 	//region network traffic
 	private FrameLayout NTQSHolder = null;
 	private static boolean networkOnSBEnabled = false;
-	private static boolean networkOnQSEnabled = false;
 	private static int networkTrafficPosition = POSITION_LEFT;
 	private NetworkTraffic networkTrafficSB = null;
-	private NetworkTraffic networkTrafficQS = null;
 	//endregion
 
 	//region battery bar
@@ -324,7 +322,6 @@ public class StatusbarMods extends XposedModPack {
 
 		//region network Traffic settings
 		networkOnSBEnabled = Xprefs.getBoolean("networkOnSBEnabled", false);
-		networkOnQSEnabled = Xprefs.getBoolean("networkOnQSEnabled", false);
 		String networkTrafficModeStr = Xprefs.getString("networkTrafficMode", "0");
 		int networkTrafficMode = Integer.parseInt(networkTrafficModeStr);
 
@@ -337,7 +334,7 @@ public class StatusbarMods extends XposedModPack {
 		boolean networkTrafficShowIcons = Xprefs.getBoolean("networkTrafficShowIcons", true);
 		boolean networkTrafficShowInBits = Xprefs.getBoolean("networkTrafficShowInBits", false);
 
-		if (networkOnSBEnabled || networkOnQSEnabled) {
+		if (networkOnSBEnabled) {
 			networkTrafficPosition = Integer.parseInt(Xprefs.getString("networkTrafficPosition", String.valueOf(POSITION_RIGHT)));
 			if (networkTrafficPosition == POSITION_LEFT_EXTRA_LEVEL) {
 				Xprefs.edit().putString("networkTrafficPosition", String.valueOf(POSITION_LEFT)).apply();
@@ -359,12 +356,7 @@ public class StatusbarMods extends XposedModPack {
 			networkTrafficSB = NetworkTraffic.getInstance(mContext, true);
 			networkTrafficSB.update();
 		}
-		if (networkOnQSEnabled) {
-			networkTrafficQS = NetworkTraffic.getInstance(mContext, false);
-			networkTrafficQS.update();
-		}
 		placeNTSB();
-		placeNTQS();
 
 		//endregion network settings
 
@@ -470,22 +462,6 @@ public class StatusbarMods extends XposedModPack {
 
 				mClockView.setText((CharSequence) callMethod(mClockView, "getSmallTime"));
 			});
-		} catch (Throwable ignored) {
-		}
-	}
-
-	private void placeNTQS() {
-		if (networkTrafficQS == null) {
-			return;
-		}
-		try {
-			((ViewGroup) networkTrafficQS.getParent()).removeView(networkTrafficQS);
-		} catch (Throwable ignored) {
-		}
-		if (!networkOnQSEnabled) return;
-
-		try {
-			NTQSHolder.addView(networkTrafficQS);
 		} catch (Throwable ignored) {
 		}
 	}
@@ -693,7 +669,6 @@ public class StatusbarMods extends XposedModPack {
 					lp.gravity = Gravity.CENTER_HORIZONTAL;
 					NTQSHolder.setLayoutParams(lp);
 					((FrameLayout) QSBH).addView(NTQSHolder);
-					placeNTQS();
 				});
 
 		//stealing a working activity starter

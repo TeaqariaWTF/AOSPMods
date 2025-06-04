@@ -1,19 +1,13 @@
 package sh.siava.pixelxpert.modpacks;
 
-import static sh.siava.pixelxpert.modpacks.utils.toolkit.OverlayTools.setOverlay;
-
-import android.os.Build;
-
 import java.util.ArrayList;
 
 import sh.siava.pixelxpert.modpacks.allApps.HookTester;
-import sh.siava.pixelxpert.modpacks.allApps.OverScrollDisabler;
 import sh.siava.pixelxpert.modpacks.android.BrightnessRange;
 import sh.siava.pixelxpert.modpacks.android.FaceUpScreenSleep;
 import sh.siava.pixelxpert.modpacks.android.HotSpotController;
 import sh.siava.pixelxpert.modpacks.android.PackageManager;
 import sh.siava.pixelxpert.modpacks.android.PhoneWindowManager;
-import sh.siava.pixelxpert.modpacks.android.RingerVolSeparator;
 import sh.siava.pixelxpert.modpacks.android.ScreenOffKeys;
 import sh.siava.pixelxpert.modpacks.android.ScreenRotation;
 import sh.siava.pixelxpert.modpacks.android.StatusbarSize;
@@ -29,13 +23,10 @@ import sh.siava.pixelxpert.modpacks.launcher.TaskbarActivator;
 import sh.siava.pixelxpert.modpacks.settings.AppCloneEnabler;
 import sh.siava.pixelxpert.modpacks.settings.PXSettingsLauncher;
 import sh.siava.pixelxpert.modpacks.systemui.BatteryDataProvider;
-import sh.siava.pixelxpert.modpacks.systemui.BatteryStyleManager;
-import sh.siava.pixelxpert.modpacks.systemui.BrightnessSlider;
 import sh.siava.pixelxpert.modpacks.systemui.DepthWallpaper;
 import sh.siava.pixelxpert.modpacks.systemui.EasyUnlock;
 import sh.siava.pixelxpert.modpacks.systemui.FeatureFlagsMods;
 import sh.siava.pixelxpert.modpacks.systemui.FingerprintWhileDozing;
-import sh.siava.pixelxpert.modpacks.systemui.FlashLightLevel;
 import sh.siava.pixelxpert.modpacks.systemui.GestureNavbarManager;
 import sh.siava.pixelxpert.modpacks.systemui.IconPacks;
 import sh.siava.pixelxpert.modpacks.systemui.KSURootReceiver;
@@ -45,7 +36,6 @@ import sh.siava.pixelxpert.modpacks.systemui.MultiStatusbarRows;
 import sh.siava.pixelxpert.modpacks.systemui.NotificationExpander;
 import sh.siava.pixelxpert.modpacks.systemui.NotificationManager;
 import sh.siava.pixelxpert.modpacks.systemui.PowerMenu;
-import sh.siava.pixelxpert.modpacks.systemui.QSFooterManager;
 import sh.siava.pixelxpert.modpacks.systemui.QSTileGrid;
 import sh.siava.pixelxpert.modpacks.systemui.ScreenGestures;
 import sh.siava.pixelxpert.modpacks.systemui.ScreenRecord;
@@ -54,7 +44,6 @@ import sh.siava.pixelxpert.modpacks.systemui.StatusIconTuner;
 import sh.siava.pixelxpert.modpacks.systemui.StatusbarGestures;
 import sh.siava.pixelxpert.modpacks.systemui.StatusbarMods;
 import sh.siava.pixelxpert.modpacks.systemui.ThermalProvider;
-import sh.siava.pixelxpert.modpacks.systemui.ThreeButtonNavMods;
 import sh.siava.pixelxpert.modpacks.systemui.UDFPSManager;
 import sh.siava.pixelxpert.modpacks.telecom.CallVibrator;
 
@@ -78,7 +67,6 @@ public class ModPacks {
 				modPacks.add(ScreenRotation.class);
 				modPacks.add(ScreenOffKeys.class);
 				modPacks.add(HotSpotController.class);
-				modPacks.add(RingerVolSeparator.class);
 				modPacks.add(SystemScreenRecord.class);
 				modPacks.add(FaceUpScreenSleep.class);
 				break;
@@ -91,34 +79,27 @@ public class ModPacks {
 				else
 				{
 					//load before others
-					modPacks.add(ThermalProvider.class); //good already
-					modPacks.add(BatteryDataProvider.class); //not checked yet
-					modPacks.add(IconPacks.class); //not checked yet
-					modPacks.add(BrightnessRange.class); //already good
-					modPacks.add(NotificationExpander.class); //good
-					modPacks.add(QSTileGrid.class); //good
-//					modPacks.add(BrightnessSlider.class); //doesn't look good at all
+					modPacks.add(ThermalProvider.class);
+					modPacks.add(BatteryDataProvider.class);
+					modPacks.add(IconPacks.class);
+					modPacks.add(BrightnessRange.class);
+					modPacks.add(NotificationExpander.class);
+					modPacks.add(QSTileGrid.class);
 					modPacks.add(FeatureFlagsMods.class);
-					modPacks.add(ThreeButtonNavMods.class);
-					modPacks.add(ScreenGestures.class); //seems ok
+					modPacks.add(ScreenGestures.class);
 					modPacks.add(MiscSettings.class);
-					modPacks.add(StatusbarGestures.class); //good
+					modPacks.add(StatusbarGestures.class);
 					modPacks.add(KeyguardMods.class); //good
 					modPacks.add(UDFPSManager.class); //good
 					modPacks.add(EasyUnlock.class); //good
 					modPacks.add(MultiStatusbarRows.class); //good already
 					modPacks.add(StatusbarMods.class);
-//					modPacks.add(BatteryStyleManager.class);
 					modPacks.add(GestureNavbarManager.class); //good already
-					modPacks.add(QSFooterManager.class);
 					modPacks.add(KeyGuardPinScrambler.class); //good already
 					modPacks.add(FingerprintWhileDozing.class); //good already
 					modPacks.add(StatusbarSize.class); //good already
-//					modPacks.add(FlashLightLevel.class); //dead!
 					modPacks.add(NotificationManager.class); //good
-//					modPacks.add(VolumeTile.class); //dead
 					modPacks.add(ScreenRecord.class); //good already
-//					modPacks.add(VolumeDialog.class);
 					modPacks.add(DepthWallpaper.class); //good
 					modPacks.add(KSURootReceiver.class);
 					modPacks.add(PowerMenu.class); //good already
@@ -142,10 +123,7 @@ public class ModPacks {
 			case Constants.SETTINGS_PACKAGE:
 				modPacks.add(PXSettingsLauncher.class);
 				modPacks.add(IconPacks.class);
-
-				if(Build.VERSION.SDK_INT > Build.VERSION_CODES.TIRAMISU)
-					modPacks.add(AppCloneEnabler.class);
-				break;
+				modPacks.add(AppCloneEnabler.class);
 
 			case Constants.DIALER_PACKAGE:
 				modPacks.add(RecordingMessage.class);
@@ -158,7 +136,6 @@ public class ModPacks {
 		}
 
 		//All Apps
-		modPacks.add(OverScrollDisabler.class);
 
 		return modPacks;
 	}

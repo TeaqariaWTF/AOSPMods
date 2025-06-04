@@ -1,6 +1,5 @@
 package sh.siava.pixelxpert.modpacks.systemui;
 
-import static android.graphics.Color.BLACK;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static de.robv.android.xposed.XposedHelpers.setObjectField;
 import static sh.siava.pixelxpert.modpacks.XPrefs.Xprefs;
@@ -35,7 +34,6 @@ public class PowerMenu extends XposedModPack {
 	public static final String listenPackage = Constants.SYSTEM_UI_PACKAGE;
 
 	private ReflectedClass mLongPressActionInterface = null;
-	private static boolean enablePowerMenuTheme = false;
 	private static boolean advancedPowerMenu = false;
 
 	public PowerMenu(Context context) {
@@ -45,9 +43,6 @@ public class PowerMenu extends XposedModPack {
 	@Override
 	public void updatePrefs(String... Key) {
 		advancedPowerMenu = Xprefs.getBoolean("advancedPowerMenu", false);
-
-		enablePowerMenuTheme = Xprefs.getBoolean("LightQSPanel", false)
-				&& Xprefs.getBoolean("enablePowerMenuTheme", false);
 	}
 
 	@Override
@@ -233,11 +228,6 @@ public class PowerMenu extends XposedModPack {
 			TextView messageView = view.findViewById(res.getIdentifier("message", "id", "android"));
 			messageView.setSelected(true);
 			messageView.setText(getText());
-
-			if(enablePowerMenuTheme && !SystemUtils.isDarkMode())
-			{
-				messageView.setTextColor(BLACK);
-			}
 
 			view.setId(View.generateViewId());
 			return view;

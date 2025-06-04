@@ -7,7 +7,6 @@ import static de.robv.android.xposed.XposedBridge.invokeOriginalMethod;
 import static de.robv.android.xposed.XposedBridge.log;
 import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.getStaticObjectField;
-import static sh.siava.pixelxpert.modpacks.XPrefs.Xprefs;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -318,17 +317,7 @@ public class SystemUtils {
 
 		try {
 			String flashID = getFlashID(mCameraManager);
-			if (flashID.isEmpty()) {
-				return;
-			}
-			if (Xprefs.getBoolean("leveledFlashTile", false)
-					&& Xprefs.getBoolean("isFlashLevelGlobal", false)
-					&& supportsFlashLevelsInternal()) {
-				float currentPct = Xprefs.getInt("flashPCT", 50) / 100f;
-
-				setFlashInternalWithLevel(enabled, getFlashlightLevelInternal(currentPct), animate);
-			}
-			else {
+			if (!flashID.isEmpty()) {
 				setFlashInternalNoLevel(enabled);
 			}
 		} catch (Throwable t) {
