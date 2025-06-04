@@ -8,22 +8,6 @@
 		app:lottie_rawRes="@raw/theme"
 		search:ignore="true" />
 
-	<sh.siava.pixelxpert.ui.preferences.MaterialSwitchPreference
-		android:defaultValue="false"
-		android:key="LightQSPanel"
-		android:summaryOff="@string/general_off"
-		android:summaryOn="@string/general_on"
-		android:title="@string/light_qs_title"
-		app:iconSpaceReserved="false" />
-
-	<sh.siava.pixelxpert.ui.preferences.MaterialSwitchPreference
-		android:defaultValue="false"
-		android:key="enablePowerMenuTheme"
-		android:summaryOff="@string/general_off"
-		android:summaryOn="@string/general_on"
-		android:title="@string/power_menu_overlays_title"
-		app:iconSpaceReserved="false" />
-
 	<sh.siava.pixelxpert.ui.preferences.MaterialPreference
 		android:key="icon_packs"
 		android:title="@string/icon_packs_title"
