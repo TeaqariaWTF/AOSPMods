@@ -1,3 +1,6 @@
+**canary-451**  
+- A16qpr1b1: wallpaper depth effect now works with all clock styles  
+  
 **canary-450**  
 - A16qpr1b1: Fixed wallpaper depth effect bugs  
   
