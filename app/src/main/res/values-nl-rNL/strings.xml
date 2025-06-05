@@ -261,11 +261,11 @@
     <string name="qs_footer_text_value">Aangepaste tekst invoeren</string>
     <string name="qs_footer_text_summary">Laat het leeg om de tekst volledig te verwijderen</string>
     <string name="qs_footer_text_desc">Zet het scherm aan/uit om toe te passen</string>
-    <string name="qs_leveled_flashlight_title">Helderheid-nivellerende zaklamptegel</string>
+    <string name="qs_leveled_flashlight_title">Flashlight-leveled tile</string>
     <string name="qs_flashlight_level_global_title">Zaklampniveau globaal toepassen</string>
     <string name="qs_tile_vertical_title">Verplaats tegelpictogrammen naar boven</string>
     <string name="qs_tile_qty_title">Snelle instellingen Instellingen voor het tellen van tegels</string>
-    <string name="qs_leveled_flashlight_summary">Vereist ondersteunde hardware</string>
+    <string name="qs_leveled_flashlight_summary">Longpress on tile to show the slider.\nRequires supported hardware</string>
     <string name="light_qs_title">Licht QS-paneel tijdens lichtthema</string>
     <string name="qs_pulldown_size">Snel naar beneden trekkende breedte</string>
     <string name="qs_pulldown_switch_title">Snel QS-paneel naar beneden trekken vanuit de statusbalk</string>

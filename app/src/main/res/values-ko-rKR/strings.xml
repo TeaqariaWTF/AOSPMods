@@ -261,11 +261,11 @@
     <string name="qs_footer_text_value">커스텀 문구 입력하기</string>
     <string name="qs_footer_text_summary">비워서 빌드 번호 완전 삭제</string>
     <string name="qs_footer_text_desc">화면을 껐다 켜서 설정 적용</string>
-    <string name="qs_leveled_flashlight_title">손전등 밝기 조절 타일 활성화</string>
+    <string name="qs_leveled_flashlight_title">Flashlight-leveled tile</string>
     <string name="qs_flashlight_level_global_title">손전등 밝기 전역 설정</string>
     <string name="qs_tile_vertical_title">타일 아이콘 상단으로 옮기기</string>
     <string name="qs_tile_qty_title">빠른 설정 타일 배치 설정</string>
-    <string name="qs_leveled_flashlight_summary">지원되는 하드웨어가 필요합니다</string>
+    <string name="qs_leveled_flashlight_summary">Longpress on tile to show the slider.\nRequires supported hardware</string>
     <string name="light_qs_title">밝은 테마 사용 시 밝은 빠른 설정 화면 적용</string>
     <string name="qs_pulldown_size">바로 열기 영역 너비</string>
     <string name="qs_pulldown_switch_title">상태 표시줄로부터 빠른 설정 바로 열기</string>

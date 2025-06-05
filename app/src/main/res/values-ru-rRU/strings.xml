@@ -261,11 +261,11 @@
     <string name="qs_footer_text_value">Ввести свой текст</string>
     <string name="qs_footer_text_summary">Оставьте пустым, чтобы полностью удалить текст</string>
     <string name="qs_footer_text_desc">Выкл/вкл экран, чтобы применить</string>
-    <string name="qs_leveled_flashlight_title">Плитка фонарика с уровнем яркости</string>
+    <string name="qs_leveled_flashlight_title">Flashlight-leveled tile</string>
     <string name="qs_flashlight_level_global_title">Применить уровень яркости глобально</string>
     <string name="qs_tile_vertical_title">Переместить значки наверх</string>
     <string name="qs_tile_qty_title">Настройки быстрых настроек счетчик плиток</string>
-    <string name="qs_leveled_flashlight_summary">Требуется поддерживаемое оборудование</string>
+    <string name="qs_leveled_flashlight_summary">Longpress on tile to show the slider.\nRequires supported hardware</string>
     <string name="light_qs_title">Белая панель быстрых настроек при светлой теме</string>
     <string name="qs_pulldown_size">Ширина быстрого вытягивания</string>
     <string name="qs_pulldown_switch_title">Быстрое вытягивание панели быстрых настроек из строки состояния</string>

@@ -261,11 +261,11 @@
     <string name="qs_footer_text_value">הזן טקסט מותאם אישית</string>
     <string name="qs_footer_text_summary">השאר ריק כדי להסיר לחלוטין</string>
     <string name="qs_footer_text_desc">כבה/הפעל את התצוגה כדי להחיל</string>
-    <string name="qs_leveled_flashlight_title">אריח פנס ברמת בהירות</string>
+    <string name="qs_leveled_flashlight_title">Flashlight-leveled tile</string>
     <string name="qs_flashlight_level_global_title">החל את חוזק הפנס בכל הטלפון בהתאם לחוזק הפנס בפאנל QS</string>
     <string name="qs_tile_vertical_title">הזז את סמלי האריחים למעלה</string>
     <string name="qs_tile_qty_title">הגדרות מהירות ספירת אריחים</string>
-    <string name="qs_leveled_flashlight_summary">דורש חומרה נתמכת</string>
+    <string name="qs_leveled_flashlight_summary">Longpress on tile to show the slider.\nRequires supported hardware</string>
     <string name="light_qs_title">החל את לוח QS קל בעת שימוש בערכת נושא קלה</string>
     <string name="qs_pulldown_size">רוחב משיכה מהיר</string>
     <string name="qs_pulldown_switch_title">פתיחת מהירה של QS משורת המצב</string>

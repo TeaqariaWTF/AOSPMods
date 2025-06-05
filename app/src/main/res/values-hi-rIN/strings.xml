@@ -261,11 +261,11 @@
     <string name="qs_footer_text_value">कस्टम टेक्स्ट</string>
     <string name="qs_footer_text_summary">टेक्स्ट हटाने के लिए खाली छोड़ दें</string>
     <string name="qs_footer_text_desc">सक्रिय करने के लिए डिस्प्ले को टॉगल करें</string>
-    <string name="qs_leveled_flashlight_title">श्रेणीबद्ध टॉर्च टाइलें</string>
+    <string name="qs_leveled_flashlight_title">Flashlight-leveled tile</string>
     <string name="qs_flashlight_level_global_title">वैश्विक स्तर पर टॉर्च स्तर लागू करें</string>
     <string name="qs_tile_vertical_title">टाइल आइकन ऊपर ले जाएं</string>
     <string name="qs_tile_qty_title">त्वरित सेटिंग टाइल गणना सेटिंग</string>
-    <string name="qs_leveled_flashlight_summary">समर्थित हार्डवेयर की आवश्यकता है</string>
+    <string name="qs_leveled_flashlight_summary">Longpress on tile to show the slider.\nRequires supported hardware</string>
     <string name="light_qs_title">लाइट थीम के दौरान हल्की त्‍वरित सेटिंग (छोटी गाड़ी हो सकती है)</string>
     <string name="qs_pulldown_size">त्वरित पुल डाउन आकार</string>
     <string name="qs_pulldown_switch_title">स्टेटस बार से त्वरित सेटिंग मेनू को तुरंत नीचे खींचें</string>

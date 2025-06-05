@@ -261,11 +261,11 @@
     <string name="qs_footer_text_value">Введіть свій текст (Залиште пустим, щоб повністю видалити)</string>
     <string name="qs_footer_text_summary">Залиште його пустим щоб повністю видалити текст</string>
     <string name="qs_footer_text_desc">Увімкніть/Вимкніть дисплей, щоб застосувати</string>
-    <string name="qs_leveled_flashlight_title">Плитка ліхтарика з рівнем яскравості</string>
+    <string name="qs_leveled_flashlight_title">Flashlight-leveled tile</string>
     <string name="qs_flashlight_level_global_title">Застосувати рівень ліхтарика глобально</string>
     <string name="qs_tile_vertical_title">Перемістіть значки плиток угору</string>
     <string name="qs_tile_qty_title">Налаштування кількості плиток швидкого налаштування</string>
-    <string name="qs_leveled_flashlight_summary">Потрібне підтримуване обладнання</string>
+    <string name="qs_leveled_flashlight_summary">Longpress on tile to show the slider.\nRequires supported hardware</string>
     <string name="light_qs_title">Висвітлити панель швидких налаштувань для світлої теми</string>
     <string name="qs_pulldown_size">Ширина Швидких налагтувань</string>
     <string name="qs_pulldown_switch_title">Розкривний список панелі швидких налаштувань у рядку стану</string>

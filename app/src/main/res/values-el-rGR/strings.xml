@@ -261,11 +261,11 @@
     <string name="qs_footer_text_value">Εισαγάγετε προσαρμοσμένο κείμενο</string>
     <string name="qs_footer_text_summary">Αφήστε το κενό για να αφαιρεθεί εντελώς</string>
     <string name="qs_footer_text_desc">Απενεργοποιήστε/ενεργοποιήστε την οθόνη για εφαρμογή</string>
-    <string name="qs_leveled_flashlight_title">Πλακίδιο φακού σε επίπεδο φωτεινότητας</string>
+    <string name="qs_leveled_flashlight_title">Flashlight-leveled tile</string>
     <string name="qs_flashlight_level_global_title">Εφαρμόστε το επίπεδο του φακού καθολικά</string>
     <string name="qs_tile_vertical_title">Μετακινήστε τα εικονίδια πλακιδίων στην κορυφή</string>
     <string name="qs_tile_qty_title">Γρήγορες ρυθμίσεις μέτρησης πλακιδίων</string>
-    <string name="qs_leveled_flashlight_summary">Απαιτεί υποστηριζόμενο υλικό</string>
+    <string name="qs_leveled_flashlight_summary">Longpress on tile to show the slider.\nRequires supported hardware</string>
     <string name="light_qs_title">Εφαρμόστε ελαφρύ QS Panel όταν χρησιμοποιείτε ανοιχτό θέμα</string>
     <string name="qs_pulldown_size">Πλάτος γρήγορης ανάσυρσης</string>
     <string name="qs_pulldown_switch_title">Γρήγορο αναπτυσσόμενο πλαίσιο QS από τη γραμμή κατάστασης</string>

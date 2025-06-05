@@ -261,11 +261,11 @@
     <string name="qs_footer_text_value">Indtast tilpasset tekst</string>
     <string name="qs_footer_text_summary">Lad det være tomt for at fjerne det helt</string>
     <string name="qs_footer_text_desc">Sluk/tænd for skærmen for at anvende</string>
-    <string name="qs_leveled_flashlight_title">Lommelygteflise med lysstyrkeniveau</string>
+    <string name="qs_leveled_flashlight_title">Flashlight-leveled tile</string>
     <string name="qs_flashlight_level_global_title">Anvend lommelygteniveau globalt</string>
     <string name="qs_tile_vertical_title">Flyt fliseikoner til toppen</string>
     <string name="qs_tile_qty_title">Hurtige indstillinger indstillinger for antal fliser</string>
-    <string name="qs_leveled_flashlight_summary">Kræver understøttet hardware</string>
+    <string name="qs_leveled_flashlight_summary">Longpress on tile to show the slider.\nRequires supported hardware</string>
     <string name="light_qs_title">Anvend lys QS Panel, når du bruger let tema</string>
     <string name="qs_pulldown_size">Hurtig nedtræksbredde</string>
     <string name="qs_pulldown_switch_title">Hurtig QS panel pull-down fra statuslinjen</string>

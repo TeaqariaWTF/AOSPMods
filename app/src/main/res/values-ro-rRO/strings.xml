@@ -261,11 +261,11 @@
     <string name="qs_footer_text_value">Introdu un text personalizat</string>
     <string name="qs_footer_text_summary">Lasă necompletat pentru a elimina complet</string>
     <string name="qs_footer_text_desc">Oprește afișajul pentru a aplica</string>
-    <string name="qs_leveled_flashlight_title">Lanternă cu nivel de luminozitate</string>
+    <string name="qs_leveled_flashlight_title">Flashlight-leveled tile</string>
     <string name="qs_flashlight_level_global_title">Aplică nivelul lanternei global</string>
     <string name="qs_tile_vertical_title">Mută pictogramele dalelor în partea de sus</string>
     <string name="qs_tile_qty_title">Setarea numărului plăcilor</string>
-    <string name="qs_leveled_flashlight_summary">Necesită hardware suportat</string>
+    <string name="qs_leveled_flashlight_summary">Longpress on tile to show the slider.\nRequires supported hardware</string>
     <string name="light_qs_title">Aplică panoul de setări rapide luminoase când se utilizează tema luminoasă</string>
     <string name="qs_pulldown_size">Lățime tragere rapidă</string>
     <string name="qs_pulldown_switch_title">Panou setări rapide la tragere în jos a barei de stare</string>

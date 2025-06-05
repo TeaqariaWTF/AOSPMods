@@ -261,11 +261,11 @@
     <string name="qs_footer_text_value">Kirjoita mukautettu teksti</string>
     <string name="qs_footer_text_summary">Jätä tyhjäksi poistaaksesi kokonaan</string>
     <string name="qs_footer_text_desc">Ota näyttö pois päältä/päälle</string>
-    <string name="qs_leveled_flashlight_title">Kirkkaustasoitettu Taskulamppu-laatta</string>
+    <string name="qs_leveled_flashlight_title">Flashlight-leveled tile</string>
     <string name="qs_flashlight_level_global_title">Käytä taskulampputasoa maailmanlaajuisesti</string>
     <string name="qs_tile_vertical_title">Siirrä laattakuvakkeet yläreunaan</string>
     <string name="qs_tile_qty_title">Pika-asetukset laattojen määräasetukset</string>
-    <string name="qs_leveled_flashlight_summary">Vaatii tuetun laitteiston</string>
+    <string name="qs_leveled_flashlight_summary">Longpress on tile to show the slider.\nRequires supported hardware</string>
     <string name="light_qs_title">Käytä kevyttä QS-paneelia, kun käytät vaaleaa teemaa</string>
     <string name="qs_pulldown_size">Nopea alasveto leveys</string>
     <string name="qs_pulldown_switch_title">Nopea QS-paneelin alasveto tilapalkista</string>

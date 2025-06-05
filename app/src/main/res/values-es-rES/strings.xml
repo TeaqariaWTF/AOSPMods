@@ -261,11 +261,11 @@
     <string name="qs_footer_text_value">Introducir texto personalizado</string>
     <string name="qs_footer_text_summary">Dejar en blanco para eliminar completamente</string>
     <string name="qs_footer_text_desc">Requiere apagar/encender la pantalla</string>
-    <string name="qs_leveled_flashlight_title">Mosaico de linterna con nivel de brillo</string>
+    <string name="qs_leveled_flashlight_title">Flashlight-leveled tile</string>
     <string name="qs_flashlight_level_global_title">Aplicar nivel de linterna globalmente</string>
     <string name="qs_tile_vertical_title">Mover iconos de mosaico a la parte superior</string>
     <string name="qs_tile_qty_title">Configuración de recuento de mosaicos en configuración rápida</string>
-    <string name="qs_leveled_flashlight_summary">Requiere hardware compatible</string>
+    <string name="qs_leveled_flashlight_summary">Longpress on tile to show the slider.\nRequires supported hardware</string>
     <string name="light_qs_title">Panel de ajustes rápidos claro</string>
     <string name="qs_pulldown_size">Distancia para deslizamiento rápido de ajustes rápidos</string>
     <string name="qs_pulldown_switch_title">Deslize rápido para abajo desde la barra de estado</string>

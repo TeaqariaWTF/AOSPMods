@@ -261,11 +261,11 @@
     <string name="qs_footer_text_value">Benutzerdefinierten Text</string>
     <string name="qs_footer_text_summary">Leer lassen um den Text zu entfernen</string>
     <string name="qs_footer_text_desc">Schalte das Display Ein/Aus um zu aktivieren</string>
-    <string name="qs_leveled_flashlight_title">Graduelle Taschenlampenplättchen</string>
+    <string name="qs_leveled_flashlight_title">Flashlight-leveled tile</string>
     <string name="qs_flashlight_level_global_title">Wenden die Taschenlampenstufe global an</string>
     <string name="qs_tile_vertical_title">Kachelsymbole nach oben verschieben</string>
     <string name="qs_tile_qty_title">Schnelleinstellungen Kachelanzahl Einstellungen</string>
-    <string name="qs_leveled_flashlight_summary">Erfordert unterstützte Hardware</string>
+    <string name="qs_leveled_flashlight_summary">Longpress on tile to show the slider.\nRequires supported hardware</string>
     <string name="light_qs_title">Helle Schnelleinstellungen während hellem Thema (könnte fehlerhaft sein)</string>
     <string name="qs_pulldown_size">Schnell herunterziehen Größe</string>
     <string name="qs_pulldown_switch_title">Schnelles herunterziehen des Schnelleinstellungsmenüs von der Statusleiste </string>

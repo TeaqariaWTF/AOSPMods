@@ -261,11 +261,11 @@
     <string name="qs_footer_text_value">テキストの変更を有効化</string>
     <string name="qs_footer_text_summary">完全に非表示をする場合は空白のままにしてください</string>
     <string name="qs_footer_text_desc">画面のON/OFFで適用</string>
-    <string name="qs_leveled_flashlight_title">輝度レベルが調整された懐中電灯</string>
+    <string name="qs_leveled_flashlight_title">Flashlight-leveled tile</string>
     <string name="qs_flashlight_level_global_title">懐中電灯のレベルを全体的に変更</string>
     <string name="qs_tile_vertical_title">タイルアイコンを上部に移動</string>
     <string name="qs_tile_qty_title">クイック設定のタイルの数</string>
-    <string name="qs_leveled_flashlight_summary">対応をしたハードウェアが必要です</string>
+    <string name="qs_leveled_flashlight_summary">Longpress on tile to show the slider.\nRequires supported hardware</string>
     <string name="light_qs_title">ライトテーマの使用時にクイック設定パネルを適用</string>
     <string name="qs_pulldown_size">クイックプルダウンの幅</string>
     <string name="qs_pulldown_switch_title">ステータスバーからクイック設定をプルダウン</string>

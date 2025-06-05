@@ -261,11 +261,11 @@
     <string name="qs_footer_text_value">Wpisz własny tekst</string>
     <string name="qs_footer_text_summary">Pozostaw puste, aby całkowicie usunąć</string>
     <string name="qs_footer_text_desc">Wyłącz/włącz wyświetlacz, aby zastosować</string>
-    <string name="qs_leveled_flashlight_title">Płytka latarki o poziomie jasności</string>
+    <string name="qs_leveled_flashlight_title">Flashlight-leveled tile</string>
     <string name="qs_flashlight_level_global_title">Zastosuj poziom latarki globalnie</string>
     <string name="qs_tile_vertical_title">Przesuń ikony kafelków na górę</string>
     <string name="qs_tile_qty_title">Szybkie ustawienia Ustawienia liczby płytek</string>
-    <string name="qs_leveled_flashlight_summary">Wymaga obsługiwanego sprzętu</string>
+    <string name="qs_leveled_flashlight_summary">Longpress on tile to show the slider.\nRequires supported hardware</string>
     <string name="light_qs_title">Zastosuj jasny panel QS podczas korzystania z jasnego motywu</string>
     <string name="qs_pulldown_size">Szerokość szybkiego opuszczania</string>
     <string name="qs_pulldown_switch_title">Szybkie rozwijanie panelu QS z paska stanu</string>

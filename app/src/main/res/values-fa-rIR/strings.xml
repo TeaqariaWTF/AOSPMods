@@ -261,11 +261,11 @@
     <string name="qs_footer_text_value">متن مورد نظر را وارد کنید</string>
     <string name="qs_footer_text_summary">خالی بگذارید تا کاملا حذف شود</string>
     <string name="qs_footer_text_desc">برای اعمال، نمایشگر را خاموش/روشن کنید</string>
-    <string name="qs_leveled_flashlight_title">تنظیم نور چراغ قوه از روی دکمه</string>
+    <string name="qs_leveled_flashlight_title">Flashlight-leveled tile</string>
     <string name="qs_flashlight_level_global_title">درجه نور چراغ قوه همه جا اعمال گردد</string>
     <string name="qs_tile_vertical_title">نمایه به بالای کاشی منتقل شود</string>
     <string name="qs_tile_qty_title">تنظیمات سریع تعداد کاشی تنظیمات</string>
-    <string name="qs_leveled_flashlight_summary">در صورتی که سخت افزار گوشی پشتیبانی کند</string>
+    <string name="qs_leveled_flashlight_summary">Longpress on tile to show the slider.\nRequires supported hardware</string>
     <string name="light_qs_title">رنگ پنل تنظیمات سریع بر اساس رنگبندی دستگاه</string>
     <string name="qs_pulldown_size">عرض پایین کشی سریع</string>
     <string name="qs_pulldown_switch_title">کشویی سریع پانل QS از نوار وضعیت</string>

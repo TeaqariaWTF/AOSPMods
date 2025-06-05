@@ -261,11 +261,11 @@
     <string name="qs_footer_text_value">Zadejte vlastní text</string>
     <string name="qs_footer_text_summary">Pro úplné odstranění nechte prázdné</string>
     <string name="qs_footer_text_desc">Chcete-li použít, vypněte/zapněte displej</string>
-    <string name="qs_leveled_flashlight_title">Dlaždice Baterka s vyrovnaným jasem</string>
+    <string name="qs_leveled_flashlight_title">Flashlight-leveled tile</string>
     <string name="qs_flashlight_level_global_title">Použijte úroveň baterky globálně</string>
     <string name="qs_tile_vertical_title">Přesunout ikony dlaždic nahoru</string>
     <string name="qs_tile_qty_title">Rychlé nastavení nastavení počtu dlaždic</string>
-    <string name="qs_leveled_flashlight_summary">Vyžaduje podporovaný hardware</string>
+    <string name="qs_leveled_flashlight_summary">Longpress on tile to show the slider.\nRequires supported hardware</string>
     <string name="light_qs_title">Při použití světlého motivu použijte světlý panel QS</string>
     <string name="qs_pulldown_size">Rychlá stahovací šířka</string>
     <string name="qs_pulldown_switch_title">Rychlé stahování panelu QS ze stavového řádku</string>

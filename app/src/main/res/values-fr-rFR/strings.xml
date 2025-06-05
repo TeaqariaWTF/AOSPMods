@@ -261,11 +261,11 @@
     <string name="qs_footer_text_value">Entrer le texte personnalisé</string>
     <string name="qs_footer_text_summary">Laisser vide pour retirer complètement</string>
     <string name="qs_footer_text_desc">Éteindre et rallumer l’écran pour appliquer</string>
-    <string name="qs_leveled_flashlight_title">Choisir le niveau d’intensité de la lampe torche depuis son bloc</string>
+    <string name="qs_leveled_flashlight_title">Flashlight-leveled tile</string>
     <string name="qs_flashlight_level_global_title">Change le niveau pour tout l’appareil</string>
     <string name="qs_tile_vertical_title">Bouger les icônes en haut des blocs</string>
     <string name="qs_tile_qty_title">Préférences du nombre de blocs</string>
-    <string name="qs_leveled_flashlight_summary">Nécessite un appareil compatible</string>
+    <string name="qs_leveled_flashlight_summary">Longpress on tile to show the slider.\nRequires supported hardware</string>
     <string name="light_qs_title">Appliquer la fenêtre de configuration rapide claire quand le thème clair est activé</string>
     <string name="qs_pulldown_size">Largeur pour l’accès rapide</string>
     <string name="qs_pulldown_switch_title">Accès rapide depuis la barre d’état</string>
