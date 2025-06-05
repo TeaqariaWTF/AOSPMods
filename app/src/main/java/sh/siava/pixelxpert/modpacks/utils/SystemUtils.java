@@ -7,6 +7,7 @@ import static de.robv.android.xposed.XposedBridge.invokeOriginalMethod;
 import static de.robv.android.xposed.XposedBridge.log;
 import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.getStaticObjectField;
+import static sh.siava.pixelxpert.modpacks.XPrefs.Xprefs;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -316,11 +317,21 @@ public class SystemUtils {
 			return;
 
 		try {
-			String flashID = getFlashID(mCameraManager);
-			if (!flashID.isEmpty()) {
-				setFlashInternalNoLevel(enabled);
+			String flashID = getFlashID(getCameraManager());
+			if (flashID.isEmpty()) {
+				return;
 			}
-		} catch (Throwable t) {
+			float currentPct1 = Xprefs.getInt("flashPCT", 50) / 100f;
+
+			if (Xprefs.getBoolean("isFlashLevelGlobal", true)
+					&& supportsFlashLevelsInternal()) {
+				float currentPct = Xprefs.getInt("flashPCT", 50) / 100f;
+
+				setFlashInternalWithLevel(enabled, getFlashlightLevelInternal(currentPct), animate);
+			}
+			else {
+				setFlashInternalNoLevel(enabled);
+			}		} catch (Throwable t) {
 			if (BuildConfig.DEBUG) {
 				log("PixelXpert Error in setting flashlight");
 				log(t);
@@ -330,7 +341,7 @@ public class SystemUtils {
 
 	private void setFlashInternalNoLevel(boolean enabled) {
 		try {
-			invokeOriginalMethod(mSetTorchModeMethod, mCameraManager,new Object[]{getFlashID(mCameraManager), enabled});
+			invokeOriginalMethod(mSetTorchModeMethod, getCameraManager(),new Object[]{getFlashID(getCameraManager()), enabled});
 		} catch (Throwable ignored) {}
 	}
 
@@ -399,7 +410,7 @@ public class SystemUtils {
 			if (maxFlashLevel == -1) {
 				@SuppressWarnings("unchecked")
 				CameraCharacteristics.Key<Integer> FLASH_INFO_STRENGTH_MAXIMUM_LEVEL = (CameraCharacteristics.Key<Integer>) getStaticObjectField(CameraCharacteristics.class, "FLASH_INFO_STRENGTH_MAXIMUM_LEVEL");
-				maxFlashLevel = mCameraManager.getCameraCharacteristics(flashID).get(FLASH_INFO_STRENGTH_MAXIMUM_LEVEL);
+				maxFlashLevel = getCameraManager().getCameraCharacteristics(flashID).get(FLASH_INFO_STRENGTH_MAXIMUM_LEVEL);
 			}
 		} catch (Throwable ignored) {}
 	}
@@ -433,11 +444,11 @@ public class SystemUtils {
 
 		private void setFlashLevel(boolean enabled, int level) {
 		try {
-			String flashID = getFlashID(mCameraManager);
+			String flashID = getFlashID(getCameraManager());
 			if (enabled) {
 				if (supportsFlashLevels()) //good news. we can set levels
 				{
-					mCameraManager.turnOnTorchWithStrengthLevel(flashID,Math.max(level, 1));
+					getCameraManager().turnOnTorchWithStrengthLevel(flashID,Math.max(level, 1));
 				} else //flash doesn't support levels: go normal
 				{
 					setFlashInternalNoLevel(true);
@@ -484,7 +495,7 @@ public class SystemUtils {
 	private int getFlashStrengthInternal()
 	{
 		try {
-			return mCameraManager.getTorchStrengthLevel(getFlashID(mCameraManager));
+			return getCameraManager().getTorchStrengthLevel(getFlashID(getCameraManager()));
 		} catch (CameraAccessException e) {
 			return 0;
 		}

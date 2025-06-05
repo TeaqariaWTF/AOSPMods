@@ -27,6 +27,7 @@ import sh.siava.pixelxpert.modpacks.systemui.DepthWallpaper;
 import sh.siava.pixelxpert.modpacks.systemui.EasyUnlock;
 import sh.siava.pixelxpert.modpacks.systemui.FeatureFlagsMods;
 import sh.siava.pixelxpert.modpacks.systemui.FingerprintWhileDozing;
+import sh.siava.pixelxpert.modpacks.systemui.FlashlightTile;
 import sh.siava.pixelxpert.modpacks.systemui.GestureNavbarManager;
 import sh.siava.pixelxpert.modpacks.systemui.IconPacks;
 import sh.siava.pixelxpert.modpacks.systemui.KSURootReceiver;
@@ -81,6 +82,7 @@ public class ModPacks {
 					//load before others
 					modPacks.add(ThermalProvider.class);
 					modPacks.add(BatteryDataProvider.class);
+
 					modPacks.add(IconPacks.class);
 					modPacks.add(BrightnessRange.class);
 					modPacks.add(NotificationExpander.class);
@@ -104,6 +106,7 @@ public class ModPacks {
 					modPacks.add(KSURootReceiver.class);
 					modPacks.add(PowerMenu.class); //good already
 					modPacks.add(StatusIconTuner.class); //good already
+					modPacks.add(FlashlightTile.class);
 				}
 				break;
 
