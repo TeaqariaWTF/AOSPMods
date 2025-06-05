@@ -33,6 +33,13 @@
 
 		<sh.siava.pixelxpert.ui.preferences.MaterialSwitchPreference
 			android:defaultValue="false"
+			android:key="leveledFlashTile"
+			android:summary="@string/qs_leveled_flashlight_summary"
+			android:title="@string/qs_leveled_flashlight_title"
+			app:iconSpaceReserved="false" />
+
+		<sh.siava.pixelxpert.ui.preferences.MaterialSwitchPreference
+			android:defaultValue="false"
 			android:key="wifi_cell"
 			android:summaryOff="@string/wifi_cell_off"
 			android:summaryOn="@string/wifi_cell_on"
