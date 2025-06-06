@@ -4,6 +4,7 @@ import static android.media.AudioManager.STREAM_MUSIC;
 import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.AudioManager;
+import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.registerVolumeChangeListener;
 
 import android.content.ComponentName;
 import android.content.Context;
@@ -45,6 +46,7 @@ public class VolumeTile extends XposedModPack {
 					if(componentName.getClassName().equals(VolumeTileService.class.getName()))
 					{
 						mVolumeTile = param.thisObject;
+						registerVolumeChangeListener(newVal -> updateTile());
 					}
 				});
 
@@ -55,11 +57,7 @@ public class VolumeTile extends XposedModPack {
 					{
 						SystemUtils.toggleMute();
 
-						Tile mTile = (Tile) getObjectField(param.thisObject, "mTile");
-						mTile.setState(SystemUtils.AudioManager().isStreamMute(STREAM_MUSIC) ? Tile.STATE_INACTIVE : Tile.STATE_ACTIVE);
-
-						callMethod(param.thisObject, "applyTileState", mTile, true);
-						callMethod(param.thisObject, "refreshState", new Object[]{null});
+						updateTile();
 					}
 				});
 		
@@ -76,6 +74,14 @@ public class VolumeTile extends XposedModPack {
 							param.setResult(new Intent());
 					}
 				});
+	}
+
+	private void updateTile() {
+		Tile mTile = (Tile) getObjectField(mVolumeTile, "mTile");
+		mTile.setState(SystemUtils.AudioManager().isStreamMute(STREAM_MUSIC) ? Tile.STATE_INACTIVE : Tile.STATE_ACTIVE);
+
+		callMethod(mVolumeTile, "applyTileState", mTile, true);
+		callMethod(mVolumeTile, "refreshState", new Object[]{null});
 	}
 
 	private void registerUpdateReceiver() {
