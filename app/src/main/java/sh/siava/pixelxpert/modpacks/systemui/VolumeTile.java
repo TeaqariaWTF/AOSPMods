@@ -107,7 +107,8 @@ public class VolumeTile extends XposedModPack {
 
 			@Override
 			public void onValueChange(Object slider, float value, boolean fromUser) {
-				changeVolume(Math.round(value));
+				if(fromUser)
+					changeVolume(Math.round(value));
 			}
 		};
 
