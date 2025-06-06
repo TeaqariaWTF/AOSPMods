@@ -250,6 +250,9 @@ public class PreferenceHelper {
 				}
 				return showOverlays;
 
+			case "isFlashLevelGlobal":
+				return instance.mPreferences.getBoolean("leveledFlashTile", false);
+
 			case "BackLeftHeight":
 				return instance.mPreferences.getBoolean("BackFromLeft", true);
 
