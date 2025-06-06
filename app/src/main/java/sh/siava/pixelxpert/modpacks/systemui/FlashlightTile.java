@@ -81,7 +81,9 @@ public class FlashlightTile extends XposedModPack {
 			}
 		};
 
-		mAlertSlider = new AlertSlider();
+		if(mAlertSlider == null)
+			mAlertSlider = new AlertSlider();
+
 		mAlertSlider.show(mContext,
 				getFlashlightLevel(
 						Xprefs.getInt("flashPCT", 50)

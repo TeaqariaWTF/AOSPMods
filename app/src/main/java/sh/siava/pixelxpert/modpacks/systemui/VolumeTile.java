@@ -47,6 +47,7 @@ public class VolumeTile extends XposedModPack {
 					{
 						mVolumeTile = param.thisObject;
 						registerVolumeChangeListener(newVal -> updateTile());
+						updateTile();
 					}
 				});
 
@@ -80,7 +81,6 @@ public class VolumeTile extends XposedModPack {
 		Tile mTile = (Tile) getObjectField(mVolumeTile, "mTile");
 		mTile.setState(SystemUtils.AudioManager().isStreamMute(STREAM_MUSIC) ? Tile.STATE_INACTIVE : Tile.STATE_ACTIVE);
 
-		callMethod(mVolumeTile, "applyTileState", mTile, true);
 		callMethod(mVolumeTile, "refreshState", new Object[]{null});
 	}
 
@@ -112,7 +112,8 @@ public class VolumeTile extends XposedModPack {
 			}
 		};
 
-		mAlertSlider = new AlertSlider();
+		if(mAlertSlider == null)
+			mAlertSlider = new AlertSlider();
 
 		mAlertSlider.show(mContext,
 				AudioManager().getStreamVolume(STREAM_MUSIC),
