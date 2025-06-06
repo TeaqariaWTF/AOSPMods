@@ -46,6 +46,7 @@ import sh.siava.pixelxpert.modpacks.systemui.StatusbarGestures;
 import sh.siava.pixelxpert.modpacks.systemui.StatusbarMods;
 import sh.siava.pixelxpert.modpacks.systemui.ThermalProvider;
 import sh.siava.pixelxpert.modpacks.systemui.UDFPSManager;
+import sh.siava.pixelxpert.modpacks.systemui.VolumeTile;
 import sh.siava.pixelxpert.modpacks.telecom.CallVibrator;
 
 
@@ -107,6 +108,7 @@ public class ModPacks {
 					modPacks.add(PowerMenu.class); //good already
 					modPacks.add(StatusIconTuner.class); //good already
 					modPacks.add(FlashlightTile.class);
+					modPacks.add(VolumeTile.class);
 				}
 				break;
 

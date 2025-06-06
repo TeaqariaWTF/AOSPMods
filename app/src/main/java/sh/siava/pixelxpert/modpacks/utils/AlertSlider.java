@@ -21,6 +21,7 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ResourceTools;
 
 public class AlertSlider {
+	Object mSlider;
 
 	public void show(Context context, float initialValue, float minValue, float maxValue, float stepSize, SliderEventCallback eventCallback) throws Throwable {
 		ReflectedClass AmbientVolumeSliderClass = ReflectedClass.of("com.android.systemui.accessibility.hearingaid.AmbientVolumeSlider");
@@ -38,13 +39,13 @@ public class AlertSlider {
 		sliderView.setPadding(0, 0, 0, ResourceTools.dpToPx(context, 24));
 		sliderView.setLayoutParams(lp);
 
-		Object mSlider = getObjectField(sliderView, "mSlider");
+		mSlider = getObjectField(sliderView, "mSlider");
 
 		setSliderListeners(mSlider, eventCallback);
 
-		setSliderValues(mSlider, minValue, maxValue, stepSize);
+		setSliderValues(minValue, maxValue, stepSize);
 
-		setSliderCurrentValue(mSlider, initialValue);
+		setSliderCurrentValue(initialValue);
 
 		sliderDialog.show();
 
@@ -55,8 +56,8 @@ public class AlertSlider {
 	}
 
 	/** @noinspection SameParameterValue*/
-	private static void setSliderCurrentValue(Object slider, float currentValue) {
-		callMethod(slider, "setValue", currentValue);
+	public void setSliderCurrentValue(float currentValue) {
+		callMethod(mSlider, "setValue", currentValue);
 	}
 
 	private void setSliderListeners(Object slider, SliderEventCallback sliderEventCallback) {
@@ -82,13 +83,13 @@ public class AlertSlider {
 	}
 
 	/** @noinspection SameParameterValue*/
-	private static void setSliderValues(Object slider, float valueFrom, float valueTo, float stepSize) {
-		setObjectField(slider, "valueFrom", valueFrom);
-		setObjectField(slider, "valueTo",valueTo);
-		setObjectField(slider, "stepSize", stepSize);
+	public void setSliderValues(float valueFrom, float valueTo, float stepSize) {
+		setObjectField(mSlider, "valueFrom", valueFrom);
+		setObjectField(mSlider, "valueTo",valueTo);
+		setObjectField(mSlider, "stepSize", stepSize);
 
-		setObjectField(slider, "dirtyConfig", true);
-		callMethod(slider, "postInvalidate");
+		setObjectField(mSlider, "dirtyConfig", true);
+		callMethod(mSlider, "postInvalidate");
 	}
 
 

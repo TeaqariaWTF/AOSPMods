@@ -21,6 +21,8 @@ public class FlashlightTile extends XposedModPack {
 	private static final String listenPackage = Constants.SYSTEM_UI_PACKAGE;
 	private boolean leveledFlashTile = false;
 	private boolean AnimateFlashlight = false;
+	private boolean mReceiverRegistered = false;
+	private AlertSlider mAlertSlider;
 
 	public FlashlightTile(Context context) {
 		super(context);
@@ -50,6 +52,8 @@ public class FlashlightTile extends XposedModPack {
 	}
 
 	private boolean handleFlashLongClick() throws Throwable {
+		if(!mReceiverRegistered)
+			registerReceiver();
 		AlertSlider.SliderEventCallback flashlightSliderCallback = new AlertSlider.SliderEventCallback() {
 			@Override
 			public void onStartTrackingTouch(Object slider) {}
@@ -77,7 +81,8 @@ public class FlashlightTile extends XposedModPack {
 			}
 		};
 
-		new AlertSlider().show(mContext,
+		mAlertSlider = new AlertSlider();
+		mAlertSlider.show(mContext,
 				getFlashlightLevel(
 						Xprefs.getInt("flashPCT", 50)
 								/ 100f),
@@ -87,6 +92,13 @@ public class FlashlightTile extends XposedModPack {
 				flashlightSliderCallback);
 
 		return true;
+	}
+
+	private void registerReceiver() {
+		SystemUtils
+				.registerFlashlightLevelListener(newVal ->
+						mAlertSlider.setSliderCurrentValue(newVal));
+		mReceiverRegistered = true;
 	}
 
 	@Override

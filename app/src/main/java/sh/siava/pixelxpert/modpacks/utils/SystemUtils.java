@@ -2,6 +2,7 @@ package sh.siava.pixelxpert.modpacks.utils;
 
 import static android.content.Context.RECEIVER_EXPORTED;
 import static android.content.res.Configuration.UI_MODE_NIGHT_YES;
+import static android.media.AudioManager.STREAM_MUSIC;
 import static java.lang.Math.round;
 import static de.robv.android.xposed.XposedBridge.invokeOriginalMethod;
 import static de.robv.android.xposed.XposedBridge.log;
@@ -57,6 +58,8 @@ public class SystemUtils {
 	private static final int THREAD_PRIORITY_BACKGROUND = 10;
 	public static final String EXTRA_VOLUME_STREAM_TYPE = "android.media.EXTRA_VOLUME_STREAM_TYPE";
 	public static final String EXTRA_VOLUME_STREAM_VALUE = "android.media.EXTRA_VOLUME_STREAM_VALUE";
+	public static final String ACTION_FLASH_LEVEL_CHANGED = BuildConfig.APPLICATION_ID + ".action.FLASH_LEVEL_CHANGED";
+
 	public static final int FADE_DURATION = 500;
 
 	@SuppressLint("StaticFieldLeak")
@@ -77,6 +80,7 @@ public class SystemUtils {
 	static boolean isTorchOn = false;
 
 	ArrayList<ChangeListener> mVolumeChangeListeners = new ArrayList<>();
+	ArrayList<ChangeListener> mFlashlightLevelListeners = new ArrayList<>();
 	private WifiManager mWifiManager;
 	private WindowManager mWindowManager;
 	private UserManager mUserManager;
@@ -283,7 +287,7 @@ public class SystemUtils {
 		BroadcastReceiver volChangeReceiver = new BroadcastReceiver() {
 			@Override
 			public void onReceive(Context context, Intent intent) {
-				if(intent.getIntExtra(EXTRA_VOLUME_STREAM_TYPE, -1) == AudioManager.STREAM_MUSIC)
+				if(intent.getIntExtra(EXTRA_VOLUME_STREAM_TYPE, -1) == STREAM_MUSIC)
 				{
 					int newLevel = intent.getIntExtra(EXTRA_VOLUME_STREAM_VALUE, 0);
 					for(ChangeListener listener : mVolumeChangeListeners)
@@ -294,11 +298,13 @@ public class SystemUtils {
 			}
 		};
 
-		IntentFilter volumeFilter = new IntentFilter();
-		volumeFilter.addAction("android.media.VOLUME_CHANGED_ACTION");
+		IntentFilter volumeFilter = new IntentFilter("android.media.VOLUME_CHANGED_ACTION");
 		mContext.registerReceiver(volChangeReceiver, volumeFilter, RECEIVER_EXPORTED);
 	}
-
+	public static void registerFlashlightLevelListener(ChangeListener listener)
+	{
+		instance.mFlashlightLevelListeners.add(listener);
+	}
 	public static void registerVolumeChangeListener(ChangeListener listener)
 	{
 		if(instance != null)
@@ -323,7 +329,8 @@ public class SystemUtils {
 			}
 			float currentPct1 = Xprefs.getInt("flashPCT", 50) / 100f;
 
-			if (Xprefs.getBoolean("isFlashLevelGlobal", true)
+			if (Xprefs.getBoolean("leveledFlashTile", false)
+					&& Xprefs.getBoolean("isFlashLevelGlobal", false)
 					&& supportsFlashLevelsInternal()) {
 				float currentPct = Xprefs.getInt("flashPCT", 50) / 100f;
 
@@ -350,7 +357,7 @@ public class SystemUtils {
 			ValueAnimator valueAnimator = ValueAnimator
 					.ofInt(0, level)
 					.setDuration(FADE_DURATION);
-			valueAnimator.addUpdateListener(animation -> setFlashLevel(true, (Integer) animation.getAnimatedValue()));
+			valueAnimator.addUpdateListener(animation -> setFlashLevel(true, (Integer) animation.getAnimatedValue(), false));
 			valueAnimator.start();
 		});
 	}
@@ -360,7 +367,7 @@ public class SystemUtils {
 			ValueAnimator valueAnimator = ValueAnimator
 					.ofInt(getFlashStrengthInternal(), 0)
 					.setDuration(500);
-			valueAnimator.addUpdateListener(animation -> setFlashLevel(true, (Integer) animation.getAnimatedValue()));
+			valueAnimator.addUpdateListener(animation -> setFlashLevel(true, (Integer) animation.getAnimatedValue(), false));
 			valueAnimator.addListener(new AnimatorListenerAdapter() {
 				@Override
 				public void onAnimationEnd(Animator animation) {
@@ -438,17 +445,22 @@ public class SystemUtils {
 			}
 		}
 		else {
-			setFlashLevel(enabled, level);
+			setFlashLevel(enabled, level, true);
 		}
 	}
 
-		private void setFlashLevel(boolean enabled, int level) {
+		private void setFlashLevel(boolean enabled, int level, boolean broadcast) {
 		try {
 			String flashID = getFlashID(getCameraManager());
 			if (enabled) {
 				if (supportsFlashLevels()) //good news. we can set levels
 				{
 					getCameraManager().turnOnTorchWithStrengthLevel(flashID,Math.max(level, 1));
+
+					if(broadcast)
+					{
+						mContext.sendBroadcast(new Intent(ACTION_FLASH_LEVEL_CHANGED));
+					}
 				} else //flash doesn't support levels: go normal
 				{
 					setFlashInternalNoLevel(true);
@@ -461,6 +473,13 @@ public class SystemUtils {
 				log("PixelXpert Error in setting flashlight");
 				log(t);
 			}
+		}
+	}
+
+	private void informFlashListeners() {
+		for(ChangeListener listener : mFlashlightLevelListeners)
+		{
+			listener.onChanged(getFlashStrengthInternal());
 		}
 	}
 
@@ -697,6 +716,16 @@ public class SystemUtils {
 						isTorchOn = enabled;
 					}
 				}, mHandler);
+
+				mContext.registerReceiver(
+						new BroadcastReceiver() {
+							@Override
+							public void onReceive(Context context, Intent intent) {
+								informFlashListeners();
+							}
+						},
+						new IntentFilter(ACTION_FLASH_LEVEL_CHANGED),
+						RECEIVER_EXPORTED);
 			} catch (Throwable t) {
 				mCameraManager = null;
 				if (BuildConfig.DEBUG) {
@@ -739,7 +768,25 @@ public class SystemUtils {
 		}
 		return mUserManager;
 	}
-	
+
+	public static void toggleMute()
+	{
+		if(instance != null)
+		{
+			instance.toggleMuteInternal();
+		}
+	}
+
+	private void toggleMuteInternal() {
+
+		if(getAudioManager().isStreamMute(STREAM_MUSIC)) {
+			mAudioManager.setStreamVolume(STREAM_MUSIC, Xprefs.getSliderInt("UnMuteVolumePCT", 50), 0);
+		}
+		else {
+			mAudioManager.setStreamVolume(STREAM_MUSIC, 0, 0);
+		}
+	}
+
 	public interface ChangeListener
 	{
 		void onChanged(int newVal);
