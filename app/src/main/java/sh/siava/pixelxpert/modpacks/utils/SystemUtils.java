@@ -778,9 +778,12 @@ public class SystemUtils {
 	}
 
 	private void toggleMuteInternal() {
-
 		if(getAudioManager().isStreamMute(STREAM_MUSIC)) {
-			mAudioManager.setStreamVolume(STREAM_MUSIC, Xprefs.getSliderInt("UnMuteVolumePCT", 50), 0);
+			int unMuteVolume = round(
+					(AudioManager().getStreamMaxVolume(STREAM_MUSIC)
+							- AudioManager().getStreamMinVolume(STREAM_MUSIC)
+					) * (float) Xprefs.getSliderInt("UnMuteVolumePCT", 50) / 100f);
+			mAudioManager.setStreamVolume(STREAM_MUSIC, unMuteVolume, 0);
 		}
 		else {
 			mAudioManager.setStreamVolume(STREAM_MUSIC, 0, 0);
