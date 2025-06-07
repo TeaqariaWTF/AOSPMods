@@ -1,3 +1,8 @@
+**canary-452**  
+- A16QPR1b1: Incompatible options were removed  
+- Media volume tile now is adjusted through longpress  
+- Added option to adjust flashlight with longpress on the tile  
+  
 **canary-451**  
 - A16qpr1b1: wallpaper depth effect now works with all clock styles  
   

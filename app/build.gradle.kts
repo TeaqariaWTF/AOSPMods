@@ -15,8 +15,8 @@ android {
 		applicationId = "sh.siava.pixelxpert"
 		minSdk = 36
 		targetSdk = 36
-		versionCode = 451
-		versionName = "canary-451"
+		versionCode = 452
+		versionName = "canary-452"
 		setProperty("archivesBaseName", "PixelXpert.apk")
 		ndk {
 			//noinspection ChromeOsAbiSupport
