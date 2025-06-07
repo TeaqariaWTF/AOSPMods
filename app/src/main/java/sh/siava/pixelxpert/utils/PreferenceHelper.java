@@ -2,8 +2,6 @@ package sh.siava.pixelxpert.utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.Build;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -19,10 +17,6 @@ import sh.siava.pixelxpert.ui.preferences.MaterialPrimarySwitchPreference;
 import sh.siava.rangesliderpreference.RangeSliderPreference;
 
 public class PreferenceHelper {
-	public static final int FULL_VERSION = 0;
-	public static final int XPOSED_ONLY = 1;
-	public static boolean showOverlays, showFonts;
-
 	private final ExtendedSharedPreferences mPreferences;
 
 	public static PreferenceHelper instance;
@@ -34,48 +28,13 @@ public class PreferenceHelper {
 	private PreferenceHelper(ExtendedSharedPreferences prefs) {
 		mPreferences = prefs;
 
-		int moduleType = XPOSED_ONLY;
-
-		showOverlays = moduleType == FULL_VERSION;
-		showFonts = moduleType == FULL_VERSION;
-
 		instance = this;
-	}
-
-	public static SharedPreferences getModulePrefs() {
-		if (instance != null) return instance.mPreferences;
-		return null;
 	}
 
 	public static boolean isVisible(String key) {
 		if (instance == null) return true;
 
 		switch (key) {
-			case "nav_keyboard_height_cat":
-			case "icon_style_header":
-			case "icon_shape_header":
-			case "signal_icon_theme_header":
-			case "dark_theme_styles_header":
-			case "HideNavbarOverlay":
-			case "CustomThemedIconsOverlay":
-			case "UnreadMessagesNumberOverlay":
-			case "QSTilesThemesOverlayEx":
-			case "IconPacksOverlayEx":
-			case "IconShapesOverlayEx":
-			case "SignalIconsOverlayEx":
-			case "DTStylesOverlayEx":
-			case "ReduceKeyboardSpaceOverlay":
-				return showOverlays;
-
-			case "DisableLockScreenPill":
-			case "ForceThemedLauncherIcons":
-			case "DisableOngoingNotifDismiss":
-				return Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
-
-			case "font_dependent":
-			case "enableCustomFonts":
-				return showFonts;
-
 			case "TaskbarAsRecents":
 			case "taskbarHeightOverride":
 			case "TaskbarRadiusOverride":
@@ -88,26 +47,6 @@ public class PreferenceHelper {
 
 			case "TaskbarHideAllAppsIcon":
 				return instance.mPreferences.getBoolean("TaskbarAsRecents", false);
-
-			case "gsans_override":
-			case "FontsOverlayEx":
-				if (!showFonts)
-					return false;
-
-				boolean customFontsEnabled = instance.mPreferences.getBoolean("enableCustomFonts", false);
-
-				if (!customFontsEnabled && !instance.mPreferences.getString("FontsOverlayEx", "").equals("None")) {
-					instance.mPreferences.edit().putString("FontsOverlayEx", "None").apply();
-				}
-
-				boolean gSansOverride = instance.mPreferences.getBoolean("gsans_override", false);
-				boolean FontsOverlayExEnabled = !instance.mPreferences.getString("FontsOverlayEx", "None").equals("None");
-
-				if ("gsans_override".equals(key)) {
-					return customFontsEnabled && !FontsOverlayExEnabled;
-				} else {
-					return customFontsEnabled && !gSansOverride;
-				}
 
 			case "displayOverride":
 				return instance.mPreferences.getBoolean("displayOverrideEnabled", false);
@@ -131,18 +70,17 @@ public class PreferenceHelper {
 				boolean bBarEnabled = instance.mPreferences.getBoolean("BBarEnabled", false);
 				boolean transitColors = instance.mPreferences.getBoolean("BBarTransitColors", false);
 
-				switch (key) {
-					case "batteryFastChargingColor":
-						return instance.mPreferences.getBoolean("indicateFastCharging", false) && bBarEnabled;
-					case "batteryChargingColor":
-						return instance.mPreferences.getBoolean("indicateCharging", false) && bBarEnabled;
-					case "batteryPowerSaveColor":
-						return instance.mPreferences.getBoolean("indicatePowerSave", false) && bBarEnabled;
-					case "batteryWarningColor":
-						return !warnZero && bBarEnabled;
-					default:  //batteryCriticalColor
-						return (!critZero || transitColors) && bBarEnabled && !warnZero;
-				}
+				return switch (key) {
+					case "batteryFastChargingColor" ->
+							instance.mPreferences.getBoolean("indicateFastCharging", false) && bBarEnabled;
+					case "batteryChargingColor" ->
+							instance.mPreferences.getBoolean("indicateCharging", false) && bBarEnabled;
+					case "batteryPowerSaveColor" ->
+							instance.mPreferences.getBoolean("indicatePowerSave", false) && bBarEnabled;
+					case "batteryWarningColor" -> !warnZero && bBarEnabled;
+					default ->  //batteryCriticalColor
+							(!critZero || transitColors) && bBarEnabled && !warnZero;
+				};
 
 			case "networkTrafficRXTop":
 				return (instance.mPreferences.getBoolean("networkOnSBEnabled", false)) && instance.mPreferences.getString("networkTrafficMode", "0").equals("0");
@@ -153,9 +91,6 @@ public class PreferenceHelper {
 			case "networkTrafficDLColor":
 			case "networkTrafficULColor":
 				return (instance.mPreferences.getBoolean("networkOnSBEnabled", false)) && instance.mPreferences.getBoolean("networkTrafficColorful", true);
-
-			case "DualToneBatteryOverlay":
-				return Integer.parseInt(instance.mPreferences.getString("BatteryStyle", "0")) == 0 && showOverlays;
 
 			case "BIconOpacity":
 			case "BIconindicateFastCharging":
@@ -239,16 +174,8 @@ public class PreferenceHelper {
 
 			case "QSPulldownPercent":
 			case "QSPulldownSide":
-				return instance.mPreferences.getBoolean("QSPullodwnEnabled", false);
-
 			case "oneFingerPullupEnabled":
-				return instance.mPreferences.getBoolean("QSPullodwnEnabled", false) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.UPSIDE_DOWN_CAKE;
-
-			case "BSThickTrackOverlay":
-				if (!showOverlays && instance.mPreferences.getBoolean("BSThickTrackOverlay", false)) {
-					instance.mPreferences.edit().putBoolean("BSThickTrackOverlay", false).apply();
-				}
-				return showOverlays;
+				return instance.mPreferences.getBoolean("QSPullodwnEnabled", false);
 
 			case "isFlashLevelGlobal":
 				return instance.mPreferences.getBoolean("leveledFlashTile", false);
@@ -280,34 +207,19 @@ public class PreferenceHelper {
 	}
 
 	public static boolean isEnabled(String key) {
-		switch (key) {
-			case "BBOnlyWhileCharging":
-			case "BBOnBottom":
-			case "BBOpacity":
-			case "BBarHeight":
-			case "BBSetCentered":
-			case "BBAnimateCharging":
-			case "indicateCharging":
-			case "indicateFastCharging":
-			case "indicatePowerSave":
-			case "batteryWarningRange":
-				return instance.mPreferences.getBoolean("BBarEnabled", false);
-
-			case "BBarTransitColors":
-				return instance.mPreferences.getBoolean("BBarEnabled", false) &&
-						!instance.mPreferences.getBoolean("BBarColorful", false);
-
-			case "BBarColorful":
-				return instance.mPreferences.getBoolean("BBarEnabled", false) &&
-						!instance.mPreferences.getBoolean("BBarTransitColors", false);
-
-			case "BIconColorful":
-				return !instance.mPreferences.getBoolean("BIconTransitColors", false);
-
-			case "BIconTransitColors":
-				return !instance.mPreferences.getBoolean("BIconColorful", false);
-		}
-		return true;
+		return switch (key) {
+			case "BBOnlyWhileCharging", "BBOnBottom", "BBOpacity", "BBarHeight", "BBSetCentered",
+				 "BBAnimateCharging", "indicateCharging", "indicateFastCharging",
+				 "indicatePowerSave", "batteryWarningRange" ->
+					instance.mPreferences.getBoolean("BBarEnabled", false);
+			case "BBarTransitColors" -> instance.mPreferences.getBoolean("BBarEnabled", false) &&
+					!instance.mPreferences.getBoolean("BBarColorful", false);
+			case "BBarColorful" -> instance.mPreferences.getBoolean("BBarEnabled", false) &&
+					!instance.mPreferences.getBoolean("BBarTransitColors", false);
+			case "BIconColorful" -> !instance.mPreferences.getBoolean("BIconTransitColors", false);
+			case "BIconTransitColors" -> !instance.mPreferences.getBoolean("BIconColorful", false);
+			default -> true;
+		};
 	}
 
 	/**

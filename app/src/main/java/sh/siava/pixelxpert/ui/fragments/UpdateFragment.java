@@ -61,7 +61,6 @@ import sh.siava.pixelxpert.ui.activities.SettingsActivity;
 import sh.siava.pixelxpert.utils.AppUtils;
 import sh.siava.pixelxpert.utils.DisplayUtils;
 import sh.siava.pixelxpert.utils.ExtendedSharedPreferences;
-import sh.siava.pixelxpert.utils.PreferenceHelper;
 
 
 public class UpdateFragment extends BaseFragment {
@@ -122,11 +121,9 @@ public class UpdateFragment extends BaseFragment {
 	};
 	private UpdateFragmentBinding binding;
 	private int currentVersionCode = -1;
-	private int currentVersionType = PreferenceHelper.XPOSED_ONLY;
 	private String currentVersionName = "";
 	private boolean rebootPending = false;
 	//	private boolean downloadStarted = false;
-	private boolean installFullVersion = false;
 
 	@Override
 	public String getTitle() {
@@ -171,11 +168,8 @@ public class UpdateFragment extends BaseFragment {
 		ExtendedSharedPreferences prefs = ExtendedSharedPreferences.from(PreferenceManager.getDefaultSharedPreferences(requireContext().createDeviceProtectedStorageContext()));
 
 		int volumeStps = prefs.getSliderInt("volumeStps", 0);
-		boolean customFontsEnabled = prefs.getBoolean("enableCustomFonts", false);
-		boolean GSansOverrideEnabled = prefs.getBoolean("gsans_override", false);
 
 		ModuleFolderOperations.applyVolumeSteps(volumeStps, updateRoot, true);
-		ModuleFolderOperations.applyFontSettings(customFontsEnabled, GSansOverrideEnabled, updateRoot, true);
 	}
 
 	@Override
@@ -187,7 +181,6 @@ public class UpdateFragment extends BaseFragment {
 
 		if (!Shell.getShell().isRoot()) {
 			currentVersionName = getString(R.string.root_not_here);
-			currentVersionType = -1;
 			currentVersionCode = 9999;
 		} else {
 			getCurrentVersion();
@@ -270,7 +263,7 @@ public class UpdateFragment extends BaseFragment {
 								}
 								enable = true; //stable version is ALWAYS flashable, so that user can revert from canary or repair installation
 							} else {
-								if (latestCode > currentVersionCode || (currentVersionType == PreferenceHelper.FULL_VERSION) != installFullVersion) {
+								if (latestCode > currentVersionCode) {
 									enable = true;
 								}
 							}
@@ -285,28 +278,18 @@ public class UpdateFragment extends BaseFragment {
 
 		binding.updateChannelRadioGroup.setOnCheckedChangeListener(onCheckChangedListener);
 
-		binding.packageTypeRadioGroup.setOnCheckedChangeListener((radioGroup, i) -> onCheckChangedListener.onCheckedChanged(view.findViewById(R.id.updateChannelRadioGroup), 0));
-
 		binding.updateBtn.setOnClickListener(view1 -> {
 			if (rebootPending) {
 				AppUtils.restart("system");
 			} else {
-				String zipURL = (String) latestVersion.get("zipUrl_Xposed");
-				if (zipURL == null) zipURL = (String) latestVersion.get("zipUrl");
 
 				//noinspection ConstantConditions
-				startDownload(zipURL, (int) latestVersion.get("versionCode"));
+				startDownload((String) latestVersion.get("zipUrl"),
+						(int) latestVersion.get("versionCode"));
 				binding.updateBtn.setEnabled(false);
-//				downloadStarted = true;
 				binding.updateBtn.setText(R.string.update_download_started);
 			}
 		});
-
-		if (currentVersionType == PreferenceHelper.FULL_VERSION) {
-			((RadioButton) view.findViewById(R.id.fullTypeID)).setChecked(true);
-		} else {
-			((RadioButton) view.findViewById(R.id.XposedTypeID)).setChecked(true);
-		}
 
 		if (currentVersionName.toLowerCase().contains("canary")) {
 			((RadioButton) view.findViewById(R.id.canaryID)).setChecked(true);
@@ -314,10 +297,6 @@ public class UpdateFragment extends BaseFragment {
 			((RadioButton) view.findViewById(R.id.stableID)).setChecked(true);
 		}
 	}
-
-/*    private void getChangelog(String URL, TaskDoneCallback callback) {
-        new ChangelogReceiver(URL, callback).start();
-    }*/
 
 	private void getCurrentVersion() {
 		rebootPending = false;
@@ -399,37 +378,6 @@ public class UpdateFragment extends BaseFragment {
 	public interface TaskDoneCallback extends Callback {
 		void onFinished(HashMap<String, Object> result);
 	}
-/*    private static class ChangelogReceiver extends Thread {
-        private final TaskDoneCallback mCallback;
-        private final String mURL;
-
-        private ChangelogReceiver(String URL, TaskDoneCallback callback) {
-            mURL = URL;
-            mCallback = callback;
-        }
-
-        @Override
-        public void run()
-        {
-            try {
-                URL changelogData = new URL(mURL);
-                InputStream s = changelogData.openStream();
-
-                BufferedReader in = new BufferedReader(new InputStreamReader(s));
-
-                StringBuilder result = new StringBuilder();
-                String line;
-                while ((line = in.readLine()) != null) {
-                    result.append(line).append("\n");
-                }
-                HashMap<String, Object> returnVal = new HashMap<>();
-                returnVal.put("changelog", result.toString());
-
-                mCallback.onFinished(returnVal);
-            } catch (Exception ignored){}
-        }
-    }
-*/
 
 	public static class updateChecker extends Thread {
 		private final TaskDoneCallback mCallback;
@@ -457,8 +405,6 @@ public class UpdateFragment extends BaseFragment {
 							versionInfo.put(name, jsonReader.nextInt());
 							break;
 						case "zipUrl":
-						case "zipUrl_Xposed":
-						case "zipUrl_Full":
 						case "version":
 						case "changelog":
 						default:

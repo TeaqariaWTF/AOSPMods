@@ -8,24 +8,15 @@ import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.PackageManager;
 
 import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.ColorSpace;
-import android.graphics.Insets;
-import android.graphics.ParcelableColorSpace;
-import android.graphics.Rect;
-import android.hardware.HardwareBuffer;
-import android.os.Bundle;
 import android.os.UserHandle;
 import android.view.Display;
 import android.view.WindowManager;
 
-import java.lang.reflect.Constructor;
 import java.util.List;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
@@ -38,20 +29,8 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 public class PhoneWindowManager extends XposedModPack {
 	public static final String listenPackage = Constants.SYSTEM_FRAMEWORK_PACKAGE;
 
-	private static final int TAKE_SCREENSHOT_PROVIDED_IMAGE = 3;
-
-	private static final String KEY_BUFFER = "bitmap_util_buffer";
-	private static final String KEY_COLOR_SPACE = "bitmap_util_color_space";
-
 	private Object windowMan = null;
 	private static boolean broadcastRegistered = false;
-	private Object mDisplayManagerInternal;
-	private Display mDefaultDisplay;
-	private Object mDefaultDisplayPolicy;
-	private Object mHandler;
-	//	private boolean ScreenshotChordInsecure;
-//	private final ArrayList<Object> screenshotChords = new ArrayList<>();
-	private ReflectedClass ScreenshotRequestClass;
 	private List<UserHandle> userHandleList;
 	private String currentPackage = "";
 	private int currentUser = -1;
@@ -70,6 +49,7 @@ public class PhoneWindowManager extends XposedModPack {
 		public void onReceive(Context context, Intent intent) {
 			try {
 				String action = intent.getAction();
+				//noinspection DataFlowIssue
 				switch (action) {
 					case Constants.ACTION_SCREENSHOT:
 						try {
@@ -197,8 +177,6 @@ public class PhoneWindowManager extends XposedModPack {
 						}).start();
 					});
 
-			ScreenshotRequestClass = ReflectedClass.ofIfPossible("com.android.internal.util.ScreenshotRequest"); //13 QPR3
-
 			PhoneWindowManagerClass
 					.after("enableScreen")
 					.run(param -> windowMan = param.thisObject);
@@ -215,74 +193,6 @@ public class PhoneWindowManager extends XposedModPack {
 			broadcast.putExtra("available", isAvailable);
 			mContext.sendBroadcast(broadcast);
 		}).start();
-	}
-
-	/**
-	 * @noinspection unused
-	 */
-	@Deprecated
-	private void takeInsecureScreenshot() {
-		if (mDisplayManagerInternal == null) {
-			initVars();
-		}
-
-		Object SCBuffer = callMethod(mDisplayManagerInternal, "systemScreenshot", mDefaultDisplay.getDisplayId());
-
-		if (ScreenshotRequestClass != null) {
-			Bitmap screenshotBitmap = (Bitmap) callMethod(SCBuffer, "asBitmap");
-
-			Object screenshotRequest = null;
-			try {
-				for (Constructor<?> constructor : ScreenshotRequestClass.getClazz().getDeclaredConstructors()) {
-					if (constructor.getParameterCount() == 8) {
-						screenshotRequest = constructor.newInstance(
-								TAKE_SCREENSHOT_PROVIDED_IMAGE /* type */,
-								0 /* source. 0 is global actions */,
-								new ComponentName("", ""), 1 /* task id*/,
-								0 /* user id */,
-								screenshotBitmap,
-								new Rect(0, 0, screenshotBitmap.getWidth(), screenshotBitmap.getHeight()),
-								Insets.of(0, 0, 0, 0));
-					}
-				}
-			} catch (Throwable ignored) {
-			}
-
-			if (screenshotRequest != null) {
-				callMethod(getObjectField(mDefaultDisplayPolicy, "mScreenshotHelper"),
-						"takeScreenshot",
-						screenshotRequest,
-						mHandler,
-						null);
-			}
-		} else {
-			HardwareBuffer mHardwareBuffer = (HardwareBuffer) getObjectField(SCBuffer, "mHardwareBuffer");
-
-			ParcelableColorSpace colorSpace = new ParcelableColorSpace((ColorSpace) getObjectField(SCBuffer, "mColorSpace"));
-
-			Bundle bundle = new Bundle();
-			bundle.putParcelable(KEY_BUFFER, mHardwareBuffer);
-			bundle.putParcelable(KEY_COLOR_SPACE, colorSpace);
-
-			callMethod(getObjectField(mDefaultDisplayPolicy, "mScreenshotHelper"),
-					"provideScreenshot",
-					bundle,
-					new Rect(0, 0, mHardwareBuffer.getWidth(), mHardwareBuffer.getHeight()),
-					Insets.of(0, 0, 0, 0),
-					1,
-					1,
-					new ComponentName("", ""),
-					0,
-					mHandler,
-					null);
-		}
-	}
-
-	private void initVars() {
-		mDisplayManagerInternal = getObjectField(windowMan, "mDisplayManagerInternal");
-		mDefaultDisplay = (Display) getObjectField(windowMan, "mDefaultDisplay");
-		mDefaultDisplayPolicy = getObjectField(windowMan, "mDefaultDisplayPolicy");
-		mHandler = getObjectField(windowMan, "mHandler");
 	}
 
 	@Override

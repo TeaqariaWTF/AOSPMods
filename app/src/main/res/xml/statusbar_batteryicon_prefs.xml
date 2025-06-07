@@ -17,14 +17,6 @@
 		android:title="@string/battery_style_title"
 		app:iconSpaceReserved="false" />
 
-	<sh.siava.pixelxpert.ui.preferences.MaterialSwitchPreference
-		android:defaultValue="false"
-		android:key="DualToneBatteryOverlay"
-		android:summaryOff="@string/general_off"
-		android:summaryOn="@string/dual_tone_battery_on_summary"
-		android:title="@string/dual_tone_battery_title"
-		app:iconSpaceReserved="false" />
-
 	<sh.siava.pixelxpert.ui.preferences.MaterialRangeSliderPreference
 		android:key="BatteryIconScaleFactor"
 		android:title="@string/battery_icon_size_title"

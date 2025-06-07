@@ -51,10 +51,6 @@ public class MiscSettings extends XposedModPack {
 				case "wifi_cell":
 					updateWifiCell();
 					break;
-				case "enableCustomFonts":
-				case "gsans_override":
-		//			updateFontsInfrastructure();
-					break;
 				case "volumeStps":
 					setVolumeSteps();
 					break;
@@ -66,7 +62,6 @@ public class MiscSettings extends XposedModPack {
 			setDisplayOverride();
 
 			updateSysUITuner();
-	//		updateFontsInfrastructure();
 
 			setVolumeSteps();
 		}
@@ -140,14 +135,6 @@ public class MiscSettings extends XposedModPack {
 				proxy.runCommand("pm " + mode + " com.android.systemui/.tuner.TunerActivity");
 			} catch (Exception ignored) {}
 		});
-	}
-
-	@Deprecated
-	private void updateFontsInfrastructure() {
-		boolean customFontsEnabled = Xprefs.getBoolean("enableCustomFonts", false);
-		boolean GSansOverrideEnabled = Xprefs.getBoolean("gsans_override", false);
-
-		ModuleFolderOperations.applyFontSettings(customFontsEnabled, GSansOverrideEnabled, XPrefs.MagiskRoot, false);
 	}
 
 	@Override

@@ -154,21 +154,6 @@
 
 		<sh.siava.pixelxpert.ui.preferences.MaterialSwitchPreference
 			android:defaultValue="false"
-			android:key="CustomThemedIconsOverlay"
-			android:summaryOff="@string/custom_themed_icons_off"
-			android:summaryOn="@string/custom_themed_icons_on"
-			android:title="@string/custom_themed_icons_title"
-			app:iconSpaceReserved="false" />
-
-		<sh.siava.pixelxpert.ui.preferences.MaterialSwitchPreference
-			android:defaultValue="false"
-			android:key="ForceThemedLauncherIcons"
-			android:summary="@string/force_themed_icons_summary"
-			android:title="@string/force_themed_icons_title"
-			app:iconSpaceReserved="false" />
-
-		<sh.siava.pixelxpert.ui.preferences.MaterialSwitchPreference
-			android:defaultValue="false"
 			android:key="RecentClearAllReposition"
 			android:summaryOff="@string/general_off"
 			android:summaryOn="@string/general_on"

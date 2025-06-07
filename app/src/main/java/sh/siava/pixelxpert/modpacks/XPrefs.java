@@ -6,7 +6,6 @@ import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 
 import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.modpacks.utils.ExtendedRemotePreferences;
-import sh.siava.pixelxpert.modpacks.utils.Overlays;
 
 
 public class XPrefs {
@@ -38,8 +37,5 @@ public class XPrefs {
 	}
 
 	public static void setPackagePrefs(String packageName) {
-		if (Constants.SYSTEM_UI_PACKAGE.equals(packageName) && !XPLauncher.isChildProcess) {
-			Overlays.setAll(false);
-		}
 	}
 }
