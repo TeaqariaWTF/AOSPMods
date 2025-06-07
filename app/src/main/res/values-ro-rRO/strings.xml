@@ -110,12 +110,7 @@
     <string name="imperial_units_title">Utilizează unități imperiale</string>
     <!--Status bar related-->
     <string name="double_tap_sleep_title">Dublă-atingere pentru oprire ecran</string>
-    <string name="battery_style_title">Alege un stil de baterie</string>
-    <string name="battery_show_percent_title">Afișează procentajul bateriei</string>
-    <string name="battery_show_charging_animation_title">Arată animația de încărcare</string>
-    <string name="battery_icon_size_title">Dimensiune pictogramă baterie</string>
     <string name="battery_hidden">Ascunsă</string>
-    <string name="BIcon_Opacity_title">Transparență</string>
     <string name="sb_multi_row_system_icons">Pictograme de sistem cu mai multe rânduri (necesită înălțime mai mare a barei de stare)</string>
     <string name="sb_multi_row_notification_icons">Pictograme de notificare pe mai multe rânduri (necesită înălțime mai mare a barei de stare)</string>
     <string name="sb_double_row_category">Rânduri duble din bara de stare</string>
@@ -414,17 +409,6 @@
     <string name="vibration_type_notification">Intensitatea definită de setările de vibrații ale notificărilor sistemului</string>
     <string name="dialer_mute_record_message_title">Elimină anunțul de înregistrare a apelurilor</string>
     <string name="dialer_mute_record_message_summary">Se aplică numai pentru aplicația Telefon Google cu înregistrarea apelurilor activată</string>
-    <!-- Theming section related -->
-    <string name="gsans_override_title">Forțează utilizarea fontului Google Sans în tot sistemul</string>
-    <string name="font_overlays_enable_title">Activează utilizarea fonturilor personalizate</string>
-    <string name="theme_customization_font_title">Font pentru Titlu / Corp text</string>
-    <string name="icons_style_title">Stil pictogramă</string>
-    <string name="icon_shapes_title">Forma pictogramelor</string>
-    <string name="signal_icons_theme_title">Tema pictogramelor de semnal</string>
-    <string name="dt_styles_category">Stil temă întunecată</string>
-    <string name="dt_styles">Alege un stil</string>
-    <string name="caution_unstable">Atenție: Această opțiune ar putea fi instabilă pentru unii utilizatori.</string>
-    <string name="power_menu_overlays_title">Activează tema luminoasă/întunecată a meniului butonului de alimentare</string>
     <!-- Arrays strings -->
     <!-- Quick pull down -->
     <string name="pull_down_left">Stânga</string>

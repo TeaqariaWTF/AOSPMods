@@ -110,12 +110,7 @@
     <string name="imperial_units_title">Gebruik imperiale eenhede</string>
     <!--Status bar related-->
     <string name="double_tap_sleep_title">Dubbeltik om te slaap</string>
-    <string name="battery_style_title">Kies \'n batterystyl</string>
-    <string name="battery_show_percent_title">Wys batterypersentasie</string>
-    <string name="battery_show_charging_animation_title">Wys laai-animasie</string>
-    <string name="battery_icon_size_title">Battery ikoon grootte</string>
     <string name="battery_hidden">Versteek</string>
-    <string name="BIcon_Opacity_title">Ondeursigtigheid</string>
     <string name="sb_multi_row_system_icons">Multi-ry stelsel ikone (benodig verhoogde statusbalk hoogte)</string>
     <string name="sb_multi_row_notification_icons">Multi-ry kennisgewing ikone (benodig verhoogde statusbalk hoogte)</string>
     <string name="sb_double_row_category">Dubbele statusbalk-rye</string>
@@ -414,17 +409,6 @@
     <string name="vibration_type_notification">Intensiteit gedefinieer deur stelselkennisgewingvibrasie-instellings</string>
     <string name="dialer_mute_record_message_title">Verwyder oproepopname-aankondiging</string>
     <string name="dialer_mute_record_message_summary">Slegs van toepassing op Google-foontoepassing met oproepopname geaktiveer</string>
-    <!-- Theming section related -->
-    <string name="gsans_override_title">Dwing Google Sans-lettertipe stelselwyd</string>
-    <string name="font_overlays_enable_title">Aktiveer die gebruik van gepasmaakte lettertipes</string>
-    <string name="theme_customization_font_title">Opskrif / Liggaam font</string>
-    <string name="icons_style_title">Ikoon styl</string>
-    <string name="icon_shapes_title">Ikoon Vorm</string>
-    <string name="signal_icons_theme_title">Sein ikone Tema</string>
-    <string name="dt_styles_category">Donker temastyle</string>
-    <string name="dt_styles">Kies \'n styl</string>
-    <string name="caution_unstable">Let op: Hierdie opsie kan vir sommige gebruikers onstabiel wees.</string>
-    <string name="power_menu_overlays_title">Aktiveer ligte/donker temas op kragkieslys</string>
     <!-- Arrays strings -->
     <!-- Quick pull down -->
     <string name="pull_down_left">Links</string>

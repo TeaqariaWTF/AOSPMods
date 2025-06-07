@@ -110,12 +110,7 @@
     <string name="imperial_units_title">Использовать британские единицы измерения</string>
     <!--Status bar related-->
     <string name="double_tap_sleep_title">Двойное нажатие для перехода в спящий режим</string>
-    <string name="battery_style_title">Выберите стиль батареи</string>
-    <string name="battery_show_percent_title">Показать процент заряда батареи</string>
-    <string name="battery_show_charging_animation_title">Показать анимацию зарядки </string>
-    <string name="battery_icon_size_title">Размер значка батареи</string>
     <string name="battery_hidden">Скрытый</string>
-    <string name="BIcon_Opacity_title">Полупрозрачный</string>
     <string name="sb_multi_row_system_icons">Многострочные системные значки (требуется большая высота строки состояния)</string>
     <string name="sb_multi_row_notification_icons">Многорядные значки уведомлений (требуется увеличение высоты статусбара)</string>
     <string name="sb_double_row_category">Двойные строки панели состояния</string>
@@ -414,17 +409,6 @@
     <string name="vibration_type_notification">Интенсивность определяется системными настройками вибрации уведомлений</string>
     <string name="dialer_mute_record_message_title">Удаление объявления о записи вызова</string>
     <string name="dialer_mute_record_message_summary">Применяется только для приложения Google phone с включенной записью звонков</string>
-    <!-- Theming section related -->
-    <string name="gsans_override_title">Принудительное использование шрифта Google Sans во всей системе</string>
-    <string name="font_overlays_enable_title">Разрешить использование пользовательских шрифтов</string>
-    <string name="theme_customization_font_title">Заголовок / Основной шрифт</string>
-    <string name="icons_style_title">Стиль иконок</string>
-    <string name="icon_shapes_title">Формы значков</string>
-    <string name="signal_icons_theme_title">Тема иконок сигнала</string>
-    <string name="dt_styles_category">Стили темной темы</string>
-    <string name="dt_styles">Выберите стиль</string>
-    <string name="caution_unstable">Внимание: эта опция может быть нестабильной для некоторых пользователей.</string>
-    <string name="power_menu_overlays_title">Включить светлые/темные темы в меню питания</string>
     <!-- Arrays strings -->
     <!-- Quick pull down -->
     <string name="pull_down_left">Слева</string>

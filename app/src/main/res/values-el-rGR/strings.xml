@@ -110,12 +110,7 @@
     <string name="imperial_units_title">Χρησιμοποιήστε αυτοκρατορικές μονάδες</string>
     <!--Status bar related-->
     <string name="double_tap_sleep_title">Πατήστε δύο φορές για ύπνο</string>
-    <string name="battery_style_title">Επιλέξτε στυλ μπαταρίας</string>
-    <string name="battery_show_percent_title">Εμφάνιση ποσοστού μπαταρίας</string>
-    <string name="battery_show_charging_animation_title">Εμφάνιση κινούμενων εικόνων φόρτισης</string>
-    <string name="battery_icon_size_title">Μέγεθος εικονιδίου μπαταρίας</string>
     <string name="battery_hidden">Κρυμμένος</string>
-    <string name="BIcon_Opacity_title">Αδιαφάνεια</string>
     <string name="sb_multi_row_system_icons">Εικονίδια συστήματος πολλών σειρών (χρειάζεται αυξημένο ύψος γραμμής κατάστασης)</string>
     <string name="sb_multi_row_notification_icons">Εικονίδια ειδοποιήσεων πολλών σειρών (χρειάζεται αυξημένο ύψος γραμμής κατάστασης)</string>
     <string name="sb_double_row_category">Διπλές σειρές γραμμής κατάστασης</string>
@@ -414,17 +409,6 @@
     <string name="vibration_type_notification">Ένταση που ορίζεται από τις ρυθμίσεις δόνησης ειδοποιήσεων συστήματος</string>
     <string name="dialer_mute_record_message_title">Κατάργηση ανακοίνωσης εγγραφής κλήσεων</string>
     <string name="dialer_mute_record_message_summary">Ισχύει μόνο για την εφαρμογή τηλεφώνου Google με ενεργοποιημένη την εγγραφή κλήσεων</string>
-    <!-- Theming section related -->
-    <string name="gsans_override_title">Επιβολή γραμματοσειράς Google Sans σε όλο το σύστημα</string>
-    <string name="font_overlays_enable_title">Ενεργοποίηση χρησιμοποιώντας προσαρμοσμένες γραμματοσειρές</string>
-    <string name="theme_customization_font_title">Γραμματοσειρά επικεφαλίδας / σώματος</string>
-    <string name="icons_style_title">Στυλ εικονιδίων</string>
-    <string name="icon_shapes_title">Σχήμα εικονιδίου</string>
-    <string name="signal_icons_theme_title">Θέμα εικονιδίων σήματος</string>
-    <string name="dt_styles_category">Στυλ σκούρου θέματος</string>
-    <string name="dt_styles">Επιλέξτε ένα στυλ</string>
-    <string name="caution_unstable">Προσοχή: Αυτή η επιλογή ενδέχεται να είναι ασταθής για ορισμένους χρήστες.</string>
-    <string name="power_menu_overlays_title">Ενεργοποιήστε τα ανοιχτά/σκοτεινά θέματα στο μενού λειτουργίας</string>
     <!-- Arrays strings -->
     <!-- Quick pull down -->
     <string name="pull_down_left">Αριστερά</string>

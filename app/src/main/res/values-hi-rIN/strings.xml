@@ -110,12 +110,7 @@
     <string name="imperial_units_title">शाही इकाइयों का प्रयोग करें</string>
     <!--Status bar related-->
     <string name="double_tap_sleep_title">लॉक करने के लिए डबल टैप करें</string>
-    <string name="battery_style_title">बैटरी शैली चुनें</string>
-    <string name="battery_show_percent_title">बैटरी प्रतिशत दिखाएं</string>
-    <string name="battery_show_charging_animation_title">चार्जिंग एनीमेशन दिखाएँ</string>
-    <string name="battery_icon_size_title">बैटरी आइकन आकार</string>
     <string name="battery_hidden">छिपा हुआ</string>
-    <string name="BIcon_Opacity_title">दृश्यता</string>
     <string name="sb_multi_row_system_icons">मल्टी-लाइन सिस्टम आइकन (उच्च स्थिति बार ऊंचाई की आवश्यकता है)</string>
     <string name="sb_multi_row_notification_icons">बहु-पंक्ति अधिसूचना आइकन (उच्च स्थिति बार आवश्यक)</string>
     <string name="sb_double_row_category">डुप्लिकेट स्थिति बार पंक्तियां</string>
@@ -414,17 +409,6 @@
     <string name="vibration_type_notification">तीव्रता सिस्टम सूचना कंपन सेटिंग द्वारा सेट की जाती है</string>
     <string name="dialer_mute_record_message_title">कॉल रिकॉर्डिंग घोषणा हटाएँ</string>
     <string name="dialer_mute_record_message_summary">केवल कॉल रिकॉर्डिंग सक्षम वाले Google फ़ोन ऐप पर लागू होता है</string>
-    <!-- Theming section related -->
-    <string name="gsans_override_title">Google Sans फ़ॉन्ट सिस्टम को फ़ोर्स करें</string>
-    <string name="font_overlays_enable_title">कस्टम फ़ॉन्ट का उपयोग सक्षम करें</string>
-    <string name="theme_customization_font_title">ओवर/मेन फॉन्ट</string>
-    <string name="icons_style_title">प्रतीक शैली</string>
-    <string name="icon_shapes_title">चिह्न का आकार</string>
-    <string name="signal_icons_theme_title">रिसेप्शन आइकॉन स्टाइल्स</string>
-    <string name="dt_styles_category">डार्क मोड स्टाइल्स</string>
-    <string name="dt_styles">कोई शैली चुनें</string>
-    <string name="caution_unstable">चेतावनी! यह विकल्प कुछ उपयोगकर्ताओं के लिए अस्थिर हो सकता है।</string>
-    <string name="power_menu_overlays_title">पावर मेन्यू के लिए हल्की/गहरी थीम सक्षम करें</string>
     <!-- Arrays strings -->
     <!-- Quick pull down -->
     <string name="pull_down_left">बाएं</string>

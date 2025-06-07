@@ -110,12 +110,7 @@
     <string name="imperial_units_title">Utiliser les unités impériales</string>
     <!--Status bar related-->
     <string name="double_tap_sleep_title">Double appui pour mise en veille</string>
-    <string name="battery_style_title">Choisir un style de batterie</string>
-    <string name="battery_show_percent_title">Montrer le pourcentage de la batterie</string>
-    <string name="battery_show_charging_animation_title">Afficher l\'animation de chargement</string>
-    <string name="battery_icon_size_title">Taille de l’icône de batterie</string>
     <string name="battery_hidden">Cachée</string>
-    <string name="BIcon_Opacity_title">Opacité</string>
     <string name="sb_multi_row_system_icons">Icônes systèmes sur plusieurs lignes (nécessite une hauteur suffisante)</string>
     <string name="sb_multi_row_notification_icons">Icônes de notifications sur plusieurs lignes (nécessite une hauteur suffisante)</string>
     <string name="sb_double_row_category">Icônes sur plusieurs lignes</string>
@@ -414,17 +409,6 @@
     <string name="vibration_type_notification">L’intensité de vibration est celle définie par les paramètres de notifications de l’appareil</string>
     <string name="dialer_mute_record_message_title">Supprimer l\'annonce d\'enregistrement d\'appel</string>
     <string name="dialer_mute_record_message_summary">S\'applique uniquement à l\'application téléphonique Google avec l\'enregistrement des appels activé</string>
-    <!-- Theming section related -->
-    <string name="gsans_override_title">Forcer l’utilisation de la police Google Sans dans le système</string>
-    <string name="font_overlays_enable_title">Activer l’utilisation de polices personnalisées</string>
-    <string name="theme_customization_font_title">Police des titres/corps</string>
-    <string name="icons_style_title">Style des icônes</string>
-    <string name="icon_shapes_title">Forme des icônes</string>
-    <string name="signal_icons_theme_title">Style des icônes du réseau</string>
-    <string name="dt_styles_category">Styles du thème sombre</string>
-    <string name="dt_styles">Choisir un style</string>
-    <string name="caution_unstable">Attention : cette option peut être instable pour certains utilisateurs.</string>
-    <string name="power_menu_overlays_title">Activer le thème clair/sombre dans le menu marche/arrêt</string>
     <!-- Arrays strings -->
     <!-- Quick pull down -->
     <string name="pull_down_left">Gauche</string>

@@ -110,12 +110,7 @@
     <string name="imperial_units_title">Použijte imperiální jednotky</string>
     <!--Status bar related-->
     <string name="double_tap_sleep_title">Dvojitým klepnutím přejdete do režimu spánku</string>
-    <string name="battery_style_title">Vyberte si styl baterie</string>
-    <string name="battery_show_percent_title">Zobrazit procento baterie</string>
-    <string name="battery_show_charging_animation_title">Zobrazit animaci nabíjení</string>
-    <string name="battery_icon_size_title">Velikost ikony baterie</string>
     <string name="battery_hidden">Skrytý</string>
-    <string name="BIcon_Opacity_title">Neprůhlednost</string>
     <string name="sb_multi_row_system_icons">Víceřádkové systémové ikony (vyžaduje zvýšenou výšku stavového řádku)</string>
     <string name="sb_multi_row_notification_icons">Víceřádkové ikony oznámení (vyžaduje zvýšenou výšku stavového řádku)</string>
     <string name="sb_double_row_category">Dvojité řádky stavového řádku</string>
@@ -414,17 +409,6 @@
     <string name="vibration_type_notification">Intenzita definovaná nastavením vibrací upozornění systému</string>
     <string name="dialer_mute_record_message_title">Odebrat oznámení o nahrávání hovoru</string>
     <string name="dialer_mute_record_message_summary">Platí pouze pro aplikaci pro telefony Google s povoleným nahráváním hovorů</string>
-    <!-- Theming section related -->
-    <string name="gsans_override_title">Vynutit písmo Google Sans v celém systému</string>
-    <string name="font_overlays_enable_title">Povolit používání vlastních písem</string>
-    <string name="theme_customization_font_title">Písmo nadpisu / těla</string>
-    <string name="icons_style_title">Styl ikony</string>
-    <string name="icon_shapes_title">Tvar ikony</string>
-    <string name="signal_icons_theme_title">Signál Ikony Téma</string>
-    <string name="dt_styles_category">Styly tmavého motivu</string>
-    <string name="dt_styles">Vyberte si styl</string>
-    <string name="caution_unstable">Upozornění: Tato možnost může být pro některé uživatele nestabilní.</string>
-    <string name="power_menu_overlays_title">Povolte světlá/tmavá témata v nabídce napájení</string>
     <!-- Arrays strings -->
     <!-- Quick pull down -->
     <string name="pull_down_left">Vlevo, odjet</string>

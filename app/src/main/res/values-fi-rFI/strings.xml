@@ -110,12 +110,7 @@
     <string name="imperial_units_title">Käytä imperialistisia yksiköitä</string>
     <!--Status bar related-->
     <string name="double_tap_sleep_title">Nukkumaan kaksoisnapauttamalla</string>
-    <string name="battery_style_title">Valitse akun tyyli</string>
-    <string name="battery_show_percent_title">Näytä akun prosenttiosuus</string>
-    <string name="battery_show_charging_animation_title">Näytä latausanimaatio</string>
-    <string name="battery_icon_size_title">Akun kuvakkeen koko</string>
     <string name="battery_hidden">Piilotettu</string>
-    <string name="BIcon_Opacity_title">Peittävyys</string>
     <string name="sb_multi_row_system_icons">Moniriviset järjestelmäkuvakkeet (tilapalkin korkeutta on nostettava)</string>
     <string name="sb_multi_row_notification_icons">Moniriviset ilmoituskuvakkeet (tilapalkin korkeutta on nostettava)</string>
     <string name="sb_double_row_category">Kaksinkertaiset tilapalkin rivit</string>
@@ -414,17 +409,6 @@
     <string name="vibration_type_notification">Järjestelmän ilmoitusvärinäasetusten määrittämä voimakkuus</string>
     <string name="dialer_mute_record_message_title">Poista puhelun tallennusilmoitus</string>
     <string name="dialer_mute_record_message_summary">Koskee vain Google-puhelinsovellusta, jossa puhelun tallennus on käytössä</string>
-    <!-- Theming section related -->
-    <string name="gsans_override_title">Pakota Google Sans -fontti koko järjestelmän laajuisesti</string>
-    <string name="font_overlays_enable_title">Ota käyttöön mukautettujen fonttien käyttö</string>
-    <string name="theme_customization_font_title">Otsikon/tekstin kirjasin</string>
-    <string name="icons_style_title">Ikonin tyyli</string>
-    <string name="icon_shapes_title">Ikonin muoto</string>
-    <string name="signal_icons_theme_title">Signaalikuvakkeet teema</string>
-    <string name="dt_styles_category">Tummat teematyylit</string>
-    <string name="dt_styles">Valitse tyyli</string>
-    <string name="caution_unstable">Varoitus: Tämä vaihtoehto saattaa olla epävakaa joillekin käyttäjille.</string>
-    <string name="power_menu_overlays_title">Ota vaaleat/tummat teemat käyttöön virtavalikossa</string>
     <!-- Arrays strings -->
     <!-- Quick pull down -->
     <string name="pull_down_left">Vasen</string>

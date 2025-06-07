@@ -110,12 +110,7 @@
     <string name="imperial_units_title">Империјалне јединице</string>
     <!--Status bar related-->
     <string name="double_tap_sleep_title">Двапут додирните за режим спавања</string>
-    <string name="battery_style_title">Стил батерије</string>
-    <string name="battery_show_percent_title">Прикажи проценат батерије</string>
-    <string name="battery_show_charging_animation_title">Прикажи анимацију пуњења</string>
-    <string name="battery_icon_size_title">Величина иконе</string>
     <string name="battery_hidden">Скривено</string>
-    <string name="BIcon_Opacity_title">Непрозирност</string>
     <string name="sb_multi_row_system_icons">Системске иконе у више редова (потребна је подигнута висина статусне траке)</string>
     <string name="sb_multi_row_notification_icons">Иконе обавештења у више редова (потребна је подигнута висина статусне траке)</string>
     <string name="sb_double_row_category">Двоструки редови статусне траке</string>
@@ -414,17 +409,6 @@
     <string name="vibration_type_notification">Интензитет дефинисан поставкама вибрације системских обавештења</string>
     <string name="dialer_mute_record_message_title">Уклоните најаву снимања позива</string>
     <string name="dialer_mute_record_message_summary">Односи се само на апликацију Гоогле телефон са омогућеним снимањем позива</string>
-    <!-- Theming section related -->
-    <string name="gsans_override_title">Форсирајте Гоогле Санс фонт у целом систему</string>
-    <string name="font_overlays_enable_title">Омогућите коришћење прилагођених фонтова</string>
-    <string name="theme_customization_font_title">Фонт наслова/тела</string>
-    <string name="icons_style_title">Стил иконе</string>
-    <string name="icon_shapes_title">Облик иконе</string>
-    <string name="signal_icons_theme_title">Сигнал Ицонс Тхеме</string>
-    <string name="dt_styles_category">Стилови тамних тема</string>
-    <string name="dt_styles">Изаберите стил</string>
-    <string name="caution_unstable">Опрез: Ова опција може бити нестабилна за неке кориснике.</string>
-    <string name="power_menu_overlays_title">Омогућите светле/тамне теме у менију за напајање</string>
     <!-- Arrays strings -->
     <!-- Quick pull down -->
     <string name="pull_down_left">Лево</string>

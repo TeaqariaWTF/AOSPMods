@@ -110,12 +110,7 @@
     <string name="imperial_units_title">帝国単位を使用する</string>
     <!--Status bar related-->
     <string name="double_tap_sleep_title">ダブルタップでスリープ</string>
-    <string name="battery_style_title">バッテリー表示のスタイル</string>
-    <string name="battery_show_percent_title">バッテリーパーセンテージを表示</string>
-    <string name="battery_show_charging_animation_title">充電アニメーションを表示する</string>
-    <string name="battery_icon_size_title">バッテリーアイコンの大きさ</string>
     <string name="battery_hidden">非表示</string>
-    <string name="BIcon_Opacity_title">不透明度</string>
     <string name="sb_multi_row_system_icons">システムアイコンを多段表示 (ステータスバーの高さを上げる必要があります)</string>
     <string name="sb_multi_row_notification_icons">複数列の通知アイコン (ステータスバーの高さを上げる必要があります)</string>
     <string name="sb_double_row_category">ステータスバーの多段表示</string>
@@ -414,17 +409,6 @@
     <string name="vibration_type_notification">システム通知の振動設定によって定義される強度</string>
     <string name="dialer_mute_record_message_title">通話録音アナウンスを削除する</string>
     <string name="dialer_mute_record_message_summary">通話録音が有効になっている Google 電話アプリにのみ適用されます</string>
-    <!-- Theming section related -->
-    <string name="gsans_override_title">Google Sansをシステム全体で強制的に適用</string>
-    <string name="font_overlays_enable_title">カスタムフォントを有効化</string>
-    <string name="theme_customization_font_title">Headline / Body font</string>
-    <string name="icons_style_title">アイコンのスタイル</string>
-    <string name="icon_shapes_title">アイコンの形</string>
-    <string name="signal_icons_theme_title">信号アイコンのスタイル</string>
-    <string name="dt_styles_category">ダークテーマのスタイル</string>
-    <string name="dt_styles">スタイルを選択</string>
-    <string name="caution_unstable">注意: このオプションは一部のユーザーでは動作が不安定な場合があります。</string>
-    <string name="power_menu_overlays_title">電源メニューでライト/ダークテーマを有効化</string>
     <!-- Arrays strings -->
     <!-- Quick pull down -->
     <string name="pull_down_left">左</string>

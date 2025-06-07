@@ -92,43 +92,6 @@ public class PreferenceHelper {
 			case "networkTrafficULColor":
 				return (instance.mPreferences.getBoolean("networkOnSBEnabled", false)) && instance.mPreferences.getBoolean("networkTrafficColorful", true);
 
-			case "BIconOpacity":
-			case "BIconindicateFastCharging":
-			case "BIconColorful":
-			case "BIconTransitColors":
-			case "BatteryChargingAnimationEnabled":
-			case "BIconbatteryWarningRange":
-				return Integer.parseInt(instance.mPreferences.getString("BatteryStyle", "0")) > 0 && Integer.parseInt(instance.mPreferences.getString("BatteryStyle", "0")) < 99;
-
-			case "BatteryIconScaleFactor":
-				return Integer.parseInt(instance.mPreferences.getString("BatteryStyle", "0")) < 99;
-
-			case "BatteryShowPercent":
-				return Integer.parseInt(instance.mPreferences.getString("BatteryStyle", "0")) == 1 || Integer.parseInt(instance.mPreferences.getString("BatteryStyle", "0")) == 2;
-
-			case "BIconindicateCharging":
-				return Integer.parseInt(instance.mPreferences.getString("BatteryStyle", "0")) == 3;
-
-			case "batteryIconChargingColor":
-				return Integer.parseInt(instance.mPreferences.getString("BatteryStyle", "0")) == 3 && instance.mPreferences.getBoolean("BIconindicateCharging", false);
-
-			case "batteryIconFastChargingColor":
-				return Integer.parseInt(instance.mPreferences.getString("BatteryStyle", "0")) > 0 && Integer.parseInt(instance.mPreferences.getString("BatteryStyle", "0")) < 99 && instance.mPreferences.getBoolean("BIconindicateFastCharging", false);
-
-			case "BIconbatteryCriticalColor":
-			case "BIconbatteryWarningColor":
-				boolean BIcritZero = false, BIwarnZero = false;
-				List<Float> BIconLevels = instance.mPreferences.getSliderValues("BIconbatteryWarningRange", 0);
-
-				if (!BIconLevels.isEmpty()) {
-					BIcritZero = BIconLevels.get(0) == 0;
-					BIwarnZero = BIconLevels.get(1) == 0;
-				}
-
-				return "BIconbatteryCriticalColor".equals(key)
-						? Integer.parseInt(instance.mPreferences.getString("BatteryStyle", "0")) > 0 && Integer.parseInt(instance.mPreferences.getString("BatteryStyle", "0")) < 99 && (instance.mPreferences.getBoolean("BIconColorful", false) || !BIcritZero)
-						: Integer.parseInt(instance.mPreferences.getString("BatteryStyle", "0")) > 0 && Integer.parseInt(instance.mPreferences.getString("BatteryStyle", "0")) < 99 && (instance.mPreferences.getBoolean("BIconColorful", false) || !BIwarnZero);
-
 			case "SBCBeforeClockColor":
 			case "SBCClockColor":
 			case "SBCAfterClockColor":
@@ -191,9 +154,6 @@ public class PreferenceHelper {
 
 			case "rightSwipeUpPercentage":
 				return !instance.mPreferences.getString("rightSwipeUpAction", "-1").equals("-1");
-
-			case "nav_pill_cat":
-				return !instance.mPreferences.getBoolean("HideNavbarOverlay", false);
 
 			case "UpdateWifiOnly":
 				return instance.mPreferences.getBoolean("AutoUpdate", true);

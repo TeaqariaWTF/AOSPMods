@@ -110,12 +110,7 @@
     <string name="imperial_units_title">使用英制单位</string>
     <!--Status bar related-->
     <string name="double_tap_sleep_title">双击息屏</string>
-    <string name="battery_style_title">选择电池图标样式</string>
-    <string name="battery_show_percent_title">显示电量百分比</string>
-    <string name="battery_show_charging_animation_title">显示充电动画</string>
-    <string name="battery_icon_size_title">电池图标大小</string>
     <string name="battery_hidden">隐藏</string>
-    <string name="BIcon_Opacity_title">不透明度</string>
     <string name="sb_multi_row_system_icons">多行状态图标 (需要增加状态栏高度)</string>
     <string name="sb_multi_row_notification_icons">多行通知图标 (需要增加状态栏高度)</string>
     <string name="sb_double_row_category">多行状态栏</string>
@@ -414,17 +409,6 @@
     <string name="vibration_type_notification">强度由系统通知振动设置定义</string>
     <string name="dialer_mute_record_message_title">删除通话录音通知</string>
     <string name="dialer_mute_record_message_summary">仅适用于已启用通话录制的谷歌电话应用</string>
-    <!-- Theming section related -->
-    <string name="gsans_override_title">系统级强制使用 Google Sans</string>
-    <string name="font_overlays_enable_title">启用自定义字体</string>
-    <string name="theme_customization_font_title">标题 / 正文字体</string>
-    <string name="icons_style_title">图标样式</string>
-    <string name="icon_shapes_title">图标形状</string>
-    <string name="signal_icons_theme_title">信号图标主题</string>
-    <string name="dt_styles_category">深色主题样式</string>
-    <string name="dt_styles">选择样式</string>
-    <string name="caution_unstable">注意: 该功能对部分用户不稳定</string>
-    <string name="power_menu_overlays_title">在电源菜单启用浅色 / 深色主题</string>
     <!-- Arrays strings -->
     <!-- Quick pull down -->
     <string name="pull_down_left">左侧</string>

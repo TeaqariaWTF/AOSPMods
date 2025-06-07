@@ -110,12 +110,7 @@
     <string name="imperial_units_title">Sử dụng đơn vị Hệ Thống Đo Lường Anh</string>
     <!--Status bar related-->
     <string name="double_tap_sleep_title">Chạm hai lần để tắt màn hình</string>
-    <string name="battery_style_title">Chọn kiểu pin</string>
-    <string name="battery_show_percent_title">Hiển thị phần trăm pin</string>
-    <string name="battery_show_charging_animation_title">Hiển thị hoạt ảnh sạc</string>
-    <string name="battery_icon_size_title">Kích thước biểu tượng pin</string>
     <string name="battery_hidden">Ẩn</string>
-    <string name="BIcon_Opacity_title">Độ mờ</string>
     <string name="sb_multi_row_system_icons">Biểu tượng hệ thống nhiều hàng (cần chiều cao thanh trạng thái nhiều hơn)</string>
     <string name="sb_multi_row_notification_icons">Biểu tượng thông báo nhiều hàng (cần tăng chiều cao thanh trạng thái)</string>
     <string name="sb_double_row_category">Hàng thanh trạng thái đôi</string>
@@ -414,17 +409,6 @@
     <string name="vibration_type_notification">Cường độ được xác định bởi cài đặt rung thông báo hệ thống</string>
     <string name="dialer_mute_record_message_title">Xóa thông báo ghi âm cuộc gọi</string>
     <string name="dialer_mute_record_message_summary">Chỉ áp dụng cho ứng dụng điện thoại Google đã bật ghi âm cuộc gọi</string>
-    <!-- Theming section related -->
-    <string name="gsans_override_title">Phông chữ Google Sans trên toàn hệ thống</string>
-    <string name="font_overlays_enable_title">Dùng phông chữ tùy chỉnh</string>
-    <string name="theme_customization_font_title">Phông chữ dòng tiêu đề / nội dung</string>
-    <string name="icons_style_title">Phong cách biểu tượng</string>
-    <string name="icon_shapes_title">Hình dạng biểu tượng</string>
-    <string name="signal_icons_theme_title">Chủ đề biểu tượng tín hiệu</string>
-    <string name="dt_styles_category">Các kiểu chủ đề tối</string>
-    <string name="dt_styles">Chọn một kiểu</string>
-    <string name="caution_unstable">Chú ý: Tùy chọn này có thể không ổn định đối với một số thiết bị</string>
-    <string name="power_menu_overlays_title">Bật chủ đề Sáng/Tối trên Menu nguồn</string>
     <!-- Arrays strings -->
     <!-- Quick pull down -->
     <string name="pull_down_left">Bên trái</string>

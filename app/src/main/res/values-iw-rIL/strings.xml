@@ -110,12 +110,7 @@
     <string name="imperial_units_title">השתמש ביחידות אימפריאליות</string>
     <!--Status bar related-->
     <string name="double_tap_sleep_title">הקש פעמיים כדי לכבות את המסך</string>
-    <string name="battery_style_title">בחר סגנון סוללה</string>
-    <string name="battery_show_percent_title">הצג אחוזי סוללה</string>
-    <string name="battery_show_charging_animation_title">הצג אנימציית טעינה</string>
-    <string name="battery_icon_size_title">גודל סמל הסוללה</string>
     <string name="battery_hidden">מוּסתָר</string>
-    <string name="BIcon_Opacity_title">אֲטִימוּת</string>
     <string name="sb_multi_row_system_icons">סמלי הודעות מרובות שורות (צריך להגדיל את גובה שורת המצב)</string>
     <string name="sb_multi_row_notification_icons">סמלי הודעות מרובות שורות (צריך להגדיל את גובה שורת המצב)</string>
     <string name="sb_double_row_category">שורת מצב כפולה</string>
@@ -414,17 +409,6 @@
     <string name="vibration_type_notification">עוצמה המוגדרת על-ידי הגדרות רטט של הודעת מערכת</string>
     <string name="dialer_mute_record_message_title">הסר הודעת הקלטת שיחות</string>
     <string name="dialer_mute_record_message_summary">חל רק על אפליקציית הטלפון של Google עם הקלטת שיחות מופעלת</string>
-    <!-- Theming section related -->
-    <string name="gsans_override_title">כפה על Google Sans גופן בכל המערכת</string>
-    <string name="font_overlays_enable_title">הפעלה באמצעות גופנים מותאמים אישית</string>
-    <string name="theme_customization_font_title">כותרת / גופן גוף</string>
-    <string name="icons_style_title">סגנון סמל</string>
-    <string name="icon_shapes_title">צורת סמל</string>
-    <string name="signal_icons_theme_title">ערכת הנושא \'סמלי אותות\'</string>
-    <string name="dt_styles_category">סגנונות ערכת נושא כהים</string>
-    <string name="dt_styles">בחר סגנון</string>
-    <string name="caution_unstable">אזהרה: אפשרות זו עלולה להיות לא יציבה עבור משתמשים מסוימים.</string>
-    <string name="power_menu_overlays_title">הפעלת ערכות נושא בהירות/כהות בתפריט צריכת החשמל</string>
     <!-- Arrays strings -->
     <!-- Quick pull down -->
     <string name="pull_down_left">שמאל</string>

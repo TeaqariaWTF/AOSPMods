@@ -110,12 +110,7 @@
     <string name="imperial_units_title">Usar unidades imperiales</string>
     <!--Status bar related-->
     <string name="double_tap_sleep_title">Doble toque para bloquear pantalla</string>
-    <string name="battery_style_title">Escoger un estilo de batería</string>
-    <string name="battery_show_percent_title">Mostrar porcentaje</string>
-    <string name="battery_show_charging_animation_title">Mostrar la animación de carga</string>
-    <string name="battery_icon_size_title">Tamaño del icono de batería</string>
     <string name="battery_hidden">Oculta</string>
-    <string name="BIcon_Opacity_title">Opacidad</string>
     <string name="sb_multi_row_system_icons">Iconos de sistema de varias filas (necesita una altura elevada de la barra de estado)</string>
     <string name="sb_multi_row_notification_icons">Iconos de notificación de varias filas (necesita una altura elevada de la barra de estado)</string>
     <string name="sb_double_row_category">Fila doble en barra de estado</string>
@@ -414,17 +409,6 @@
     <string name="vibration_type_notification">Intensidad definida por la configuración de vibración de notificación del sistema</string>
     <string name="dialer_mute_record_message_title">Eliminar anuncio de grabación de llamada</string>
     <string name="dialer_mute_record_message_summary">Solo se aplica a la aplicación de teléfono de Google con la grabación de llamadas habilitada</string>
-    <!-- Theming section related -->
-    <string name="gsans_override_title">Forzar la fuente Google Sans en todo el sistema</string>
-    <string name="font_overlays_enable_title">Habilitar el uso de fuentes personalizadas</string>
-    <string name="theme_customization_font_title">Fuente de título / cuerpo del texto</string>
-    <string name="icons_style_title">Estilo de los iconos</string>
-    <string name="icon_shapes_title">Forma de los iconos</string>
-    <string name="signal_icons_theme_title">Tema de los iconos de red</string>
-    <string name="dt_styles_category">Estilos de tema oscuro</string>
-    <string name="dt_styles">Selecciona un estilo</string>
-    <string name="caution_unstable">Precaución: esta opción puede ser inestable para algunos usuarios.</string>
-    <string name="power_menu_overlays_title">Habilitar temas claros/oscuros en el menú de encendido</string>
     <!-- Arrays strings -->
     <!-- Quick pull down -->
     <string name="pull_down_left">Izquierda</string>

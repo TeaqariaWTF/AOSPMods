@@ -110,12 +110,7 @@
     <string name="imperial_units_title">Brug kejserlige enheder</string>
     <!--Status bar related-->
     <string name="double_tap_sleep_title">Dobbelttryk for at sove</string>
-    <string name="battery_style_title">Vælg en batteristil</string>
-    <string name="battery_show_percent_title">Vis batteriprocent</string>
-    <string name="battery_show_charging_animation_title">Vis opladningsanimation</string>
-    <string name="battery_icon_size_title">Batteriikonstørrelse</string>
     <string name="battery_hidden">Skjult</string>
-    <string name="BIcon_Opacity_title">Gennemsigtighed</string>
     <string name="sb_multi_row_system_icons">Systemikoner med flere rækker (kræver øget statuslinjehøjde)</string>
     <string name="sb_multi_row_notification_icons">Notifikationsikoner med flere rækker (kræver en hævet statuslinjehøjde)</string>
     <string name="sb_double_row_category">Dobbelt statuslinje rækker</string>
@@ -414,17 +409,6 @@
     <string name="vibration_type_notification">Intensitet defineret af vibrationsindstillinger for systemmeddelelser</string>
     <string name="dialer_mute_record_message_title">Fjern opkaldsoptagelsesmeddelelse</string>
     <string name="dialer_mute_record_message_summary">Gælder kun for Google-telefonappen med opkaldsoptagelse aktiveret</string>
-    <!-- Theming section related -->
-    <string name="gsans_override_title">Tving Google Sans skrifttype i hele systemet</string>
-    <string name="font_overlays_enable_title">Aktiver brug af tilpassede skrifttyper</string>
-    <string name="theme_customization_font_title">Overskrift / Brødskrift</string>
-    <string name="icons_style_title">Ikon stil</string>
-    <string name="icon_shapes_title">Ikon form</string>
-    <string name="signal_icons_theme_title">Signal ikoner tema</string>
-    <string name="dt_styles_category">Mørke temastile</string>
-    <string name="dt_styles">Vælg en stil</string>
-    <string name="caution_unstable">Forsigtig: Denne indstilling kan være ustabil for nogle brugere.</string>
-    <string name="power_menu_overlays_title">Aktiver lyse/mørke temaer i strømmenuen</string>
     <!-- Arrays strings -->
     <!-- Quick pull down -->
     <string name="pull_down_left">Venstre</string>

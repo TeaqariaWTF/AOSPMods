@@ -110,12 +110,7 @@
     <string name="imperial_units_title">Використовуйте імперські одиниці</string>
     <!--Status bar related-->
     <string name="double_tap_sleep_title">Подвійне натискання для переходу в режим сну</string>
-    <string name="battery_style_title">Оберіть стиль батареї</string>
-    <string name="battery_show_percent_title">Показати процент заряду батареї</string>
-    <string name="battery_show_charging_animation_title">Показати анімацію заряджання</string>
-    <string name="battery_icon_size_title">Розмір значка батареї</string>
     <string name="battery_hidden">Схований</string>
-    <string name="BIcon_Opacity_title">Прозорість</string>
     <string name="sb_multi_row_system_icons">Багаторядкові системні значки (потрібна більша висота рядка стану)</string>
     <string name="sb_multi_row_notification_icons">Багаторядні піктограми сповіщень (потрібно збільшити висоту панелі стану)</string>
     <string name="sb_double_row_category">Подвійні рядки рядка стану</string>
@@ -414,17 +409,6 @@
     <string name="vibration_type_notification">Інтенсивність визначається налаштуваннями вібрації сповіщень системи</string>
     <string name="dialer_mute_record_message_title">Видалити повідомлення про запис розмови</string>
     <string name="dialer_mute_record_message_summary">Застосовується лише до телефонної програми Google із увімкненим записом дзвінків</string>
-    <!-- Theming section related -->
-    <string name="gsans_override_title">Примусово увімнути шрифт Google Sans по всій системі</string>
-    <string name="font_overlays_enable_title">Увімкнути використовуючи користувацькі шрифти</string>
-    <string name="theme_customization_font_title">Заголовок / Основний шрифт</string>
-    <string name="icons_style_title">Стиль значків</string>
-    <string name="icon_shapes_title">Фігури значків</string>
-    <string name="signal_icons_theme_title">Тема значків сигналу</string>
-    <string name="dt_styles_category">Стилі темної теми</string>
-    <string name="dt_styles">Оберіть стиль</string>
-    <string name="caution_unstable">Застереження: ця опція може бути нестабільною для деяких користувачів.</string>
-    <string name="power_menu_overlays_title">Увімкніть світлі/темні теми в меню живлення</string>
     <!-- Arrays strings -->
     <!-- Quick pull down -->
     <string name="pull_down_left">Ліворуч</string>

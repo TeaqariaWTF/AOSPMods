@@ -110,12 +110,7 @@
     <string name="imperial_units_title">Használjon angolszász mértékegységet</string>
     <!--Status bar related-->
     <string name="double_tap_sleep_title">Dupla érintésre alvó mód</string>
-    <string name="battery_style_title">Válasszon akkumulátor ikontípust</string>
-    <string name="battery_show_percent_title">Az akkumulátor töltöttség százalékos megjelenítése</string>
-    <string name="battery_show_charging_animation_title">Töltési animáció megjelenítése</string>
-    <string name="battery_icon_size_title">Akkumulátor ikon mérete</string>
     <string name="battery_hidden">Rejtett</string>
-    <string name="BIcon_Opacity_title">Áttetszőség</string>
     <string name="sb_multi_row_system_icons">Többsoros rendszerikonok (meg kell emelni az állapotsor magasságát)</string>
     <string name="sb_multi_row_notification_icons">Többsoros értesítési ikonok (az állapotsor magasságának növelése szükséges)</string>
     <string name="sb_double_row_category">Dupla állapotsor sorok</string>
@@ -414,17 +409,6 @@
     <string name="vibration_type_notification">A rendszerértesítés rezgésbeállításai által meghatározott intenzitás</string>
     <string name="dialer_mute_record_message_title">Hívásrögzítési bejelentés eltávolítása</string>
     <string name="dialer_mute_record_message_summary">Csak arra a Google telefonalkalmazásra vonatkozik, amelynél engedélyezve van a hívásrögzítés</string>
-    <!-- Theming section related -->
-    <string name="gsans_override_title">A Google Sans betűtípus kényszerítése az egész rendszerre</string>
-    <string name="font_overlays_enable_title">Egyéni betűtípusok használatának engedélyezése</string>
-    <string name="theme_customization_font_title">Címsor/törzs betűtípus</string>
-    <string name="icons_style_title">Ikon stílus</string>
-    <string name="icon_shapes_title">Ikon alakja</string>
-    <string name="signal_icons_theme_title">Jel ikonok téma</string>
-    <string name="dt_styles_category">Sötét témastílusok</string>
-    <string name="dt_styles">Válasszon stílust</string>
-    <string name="caution_unstable">Figyelem: Ez a lehetőség instabil lehet egyes felhasználók számára.</string>
-    <string name="power_menu_overlays_title">Világos/sötét témák engedélyezése a bekapcsoló menüben</string>
     <!-- Arrays strings -->
     <!-- Quick pull down -->
     <string name="pull_down_left">Bal</string>

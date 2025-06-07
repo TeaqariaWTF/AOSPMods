@@ -85,12 +85,7 @@
 	<string name="imperial_units_title">Use imperial units</string>
 	<!--Status bar related-->
 	<string name="double_tap_sleep_title">Double-tap to sleep</string>
-	<string name="battery_style_title">Choose a battery style</string>
-	<string name="battery_show_percent_title">Show battery percentage</string>
-	<string name="battery_show_charging_animation_title">Show charging animation</string>
-	<string name="battery_icon_size_title">Battery icon size</string>
 	<string name="battery_hidden">Hidden</string>
-	<string name="BIcon_Opacity_title">Opacity</string>
 	<string name="sb_multi_row_system_icons">Multi-row system icons (needs raised statusbar height)</string>
 	<string name="sb_multi_row_notification_icons">Multi-row notification icons (needs raised statusbar height)</string>
 	<string name="sb_double_row_category">Double Statusbar rows</string>
@@ -306,17 +301,6 @@
 	<string name="vibration_type_notification">Intensity defined by system notification vibration settings</string>
 	<string name="dialer_mute_record_message_title">Remove call recording announcement</string>
 	<string name="dialer_mute_record_message_summary">Only applies to Google phone app with call recording enabled</string>
-	<!-- Theming section related -->
-	<string name="gsans_override_title">Force Google Sans font system-wide</string>
-	<string name="font_overlays_enable_title">Enable using custom fonts</string>
-	<string name="theme_customization_font_title">Headline / Body font</string>
-	<string name="icons_style_title">Icon Style</string>
-	<string name="icon_shapes_title">Icon Shape</string>
-	<string name="signal_icons_theme_title">Signal Icons Theme</string>
-	<string name="dt_styles_category">Dark theme styles</string>
-	<string name="dt_styles">Choose a style</string>
-	<string name="caution_unstable">Caution: This option might be unstable for some users.</string>
-	<string name="power_menu_overlays_title">Enable light/dark themes on power menu</string>
 	<!-- Arrays strings -->
 	<!-- Quick pull down -->
 	<string name="pull_down_left">Left</string>

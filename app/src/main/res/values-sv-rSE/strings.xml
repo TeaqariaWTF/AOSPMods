@@ -110,12 +110,7 @@
     <string name="imperial_units_title">Använd kejserliga enheter</string>
     <!--Status bar related-->
     <string name="double_tap_sleep_title">Dubbeltryck för att sova</string>
-    <string name="battery_style_title">Välj en batteristil</string>
-    <string name="battery_show_percent_title">Visa batteriprocent</string>
-    <string name="battery_show_charging_animation_title">Visa laddningsanimation</string>
-    <string name="battery_icon_size_title">Batteriikonens storlek</string>
     <string name="battery_hidden">Dold</string>
-    <string name="BIcon_Opacity_title">Opacitet</string>
     <string name="sb_multi_row_system_icons">Systemikoner med flera rader (behöver höjd statusfältshöjd)</string>
     <string name="sb_multi_row_notification_icons">Aviseringsikoner med flera rader (behöver höjd statusfältshöjd)</string>
     <string name="sb_double_row_category">Dubbla statusrader</string>
@@ -414,17 +409,6 @@
     <string name="vibration_type_notification">Intensitet definieras av vibrationsinställningar för systemaviseringar</string>
     <string name="dialer_mute_record_message_title">Ta bort meddelande om samtalsinspelning</string>
     <string name="dialer_mute_record_message_summary">Gäller endast Googles telefonapp med samtalsinspelning aktiverad</string>
-    <!-- Theming section related -->
-    <string name="gsans_override_title">Tvinga Google Sans teckensnitt i hela systemet</string>
-    <string name="font_overlays_enable_title">Aktivera användning av anpassade teckensnitt</string>
-    <string name="theme_customization_font_title">Rubrik / Kroppstypsnitt</string>
-    <string name="icons_style_title">Ikon stil</string>
-    <string name="icon_shapes_title">Ikon Form</string>
-    <string name="signal_icons_theme_title">Signal ikoner Tema</string>
-    <string name="dt_styles_category">Stilar med mörkt tema</string>
-    <string name="dt_styles">Välj en stil</string>
-    <string name="caution_unstable">Varning: Det här alternativet kan vara instabilt för vissa användare.</string>
-    <string name="power_menu_overlays_title">Aktivera ljusa/mörka teman på strömmeny</string>
     <!-- Arrays strings -->
     <!-- Quick pull down -->
     <string name="pull_down_left">Vänster</string>
