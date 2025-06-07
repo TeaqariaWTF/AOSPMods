@@ -222,9 +222,6 @@ public class PreferenceHelper {
 			case "networkTrafficInterval":
 				return instance.mPreferences.getSliderInt("networkTrafficInterval", 1) + " second(s)";
 
-			case "BatteryIconScaleFactor":
-				return instance.mPreferences.getSliderInt("BatteryIconScaleFactor", 50) * 2 + fragmentCompat.getString(R.string.battery_size_summary);
-
 			case "BIconOpacity":
 				return instance.mPreferences.getSliderInt("BIconOpacity", 100) + "%";
 
