@@ -1,6 +1,5 @@
 package sh.siava.pixelxpert.modpacks.systemui;
 
-import static android.content.DialogInterface.BUTTON_NEUTRAL;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
@@ -12,16 +11,13 @@ import static de.robv.android.xposed.XposedHelpers.getBooleanField;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static de.robv.android.xposed.XposedHelpers.setAdditionalInstanceField;
 import static de.robv.android.xposed.XposedHelpers.setObjectField;
-import static sh.siava.pixelxpert.modpacks.ResourceManager.modRes;
 import static sh.siava.pixelxpert.modpacks.XPrefs.Xprefs;
 import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.dimenIdOf;
 import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.idOf;
 import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.resourceIdOf;
-import static sh.siava.pixelxpert.modpacks.utils.toolkit.ColorUtils.getColorAttrDefaultColor;
 
 import android.animation.LayoutTransition;
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.content.BroadcastReceiver;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -36,7 +32,6 @@ import android.provider.CalendarContract;
 import android.provider.Settings;
 import android.telephony.ServiceState;
 import android.telephony.TelephonyCallback;
-import android.telephony.TelephonyDisplayInfo;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.Spanned;
@@ -104,7 +99,6 @@ public class StatusbarMods extends XposedModPack {
 	//endregion
 
 	//region network traffic
-	private FrameLayout NTQSHolder = null;
 	private static boolean networkOnSBEnabled = false;
 	private static int networkTrafficPosition = POSITION_LEFT;
 	private NetworkTraffic networkTrafficSB = null;
@@ -138,7 +132,6 @@ public class StatusbarMods extends XposedModPack {
 	private static final float PADDING_DEFAULT = -0.5f;
 	private static final ArrayList<ClockVisibilityCallback> clockVisibilityCallbacks = new ArrayList<>();
 	private Object mActivityStarter;
-	private Object QSBH = null;
 	private static boolean notificationAreaMultiRow = false;
 	private static int NotificationAODIconLimit = 3;
 	private static int NotificationIconLimit = 4;
@@ -172,7 +165,6 @@ public class StatusbarMods extends XposedModPack {
 
 	private ReflectedClass StatusBarIconClass;
 	private ReflectedClass StatusBarIconHolderClass;
-	private ReflectedClass SystemUIDialogClass;
 	private Object volteStatusbarIconHolder;
 	private boolean telephonyCallbackRegistered = false;
 	private boolean lastVolteAvailable = false;
@@ -477,7 +469,6 @@ public class StatusbarMods extends XposedModPack {
 
 		//region needed classes
 		ReflectedClass QSSecurityFooterUtilsClass = ReflectedClass.of("com.android.systemui.qs.QSSecurityFooterUtils");
-		ReflectedClass QuickStatusBarHeaderClass = ReflectedClass.of("com.android.systemui.qs.QuickStatusBarHeader");
 		ReflectedClass ClockClass = ReflectedClass.of("com.android.systemui.statusbar.policy.Clock");
 		ReflectedClass PhoneStatusBarViewClass = ReflectedClass.of("com.android.systemui.statusbar.phone.PhoneStatusBarView");
 		ReflectedClass NotificationIconContainerClass = ReflectedClass.of("com.android.systemui.statusbar.phone.NotificationIconContainer");
@@ -488,12 +479,11 @@ public class StatusbarMods extends XposedModPack {
 		ReflectedClass NotificationIconContainerStatusBarViewModelClass = ReflectedClass.ofIfPossible("com.android.systemui.statusbar.notification.icon.ui.viewmodel.NotificationIconContainerStatusBarViewModel");
 		StatusBarIconClass = ReflectedClass.of("com.android.internal.statusbar.StatusBarIcon");
 		StatusBarIconHolderClass = ReflectedClass.of("com.android.systemui.statusbar.phone.StatusBarIconHolder");
-		SystemUIDialogClass = ReflectedClass.of("com.android.systemui.statusbar.phone.SystemUIDialog");
 		ReflectedClass PrivacyItemClass = ReflectedClass.of("com.android.systemui.privacy.PrivacyItem");
 		ReflectedClass PhoneStatusBarViewControllerClass = ReflectedClass.of("com.android.systemui.statusbar.phone.PhoneStatusBarViewController");
 		ReflectedClass KeyguardStateControllerImplClass = ReflectedClass.of("com.android.systemui.statusbar.policy.KeyguardStateControllerImpl");
 		ReflectedClass StatusBarIconControllerImplClass = ReflectedClass.of("com.android.systemui.statusbar.phone.ui.StatusBarIconControllerImpl");
-
+		ReflectedClass ShadeHeaderControllerClass = ReflectedClass.of("com.android.systemui.shade.ShadeHeaderController");
 		//endregion
 
 
@@ -659,73 +649,25 @@ public class StatusbarMods extends XposedModPack {
 					}
 				}, 2000));
 
-		//getting activitity starter for further use
-		QuickStatusBarHeaderClass
-				.afterConstruction()
-				.run(param -> {
-					QSBH = param.thisObject;
-					NTQSHolder = new FrameLayout(mContext);
-					FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(WRAP_CONTENT, WRAP_CONTENT);
-					lp.gravity = Gravity.CENTER_HORIZONTAL;
-					NTQSHolder.setLayoutParams(lp);
-					((FrameLayout) QSBH).addView(NTQSHolder);
-				});
-
 		//stealing a working activity starter
 		QSSecurityFooterUtilsClass
 				.afterConstruction()
 				.run(param -> mActivityStarter = getObjectField(param.thisObject, "mActivityStarter"));
 
+
 		final ClickListener clickListener = new ClickListener();
 
-		//marking clock instances for recognition and setting click actions on some icons
-		QuickStatusBarHeaderClass
-				.after("onFinishInflate")
+		ShadeHeaderControllerClass
+				.after("onInit")
 				.run(param -> {
-					//Getting QS text color for Network traffic
-					@SuppressLint("DiscouragedApi") int fillColor = getColorAttrDefaultColor(
-							mContext,
-							resourceIdOf("@android:attr/textColorPrimary", "attr"));
+					View mView = (View) getObjectField(param.thisObject, "mView");
 
-					NetworkTraffic.setTintColor(fillColor, false);
+					mView.findViewById(idOf("clock")).setOnClickListener(clickListener);
+					mView.findViewById(idOf("clock")).setOnLongClickListener(clickListener);
 
-					try {
-						//Clickable icons
-						Object mBatteryRemainingIcon = getObjectField(param.thisObject, "mBatteryRemainingIcon");
-						Object mDateView = getObjectField(param.thisObject, "mDateView");
-						Object mClockViewQS = getObjectField(param.thisObject, "mClockView");
-
-						callMethod(mBatteryRemainingIcon, "setOnClickListener", clickListener);
-						callMethod(mClockViewQS, "setOnClickListener", clickListener);
-						callMethod(mClockViewQS, "setOnLongClickListener", clickListener);
-						callMethod(mDateView, "setOnClickListener", clickListener);
-						callMethod(mDateView, "setOnLongClickListener", clickListener);
-					} catch (Throwable ignored) {}
+					mView.findViewById(idOf("date")).setOnClickListener(clickListener);
+					mView.findViewById(idOf("date")).setOnLongClickListener(clickListener);
 				});
-
-		try {
-			//QPR3
-			ReflectedClass ShadeHeaderControllerClass = ReflectedClass.ofIfPossible("com.android.systemui.shade.ShadeHeaderController");
-
-			if (ShadeHeaderControllerClass.getClazz() == null) //QPR2
-			{
-				ShadeHeaderControllerClass = ReflectedClass.of("com.android.systemui.shade.LargeScreenShadeHeaderController");
-			}
-
-			ShadeHeaderControllerClass
-					.after("onInit")
-					.run(param -> {
-						View mView = (View) getObjectField(param.thisObject, "mView");
-
-						mView.findViewById(idOf("clock")).setOnClickListener(clickListener);
-						mView.findViewById(idOf("clock")).setOnLongClickListener(clickListener);
-						mView.findViewById(idOf("date")).setOnClickListener(clickListener);
-						mView.findViewById(idOf("batteryRemainingIcon")).setOnClickListener(clickListener);
-					});
-
-		} catch (Throwable ignored) {						
-
-		}
 
 		//modding clock, adding additional objects,
 		PhoneStatusBarViewControllerClass
@@ -821,22 +763,6 @@ public class StatusbarMods extends XposedModPack {
 				});
 
 		//region mobile roaming
-		//A14QPR1 and prior
-		ReflectedClass.of(ServiceState.class)
-				.before("getRoaming")
-				.run(param -> {
-					if (HideRoamingState)
-						param.setResult(false);
-				});
-
-		//A14QPR2
-		ReflectedClass.of(TelephonyDisplayInfo.class)
-				.before("isRoaming")
-				.run(param -> {
-					if (HideRoamingState)
-						param.setResult(false);
-				});
-
 		try { //A14QPR3
 			ReflectedClass MobileIconInteractorImplClass = ReflectedClass.of("com.android.systemui.statusbar.pipeline.mobile.domain.interactor.MobileIconInteractorImpl");
 
@@ -962,8 +888,6 @@ public class StatusbarMods extends XposedModPack {
 	}
 
 	private void repositionOngoingChips() {
-		repositionOngoingChip("ongoing_activity_chip"); //A15
-		repositionOngoingChip("ongoing_call_chip"); //Pre A15
 		repositionOngoingChip("ongoing_activity_chip_primary"); //A15 QPR1
 		repositionOngoingChip("ongoing_activity_chip_secondary"); //A15 QPR1
 	}
@@ -1181,9 +1105,6 @@ public class StatusbarMods extends XposedModPack {
 
 	//region icon tap related
 	class ClickListener implements View.OnClickListener, View.OnLongClickListener {
-		public ClickListener() {
-		}
-
 		@Override
 		public void onClick(View v) {
 			String name = mContext.getResources().getResourceName(v.getId());
@@ -1196,17 +1117,6 @@ public class StatusbarMods extends XposedModPack {
 				builder.appendPath(Long.toString(System.currentTimeMillis()));
 				Intent todayIntent = new Intent(Intent.ACTION_VIEW, builder.build());
 				callMethod(mActivityStarter, "postStartActivityDismissingKeyguard", todayIntent, 0);
-			} else if (name.endsWith("batteryRemainingIcon")) {
-
-				if (BatteryDataProvider.isCharging()) {
-					try {
-						showChargingDialog();
-						return;
-					} catch (Throwable ignored) {						
-
-					}
-				}
-				showBatteryPage();
 			}
 		}
 
@@ -1223,22 +1133,6 @@ public class StatusbarMods extends XposedModPack {
 			}
 			return false;
 		}
-	}
-
-	private void showChargingDialog() throws Throwable {
-		AlertDialog dialog = (AlertDialog) SystemUIDialogClass.getClazz().getConstructor(Context.class).newInstance(mContext);
-
-		dialog.setMessage(KeyguardMods.getPowerIndicationString());
-
-		dialog.setButton(BUTTON_NEUTRAL,
-				modRes.getText(R.string.battery_info_button_title),
-				(dialog1, which) -> showBatteryPage());
-
-		dialog.show();
-	}
-
-	private void showBatteryPage() {
-		callMethod(mActivityStarter, "postStartActivityDismissingKeyguard", new Intent(Intent.ACTION_POWER_USAGE_SUMMARY), 0);
 	}
 	//endregion
 
