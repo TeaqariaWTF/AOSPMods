@@ -355,6 +355,7 @@
     <string name="taskbar_transient_title">Auto hide</string>
     <string name="taskbar_on_launcher_title">Show on home</string>
     <string name="remap_physical_buttons_title">Remap physical buttons</string>
+    <string name="taskbar_on_ime_title">Show with keyboard open</string>
 
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">Bypass package signature check</string>
