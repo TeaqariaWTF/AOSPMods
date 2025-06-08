@@ -1,5 +1,5 @@
 **canary-453**  
-- Fixed double tap to take  
+- Fixed double tap to wake  
   
 **canary-452**  
 - A16QPR1b1: Incompatible options were removed  
