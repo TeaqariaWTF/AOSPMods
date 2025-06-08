@@ -1,3 +1,6 @@
+**canary-453**  
+- Fixed double tap to take  
+  
 **canary-452**  
 - A16QPR1b1: Incompatible options were removed  
 - Media volume tile now is adjusted through longpress  
