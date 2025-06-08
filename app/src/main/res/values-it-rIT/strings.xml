@@ -256,11 +256,11 @@
     <string name="qs_footer_text_value">Inserisci testo personalizzato</string>
     <string name="qs_footer_text_summary">Lascia vuoto per rimuovere</string>
     <string name="qs_footer_text_desc">Accendi/spegni il display per applicare</string>
-    <string name="qs_leveled_flashlight_title">Flashlight-leveled tile</string>
+    <string name="qs_leveled_flashlight_title">Tile torcia livellata</string>
     <string name="qs_flashlight_level_global_title">Applica livello torcia globalmente</string>
     <string name="qs_tile_vertical_title">Sposta le icone dei tile in alto</string>
     <string name="qs_tile_qty_title">Impostazioni numero QS Tile</string>
-    <string name="qs_leveled_flashlight_summary">Longpress on tile to show the slider.\nRequires supported hardware</string>
+    <string name="qs_leveled_flashlight_summary">Premi a lungo sul tile per mostrare il cursore.\nRichiede hardware supportato</string>
     <string name="light_qs_title">Applica pannello QS chiaro quando si utilizza il tema chiaro</string>
     <string name="qs_pulldown_size">Larghezza quick pull-down</string>
     <string name="qs_pulldown_switch_title">Pannello quick QS pull-down dalla Status Bar</string>

@@ -256,11 +256,11 @@
     <string name="qs_footer_text_value">Ввести свой текст</string>
     <string name="qs_footer_text_summary">Оставьте пустым, чтобы полностью удалить текст</string>
     <string name="qs_footer_text_desc">Выкл/вкл экран, чтобы применить</string>
-    <string name="qs_leveled_flashlight_title">Flashlight-leveled tile</string>
+    <string name="qs_leveled_flashlight_title">Плитка яркости фонарика</string>
     <string name="qs_flashlight_level_global_title">Применить уровень яркости глобально</string>
     <string name="qs_tile_vertical_title">Переместить значки наверх</string>
     <string name="qs_tile_qty_title">Настройки быстрых настроек счетчик плиток</string>
-    <string name="qs_leveled_flashlight_summary">Longpress on tile to show the slider.\nRequires supported hardware</string>
+    <string name="qs_leveled_flashlight_summary">Удерживайте плитку для показа слайдера.\nТребует поддерживаемое оборудование</string>
     <string name="light_qs_title">Белая панель быстрых настроек при светлой теме</string>
     <string name="qs_pulldown_size">Ширина быстрого вытягивания</string>
     <string name="qs_pulldown_switch_title">Быстрое вытягивание панели быстрых настроек из строки состояния</string>
@@ -273,7 +273,7 @@
     <string name="qs_tile_qty_landscape">В горизонтальной ориентации</string>
     <string name="qs_mod_category_misc_title">Разное</string>
     <string name="charging_info_on_qs">Отображать информацию о зарядке в панели быстрых настроек</string>
-    <string name="qqs_rows_number">Number of quick QS rows</string>
+    <string name="qqs_rows_number">Количество рядов быстрых настроек</string>
     <string name="qs_rows_number">Количество рядов быстрых настроек</string>
     <string name="qs_cols_number">Количество столбцов быстрых настроек</string>
     <string name="qqs_tiles_number">Максимальное количество плиток в полураскрытых быстрых настройках (максимум 2 строки)</string>

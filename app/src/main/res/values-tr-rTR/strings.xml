@@ -256,11 +256,11 @@
     <string name="qs_footer_text_value">Özel metin girin</string>
     <string name="qs_footer_text_summary">Tamamen kaldırmak için boş bırakın</string>
     <string name="qs_footer_text_desc">Uygulamak için ekranı kapatıp/açın</string>
-    <string name="qs_leveled_flashlight_title">Flashlight-leveled tile</string>
+    <string name="qs_leveled_flashlight_title">Fener seviyesinde kutucuk</string>
     <string name="qs_flashlight_level_global_title">El feneri seviyesini global olarak uygula</string>
     <string name="qs_tile_vertical_title">Kutucuk simgelerini üste taşı</string>
     <string name="qs_tile_qty_title">Hızlı ayarlar kutucuk sayısı ayarları</string>
-    <string name="qs_leveled_flashlight_summary">Longpress on tile to show the slider.\nRequires supported hardware</string>
+    <string name="qs_leveled_flashlight_summary">Kaydırıcıyı göstermek için kutucuğa uzun basın.\nDesteklenen donanım gerektirir</string>
     <string name="light_qs_title">Açık tema kullanırken açık Hızlı Ayarlar Paneli uygula</string>
     <string name="qs_pulldown_size">Hızlı çekme genişliği</string>
     <string name="qs_pulldown_switch_title">Durum çubuğundan hızlı Hızlı Ayarlar paneli çekme</string>
