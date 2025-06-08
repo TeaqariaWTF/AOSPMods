@@ -39,6 +39,7 @@ import java.util.Objects;
 import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.databinding.SettingsActivityBinding;
+import sh.siava.pixelxpert.modpacks.systemui.BatteryDataProvider;
 import sh.siava.pixelxpert.service.tileServices.SleepOnSurfaceTileService;
 import sh.siava.pixelxpert.ui.fragments.HeaderFragment;
 import sh.siava.pixelxpert.ui.fragments.UpdateFragment;
@@ -280,8 +281,6 @@ public class SettingsActivity extends BaseActivity implements PreferenceFragment
 					navigateTo(navController, R.id.action_statusbarFragment_to_SBCFragment);
 			case "BBarEnabled" ->
 					navigateTo(navController, R.id.action_statusbarFragment_to_SBBBFragment);
-			case "sbbIcon_header" ->
-					navigateTo(navController, R.id.action_statusbarFragment_to_SBBIconFragment);
 			case "network_settings_header" ->
 					navigateTo(navController, R.id.action_statusbarFragment_to_networkFragment);
 			case "threebutton_header" ->

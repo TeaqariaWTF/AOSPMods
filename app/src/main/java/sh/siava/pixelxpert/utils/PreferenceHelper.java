@@ -176,8 +176,6 @@ public class PreferenceHelper {
 					!instance.mPreferences.getBoolean("BBarColorful", false);
 			case "BBarColorful" -> instance.mPreferences.getBoolean("BBarEnabled", false) &&
 					!instance.mPreferences.getBoolean("BBarTransitColors", false);
-			case "BIconColorful" -> !instance.mPreferences.getBoolean("BIconTransitColors", false);
-			case "BIconTransitColors" -> !instance.mPreferences.getBoolean("BIconColorful", false);
 			default -> true;
 		};
 	}
@@ -221,9 +219,6 @@ public class PreferenceHelper {
 
 			case "networkTrafficInterval":
 				return instance.mPreferences.getSliderInt("networkTrafficInterval", 1) + " second(s)";
-
-			case "BIconOpacity":
-				return instance.mPreferences.getSliderInt("BIconOpacity", 100) + "%";
 
 			case "volumeStps":
 				int volumeStps = instance.mPreferences.getSliderInt("volumeStps", 0);
