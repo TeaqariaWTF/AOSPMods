@@ -12,6 +12,7 @@ import sh.siava.pixelxpert.modpacks.android.ScreenOffKeys;
 import sh.siava.pixelxpert.modpacks.android.ScreenRotation;
 import sh.siava.pixelxpert.modpacks.android.StatusbarSize;
 import sh.siava.pixelxpert.modpacks.android.SystemScreenRecord;
+import sh.siava.pixelxpert.modpacks.android.TargetOptimizer;
 import sh.siava.pixelxpert.modpacks.dialer.RecordingMessage;
 import sh.siava.pixelxpert.modpacks.ksu.KSUInjector;
 import sh.siava.pixelxpert.modpacks.launcher.ClearAllButtonMod;
@@ -70,6 +71,7 @@ public class ModPacks {
 				modPacks.add(HotSpotController.class);
 				modPacks.add(SystemScreenRecord.class);
 				modPacks.add(FaceUpScreenSleep.class);
+				modPacks.add(TargetOptimizer.class);
 				break;
 
 			case Constants.SYSTEM_UI_PACKAGE:

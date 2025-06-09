@@ -1,0 +1,63 @@
+package sh.siava.pixelxpert.modpacks.android;
+
+import static sh.siava.pixelxpert.modpacks.XPrefs.Xprefs;
+
+import android.content.Context;
+import android.os.Build;
+
+import java.util.Arrays;
+
+import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import sh.siava.pixelxpert.R;
+import sh.siava.pixelxpert.modpacks.Constants;
+import sh.siava.pixelxpert.modpacks.ResourceManager;
+import sh.siava.pixelxpert.modpacks.XPLauncher;
+import sh.siava.pixelxpert.modpacks.XposedModPack;
+
+public class TargetOptimizer extends XposedModPack {
+	public static final String listenPackage = Constants.SYSTEM_FRAMEWORK_PACKAGE;
+
+	public static final String OPTIMIZED_BUILD_KEY = "optimized_build";
+	public static final String SYSTEM_RESTART_PENDING_KEY = "system_restart_pending";
+
+	public TargetOptimizer(Context context) {
+		super(context);
+	}
+
+	@Override
+	public void updatePrefs(String... Key) {}
+
+	@Override
+	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+		if(Xprefs.getBoolean(SYSTEM_RESTART_PENDING_KEY, false)) {
+			Xprefs.edit()
+					.putBoolean(SYSTEM_RESTART_PENDING_KEY, false)
+					.apply();
+		}
+
+		String optimizedBuild = Xprefs.getString(OPTIMIZED_BUILD_KEY, "");
+
+		if(!Build.ID.equals(optimizedBuild))
+		{
+			try {
+				String[] targetPacks = ResourceManager.modRes.getStringArray(R.array.module_scope);
+
+				Arrays.asList(targetPacks).forEach(target ->
+						XPLauncher.enqueueProxyCommand(proxy ->
+								proxy.runCommand(String.format("cmd package compile -m speed -f %s", target))));
+
+				Xprefs.edit()
+						.putBoolean(SYSTEM_RESTART_PENDING_KEY, true)
+						.putString(OPTIMIZED_BUILD_KEY, Build.ID)
+						.apply();
+			}
+			catch (Throwable ignored)
+			{}
+		}
+	}
+
+	@Override
+	public boolean listensTo(String packageName) {
+		return listenPackage.equals(packageName);
+	}
+}
