@@ -8,6 +8,7 @@ import static de.robv.android.xposed.XposedBridge.invokeOriginalMethod;
 import static de.robv.android.xposed.XposedBridge.log;
 import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.getStaticObjectField;
+import static sh.siava.pixelxpert.modpacks.Constants.SYSTEM_UI_PACKAGE;
 import static sh.siava.pixelxpert.modpacks.XPrefs.Xprefs;
 
 import android.animation.Animator;
@@ -52,8 +53,6 @@ import java.util.ArrayList;
 import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.modpacks.XPLauncher;
 
-/** @noinspection UnusedReturnValue*/
-@SuppressWarnings("unused")
 public class SystemUtils {
 	private static final int THREAD_PRIORITY_BACKGROUND = 10;
 	public static final String EXTRA_VOLUME_STREAM_TYPE = "android.media.EXTRA_VOLUME_STREAM_TYPE";
@@ -87,17 +86,12 @@ public class SystemUtils {
 	private Handler mHandler;
 	private Method mSetTorchModeMethod;
 
-	public static void restartSystemUI() {
-		BootLoopProtector.resetCounter("com.android.systemui");
-
-		restart("systemUI");
-	}
-
 	public static void restart(String what) {
 		switch (what.toLowerCase())
 		{
 			case "systemui":
-				runRootCommand("killall com.android.systemui");
+				BootLoopProtector.resetCounter(SYSTEM_UI_PACKAGE);
+				runRootCommand("killall " +  SYSTEM_UI_PACKAGE);
 				break;
 			case "system":
 				runRootCommand("am start -a android.intent.action.REBOOT");
@@ -231,6 +225,7 @@ public class SystemUtils {
 				: instance.getTelephonyManager();
 	}
 
+	/** @noinspection unused*/
 	public static DownloadManager DownloadManager() {
 		return instance == null
 				? null
@@ -311,6 +306,7 @@ public class SystemUtils {
 			instance.mVolumeChangeListeners.add(listener);
 	}
 
+	/** @noinspection unused*/
 	public static void unregisterVolumeChangeListener(ChangeListener listener)
 	{
 		if(instance != null)
@@ -327,7 +323,6 @@ public class SystemUtils {
 			if (flashID.isEmpty()) {
 				return;
 			}
-			float currentPct1 = Xprefs.getInt("flashPCT", 50) / 100f;
 
 			if (Xprefs.getBoolean("leveledFlashTile", false)
 					&& Xprefs.getBoolean("isFlashLevelGlobal", false)
@@ -337,8 +332,9 @@ public class SystemUtils {
 				setFlashInternalWithLevel(enabled, getFlashlightLevelInternal(currentPct), animate);
 			}
 			else {
-				setFlashInternalNoLevel(enabled);
-			}		} catch (Throwable t) {
+				setFlashInternalNoLevel(enabled, animate);
+			}
+		} catch (Throwable t) {
 			if (BuildConfig.DEBUG) {
 				log("PixelXpert Error in setting flashlight");
 				log(t);
@@ -346,9 +342,22 @@ public class SystemUtils {
 		}
 	}
 
-	private void setFlashInternalNoLevel(boolean enabled) {
+	private void setFlashInternalNoLevel(boolean enabled, boolean animate) {
 		try {
-			invokeOriginalMethod(mSetTorchModeMethod, getCameraManager(),new Object[]{getFlashID(getCameraManager()), enabled});
+			if(animate && supportsFlashLevels())
+			{
+				if(enabled) {
+					animateFlashLightOn(getFlashStrengthInternal());
+				}
+				else
+				{
+					animateFlashLightOff();
+				}
+			}
+			else
+			{
+				invokeOriginalMethod(mSetTorchModeMethod, getCameraManager(),new Object[]{getFlashID(getCameraManager()), enabled});
+			}
 		} catch (Throwable ignored) {}
 	}
 
@@ -371,7 +380,7 @@ public class SystemUtils {
 			valueAnimator.addListener(new AnimatorListenerAdapter() {
 				@Override
 				public void onAnimationEnd(Animator animation) {
-					setFlashInternalNoLevel(false);
+					setFlashInternalNoLevel(false, false);
 				}
 			});
 			valueAnimator.start();
@@ -463,10 +472,10 @@ public class SystemUtils {
 					}
 				} else //flash doesn't support levels: go normal
 				{
-					setFlashInternalNoLevel(true);
+					setFlashInternalNoLevel(true, false);
 				}
 			} else {
-				setFlashInternalNoLevel(false);
+				setFlashInternalNoLevel(false, false);
 			}
 		} catch (Throwable t) {
 			if (BuildConfig.DEBUG) {
@@ -501,6 +510,7 @@ public class SystemUtils {
 		return "";
 	}
 
+	/** @noinspection unused*/
 	public static int getFlashStrength()
 	{
 		return instance.getFlashStrengthInternal();
@@ -778,16 +788,18 @@ public class SystemUtils {
 	}
 
 	private void toggleMuteInternal() {
-		if(getAudioManager().isStreamMute(STREAM_MUSIC)) {
-			int unMuteVolume = round(
-					(AudioManager().getStreamMaxVolume(STREAM_MUSIC)
-							- AudioManager().getStreamMinVolume(STREAM_MUSIC)
-					) * (float) Xprefs.getSliderInt("UnMuteVolumePCT", 50) / 100f);
-			mAudioManager.setStreamVolume(STREAM_MUSIC, unMuteVolume, 0);
-		}
-		else {
-			mAudioManager.setStreamVolume(STREAM_MUSIC, 0, 0);
-		}
+		try {
+			if (getAudioManager().isStreamMute(STREAM_MUSIC)) {
+				//noinspection DataFlowIssue
+				int unMuteVolume = round(
+						(AudioManager().getStreamMaxVolume(STREAM_MUSIC)
+								- AudioManager().getStreamMinVolume(STREAM_MUSIC)
+						) * (float) Xprefs.getSliderInt("UnMuteVolumePCT", 50) / 100f);
+				mAudioManager.setStreamVolume(STREAM_MUSIC, unMuteVolume, 0);
+			} else {
+				mAudioManager.setStreamVolume(STREAM_MUSIC, 0, 0);
+			}
+		} catch (Throwable ignored){}
 	}
 
 	public interface ChangeListener
