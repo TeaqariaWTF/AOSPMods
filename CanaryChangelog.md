@@ -1,3 +1,6 @@
+**canary-454**  
+- Fixed flashlight fade effect when level customization is disabled  
+  
 **canary-453**  
 - Fixed double tap to wake  
   
