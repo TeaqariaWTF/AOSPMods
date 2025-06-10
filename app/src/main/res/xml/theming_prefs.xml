@@ -14,4 +14,11 @@
 		app:fragment="sh.siava.pixelxpert.ui.fragments.iconpack.IconPackFragment"
 		app:iconSpaceReserved="false" />
 
+	<sh.siava.pixelxpert.ui.preferences.MaterialSwitchPreference
+		android:defaultValue="false"
+		android:key="ForceThemedLauncherIcons"
+		android:summary="@string/force_themed_icons_summary"
+		android:title="@string/force_themed_icons_title"
+		app:iconSpaceReserved="false" />
+
 </PreferenceScreen>

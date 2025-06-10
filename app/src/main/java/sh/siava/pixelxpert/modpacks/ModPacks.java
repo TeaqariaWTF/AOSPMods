@@ -17,6 +17,7 @@ import sh.siava.pixelxpert.modpacks.dialer.RecordingMessage;
 import sh.siava.pixelxpert.modpacks.ksu.KSUInjector;
 import sh.siava.pixelxpert.modpacks.launcher.ClearAllButtonMod;
 import sh.siava.pixelxpert.modpacks.launcher.CustomNavGestures;
+import sh.siava.pixelxpert.modpacks.launcher.LauncherThemedIcons;
 import sh.siava.pixelxpert.modpacks.launcher.LauncherGestureNavbarManager;
 import sh.siava.pixelxpert.modpacks.launcher.PixelXpertIconUpdater;
 import sh.siava.pixelxpert.modpacks.launcher.TaskbarActivator;
@@ -119,6 +120,7 @@ public class ModPacks {
 				modPacks.add(CustomNavGestures.class);
 				modPacks.add(ClearAllButtonMod.class);
 				modPacks.add(PixelXpertIconUpdater.class);
+				modPacks.add(LauncherThemedIcons.class);
 				break;
 
 			case Constants.TELECOM_SERVER_PACKAGE:
