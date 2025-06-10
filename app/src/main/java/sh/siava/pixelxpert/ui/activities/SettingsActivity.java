@@ -13,7 +13,6 @@ import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.ComponentName;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -41,7 +40,6 @@ import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.databinding.SettingsActivityBinding;
 import sh.siava.pixelxpert.modpacks.android.TargetOptimizer;
-import sh.siava.pixelxpert.modpacks.systemui.BatteryDataProvider;
 import sh.siava.pixelxpert.service.tileServices.SleepOnSurfaceTileService;
 import sh.siava.pixelxpert.ui.fragments.HeaderFragment;
 import sh.siava.pixelxpert.ui.fragments.UpdateFragment;
@@ -49,7 +47,7 @@ import sh.siava.pixelxpert.ui.preferences.preferencesearch.SearchPreferenceResul
 import sh.siava.pixelxpert.ui.preferences.preferencesearch.SearchPreferenceResultListener;
 import sh.siava.pixelxpert.utils.AppUtils;
 import sh.siava.pixelxpert.utils.DisplayUtils;
-import sh.siava.pixelxpert.utils.ExtendedSharedPreferences;
+import sh.siava.pixelxpert.utils.PXPreferences;
 import sh.siava.pixelxpert.utils.PrefManager;
 import sh.siava.pixelxpert.utils.PreferenceHelper;
 
@@ -70,8 +68,7 @@ public class SettingsActivity extends BaseActivity implements PreferenceFragment
 		createNotificationChannel();
 		setupNavigation(savedInstanceState);
 
-		ExtendedSharedPreferences preferences = ExtendedSharedPreferences.from(getDefaultSharedPreferences(createDeviceProtectedStorageContext()));
-		PreferenceHelper.init(preferences);
+		PreferenceHelper.init(PXPreferences.getPrefs());
 
 		if (getIntent() != null) {
 			if (getIntent().getBooleanExtra("updateTapped", false)) {
@@ -103,7 +100,7 @@ public class SettingsActivity extends BaseActivity implements PreferenceFragment
 			}
 		}
 
-		if (preferences.getBoolean(TargetOptimizer.SYSTEM_RESTART_PENDING_KEY, false)) {
+		if (PXPreferences.getBoolean(TargetOptimizer.SYSTEM_RESTART_PENDING_KEY, false)) {
 			new MaterialAlertDialogBuilder(this, R.style.MaterialComponents_MaterialAlertDialog)
 					.setTitle(R.string.optimization_restart_needed_title)
 					.setMessage(R.string.optimization_restart_needed_message)
