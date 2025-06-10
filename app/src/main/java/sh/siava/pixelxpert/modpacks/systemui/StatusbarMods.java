@@ -475,7 +475,6 @@ public class StatusbarMods extends XposedModPack {
 		ReflectedClass NotificationIconContainerClass = ReflectedClass.of("com.android.systemui.statusbar.phone.NotificationIconContainer");
 		ReflectedClass TunerServiceImplClass = ReflectedClass.of("com.android.systemui.tuner.TunerServiceImpl");
 		ReflectedClass ConnectivityCallbackHandlerClass = ReflectedClass.of("com.android.systemui.statusbar.connectivity.CallbackHandler");
-		ReflectedClass HeadsUpStatusBarViewClass = ReflectedClass.of("com.android.systemui.statusbar.HeadsUpStatusBarView");
 		ReflectedClass NotificationIconContainerAlwaysOnDisplayViewModelClass = ReflectedClass.ofIfPossible("com.android.systemui.statusbar.notification.icon.ui.viewmodel.NotificationIconContainerAlwaysOnDisplayViewModel");
 		ReflectedClass NotificationIconContainerStatusBarViewModelClass = ReflectedClass.ofIfPossible("com.android.systemui.statusbar.notification.icon.ui.viewmodel.NotificationIconContainerStatusBarViewModel");
 		StatusBarIconClass = ReflectedClass.of("com.android.internal.statusbar.StatusBarIcon");
@@ -528,23 +527,6 @@ public class StatusbarMods extends XposedModPack {
 		//forcing a refresh on statusbar once the charging chip goes away to avoid layout issues
 		//only needed if chip is shown on lockscreen and device is unlocked quickly afterwards
 
-
-		// Placing the headsUp text right next to the icon. if it's double row, it needs to shift down
-		HeadsUpStatusBarViewClass
-				.after("onLayout")
-				.run(param -> {
-					View headsUpView = (View) param.thisObject;
-					int[] headsUpLocation = new int[2];
-					headsUpView.getLocationOnScreen(headsUpLocation);
-
-					int[] notificationContainerLocation = new int[2];
-					mNotificationIconContainer.getLocationOnScreen(notificationContainerLocation);
-
-					((View) getObjectField(param.thisObject, "mTextView"))
-							.setTranslationY(
-									(notificationContainerLocation[1] - headsUpLocation[1])
-											/ 2f);
-				});
 
 		//region combined signal icons
 		TunerServiceImplClass
