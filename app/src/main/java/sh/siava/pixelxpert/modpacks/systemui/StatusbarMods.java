@@ -15,6 +15,7 @@ import static sh.siava.pixelxpert.modpacks.XPrefs.Xprefs;
 import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.dimenIdOf;
 import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.idOf;
 import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.resourceIdOf;
+import static sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectionTools.reAddView;
 
 import android.animation.LayoutTransition;
 import android.annotation.SuppressLint;
@@ -530,7 +531,7 @@ public class StatusbarMods extends XposedModPack {
 
 		// Placing the headsUp text right next to the icon. if it's double row, it needs to shift down
 		HeadsUpStatusBarViewClass
-				.after("onLayoutt")
+				.after("onLayout")
 				.run(param -> {
 					View headsUpView = (View) param.thisObject;
 					int[] headsUpLocation = new int[2];
@@ -861,7 +862,7 @@ public class StatusbarMods extends XposedModPack {
 		parent.removeView(mNotificationIconContainer);
 		mLeftVerticalSplitContainer.addView(mNotificationContainerContainer);
 
-		repositionOngoingChips();
+		repositionOngoingChip();
 
 		mNotificationContainerContainer.addView(mNotificationIconContainer);
 
@@ -887,19 +888,21 @@ public class StatusbarMods extends XposedModPack {
 		mLeftVerticalSplitContainer.getLayoutParams().height = MATCH_PARENT;
 	}
 
-	private void repositionOngoingChips() {
-		repositionOngoingChip("ongoing_activity_chip_primary"); //A15 QPR1
-		repositionOngoingChip("ongoing_activity_chip_secondary"); //A15 QPR1
+	private void repositionOngoingChip() {
+		View ongoingChipComposeView = findComposeView(mPhoneStatusbarView.findViewById(idOf("status_bar_start_side_except_heads_up")));
+		reAddView(mNotificationContainerContainer, ongoingChipComposeView);
 	}
 
-	private void repositionOngoingChip(String chipName) {
-		@SuppressLint("DiscouragedApi")
-		View ongoingActivityChipView = mPhoneStatusbarView.findViewById(idOf(chipName));
-		if (ongoingActivityChipView != null) {
-			((ViewGroup) ongoingActivityChipView.getParent()).removeView(ongoingActivityChipView);
-			mNotificationContainerContainer.addView(ongoingActivityChipView);
+	private View findComposeView(ViewGroup parent) {
+		for(int i = 0; i < parent.getChildCount(); i++)
+		{
+			View child = parent.getChildAt(i);
+			if(child.getClass().getName().endsWith("ComposeView"))
+				return child;
 		}
+		return null;
 	}
+
 
 	private void setHeights() {
 		@SuppressLint("DiscouragedApi") int statusbarHeight = mPhoneStatusbarView.getLayoutParams().height
