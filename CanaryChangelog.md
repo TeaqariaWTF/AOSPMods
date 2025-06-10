@@ -1,3 +1,7 @@
+**canary-455**  
+- Themed icon generator is added back (Theming section)  
+- Added auto optimization feature after system updates  
+  
 **canary-454**  
 - Fixed flashlight fade effect when level customization is disabled  
   
