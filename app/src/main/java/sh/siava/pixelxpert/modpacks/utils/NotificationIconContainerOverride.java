@@ -108,7 +108,6 @@ public class NotificationIconContainerOverride {
 			for (int i = firstOverflowIndex; i < childCount; i++) {
 				View view = thisObject.getChildAt(i);
 				Object iconState = callMethod(mIconStates, "get", view);
-				int dotWidth = getIntField(thisObject, "mStaticDotDiameter") + getIntField(thisObject, "mDotPadding");
 				setObjectField(iconState, xTranslationField, translationX);
 				if (mNumDots < MAX_DOTS) {
 					if (mNumDots == 0 && getFloatField(iconState, "iconAppearAmount") < 0.8f) {
@@ -118,11 +117,8 @@ public class NotificationIconContainerOverride {
 						mNumDots++;
 						//setObjectField(thisObject, "mNumDots", getIntField(thisObject, "mNumDots") + 1);
 					}
-					translationX +=
-							(mNumDots == MAX_DOTS
-									? MAX_DOTS * dotWidth
-									: dotWidth)
-							* getFloatField(iconState, "iconAppearAmount");
+					translationX += getFloatField(iconState, "iconAppearAmount");
+
 					try {
 						setObjectField(thisObject, "mLastVisibleIconState", iconState);
 					} catch (Throwable ignored) {
