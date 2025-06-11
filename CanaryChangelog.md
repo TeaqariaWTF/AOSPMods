@@ -1,3 +1,8 @@
+**canary-456**  
+- 16qpr1b2: Fixed statusbar notification icons  
+- 16qpr1b2: fixed power longpress  
+- Fixed ongoing activity chip's location  
+  
 **canary-455**  
 - Themed icon generator is added back (Theming section)  
 - Added auto optimization feature after system updates  
