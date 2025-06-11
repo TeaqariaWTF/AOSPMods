@@ -132,9 +132,6 @@ public class PreferenceHelper {
 			case "NetworkStatsMonthStart":
 				return instance.mPreferences.getString("NetworkStatsStartBase", "0").equals("2");
 
-			case "wifi_cell":
-				return instance.mPreferences.getBoolean("InternetTileModEnabled", true);
-
 			case "QSPulldownPercent":
 			case "QSPulldownSide":
 			case "oneFingerPullupEnabled":

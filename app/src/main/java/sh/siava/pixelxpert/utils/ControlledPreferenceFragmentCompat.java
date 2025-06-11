@@ -133,11 +133,6 @@ public abstract class ControlledPreferenceFragmentCompat extends PreferenceFragm
 	}
 
 	public void updateScreen(String key) {
-		if(key != null && getActivity() != null) {
-			getActivity().recreate();
-			return;
-		}
-
 		PreferenceHelper.setupAllPreferences(this.getPreferenceScreen());
 	}
 

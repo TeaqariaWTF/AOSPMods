@@ -1,8 +1,6 @@
 package sh.siava.pixelxpert.modpacks;
 
 import static sh.siava.pixelxpert.modpacks.XPrefs.Xprefs;
-import static sh.siava.pixelxpert.modpacks.utils.toolkit.ObjectTools.addItemToCommaStringIfNotPresent;
-import static sh.siava.pixelxpert.modpacks.utils.toolkit.ObjectTools.removeItemFromCommaString;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -48,9 +46,6 @@ public class MiscSettings extends XposedModPack {
 				case "sysui_tuner":
 					updateSysUITuner();
 					break;
-				case "wifi_cell":
-					updateWifiCell();
-					break;
 				case "volumeStps":
 					setVolumeSteps();
 					break;
@@ -93,37 +88,6 @@ public class MiscSettings extends XposedModPack {
 		int volumeStps = Xprefs.getSliderInt("volumeStps", 0);
 
 		ModuleFolderOperations.applyVolumeSteps(volumeStps, XPrefs.MagiskRoot, false);
-	}
-
-	private void updateWifiCell() {
-		XPLauncher.enqueueProxyCommand(proxy -> {
-			boolean WifiCellEnabled = Xprefs.getBoolean("wifi_cell", false)
-					&& Xprefs.getBoolean("InternetTileModEnabled", true);
-
-			try {
-				String currentTiles = proxy.runCommand("settings get secure sysui_qs_tiles")[0];
-
-				boolean providerModel;
-
-				if (WifiCellEnabled) {
-					providerModel = false;
-					currentTiles = addItemToCommaStringIfNotPresent(currentTiles, "cell_PixelXpert");
-					currentTiles = addItemToCommaStringIfNotPresent(currentTiles, "wifi_PixelXpert");
-
-					currentTiles = removeItemFromCommaString(currentTiles, "internet");
-				} else {
-					providerModel = true;
-
-					currentTiles = removeItemFromCommaString(currentTiles, "cell_PixelXpert");
-					currentTiles = removeItemFromCommaString(currentTiles, "wifi_PixelXpert");
-
-					currentTiles = addItemToCommaStringIfNotPresent(currentTiles, "internet");
-				}
-
-				proxy.runCommand("settings put global settings_provider_model " + providerModel + "; settings put secure sysui_qs_tiles \"" + currentTiles + "\"");
-			} catch (Exception ignored) {
-			}
-		});
 	}
 
 	private void updateSysUITuner() {

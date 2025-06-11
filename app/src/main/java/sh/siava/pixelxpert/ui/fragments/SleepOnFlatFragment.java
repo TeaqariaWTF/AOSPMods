@@ -19,6 +19,10 @@ public class SleepOnFlatFragment extends ControlledPreferenceFragmentCompat {
     @Override
     public void updateScreen(String key)
     {
+        if(key != null && getActivity() != null) {
+            getActivity().recreate();
+            return;
+        }
         super.updateScreen(key);
         SleepOnSurfaceTileService.onPrefsChanged();
     }

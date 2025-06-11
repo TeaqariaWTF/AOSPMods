@@ -294,9 +294,6 @@
     <string name="qqs_tiles_number">Maximum tiles in Quick QS (max 2 rows)</string>
     <string name="qs_tile_label_size">QS Tile label size</string>
     <string name="qs_tile_secondary_label_size">QS Tile label summary size</string>
-    <string name="wifi_cell_title">Internet Tile</string>
-    <string name="wifi_cell_on">Use separate WiFi &amp; Data tiles</string>
-    <string name="wifi_cell_off">Use a single Internet tile</string>
     <string name="QQS_brightness_category">Brightness slider options</string>
     <string name="QS_auto_brightness_title">Adaptive brightness shortcut</string>
     <string name="QQS_brightness_title">Show brightness slider on QQS Panel</string>
