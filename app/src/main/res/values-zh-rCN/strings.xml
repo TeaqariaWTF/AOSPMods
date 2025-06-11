@@ -279,9 +279,9 @@
     <string name="qqs_tiles_number">磁贴面板最大磁贴数量 (最大2行)</string>
     <string name="qs_tile_label_size">磁贴标签大小</string>
     <string name="qs_tile_secondary_label_size">磁贴标签内容大小</string>
-    <string name="wifi_cell_title">网络磁贴</string>
-    <string name="wifi_cell_on">分离 WIFI 和数据磁贴</string>
-    <string name="wifi_cell_off">合并 WIFI 和数据磁贴</string>
+
+
+
     <string name="QQS_brightness_category">亮度滑块选项</string>
     <string name="QS_auto_brightness_title">自适应亮度快捷方式</string>
     <string name="QQS_brightness_title">在下拉磁贴面板显示</string>

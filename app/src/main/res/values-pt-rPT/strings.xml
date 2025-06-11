@@ -279,9 +279,9 @@
     <string name="qqs_tiles_number">Número de atalhos no painel rápido das DR (2 linhas máx.)</string>
     <string name="qs_tile_label_size">Tamanho do texto</string>
     <string name="qs_tile_secondary_label_size">Tamanho do texto secundário</string>
-    <string name="wifi_cell_title">Atalho da Internet</string>
-    <string name="wifi_cell_on">Usar WiFi e Dados em separado</string>
-    <string name="wifi_cell_off">Usar apenas o atalho Internet</string>
+
+
+
     <string name="QQS_brightness_category">Opções do controlo de brilho</string>
     <string name="QS_auto_brightness_title">Atalho para brilho adaptável</string>
     <string name="QQS_brightness_title">Controlo de brilho no painel rápido das DR</string>

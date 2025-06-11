@@ -279,9 +279,9 @@
     <string name="qqs_tiles_number">الحد الأقصى للبلاط في الإعدادات السريعة (صف أقصى 2)</string>
     <string name="qs_tile_label_size">QS Tile label size</string>
     <string name="qs_tile_secondary_label_size">حجم ملخص ملحق بلاط الإعدادات السريعة</string>
-    <string name="wifi_cell_title">مربع الانترنت</string>
-    <string name="wifi_cell_on">استخدام WiFi &amp; بلاط البيانات</string>
-    <string name="wifi_cell_off">استخدام مربع إنترنت واحد</string>
+
+
+
     <string name="QQS_brightness_category">خيارات شريط تمرير السطوع</string>
     <string name="QS_auto_brightness_title">اختصار السطوع التكيفي</string>
     <string name="QQS_brightness_title">إظهار شريط تمرير السطوع على لوحة QQS</string>

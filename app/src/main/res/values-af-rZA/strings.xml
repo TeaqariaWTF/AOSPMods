@@ -279,9 +279,9 @@
     <string name="qqs_tiles_number">Maksimum teëls in Quick QS (maksimum 2 rye)</string>
     <string name="qs_tile_label_size">QS Tile etiket grootte</string>
     <string name="qs_tile_secondary_label_size">QS Tile etiket opsomming grootte</string>
-    <string name="wifi_cell_title">Internet teël</string>
-    <string name="wifi_cell_on">Gebruik aparte WiFi &amp; Data-teëls</string>
-    <string name="wifi_cell_off">Gebruik \'n enkele internetteël</string>
+
+
+
     <string name="QQS_brightness_category">Helderheid glyer opsies</string>
     <string name="QS_auto_brightness_title">Adaptive brightness shortcut</string>
     <string name="QQS_brightness_title">Wys helderheidsskuifbalk op QQS-paneel</string>

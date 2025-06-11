@@ -279,9 +279,9 @@
     <string name="qqs_tiles_number">Maksimalt antall fliser i Quick QS (maks 2 rader)</string>
     <string name="qs_tile_label_size">QS Tile-etikettstørrelse</string>
     <string name="qs_tile_secondary_label_size">QS Tile etikett sammendrag størrelse</string>
-    <string name="wifi_cell_title">Internett-flis</string>
-    <string name="wifi_cell_on">Bruk separate WiFi &amp; datafliser</string>
-    <string name="wifi_cell_off">Bruk en enkelt Internett-brikke</string>
+
+
+
     <string name="QQS_brightness_category">Lysstyrkeskyvealternativer</string>
     <string name="QS_auto_brightness_title">Snarvei for adaptiv lysstyrke</string>
     <string name="QQS_brightness_title">Vis glidebryteren for lysstyrke på QQS-panelet</string>

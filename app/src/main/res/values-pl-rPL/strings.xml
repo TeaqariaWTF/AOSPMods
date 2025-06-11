@@ -279,9 +279,9 @@
     <string name="qqs_tiles_number">Maksymalna liczba płytek w Quick QS (maks. 2 rzędy)</string>
     <string name="qs_tile_label_size">Rozmiar etykiety płytki QS</string>
     <string name="qs_tile_secondary_label_size">Rozmiar podsumowania etykiety QS Tile</string>
-    <string name="wifi_cell_title">Kafelek internetowy</string>
-    <string name="wifi_cell_on">Użyj oddzielnego Wi-Fi</string>
-    <string name="wifi_cell_off">Użyj jednego kafelka internetowego</string>
+
+
+
     <string name="QQS_brightness_category">Opcje suwaka jasności</string>
     <string name="QS_auto_brightness_title">Adaptacyjny skrót jasności</string>
     <string name="QQS_brightness_title">Pokaż suwak jasności na panelu QQS</string>

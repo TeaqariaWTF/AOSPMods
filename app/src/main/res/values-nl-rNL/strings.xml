@@ -279,9 +279,9 @@
     <string name="qqs_tiles_number">Maximum aantal tegels in Quick QS (max. 2 rijen)</string>
     <string name="qs_tile_label_size">QS Tegellabelformaat</string>
     <string name="qs_tile_secondary_label_size">QS Tegellabel overzichtsgrootte</string>
-    <string name="wifi_cell_title">Internettegel</string>
-    <string name="wifi_cell_on">Gebruik wifi en data aparte tegels</string>
-    <string name="wifi_cell_off">Gebruik enkele internettegel</string>
+
+
+
     <string name="QQS_brightness_category">Opties voor schuifregelaar helderheid</string>
     <string name="QS_auto_brightness_title">Aanpasbare helderheid snelkoppeling</string>
     <string name="QQS_brightness_title">Helderheidsschuifregelaar weergeven op QQS-paneel</string>

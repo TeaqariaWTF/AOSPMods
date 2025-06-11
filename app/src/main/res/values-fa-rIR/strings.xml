@@ -279,9 +279,9 @@
     <string name="qqs_tiles_number">حداکثر آیتمهای تنظیمات سریع در QQS (حداکثر 2 ردیف)</string>
     <string name="qs_tile_label_size">اندازه فونت تنظیمات سریع</string>
     <string name="qs_tile_secondary_label_size">اندازه فونت زیر نویس تنظیمات سریع</string>
-    <string name="wifi_cell_title">جداسازی تنظیمات وای فای و اینترنت همراه</string>
-    <string name="wifi_cell_on">جداسازی تنظیمات وای فای و اینترنت همراه</string>
-    <string name="wifi_cell_off">تلفیق تنظیمات وای فای و اینترنت همراه</string>
+
+
+
     <string name="QQS_brightness_category">تنظیمات نوار نور صفحه</string>
     <string name="QS_auto_brightness_title">میانبر روشنایی تطبیقی</string>
     <string name="QQS_brightness_title">نوار نور صفحه در پنل QQS</string>

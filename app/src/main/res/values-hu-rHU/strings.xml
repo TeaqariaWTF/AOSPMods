@@ -279,9 +279,9 @@
     <string name="qqs_tiles_number">Maximális csempék a Quick QS-ben (max. 2 sor)</string>
     <string name="qs_tile_label_size">QS Csempe címke mérete</string>
     <string name="qs_tile_secondary_label_size">QS Csempe címke összefoglaló mérete</string>
-    <string name="wifi_cell_title">Internet csempe</string>
-    <string name="wifi_cell_on">Használjon külön WiFi &amp; adatlapkákat</string>
-    <string name="wifi_cell_off">Használjon egyetlen internetes csempét</string>
+
+
+
     <string name="QQS_brightness_category">Fényerő-csúszka beállításai</string>
     <string name="QS_auto_brightness_title">Adaptive brightness shortcut</string>
     <string name="QQS_brightness_title">Fényerő-csúszka megjelenítése a QQS panelen</string>

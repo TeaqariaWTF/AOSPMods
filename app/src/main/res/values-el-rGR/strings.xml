@@ -279,9 +279,9 @@
     <string name="qqs_tiles_number">Μέγιστα πλακίδια στο Quick QS (μέγιστο 2 σειρές)</string>
     <string name="qs_tile_label_size">Μέγεθος ετικέτας πλακιδίων QS</string>
     <string name="qs_tile_secondary_label_size">Μέγεθος σύνοψης ετικέτας πλακιδίων QS</string>
-    <string name="wifi_cell_title">Πλακάκι Διαδικτύου</string>
-    <string name="wifi_cell_on">Χρησιμοποιήστε ξεχωριστά πλακίδια δεδομένων WiFi &amp;</string>
-    <string name="wifi_cell_off">Χρησιμοποιήστε ένα μόνο πλακίδιο Διαδικτύου</string>
+
+
+
     <string name="QQS_brightness_category">Επιλογές ρυθμιστικού φωτεινότητας</string>
     <string name="QS_auto_brightness_title">Συντόμευση προσαρμοστικής φωτεινότητας</string>
     <string name="QQS_brightness_title">Εμφάνιση ρυθμιστικού φωτεινότητας στον πίνακα QQS</string>

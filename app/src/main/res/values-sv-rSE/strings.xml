@@ -279,9 +279,9 @@
     <string name="qqs_tiles_number">Maximalt antal brickor i Quick QS (max 2 rader)</string>
     <string name="qs_tile_label_size">QS Tile-etikettstorlek</string>
     <string name="qs_tile_secondary_label_size">QS Tile etikett sammanfattning storlek</string>
-    <string name="wifi_cell_title">Internet Kakel</string>
-    <string name="wifi_cell_on">Använd separata WiFi &amp; -dataplattor</string>
-    <string name="wifi_cell_off">Använd en enda Internetbricka</string>
+
+
+
     <string name="QQS_brightness_category">Alternativ för skjutreglage för ljusstyrka</string>
     <string name="QS_auto_brightness_title">Genväg för anpassningsbar ljusstyrka</string>
     <string name="QQS_brightness_title">Visa skjutreglaget för ljusstyrka på QQS-panelen</string>

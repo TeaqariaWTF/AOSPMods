@@ -279,9 +279,9 @@
     <string name="qqs_tiles_number">Максимальное количество плиток в полураскрытых быстрых настройках (максимум 2 строки)</string>
     <string name="qs_tile_label_size">Размер текста плиток быстрых настроек</string>
     <string name="qs_tile_secondary_label_size">Размер деталей плиток быстрых настроек</string>
-    <string name="wifi_cell_title">Плитка интернета</string>
-    <string name="wifi_cell_on">Использовать отдельные плитки для WiFi и мобильных данных</string>
-    <string name="wifi_cell_off">Использовать одну плитку интернета</string>
+
+
+
     <string name="QQS_brightness_category">Параметры ползунка яркости</string>
     <string name="QS_auto_brightness_title">Быстрый доступ к адаптивной яркости</string>
     <string name="QQS_brightness_title">Показывать ползунок яркости в полураскрытой панели быстрых настроек</string>

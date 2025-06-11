@@ -279,9 +279,9 @@
     <string name="qqs_tiles_number">Tối đa số ô trong bảng cài đặt nhanh (tối đa 2 hàng)</string>
     <string name="qs_tile_label_size">Kích thước văn bản tiêu đề ô cài đặt nhanh</string>
     <string name="qs_tile_secondary_label_size">Kích thước văn bản ô cài đặt nhanh</string>
-    <string name="wifi_cell_title">Ô biểu tượng mạng kết hợp\n(Wifi,Dữ liệu mạng di động)</string>
-    <string name="wifi_cell_on">Tách biệt WiFi &amp; Dữ liệu di động</string>
-    <string name="wifi_cell_off">Sử dụng một ô biểu tượng mạng duy nhất</string>
+
+
+
     <string name="QQS_brightness_category">Tùy chỉnh thanh trượt độ sáng</string>
     <string name="QS_auto_brightness_title">Lối tắt độ sáng thích ứng</string>
     <string name="QQS_brightness_title">Hiển thị thanh trượt độ sáng trên Bảng cài đặt nhanh</string>

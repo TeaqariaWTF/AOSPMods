@@ -279,9 +279,9 @@
     <string name="qqs_tiles_number">מספר מרבי של אריחים ב- QS מהיר (עד 2 שורות)</string>
     <string name="qs_tile_label_size">גודל תווית אריח QS </string>
     <string name="qs_tile_secondary_label_size">גודל סיכום של תווית אריח QS</string>
-    <string name="wifi_cell_title">אריח אינטרנט</string>
-    <string name="wifi_cell_on">השתמש ב-WiFi נפרד &amp; אריחי נתונים</string>
-    <string name="wifi_cell_off">שימוש באריח אינטרנט יחיד</string>
+
+
+
     <string name="QQS_brightness_category">אפשרויות מחוון בהירות</string>
     <string name="QS_auto_brightness_title">Adaptive brightness shortcut</string>
     <string name="QQS_brightness_title">הצג את מחוון הבהירות בלוח QQS</string>

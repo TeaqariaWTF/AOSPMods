@@ -279,9 +279,9 @@
     <string name="qqs_tiles_number">Maximum dale în setările rapide (max 2 rânduri)</string>
     <string name="qs_tile_label_size">Dimensiune etichete dale în setările rapide</string>
     <string name="qs_tile_secondary_label_size">Dimensiune sumar etichetă dale în setările rapide</string>
-    <string name="wifi_cell_title">Dală Internet</string>
-    <string name="wifi_cell_on">Utilizează plăci separate pentru WiFi și date mobile</string>
-    <string name="wifi_cell_off">Folosește o singură dală Internet</string>
+
+
+
     <string name="QQS_brightness_category">Opțiuni glisor luminozitate</string>
     <string name="QS_auto_brightness_title">Comandă rapidă pentru luminozitatea adaptivă</string>
     <string name="QQS_brightness_title">Arată glisorul de luminozitate în panoul setărilor rapide</string>

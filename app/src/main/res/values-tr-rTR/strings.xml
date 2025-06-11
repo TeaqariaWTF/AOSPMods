@@ -279,9 +279,9 @@
     <string name="qqs_tiles_number">Hızlı Hızlı Ayarlarda maksimum kutucuk sayısı (maks 2 satır)</string>
     <string name="qs_tile_label_size">Hızlı Ayarlar Kutucuğu etiket boyutu</string>
     <string name="qs_tile_secondary_label_size">Hızlı Ayarlar Kutucuğu etiket özeti boyutu</string>
-    <string name="wifi_cell_title">İnternet Kutucuğu</string>
-    <string name="wifi_cell_on">Ayrı WiFi ve Veri kutucukları kullan</string>
-    <string name="wifi_cell_off">Tek bir İnternet kutucuğu kullan</string>
+
+
+
     <string name="QQS_brightness_category">Parlaklık kaydırıcısı seçenekleri</string>
     <string name="QS_auto_brightness_title">Uyarlanabilir parlaklık kısayolu</string>
     <string name="QQS_brightness_title">Hızlı Hızlı Ayarlarda parlaklık kaydırıcısını göster</string>

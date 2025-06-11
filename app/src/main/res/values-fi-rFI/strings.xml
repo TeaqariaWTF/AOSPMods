@@ -279,9 +279,9 @@
     <string name="qqs_tiles_number">Laattojen enimmäismäärä Quick QS:ssä (enintään 2 riviä)</string>
     <string name="qs_tile_label_size">QS Laattojen etiketin koko</string>
     <string name="qs_tile_secondary_label_size">QS Laattojen yhteenvetokoko</string>
-    <string name="wifi_cell_title">Internet-laatta</string>
-    <string name="wifi_cell_on">Käytä erillisiä WiFi &amp; -datalaattoja</string>
-    <string name="wifi_cell_off">Käytä yhtä Internet-laattaa</string>
+
+
+
     <string name="QQS_brightness_category">Kirkkauden liukusäätimen asetukset</string>
     <string name="QS_auto_brightness_title">Mukautuva kirkkauden pikakuvake</string>
     <string name="QQS_brightness_title">Näytä kirkkauden liukusäädin QQS-paneelissa</string>

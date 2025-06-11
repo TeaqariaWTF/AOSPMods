@@ -279,9 +279,9 @@
     <string name="qqs_tiles_number">Максималан број плочица у Куицк КС (максимално 2 реда)</string>
     <string name="qs_tile_label_size">КС Величина етикете плочице</string>
     <string name="qs_tile_secondary_label_size">Величина резимеа налепнице КС плочице</string>
-    <string name="wifi_cell_title">Интернет Тиле</string>
-    <string name="wifi_cell_on">Користите засебне ВиФи &amp; плочице података</string>
-    <string name="wifi_cell_off">Користите једну интернет плочицу</string>
+
+
+
     <string name="QQS_brightness_category">Опције клизача за осветљеност</string>
     <string name="QS_auto_brightness_title">Adaptive brightness shortcut</string>
     <string name="QQS_brightness_title">Прикажи клизач за осветљеност на ККС панелу</string>

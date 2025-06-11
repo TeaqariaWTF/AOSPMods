@@ -279,9 +279,9 @@
     <string name="qqs_tiles_number">Nombre maximum de blocs (maximum deux lignes)</string>
     <string name="qs_tile_label_size">Taille de la police des titres des blocs</string>
     <string name="qs_tile_secondary_label_size">Taille de la police des descriptions des blocs</string>
-    <string name="wifi_cell_title">Blocs Internet</string>
-    <string name="wifi_cell_on">Utiliser deux blocs séparés pour les données mobiles et le Wi-Fi</string>
-    <string name="wifi_cell_off">Utiliser un bloc Internet</string>
+
+
+
     <string name="QQS_brightness_category">Préférence pour le curseur de luminosité</string>
     <string name="QS_auto_brightness_title">Raccourci de luminosité adaptative</string>
     <string name="QQS_brightness_title">Montrer le curseur de luminosité dans la fenêtre de configuration rapide</string>

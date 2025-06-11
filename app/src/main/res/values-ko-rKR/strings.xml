@@ -279,9 +279,9 @@
     <string name="qqs_tiles_number">최대 타일 개수 (최대 2 가로 행)</string>
     <string name="qs_tile_label_size">타일 라벨 크기</string>
     <string name="qs_tile_secondary_label_size">타일 요약 라벨 크기</string>
-    <string name="wifi_cell_title">인터넷 타일</string>
-    <string name="wifi_cell_on">WiFi 및 데이터 타일 분리</string>
-    <string name="wifi_cell_off">통합된 인터넷 타일 사용</string>
+
+
+
     <string name="QQS_brightness_category">밝기 조절 슬라이더 설정</string>
     <string name="QS_auto_brightness_title">Adaptive brightness shortcut</string>
     <string name="QQS_brightness_title">알림 화면에 밝기 조절 슬라이더 표시</string>
