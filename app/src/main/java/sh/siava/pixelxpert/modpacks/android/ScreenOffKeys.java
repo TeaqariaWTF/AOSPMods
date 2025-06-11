@@ -60,6 +60,7 @@ public class ScreenOffKeys extends XposedModPack {
 	public static final int WAKE_REASON_POWER_BUTTON = 1;
 	public static final int CAMERA_LAUNCH_SOURCE_POWER_DOUBLE_TAP = 1;
 	private static final int INVOCATION_TYPE_POWER_BUTTON_LONG_PRESS = 6;
+	public static final int ACTION_COMPLETE = 1; // SingleKeyGestureEvent
 
 
 	private static int longPressPowerButtonScreenOff = 0;
@@ -141,6 +142,14 @@ public class ScreenOffKeys extends XposedModPack {
 			PowerKeyRuleClass
 					.before("onLongPress")
 					.run(param -> {
+						try { //TODO: no need to try/catch once QPR1 stable is released
+							if ((int) callMethod(
+									param.args[0],
+									"getAction")
+									!= ACTION_COMPLETE)
+								return;
+						} catch (Throwable ignored){}
+
 						boolean screenIsOn = screenIsOn();
 
 						if (launchAction(resolveAction(KEYCODE_POWER, screenIsOn),
@@ -149,13 +158,13 @@ public class ScreenOffKeys extends XposedModPack {
 							param.setResult(null);
 					});
 
-			PhoneWindowManagerClass
-					.before("startedWakingUp")
-					.run(param -> {
-						if ((int) param.args[param.args.length - 1] == WAKE_REASON_POWER_BUTTON) {
-							mWakeTime = SystemClock.uptimeMillis();
-						}
-					});
+					PhoneWindowManagerClass
+							.before("startedWakingUp")
+							.run(param -> {
+								if ((int) param.args[param.args.length - 1] == WAKE_REASON_POWER_BUTTON) {
+									mWakeTime = SystemClock.uptimeMillis();
+								}
+							});
 
 			PhoneWindowManagerClass
 					.before("interceptKeyBeforeQueueing")
