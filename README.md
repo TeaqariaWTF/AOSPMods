@@ -38,12 +38,9 @@ PixelXpert is ONLY compatible with pixel stock firmware on Google Pixel devices.
 
 Here is the compatibility chart according to different android versions and QPRs:
 
-- Android 12/12.1: [final version: v2.4.1](https://github.com/siavash79/PixelXpert/releases/tag/v2.4.1).
-- Android 13 stable QPR1 (up until November 2022 firmware): [final version: v.2.4.1](https://github.com/siavash79/PixelXpert/releases/tag/v2.4.1).
-- Android 13 stable QPR3 (starting from December 2022 firmware till QPR3): [starting with v.2.5](https://github.com/siavash79/PixelXpert/releases/tag/v2.5.0) up until the latest stable/canary versions.
-- Android 14: [starting with v.2.9](https://github.com/siavash79/PixelXpert/releases/tag/v2.9.0) up until the latest stable/canary versions.
-<hr>
-- Android 15 beta builds: only latest canary version (anytime)
+- Android 12/12.1 and 13 (up to Nov 2022): [final version: v2.4.1](https://github.com/siavash79/PixelXpert/releases/tag/v2.4.1).
+- Android 13 stable QPR3 to Android 16 (June 2022): [final version: v.4.3.0](https://github.com/siavash79/PixelXpert/releases/tag/v4.3.0).
+- Android 16 stable QPR1 and newer: only [latest canary version](https://github.com/siavash79/PixelXpert/releases/tag/canary_builds)
 <hr>
 
 ### **Prerequisites:**
