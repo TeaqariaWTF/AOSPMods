@@ -279,9 +279,6 @@
     <string name="qqs_tiles_number">최대 타일 개수 (최대 2 가로 행)</string>
     <string name="qs_tile_label_size">타일 라벨 크기</string>
     <string name="qs_tile_secondary_label_size">타일 요약 라벨 크기</string>
-
-
-
     <string name="QQS_brightness_category">밝기 조절 슬라이더 설정</string>
     <string name="QS_auto_brightness_title">Adaptive brightness shortcut</string>
     <string name="QQS_brightness_title">알림 화면에 밝기 조절 슬라이더 표시</string>
@@ -321,6 +318,7 @@
     <string name="taskbar_transient_title">자동 숨김</string>
     <string name="taskbar_on_launcher_title">Show on home</string>
     <string name="remap_physical_buttons_title">Remap physical buttons</string>
+    <string name="taskbar_on_ime_title">Show with keyboard open</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">패키지 인증서 확인 절차 우회</string>
     <string name="pm_allow_downgrade_title">앱 다운그레이드 허용</string>
@@ -586,4 +584,9 @@
     <string name="reboot_bootloader_title">Reboot to Bootloader</string>
     <string name="soft_reboot_title">Soft Reboot</string>
     <string name="restart_systemui_title">Restart SystemUI</string>
+    <!--Optimization estart request-->
+    <string name="optimization_restart_needed_title">Restart Recommended</string>
+    <string name="optimization_restart_needed_message">A reboot is recommended to increase system integration</string>
+    <string name="restart_postpone">Later</string>
+    <string name="restart_now">Reboot now</string>
 </resources>

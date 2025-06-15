@@ -279,9 +279,6 @@
     <string name="qqs_tiles_number">Μέγιστα πλακίδια στο Quick QS (μέγιστο 2 σειρές)</string>
     <string name="qs_tile_label_size">Μέγεθος ετικέτας πλακιδίων QS</string>
     <string name="qs_tile_secondary_label_size">Μέγεθος σύνοψης ετικέτας πλακιδίων QS</string>
-
-
-
     <string name="QQS_brightness_category">Επιλογές ρυθμιστικού φωτεινότητας</string>
     <string name="QS_auto_brightness_title">Συντόμευση προσαρμοστικής φωτεινότητας</string>
     <string name="QQS_brightness_title">Εμφάνιση ρυθμιστικού φωτεινότητας στον πίνακα QQS</string>
@@ -321,6 +318,7 @@
     <string name="taskbar_transient_title">Αυτόματη απόκρυψη</string>
     <string name="taskbar_on_launcher_title">Show on home</string>
     <string name="remap_physical_buttons_title">Απομάκρυνση φυσικών πλήκτρων</string>
+    <string name="taskbar_on_ime_title">Show with keyboard open</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">Παράκαμψη ελέγχου υπογραφής πακέτου</string>
     <string name="pm_allow_downgrade_title">Να επιτρέπεται η υποβάθμιση της εφαρμογής</string>
@@ -586,4 +584,9 @@
     <string name="reboot_bootloader_title">Reboot to Bootloader</string>
     <string name="soft_reboot_title">Soft Reboot</string>
     <string name="restart_systemui_title">Restart SystemUI</string>
+    <!--Optimization estart request-->
+    <string name="optimization_restart_needed_title">Restart Recommended</string>
+    <string name="optimization_restart_needed_message">A reboot is recommended to increase system integration</string>
+    <string name="restart_postpone">Later</string>
+    <string name="restart_now">Reboot now</string>
 </resources>

@@ -279,9 +279,6 @@
     <string name="qqs_tiles_number">方塊面板最大方塊數量 (最大2行)</string>
     <string name="qs_tile_label_size">方塊標籤大小</string>
     <string name="qs_tile_secondary_label_size">方塊標籤內容大小</string>
-
-
-
     <string name="QQS_brightness_category">亮度滑塊選項</string>
     <string name="QS_auto_brightness_title">自動亮度快捷方式</string>
     <string name="QQS_brightness_title">在下拉方塊面板顯示</string>
@@ -321,6 +318,7 @@
     <string name="taskbar_transient_title">Auto hide</string>
     <string name="taskbar_on_launcher_title">在首頁顯示</string>
     <string name="remap_physical_buttons_title">重新映射物理按鍵</string>
+    <string name="taskbar_on_ime_title">Show with keyboard open</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">繞過應用簽名檢查</string>
     <string name="pm_allow_downgrade_title">允許應用降級</string>
@@ -586,4 +584,9 @@
     <string name="reboot_bootloader_title">重啟到 BootLoader</string>
     <string name="soft_reboot_title">軟重啟</string>
     <string name="restart_systemui_title">重啟系統介面</string>
+    <!--Optimization estart request-->
+    <string name="optimization_restart_needed_title">Restart Recommended</string>
+    <string name="optimization_restart_needed_message">A reboot is recommended to increase system integration</string>
+    <string name="restart_postpone">Later</string>
+    <string name="restart_now">Reboot now</string>
 </resources>

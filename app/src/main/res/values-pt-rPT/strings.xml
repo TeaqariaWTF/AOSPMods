@@ -279,9 +279,6 @@
     <string name="qqs_tiles_number">Número de atalhos no painel rápido das DR (2 linhas máx.)</string>
     <string name="qs_tile_label_size">Tamanho do texto</string>
     <string name="qs_tile_secondary_label_size">Tamanho do texto secundário</string>
-
-
-
     <string name="QQS_brightness_category">Opções do controlo de brilho</string>
     <string name="QS_auto_brightness_title">Atalho para brilho adaptável</string>
     <string name="QQS_brightness_title">Controlo de brilho no painel rápido das DR</string>
@@ -321,6 +318,7 @@
     <string name="taskbar_transient_title">Ocultar automaticamente</string>
     <string name="taskbar_on_launcher_title">Mostrar no ecrã inicial</string>
     <string name="remap_physical_buttons_title">Remapear botões físicos</string>
+    <string name="taskbar_on_ime_title">Mostrar com o teclado aberto</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">Ignorar a assinatura das aplicações</string>
     <string name="pm_allow_downgrade_title">Permitir o downgrade das apps</string>
@@ -586,4 +584,9 @@
     <string name="reboot_bootloader_title">Reiniciar para o bootloader</string>
     <string name="soft_reboot_title">Reinício Suave</string>
     <string name="restart_systemui_title">Reiniciar IU do Sistema</string>
+    <!--Optimization estart request-->
+    <string name="optimization_restart_needed_title">Reiniciar recomendado</string>
+    <string name="optimization_restart_needed_message">Recomenda-se reiniciar o sistema para aumentar a integração</string>
+    <string name="restart_postpone">Mais tarde</string>
+    <string name="restart_now">Reiniciar agora</string>
 </resources>

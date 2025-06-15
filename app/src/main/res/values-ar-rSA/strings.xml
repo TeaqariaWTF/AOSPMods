@@ -279,9 +279,6 @@
     <string name="qqs_tiles_number">الحد الأقصى للبلاط في الإعدادات السريعة (صف أقصى 2)</string>
     <string name="qs_tile_label_size">QS Tile label size</string>
     <string name="qs_tile_secondary_label_size">حجم ملخص ملحق بلاط الإعدادات السريعة</string>
-
-
-
     <string name="QQS_brightness_category">خيارات شريط تمرير السطوع</string>
     <string name="QS_auto_brightness_title">اختصار السطوع التكيفي</string>
     <string name="QQS_brightness_title">إظهار شريط تمرير السطوع على لوحة QQS</string>
@@ -321,6 +318,7 @@
     <string name="taskbar_transient_title">إخفاء تلقائي</string>
     <string name="taskbar_on_launcher_title">Show on home</string>
     <string name="remap_physical_buttons_title">إعادة تعيين الأزرار الفيزيائية</string>
+    <string name="taskbar_on_ime_title">Show with keyboard open</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">تجاوز التحقق من توقيع الحزمة</string>
     <string name="pm_allow_downgrade_title">السماح بخفض مستوى التطبيق</string>
@@ -586,4 +584,9 @@
     <string name="reboot_bootloader_title">Reboot to Bootloader</string>
     <string name="soft_reboot_title">Soft Reboot</string>
     <string name="restart_systemui_title">Restart SystemUI</string>
+    <!--Optimization estart request-->
+    <string name="optimization_restart_needed_title">Restart Recommended</string>
+    <string name="optimization_restart_needed_message">A reboot is recommended to increase system integration</string>
+    <string name="restart_postpone">Later</string>
+    <string name="restart_now">Reboot now</string>
 </resources>

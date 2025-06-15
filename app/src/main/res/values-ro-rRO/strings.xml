@@ -256,11 +256,11 @@
     <string name="qs_footer_text_value">Introdu un text personalizat</string>
     <string name="qs_footer_text_summary">Lasă necompletat pentru a elimina complet</string>
     <string name="qs_footer_text_desc">Oprește afișajul pentru a aplica</string>
-    <string name="qs_leveled_flashlight_title">Flashlight-leveled tile</string>
+    <string name="qs_leveled_flashlight_title">Dală lanternă</string>
     <string name="qs_flashlight_level_global_title">Aplică nivelul lanternei global</string>
     <string name="qs_tile_vertical_title">Mută pictogramele dalelor în partea de sus</string>
     <string name="qs_tile_qty_title">Setarea numărului plăcilor</string>
-    <string name="qs_leveled_flashlight_summary">Longpress on tile to show the slider.\nRequires supported hardware</string>
+    <string name="qs_leveled_flashlight_summary">Apasă lung pe dală pentru a afișa glisorul.\nNecesită suport hardware</string>
     <string name="light_qs_title">Aplică panoul de setări rapide luminoase când se utilizează tema luminoasă</string>
     <string name="qs_pulldown_size">Lățime tragere rapidă</string>
     <string name="qs_pulldown_switch_title">Panou setări rapide la tragere în jos a barei de stare</string>
@@ -279,9 +279,6 @@
     <string name="qqs_tiles_number">Maximum dale în setările rapide (max 2 rânduri)</string>
     <string name="qs_tile_label_size">Dimensiune etichete dale în setările rapide</string>
     <string name="qs_tile_secondary_label_size">Dimensiune sumar etichetă dale în setările rapide</string>
-
-
-
     <string name="QQS_brightness_category">Opțiuni glisor luminozitate</string>
     <string name="QS_auto_brightness_title">Comandă rapidă pentru luminozitatea adaptivă</string>
     <string name="QQS_brightness_title">Arată glisorul de luminozitate în panoul setărilor rapide</string>
@@ -321,6 +318,7 @@
     <string name="taskbar_transient_title">Ascundere automată</string>
     <string name="taskbar_on_launcher_title">Afișare pe pagina principală</string>
     <string name="remap_physical_buttons_title">Realocare butoane fizice</string>
+    <string name="taskbar_on_ime_title">Arată cu tastatură deschisă</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">Ignoră verificarea semnăturii pachetului</string>
     <string name="pm_allow_downgrade_title">Permite retrogradarea aplicației</string>
@@ -586,4 +584,9 @@
     <string name="reboot_bootloader_title">Repornire în Bootloader</string>
     <string name="soft_reboot_title">Repornire rapidă</string>
     <string name="restart_systemui_title">Repornire SystemUI</string>
+    <!--Optimization estart request-->
+    <string name="optimization_restart_needed_title">Repornire recomandată</string>
+    <string name="optimization_restart_needed_message">Se recomandă o repornire pentru a spori integrarea sistemului</string>
+    <string name="restart_postpone">Mai târziu</string>
+    <string name="restart_now">Repornește acum</string>
 </resources>

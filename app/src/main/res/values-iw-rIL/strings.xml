@@ -279,9 +279,6 @@
     <string name="qqs_tiles_number">מספר מרבי של אריחים ב- QS מהיר (עד 2 שורות)</string>
     <string name="qs_tile_label_size">גודל תווית אריח QS </string>
     <string name="qs_tile_secondary_label_size">גודל סיכום של תווית אריח QS</string>
-
-
-
     <string name="QQS_brightness_category">אפשרויות מחוון בהירות</string>
     <string name="QS_auto_brightness_title">Adaptive brightness shortcut</string>
     <string name="QQS_brightness_title">הצג את מחוון הבהירות בלוח QQS</string>
@@ -321,6 +318,7 @@
     <string name="taskbar_transient_title">הסתרה אוטומטית</string>
     <string name="taskbar_on_launcher_title">Show on home</string>
     <string name="remap_physical_buttons_title">Remap physical buttons</string>
+    <string name="taskbar_on_ime_title">Show with keyboard open</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">עוקף את בדיקת חתימת החבילה</string>
     <string name="pm_allow_downgrade_title">אפשר שדרוג לאחור של האפליקציה</string>
@@ -586,4 +584,9 @@
     <string name="reboot_bootloader_title">Reboot to Bootloader</string>
     <string name="soft_reboot_title">Soft Reboot</string>
     <string name="restart_systemui_title">Restart SystemUI</string>
+    <!--Optimization estart request-->
+    <string name="optimization_restart_needed_title">Restart Recommended</string>
+    <string name="optimization_restart_needed_message">A reboot is recommended to increase system integration</string>
+    <string name="restart_postpone">Later</string>
+    <string name="restart_now">Reboot now</string>
 </resources>

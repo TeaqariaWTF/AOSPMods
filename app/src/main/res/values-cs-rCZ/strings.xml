@@ -279,9 +279,6 @@
     <string name="qqs_tiles_number">Maximální počet dlaždic v rychlém QS (max. 2 řádky)</string>
     <string name="qs_tile_label_size">QS Velikost štítku dlaždice</string>
     <string name="qs_tile_secondary_label_size">QS Velikost souhrnu štítků dlaždic</string>
-
-
-
     <string name="QQS_brightness_category">Možnosti posuvníku jasu</string>
     <string name="QS_auto_brightness_title">Adaptivní zkratka jasu</string>
     <string name="QQS_brightness_title">Zobrazit posuvník jasu na panelu QQS</string>
@@ -321,6 +318,7 @@
     <string name="taskbar_transient_title">Automatické skrytí</string>
     <string name="taskbar_on_launcher_title">Show on home</string>
     <string name="remap_physical_buttons_title">Odstranit fyzická tlačítka</string>
+    <string name="taskbar_on_ime_title">Show with keyboard open</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">Obejít kontrolu podpisu balíčku</string>
     <string name="pm_allow_downgrade_title">Povolit přechod aplikace na nižší verzi</string>
@@ -586,4 +584,9 @@
     <string name="reboot_bootloader_title">Reboot to Bootloader</string>
     <string name="soft_reboot_title">Soft Reboot</string>
     <string name="restart_systemui_title">Restart SystemUI</string>
+    <!--Optimization estart request-->
+    <string name="optimization_restart_needed_title">Restart Recommended</string>
+    <string name="optimization_restart_needed_message">A reboot is recommended to increase system integration</string>
+    <string name="restart_postpone">Later</string>
+    <string name="restart_now">Reboot now</string>
 </resources>

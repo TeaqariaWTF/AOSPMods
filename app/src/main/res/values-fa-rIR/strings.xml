@@ -37,7 +37,7 @@
     <string name="usage_summary">صفحه ویکی را باز کنید</string>
     <string name="crowdin_title">همکاری در ترجمه این برنامه</string>
     <string name="crowdin_summary">کمک کنید که ترجمه %s تکمیل شود</string>
-    <string name="nothing_to_show">Nothing to show</string>
+    <string name="nothing_to_show">چیزی برای نمایش وجود ندارد</string>
     <!--Category titles-->
     <string name="lockscreen_header_title">صفحه قفل</string>
     <string name="lockscreen_header_summary">صفحه قفل رو جوری عوض کن که میخوای</string>
@@ -256,11 +256,11 @@
     <string name="qs_footer_text_value">متن مورد نظر را وارد کنید</string>
     <string name="qs_footer_text_summary">خالی بگذارید تا کاملا حذف شود</string>
     <string name="qs_footer_text_desc">برای اعمال، نمایشگر را خاموش/روشن کنید</string>
-    <string name="qs_leveled_flashlight_title">Flashlight-leveled tile</string>
+    <string name="qs_leveled_flashlight_title">کاشی تراز چراغ قوه</string>
     <string name="qs_flashlight_level_global_title">درجه نور چراغ قوه همه جا اعمال گردد</string>
     <string name="qs_tile_vertical_title">نمایه به بالای کاشی منتقل شود</string>
     <string name="qs_tile_qty_title">تنظیمات سریع تعداد کاشی تنظیمات</string>
-    <string name="qs_leveled_flashlight_summary">Longpress on tile to show the slider.\nRequires supported hardware</string>
+    <string name="qs_leveled_flashlight_summary">برای نمایش لغزنده، روی کاشی را طولانی فشار دهید.\nبه سخت‌افزار پشتیبانی‌شده نیاز دارد</string>
     <string name="light_qs_title">رنگ پنل تنظیمات سریع بر اساس رنگبندی دستگاه</string>
     <string name="qs_pulldown_size">عرض پایین کشی سریع</string>
     <string name="qs_pulldown_switch_title">کشویی سریع پانل QS از نوار وضعیت</string>
@@ -273,15 +273,12 @@
     <string name="qs_tile_qty_landscape">در جهت گیری منظره</string>
     <string name="qs_mod_category_misc_title">متفرقه</string>
     <string name="charging_info_on_qs">نمایش اطلاعات شارژ در پنل QS</string>
-    <string name="qqs_rows_number">Number of quick QS rows</string>
+    <string name="qqs_rows_number">تعداد ردیف‌های ت. س سریع</string>
     <string name="qs_rows_number">تعداد ردیفهای تنظیمات سریع</string>
     <string name="qs_cols_number">تعداد ستونهای تنظیمات سریع</string>
     <string name="qqs_tiles_number">حداکثر آیتمهای تنظیمات سریع در QQS (حداکثر 2 ردیف)</string>
     <string name="qs_tile_label_size">اندازه فونت تنظیمات سریع</string>
     <string name="qs_tile_secondary_label_size">اندازه فونت زیر نویس تنظیمات سریع</string>
-
-
-
     <string name="QQS_brightness_category">تنظیمات نوار نور صفحه</string>
     <string name="QS_auto_brightness_title">میانبر روشنایی تطبیقی</string>
     <string name="QQS_brightness_title">نوار نور صفحه در پنل QQS</string>
@@ -301,7 +298,7 @@
     <string name="gesture_nav_pill_width_title">عرض در نسبت به اندازه استاندارد</string>
     <string name="gesture_nav_pill_height_title">ارتفاع نسبت به اندازه استاندارد</string>
     <string name="threebutton_header_title">نوار ناوبری 3 کلیده</string>
-    <string name="taskbar_header_title">Taskbar navigation</string>
+    <string name="taskbar_header_title">ناوبری نوار وظیفه</string>
     <string name="modify_3button_title">تنظیم محل دکمه های ناوبری</string>
     <string name="three_button_left_title">دکمه سمت چپ</string>
     <string name="three_button_center_title">دکمه وسط</string>
@@ -321,6 +318,7 @@
     <string name="taskbar_transient_title">پنهان کردن خودکار</string>
     <string name="taskbar_on_launcher_title">نمایش در خانه</string>
     <string name="remap_physical_buttons_title">دکمه های فیزیکی را مجدداً نقشه برداری کنید</string>
+    <string name="taskbar_on_ime_title">نمایش با صفحه‌کلید باز</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">دور زدن چک امضای بسته</string>
     <string name="pm_allow_downgrade_title">اجازه تنزل برنامه</string>
@@ -379,7 +377,7 @@
     <string name="disable_overscroll">غیر فعال کردن حالت الاستیک اسکرول صفحه</string>
     <string name="overscroll_on_summary">مهم: هر برنامه که این امکان مورد نیاز است باید در LSposed اضافه شود</string>
     <string name="control_flashlight_with_volume_keys">چراغ قوه را با دکمه های تنظیم صدا کنترل کنید</string>
-    <string name="flashlight_fade_effect">Flashlight fade effect</string>
+    <string name="flashlight_fade_effect">جلوه محو شدن چراغ قوه</string>
     <string name="milliseconds">هزارم ثانیه</string>
     <string name="duration_seconds">%d ثانیه</string>
     <string name="hours">ساعت</string>
@@ -586,4 +584,9 @@
     <string name="reboot_bootloader_title">راه‌اندازی مجدد به بوت‌لودر</string>
     <string name="soft_reboot_title">راه‌اندازی مجدد نرم</string>
     <string name="restart_systemui_title">راه‌اندازی مجدد رابط سیستم</string>
+    <!--Optimization estart request-->
+    <string name="optimization_restart_needed_title">راه اندازی مجدد توصیه می شود</string>
+    <string name="optimization_restart_needed_message">برای افزایش یکپارچگی سیستم، راه‌اندازی مجدد توصیه می‌شود</string>
+    <string name="restart_postpone">بعداً</string>
+    <string name="restart_now">راه‌اندازی دوباره</string>
 </resources>

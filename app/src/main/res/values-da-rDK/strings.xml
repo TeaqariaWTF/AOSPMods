@@ -279,9 +279,6 @@
     <string name="qqs_tiles_number">Maksimalt antal fliser i Quick QS (maks. 2 rækker)</string>
     <string name="qs_tile_label_size">QS Tile etiketstørrelse</string>
     <string name="qs_tile_secondary_label_size">QS Tile label oversigt størrelse</string>
-
-
-
     <string name="QQS_brightness_category">Indstillinger for lysstyrkeskyder</string>
     <string name="QS_auto_brightness_title">Genvej til fleksibel lysstyrke</string>
     <string name="QQS_brightness_title">Vis lysstyrkeskyderen på QQS Panel</string>
@@ -321,6 +318,7 @@
     <string name="taskbar_transient_title">Skjul automatisk</string>
     <string name="taskbar_on_launcher_title">Show on home</string>
     <string name="remap_physical_buttons_title">Forbliv fysiske knapper</string>
+    <string name="taskbar_on_ime_title">Show with keyboard open</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">Omgå kontrol af pakkesignatur</string>
     <string name="pm_allow_downgrade_title">Tillad app-nedgradering</string>
@@ -586,4 +584,9 @@
     <string name="reboot_bootloader_title">Reboot to Bootloader</string>
     <string name="soft_reboot_title">Soft Reboot</string>
     <string name="restart_systemui_title">Restart SystemUI</string>
+    <!--Optimization estart request-->
+    <string name="optimization_restart_needed_title">Restart Recommended</string>
+    <string name="optimization_restart_needed_message">A reboot is recommended to increase system integration</string>
+    <string name="restart_postpone">Later</string>
+    <string name="restart_now">Reboot now</string>
 </resources>
