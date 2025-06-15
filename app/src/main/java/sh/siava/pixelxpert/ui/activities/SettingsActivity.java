@@ -12,8 +12,11 @@ import static sh.siava.pixelxpert.utils.NavigationExtensionKt.navigateTo;
 import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
+import android.content.BroadcastReceiver;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -25,6 +28,7 @@ import androidx.annotation.NonNull;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.navigation.NavController;
 import androidx.navigation.NavGraph;
 import androidx.navigation.fragment.NavHostFragment;
@@ -32,6 +36,7 @@ import androidx.navigation.ui.NavigationUI;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceFragmentCompat;
 
+import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.Objects;
@@ -58,6 +63,14 @@ public class SettingsActivity extends BaseActivity implements PreferenceFragment
 	private NavController navControllerMain;
 	private NavController navControllerDetails;
 	private final boolean isTabletDevice = DisplayUtils.isTablet();
+
+	private final BroadcastReceiver updateCheckReceiver = new BroadcastReceiver() {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			int latestVersionCode = intent.getIntExtra("latestVersionCode", BuildConfig.VERSION_CODE);
+			handleUpdateBadge(latestVersionCode);
+		}
+	};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -310,9 +323,45 @@ public class SettingsActivity extends BaseActivity implements PreferenceFragment
 		};
 	}
 
+	private void handleUpdateBadge(int latestVersionCode) {
+		if (latestVersionCode > BuildConfig.VERSION_CODE) {
+			BadgeDrawable badge;
+			if (isTabletDevice) {
+				badge = binding.navigationRailView.getOrCreateBadge(R.id.updateFragment);
+			} else {
+				badge = binding.bottomNavigationView.getOrCreateBadge(R.id.updateFragment);
+			}
+			badge.setVisible(true);
+		} else {
+			if (isTabletDevice) {
+				binding.navigationRailView.removeBadge(R.id.updateFragment);
+			} else {
+				binding.bottomNavigationView.removeBadge(R.id.updateFragment);
+			}
+		}
+	}
+
 	@Override
 	protected void onNewIntent(@NonNull Intent intent) {
 		super.onNewIntent(intent);
 		setIntent(intent);
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	protected void onResume() {
+		super.onResume();
+		LocalBroadcastManager.getInstance(this).registerReceiver(
+				updateCheckReceiver,
+				new IntentFilter(BuildConfig.APPLICATION_ID + ".UPDATE_CHECK")
+		);
+		handleUpdateBadge(PXPreferences.getInt("latestVersionCode", -1));
+	}
+
+	@SuppressWarnings("deprecation")
+	@Override
+	protected void onPause() {
+		super.onPause();
+		LocalBroadcastManager.getInstance(this).unregisterReceiver(updateCheckReceiver);
 	}
 }
