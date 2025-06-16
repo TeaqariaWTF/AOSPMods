@@ -279,9 +279,6 @@
     <string name="qqs_tiles_number">クイック設定の最大タイル数 (最大2列)</string>
     <string name="qs_tile_label_size">クイック設定のラベルの大きさ</string>
     <string name="qs_tile_secondary_label_size">クイック設定の説明ラベルの文字の大きさ</string>
-
-
-
     <string name="QQS_brightness_category">画面の明るさのスライダーの設定</string>
     <string name="QS_auto_brightness_title">「明るさの自動調節」のショートカット</string>
     <string name="QQS_brightness_title">クイック設定パネルに画面の明るさのスライダーを表示</string>
@@ -321,6 +318,7 @@
     <string name="taskbar_transient_title">自動非表示</string>
     <string name="taskbar_on_launcher_title">Show on home</string>
     <string name="remap_physical_buttons_title">Remap physical button</string>
+    <string name="taskbar_on_ime_title">Show with keyboard open</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">パッケージ署名チェックをバイパスする</string>
     <string name="pm_allow_downgrade_title">アプリのダウングレードを許可する</string>
@@ -586,4 +584,9 @@
     <string name="reboot_bootloader_title">Reboot to Bootloader</string>
     <string name="soft_reboot_title">Soft Reboot</string>
     <string name="restart_systemui_title">Restart SystemUI</string>
+    <!--Optimization estart request-->
+    <string name="optimization_restart_needed_title">Restart Recommended</string>
+    <string name="optimization_restart_needed_message">A reboot is recommended to increase system integration</string>
+    <string name="restart_postpone">Later</string>
+    <string name="restart_now">Reboot now</string>
 </resources>

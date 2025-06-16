@@ -279,9 +279,6 @@
     <string name="qqs_tiles_number">Número máximo de mosaicos en QS (máx. 2 filas)</string>
     <string name="qs_tile_label_size">Tamaño de etiqueta de mosaico QS</string>
     <string name="qs_tile_secondary_label_size">Tamaño de resumen de etiqueta de mosaico QS</string>
-
-
-
     <string name="QQS_brightness_category">Preferencias de la barra de brillo</string>
     <string name="QS_auto_brightness_title">Acceso directo de brillo adaptativo</string>
     <string name="QQS_brightness_title">Mostrar la barra de brillo en el panel de ajustes rápidos</string>
@@ -321,6 +318,7 @@
     <string name="taskbar_transient_title">Esconder automáticamente</string>
     <string name="taskbar_on_launcher_title">Mostrar en Inicio</string>
     <string name="remap_physical_buttons_title">Mapear botones físicos</string>
+    <string name="taskbar_on_ime_title">Mostrar con el teclado abierto</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">Pasar por alto la verificación de la firma del paquete</string>
     <string name="pm_allow_downgrade_title">Permitir degradar la aplicación</string>
@@ -586,4 +584,9 @@
     <string name="reboot_bootloader_title">Reiniciar en bootloader</string>
     <string name="soft_reboot_title">Reinicio rápido</string>
     <string name="restart_systemui_title">Reiniciar SystemUI</string>
+    <!--Optimization estart request-->
+    <string name="optimization_restart_needed_title">Se recomienda un reinicio</string>
+    <string name="optimization_restart_needed_message">Se recomienda un reinicio para aumentar la integración del sistema</string>
+    <string name="restart_postpone">Más tarde</string>
+    <string name="restart_now">Reiniciar ahora</string>
 </resources>

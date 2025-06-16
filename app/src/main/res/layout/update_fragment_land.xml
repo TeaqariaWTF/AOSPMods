@@ -166,6 +166,9 @@
 
 					<com.google.android.material.progressindicator.LinearProgressIndicator
 						android:id="@+id/progressBar"
+						app:waveAmplitude="2dp"
+						app:waveSpeed="2dp"
+						app:wavelength="28dp"
 						android:layout_width="match_parent"
 						android:layout_height="wrap_content"
 						android:indeterminate="true" />

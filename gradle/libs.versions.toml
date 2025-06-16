@@ -12,10 +12,11 @@ coreSplashscreen = "1.0.1"
 desugar_jdk_libs = "2.1.5"
 fragmentKtx = "1.8.8"
 gson = "2.11.0"
+localbroadcastmanager = "1.1.0"
 lottie = "6.6.2"
 markdown = "0.19.0"
 libsuVersion = "5.2.2"
-android-material = "1.12.0"
+android-material = "1.14.0-alpha01"
 navigationFragmentKtx = "2.9.0"
 objenesis = "3.3"
 ntpClient = "0.0.1-alpha11"
@@ -40,6 +41,7 @@ androidx-appcompat = { module = "androidx.appcompat:appcompat", version.ref = "a
 androidx-cardview = { module = "androidx.cardview:cardview", version.ref = "cardview" }
 androidx-constraintlayout = { module = "androidx.constraintlayout:constraintlayout", version.ref = "constraintlayout" }
 androidx-core-splashscreen = { module = "androidx.core:core-splashscreen", version.ref = "coreSplashscreen" }
+androidx-localbroadcastmanager = { module = "androidx.localbroadcastmanager:localbroadcastmanager", version.ref = "localbroadcastmanager" }
 androidx-navigation-fragment-ktx = { module = "androidx.navigation:navigation-fragment-ktx", version.ref = "navigationFragmentKtx" }
 androidx-navigation-ui-ktx = { module = "androidx.navigation:navigation-ui-ktx", version.ref = "navigationFragmentKtx" }
 androidx-fragment-ktx = { module = "androidx.fragment:fragment-ktx", version.ref = "fragmentKtx" }

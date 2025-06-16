@@ -279,9 +279,6 @@
     <string name="qqs_tiles_number">N. massimo tiles nel Quick QS (max 2 righe)</string>
     <string name="qs_tile_label_size">Dimensione etichetta QS Tile</string>
     <string name="qs_tile_secondary_label_size">Dimensione etichetta sommario QS Tile</string>
-
-
-
     <string name="QQS_brightness_category">Opzioni slider luminosità</string>
     <string name="QS_auto_brightness_title">Scorciatoia luminosità adattiva</string>
     <string name="QQS_brightness_title">Mostra slider luminosità nel pannello QQS</string>
@@ -321,6 +318,7 @@
     <string name="taskbar_transient_title">Nascondi automaticamente</string>
     <string name="taskbar_on_launcher_title">Mostra nella home</string>
     <string name="remap_physical_buttons_title">Rimappa pulsanti fisici</string>
+    <string name="taskbar_on_ime_title">Mostra con la tastiera aperta</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">Ignora controllo firma pacchetto</string>
     <string name="pm_allow_downgrade_title">Consenti downgrade applicazione</string>
@@ -586,4 +584,9 @@
     <string name="reboot_bootloader_title">Riavvia in Bootloader</string>
     <string name="soft_reboot_title">Riavvio veloce</string>
     <string name="restart_systemui_title">Riavvia SystemUI</string>
+    <!--Optimization estart request-->
+    <string name="optimization_restart_needed_title">Riavvio consigliato</string>
+    <string name="optimization_restart_needed_message">Si raccomanda un riavvio per aumentare l\'integrazione del sistema</string>
+    <string name="restart_postpone">Più tardi</string>
+    <string name="restart_now">Riavvia ora</string>
 </resources>

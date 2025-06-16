@@ -156,4 +156,5 @@ dependencies {
 	implementation (libs.gson)
 
 	implementation(libs.androidx.ui)
+	implementation(libs.androidx.localbroadcastmanager)
 }

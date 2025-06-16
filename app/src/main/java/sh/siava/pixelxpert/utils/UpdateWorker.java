@@ -1,7 +1,6 @@
 package sh.siava.pixelxpert.utils;
 
 import static androidx.preference.PreferenceManager.getDefaultSharedPreferences;
-
 import static sh.siava.pixelxpert.ui.Constants.UPDATE_AVAILABLE_ID;
 
 import android.app.NotificationChannel;
@@ -17,6 +16,7 @@ import android.util.Log;
 import androidx.annotation.NonNull;
 import androidx.concurrent.futures.CallbackToFutureAdapter;
 import androidx.core.app.NotificationCompat;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.work.ListenableWorker;
 import androidx.work.WorkerParameters;
 
@@ -64,6 +64,8 @@ public class UpdateWorker extends ListenableWorker {
 	}
 
 	private void showUpdateNotification(int latestVersionCode) {
+		showBadgeDrawable(mContext, latestVersionCode);
+
 		int ignoredVersion = PXPreferences.getInt("updateVersionIgnored", BuildConfig.VERSION_CODE);
 		if (latestVersionCode == ignoredVersion) {
 			Log.d("UpdateWorker", "Update ignored for version: " + latestVersionCode);
@@ -93,6 +95,14 @@ public class UpdateWorker extends ListenableWorker {
 		NotificationManager notificationManager = (NotificationManager) mContext.getSystemService(Context.NOTIFICATION_SERVICE);
 		createChannel(notificationManager);
 		notificationManager.notify(UPDATE_AVAILABLE_ID, notificationBuilder.build());
+	}
+
+	@SuppressWarnings("deprecation")
+	public static void showBadgeDrawable(Context context, int latestVersionCode) {
+		PXPreferences.putInt("latestVersionCode", latestVersionCode);
+		Intent broadcastIntent = new Intent(BuildConfig.APPLICATION_ID + ".UPDATE_CHECK");
+		broadcastIntent.putExtra("latestVersionCode", latestVersionCode);
+		LocalBroadcastManager.getInstance(context).sendBroadcast(broadcastIntent);
 	}
 
 	public void createChannel(NotificationManager notificationManager) {

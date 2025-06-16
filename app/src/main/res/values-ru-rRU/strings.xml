@@ -279,9 +279,6 @@
     <string name="qqs_tiles_number">Максимальное количество плиток в полураскрытых быстрых настройках (максимум 2 строки)</string>
     <string name="qs_tile_label_size">Размер текста плиток быстрых настроек</string>
     <string name="qs_tile_secondary_label_size">Размер деталей плиток быстрых настроек</string>
-
-
-
     <string name="QQS_brightness_category">Параметры ползунка яркости</string>
     <string name="QS_auto_brightness_title">Быстрый доступ к адаптивной яркости</string>
     <string name="QQS_brightness_title">Показывать ползунок яркости в полураскрытой панели быстрых настроек</string>
@@ -321,6 +318,7 @@
     <string name="taskbar_transient_title">Автоматическое скрытие</string>
     <string name="taskbar_on_launcher_title">Показывать на домашнем экране</string>
     <string name="remap_physical_buttons_title">Переназначение физических кнопок</string>
+    <string name="taskbar_on_ime_title">Show with keyboard open</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">Обход проверки подписи пакета</string>
     <string name="pm_allow_downgrade_title">Разрешить понижение версии приложения</string>
@@ -586,4 +584,9 @@
     <string name="reboot_bootloader_title">Перезагрузить в Bootloader</string>
     <string name="soft_reboot_title">Мягкая перезагрузка</string>
     <string name="restart_systemui_title">Перезагрузка SystemUI</string>
+    <!--Optimization estart request-->
+    <string name="optimization_restart_needed_title">Restart Recommended</string>
+    <string name="optimization_restart_needed_message">A reboot is recommended to increase system integration</string>
+    <string name="restart_postpone">Later</string>
+    <string name="restart_now">Reboot now</string>
 </resources>

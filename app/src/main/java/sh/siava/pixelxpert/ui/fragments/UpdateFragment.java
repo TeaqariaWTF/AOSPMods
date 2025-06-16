@@ -7,6 +7,7 @@ import static sh.siava.pixelxpert.ui.Constants.UPDATE_DOWNLOAD_FAILED_ID;
 import static sh.siava.pixelxpert.utils.AppUtils.installDoubleZip;
 import static sh.siava.pixelxpert.utils.MiscUtils.getColorFromAttribute;
 import static sh.siava.pixelxpert.utils.MiscUtils.intToHex;
+import static sh.siava.pixelxpert.utils.UpdateWorker.showBadgeDrawable;
 
 import android.annotation.SuppressLint;
 import android.app.DownloadManager;
@@ -265,6 +266,7 @@ public class UpdateFragment extends BaseFragment {
 							} else {
 								if (latestCode > currentVersionCode) {
 									enable = true;
+									showBadgeDrawable(requireContext(), latestCode);
 								}
 							}
 						} catch (Exception ignored) {

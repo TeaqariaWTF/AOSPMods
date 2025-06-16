@@ -1,7 +1,10 @@
 ### For Pixel Stock Android 12 and 13 (Up to Nov 2022 - AOSP 13R8):  
 [![Latest Release for A12 & A13 up to Nov 2022](https://img.shields.io/badge/Download-v2.4.1-blue)](https://github.com/siavash79/PixelXpert/releases/tag/v2.4.1)  
 
-### For Pixel Stock Android 13, 14 and 15 (starting with Dec 2022 security patch):  
+### For Pixel Stock Android 13 (Dec 2022) to Android 16 (June 2025):  
+[![Latest Release A13 up to A16](https://img.shields.io/badge/Download-v4.3.0-blue)](https://github.com/siavash79/PixelXpert/releases/tag/v4.3.0)  
+
+### For Pixel Stock Android 16 QPR1 and newer:  
 [![Latest Release](https://img.shields.io/github/v/release/siavash79/PixelXpert?color=green&include_prereleases&label=Download%20Latest%20Stable)](https://github.com/siavash79/PixelXpert/releases/latest)
 [![Latest Canary Release](https://img.shields.io/badge/Download%20Latest-Canary-blue)](https://github.com/siavash79/PixelXpert/releases/tag/canary_builds)
 
@@ -35,12 +38,9 @@ PixelXpert is ONLY compatible with pixel stock firmware on Google Pixel devices.
 
 Here is the compatibility chart according to different android versions and QPRs:
 
-- Android 12/12.1: [final version: v2.4.1](https://github.com/siavash79/PixelXpert/releases/tag/v2.4.1).
-- Android 13 stable QPR1 (up until November 2022 firmware): [final version: v.2.4.1](https://github.com/siavash79/PixelXpert/releases/tag/v2.4.1).
-- Android 13 stable QPR3 (starting from December 2022 firmware till QPR3): [starting with v.2.5](https://github.com/siavash79/PixelXpert/releases/tag/v2.5.0) up until the latest stable/canary versions.
-- Android 14: [starting with v.2.9](https://github.com/siavash79/PixelXpert/releases/tag/v2.9.0) up until the latest stable/canary versions.
-<hr>
-- Android 15 beta builds: only latest canary version (anytime)
+- Android 12/12.1 and 13 (up to Nov 2022): [final version: v2.4.1](https://github.com/siavash79/PixelXpert/releases/tag/v2.4.1).
+- Android 13 stable QPR3 to Android 16 (June 2022): [final version: v.4.3.0](https://github.com/siavash79/PixelXpert/releases/tag/v4.3.0).
+- Android 16 stable QPR1 and newer: only [latest canary version](https://github.com/siavash79/PixelXpert/releases/tag/canary_builds)
 <hr>
 
 ### **Prerequisites:**
