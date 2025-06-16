@@ -22,12 +22,13 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ResourceTools;
 
 public class AlertSlider {
 	Object mSlider;
+	AlertDialog sliderDialog;
 
-	public void show(Context context, float initialValue, float minValue, float maxValue, float stepSize, SliderEventCallback eventCallback) throws Throwable {
+	public AlertSlider(Context context, float initialValue, float minValue, float maxValue, float stepSize, SliderEventCallback eventCallback) throws Throwable {
 		ReflectedClass AmbientVolumeSliderClass = ReflectedClass.of("com.android.systemui.accessibility.hearingaid.AmbientVolumeSlider");
 		ReflectedClass SystemUIDialogClass = ReflectedClass.of("com.android.systemui.statusbar.phone.SystemUIDialog");
 
-		AlertDialog sliderDialog = (AlertDialog) SystemUIDialogClass.getClazz().getConstructor(Context.class).newInstance(context);
+		sliderDialog = (AlertDialog) SystemUIDialogClass.getClazz().getConstructor(Context.class).newInstance(context);
 
 		FrameLayout contentFrameLayout = new FrameLayout(context);
 		contentFrameLayout.setLayoutParams(new FrameLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
@@ -48,11 +49,17 @@ public class AlertSlider {
 		setSliderCurrentValue(initialValue);
 
 		sliderDialog.show();
+		sliderDialog.hide();
 
 		FrameLayout dialogInternalContainer = sliderDialog.findViewById(android.R.id.content);
 
 		contentFrameLayout.addView(sliderView);
 		dialogInternalContainer.addView(contentFrameLayout);
+	}
+
+	public void show()
+	{
+		sliderDialog.show();
 	}
 
 	/** @noinspection SameParameterValue*/

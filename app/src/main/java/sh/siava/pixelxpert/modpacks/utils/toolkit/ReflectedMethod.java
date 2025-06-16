@@ -1,5 +1,6 @@
 package sh.siava.pixelxpert.modpacks.utils.toolkit;
 
+import static de.robv.android.xposed.XposedBridge.invokeOriginalMethod;
 import static de.robv.android.xposed.XposedHelpers.findMethodExact;
 
 import java.lang.reflect.Method;
@@ -57,6 +58,11 @@ public class ReflectedMethod {
 			}
 		}
 		return null;
+	}
+
+	public Object invokeOriginal(Object object, Object... args) throws Throwable
+	{
+		return invokeOriginalMethod(method, object, args);
 	}
 
 	public Object invoke(Object object, Object... args) throws Throwable

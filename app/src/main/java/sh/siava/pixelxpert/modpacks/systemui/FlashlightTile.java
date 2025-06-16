@@ -1,6 +1,7 @@
 package sh.siava.pixelxpert.modpacks.systemui;
 
 import static de.robv.android.xposed.XposedHelpers.callMethod;
+import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static de.robv.android.xposed.XposedHelpers.setObjectField;
 import static sh.siava.pixelxpert.modpacks.XPrefs.Xprefs;
 import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.getFlashlightLevel;
@@ -10,12 +11,15 @@ import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.isFlashOn;
 import android.content.Context;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.modpacks.Constants;
+import sh.siava.pixelxpert.modpacks.ResourceManager;
 import sh.siava.pixelxpert.modpacks.XPLauncher;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.AlertSlider;
 import sh.siava.pixelxpert.modpacks.utils.SystemUtils;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedMethod;
 
 public class FlashlightTile extends XposedModPack {
 	private static final String listenPackage = Constants.SYSTEM_UI_PACKAGE;
@@ -23,6 +27,7 @@ public class FlashlightTile extends XposedModPack {
 	private boolean AnimateFlashlight = false;
 	private boolean mReceiverRegistered = false;
 	private AlertSlider mAlertSlider;
+	private Object mTile;
 
 	public FlashlightTile(Context context) {
 		super(context);
@@ -37,6 +42,53 @@ public class FlashlightTile extends XposedModPack {
 	@Override
 	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		ReflectedClass FlashlightTileClass = ReflectedClass.of("com.android.systemui.qs.tiles.FlashlightTile");
+		ReflectedClass QSTileImplClass = ReflectedClass.of("com.android.systemui.qs.tileimpl.QSTileImpl");
+
+		FlashlightTileClass
+				.beforeConstruction()
+				.run(param -> mTile = param.thisObject);
+
+
+		FlashlightTileClass
+				.before("handleClick")
+				.run(param -> {
+
+					Object state = getObjectField(param.thisObject, "mState");
+					boolean handlesSecondary = (boolean) getObjectField(state, "handlesSecondaryClick");
+
+					if(!handlesSecondary || !leveledFlashTile)
+						return;
+
+					if(handleFlashLongClick())
+					{
+						param.setResult(null);
+					}
+				});
+
+		FlashlightTileClass
+				.after("handleUpdateState")
+				.run(param -> {
+					Object state = param.args[0];
+					setObjectField(state, "handlesSecondaryClick", leveledFlashTile);
+
+					if(leveledFlashTile) {
+						String subTitle = ResourceManager.modRes.getString(R.string.sliding_tile_subtitle);
+						setObjectField(state, "secondaryLabel", subTitle);
+					}
+				});
+
+		QSTileImplClass
+				.before("handleSecondaryClick")
+				.run(param -> {
+					if(leveledFlashTile && param.thisObject == mTile)
+					{
+						ReflectedMethod
+								.ofName(FlashlightTileClass, "handleClick")
+								.invokeOriginal(mTile, param.args[0]);
+
+						param.setResult(null); //otherwise it will also call click
+					}
+				});
 
 		FlashlightTileClass
 				.before("handleLongClick")
@@ -54,6 +106,16 @@ public class FlashlightTile extends XposedModPack {
 	private boolean handleFlashLongClick() throws Throwable {
 		if(!mReceiverRegistered)
 			registerReceiver();
+
+		if(mAlertSlider == null) {
+			createAlertSlider();
+		}
+		mAlertSlider.show();
+
+		return true;
+	}
+
+	private void createAlertSlider() throws Throwable {
 		AlertSlider.SliderEventCallback flashlightSliderCallback = new AlertSlider.SliderEventCallback() {
 			@Override
 			public void onStartTrackingTouch(Object slider) {}
@@ -81,10 +143,7 @@ public class FlashlightTile extends XposedModPack {
 			}
 		};
 
-		if(mAlertSlider == null)
-			mAlertSlider = new AlertSlider();
-
-		mAlertSlider.show(mContext,
+		mAlertSlider = new AlertSlider(mContext,
 				getFlashlightLevel(
 						Xprefs.getInt("flashPCT", 50)
 								/ 100f),
@@ -92,8 +151,6 @@ public class FlashlightTile extends XposedModPack {
 				getMaxFlashLevel(),
 				1,
 				flashlightSliderCallback);
-
-		return true;
 	}
 
 	private void registerReceiver() {
