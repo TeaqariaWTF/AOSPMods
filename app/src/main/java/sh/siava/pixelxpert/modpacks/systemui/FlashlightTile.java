@@ -7,6 +7,8 @@ import static sh.siava.pixelxpert.modpacks.XPrefs.Xprefs;
 import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.getFlashlightLevel;
 import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.getMaxFlashLevel;
 import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.isFlashOn;
+import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.registerFlashlightLevelListener;
+import static sh.siava.pixelxpert.modpacks.utils.SystemUtils.unregisterFlashlightLevelListener;
 
 import android.content.Context;
 
@@ -25,8 +27,6 @@ public class FlashlightTile extends XposedModPack {
 	private static final String listenPackage = Constants.SYSTEM_UI_PACKAGE;
 	private boolean leveledFlashTile = false;
 	private boolean AnimateFlashlight = false;
-	private boolean mReceiverRegistered = false;
-	private AlertSlider mAlertSlider;
 	private Object mTile;
 
 	public FlashlightTile(Context context) {
@@ -104,18 +104,12 @@ public class FlashlightTile extends XposedModPack {
 	}
 
 	private boolean handleFlashLongClick() throws Throwable {
-		if(!mReceiverRegistered)
-			registerReceiver();
-
-		if(mAlertSlider == null) {
-			createAlertSlider();
-		}
-		mAlertSlider.show();
+		showAlertSlider();
 
 		return true;
 	}
 
-	private void createAlertSlider() throws Throwable {
+	private void showAlertSlider() throws Throwable {
 		AlertSlider.SliderEventCallback flashlightSliderCallback = new AlertSlider.SliderEventCallback() {
 			@Override
 			public void onStartTrackingTouch(Object slider) {}
@@ -141,23 +135,33 @@ public class FlashlightTile extends XposedModPack {
 					SystemUtils.setFlash(true, Math.round(value), false);
 				}
 			}
+
+			@Override
+			public void onCreate(AlertSlider alertSlider) {
+				registerFlashlightLevelListener(alertSlider);
+			}
+
+			@Override
+			public void onDismiss(AlertSlider alertSlider) {
+				unregisterFlashlightLevelListener(alertSlider);
+			}
 		};
 
-		mAlertSlider = new AlertSlider(mContext,
+		AlertSlider alertSlider = new AlertSlider(mContext,
 				getFlashlightLevel(
 						Xprefs.getInt("flashPCT", 50)
 								/ 100f),
 				1,
 				getMaxFlashLevel(),
 				1,
-				flashlightSliderCallback);
-	}
+				flashlightSliderCallback) {
+			@Override
+			public void onChanged(int newVal) {
+				setSliderCurrentValue(newVal);
+			}
+		};
 
-	private void registerReceiver() {
-		SystemUtils
-				.registerFlashlightLevelListener(newVal ->
-						mAlertSlider.setSliderCurrentValue(newVal));
-		mReceiverRegistered = true;
+		alertSlider.show();
 	}
 
 	@Override

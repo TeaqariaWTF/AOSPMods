@@ -23,8 +23,6 @@ import sh.siava.pixelxpert.service.tileServices.VolumeTileService;
 /** @noinspection DataFlowIssue*/
 public class VolumeTile extends XposedModPack {
 	private static final String listenPackage = Constants.SYSTEM_UI_PACKAGE;
-	private AlertSlider mAlertSlider;
-	private boolean mReceiverRegistered = false;
 	private Object mTile;
 	private boolean mNextTileIsVolume;
 
@@ -122,35 +120,13 @@ public class VolumeTile extends XposedModPack {
 		callMethod(this.mTile, "refreshState", new Object[]{null});
 	}
 
-	private void registerUpdateReceiver() {
-		SystemUtils
-				.registerVolumeChangeListener(newVal -> {
-					if(mAlertSlider != null)
-					{
-						mAlertSlider.setSliderCurrentValue(newVal);
-					}
-				});
-
-		mReceiverRegistered = true;
-	}
-
 	private boolean handleVolumeLongClick() throws Throwable {
-		if(!mReceiverRegistered)
-		{
-			registerUpdateReceiver();
-		}
-
-
-		if(mAlertSlider == null) {
-			createAlertSlider();
-		}
-
-		mAlertSlider.show();
+		showAlertSlider();
 
 		return true;
 	}
 
-	private void createAlertSlider() throws Throwable {
+	private void showAlertSlider() throws Throwable {
 		AlertSlider.SliderEventCallback volumeSliderCallback = new AlertSlider.SliderEventCallback() {
 			@Override
 			public void onStartTrackingTouch(Object slider) {}
@@ -163,14 +139,31 @@ public class VolumeTile extends XposedModPack {
 				if(fromUser)
 					changeVolume(Math.round(value));
 			}
+
+			@Override
+			public void onCreate(AlertSlider alertSlider) {
+				registerVolumeChangeListener(alertSlider);
+			}
+
+			@Override
+			public void onDismiss(AlertSlider alertSlider) {
+				SystemUtils.unregisterVolumeChangeListener(alertSlider);
+			}
 		};
 
-		mAlertSlider = new AlertSlider(mContext,
+		AlertSlider alertSlider = new AlertSlider(mContext,
 				AudioManager().getStreamVolume(STREAM_MUSIC),
 				AudioManager().getStreamMinVolume(STREAM_MUSIC),
 				AudioManager().getStreamMaxVolume(STREAM_MUSIC),
 				1,
-				volumeSliderCallback);
+				volumeSliderCallback) {
+			@Override
+			public void onChanged(int newVal) {
+				setSliderCurrentValue(newVal);
+			}
+		};
+
+		alertSlider.show();
 	}
 
 	private void changeVolume(int currentValue) {

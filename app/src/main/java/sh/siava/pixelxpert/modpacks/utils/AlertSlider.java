@@ -20,11 +20,34 @@ import java.util.List;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ResourceTools;
 
-public class AlertSlider {
+public abstract class AlertSlider implements SystemUtils.ChangeListener {
+	private final Context context;
+	private final float initialValue;
+	private final float minValue;
+	private final float maxValue;
+	private final float stepSize;
+	private final SliderEventCallback eventCallback;
 	Object mSlider;
 	AlertDialog sliderDialog;
 
-	public AlertSlider(Context context, float initialValue, float minValue, float maxValue, float stepSize, SliderEventCallback eventCallback) throws Throwable {
+	public AlertSlider(Context context, float initialValue, float minValue, float maxValue, float stepSize, SliderEventCallback eventCallback) {
+		this.context = context;
+		this.initialValue = initialValue;
+		this.minValue = minValue;
+		this.maxValue = maxValue;
+		this.stepSize = stepSize;
+		this.eventCallback = eventCallback;
+	}
+
+	public void show() throws Throwable {
+		if(sliderDialog == null)
+		{
+			createSliderDialog();
+		}
+		sliderDialog.show();
+	}
+
+	private void createSliderDialog() throws Throwable {
 		ReflectedClass AmbientVolumeSliderClass = ReflectedClass.of("com.android.systemui.accessibility.hearingaid.AmbientVolumeSlider");
 		ReflectedClass SystemUIDialogClass = ReflectedClass.of("com.android.systemui.statusbar.phone.SystemUIDialog");
 
@@ -51,15 +74,14 @@ public class AlertSlider {
 		sliderDialog.show();
 		sliderDialog.hide();
 
+		sliderDialog.setOnDismissListener(dialog -> eventCallback.onDismiss(this));
+
 		FrameLayout dialogInternalContainer = sliderDialog.findViewById(android.R.id.content);
 
 		contentFrameLayout.addView(sliderView);
 		dialogInternalContainer.addView(contentFrameLayout);
-	}
 
-	public void show()
-	{
-		sliderDialog.show();
+		eventCallback.onCreate(this);
 	}
 
 	/** @noinspection SameParameterValue*/
@@ -139,5 +161,7 @@ public class AlertSlider {
 		void onStartTrackingTouch(Object slider) throws Throwable;
 		void onStopTrackingTouch(Object slider) throws Throwable;
 		void onValueChange(Object slider, float value, boolean fromUser) throws Throwable;
+		void onCreate(AlertSlider alertSlider);
+		void onDismiss(AlertSlider alertSlider);
 	}
 }

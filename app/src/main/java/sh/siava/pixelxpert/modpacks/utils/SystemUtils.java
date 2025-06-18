@@ -300,6 +300,11 @@ public class SystemUtils {
 	{
 		instance.mFlashlightLevelListeners.add(listener);
 	}
+
+	public static void unregisterFlashlightLevelListener(ChangeListener listener)
+	{
+		instance.mFlashlightLevelListeners.remove(listener);
+	}
 	public static void registerVolumeChangeListener(ChangeListener listener)
 	{
 		if(instance != null)
