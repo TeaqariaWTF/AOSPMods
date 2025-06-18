@@ -1,3 +1,6 @@
+**canary-457**  
+- updated volume/flash tiles to modern tiles  
+  
 **canary-456**  
 - 16qpr1b2: Fixed statusbar notification icons  
 - 16qpr1b2: fixed power longpress  

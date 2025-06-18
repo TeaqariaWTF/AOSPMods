@@ -1,6 +1,6 @@
 {
-    "version": "canary-456",
-    "versionCode": 456,
+    "version": "canary-457",
+    "versionCode": 457,
     "zipUrl_Xposed": "https://github.com/siavash79/PixelXpert/releases/download/canary_builds/PixelXpert.zip",
     "zipUrl": "https://github.com/siavash79/PixelXpert/releases/download/canary_builds/PixelXpert.zip",
     "changelog": "https://raw.githubusercontent.com/siavash79/PixelXpert/canary/CanaryChangelog.md"
