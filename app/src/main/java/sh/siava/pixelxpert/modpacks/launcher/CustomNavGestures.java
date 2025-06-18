@@ -41,6 +41,7 @@ public class CustomNavGestures extends XposedModPack {
 	private static final int ACTION_ONE_HANDED = 5;
 	private static final int ACTION_SLEEP = 7;
 	private static final int ACTION_SWITCH_APP_PROFILE = 8;
+	private static final int TAKE_SCREENSHOT_FULLSCREEN = 1;
 
 	private static final int SWIPE_NONE = 0;
 	private static final int SWIPE_LEFT = 1;
@@ -98,6 +99,8 @@ public class CustomNavGestures extends XposedModPack {
 		ReflectedClass OverviewInputConsumerClass = ReflectedClass.of("com.android.quickstep.inputconsumers.OverviewInputConsumer"); //When on Home screen and Recents
 		ReflectedClass SystemUiProxyClass = ReflectedClass.of("com.android.quickstep.SystemUiProxy");
 		ReflectedClass RecentTasksListClass = ReflectedClass.of("com.android.quickstep.RecentTasksList");
+
+
 
 		//noinspection DataFlowIssue
 		Rect displayBounds = SystemUtils.WindowManager().getMaximumWindowMetrics().getBounds();
@@ -279,9 +282,6 @@ public class CustomNavGestures extends XposedModPack {
 			case ACTION_ONE_HANDED:
 				startOneHandedMode();
 				break;
-/*			case ACTION_INSECURE_SCREENSHOT:
-				takeInsecureScreenshot();
-				break;*/
 			case ACTION_SLEEP:
 				goToSleep();
 				break;
@@ -332,7 +332,7 @@ public class CustomNavGestures extends XposedModPack {
 	}
 
 	private void startOneHandedMode() {
-		callMethod(getObjectField(mSystemUIProxy, "mOneHanded"), "startOneHanded");
+		callMethod(mSystemUIProxy, "startOneHandedMode");
 	}
 
 	private void toggleNotification() {
@@ -340,9 +340,22 @@ public class CustomNavGestures extends XposedModPack {
 	}
 
 	private void takeScreenshot() {
-		Intent broadcast = new Intent();
-		broadcast.setAction(Constants.ACTION_SCREENSHOT);
-		mContext.sendBroadcast(broadcast);
+		try {
+			ReflectedClass ScreenshotRequestBuilderClass = ReflectedClass.of("com.android.internal.util.ScreenshotRequest$Builder");
+
+			Object screenshotRequestBuilder = ScreenshotRequestBuilderClass
+					.getClazz()
+					.getConstructor(int.class, int.class)
+					.newInstance(TAKE_SCREENSHOT_FULLSCREEN,1);
+
+			callMethod(mSystemUIProxy,
+					"takeScreenshot",
+					callMethod(
+							screenshotRequestBuilder,
+							"build")
+			);
+		}
+		catch (Throwable ignored) {}
 	}
 
 	private void goHome() {

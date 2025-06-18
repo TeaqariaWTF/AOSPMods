@@ -40,9 +40,7 @@ public class PhoneWindowManager extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {
-//		ScreenshotChordInsecure = Xprefs.getBoolean("ScreenshotChordInsecure", false);
-	}
+	public void updatePrefs(String... Key) {}
 
 	final BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
 		@Override
@@ -51,13 +49,6 @@ public class PhoneWindowManager extends XposedModPack {
 				String action = intent.getAction();
 				//noinspection DataFlowIssue
 				switch (action) {
-					case Constants.ACTION_SCREENSHOT:
-						try {
-							callMethod(windowMan, "handleScreenShot", 1); //13 QPR3
-						} catch (Throwable ignored) {
-							callMethod(windowMan, "handleScreenShot", 1, 1); //pre 13 QPR3
-						}
-						break;
 					case Constants.ACTION_HOME:
 						callMethod(windowMan, "launchHomeFromHotKey", Display.DEFAULT_DISPLAY);
 						break;
@@ -136,7 +127,6 @@ public class PhoneWindowManager extends XposedModPack {
 			broadcastRegistered = true;
 
 			IntentFilter intentFilter = new IntentFilter();
-			intentFilter.addAction(Constants.ACTION_SCREENSHOT);
 			intentFilter.addAction(Constants.ACTION_HOME);
 			intentFilter.addAction(Constants.ACTION_BACK);
 			intentFilter.addAction(Constants.ACTION_SLEEP);

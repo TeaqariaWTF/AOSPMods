@@ -11,8 +11,6 @@ import java.util.List;
 import sh.siava.pixelxpert.modpacks.utils.BootLoopProtector;
 
 public final class Constants {
-	public static final String ACTION_SCREENSHOT = APPLICATION_ID + ".ACTION_SCREENSHOT";
-
 	public static final String ACTION_HOME = APPLICATION_ID + ".ACTION_HOME";
 	public static final String ACTION_BACK = APPLICATION_ID + ".ACTION_BACK";
 	public static final String ACTION_SLEEP = APPLICATION_ID + ".ACTION_SLEEP";
