@@ -1,3 +1,6 @@
+**canary-458**  
+- slider tiles: bugfix  
+  
 **canary-457**  
 - updated volume/flash tiles to modern tiles  
   
