@@ -50,7 +50,7 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass.ReflectionConsu
  */
 @SuppressWarnings("RedundantThrows")
 public class TaskbarActivator extends XposedModPack {
-	private static final String listenPackage = Constants.LAUNCHER_PACKAGE;
+	private static final String TARGET_PACKAGE = Constants.LAUNCHER_PACKAGE;
 
 	public static final int TASKBAR_DEFAULT = 0;
 	public static final int TASKBAR_ON = 1;
@@ -90,7 +90,7 @@ public class TaskbarActivator extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {
+	public void onPreferenceUpdated(String... Key) {
 
 		//3button nav has moved to taskbar since 15QPR2
 		ThreeButtonLayoutMod = Xprefs.getBoolean("ThreeButtonLayoutMod", false);
@@ -153,13 +153,13 @@ public class TaskbarActivator extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
-		return listenPackage.equals(packageName);
+	public boolean isTargeting(String packageName) {
+		return TARGET_PACKAGE.equals(packageName);
 	}
 
 	@SuppressLint("DiscouragedApi")
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		ReflectedClass DeviceProfileClass = ReflectedClass.of("com.android.launcher3.DeviceProfile");
 		ReflectedClass TaskbarActivityContextClass = ReflectedClass.of("com.android.launcher3.taskbar.TaskbarActivityContext");
 		ReflectedClass LauncherModelClass = ReflectedClass.of("com.android.launcher3.LauncherModel");

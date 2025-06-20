@@ -22,7 +22,7 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
 public class StatusbarGestures extends XposedModPack {
-	private static final String listenPackage = Constants.SYSTEM_UI_PACKAGE;
+	private static final String TARGET_PACKAGE = Constants.SYSTEM_UI_PACKAGE;
 
 	private static final int PULLDOWN_SIDE_RIGHT = 1;
 	@SuppressWarnings("unused")
@@ -48,7 +48,7 @@ public class StatusbarGestures extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {
+	public void onPreferenceUpdated(String... Key) {
 		if (Xprefs == null) return;
 		oneFingerPulldownEnabled = Xprefs.getBoolean("QSPullodwnEnabled", false);
 		oneFingerPullupEnabled = oneFingerPulldownEnabled && Xprefs.getBoolean("oneFingerPullupEnabled", false);
@@ -59,7 +59,7 @@ public class StatusbarGestures extends XposedModPack {
 	}
 
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		ReflectedClass NotificationPanelViewControllerClass = ReflectedClass.of("com.android.systemui.shade.NotificationPanelViewController");
 		ReflectedClass PhoneStatusBarViewClass = ReflectedClass.of("com.android.systemui.statusbar.phone.PhoneStatusBarView");
 
@@ -171,8 +171,8 @@ public class StatusbarGestures extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
-		return listenPackage.equals(packageName) && !XPLauncher.isChildProcess;
+	public boolean isTargeting(String packageName) {
+		return TARGET_PACKAGE.equals(packageName) && !XPLauncher.isChildProcess;
 	}
 
 	private class LongpressListener implements GestureDetector.OnGestureListener {

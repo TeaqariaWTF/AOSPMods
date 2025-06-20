@@ -24,7 +24,7 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedMethod;
 
 public class FlashlightTile extends XposedModPack {
-	private static final String listenPackage = Constants.SYSTEM_UI_PACKAGE;
+	private static final String TARGET_PACKAGE = Constants.SYSTEM_UI_PACKAGE;
 	private boolean leveledFlashTile = false;
 	private boolean AnimateFlashlight = false;
 	private Object mTile;
@@ -34,13 +34,13 @@ public class FlashlightTile extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {
+	public void onPreferenceUpdated(String... Key) {
 		leveledFlashTile = Xprefs.getBoolean("leveledFlashTile", false);
 		AnimateFlashlight = Xprefs.getBoolean("AnimateFlashlight", false);
 	}
 
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		ReflectedClass FlashlightTileClass = ReflectedClass.of("com.android.systemui.qs.tiles.FlashlightTile");
 		ReflectedClass QSTileImplClass = ReflectedClass.of("com.android.systemui.qs.tileimpl.QSTileImpl");
 
@@ -165,7 +165,7 @@ public class FlashlightTile extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
-		return listenPackage.equals(packageName) && !XPLauncher.isChildProcess;
+	public boolean isTargeting(String packageName) {
+		return TARGET_PACKAGE.equals(packageName) && !XPLauncher.isChildProcess;
 	}
 }

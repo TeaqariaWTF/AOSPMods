@@ -31,7 +31,7 @@ import sh.siava.pixelxpert.modpacks.utils.SystemUtils;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 public class PowerMenu extends XposedModPack {
-	public static final String listenPackage = Constants.SYSTEM_UI_PACKAGE;
+	public static final String TARGET_PACKAGE = Constants.SYSTEM_UI_PACKAGE;
 
 	private ReflectedClass mLongPressActionInterface = null;
 	private static boolean advancedPowerMenu = false;
@@ -41,12 +41,12 @@ public class PowerMenu extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {
+	public void onPreferenceUpdated(String... Key) {
 		advancedPowerMenu = Xprefs.getBoolean("advancedPowerMenu", false);
 	}
 
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		ReflectedClass GlobalActionsDialogLiteClass = ReflectedClass.of("com.android.systemui.globalactions.GlobalActionsDialogLite");
 		ReflectedClass PowerOptionsAction = ReflectedClass.of("com.android.systemui.globalactions.GlobalActionsDialogLite$PowerOptionsAction");
 		mLongPressActionInterface = ReflectedClass.of("com.android.systemui.globalactions.GlobalActionsDialogLite$LongPressAction");
@@ -243,7 +243,7 @@ public class PowerMenu extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
-		return listenPackage.equals(packageName) && !XPLauncher.isChildProcess;
+	public boolean isTargeting(String packageName) {
+		return TARGET_PACKAGE.equals(packageName) && !XPLauncher.isChildProcess;
 	}
 }

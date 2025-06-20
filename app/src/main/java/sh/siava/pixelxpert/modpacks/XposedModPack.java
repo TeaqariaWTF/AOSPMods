@@ -1,9 +1,10 @@
 package sh.siava.pixelxpert.modpacks;
 
+import static sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass.setDefaultClassloader;
+
 import android.content.Context;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 public abstract class XposedModPack {
 	protected Context mContext;
@@ -12,14 +13,14 @@ public abstract class XposedModPack {
 		mContext = context;
 	}
 
-	public abstract void updatePrefs(String... Key);
-	public final void handleLoadPackageInternal(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable
+	public abstract void onPreferenceUpdated(String... Key);
+	public final void onPackageLoadedInternal(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable
 	{
-		ReflectedClass.setDefaultClassloader(lpParam.classLoader);
-		handleLoadPackage(lpParam);
+		setDefaultClassloader(lpParam.classLoader);
+		onPackageLoaded(lpParam);
 	}
 
-	public abstract void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable;
+	public abstract void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable;
 
-	public abstract boolean listensTo(String packageName);
+	public abstract boolean isTargeting(String packageName);
 }

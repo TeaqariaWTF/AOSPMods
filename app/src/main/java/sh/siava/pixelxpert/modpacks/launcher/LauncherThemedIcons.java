@@ -20,7 +20,7 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
 public class LauncherThemedIcons extends XposedModPack {
-	private static final String listenPackage = Constants.LAUNCHER_PACKAGE;
+	private static final String TARGET_PACKAGE = Constants.LAUNCHER_PACKAGE;
 	private static boolean ForceThemedLauncherIcons = false;
 	private int mIconBitmapSize;
 	private Object LAS;
@@ -30,7 +30,7 @@ public class LauncherThemedIcons extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {
+	public void onPreferenceUpdated(String... Key) {
 		ForceThemedLauncherIcons = Xprefs.getBoolean("ForceThemedLauncherIcons", false);
 
 		if (Key.length > 0) {
@@ -41,12 +41,12 @@ public class LauncherThemedIcons extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
-		return listenPackage.equals(packageName);
+	public boolean isTargeting(String packageName) {
+		return TARGET_PACKAGE.equals(packageName);
 	}
 
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		ReflectedClass BaseIconFactoryClass = ReflectedClass.of("com.android.launcher3.icons.BaseIconFactory");
 		ReflectedClass LauncherAppStateClass = ReflectedClass.of("com.android.launcher3.LauncherAppState");
 

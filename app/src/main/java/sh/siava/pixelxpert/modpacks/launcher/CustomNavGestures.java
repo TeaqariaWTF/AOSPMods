@@ -31,7 +31,7 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 /** @noinspection ConstantValue*/
 @SuppressWarnings("RedundantThrows")
 public class CustomNavGestures extends XposedModPack {
-	private static final String listenPackage = Constants.LAUNCHER_PACKAGE;
+	private static final String TARGET_PACKAGE = Constants.LAUNCHER_PACKAGE;
 
 	private static final int NO_ACTION = -1;
 	private static final int ACTION_SCREENSHOT = 1;
@@ -70,7 +70,7 @@ public class CustomNavGestures extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {
+	public void onPreferenceUpdated(String... Key) {
 		FCLongSwipeEnabled = Xprefs.getBoolean("FCLongSwipeEnabled", false);
 		leftSwipeUpAction = readAction(Xprefs, "leftSwipeUpAction");
 		rightSwipeUpAction = readAction(Xprefs, "rightSwipeUpAction");
@@ -89,12 +89,12 @@ public class CustomNavGestures extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
-		return listenPackage.equals(packageName);
+	public boolean isTargeting(String packageName) {
+		return TARGET_PACKAGE.equals(packageName);
 	}
 
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		ReflectedClass OtherActivityInputConsumerClass = ReflectedClass.of("com.android.quickstep.inputconsumers.OtherActivityInputConsumer"); //When apps are open
 		ReflectedClass OverviewInputConsumerClass = ReflectedClass.of("com.android.quickstep.inputconsumers.OverviewInputConsumer"); //When on Home screen and Recents
 		ReflectedClass SystemUiProxyClass = ReflectedClass.of("com.android.quickstep.SystemUiProxy");

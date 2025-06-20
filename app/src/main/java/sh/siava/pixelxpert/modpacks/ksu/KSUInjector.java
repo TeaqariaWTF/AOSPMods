@@ -29,9 +29,9 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
  * @noinspection RedundantThrows
  */
 public class KSUInjector extends XposedModPack {
-	private static final String listenPackage1 = Constants.KSU_PACKAGE;
-	private static final String listenPackage2 = Constants.KSU_NEXT_PACKAGE;
-	private static final String listenPackage = Constants.KSU_PACKAGE;
+	private static final String TARGET_PACKAGE1 = Constants.KSU_PACKAGE;
+	private static final String TARGET_PACKAGE2 = Constants.KSU_NEXT_PACKAGE;
+	private static final String TARGET_PACKAGE = Constants.KSU_PACKAGE;
 	private ReflectedClass NativesClass;
 	private ReflectedClass ProfileClass;
 
@@ -40,10 +40,10 @@ public class KSUInjector extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {}
+	public void onPreferenceUpdated(String... Key) {}
 
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		String packageName = lpParam.packageName; // Can be KSU or KSU Next
 		ReflectedClass MainActivityClass = ReflectedClass.of(packageName + ".ui.MainActivity");
 		NativesClass = ReflectedClass.of(packageName + ".Natives");
@@ -110,7 +110,7 @@ public class KSUInjector extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
-		return listenPackage1.equals(packageName) || listenPackage2.equals(packageName);
+	public boolean isTargeting(String packageName) {
+		return TARGET_PACKAGE1.equals(packageName) || TARGET_PACKAGE2.equals(packageName);
 	}
 }

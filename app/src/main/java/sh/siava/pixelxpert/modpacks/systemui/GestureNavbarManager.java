@@ -26,7 +26,7 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
 public class GestureNavbarManager extends XposedModPack {
-	public static final String listenPackage = Constants.SYSTEM_UI_PACKAGE;
+	public static final String TARGET_PACKAGE = Constants.SYSTEM_UI_PACKAGE;
 
 	//region Back gesture
 	private static float backGestureHeightFractionLeft = 1f; // % of screen height. can be anything between 0 to 1
@@ -55,7 +55,7 @@ public class GestureNavbarManager extends XposedModPack {
 		super(context);
 	}
 
-	public void updatePrefs(String... Key) {
+	public void onPreferenceUpdated(String... Key) {
 		if (Xprefs == null) return;
 
 		//region Back gesture
@@ -99,8 +99,8 @@ public class GestureNavbarManager extends XposedModPack {
 	//endregion
 
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
-		if (!lpParam.packageName.equals(listenPackage)) return;
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+		if (!lpParam.packageName.equals(TARGET_PACKAGE)) return;
 
 		ReflectedClass NavigationHandleClass = ReflectedClass.of("com.android.systemui.navigationbar.gestural.NavigationHandle");
 		ReflectedClass EdgeBackGestureHandlerClass = ReflectedClass.ofIfPossible("com.android.systemui.navigationbar.gestural.EdgeBackGestureHandler");
@@ -249,7 +249,7 @@ public class GestureNavbarManager extends XposedModPack {
 	//endregion
 
 	@Override
-	public boolean listensTo(String packageName) {
-		return listenPackage.equals(packageName) && !XPLauncher.isChildProcess;
+	public boolean isTargeting(String packageName) {
+		return TARGET_PACKAGE.equals(packageName) && !XPLauncher.isChildProcess;
 	}
 }

@@ -38,7 +38,7 @@ public class IconPacks extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {
+	public void onPreferenceUpdated(String... Key) {
 		updateMapping(Key.length > 0 && Key[0].equals(DRAWABLE_MAPPING_KEY));
 	}
 
@@ -155,7 +155,7 @@ public class IconPacks extends XposedModPack {
 		return mContext.getResources().getIdentifier(resName, type, sourcePackage);
 	}
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		mPackageLoaded = true;
 		hookAll();
 	}
@@ -174,7 +174,7 @@ public class IconPacks extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
+	public boolean isTargeting(String packageName) {
 		return true;
 	}
 

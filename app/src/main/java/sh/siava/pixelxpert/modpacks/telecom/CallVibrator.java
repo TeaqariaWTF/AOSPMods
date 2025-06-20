@@ -15,7 +15,7 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
 public class CallVibrator extends XposedModPack {
-	private static final String listenPackage = Constants.TELECOM_SERVER_PACKAGE;
+	private static final String TARGET_PACKAGE = Constants.TELECOM_SERVER_PACKAGE;
 
 	public static final int DIALING = 3;
 	public static final int ACTIVE = 5;
@@ -30,18 +30,18 @@ public class CallVibrator extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {
+	public void onPreferenceUpdated(String... Key) {
 		vibrateOnAnswered = Xprefs.getBoolean("vibrateOnAnswered", false);
 		vibrateOnDrop = Xprefs.getBoolean("vibrateOnDrop", false);
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
-		return listenPackage.equals(packageName);
+	public boolean isTargeting(String packageName) {
+		return TARGET_PACKAGE.equals(packageName);
 	}
 
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		try {
 			ReflectedClass InCallControllerClass = ReflectedClass.of("com.android.server.telecom.InCallController");
 

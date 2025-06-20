@@ -26,7 +26,7 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ComposeFontUtils;
 
 @SuppressWarnings("RedundantThrows")
 public class QSTileGrid extends XposedModPack {
-	public static final String listenPackage = Constants.SYSTEM_UI_PACKAGE;
+	public static final String TARGET_PACKAGE = Constants.SYSTEM_UI_PACKAGE;
 
 	private static final int NOT_SET = 0;
 	private static final int QS_COL_NOT_SET = 1;
@@ -47,7 +47,7 @@ public class QSTileGrid extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {
+	public void onPreferenceUpdated(String... Key) {
 		if (Xprefs == null) return;
 
 		if(Key.length > 0 && Key[0].equals("VerticalQSTile"))
@@ -76,8 +76,8 @@ public class QSTileGrid extends XposedModPack {
 
 	@SuppressLint("DiscouragedApi")
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
-		if (!lpParam.packageName.equals(listenPackage)) return;
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+		if (!lpParam.packageName.equals(TARGET_PACKAGE)) return;
 
 		ReflectedClass PaginatedGridLayoutClass = ReflectedClass.ofIfPossible("com.android.systemui.qs.panels.ui.compose.PaginatedGridLayout");
 		ReflectedClass QSColumnsRepositoryClass = ReflectedClass.ofIfPossible("com.android.systemui.qs.panels.data.repository.QSColumnsRepository");
@@ -182,7 +182,7 @@ public class QSTileGrid extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
-		return listenPackage.equals(packageName) && !XPLauncher.isChildProcess;
+	public boolean isTargeting(String packageName) {
+		return TARGET_PACKAGE.equals(packageName) && !XPLauncher.isChildProcess;
 	}
 }

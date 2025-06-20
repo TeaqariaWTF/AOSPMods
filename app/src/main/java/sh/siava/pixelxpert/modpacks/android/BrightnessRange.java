@@ -28,7 +28,7 @@ public class BrightnessRange extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {
+	public void onPreferenceUpdated(String... Key) {
 		if (Xprefs == null) return;
 
 		try {
@@ -42,12 +42,12 @@ public class BrightnessRange extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
+	public boolean isTargeting(String packageName) {
 		return listenPacks.contains(packageName) && !XPLauncher.isChildProcess;
 	}
 
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		try { //framework
 			ReflectedClass DisplayPowerControllerClass = ReflectedClass.of("com.android.server.display.DisplayPowerController");
 

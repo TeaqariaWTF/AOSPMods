@@ -18,7 +18,7 @@ import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 public class StatusIconTuner extends XposedModPack {
-	private static final String listenPackage = Constants.SYSTEM_UI_PACKAGE;
+	private static final String TARGET_PACKAGE = Constants.SYSTEM_UI_PACKAGE;
 
 	private static Set<String> SBIgnoredIcons = new ArraySet<>();
 	private static Set<String> KGIgnoredIcons = new ArraySet<>();
@@ -31,7 +31,7 @@ public class StatusIconTuner extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {
+	public void onPreferenceUpdated(String... Key) {
 		SBIgnoredIcons = Xprefs.getStringSet("SBIgnoredIcons", new ArraySet<>());
 		KGIgnoredIcons = Xprefs.getStringSet("KGIgnoredIcons", new ArraySet<>());
 		QSIgnoredIcons = Xprefs.getStringSet("QSIgnoredIcons", new ArraySet<>());
@@ -44,7 +44,7 @@ public class StatusIconTuner extends XposedModPack {
 	}
 
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		ReflectedClass IconManagerClass = ReflectedClass.ofIfPossible("com.android.systemui.statusbar.phone.ui.IconManager");
 		if(IconManagerClass.getClazz() == null) //pre 15beta3
 		{
@@ -102,7 +102,7 @@ public class StatusIconTuner extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
-		return listenPackage.equals(packageName) && !XPLauncher.isChildProcess;
+	public boolean isTargeting(String packageName) {
+		return TARGET_PACKAGE.equals(packageName) && !XPLauncher.isChildProcess;
 	}
 }

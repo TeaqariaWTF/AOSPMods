@@ -23,7 +23,7 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
 public class UDFPSManager extends XposedModPack {
-	private static final String listenPackage = Constants.SYSTEM_UI_PACKAGE;
+	private static final String TARGET_PACKAGE = Constants.SYSTEM_UI_PACKAGE;
 
 	private static final int TRANSPARENT = 0;
 	private static final int OPAQUE = 255;
@@ -38,7 +38,7 @@ public class UDFPSManager extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {
+	public void onPreferenceUpdated(String... Key) {
 		if (Xprefs == null) return;
 		transparentBG = Xprefs.getBoolean("fingerprint_circle_hide", false);
 		transparentFG = Xprefs.getBoolean("fingerprint_icon_hide", false);
@@ -52,13 +52,13 @@ public class UDFPSManager extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
-		return listenPackage.equals(packageName) && !XPLauncher.isChildProcess;
+	public boolean isTargeting(String packageName) {
+		return TARGET_PACKAGE.equals(packageName) && !XPLauncher.isChildProcess;
 	}
 
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) {
-		if (!lpParam.packageName.equals(listenPackage)) return;
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) {
+		if (!lpParam.packageName.equals(TARGET_PACKAGE)) return;
 
 		ReflectedClass UdfpsKeyguardViewClass = ReflectedClass.ofIfPossible("com.android.systemui.biometrics.UdfpsKeyguardViewLegacy"); //A4B3
 		if (UdfpsKeyguardViewClass.getClazz() == null) { //A13

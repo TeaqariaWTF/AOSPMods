@@ -41,7 +41,7 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedMethod;
 
 @SuppressWarnings("RedundantThrows")
 public class ScreenOffKeys extends XposedModPack {
-	public static final String listenPackage = Constants.SYSTEM_FRAMEWORK_PACKAGE;
+	public static final String TARGET_PACKAGE = Constants.SYSTEM_FRAMEWORK_PACKAGE;
 
 	public static final int PHYSICAL_ACTION_NONE = -1;
 
@@ -89,7 +89,7 @@ public class ScreenOffKeys extends XposedModPack {
 
 	@SuppressLint("CheckResult")
 	@Override
-	public void updatePrefs(String... Key) {
+	public void onPreferenceUpdated(String... Key) {
 		try {
 			longPressPowerButtonScreenOff = Integer.parseInt(Xprefs.getString("longPressPowerButtonScreenOff", "0"));
 			longPressPowerButtonScreenOn = Integer.parseInt(Xprefs.getString("longPressPowerButtonScreenOn", "0"));
@@ -110,7 +110,7 @@ public class ScreenOffKeys extends XposedModPack {
 	}
 
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		try {
 			ReflectedClass PhoneWindowManagerClass = ReflectedClass.of("com.android.server.policy.PhoneWindowManager");
 			ReflectedClass PowerKeyRuleClass = ReflectedClass.of("com.android.server.policy.PhoneWindowManager$PowerKeyRule");
@@ -370,8 +370,8 @@ public class ScreenOffKeys extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
-		return listenPackage.equals(packageName);
+	public boolean isTargeting(String packageName) {
+		return TARGET_PACKAGE.equals(packageName);
 	}
 
 	class VolumeLongPressRunnable implements Runnable {

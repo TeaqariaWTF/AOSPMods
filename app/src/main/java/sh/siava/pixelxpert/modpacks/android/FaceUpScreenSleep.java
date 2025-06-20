@@ -25,7 +25,7 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 /** @noinspection RedundantThrows*/
 public class FaceUpScreenSleep extends XposedModPack {
-	public static final String listenPackage = Constants.SYSTEM_FRAMEWORK_PACKAGE;
+	public static final String TARGET_PACKAGE = Constants.SYSTEM_FRAMEWORK_PACKAGE;
 	public static final float FACE_UP_Z_THRESHOLD = 9f;
 	public static final int DEFAULT_DISPLAY_GROUP = 0;
 	public static final int GO_TO_SLEEP_REASON_TIMEOUT = 2;
@@ -45,7 +45,7 @@ public class FaceUpScreenSleep extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {
+	public void onPreferenceUpdated(String... Key) {
 		SleepOnFlatScreen = Xprefs.getBoolean("SleepOnFlatScreen", false);
 		FlatStandbyTimeMillis = Xprefs.getSliderInt("FlatStandbyTime", 5) * 1000L;
 		SleepOnFlatRespectWakeLock = Xprefs.getBoolean("SleepOnFlatRespectWakeLock", true);
@@ -53,7 +53,7 @@ public class FaceUpScreenSleep extends XposedModPack {
 	}
 
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		ReflectedClass FaceDownDetectorClass = ReflectedClass.of("com.android.server.power.FaceDownDetector");
 		ReflectedClass PowerManagerServiceClass = ReflectedClass.of("com.android.server.power.PowerManagerService");
 
@@ -137,8 +137,8 @@ public class FaceUpScreenSleep extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
-		return listenPackage.equals(packageName);
+	public boolean isTargeting(String packageName) {
+		return TARGET_PACKAGE.equals(packageName);
 	}
 
 }

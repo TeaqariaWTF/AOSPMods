@@ -14,7 +14,7 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
 public class RecordingMessage extends XposedModPack {
-	public static final String listenPackage = Constants.DIALER_PACKAGE;
+	public static final String TARGET_PACKAGE = Constants.DIALER_PACKAGE;
 
 	private static boolean removeRecodingMessage = false;
 
@@ -23,7 +23,7 @@ public class RecordingMessage extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {
+	public void onPreferenceUpdated(String... Key) {
 		if (Xprefs == null) return;
 
 		if (Key.length > 0 && Key[0].equals("DialerRemoveRecordMessage")) {
@@ -33,13 +33,13 @@ public class RecordingMessage extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
-		return listenPackage.equals(packageName);
+	public boolean isTargeting(String packageName) {
+		return TARGET_PACKAGE.equals(packageName);
 	}
 
 	@SuppressLint("DiscouragedApi")
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		int call_recording_starting_voice = mContext.getResources().getIdentifier("call_recording_starting_voice", "string", mContext.getPackageName());
 		int call_recording_ending_voice = mContext.getResources().getIdentifier("call_recording_ending_voice", "string", mContext.getPackageName());
 

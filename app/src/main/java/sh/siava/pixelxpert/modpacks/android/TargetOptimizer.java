@@ -15,7 +15,7 @@ import sh.siava.pixelxpert.modpacks.XPLauncher;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 
 public class TargetOptimizer extends XposedModPack {
-	public static final String listenPackage = Constants.SYSTEM_FRAMEWORK_PACKAGE;
+	public static final String TARGET_PACKAGE = Constants.SYSTEM_FRAMEWORK_PACKAGE;
 
 	public static final String OPTIMIZED_BUILD_KEY = "optimized_build";
 	public static final String SYSTEM_RESTART_PENDING_KEY = "system_restart_pending";
@@ -25,10 +25,10 @@ public class TargetOptimizer extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {}
+	public void onPreferenceUpdated(String... Key) {}
 
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		if(Xprefs.getBoolean(SYSTEM_RESTART_PENDING_KEY, false)) {
 			Xprefs.edit()
 					.putBoolean(SYSTEM_RESTART_PENDING_KEY, false)
@@ -57,7 +57,7 @@ public class TargetOptimizer extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
-		return listenPackage.equals(packageName);
+	public boolean isTargeting(String packageName) {
+		return TARGET_PACKAGE.equals(packageName);
 	}
 }

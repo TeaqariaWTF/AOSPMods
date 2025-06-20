@@ -81,7 +81,7 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ResourceTools;
  * @noinspection RedundantThrows
  */
 public class StatusbarMods extends XposedModPack {
-	private static final String listenPackage = Constants.SYSTEM_UI_PACKAGE;
+	private static final String TARGET_PACKAGE = Constants.SYSTEM_UI_PACKAGE;
 	//region Clock
 	public static final int POSITION_LEFT = 0;
 	public static final int POSITION_CENTER = 1;
@@ -210,7 +210,7 @@ public class StatusbarMods extends XposedModPack {
 	@SuppressLint("DiscouragedApi")
 	public StatusbarMods(Context context) {
 		super(context);
-		if (!listensTo(context.getPackageName())) return;
+		if (!isTargeting(context.getPackageName())) return;
 
 		rightClockPadding = mContext.getResources().getDimensionPixelSize(dimenIdOf("status_bar_clock_starting_padding"));
 		leftClockPadding = mContext.getResources().getDimensionPixelSize(dimenIdOf("status_bar_left_clock_end_padding"));
@@ -228,11 +228,11 @@ public class StatusbarMods extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
-		return listenPackage.equals(packageName) && !XPLauncher.isChildProcess;
+	public boolean isTargeting(String packageName) {
+		return TARGET_PACKAGE.equals(packageName) && !XPLauncher.isChildProcess;
 	}
 
-	public void updatePrefs(String... Key) {
+	public void onPreferenceUpdated(String... Key) {
 		if (Xprefs == null) return;
 
 		StatusbarAppSwitchIconEnabled = Xprefs.getBoolean("StatusbarAppSwitchIconEnabled", false);
@@ -461,8 +461,8 @@ public class StatusbarMods extends XposedModPack {
 
 	@SuppressLint("DiscouragedApi")
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
-		if (!lpParam.packageName.equals(listenPackage)) return;
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+		if (!lpParam.packageName.equals(TARGET_PACKAGE)) return;
 
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(Constants.ACTION_PROFILE_SWITCH_AVAILABLE);

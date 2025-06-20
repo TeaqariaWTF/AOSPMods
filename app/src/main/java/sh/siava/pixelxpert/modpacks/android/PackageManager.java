@@ -21,7 +21,7 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
  * @noinspection RedundantThrows
  */
 public class PackageManager extends XposedModPack {
-	public static final String listenPackage = Constants.SYSTEM_FRAMEWORK_PACKAGE;
+	public static final String TARGET_PACKAGE = Constants.SYSTEM_FRAMEWORK_PACKAGE;
 
 	private static final int AUTO_DISABLE_MINUTES = 5;
 	private static final String ALLOW_SIGNATURE_PREF = "PM_AllowMismatchedSignature";
@@ -38,7 +38,7 @@ public class PackageManager extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {
+	public void onPreferenceUpdated(String... Key) {
 		PM_AllowMismatchedSignature = Xprefs.getBoolean(ALLOW_SIGNATURE_PREF, false);
 		PM_AllowDowngrade = Xprefs.getBoolean(ALLOW_DOWNGRADE_PREF, false);
 
@@ -65,7 +65,7 @@ public class PackageManager extends XposedModPack {
 	}
 
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		try {
 			ReflectedClass InstallPackageHelperClass = ReflectedClass.of("com.android.server.pm.InstallPackageHelper");
 			ReflectedClass PackageManagerServiceUtilsClass = ReflectedClass.of("com.android.server.pm.PackageManagerServiceUtils");
@@ -153,8 +153,8 @@ public class PackageManager extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
-		return listenPackage.equals(packageName);
+	public boolean isTargeting(String packageName) {
+		return TARGET_PACKAGE.equals(packageName);
 	}
 
 }

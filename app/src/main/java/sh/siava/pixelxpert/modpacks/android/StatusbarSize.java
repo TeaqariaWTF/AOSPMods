@@ -41,7 +41,7 @@ public class StatusbarSize extends XposedModPack {
 
 	@SuppressLint({"DiscouragedApi", "InternalInsetResource"})
 	@Override
-	public void updatePrefs(String... Key) {
+	public void onPreferenceUpdated(String... Key) {
 		if (Xprefs == null) return;
 
 		noCutoutEnabled = Xprefs.getBoolean("noCutoutEnabled", false);
@@ -72,12 +72,12 @@ public class StatusbarSize extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
+	public boolean isTargeting(String packageName) {
 		return listenPacks.contains(packageName) && !XPLauncher.isChildProcess;
 	}
 
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		try {
 			try {
 				ReflectedClass WmDisplayCutoutClass = ReflectedClass.of("com.android.server.wm.utils.WmDisplayCutout");

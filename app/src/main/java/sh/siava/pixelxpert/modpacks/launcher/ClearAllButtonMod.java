@@ -29,7 +29,7 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
 public class ClearAllButtonMod extends XposedModPack {
-	private static final String listenPackage = Constants.LAUNCHER_PACKAGE;
+	private static final String TARGET_PACKAGE = Constants.LAUNCHER_PACKAGE;
 
 	private Object recentView;
 	private static boolean RecentClearAllReposition = false;
@@ -41,7 +41,7 @@ public class ClearAllButtonMod extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {
+	public void onPreferenceUpdated(String... Key) {
 		if (Key.length > 0 && Key[0].equals("RecentClearAllReposition")) {
 			SystemUtils.killSelf();
 		}
@@ -50,14 +50,12 @@ public class ClearAllButtonMod extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
-		return listenPackage.equals(packageName);
+	public boolean isTargeting(String packageName) {
+		return TARGET_PACKAGE.equals(packageName);
 	}
 
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
-		if (!lpParam.packageName.equals(listenPackage)) return;
-
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		ReflectedClass OverviewActionsViewClass = ReflectedClass.of("com.android.quickstep.views.OverviewActionsView");
 		ReflectedClass RecentsViewClass = ReflectedClass.of("com.android.quickstep.views.RecentsView");
 		Method dismissAllTasksMethod = findMethodBestMatch(RecentsViewClass.getClazz(), "dismissAllTasks", View.class);

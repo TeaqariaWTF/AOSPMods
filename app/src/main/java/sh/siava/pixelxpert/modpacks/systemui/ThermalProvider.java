@@ -17,7 +17,7 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings({"RedundantThrows", "unused"})
 public class ThermalProvider extends XposedModPack {
-	private static final String listenPackage = Constants.SYSTEM_UI_PACKAGE;
+	private static final String TARGET_PACKAGE = Constants.SYSTEM_UI_PACKAGE;
 
 	public static final int CPU = 0;
 	public static final int GPU = 1;
@@ -33,18 +33,18 @@ public class ThermalProvider extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key)
+	public void onPreferenceUpdated(String... Key)
 	{
 		TemperatureUnitF = Xprefs.getBoolean("TemperatureUnitF", false);
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
-		return listenPackage.equals(packageName) && !XPLauncher.isChildProcess;
+	public boolean isTargeting(String packageName) {
+		return TARGET_PACKAGE.equals(packageName) && !XPLauncher.isChildProcess;
 	}
 
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		ReflectedClass PowerUIClass = ReflectedClass.of("com.android.systemui.power.PowerUI");
 
 		PowerUIClass

@@ -20,7 +20,7 @@ public class MiscSettings extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {
+	public void onPreferenceUpdated(String... Key) {
 		if (Xprefs == null) return; //it won't be null. but anyway...
 
 		//netstat settings
@@ -102,11 +102,11 @@ public class MiscSettings extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
+	public boolean isTargeting(String packageName) {
 		return packageName.equals(Constants.SYSTEM_UI_PACKAGE);
 	}
 
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 	}
 }

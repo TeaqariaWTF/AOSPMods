@@ -3,7 +3,6 @@ package sh.siava.pixelxpert.modpacks;
 import static android.content.Context.CONTEXT_IGNORE_SECURITY;
 import static de.robv.android.xposed.XposedBridge.log;
 import static sh.siava.pixelxpert.BuildConfig.APPLICATION_ID;
-import static sh.siava.pixelxpert.modpacks.Constants.SYSTEM_UI_PACKAGE;
 import static sh.siava.pixelxpert.modpacks.XPrefs.Xprefs;
 import static sh.siava.pixelxpert.modpacks.utils.BootLoopProtector.isBootLooped;
 
@@ -13,7 +12,6 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.os.Build;
 import android.os.IBinder;
 import android.os.RemoteException;
 
@@ -75,15 +73,6 @@ public class XPLauncher implements ServiceConnection {
 			processName = lpParam.processName;
 		} catch (Throwable ignored) {
 			isChildProcess = false;
-		}
-
-		//If example class isn't found, user is using an older version. Don't load the module at all
-		if (Build.VERSION.SDK_INT == Build.VERSION_CODES.TIRAMISU && lpParam.packageName.equals(SYSTEM_UI_PACKAGE)) {
-			ReflectedClass A33R18Example = ReflectedClass.ofIfPossible("com.android.systemui.shade.NotificationPanelViewController");
-			if (A33R18Example.getClazz() == null) {
-				log("This version isn't compatible with your ROM. Exiting...");
-				return;
-			}
 		}
 
 		if (lpParam.packageName.equals(Constants.SYSTEM_FRAMEWORK_PACKAGE)) {
@@ -150,12 +139,12 @@ public class XPLauncher implements ServiceConnection {
 		for (Class<? extends XposedModPack> mod : ModPacks.getMods(lpParam.packageName)) {
 			try {
 				XposedModPack instance = mod.getConstructor(Context.class).newInstance(mContext);
-				if (!instance.listensTo(lpParam.packageName)) continue;
+				if (!instance.isTargeting(lpParam.packageName)) continue;
 				try {
-					instance.updatePrefs();
+					instance.onPreferenceUpdated();
 				} catch (Throwable ignored) {
 				}
-				instance.handleLoadPackageInternal(lpParam);
+				instance.onPackageLoadedInternal(lpParam);
 				runningMods.add(instance);
 			} catch (Throwable T) {
 				log("Start Error Dump - Occurred in " + mod.getName());

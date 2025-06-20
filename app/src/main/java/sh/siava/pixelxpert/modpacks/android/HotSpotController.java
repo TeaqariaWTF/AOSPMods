@@ -12,7 +12,7 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
 public class HotSpotController extends XposedModPack {
-	public static final String listenPackage = Constants.SYSTEM_FRAMEWORK_PACKAGE;
+	public static final String TARGET_PACKAGE = Constants.SYSTEM_FRAMEWORK_PACKAGE;
 
 	private static long hotSpotTimeoutMillis = 0;
 	private static boolean hotSpotHideSSID = false;
@@ -24,7 +24,7 @@ public class HotSpotController extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {
+	public void onPreferenceUpdated(String... Key) {
 
 		int clients = Xprefs.getSliderInt("hotSpotMaxClients", 0);
 
@@ -35,12 +35,12 @@ public class HotSpotController extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
-		return listenPackage.equals(packageName);
+	public boolean isTargeting(String packageName) {
+		return TARGET_PACKAGE.equals(packageName);
 	}
 
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		try {
 			ReflectedClass SoftApConfiguration = ReflectedClass.of("android.net.wifi.SoftApConfiguration");
 

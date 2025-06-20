@@ -19,7 +19,7 @@ public class XPrefs {
 	public static void init(Context context) {
 		packageName = context.getPackageName();
 
-		Xprefs = (ExtendedRemotePreferences) new ExtendedRemotePreferences(context, BuildConfig.APPLICATION_ID, BuildConfig.APPLICATION_ID + "_preferences", true);
+		Xprefs = new ExtendedRemotePreferences(context, BuildConfig.APPLICATION_ID, BuildConfig.APPLICATION_ID + "_preferences", true);
 
 		Xprefs.registerOnSharedPreferenceChangeListener(listener);
 	}
@@ -32,7 +32,7 @@ public class XPrefs {
 		setPackagePrefs(packageName);
 
 		for (XposedModPack thisMod : XPLauncher.runningMods) {
-			thisMod.updatePrefs(key);
+			thisMod.onPreferenceUpdated(key);
 		}
 	}
 

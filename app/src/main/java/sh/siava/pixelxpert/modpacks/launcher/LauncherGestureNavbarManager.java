@@ -21,7 +21,7 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
  * @noinspection RedundantThrows
  */
 public class LauncherGestureNavbarManager extends XposedModPack {
-	private static final String listenPackage = Constants.LAUNCHER_PACKAGE;
+	private static final String TARGET_PACKAGE = Constants.LAUNCHER_PACKAGE;
 
 	private static boolean navPillColorAccent = false;
 	private static float widthFactor = 1f;
@@ -37,7 +37,7 @@ public class LauncherGestureNavbarManager extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {
+	public void onPreferenceUpdated(String... Key) {
 		navPillColorAccent = Xprefs.getBoolean("navPillColorAccent", false);
 
 		widthFactor = Xprefs.getSliderInt("GesPillWidthModPos", 50) * .02f;
@@ -56,7 +56,7 @@ public class LauncherGestureNavbarManager extends XposedModPack {
 	}
 
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		ReflectedClass StashedHandleViewClass = ReflectedClass.ofIfPossible("com.android.launcher3.taskbar.StashedHandleView");
 
 		if (StashedHandleViewClass.getClazz() == null) return; //It's an older version
@@ -108,7 +108,7 @@ public class LauncherGestureNavbarManager extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
-		return listenPackage.equals(packageName);
+	public boolean isTargeting(String packageName) {
+		return TARGET_PACKAGE.equals(packageName);
 	}
 }

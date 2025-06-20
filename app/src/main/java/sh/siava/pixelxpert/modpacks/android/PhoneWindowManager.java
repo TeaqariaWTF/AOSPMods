@@ -27,7 +27,7 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
 public class PhoneWindowManager extends XposedModPack {
-	public static final String listenPackage = Constants.SYSTEM_FRAMEWORK_PACKAGE;
+	public static final String TARGET_PACKAGE = Constants.SYSTEM_FRAMEWORK_PACKAGE;
 
 	private Object windowMan = null;
 	private static boolean broadcastRegistered = false;
@@ -40,7 +40,7 @@ public class PhoneWindowManager extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {}
+	public void onPreferenceUpdated(String... Key) {}
 
 	final BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
 		@Override
@@ -117,7 +117,7 @@ public class PhoneWindowManager extends XposedModPack {
 
 	@SuppressLint("WrongConstant")
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		//noinspection unchecked
 		userHandleList = (List<UserHandle>) callMethod(SystemUtils.UserManager(), "getProfiles", true);
 
@@ -186,7 +186,7 @@ public class PhoneWindowManager extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
-		return listenPackage.equals(packageName);
+	public boolean isTargeting(String packageName) {
+		return TARGET_PACKAGE.equals(packageName);
 	}
 }

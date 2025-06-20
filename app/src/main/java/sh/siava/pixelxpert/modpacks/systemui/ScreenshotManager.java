@@ -27,7 +27,7 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
 public class ScreenshotManager extends XposedModPack {
-	private static final String listenPackage = Constants.SYSTEM_UI_PACKAGE;
+	private static final String TARGET_PACKAGE = Constants.SYSTEM_UI_PACKAGE;
 
 	private static boolean disableScreenshotSound = false;
 	private boolean ScreenshotChordInsecure = false;
@@ -37,15 +37,15 @@ public class ScreenshotManager extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {
+	public void onPreferenceUpdated(String... Key) {
 		if (Xprefs == null) return;
 		disableScreenshotSound = Xprefs.getBoolean("disableScreenshotSound", false);
 		ScreenshotChordInsecure = Xprefs.getBoolean("ScreenshotChordInsecure", false);
 	}
 
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
-		if (!listensTo(lpParam.packageName)) return;
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+		if (!isTargeting(lpParam.packageName)) return;
 
 		ReflectedClass ScreenshotControllerClass = ReflectedClass.ofIfPossible("com.android.systemui.screenshot.ScreenshotController");
 
@@ -130,8 +130,8 @@ public class ScreenshotManager extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
-		return listenPackage.equals(packageName) && XPLauncher.isChildProcess && XPLauncher.processName.contains("screenshot");
+	public boolean isTargeting(String packageName) {
+		return TARGET_PACKAGE.equals(packageName) && XPLauncher.isChildProcess && XPLauncher.processName.contains("screenshot");
 	}
 
 	//Seems like an executor, but doesn't act! perfect thing

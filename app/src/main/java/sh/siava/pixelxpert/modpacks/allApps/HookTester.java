@@ -17,10 +17,10 @@ public class HookTester extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {}
+	public void onPreferenceUpdated(String... Key) {}
 
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
 			@Override
 			public void onReceive(Context context, Intent intent) {
@@ -42,7 +42,7 @@ public class HookTester extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
+	public boolean isTargeting(String packageName) {
 		return true;
 	}
 }

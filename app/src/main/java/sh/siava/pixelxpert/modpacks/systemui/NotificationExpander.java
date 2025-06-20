@@ -47,7 +47,7 @@ public class NotificationExpander extends XposedModPack {
 	/** @noinspection unused*/
 	private static final int COLLAPSE_ALWAYS = 2;
 
-	public static final String listenPackage = Constants.SYSTEM_UI_PACKAGE;
+	public static final String TARGET_PACKAGE = Constants.SYSTEM_UI_PACKAGE;
 
 	public static boolean notificationExpandallHookEnabled = true;
 	public static boolean notificationExpandallEnabled = false;
@@ -64,7 +64,7 @@ public class NotificationExpander extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {
+	public void onPreferenceUpdated(String... Key) {
 		notificationExpandallEnabled = Xprefs.getBoolean("notificationExpandallEnabled", false);
 		notificationExpandallHookEnabled = Xprefs.getBoolean("notificationExpandallHookEnabled", true);
 		notificationDefaultExpansion = tryParseInt(Xprefs.getString("notificationDefaultExpansion", "0"), 0);
@@ -75,13 +75,13 @@ public class NotificationExpander extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
-		return listenPackage.equals(packageName) && !XPLauncher.isChildProcess;
+	public boolean isTargeting(String packageName) {
+		return TARGET_PACKAGE.equals(packageName) && !XPLauncher.isChildProcess;
 	}
 
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
-		if (!listenPackage.equals(lpParam.packageName) || !notificationExpandallHookEnabled) return;
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+		if (!TARGET_PACKAGE.equals(lpParam.packageName) || !notificationExpandallHookEnabled) return;
 
 		ReflectedClass NotificationStackScrollLayoutClass = ReflectedClass.of("com.android.systemui.statusbar.notification.stack.NotificationStackScrollLayout");
 		ReflectedClass FooterViewButtonClass = ReflectedClass.of("com.android.systemui.statusbar.notification.row.FooterViewButton");

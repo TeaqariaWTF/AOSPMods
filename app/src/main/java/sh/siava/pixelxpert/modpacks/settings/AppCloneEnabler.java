@@ -25,7 +25,7 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings({"RedundantThrows"})
 public class AppCloneEnabler extends XposedModPack {
-	private static final String listenPackage = Constants.SETTINGS_PACKAGE;
+	private static final String TARGET_PACKAGE = Constants.SETTINGS_PACKAGE;
 	private static final int AVAILABLE = 0;
 	private static final int LIST_TYPE_CLONED_APPS = 17;
 	private ReflectedClass UtilsClass;
@@ -35,17 +35,17 @@ public class AppCloneEnabler extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {
+	public void onPreferenceUpdated(String... Key) {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
-		return listenPackage.equals(packageName) && Build.VERSION.SDK_INT > Build.VERSION_CODES.TIRAMISU;
+	public boolean isTargeting(String packageName) {
+		return TARGET_PACKAGE.equals(packageName) && Build.VERSION.SDK_INT > Build.VERSION_CODES.TIRAMISU;
 	}
 
 	@SuppressLint("ResourceType")
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 
 		ReflectedClass ClonedAppsPreferenceControllerClass = ReflectedClass.of("com.android.settings.applications.ClonedAppsPreferenceController");
 		ReflectedClass AppStateClonedAppsBridgeClass = ReflectedClass.of("com.android.settings.applications.AppStateClonedAppsBridge");

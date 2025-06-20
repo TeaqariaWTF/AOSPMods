@@ -12,17 +12,17 @@ import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.utils.AppUtils;
 
 public class KSURootReceiver extends XposedModPack {
-	private static final String listenPackage = Constants.SYSTEM_UI_PACKAGE;
+	private static final String TARGET_PACKAGE = Constants.SYSTEM_UI_PACKAGE;
 
 	public KSURootReceiver(Context context) {
 		super(context);
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {}
+	public void onPreferenceUpdated(String... Key) {}
 
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
 			@Override
 			public void onReceive(Context context, Intent intent) {
@@ -37,7 +37,7 @@ public class KSURootReceiver extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
-		return listenPackage.equals(packageName) && !XPLauncher.isChildProcess;
+	public boolean isTargeting(String packageName) {
+		return TARGET_PACKAGE.equals(packageName) && !XPLauncher.isChildProcess;
 	}
 }

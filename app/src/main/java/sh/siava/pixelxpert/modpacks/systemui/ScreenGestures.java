@@ -38,7 +38,7 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
 public class ScreenGestures extends XposedModPack {
-	public static final String listenPackage = Constants.SYSTEM_UI_PACKAGE;
+	public static final String TARGET_PACKAGE = Constants.SYSTEM_UI_PACKAGE;
 
 	private static final long HOLD_DURATION = 500;
 	private static final int SHADE = 0; //frameworks/base/packages/SystemUI/src/com/android/systemui/statusbar/StatusBarState.java - screen unlocked - pulsing means screen is locked - shade locked means (Q)QS is open on lockscreen
@@ -74,7 +74,7 @@ public class ScreenGestures extends XposedModPack {
 	}
 
 	@Override
-	public void updatePrefs(String... Key) {
+	public void onPreferenceUpdated(String... Key) {
 		doubleTapToWake = Xprefs.getBoolean("doubleTapToWake", false);
 		holdScreenTorchEnabled = Xprefs.getBoolean("holdScreenTorchEnabled", false);
 		doubleTapToSleepStatusbarEnabled = Xprefs.getBoolean("DoubleTapSleep", false);
@@ -85,13 +85,13 @@ public class ScreenGestures extends XposedModPack {
 	}
 
 	@Override
-	public boolean listensTo(String packageName) {
-		return listenPackage.equals(packageName) && !XPLauncher.isChildProcess;
+	public boolean isTargeting(String packageName) {
+		return TARGET_PACKAGE.equals(packageName) && !XPLauncher.isChildProcess;
 	}
 
 	@Override
-	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
-		if (!lpParam.packageName.equals(listenPackage)) return;
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+		if (!lpParam.packageName.equals(TARGET_PACKAGE)) return;
 
 		mLockscreenDoubleTapToSleep = new GestureDetector(mContext, new GestureDetector.SimpleOnGestureListener() {
 			@Override
