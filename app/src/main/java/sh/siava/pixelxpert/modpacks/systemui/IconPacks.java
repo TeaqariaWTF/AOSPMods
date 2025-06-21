@@ -16,6 +16,8 @@ import java.util.List;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.BuildConfig;
+import sh.siava.pixelxpert.annotations.SettingsModPack;
+import sh.siava.pixelxpert.annotations.SystemUIMainProcessModPack;
 import sh.siava.pixelxpert.modpacks.XPLauncher;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
@@ -25,8 +27,9 @@ import sh.siava.pixelxpert.utils.ThemePackMapping.Mapping;
 import sh.siava.pixelxpert.utils.ThemePackMapping.OverlayID;
 import sh.siava.pixelxpert.utils.ThemePackMapping.OverlayIDName;
 
+@SystemUIMainProcessModPack
+@SettingsModPack
 public class IconPacks extends XposedModPack {
-
 	static IDMapping drawableMapping = new IDMapping();
 	private final PackageManager mPackageManager;
 	private final List<XC_MethodHook.Unhook> hooks = new ArrayList<>();
@@ -172,10 +175,4 @@ public class IconPacks extends XposedModPack {
 		}
 		return null;
 	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return true;
-	}
-
 }

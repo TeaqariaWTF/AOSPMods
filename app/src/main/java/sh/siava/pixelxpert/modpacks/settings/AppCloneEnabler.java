@@ -10,7 +10,6 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.os.Build;
 import android.view.Menu;
 
 import java.util.ArrayList;
@@ -18,14 +17,14 @@ import java.util.List;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.R;
-import sh.siava.pixelxpert.modpacks.Constants;
 import sh.siava.pixelxpert.modpacks.ResourceManager;
+import sh.siava.pixelxpert.annotations.SettingsModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings({"RedundantThrows"})
+@SettingsModPack
 public class AppCloneEnabler extends XposedModPack {
-	private static final String TARGET_PACKAGE = Constants.SETTINGS_PACKAGE;
 	private static final int AVAILABLE = 0;
 	private static final int LIST_TYPE_CLONED_APPS = 17;
 	private ReflectedClass UtilsClass;
@@ -36,11 +35,6 @@ public class AppCloneEnabler extends XposedModPack {
 
 	@Override
 	public void onPreferenceUpdated(String... Key) {
-	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName) && Build.VERSION.SDK_INT > Build.VERSION_CODES.TIRAMISU;
 	}
 
 	@SuppressLint("ResourceType")

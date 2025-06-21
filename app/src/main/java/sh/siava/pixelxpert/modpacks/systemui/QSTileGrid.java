@@ -16,8 +16,7 @@ import java.util.Set;
 
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.modpacks.Constants;
-import sh.siava.pixelxpert.modpacks.XPLauncher;
+import sh.siava.pixelxpert.annotations.SystemUIMainProcessModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.SystemUtils;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.FakeIntegerResource;
@@ -25,9 +24,8 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ComposeFontUtils;
 
 @SuppressWarnings("RedundantThrows")
+@SystemUIMainProcessModPack
 public class QSTileGrid extends XposedModPack {
-	public static final String TARGET_PACKAGE = Constants.SYSTEM_UI_PACKAGE;
-
 	private static final int NOT_SET = 0;
 	private static final int QS_COL_NOT_SET = 1;
 
@@ -77,8 +75,6 @@ public class QSTileGrid extends XposedModPack {
 	@SuppressLint("DiscouragedApi")
 	@Override
 	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
-		if (!lpParam.packageName.equals(TARGET_PACKAGE)) return;
-
 		ReflectedClass PaginatedGridLayoutClass = ReflectedClass.ofIfPossible("com.android.systemui.qs.panels.ui.compose.PaginatedGridLayout");
 		ReflectedClass QSColumnsRepositoryClass = ReflectedClass.ofIfPossible("com.android.systemui.qs.panels.data.repository.QSColumnsRepository");
 		ReflectedClass QuickQuickSettingsRowRepositoryClass = ReflectedClass.ofIfPossible("com.android.systemui.qs.panels.data.repository.QuickQuickSettingsRowRepository");
@@ -179,10 +175,5 @@ public class QSTileGrid extends XposedModPack {
 							return mContext.getResources().getInteger(id);
 						}
 					});
-	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName) && !XPLauncher.isChildProcess;
 	}
 }

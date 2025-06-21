@@ -33,16 +33,15 @@ import android.view.ViewConfiguration;
 import org.apache.commons.lang3.SystemProperties;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.modpacks.Constants;
+import sh.siava.pixelxpert.annotations.FrameworkModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.SystemUtils;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedMethod;
 
 @SuppressWarnings("RedundantThrows")
+@FrameworkModPack
 public class ScreenOffKeys extends XposedModPack {
-	public static final String TARGET_PACKAGE = Constants.SYSTEM_FRAMEWORK_PACKAGE;
-
 	public static final int PHYSICAL_ACTION_NONE = -1;
 
 	public static final int PHYSICAL_ACTION_DEFAULT = 0;
@@ -367,11 +366,6 @@ public class ScreenOffKeys extends XposedModPack {
 		AudioManager().dispatchMediaKeyEvent(new KeyEvent(ACTION_DOWN, keyCode));
 
 		AudioManager().dispatchMediaKeyEvent(new KeyEvent(KeyEvent.ACTION_UP, keyCode));
-	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName);
 	}
 
 	class VolumeLongPressRunnable implements Runnable {

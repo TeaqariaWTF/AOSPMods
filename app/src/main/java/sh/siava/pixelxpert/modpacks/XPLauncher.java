@@ -15,8 +15,11 @@ import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.os.RemoteException;
 
+import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Objects;
 import java.util.Queue;
@@ -24,10 +27,20 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
+import dalvik.system.DexFile;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.IRootProviderProxy;
 import sh.siava.pixelxpert.R;
+import sh.siava.pixelxpert.annotations.CommonModPack;
+import sh.siava.pixelxpert.annotations.DialerModPack;
+import sh.siava.pixelxpert.annotations.FrameworkModPack;
+import sh.siava.pixelxpert.annotations.KSUModPack;
+import sh.siava.pixelxpert.annotations.LauncherModPack;
+import sh.siava.pixelxpert.annotations.SettingsModPack;
+import sh.siava.pixelxpert.annotations.SystemUIChildProcessModPack;
+import sh.siava.pixelxpert.annotations.SystemUIMainProcessModPack;
+import sh.siava.pixelxpert.annotations.TelecomServerModPack;
 import sh.siava.pixelxpert.modpacks.utils.SystemUtils;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 import sh.siava.pixelxpert.service.RootProviderProxy;
@@ -136,20 +149,68 @@ public class XPLauncher implements ServiceConnection {
 			forceConnectRootService();
 		}
 
-		for (Class<? extends XposedModPack> mod : ModPacks.getMods(lpParam.packageName)) {
-			try {
-				XposedModPack instance = mod.getConstructor(Context.class).newInstance(mContext);
-				if (!instance.isTargeting(lpParam.packageName)) continue;
-				try {
-					instance.onPreferenceUpdated();
-				} catch (Throwable ignored) {
+		Class<? extends Annotation> annotation = getModMapping(lpParam);
+
+		try {
+			//noinspection deprecation
+			DexFile moduleDex = new DexFile(ResourceManager.getModulePath());
+
+			ClassLoader moduleClassloader = this.getClass().getClassLoader();
+			//noinspection deprecation
+			Enumeration<String> moduleClasses = moduleDex.entries();
+			while (moduleClasses.hasMoreElements()) {
+				String className = moduleClasses.nextElement();
+				if (className.startsWith(APPLICATION_ID + ".modpacks")) {
+					try {
+						//noinspection DataFlowIssue
+						Class<?> thisClass = moduleClassloader.loadClass(className);
+
+						if (thisClass.isAnnotationPresent(CommonModPack.class) || thisClass.isAnnotationPresent(annotation)) {
+							//noinspection ControlFlowStatementWithoutBraces,DataFlowIssue
+							if(annotation.equals(SystemUIChildProcessModPack.class)
+									&& !lpParam.processName.contains(thisClass.getAnnotation(SystemUIChildProcessModPack.class).processNameContains()))
+								continue;
+
+							//noinspection unchecked
+							loadModPack((Class<? extends XposedModPack>) thisClass, lpParam);
+						}
+					} catch (Throwable ignored) {
+					}
 				}
-				instance.onPackageLoadedInternal(lpParam);
-				runningMods.add(instance);
-			} catch (Throwable T) {
-				log("Start Error Dump - Occurred in " + mod.getName());
-				log(T);
 			}
+		}
+		catch (Throwable ignored){}
+	}
+
+	private Class<? extends Annotation> getModMapping(XC_LoadPackage.LoadPackageParam lpParam) {
+		HashMap<String, Class<? extends Annotation>> modMapping = new HashMap<>();
+		modMapping.put(Constants.LAUNCHER_PACKAGE, LauncherModPack.class);
+		modMapping.put(Constants.SETTINGS_PACKAGE, SettingsModPack.class);
+		modMapping.put(Constants.DIALER_PACKAGE, DialerModPack.class);
+		modMapping.put(Constants.TELECOM_SERVER_PACKAGE, TelecomServerModPack.class);
+		modMapping.put(Constants.SYSTEM_FRAMEWORK_PACKAGE, FrameworkModPack.class);
+		modMapping.put(Constants.KSU_PACKAGE, KSUModPack.class);
+		modMapping.put(Constants.KSU_NEXT_PACKAGE, KSUModPack.class);
+
+		return lpParam.packageName.equals(Constants.SYSTEM_UI_PACKAGE)
+				? isChildProcess
+					? SystemUIChildProcessModPack.class
+					: SystemUIMainProcessModPack.class
+				:modMapping.get(lpParam.packageName);
+	}
+
+	private void loadModPack(Class<? extends XposedModPack> thisClass, XC_LoadPackage.LoadPackageParam lpParam) {
+		try {
+			XposedModPack instance = thisClass.getConstructor(Context.class).newInstance(mContext);
+			try {
+				instance.onPreferenceUpdated();
+			} catch (Throwable ignored) {
+			}
+			instance.onPackageLoadedInternal(lpParam);
+			runningMods.add(instance);
+		} catch (Throwable T) {
+			log("Start Error Dump - Occurred in " + thisClass.getName());
+			log(T);
 		}
 	}
 

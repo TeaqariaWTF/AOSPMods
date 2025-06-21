@@ -14,13 +14,11 @@ public abstract class XposedModPack {
 	}
 
 	public abstract void onPreferenceUpdated(String... Key);
-	public final void onPackageLoadedInternal(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable
-	{
+
+	public final void onPackageLoadedInternal(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		setDefaultClassloader(lpParam.classLoader);
 		onPackageLoaded(lpParam);
 	}
 
 	public abstract void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable;
-
-	public abstract boolean isTargeting(String packageName);
 }

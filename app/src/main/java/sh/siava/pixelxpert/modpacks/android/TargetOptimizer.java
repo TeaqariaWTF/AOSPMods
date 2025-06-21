@@ -9,14 +9,13 @@ import java.util.Arrays;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.R;
-import sh.siava.pixelxpert.modpacks.Constants;
+import sh.siava.pixelxpert.annotations.FrameworkModPack;
 import sh.siava.pixelxpert.modpacks.ResourceManager;
 import sh.siava.pixelxpert.modpacks.XPLauncher;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 
+@FrameworkModPack
 public class TargetOptimizer extends XposedModPack {
-	public static final String TARGET_PACKAGE = Constants.SYSTEM_FRAMEWORK_PACKAGE;
-
 	public static final String OPTIMIZED_BUILD_KEY = "optimized_build";
 	public static final String SYSTEM_RESTART_PENDING_KEY = "system_restart_pending";
 
@@ -54,10 +53,5 @@ public class TargetOptimizer extends XposedModPack {
 			catch (Throwable ignored)
 			{}
 		}
-	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName);
 	}
 }

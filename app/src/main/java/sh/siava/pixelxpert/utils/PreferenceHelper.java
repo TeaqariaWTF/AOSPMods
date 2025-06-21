@@ -2,12 +2,16 @@ package sh.siava.pixelxpert.utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceGroup;
 
+import com.google.android.material.slider.LabelFormatter;
+
+import java.text.NumberFormat;
 import java.util.Arrays;
 import java.util.List;
 
@@ -184,6 +188,9 @@ public class PreferenceHelper {
 	@Nullable
 	public static String getSummary(Context fragmentCompat, @NonNull String key) {
 		switch (key) {
+			case "FastChargingWattage":
+				return labelFastChargingWattage(fragmentCompat, instance.mPreferences.getSliderInt("FastChargingWattage", 5));
+
 			case "VolumeDialogTimeout":
 				int VolumeDialogTimeout = instance.mPreferences.getSliderInt("VolumeDialogTimeout", 3000);
 				return VolumeDialogTimeout == 3000
@@ -362,9 +369,40 @@ public class PreferenceHelper {
 				case "QSSecondaryLabelScaleFactor":
 					((RangeSliderPreference) preference).slider.setLabelFormatter(value -> (value + 100) + "%");
 					break;
+				case "FastChargingWattage":
+					((RangeSliderPreference) preference).slider.setLabelFormatter(new LabelFormatter() {
+						@NonNull
+						@Override
+						public String getFormattedValue(float value) {
+							return labelFastChargingWattage(preference.getContext(), Math.round(value));
+						}
+					});
+					break;
+
+				case "DWOpacity":
+					((RangeSliderPreference) preference).slider.setLabelFormatter(new LabelFormatter() {
+						@NonNull
+						@Override
+						public String getFormattedValue(float value) {
+							Log.d("adsfda", "getFormattedValue: " + key);
+							NumberFormat format = NumberFormat.getInstance();
+							format.setMaximumFractionDigits(1);
+							return String.format("%s%%", format.format(value*100/255));
+						}
+					});
+					break;
+				default:
+					break;
 			}
 		} catch (Throwable ignored) {
 		}
+	}
+
+	public static String labelFastChargingWattage(Context context, int value)
+	{
+		return value <= 5
+				? context.getString(R.string.word_default)
+				: String.format("%s %s", value, context.getString(R.string.watts));
 	}
 
 	public static void setupAllPreferences(PreferenceGroup group) {

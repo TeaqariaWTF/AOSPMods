@@ -34,20 +34,18 @@ import java.util.regex.Pattern;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.R;
-import sh.siava.pixelxpert.modpacks.Constants;
 import sh.siava.pixelxpert.modpacks.ResourceManager;
-import sh.siava.pixelxpert.modpacks.XPLauncher;
+import sh.siava.pixelxpert.annotations.SystemUIMainProcessModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
+@SystemUIMainProcessModPack
 public class NotificationExpander extends XposedModPack {
 	private static final int DEFAULT = 0;
 	private static final int EXPAND_ALWAYS = 1;
 	/** @noinspection unused*/
 	private static final int COLLAPSE_ALWAYS = 2;
-
-	public static final String TARGET_PACKAGE = Constants.SYSTEM_UI_PACKAGE;
 
 	public static boolean notificationExpandallHookEnabled = true;
 	public static boolean notificationExpandallEnabled = false;
@@ -75,14 +73,7 @@ public class NotificationExpander extends XposedModPack {
 	}
 
 	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName) && !XPLauncher.isChildProcess;
-	}
-
-	@Override
 	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
-		if (!TARGET_PACKAGE.equals(lpParam.packageName) || !notificationExpandallHookEnabled) return;
-
 		ReflectedClass NotificationStackScrollLayoutClass = ReflectedClass.of("com.android.systemui.statusbar.notification.stack.NotificationStackScrollLayout");
 		ReflectedClass FooterViewButtonClass = ReflectedClass.of("com.android.systemui.statusbar.notification.row.FooterViewButton");
 		ReflectedClass NotifCollectionClass = ReflectedClass.ofIfPossible("com.android.systemui.statusbar.notification.collection.NotifCollection");

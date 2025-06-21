@@ -12,13 +12,18 @@ import de.robv.android.xposed.callbacks.XC_InitPackageResources;
 public class ResourceManager implements IXposedHookInitPackageResources, IXposedHookZygoteInit {
 
 	@SuppressWarnings({"FieldCanBeLocal", "unused"})
-	private String MODULE_PATH;
+	private static String MODULE_PATH;
 	public final static HashMap<String, XC_InitPackageResources.InitPackageResourcesParam> resparams = new HashMap<>();
 	public static Resources modRes;
 
 	@Override
 	public void initZygote(StartupParam startupParam) throws Throwable {
 		MODULE_PATH = startupParam.modulePath;
+	}
+
+	public static String getModulePath()
+	{
+		return MODULE_PATH;
 	}
 
 	@Override

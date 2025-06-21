@@ -39,7 +39,7 @@ import java.util.regex.Pattern;
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.BuildConfig;
-import sh.siava.pixelxpert.modpacks.Constants;
+import sh.siava.pixelxpert.annotations.LauncherModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.SystemUtils;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
@@ -49,9 +49,8 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass.ReflectionConsu
  * @noinspection RedundantCast, JavaReflectionMemberAccess
  */
 @SuppressWarnings("RedundantThrows")
+@LauncherModPack
 public class TaskbarActivator extends XposedModPack {
-	private static final String TARGET_PACKAGE = Constants.LAUNCHER_PACKAGE;
-
 	public static final int TASKBAR_DEFAULT = 0;
 	public static final int TASKBAR_ON = 1;
 	/**
@@ -150,11 +149,6 @@ public class TaskbarActivator extends XposedModPack {
 		TaskbarOnIme = Xprefs.getBoolean("TaskbarOnIme", false);
 
 		GoogleRecents = Xprefs.getBoolean("EnableGoogleRecents", false);
-	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName);
 	}
 
 	@SuppressLint("DiscouragedApi")

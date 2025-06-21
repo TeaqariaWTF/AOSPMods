@@ -40,9 +40,8 @@ import java.util.regex.Pattern;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.R;
-import sh.siava.pixelxpert.modpacks.Constants;
 import sh.siava.pixelxpert.modpacks.ResourceManager;
-import sh.siava.pixelxpert.modpacks.XPLauncher;
+import sh.siava.pixelxpert.annotations.SystemUIMainProcessModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.StringFormatter;
 import sh.siava.pixelxpert.modpacks.utils.SystemUtils;
@@ -50,9 +49,8 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectionTools;
 
 @SuppressWarnings("RedundantThrows")
+@SystemUIMainProcessModPack
 public class KeyguardMods extends XposedModPack {
-	private static final String TARGET_PACKAGE = Constants.SYSTEM_UI_PACKAGE;
-
 	//region keyguard charging data
 	public static final String EXTRA_MAX_CHARGING_CURRENT = "max_charging_current";
 	public static final String EXTRA_MAX_CHARGING_VOLTAGE = "max_charging_voltage";
@@ -148,11 +146,6 @@ public class KeyguardMods extends XposedModPack {
 					break;
 			}
 		}
-	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName) && !XPLauncher.isChildProcess;
 	}
 
 	@SuppressLint({"DiscouragedApi", "DefaultLocale"})

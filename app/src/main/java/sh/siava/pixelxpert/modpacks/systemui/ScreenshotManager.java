@@ -20,15 +20,13 @@ import java.util.concurrent.TimeoutException;
 import java.util.regex.Pattern;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.modpacks.Constants;
-import sh.siava.pixelxpert.modpacks.XPLauncher;
+import sh.siava.pixelxpert.annotations.SystemUIChildProcessModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
+@SystemUIChildProcessModPack(processNameContains = "screenshot")
 @SuppressWarnings("RedundantThrows")
 public class ScreenshotManager extends XposedModPack {
-	private static final String TARGET_PACKAGE = Constants.SYSTEM_UI_PACKAGE;
-
 	private static boolean disableScreenshotSound = false;
 	private boolean ScreenshotChordInsecure = false;
 
@@ -45,8 +43,6 @@ public class ScreenshotManager extends XposedModPack {
 
 	@Override
 	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
-		if (!isTargeting(lpParam.packageName)) return;
-
 		ReflectedClass ScreenshotControllerClass = ReflectedClass.ofIfPossible("com.android.systemui.screenshot.ScreenshotController");
 
 		ReflectedClass CaptureArgsClass = ReflectedClass.ofIfPossible("android.window.ScreenCapture.CaptureArgs"); //A14
@@ -127,11 +123,6 @@ public class ScreenshotManager extends XposedModPack {
 						}
 					}
 				}).isEmpty();
-	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName) && XPLauncher.isChildProcess && XPLauncher.processName.contains("screenshot");
 	}
 
 	//Seems like an executor, but doesn't act! perfect thing

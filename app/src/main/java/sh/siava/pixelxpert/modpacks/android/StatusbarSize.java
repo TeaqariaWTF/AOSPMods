@@ -10,21 +10,18 @@ import android.content.res.Configuration;
 import android.graphics.Rect;
 import android.view.DisplayCutout;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.modpacks.Constants;
-import sh.siava.pixelxpert.modpacks.XPLauncher;
+import sh.siava.pixelxpert.annotations.FrameworkModPack;
+import sh.siava.pixelxpert.annotations.SystemUIMainProcessModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 
 //We are playing in system framework. should be extra cautious..... many try-catchs, still not enough!
 @SuppressWarnings("RedundantThrows")
+@FrameworkModPack
+@SystemUIMainProcessModPack
 public class StatusbarSize extends XposedModPack {
-	private final List<String> listenPacks = new ArrayList<>();
-
 	private static final int BOUNDS_POSITION_TOP = 1;
 
 	static int sizeFactor = 100; // % of normal
@@ -35,8 +32,6 @@ public class StatusbarSize extends XposedModPack {
 
 	public StatusbarSize(Context context) {
 		super(context);
-		listenPacks.add(Constants.SYSTEM_FRAMEWORK_PACKAGE);
-		listenPacks.add(Constants.SYSTEM_UI_PACKAGE);
 	}
 
 	@SuppressLint({"DiscouragedApi", "InternalInsetResource"})
@@ -69,11 +64,6 @@ public class StatusbarSize extends XposedModPack {
 							* sizeFactor
 							/ 100f);
 		}
-	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return listenPacks.contains(packageName) && !XPLauncher.isChildProcess;
 	}
 
 	@Override

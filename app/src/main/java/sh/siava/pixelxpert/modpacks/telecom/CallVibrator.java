@@ -8,15 +8,14 @@ import android.content.Context;
 import android.os.VibrationEffect;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.modpacks.Constants;
+import sh.siava.pixelxpert.annotations.TelecomServerModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.SystemUtils;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
+@TelecomServerModPack
 public class CallVibrator extends XposedModPack {
-	private static final String TARGET_PACKAGE = Constants.TELECOM_SERVER_PACKAGE;
-
 	public static final int DIALING = 3;
 	public static final int ACTIVE = 5;
 	public static final int DISCONNECTED = 7;
@@ -34,12 +33,6 @@ public class CallVibrator extends XposedModPack {
 		vibrateOnAnswered = Xprefs.getBoolean("vibrateOnAnswered", false);
 		vibrateOnDrop = Xprefs.getBoolean("vibrateOnDrop", false);
 	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName);
-	}
-
 	@Override
 	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		try {

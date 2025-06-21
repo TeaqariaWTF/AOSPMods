@@ -36,14 +36,15 @@ import java.util.Arrays;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.modpacks.Constants;
+import sh.siava.pixelxpert.annotations.SystemUIMainProcessModPack;
 import sh.siava.pixelxpert.modpacks.XPLauncher;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectionTools;
 
 /** @noinspection RedundantThrows, SameParameterValue */
+@SystemUIMainProcessModPack
 public class DepthWallpaper extends XposedModPack {
-	private static final String TARGET_PACKAGE = Constants.SYSTEM_UI_PACKAGE;
 	private static boolean lockScreenSubjectCacheValid = false;
 	private Object mScrimController;
 	private static boolean DWallpaperEnabled = false;
@@ -428,10 +429,5 @@ public class DepthWallpaper extends XposedModPack {
 			new File(Constants.getLockScreenSubjectCachePath(mContext)).delete();
 		}
 		catch (Throwable ignored){}
-	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName) && !XPLauncher.isChildProcess;
 	}
 }

@@ -16,15 +16,13 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.modpacks.Constants;
-import sh.siava.pixelxpert.modpacks.XPLauncher;
+import sh.siava.pixelxpert.annotations.SystemUIMainProcessModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
+@SystemUIMainProcessModPack
 public class UDFPSManager extends XposedModPack {
-	private static final String TARGET_PACKAGE = Constants.SYSTEM_UI_PACKAGE;
-
 	private static final int TRANSPARENT = 0;
 	private static final int OPAQUE = 255;
 	private static boolean transparentBG = false;
@@ -52,14 +50,7 @@ public class UDFPSManager extends XposedModPack {
 	}
 
 	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName) && !XPLauncher.isChildProcess;
-	}
-
-	@Override
 	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) {
-		if (!lpParam.packageName.equals(TARGET_PACKAGE)) return;
-
 		ReflectedClass UdfpsKeyguardViewClass = ReflectedClass.ofIfPossible("com.android.systemui.biometrics.UdfpsKeyguardViewLegacy"); //A4B3
 		if (UdfpsKeyguardViewClass.getClazz() == null) { //A13
 			UdfpsKeyguardViewClass = ReflectedClass.ofIfPossible("com.android.systemui.biometrics.UdfpsKeyguardView");

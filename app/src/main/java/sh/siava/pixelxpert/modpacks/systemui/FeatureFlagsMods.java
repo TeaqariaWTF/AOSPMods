@@ -9,15 +9,13 @@ import android.content.Context;
 import java.util.regex.Pattern;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.modpacks.Constants;
-import sh.siava.pixelxpert.modpacks.XPLauncher;
+import sh.siava.pixelxpert.annotations.SystemUIMainProcessModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
+@SystemUIMainProcessModPack
 public class FeatureFlagsMods extends XposedModPack {
-	public static final String TARGET_PACKAGE = Constants.SYSTEM_UI_PACKAGE;
-
 //	public static final String CLIPBOARD_OVERLAY_SHOW_ACTIONS = "clipboard_overlay_show_actions";
 //	public static final String NAMESPACE_SYSTEMUI = "systemui";
 
@@ -47,8 +45,6 @@ public class FeatureFlagsMods extends XposedModPack {
 
 	@Override
 	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
-		if (!lpParam.packageName.equals(TARGET_PACKAGE)) return;
-
 /*		ReflectedClass DeviceConfigClass = ReflectedClass.of("android.provider.DeviceConfig");
 
 		hookAllMethods(DeviceConfigClass, "getBoolean", new XC_MethodHook() {
@@ -83,10 +79,5 @@ public class FeatureFlagsMods extends XposedModPack {
 							"show4gForLte",
 							SBLTEIcon == SIGNAL_FORCE_4G);
 				});
-	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName) && !XPLauncher.isChildProcess;
 	}
 }

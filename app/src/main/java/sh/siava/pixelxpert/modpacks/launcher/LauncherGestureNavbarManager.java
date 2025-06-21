@@ -12,7 +12,7 @@ import android.content.Context;
 import java.util.Arrays;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.modpacks.Constants;
+import sh.siava.pixelxpert.annotations.LauncherModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.SystemUtils;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
@@ -20,9 +20,8 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 /**
  * @noinspection RedundantThrows
  */
+@LauncherModPack
 public class LauncherGestureNavbarManager extends XposedModPack {
-	private static final String TARGET_PACKAGE = Constants.LAUNCHER_PACKAGE;
-
 	private static boolean navPillColorAccent = false;
 	private static float widthFactor = 1f;
 	private static int GesPillHeightFactor = 100;
@@ -105,10 +104,5 @@ public class LauncherGestureNavbarManager extends XposedModPack {
 						mColorReplaced = true;
 					}
 				});
-	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName);
 	}
 }

@@ -14,17 +14,16 @@ import android.content.Context;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.R;
-import sh.siava.pixelxpert.modpacks.Constants;
 import sh.siava.pixelxpert.modpacks.ResourceManager;
-import sh.siava.pixelxpert.modpacks.XPLauncher;
+import sh.siava.pixelxpert.annotations.SystemUIMainProcessModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.AlertSlider;
 import sh.siava.pixelxpert.modpacks.utils.SystemUtils;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedMethod;
 
+@SystemUIMainProcessModPack
 public class FlashlightTile extends XposedModPack {
-	private static final String TARGET_PACKAGE = Constants.SYSTEM_UI_PACKAGE;
 	private boolean leveledFlashTile = false;
 	private boolean AnimateFlashlight = false;
 	private Object mTile;
@@ -162,10 +161,5 @@ public class FlashlightTile extends XposedModPack {
 		};
 
 		alertSlider.show();
-	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName) && !XPLauncher.isChildProcess;
 	}
 }

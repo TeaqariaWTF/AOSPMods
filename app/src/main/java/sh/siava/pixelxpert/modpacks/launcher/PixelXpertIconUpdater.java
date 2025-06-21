@@ -6,13 +6,13 @@ import android.os.UserHandle;
 import de.robv.android.xposed.XposedHelpers;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.BuildConfig;
-import sh.siava.pixelxpert.modpacks.Constants;
+import sh.siava.pixelxpert.annotations.LauncherModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
+@LauncherModPack
 public class PixelXpertIconUpdater extends XposedModPack {
-	private static final String TARGET_PACKAGE = Constants.LAUNCHER_PACKAGE;
 	private Object LauncherModel;
 
 	public PixelXpertIconUpdater(Context context) {
@@ -21,11 +21,6 @@ public class PixelXpertIconUpdater extends XposedModPack {
 
 	@Override
 	public void onPreferenceUpdated(String... Key) {}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName);
-	}
 
 	@Override
 	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {

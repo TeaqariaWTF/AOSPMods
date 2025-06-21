@@ -18,16 +18,14 @@ import android.view.ViewGroup;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.modpacks.Constants;
-import sh.siava.pixelxpert.modpacks.XPLauncher;
+import sh.siava.pixelxpert.annotations.SystemUIMainProcessModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.launcher.TaskbarActivator;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
+@SystemUIMainProcessModPack
 public class GestureNavbarManager extends XposedModPack {
-	public static final String TARGET_PACKAGE = Constants.SYSTEM_UI_PACKAGE;
-
 	//region Back gesture
 	private static float backGestureHeightFractionLeft = 1f; // % of screen height. can be anything between 0 to 1
 	private static float backGestureHeightFractionRight = 1f; // % of screen height. can be anything between 0 to 1
@@ -100,8 +98,6 @@ public class GestureNavbarManager extends XposedModPack {
 
 	@Override
 	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
-		if (!lpParam.packageName.equals(TARGET_PACKAGE)) return;
-
 		ReflectedClass NavigationHandleClass = ReflectedClass.of("com.android.systemui.navigationbar.gestural.NavigationHandle");
 		ReflectedClass EdgeBackGestureHandlerClass = ReflectedClass.ofIfPossible("com.android.systemui.navigationbar.gestural.EdgeBackGestureHandler");
 		ReflectedClass NavigationBarEdgePanelClass = ReflectedClass.ofIfPossible("com.android.systemui.navigationbar.gestural.NavigationBarEdgePanel");
@@ -247,9 +243,4 @@ public class GestureNavbarManager extends XposedModPack {
 				- mEdgeHeight);
 	}
 	//endregion
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName) && !XPLauncher.isChildProcess;
-	}
 }

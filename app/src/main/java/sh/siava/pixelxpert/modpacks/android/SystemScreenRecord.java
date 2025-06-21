@@ -8,13 +8,13 @@ import android.os.Binder;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.modpacks.Constants;
+import sh.siava.pixelxpert.annotations.FrameworkModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
+@FrameworkModPack
 public class SystemScreenRecord extends XposedModPack {
-	public static final String TARGET_PACKAGE = Constants.SYSTEM_FRAMEWORK_PACKAGE;
-
 	private static boolean InsecureScreenRecord = false;
 
 	public SystemScreenRecord(Context context) {
@@ -44,10 +44,5 @@ public class SystemScreenRecord extends XposedModPack {
 					});
 		} catch (Throwable ignored) {
 		}
-	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName);
 	}
 }

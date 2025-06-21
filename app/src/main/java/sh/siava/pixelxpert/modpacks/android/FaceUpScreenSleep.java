@@ -19,13 +19,13 @@ import java.util.Set;
 
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.modpacks.Constants;
+import sh.siava.pixelxpert.annotations.FrameworkModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 /** @noinspection RedundantThrows*/
+@FrameworkModPack
 public class FaceUpScreenSleep extends XposedModPack {
-	public static final String TARGET_PACKAGE = Constants.SYSTEM_FRAMEWORK_PACKAGE;
 	public static final float FACE_UP_Z_THRESHOLD = 9f;
 	public static final int DEFAULT_DISPLAY_GROUP = 0;
 	public static final int GO_TO_SLEEP_REASON_TIMEOUT = 2;
@@ -135,10 +135,4 @@ public class FaceUpScreenSleep extends XposedModPack {
 		}
 		minimumSleepTime = SystemClock.elapsedRealtime() + FlatStandbyTimeMillis;
 	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName);
-	}
-
 }

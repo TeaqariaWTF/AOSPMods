@@ -13,14 +13,14 @@ import android.os.Handler;
 import android.os.Looper;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.modpacks.Constants;
+import sh.siava.pixelxpert.annotations.LauncherModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.GoogleMonochromeIconFactory;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
+@LauncherModPack
 public class LauncherThemedIcons extends XposedModPack {
-	private static final String TARGET_PACKAGE = Constants.LAUNCHER_PACKAGE;
 	private static boolean ForceThemedLauncherIcons = false;
 	private int mIconBitmapSize;
 	private Object LAS;
@@ -38,11 +38,6 @@ public class LauncherThemedIcons extends XposedModPack {
 				reloadIcons();
 			}
 		}
-	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName);
 	}
 
 	@Override

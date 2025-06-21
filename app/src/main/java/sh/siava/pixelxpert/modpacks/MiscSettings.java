@@ -10,9 +10,11 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import sh.siava.pixelxpert.annotations.SystemUIMainProcessModPack;
 import sh.siava.pixelxpert.modpacks.utils.ModuleFolderOperations;
 import sh.siava.pixelxpert.modpacks.utils.StringFormatter;
 
+@SystemUIMainProcessModPack
 public class MiscSettings extends XposedModPack {
 
 	public MiscSettings(Context context) {
@@ -99,11 +101,6 @@ public class MiscSettings extends XposedModPack {
 				proxy.runCommand("pm " + mode + " com.android.systemui/.tuner.TunerActivity");
 			} catch (Exception ignored) {}
 		});
-	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return packageName.equals(Constants.SYSTEM_UI_PACKAGE);
 	}
 
 	@Override

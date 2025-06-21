@@ -9,8 +9,10 @@ import android.content.IntentFilter;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.BuildConfig;
+import sh.siava.pixelxpert.annotations.CommonModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 
+@CommonModPack
 public class HookTester extends XposedModPack {
 	public HookTester(Context context) {
 		super(context);
@@ -39,10 +41,5 @@ public class HookTester extends XposedModPack {
 		mContext.registerReceiver(broadcastReceiver,
 				new IntentFilter(ACTION_CHECK_XPOSED_ENABLED),
 				Context.RECEIVER_EXPORTED);
-	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return true;
 	}
 }

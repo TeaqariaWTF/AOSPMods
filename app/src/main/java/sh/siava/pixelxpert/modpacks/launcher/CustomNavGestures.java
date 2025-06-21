@@ -24,15 +24,15 @@ import java.util.Optional;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.modpacks.Constants;
+import sh.siava.pixelxpert.annotations.LauncherModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.SystemUtils;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 /** @noinspection ConstantValue*/
 @SuppressWarnings("RedundantThrows")
+@LauncherModPack
 public class CustomNavGestures extends XposedModPack {
-	private static final String TARGET_PACKAGE = Constants.LAUNCHER_PACKAGE;
-
 	private static final int NO_ACTION = -1;
 	private static final int ACTION_SCREENSHOT = 1;
 	private static final int ACTION_BACK = 2;
@@ -86,11 +86,6 @@ public class CustomNavGestures extends XposedModPack {
 		} catch (Exception ignored) {
 			return NO_ACTION;
 		}
-	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName);
 	}
 
 	@Override

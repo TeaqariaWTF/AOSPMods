@@ -6,14 +6,13 @@ import static sh.siava.pixelxpert.modpacks.XPrefs.Xprefs;
 import android.content.Context;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.modpacks.Constants;
-import sh.siava.pixelxpert.modpacks.XPLauncher;
+import sh.siava.pixelxpert.annotations.SystemUIMainProcessModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
+@SystemUIMainProcessModPack
 public class FingerprintWhileDozing extends XposedModPack {
-	private static final String TARGET_PACKAGE = Constants.SYSTEM_UI_PACKAGE;
 	private static boolean fingerprintWhileDozing = true;
 
 	public FingerprintWhileDozing(Context context) {
@@ -26,14 +25,7 @@ public class FingerprintWhileDozing extends XposedModPack {
 	}
 
 	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName) && !XPLauncher.isChildProcess;
-	}
-
-	@Override
 	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
-		if (!lpParam.packageName.equals(TARGET_PACKAGE)) return;
-
 		ReflectedClass KeyguardUpdateMonitorClass = ReflectedClass.of("com.android.keyguard.KeyguardUpdateMonitor");
 
 		KeyguardUpdateMonitorClass

@@ -8,14 +8,13 @@ import static sh.siava.pixelxpert.modpacks.XPrefs.Xprefs;
 import android.content.Context;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.modpacks.Constants;
+import sh.siava.pixelxpert.annotations.FrameworkModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
+@FrameworkModPack
 public class ScreenRotation extends XposedModPack {
-	public static final String TARGET_PACKAGE = Constants.SYSTEM_FRAMEWORK_PACKAGE;
-
 	private static final int USER_ROTATION_LOCKED = 1;
 
 	private static boolean allScreenRotations = false;
@@ -30,12 +29,6 @@ public class ScreenRotation extends XposedModPack {
 
 		allScreenRotations = Xprefs.getBoolean("allScreenRotations", false);
 	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName);
-	}
-
 	@Override
 	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		try {

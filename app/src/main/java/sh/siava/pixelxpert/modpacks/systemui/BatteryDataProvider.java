@@ -1,5 +1,6 @@
 package sh.siava.pixelxpert.modpacks.systemui;
 
+import static de.robv.android.xposed.XposedBridge.log;
 import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.getBooleanField;
 import static de.robv.android.xposed.XposedHelpers.getIntField;
@@ -13,20 +14,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.modpacks.Constants;
-import sh.siava.pixelxpert.modpacks.XPLauncher;
+import sh.siava.pixelxpert.modpacks.XPrefs;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
+import sh.siava.pixelxpert.annotations.SystemUIMainProcessModPack;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 /**
  * @noinspection RedundantThrows
  */
+@SystemUIMainProcessModPack
 public class BatteryDataProvider extends XposedModPack {
-	private static final String TARGET_PACKAGE = Constants.SYSTEM_UI_PACKAGE;
-
-	public static final int CHARGING_FAST = 2;
-
 	public static final int BATTERY_STATUS_DISCHARGING = 3;
+	public static final int MILLION = 1000000;
+	public static final int USB_5_WATT = 5;
+	public static final int CHARGING_SLOW = 1;
+	public static final int CHARGING_FAST = 2;
 
 	@SuppressLint("StaticFieldLeak")
 	private static BatteryDataProvider instance = null;
@@ -40,6 +42,7 @@ public class BatteryDataProvider extends XposedModPack {
 	private boolean mPowerSave = false;
 	private boolean mIsFastCharging = false;
 	private boolean mIsBatteryDefender = false;
+	private static int FastChargingWattage = USB_5_WATT;
 
 
 	public BatteryDataProvider(Context context) {
@@ -49,6 +52,7 @@ public class BatteryDataProvider extends XposedModPack {
 
 	@Override
 	public void onPreferenceUpdated(String... Key) {
+		FastChargingWattage = XPrefs.Xprefs.getSliderInt("FastChargingWattage", USB_5_WATT);
 	}
 
 	@Override
@@ -75,6 +79,17 @@ public class BatteryDataProvider extends XposedModPack {
 					}
 
 					fireBatteryInfoChanged();
+				});
+
+		BatteryStatusClass
+				.before("getChargingSpeed")
+				.run(param -> {
+					if(FastChargingWattage > USB_5_WATT)
+					{
+						int maxChargingWattage = (int) getObjectField(param.thisObject, "maxChargingWattage") / MILLION;
+						mIsFastCharging = maxChargingWattage >= FastChargingWattage;
+						param.setResult(mIsFastCharging ? CHARGING_FAST : CHARGING_SLOW);
+					}
 				});
 
 		BatteryStatusClass
@@ -112,11 +127,6 @@ public class BatteryDataProvider extends XposedModPack {
 			instance.mStatusCallbacks.remove(callback);
 		} catch (Throwable ignored) {
 		}
-	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName) && !XPLauncher.isChildProcess;
 	}
 
 	public static void registerInfoCallback(BatteryInfoCallback callback) {

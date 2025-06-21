@@ -14,15 +14,15 @@ import java.util.TimerTask;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.modpacks.Constants;
+import sh.siava.pixelxpert.annotations.FrameworkModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 /**
  * @noinspection RedundantThrows
  */
+@FrameworkModPack
 public class PackageManager extends XposedModPack {
-	public static final String TARGET_PACKAGE = Constants.SYSTEM_FRAMEWORK_PACKAGE;
-
 	private static final int AUTO_DISABLE_MINUTES = 5;
 	private static final String ALLOW_SIGNATURE_PREF = "PM_AllowMismatchedSignature";
 	private static final String ALLOW_DOWNGRADE_PREF = "PM_AllowDowngrade";
@@ -151,10 +151,4 @@ public class PackageManager extends XposedModPack {
 		} catch (Throwable ignored) {
 		}
 	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName);
-	}
-
 }

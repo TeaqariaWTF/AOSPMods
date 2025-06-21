@@ -21,14 +21,14 @@ import java.util.List;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.modpacks.Constants;
+import sh.siava.pixelxpert.annotations.FrameworkModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.SystemUtils;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
+@FrameworkModPack
 public class PhoneWindowManager extends XposedModPack {
-	public static final String TARGET_PACKAGE = Constants.SYSTEM_FRAMEWORK_PACKAGE;
-
 	private Object windowMan = null;
 	private static boolean broadcastRegistered = false;
 	private List<UserHandle> userHandleList;
@@ -183,10 +183,5 @@ public class PhoneWindowManager extends XposedModPack {
 			broadcast.putExtra("available", isAvailable);
 			mContext.sendBroadcast(broadcast);
 		}).start();
-	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName);
 	}
 }

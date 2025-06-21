@@ -31,9 +31,7 @@ public class XPrefs {
 
 		setPackagePrefs(packageName);
 
-		for (XposedModPack thisMod : XPLauncher.runningMods) {
-			thisMod.onPreferenceUpdated(key);
-		}
+		XPLauncher.runningMods.forEach(thisMod -> thisMod.onPreferenceUpdated(key));
 	}
 
 	public static void setPackagePrefs(String packageName) {

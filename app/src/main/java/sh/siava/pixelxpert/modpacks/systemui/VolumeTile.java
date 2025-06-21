@@ -12,8 +12,7 @@ import android.content.Intent;
 import android.service.quicksettings.Tile;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.modpacks.Constants;
-import sh.siava.pixelxpert.modpacks.XPLauncher;
+import sh.siava.pixelxpert.annotations.SystemUIMainProcessModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.AlertSlider;
 import sh.siava.pixelxpert.modpacks.utils.SystemUtils;
@@ -21,8 +20,8 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 import sh.siava.pixelxpert.service.tileServices.VolumeTileService;
 
 /** @noinspection DataFlowIssue*/
+@SystemUIMainProcessModPack
 public class VolumeTile extends XposedModPack {
-	private static final String TARGET_PACKAGE = Constants.SYSTEM_UI_PACKAGE;
 	private Object mTile;
 	private boolean mNextTileIsVolume;
 
@@ -171,10 +170,5 @@ public class VolumeTile extends XposedModPack {
 				STREAM_MUSIC,
 				currentValue,
 				0 /* don't show UI */);
-	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName) && !XPLauncher.isChildProcess;
 	}
 }

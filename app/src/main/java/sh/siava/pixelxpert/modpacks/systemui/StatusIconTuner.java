@@ -12,14 +12,12 @@ import java.util.ArrayList;
 import java.util.Set;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.modpacks.Constants;
-import sh.siava.pixelxpert.modpacks.XPLauncher;
+import sh.siava.pixelxpert.annotations.SystemUIMainProcessModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
+@SystemUIMainProcessModPack
 public class StatusIconTuner extends XposedModPack {
-	private static final String TARGET_PACKAGE = Constants.SYSTEM_UI_PACKAGE;
-
 	private static Set<String> SBIgnoredIcons = new ArraySet<>();
 	private static Set<String> KGIgnoredIcons = new ArraySet<>();
 	private static Set<String> QSIgnoredIcons = new ArraySet<>();
@@ -99,10 +97,5 @@ public class StatusIconTuner extends XposedModPack {
 		}
 		catch (Throwable ignored){
 		}
-	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName) && !XPLauncher.isChildProcess;
 	}
 }

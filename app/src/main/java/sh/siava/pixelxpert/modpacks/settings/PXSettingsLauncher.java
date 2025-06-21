@@ -17,16 +17,14 @@ import java.lang.reflect.Proxy;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.R;
-import sh.siava.pixelxpert.modpacks.Constants;
 import sh.siava.pixelxpert.modpacks.ResourceManager;
-import sh.siava.pixelxpert.modpacks.XPLauncher;
+import sh.siava.pixelxpert.annotations.SettingsModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
+@SettingsModPack
 public class PXSettingsLauncher extends XposedModPack {
-	private static final String TARGET_PACKAGE = Constants.SETTINGS_PACKAGE;
-
 	private static boolean PXInSettings = true;
 
 	private boolean mNewSettings = true;
@@ -40,11 +38,6 @@ public class PXSettingsLauncher extends XposedModPack {
 	@Override
 	public void onPreferenceUpdated(String... Key) {
 		PXInSettings = Xprefs.getBoolean("PXInSettings", true);
-	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName) && !XPLauncher.isChildProcess;
 	}
 
 	@Override

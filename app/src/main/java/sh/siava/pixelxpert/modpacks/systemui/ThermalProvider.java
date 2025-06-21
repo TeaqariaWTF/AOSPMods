@@ -10,15 +10,13 @@ import android.content.Context;
 import java.util.Arrays;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.modpacks.Constants;
-import sh.siava.pixelxpert.modpacks.XPLauncher;
+import sh.siava.pixelxpert.annotations.SystemUIMainProcessModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings({"RedundantThrows", "unused"})
+@SystemUIMainProcessModPack
 public class ThermalProvider extends XposedModPack {
-	private static final String TARGET_PACKAGE = Constants.SYSTEM_UI_PACKAGE;
-
 	public static final int CPU = 0;
 	public static final int GPU = 1;
 	public static final int BATTERY = 2;
@@ -36,11 +34,6 @@ public class ThermalProvider extends XposedModPack {
 	public void onPreferenceUpdated(String... Key)
 	{
 		TemperatureUnitF = Xprefs.getBoolean("TemperatureUnitF", false);
-	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName) && !XPLauncher.isChildProcess;
 	}
 
 	@Override

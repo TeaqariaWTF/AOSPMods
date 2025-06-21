@@ -7,15 +7,14 @@ import android.content.Context;
 import android.content.res.Resources;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.modpacks.Constants;
+import sh.siava.pixelxpert.annotations.DialerModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.SystemUtils;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
+@DialerModPack
 public class RecordingMessage extends XposedModPack {
-	public static final String TARGET_PACKAGE = Constants.DIALER_PACKAGE;
-
 	private static boolean removeRecodingMessage = false;
 
 	public RecordingMessage(Context context) {
@@ -30,11 +29,6 @@ public class RecordingMessage extends XposedModPack {
 			SystemUtils.killSelf();
 		}
 		removeRecodingMessage = Xprefs.getBoolean("DialerRemoveRecordMessage", false);
-	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName);
 	}
 
 	@SuppressLint("DiscouragedApi")

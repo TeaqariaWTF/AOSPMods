@@ -65,7 +65,7 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.modpacks.Constants;
-import sh.siava.pixelxpert.modpacks.XPLauncher;
+import sh.siava.pixelxpert.annotations.SystemUIMainProcessModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.NetworkTraffic;
 import sh.siava.pixelxpert.modpacks.utils.NotificationIconContainerOverride;
@@ -80,8 +80,8 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ResourceTools;
 /**
  * @noinspection RedundantThrows
  */
+@SystemUIMainProcessModPack
 public class StatusbarMods extends XposedModPack {
-	private static final String TARGET_PACKAGE = Constants.SYSTEM_UI_PACKAGE;
 	//region Clock
 	public static final int POSITION_LEFT = 0;
 	public static final int POSITION_CENTER = 1;
@@ -210,8 +210,6 @@ public class StatusbarMods extends XposedModPack {
 	@SuppressLint("DiscouragedApi")
 	public StatusbarMods(Context context) {
 		super(context);
-		if (!isTargeting(context.getPackageName())) return;
-
 		rightClockPadding = mContext.getResources().getDimensionPixelSize(dimenIdOf("status_bar_clock_starting_padding"));
 		leftClockPadding = mContext.getResources().getDimensionPixelSize(dimenIdOf("status_bar_left_clock_end_padding"));
 	}
@@ -225,11 +223,6 @@ public class StatusbarMods extends XposedModPack {
 			mAppSwitchStatusbarIconHolder = getStatusbarIconHolderFor(appSwitchStatusbarIcon);
 		} catch (Throwable ignored) {
 		}
-	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName) && !XPLauncher.isChildProcess;
 	}
 
 	public void onPreferenceUpdated(String... Key) {
@@ -462,8 +455,6 @@ public class StatusbarMods extends XposedModPack {
 	@SuppressLint("DiscouragedApi")
 	@Override
 	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
-		if (!lpParam.packageName.equals(TARGET_PACKAGE)) return;
-
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(Constants.ACTION_PROFILE_SWITCH_AVAILABLE);
 		mContext.registerReceiver(mAppProfileSwitchReceiver, filter, Context.RECEIVER_EXPORTED);

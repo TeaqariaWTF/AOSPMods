@@ -21,16 +21,15 @@ import java.lang.reflect.Method;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.R;
-import sh.siava.pixelxpert.modpacks.Constants;
+import sh.siava.pixelxpert.annotations.LauncherModPack;
 import sh.siava.pixelxpert.modpacks.ResourceManager;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.SystemUtils;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
+@LauncherModPack
 public class ClearAllButtonMod extends XposedModPack {
-	private static final String TARGET_PACKAGE = Constants.LAUNCHER_PACKAGE;
-
 	private Object recentView;
 	private static boolean RecentClearAllReposition = false;
 	private ImageView clearAllIcon;
@@ -47,11 +46,6 @@ public class ClearAllButtonMod extends XposedModPack {
 		}
 
 		RecentClearAllReposition = Xprefs.getBoolean("RecentClearAllReposition", false);
-	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE.equals(packageName);
 	}
 
 	@Override

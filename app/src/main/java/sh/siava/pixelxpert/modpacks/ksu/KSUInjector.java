@@ -21,6 +21,7 @@ import java.util.List;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.modpacks.Constants;
+import sh.siava.pixelxpert.annotations.KSUModPack;
 import sh.siava.pixelxpert.modpacks.XposedModPack;
 import sh.siava.pixelxpert.modpacks.utils.SystemUtils;
 import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
@@ -28,10 +29,8 @@ import sh.siava.pixelxpert.modpacks.utils.toolkit.ReflectedClass;
 /**
  * @noinspection RedundantThrows
  */
+@KSUModPack
 public class KSUInjector extends XposedModPack {
-	private static final String TARGET_PACKAGE1 = Constants.KSU_PACKAGE;
-	private static final String TARGET_PACKAGE2 = Constants.KSU_NEXT_PACKAGE;
-	private static final String TARGET_PACKAGE = Constants.KSU_PACKAGE;
 	private ReflectedClass NativesClass;
 	private ReflectedClass ProfileClass;
 
@@ -107,10 +106,5 @@ public class KSUInjector extends XposedModPack {
 							.getLaunchIntentForPackage(BuildConfig.APPLICATION_ID)
 							.putExtra("FromKSU", 1));
 		}
-	}
-
-	@Override
-	public boolean isTargeting(String packageName) {
-		return TARGET_PACKAGE1.equals(packageName) || TARGET_PACKAGE2.equals(packageName);
 	}
 }
