@@ -1,3 +1,6 @@
+**canary-459**  
+- A16QPR1: fixed the broken custom navigation gestures  
+  
 **canary-458**  
 - slider tiles: bugfix  
   
