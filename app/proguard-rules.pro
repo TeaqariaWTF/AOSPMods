@@ -16,8 +16,8 @@
 # Xposed
 -keep class de.robv.android.xposed.**
 -keep class sh.siava.pixelxpert.XPEntry
--keepnames class sh.siava.pixelxpert.modpacks.**
--keep class sh.siava.pixelxpert.modpacks.** {
+-keepnames class sh.siava.pixelxpert.xposed.**
+-keep class sh.siava.pixelxpert.xposed.** {
     <init>(android.content.Context);
 }
 

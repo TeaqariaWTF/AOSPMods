@@ -1,26 +1,6 @@
 <resources>
 
-	<array name="lockScreenShortcut_names">
-		<item>@string/overlay_none_title</item>
-		<item>@string/camera_shortcut</item>
-		<item>@string/assistant_shortcut</item>
-		<item>@string/torch_shortcut</item>
-		<item>@string/tv_remote_shortcut</item>
-		<item>@string/dnd_shortcut</item>
-		<item>@string/qr_scanner_shortcut</item>
-	</array>
-
-	<array name="lockScreenShortcut_values">
-		<item>""</item>
-		<item>camera</item>
-		<item>assistant</item>
-		<item>torch</item>
-		<item>tvremote</item>
-		<item>zen</item>
-		<item>qrscanner</item>
-	</array>
-
-	<string-array name="qs_pulldown_side_names">
+    <string-array name="qs_pulldown_side_names">
 		<item>@string/pull_down_left</item>
 		<item>@string/pull_down_right</item>
 	</string-array>
@@ -110,23 +90,7 @@
 		<item>8</item>
 	</string-array>
 
-	<string-array name="battery_style_names">
-		<item>@string/word_default</item>
-		<item>@string/battery_circle</item>
-		<item>@string/battery_dashed_circle</item>
-		<item>@string/battery_circle_filled</item>
-		<item>@string/battery_hidden</item>
-	</string-array>
-
-	<string-array name="battery_style_codes">
-		<item>0</item>
-		<item>1</item>
-		<item>2</item>
-		<item>3</item>
-		<item>99</item>
-	</string-array>
-
-	<string-array name="sbc_position_names">
+    <string-array name="sbc_position_names">
 		<item>@string/clock_default</item>
 		<item>@string/clock_center</item>
 		<item>@string/clock_right</item>

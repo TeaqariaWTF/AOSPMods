@@ -57,7 +57,7 @@ import br.tiagohm.markdownview.css.styles.Github;
 import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.databinding.UpdateFragmentBinding;
-import sh.siava.pixelxpert.modpacks.utils.ModuleFolderOperations;
+import sh.siava.pixelxpert.xposed.utils.ModuleFolderOperations;
 import sh.siava.pixelxpert.ui.activities.SettingsActivity;
 import sh.siava.pixelxpert.utils.AppUtils;
 import sh.siava.pixelxpert.utils.DisplayUtils;

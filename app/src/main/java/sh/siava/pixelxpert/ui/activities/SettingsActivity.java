@@ -44,7 +44,7 @@ import java.util.Objects;
 import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.databinding.SettingsActivityBinding;
-import sh.siava.pixelxpert.modpacks.android.TargetOptimizer;
+import sh.siava.pixelxpert.xposed.modpacks.android.TargetOptimizer;
 import sh.siava.pixelxpert.service.tileServices.SleepOnSurfaceTileService;
 import sh.siava.pixelxpert.ui.fragments.HeaderFragment;
 import sh.siava.pixelxpert.ui.fragments.UpdateFragment;

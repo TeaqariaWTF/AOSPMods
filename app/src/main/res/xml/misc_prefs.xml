@@ -106,6 +106,16 @@
 			app:tickInterval="5"
 			app:valueCount="1" />
 
+		<sh.siava.pixelxpert.ui.preferences.MaterialRangeSliderPreference
+			android:key="FastChargingWattage"
+			android:title="@string/fast_charging_threshold_title"
+			app:defaultValue="5"
+			app:iconSpaceReserved="false"
+			app:maxVal="50"
+			app:minVal="5"
+			app:tickInterval="5"
+			app:valueCount="1" />
+
 		<sh.siava.pixelxpert.ui.preferences.MaterialSwitchPreference
 			android:defaultValue="false"
 			android:key="sysui_tuner"
