@@ -4,6 +4,7 @@
     <string name="app_themed_icon_title">ايقونة الموضوع البديل</string>
     <string name="xposed_desc">تخصيصات لأجهزة جوجل بيكسيل</string>
     <string name="volume_tile_title">مستوى صوت الوسائط</string>
+    <string name="sliding_tile_subtitle">Tap to adjust</string>
     <string name="app_switch_tile_title">تبديل ملفك الشخصي </string>
     <string name="hide_default">إخفاء (افتراضي)</string>
     <string name="percent_of_default_size">٪ من الحجم الافتراضي</string>

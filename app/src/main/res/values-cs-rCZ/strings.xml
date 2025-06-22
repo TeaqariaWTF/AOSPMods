@@ -4,6 +4,7 @@
     <string name="app_themed_icon_title">Ikona s alternativní tématikou</string>
     <string name="xposed_desc">Přizpůsobení zařízení Google Pixel</string>
     <string name="volume_tile_title">Hlasitost médií</string>
+    <string name="sliding_tile_subtitle">Tap to adjust</string>
     <string name="app_switch_tile_title">Přepnout profil aplikace</string>
     <string name="hide_default">Skrýt (výchozí)</string>
     <string name="percent_of_default_size">% výchozí velikosti</string>

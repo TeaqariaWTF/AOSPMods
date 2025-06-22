@@ -4,6 +4,7 @@
     <string name="app_themed_icon_title">其他主题图标</string>
     <string name="xposed_desc">自定义 Google Pixel 设备</string>
     <string name="volume_tile_title">媒体音量</string>
+    <string name="sliding_tile_subtitle">点击调整</string>
     <string name="app_switch_tile_title">Switch App Profile</string>
     <string name="hide_default">隐藏 (默认)</string>
     <string name="percent_of_default_size">% 默认</string>
@@ -585,8 +586,8 @@
     <string name="soft_reboot_title">软重启</string>
     <string name="restart_systemui_title">重启系统界面</string>
     <!--Optimization estart request-->
-    <string name="optimization_restart_needed_title">Restart Recommended</string>
-    <string name="optimization_restart_needed_message">A reboot is recommended to increase system integration</string>
-    <string name="restart_postpone">Later</string>
-    <string name="restart_now">Reboot now</string>
+    <string name="optimization_restart_needed_title">建议重启</string>
+    <string name="optimization_restart_needed_message">建议重启以提高系统集成度</string>
+    <string name="restart_postpone">稍后重启</string>
+    <string name="restart_now">立即重启</string>
 </resources>
