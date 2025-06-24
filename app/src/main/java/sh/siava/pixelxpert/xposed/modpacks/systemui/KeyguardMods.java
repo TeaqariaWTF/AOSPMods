@@ -41,7 +41,7 @@ import java.util.regex.Pattern;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.xposed.ResourceManager;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIMainProcessModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.utils.StringFormatter;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
@@ -49,7 +49,7 @@ import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectionTools;
 
 @SuppressWarnings("RedundantThrows")
-@SystemUIMainProcessModPack
+@SystemUIModPack
 public class KeyguardMods extends XposedModPack {
 	//region keyguard charging data
 	public static final String EXTRA_MAX_CHARGING_CURRENT = "max_charging_current";

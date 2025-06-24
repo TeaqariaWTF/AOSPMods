@@ -15,14 +15,14 @@ import android.content.Context;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.xposed.ResourceManager;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIMainProcessModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.utils.AlertSlider;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedMethod;
 
-@SystemUIMainProcessModPack
+@SystemUIModPack
 public class FlashlightTile extends XposedModPack {
 	private boolean leveledFlashTile = false;
 	private boolean AnimateFlashlight = false;

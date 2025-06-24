@@ -9,12 +9,12 @@ import android.media.projection.MediaProjection;
 import java.lang.reflect.Method;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIMainProcessModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
-@SystemUIMainProcessModPack
+@SystemUIModPack
 public class ScreenRecord extends XposedModPack {
 	private static boolean InsecureScreenRecord = false;
 

@@ -65,7 +65,7 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.xposed.Constants;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIMainProcessModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.utils.NetworkTraffic;
 import sh.siava.pixelxpert.xposed.utils.NotificationIconContainerOverride;
@@ -80,7 +80,7 @@ import sh.siava.pixelxpert.xposed.utils.toolkit.ResourceTools;
 /**
  * @noinspection RedundantThrows
  */
-@SystemUIMainProcessModPack
+@SystemUIModPack
 public class StatusbarMods extends XposedModPack {
 	//region Clock
 	public static final int POSITION_LEFT = 0;

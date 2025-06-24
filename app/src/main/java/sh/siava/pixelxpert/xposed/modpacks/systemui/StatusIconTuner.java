@@ -12,11 +12,11 @@ import java.util.ArrayList;
 import java.util.Set;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIMainProcessModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
 
-@SystemUIMainProcessModPack
+@SystemUIModPack
 public class StatusIconTuner extends XposedModPack {
 	private static Set<String> SBIgnoredIcons = new ArraySet<>();
 	private static Set<String> KGIgnoredIcons = new ArraySet<>();

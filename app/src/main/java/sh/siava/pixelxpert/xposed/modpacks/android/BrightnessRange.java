@@ -9,12 +9,12 @@ import java.util.List;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.xposed.annotations.FrameworkModPack;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIMainProcessModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
-@SystemUIMainProcessModPack
+@SystemUIModPack
 @FrameworkModPack
 public class BrightnessRange extends XposedModPack {
 	private static float minimumBrightnessLevel = 0f;

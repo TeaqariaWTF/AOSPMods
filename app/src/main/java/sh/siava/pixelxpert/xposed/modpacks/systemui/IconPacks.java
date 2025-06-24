@@ -17,7 +17,7 @@ import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.xposed.annotations.SettingsModPack;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIMainProcessModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.XPLauncher;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
@@ -27,7 +27,7 @@ import sh.siava.pixelxpert.utils.ThemePackMapping.Mapping;
 import sh.siava.pixelxpert.utils.ThemePackMapping.OverlayID;
 import sh.siava.pixelxpert.utils.ThemePackMapping.OverlayIDName;
 
-@SystemUIMainProcessModPack
+@SystemUIModPack
 @SettingsModPack
 public class IconPacks extends XposedModPack {
 	static IDMapping drawableMapping = new IDMapping();

@@ -13,13 +13,13 @@ import java.util.Collections;
 import java.util.List;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIMainProcessModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass.ReflectionConsumer;
 
 @SuppressWarnings("RedundantThrows")
-@SystemUIMainProcessModPack
+@SystemUIModPack
 public class KeyGuardPinScrambler extends XposedModPack {
 	private static boolean shufflePinEnabled = false;
 

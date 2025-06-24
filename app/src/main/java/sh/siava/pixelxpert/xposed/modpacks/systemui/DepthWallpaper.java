@@ -36,14 +36,14 @@ import java.util.Arrays;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.xposed.Constants;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIMainProcessModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.XPLauncher;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectionTools;
 
 /** @noinspection RedundantThrows, SameParameterValue */
-@SystemUIMainProcessModPack
+@SystemUIModPack
 public class DepthWallpaper extends XposedModPack {
 	private static boolean lockScreenSubjectCacheValid = false;
 	private Object mScrimController;

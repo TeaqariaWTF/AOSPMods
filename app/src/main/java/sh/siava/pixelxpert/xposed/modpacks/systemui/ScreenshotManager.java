@@ -20,11 +20,13 @@ import java.util.concurrent.TimeoutException;
 import java.util.regex.Pattern;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIChildProcessModPack;
+import sh.siava.pixelxpert.xposed.annotations.ChildProcessModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
 
-@SystemUIChildProcessModPack(processNameContains = "screenshot")
+@SystemUIModPack
+@ChildProcessModPack(processNameContains = "screenshot")
 @SuppressWarnings("RedundantThrows")
 public class ScreenshotManager extends XposedModPack {
 	private static boolean disableScreenshotSound = false;
@@ -44,7 +46,6 @@ public class ScreenshotManager extends XposedModPack {
 	@Override
 	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		ReflectedClass ScreenshotControllerClass = ReflectedClass.ofIfPossible("com.android.systemui.screenshot.ScreenshotController");
-
 		ReflectedClass CaptureArgsClass = ReflectedClass.ofIfPossible("android.window.ScreenCapture.CaptureArgs"); //A14
 		if(CaptureArgsClass.getClazz() == null)
 		{

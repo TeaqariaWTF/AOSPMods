@@ -6,12 +6,12 @@ import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
 import android.content.Context;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIMainProcessModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
-@SystemUIMainProcessModPack
+@SystemUIModPack
 public class FingerprintWhileDozing extends XposedModPack {
 	private static boolean fingerprintWhileDozing = true;
 

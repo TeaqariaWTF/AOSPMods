@@ -7,11 +7,11 @@ import android.content.IntentFilter;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.xposed.Constants;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIMainProcessModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.utils.AppUtils;
 
-@SystemUIMainProcessModPack
+@SystemUIModPack
 public class KSURootReceiver extends XposedModPack {
 	public KSURootReceiver(Context context) {
 		super(context);

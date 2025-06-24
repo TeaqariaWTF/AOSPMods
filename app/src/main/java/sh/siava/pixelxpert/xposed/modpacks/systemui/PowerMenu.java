@@ -24,12 +24,12 @@ import java.util.ArrayList;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.xposed.ResourceManager;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIMainProcessModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
 
-@SystemUIMainProcessModPack
+@SystemUIModPack
 public class PowerMenu extends XposedModPack {
 	private ReflectedClass mLongPressActionInterface = null;
 	private static boolean advancedPowerMenu = false;

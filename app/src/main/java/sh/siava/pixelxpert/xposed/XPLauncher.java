@@ -19,7 +19,6 @@ import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Enumeration;
-import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Objects;
 import java.util.Queue;
@@ -32,14 +31,15 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.IRootProviderProxy;
 import sh.siava.pixelxpert.R;
+import sh.siava.pixelxpert.xposed.annotations.ChildProcessModPack;
 import sh.siava.pixelxpert.xposed.annotations.CommonModPack;
 import sh.siava.pixelxpert.xposed.annotations.DialerModPack;
 import sh.siava.pixelxpert.xposed.annotations.FrameworkModPack;
 import sh.siava.pixelxpert.xposed.annotations.KSUModPack;
 import sh.siava.pixelxpert.xposed.annotations.LauncherModPack;
+import sh.siava.pixelxpert.xposed.annotations.MainProcessModPack;
 import sh.siava.pixelxpert.xposed.annotations.SettingsModPack;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIChildProcessModPack;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIMainProcessModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.annotations.TelecomServerModPack;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
@@ -141,10 +141,10 @@ public class XPLauncher implements ServiceConnection {
 		new SystemUtils(mContext);
 		XPrefs.setPackagePrefs(lpParam.packageName);
 
-		loadModpacks(lpParam);
+		loadModPacks(lpParam);
 	}
 
-	private void loadModpacks(XC_LoadPackage.LoadPackageParam lpParam) {
+	private void loadModPacks(XC_LoadPackage.LoadPackageParam lpParam) {
 		if (Arrays.asList(ResourceManager.modRes.getStringArray(R.array.root_requirement)).contains(lpParam.packageName)) {
 			forceConnectRootService();
 		}
@@ -165,12 +165,14 @@ public class XPLauncher implements ServiceConnection {
 						//noinspection DataFlowIssue
 						Class<?> thisClass = moduleClassloader.loadClass(className);
 
-						if (thisClass.isAnnotationPresent(CommonModPack.class) || thisClass.isAnnotationPresent(annotation)) {
-							//noinspection ControlFlowStatementWithoutBraces,DataFlowIssue
-							if(annotation.equals(SystemUIChildProcessModPack.class)
-									&& !lpParam.processName.contains(thisClass.getAnnotation(SystemUIChildProcessModPack.class).processNameContains()))
-								continue;
+						if (!isEligibleModPack(
+								lpParam,
+								thisClass.isAnnotationPresent(ChildProcessModPack.class),
+								thisClass))
+							continue;
 
+						//noinspection DataFlowIssue
+						if (thisClass.isAnnotationPresent(CommonModPack.class) || thisClass.isAnnotationPresent(annotation)) {
 							//noinspection unchecked
 							loadModPack((Class<? extends XposedModPack>) thisClass, lpParam);
 						}
@@ -182,21 +184,29 @@ public class XPLauncher implements ServiceConnection {
 		catch (Throwable ignored){}
 	}
 
-	private Class<? extends Annotation> getModMapping(XC_LoadPackage.LoadPackageParam lpParam) {
-		HashMap<String, Class<? extends Annotation>> modMapping = new HashMap<>();
-		modMapping.put(Constants.LAUNCHER_PACKAGE, LauncherModPack.class);
-		modMapping.put(Constants.SETTINGS_PACKAGE, SettingsModPack.class);
-		modMapping.put(Constants.DIALER_PACKAGE, DialerModPack.class);
-		modMapping.put(Constants.TELECOM_SERVER_PACKAGE, TelecomServerModPack.class);
-		modMapping.put(Constants.SYSTEM_FRAMEWORK_PACKAGE, FrameworkModPack.class);
-		modMapping.put(Constants.KSU_PACKAGE, KSUModPack.class);
-		modMapping.put(Constants.KSU_NEXT_PACKAGE, KSUModPack.class);
+	private boolean isEligibleModPack(XC_LoadPackage.LoadPackageParam lpParam, boolean isChildProcessModPack, Class<?> thisClass) {
+		if(mIsChildProcess)
+		{
+			return isChildProcessModPack && lpParam.processName.contains(thisClass.getAnnotation(ChildProcessModPack.class).processNameContains());
+		}
+		else
+		{
+			return !isChildProcessModPack || thisClass.isAnnotationPresent(MainProcessModPack.class);
+		}
+	}
 
-		return lpParam.packageName.equals(Constants.SYSTEM_UI_PACKAGE)
-				? mIsChildProcess
-					? SystemUIChildProcessModPack.class
-					: SystemUIMainProcessModPack.class
-				:modMapping.get(lpParam.packageName);
+	private Class<? extends Annotation> getModMapping(XC_LoadPackage.LoadPackageParam lpParam) {
+		return switch (lpParam.packageName) {
+			case Constants.SYSTEM_UI_PACKAGE -> SystemUIModPack.class;
+			case Constants.LAUNCHER_PACKAGE -> LauncherModPack.class;
+			case Constants.SETTINGS_PACKAGE -> SettingsModPack.class;
+			case Constants.DIALER_PACKAGE -> DialerModPack.class;
+			case Constants.SYSTEM_FRAMEWORK_PACKAGE -> FrameworkModPack.class;
+			case Constants.TELECOM_SERVER_PACKAGE -> TelecomServerModPack.class;
+			case Constants.KSU_PACKAGE,
+				 Constants.KSU_NEXT_PACKAGE -> KSUModPack.class;
+			default -> null;
+		};
 	}
 
 	private void loadModPack(Class<? extends XposedModPack> thisClass, XC_LoadPackage.LoadPackageParam lpParam) {

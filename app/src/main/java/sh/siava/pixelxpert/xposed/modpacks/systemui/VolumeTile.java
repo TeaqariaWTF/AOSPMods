@@ -12,7 +12,7 @@ import android.content.Intent;
 import android.service.quicksettings.Tile;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIMainProcessModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.utils.AlertSlider;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
@@ -20,7 +20,7 @@ import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
 import sh.siava.pixelxpert.service.tileServices.VolumeTileService;
 
 /** @noinspection DataFlowIssue*/
-@SystemUIMainProcessModPack
+@SystemUIModPack
 public class VolumeTile extends XposedModPack {
 	private Object mTile;
 	private boolean mNextTileIsVolume;

@@ -16,12 +16,12 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIMainProcessModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
-@SystemUIMainProcessModPack
+@SystemUIModPack
 public class UDFPSManager extends XposedModPack {
 	private static final int TRANSPARENT = 0;
 	private static final int OPAQUE = 255;

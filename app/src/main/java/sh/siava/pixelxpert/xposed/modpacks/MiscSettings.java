@@ -10,14 +10,14 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIMainProcessModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.XPLauncher;
 import sh.siava.pixelxpert.xposed.XPrefs;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.utils.ModuleFolderOperations;
 import sh.siava.pixelxpert.xposed.utils.StringFormatter;
 
-@SystemUIMainProcessModPack
+@SystemUIModPack
 public class MiscSettings extends XposedModPack {
 
 	public MiscSettings(Context context) {

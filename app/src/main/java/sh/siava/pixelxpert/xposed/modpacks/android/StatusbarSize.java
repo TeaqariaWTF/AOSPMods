@@ -12,7 +12,7 @@ import android.view.DisplayCutout;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.xposed.annotations.FrameworkModPack;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIMainProcessModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
 
@@ -20,7 +20,7 @@ import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
 //We are playing in system framework. should be extra cautious..... many try-catchs, still not enough!
 @SuppressWarnings("RedundantThrows")
 @FrameworkModPack
-@SystemUIMainProcessModPack
+@SystemUIModPack
 public class StatusbarSize extends XposedModPack {
 	private static final int BOUNDS_POSITION_TOP = 1;
 
