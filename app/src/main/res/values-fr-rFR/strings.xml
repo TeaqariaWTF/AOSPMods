@@ -4,6 +4,7 @@
     <string name="app_themed_icon_title">Icône avec thème alternatif</string>
     <string name="xposed_desc">Personnalisations pour les appareils Google Pixel</string>
     <string name="volume_tile_title">Volume des médias</string>
+    <string name="sliding_tile_subtitle">Appuyer pour ajuster</string>
     <string name="app_switch_tile_title">Changer de profil d\'application</string>
     <string name="hide_default">Cacher (par défaut)</string>
     <string name="percent_of_default_size">% de la taille par défaut</string>
@@ -256,11 +257,11 @@
     <string name="qs_footer_text_value">Entrer le texte personnalisé</string>
     <string name="qs_footer_text_summary">Laisser vide pour retirer complètement</string>
     <string name="qs_footer_text_desc">Éteindre et rallumer l’écran pour appliquer</string>
-    <string name="qs_leveled_flashlight_title">Flashlight-leveled tile</string>
+    <string name="qs_leveled_flashlight_title">Tuile pour lampe torche</string>
     <string name="qs_flashlight_level_global_title">Change le niveau pour tout l’appareil</string>
     <string name="qs_tile_vertical_title">Bouger les icônes en haut des blocs</string>
     <string name="qs_tile_qty_title">Préférences du nombre de blocs</string>
-    <string name="qs_leveled_flashlight_summary">Longpress on tile to show the slider.\nRequires supported hardware</string>
+    <string name="qs_leveled_flashlight_summary">Appui long sur la tuile pour afficher le curseur.\nNécessite un matériel compatible</string>
     <string name="light_qs_title">Appliquer la fenêtre de configuration rapide claire quand le thème clair est activé</string>
     <string name="qs_pulldown_size">Largeur pour l’accès rapide</string>
     <string name="qs_pulldown_switch_title">Accès rapide depuis la barre d’état</string>
@@ -273,7 +274,7 @@
     <string name="qs_tile_qty_landscape">En mode paysage</string>
     <string name="qs_mod_category_misc_title">Divers</string>
     <string name="charging_info_on_qs">Afficher les informations de charge sur le panneau des réglages rapides</string>
-    <string name="qqs_rows_number">Number of quick QS rows</string>
+    <string name="qqs_rows_number">Nombre de lignes pour réglages rapides</string>
     <string name="qs_rows_number">Nombre de lignes</string>
     <string name="qs_cols_number">Nombre de colonnes</string>
     <string name="qqs_tiles_number">Nombre maximum de blocs (maximum deux lignes)</string>
@@ -304,9 +305,9 @@
     <string name="three_button_center_title">Bouton central</string>
     <string name="three_button_right_title">Bouton droit</string>
     <string name="hide_navbar_title">Cacher la barre de navigation</string>
-    <string name="taskbar_as_recents_title">Convertir la barre des tâches en barre de récents PixelXpert</string>
+    <string name="taskbar_as_recents_title">Convertir la barre des tâches en récente barre PixelXpert</string>
     <string name="taskbar_hide_allapps_title">Masquer le bouton \"toutes les applications\"</string>
-    <string name="taskbar_enable_google_recents">Activer les applications récentes Android dans la barre des tâches</string>
+    <string name="taskbar_enable_google_recents">Activer les applications récentes Android dans la barre de tâches</string>
     <string name="taskbar_height_title">Hauteur de la TaskBar</string>
     <string name="taskbar_radius_title">Courbure des angles de la TaskBar</string>
     <string name="colorpill">Trait coloré avec la couleur secondaire</string>
@@ -318,7 +319,7 @@
     <string name="taskbar_transient_title">Masquage automatique</string>
     <string name="taskbar_on_launcher_title">Afficher sur la page d\'accueil</string>
     <string name="remap_physical_buttons_title">Redéfinir les boutons physiques</string>
-    <string name="taskbar_on_ime_title">Show with keyboard open</string>
+    <string name="taskbar_on_ime_title">Afficher avec le clavier</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">Contourner la vérification des signatures des paquets</string>
     <string name="pm_allow_downgrade_title">Autoriser le rétrogradage des applications</string>
@@ -585,8 +586,8 @@
     <string name="soft_reboot_title">Redémarrage logiciel</string>
     <string name="restart_systemui_title">Redémarrer l’interface système</string>
     <!--Optimization estart request-->
-    <string name="optimization_restart_needed_title">Restart Recommended</string>
-    <string name="optimization_restart_needed_message">A reboot is recommended to increase system integration</string>
-    <string name="restart_postpone">Later</string>
-    <string name="restart_now">Reboot now</string>
+    <string name="optimization_restart_needed_title">Redémarrage recommandé</string>
+    <string name="optimization_restart_needed_message">Un redémarrage est recommandé pour améliorer l\'intégration du système</string>
+    <string name="restart_postpone">Plus tard</string>
+    <string name="restart_now">Redémarrer maintenant</string>
 </resources>

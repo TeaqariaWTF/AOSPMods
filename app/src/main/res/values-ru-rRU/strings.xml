@@ -4,6 +4,7 @@
     <string name="app_themed_icon_title">Включение альтернативной иконки </string>
     <string name="xposed_desc">Настройки для устройств Google Pixel</string>
     <string name="volume_tile_title">Громкость мультимедиа </string>
+    <string name="sliding_tile_subtitle">Нажмите для настройки</string>
     <string name="app_switch_tile_title">Сменить профиль приложения</string>
     <string name="hide_default">Скрыть (по умолчанию)</string>
     <string name="percent_of_default_size">% от стандартного размера</string>
@@ -318,7 +319,7 @@
     <string name="taskbar_transient_title">Автоматическое скрытие</string>
     <string name="taskbar_on_launcher_title">Показывать на домашнем экране</string>
     <string name="remap_physical_buttons_title">Переназначение физических кнопок</string>
-    <string name="taskbar_on_ime_title">Show with keyboard open</string>
+    <string name="taskbar_on_ime_title">Показать с открытой клавиатурой</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">Обход проверки подписи пакета</string>
     <string name="pm_allow_downgrade_title">Разрешить понижение версии приложения</string>
@@ -585,8 +586,8 @@
     <string name="soft_reboot_title">Мягкая перезагрузка</string>
     <string name="restart_systemui_title">Перезагрузка SystemUI</string>
     <!--Optimization estart request-->
-    <string name="optimization_restart_needed_title">Restart Recommended</string>
-    <string name="optimization_restart_needed_message">A reboot is recommended to increase system integration</string>
-    <string name="restart_postpone">Later</string>
-    <string name="restart_now">Reboot now</string>
+    <string name="optimization_restart_needed_title">Рекомендуется перезапуск системы</string>
+    <string name="optimization_restart_needed_message">Рекомендуется перезагрузка для увеличения системной интеграции</string>
+    <string name="restart_postpone">Позже</string>
+    <string name="restart_now">Перезагрузить сейчас</string>
 </resources>
