@@ -15,10 +15,8 @@ import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.os.RemoteException;
 
-import java.lang.annotation.Annotation;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Enumeration;
 import java.util.LinkedList;
 import java.util.Objects;
 import java.util.Queue;
@@ -26,21 +24,10 @@ import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
-import dalvik.system.DexFile;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.IRootProviderProxy;
 import sh.siava.pixelxpert.R;
-import sh.siava.pixelxpert.xposed.annotations.ChildProcessModPack;
-import sh.siava.pixelxpert.xposed.annotations.CommonModPack;
-import sh.siava.pixelxpert.xposed.annotations.DialerModPack;
-import sh.siava.pixelxpert.xposed.annotations.FrameworkModPack;
-import sh.siava.pixelxpert.xposed.annotations.KSUModPack;
-import sh.siava.pixelxpert.xposed.annotations.LauncherModPack;
-import sh.siava.pixelxpert.xposed.annotations.MainProcessModPack;
-import sh.siava.pixelxpert.xposed.annotations.SettingsModPack;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
-import sh.siava.pixelxpert.xposed.annotations.TelecomServerModPack;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
 import sh.siava.pixelxpert.service.RootProviderProxy;
@@ -149,64 +136,16 @@ public class XPLauncher implements ServiceConnection {
 			forceConnectRootService();
 		}
 
-		Class<? extends Annotation> annotation = getModMapping(lpParam);
-
-		try {
-			//noinspection deprecation
-			DexFile moduleDex = new DexFile(ResourceManager.getModulePath());
-
-			ClassLoader moduleClassloader = this.getClass().getClassLoader();
-			//noinspection deprecation
-			Enumeration<String> moduleClasses = moduleDex.entries();
-			while (moduleClasses.hasMoreElements()) {
-				String className = moduleClasses.nextElement();
-				if (className.startsWith(APPLICATION_ID + ".xposed.modpacks")) {
-					try {
-						//noinspection DataFlowIssue
-						Class<?> thisClass = moduleClassloader.loadClass(className);
-
-						if (!isEligibleModPack(
-								lpParam,
-								thisClass.isAnnotationPresent(ChildProcessModPack.class),
-								thisClass))
-							continue;
-
-						//noinspection DataFlowIssue
-						if (thisClass.isAnnotationPresent(CommonModPack.class) || thisClass.isAnnotationPresent(annotation)) {
-							//noinspection unchecked
-							loadModPack((Class<? extends XposedModPack>) thisClass, lpParam);
-						}
-					} catch (Throwable ignored) {
+		ModPacks.getModPacks()
+				.forEach(modPackData -> {
+					if((modPackData.targetPackage.equals(lpParam.packageName) || modPackData.targetPackage.isEmpty() /*common mod packs*/)
+					&& ((mIsChildProcess && modPackData.targetsChildProcess && lpParam.processName.contains(modPackData.childProcessName))
+						|| (!mIsChildProcess && modPackData.targetsMainProcess)))
+					{
+						//noinspection unchecked
+						loadModPack((Class<? extends XposedModPack>) modPackData.clazz, lpParam);
 					}
-				}
-			}
-		}
-		catch (Throwable ignored){}
-	}
-
-	private boolean isEligibleModPack(XC_LoadPackage.LoadPackageParam lpParam, boolean isChildProcessModPack, Class<?> thisClass) {
-		if(mIsChildProcess)
-		{
-			return isChildProcessModPack && lpParam.processName.contains(thisClass.getAnnotation(ChildProcessModPack.class).processNameContains());
-		}
-		else
-		{
-			return !isChildProcessModPack || thisClass.isAnnotationPresent(MainProcessModPack.class);
-		}
-	}
-
-	private Class<? extends Annotation> getModMapping(XC_LoadPackage.LoadPackageParam lpParam) {
-		return switch (lpParam.packageName) {
-			case Constants.SYSTEM_UI_PACKAGE -> SystemUIModPack.class;
-			case Constants.LAUNCHER_PACKAGE -> LauncherModPack.class;
-			case Constants.SETTINGS_PACKAGE -> SettingsModPack.class;
-			case Constants.DIALER_PACKAGE -> DialerModPack.class;
-			case Constants.SYSTEM_FRAMEWORK_PACKAGE -> FrameworkModPack.class;
-			case Constants.TELECOM_SERVER_PACKAGE -> TelecomServerModPack.class;
-			case Constants.KSU_PACKAGE,
-				 Constants.KSU_NEXT_PACKAGE -> KSUModPack.class;
-			default -> null;
-		};
+		});
 	}
 
 	private void loadModPack(Class<? extends XposedModPack> thisClass, XC_LoadPackage.LoadPackageParam lpParam) {

@@ -90,6 +90,8 @@ android {
 
 dependencies {
 
+	implementation(project(":annotations"))
+	annotationProcessor(project(":annotationProcessor"))
 	coreLibraryDesugaring(libs.desugar.jdk.libs)
 
 	compileOnly(files("lib/api-82.jar"))

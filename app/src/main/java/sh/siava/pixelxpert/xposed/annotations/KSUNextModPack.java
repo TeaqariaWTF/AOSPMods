@@ -5,11 +5,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
-/**
- * By default, all mod packs are assumed @MainProcessModPack. However, if @ChildProcessModPack is defined, use this annotation
- * to show that main process must be targeted too. Otherwise, it's optional
- */
+import sh.siava.pixelxpert.annotations.BaseModPack;
+
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface MainProcessModPack {
-}
+@BaseModPack(targetPackage = "com.rifsxd.ksunext")
+public @interface KSUNextModPack { }

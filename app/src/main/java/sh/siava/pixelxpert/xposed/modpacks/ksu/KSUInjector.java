@@ -23,6 +23,7 @@ import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.xposed.Constants;
 import sh.siava.pixelxpert.xposed.annotations.KSUModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
+import sh.siava.pixelxpert.xposed.annotations.KSUNextModPack;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
 
@@ -30,6 +31,7 @@ import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
  * @noinspection RedundantThrows
  */
 @KSUModPack
+@KSUNextModPack
 public class KSUInjector extends XposedModPack {
 	private ReflectedClass NativesClass;
 	private ReflectedClass ProfileClass;

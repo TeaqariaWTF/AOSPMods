@@ -20,6 +20,7 @@ public final class Constants {
 	public static final String ACTION_XPOSED_CONFIRMED = APPLICATION_ID + ".ACTION_XPOSED_CONFIRMED";
 	public static final String ACTION_KSU_ACQUIRE_ROOT = APPLICATION_ID + "ACTION_KSU_ACQUIRE_ROOT";
 
+	//None of these are used for matching package names during modpack loading. package names must be defined in respective annotations
 	public static final String SYSTEM_UI_PACKAGE = "com.android.systemui";
 	public static final String SYSTEM_FRAMEWORK_PACKAGE = "android";
 	public static final String TELECOM_SERVER_PACKAGE = "com.android.server.telecom";

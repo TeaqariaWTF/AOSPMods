@@ -20,7 +20,7 @@ import java.util.concurrent.TimeoutException;
 import java.util.regex.Pattern;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.xposed.annotations.ChildProcessModPack;
+import sh.siava.pixelxpert.annotations.ChildProcessModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;

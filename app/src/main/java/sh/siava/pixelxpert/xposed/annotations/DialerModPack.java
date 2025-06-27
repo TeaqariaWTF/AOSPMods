@@ -5,8 +5,9 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
+import sh.siava.pixelxpert.annotations.BaseModPack;
+
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
+@BaseModPack (targetPackage = "com.google.android.dialer")
 public @interface DialerModPack { }
-
-
