@@ -73,7 +73,6 @@
     <string name="depth_wallpaper_aod_title">\"Her zaman açık ekranda\" da göster</string>
     <string name="depth_wallpaper_model_ready">Yapay zeka modeli cihaza indirildi</string>
     <string name="depth_wallpaper_model_not_available">Yapay zeka modeli cihazda (henüz) mevcut değil</string>
-    <string name="disable_unlock_hint_title">Kilit açma ipucu animasyonunu devre dışı bırak</string>
     <string name="ls_general_options">Kilit ekranı seçenekleri</string>
     <string name="hide_avatar_title">Kullanıcı avatarını kaldır (çoklu kullanıcı modu)</string>
     <string name="fingerprint_options">Parmak izi</string>
@@ -92,16 +91,6 @@
     <string name="keyguard_dim_amount_title">Kilit ekranı duvar kağıdı karartması</string>
     <string name="keyguard_bottom_category">Alt alan kısayolları</string>
     <string name="keyguard_bottom_buttons_transparent_title">Simgelerin etrafındaki daireyi kaldır</string>
-    <string name="LSleftShortcutTitle">Sol kısayol</string>
-    <string name="LSrightShortcutTitle">Sağ kısayol</string>
-    <string name="LSleftLongClickShortcutTitle">Sol kısayol (Uzun basma)</string>
-    <string name="LSrightLongClickShortcutTitle">Sağ kısayol (Uzun basma)</string>
-    <string name="camera_shortcut">Kamera</string>
-    <string name="assistant_shortcut">Asistan</string>
-    <string name="torch_shortcut">El feneri</string>
-    <string name="tv_remote_shortcut">TV Kumandası</string>
-    <string name="dnd_shortcut">Rahatsız Etmeyin</string>
-    <string name="qr_scanner_shortcut">QR kod tarayıcı</string>
     <string name="shufflePin_title">PIN\'i Karıştır</string>
     <string name="wakeup_to_security_title">Cihaz uyandığında güvenlik girişini göster</string>
     <string name="easy_unlock_title">Kolay kilit açma (PIN/Şifre)</string>
@@ -111,7 +100,6 @@
     <string name="imperial_units_title">İmparatorluk birimlerini kullan</string>
     <!--Status bar related-->
     <string name="double_tap_sleep_title">Uyutmak için çift dokunun</string>
-    <string name="battery_hidden">Gizli</string>
     <string name="sb_multi_row_system_icons">Çok satırlı sistem simgeleri (durum çubuğu yüksekliğinin artırılması gerekir)</string>
     <string name="sb_multi_row_notification_icons">Çok satırlı bildirim simgeleri (durum çubuğu yüksekliğinin artırılması gerekir)</string>
     <string name="sb_double_row_category">Çift Durum Çubuğu Satırı</string>
@@ -165,15 +153,11 @@
     <string name="nt_mode_txonly">Sadece yükleme</string>
     <string name="nt_unit_show_bits">bit/s olarak göster</string>
     <string name="statusbar_general_options">Durum Çubuğu Seçenekleri</string>
-    <string name="dual_tone_battery_title">Çift tonlu pil ölçeri etkinleştir</string>
-    <string name="dual_tone_battery_on_summary">Açık (sadece dikey simgeyle çalışır)</string>
-    <string name="unread_messages_title">Okunmamış mesaj sayısını göster</string>
     <string name="status_bar_height">Durum çubuğu yüksekliği (uygulamak için ekranı döndürün)</string>
     <string name="sb_padding_title">Durum Çubuğu Dolgusu</string>
     <string name="sb_padding_summary">Değerleri min/maks olarak ayarlamak, cihaz Varsayılanına eşdeğerdir</string>
     <string name="sbbb_header_title">Pil Çubuğu</string>
     <string name="sbbb_header">Pil çubuğu ayarları</string>
-    <string name="sbbIcon_header">Pil simgesi ayarları</string>
     <string name="BB_enable_title">Pil Çubuğunu Etkinleştir</string>
     <string name="BB_onlycharging_title">Sadece şarj olurken</string>
     <string name="BB_move_SB_bottom_title">Durum çubuğunun altında</string>
@@ -193,7 +177,6 @@
     <string name="BB_batteryFastChargingColor">Hızlı şarj rengi</string>
     <string name="BB_batteryPowerSaveColor">Güç Tasarrufu rengi</string>
     <string name="BB_transit_colors">Renkleri bu aralıkta gölgelendir</string>
-    <string name="colored_battery_percentage_title">Şarj olurken renkli pil yüzdesi</string>
     <string name="nt_stat_mode_today">Bugün</string>
     <string name="nt_stat_mode_week">Bu hafta</string>
     <string name="nt_stat_mode_month">Bu ay</string>
@@ -243,7 +226,6 @@
     <string name="status_bar_airplane">Uçak Modu</string>
     <string name="status_bar_battery">Pil Seviyesi</string>
     <string name="status_bar_sensors_off">Sensörler Kapalı</string>
-    <string name="status_bar_clock">Saat</string>
     <string name="sunday">Pazar</string>
     <string name="monday">Pazartesi</string>
     <string name="tuesday">Salı</string>
@@ -252,42 +234,23 @@
     <string name="friday">Cuma</string>
     <string name="saturday">Cumartesi</string>
     <!--Quick settings panel related-->
-    <string name="qs_mod_category_title">Hızlı Ayarlar paneli alt bilgisindeki derleme numarası</string>
-    <string name="qs_footer_mod_title">Hızlı Ayarlar panelindeki derleme numarası metnini değiştir</string>
-    <string name="qs_footer_text_value">Özel metin girin</string>
-    <string name="qs_footer_text_summary">Tamamen kaldırmak için boş bırakın</string>
-    <string name="qs_footer_text_desc">Uygulamak için ekranı kapatıp açın</string>
     <string name="qs_leveled_flashlight_title">Seviyeli el feneri düğmesi</string>
     <string name="qs_flashlight_level_global_title">El feneri seviyesini genel olarak uygula</string>
-    <string name="qs_tile_vertical_title">Düğme simgelerini üste taşı</string>
     <string name="qs_tile_qty_title">Hızlı ayarlar düğme sayısı ayarları</string>
     <string name="qs_leveled_flashlight_summary">Kaydırıcıyı göstermek için düğmeye uzun basın.\nDesteklenen donanım gerektirir</string>
-    <string name="light_qs_title">Açık tema kullanırken açık Hızlı Ayarlar Panelini uygula</string>
     <string name="qs_pulldown_size">Hızlı aşağı çekme genişliği</string>
     <string name="qs_pulldown_switch_title">Durum çubuğundan hızlı Hızlı Ayarlar paneli açma</string>
     <string name="qs_pulldown_side_title">Hızlı aşağı çekme tarafı</string>
     <string name="qs_pulldown_category">Hızlı ayarlar aşağı çekme</string>
     <string name="qs_pullup_switch_title">Hızlı ayarları tek bir kaydırmayla kapat</string>
-    <string name="qs_haptic_switch_title">Hızlı Ayarlar düğmesine dokunulduğunda titret</string>
-    <string name="vibration_type_touch">Yoğunluk, sistem dokunma titreşimi ayarlarına göre belirlenir</string>
     <string name="qs_tile_qty_portrait">Dikey yönde</string>
     <string name="qs_tile_qty_landscape">Yatay yönde</string>
-    <string name="qs_mod_category_misc_title">Çeşitli</string>
-    <string name="charging_info_on_qs">Şarj bilgisini Hızlı Ayarlar panelinde göster</string>
     <string name="qqs_rows_number">Daraltılmış H.A. satır sayısı</string>
     <string name="qs_rows_number">H.A. satır sayısı</string>
     <string name="qs_cols_number">H.A. sütun sayısı</string>
-    <string name="qqs_tiles_number">Hızlı Erişim H.A. panelindeki maksimum düğme (maks. 2 satır)</string>
     <string name="qs_tile_label_size">H.A. Düğme etiketi boyutu</string>
     <string name="qs_tile_secondary_label_size">H.A. Düğme etiket özeti boyutu</string>
-    <string name="QQS_brightness_category">Parlaklık kaydırıcısı seçenekleri</string>
-    <string name="QS_auto_brightness_title">Uyarlanabilir parlaklık kısayolu</string>
-    <string name="QQS_brightness_title">Parlaklık kaydırıcısını Hızlı Erişim Panelinde göster</string>
-    <string name="QQS_brightness_bottom_title">Parlaklık kaydırıcısını alta taşı</string>
-    <string name="QS_brightness_disable_title">Parlaklık kaydırıcısını Hızlı Ayarlar\'dan gizle</string>
-    <string name="bs_thick_track">Parlaklık kaydırıcısında kalın bir iz kullan</string>
     <string name="quick_settings_tiles_category">H.A. Düğme Seçenekleri</string>
-    <string name="qs_tile_style_title">H.A. Düğme temaları</string>
     <string name="qs_volume_unmute_title">Ses düğmesi sessizden çıkarma değeri</string>
     <!--Navigation bar related-->
     <string name="back_gesture_category_title">Geri hareketini yapılandır</string>
@@ -306,13 +269,10 @@
     <string name="three_button_right_title">Sağ düğme</string>
     <string name="hide_navbar_title">Gezinme çubuğunu gizle</string>
     <string name="taskbar_as_recents_title">Görev çubuğunu PixelXpert son uygulamalar çubuğuna dönüştür</string>
-    <string name="taskbar_hide_allapps_title">Tüm uygulamalar düğmesini gizle</string>
     <string name="taskbar_enable_google_recents">Görev Çubuğunda Android son uygulamaları etkinleştir</string>
     <string name="taskbar_height_title">Görev çubuğu yüksekliği</string>
     <string name="taskbar_radius_title">Görev çubuğu köşe yuvarlaklığı</string>
     <string name="colorpill">Vurgu renkli gezinme çubuğu</string>
-    <string name="reducekeyboard_title">Hareketler için klavye alanı</string>
-    <string name="reducekeyboard">Klavyedeki alanı azalt</string>
     <string name="taskbar_status_title">Android Görev Çubuğu</string>
     <string name="taskbar_force_enable_title">Zorla Etkin</string>
     <string name="taskbar_force_disable_title">Zorla Devre Dışı</string>
@@ -343,9 +303,6 @@
     <string name="display_resolution_title">Ekran çözünürlüğü</string>
     <string name="brightness_range_title">Ekran parlaklık limitleri</string>
     <string name="brightness_range_not_linear">Bu aralık DOĞRUSAL DEĞİLDİR: Bazen küçük bir fark önemli değişikliklere yol açar</string>
-    <string name="separate_ring_notif_vol_title">Zil Sesi ve Bildirim için ayrı ses seviyesi</string>
-    <string name="show_vol_level_title">Ses panelinde ses yüzdesi</string>
-    <string name="so_power_longpress_torch_title">El feneri için Güç düğmesine uzun basın</string>
     <string name="so_taptaptorch_title">Kilit ekranı el feneri için çift dokunmayı etkinleştir</string>
     <string name="so_taptaptorch_summary">Hızlı el feneri erişimi için kilit ekranına çift dokunup basılı tutun</string>
     <string name="so_fingerprint_sensor_enabled">Ekran kapalıyken parmak izi sensörüne izin ver</string>
@@ -358,16 +315,12 @@
     <string name="force_aod_while_charging_title">Şarj olurken AOD\'yi (Her Zaman Açık Ekran) zorla</string>
     <string name="force_aod_while_charging_summary">Cihaz şarj olurken her zaman açık ekranı etkin tut</string>
     <string name="doze_header">Ekran kapalıyken…</string>
-    <string name="custom_themed_icons_title">Özel temalı simgeler</string>
     <string name="px_in_settings_title">PixelXpert\'i ayarlar öğelerine ekle</string>
     <string name="advanced_power_menu_title">Gelişmiş güç menüsü</string>
     <string name="sleep_on_flat_screen_title">Düz bir yüzeyde ekranı kapat</string>
     <string name="sleep_on_flat_screen_tile_title">Yüzeyde uyu</string>
     <string name="flat_screen_timeout_title">Düz yüzeyde ekran zaman aşımı</string>
     <string name="flat_screen_timeout_respect_wakelock_title">Uyandırma kilitlerine saygı göster</string>
-    <string name="custom_themed_icons_off">Özel simgeler devre dışı</string>
-    <string name="custom_themed_icons_on">Özel simgeler etkin</string>
-    <string name="so_vol_longpress_skip">Müziği atlamak için Ses düğmelerine uzun basın</string>
     <string name="notifications_header">Bildirim seçenekleri</string>
     <string name="expand_notifications_icons_title">Tümünü genişlet/daralt düğmelerini ekle</string>
     <string name="disbale_ongoing_notif_dismiss_title">Devam eden bildirimleri asla kapatma</string>
@@ -375,8 +328,6 @@
     <string name="notif_default_expansion_title">Bildirim varsayılan genişletme durumu</string>
     <string name="notif_always_expand">Her zaman genişlet</string>
     <string name="notif_always_collapse">Her zaman daralt</string>
-    <string name="disable_overscroll">Elastik kaydırma efektini devre dışı bırak</string>
-    <string name="overscroll_on_summary">Önemli: aşırı kaydırmayı devre dışı bırakmak istediğiniz uygulamaları LSPosed içinden etkinleştirmelisiniz</string>
     <string name="control_flashlight_with_volume_keys">El fenerini ses tuşlarıyla kontrol et</string>
     <string name="flashlight_fade_effect">El feneri sönme efekti</string>
     <string name="milliseconds">Milisaniye</string>
@@ -392,7 +343,6 @@
     <string name="sync_ntp_failed">NTP sunucu bağlantı hatası!</string>
     <!-- Volume panel -->
     <string name="volume_panel_category">Ses paneli</string>
-    <string name="volume_dialog_timeout">Ses paneli zaman aşımı</string>
     <!-- Work/Clone profile -->
     <string name="work_clone_profile_header">İş/Klon Profili</string>
     <string name="statusbar_long_press_app_switch">Profili değiştirmek için durum çubuğuna uzun basın</string>
@@ -400,7 +350,6 @@
     <!-- Cloned apps bragging message -->
     <string name="settings_cloned_apps_active"><font fgcolor="#FF64A829"><b><u>Pixel Xpert</u></b></font> aracılığıyla tüm uygulamalar için kilidi açıldı: Keyfini çıkarın!</string>
     <!-- SystemUI hook -->
-    <string name="battery_info_button_title">Pil bilgisi…</string>
     <string name="power_indication_error">Şarj verileri alınırken hata oluştu</string>
     <!-- Call section -->
     <string name="vibrate_on_call_active_title">Giden arama cevaplandığında titret</string>
@@ -414,9 +363,6 @@
     <string name="pull_down_right">Sağ</string>
     <!-- Battery styles -->
     <string name="word_default">Varsayılan</string>
-    <string name="battery_circle">Daire</string>
-    <string name="battery_dashed_circle">Kesikli Daire</string>
-    <string name="battery_circle_filled">Dolu Daire</string>
     <!-- Clock position -->
     <string name="clock_default">Sol (Varsayılan)</string>
     <string name="clock_center">Orta</string>
@@ -453,7 +399,6 @@
     <string name="depth_effect_alert_body">Ön plan öğelerinin kilit ekranınızdaki saatin tamamını engellemediği, hem görsel çekicilik hem de işlevsel netlik sağlayan uygun bir kilit ekranı duvar kağıdı kullanın.\n\nNot: %s.</string>
     <string name="depth_effect_ok_btn">Tamam</string>
     <!-- Reboot alert -->
-    <string name="reboot_alert_body">Ayarların uygulanması için sistemin yeniden başlatılması gerekiyor</string>
     <!-- Menu Items -->
     <string name="menu_settings_title">İçe/Dışa Aktar</string>
     <string name="menu_reset_defaults">Tüm ayarları sıfırla</string>
@@ -479,8 +424,6 @@
     <string name="update_flavor_title">Güncelleme kanalı</string>
     <string name="stable_flavor">Kararlı</string>
     <string name="update_type_title">Paket Türü</string>
-    <string name="full_type">Tam</string>
-    <string name="xposed_type">Sadece Xposed</string>
     <string name="currentVersionTitle">Yüklü sürüm: </string>
     <string name="lastestVersionTitle">En son sürüm: </string>
     <string name="root_not_here">ROOT ERİŞİMİ VERİLMEDİ!</string>
@@ -494,7 +437,6 @@
     <string name="changelog_title">Değişiklik günlüğü</string>
     <string name="own_prefs_header">Ayarlar</string>
     <string name="language_title">Dil</string>
-    <string name="toggle_dark_apply">(Uygulamak için koyu temayı değiştirin)</string>
     <string name="gesture_nav_extra_cat">Ekstra gezinme çubuğu hareketleri</string>
     <string name="gesture_nav_long_swipe_fc_title">Ön plan uygulamasını kapatmak için ekranın üstüne kaydırın</string>
     <string name="gesture_nav_left_swipe_up_title">Gezinme çubuğunun solundan yukarı kaydırma eylemi</string>
@@ -558,7 +500,6 @@
     <string name="torch">El fenerini aç/kapat</string>
     <string name="camera">Kamerayı başlat</string>
     <string name="assistant">Asistanı başlat</string>
-    <string name="do_not_disturb">Rahatsız etmeyin modunu aç/kapat</string>
     <string name="pause_media">Medyayı oynat/duraklat</string>
     <string name="skip_media_next">Medya kontrolü - Sonraki</string>
     <string name="skip_media_prev">Medya kontrolü - Önceki</string>
@@ -590,4 +531,6 @@
     <string name="optimization_restart_needed_message">Sistem entegrasyonunu artırmak için yeniden başlatma önerilir</string>
     <string name="restart_postpone">Daha Sonra</string>
     <string name="restart_now">Şimdi Yeniden Başlat</string>
+    <string name="watts">Watt</string>
+    <string name="fast_charging_threshold_title">Hızlı şarj eşiği</string>
 </resources>

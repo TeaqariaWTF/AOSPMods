@@ -531,4 +531,6 @@
     <string name="optimization_restart_needed_message">A reboot is recommended to increase system integration</string>
     <string name="restart_postpone">Later</string>
     <string name="restart_now">Reboot now</string>
+    <string name="watts">Watts</string>
+    <string name="fast_charging_threshold_title">Fast charging threshold</string>
 </resources>

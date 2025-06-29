@@ -73,7 +73,6 @@
     <string name="depth_wallpaper_aod_title">همچنین در \"همیشه در نمایش\"</string>
     <string name="depth_wallpaper_model_ready">مدل هوش مصنوعی بر روی دستگاه دانلود می شود</string>
     <string name="depth_wallpaper_model_not_available">مدل هوش مصنوعی در دستگاه موجود نیست (هنوز)</string>
-    <string name="disable_unlock_hint_title">حذف انیمیشن راهنمایی باز کردن قفل</string>
     <string name="ls_general_options">تنظیمات قفل صفحه</string>
     <string name="hide_avatar_title">حذف نمایه کاربر (حالت چند کاربره)</string>
     <string name="fingerprint_options">اثرانگشت</string>
@@ -92,16 +91,6 @@
     <string name="keyguard_dim_amount_title">تیرگی تصویر در صفحه قفل</string>
     <string name="keyguard_bottom_category">میانبرهای پایین صفحه</string>
     <string name="keyguard_bottom_buttons_transparent_title">حذف دایره اطراف نمادها</string>
-    <string name="LSleftShortcutTitle">میانبر سمت چپ</string>
-    <string name="LSrightShortcutTitle">میانبر سمت راست</string>
-    <string name="LSleftLongClickShortcutTitle">میانبر چپ (طولانی)</string>
-    <string name="LSrightLongClickShortcutTitle">میانبر راست (طولانی)</string>
-    <string name="camera_shortcut">دوربین</string>
-    <string name="assistant_shortcut">دستیار صوتی</string>
-    <string name="torch_shortcut">چراغ قوه</string>
-    <string name="tv_remote_shortcut">ریموت تلویزیون</string>
-    <string name="dnd_shortcut">مزاحم نشوید</string>
-    <string name="qr_scanner_shortcut">اسکن بارکد دو بعدی</string>
     <string name="shufflePin_title">جابجایی اعداد رمز</string>
     <string name="wakeup_to_security_title">روشن شدن صفحه به پنجره ورود رمز</string>
     <string name="easy_unlock_title">باز کردن قفل بدون دکمه ورود</string>
@@ -111,7 +100,6 @@
     <string name="imperial_units_title">استفاده از واحدهای آمریکایی</string>
     <!--Status bar related-->
     <string name="double_tap_sleep_title">خاموشی صفحه با دو ضربه</string>
-    <string name="battery_hidden">پنهان</string>
     <string name="sb_multi_row_system_icons">نمادهای سیستم چند ردیفه (به ارتفاع مناسب نوار وضعیت نیاز دارد)</string>
     <string name="sb_multi_row_notification_icons">نمادهای اعلان چند ردیفی (نیاز به افزایش ارتفاع نوار وضعیت)</string>
     <string name="sb_double_row_category">دو ردیف نوار وضعیت</string>
@@ -165,15 +153,11 @@
     <string name="nt_mode_txonly">فقط آپلود</string>
     <string name="nt_unit_show_bits">نمایش در بیت‌ بر ثانیه</string>
     <string name="statusbar_general_options">تنظیمات نوار وضعیت</string>
-    <string name="dual_tone_battery_title">باتری دو رنگ</string>
-    <string name="dual_tone_battery_on_summary">روشن (فقط با نماد عمودی کار می کند)</string>
-    <string name="unread_messages_title">نمایش تعداد پیام های خوانده نشده</string>
     <string name="status_bar_height">ارتفاع نوار وضعیت (برای اعمال، صفحه را بچرخانید)</string>
     <string name="sb_padding_title">فاصله نوار وضعیت از لبه</string>
     <string name="sb_padding_summary">تنظیم مقادیر بر روی حداقل/حداکثر معادل تنظیمات خود دستگاه است</string>
     <string name="sbbb_header_title">نوار باتری</string>
     <string name="sbbb_header">تنظیمات نوار باتری</string>
-    <string name="sbbIcon_header">تنظیمات باتری</string>
     <string name="BB_enable_title">استفاده از نوار باتری</string>
     <string name="BB_onlycharging_title">فقط هنگام شارژ</string>
     <string name="BB_move_SB_bottom_title">پایین نوار وضعیت</string>
@@ -193,7 +177,6 @@
     <string name="BB_batteryFastChargingColor">رنگ شارژ سریع</string>
     <string name="BB_batteryPowerSaveColor">رنگ ذخیره باتری</string>
     <string name="BB_transit_colors">تنظیم رنگ بر اساس سطح باتری</string>
-    <string name="colored_battery_percentage_title">رنگی بودن درصد باتری هنگام شارژ</string>
     <string name="nt_stat_mode_today">امروز</string>
     <string name="nt_stat_mode_week">هفته جاری</string>
     <string name="nt_stat_mode_month">ماه جاری</string>
@@ -243,7 +226,6 @@
     <string name="status_bar_airplane">حالت پرواز</string>
     <string name="status_bar_battery">مقدار باتری</string>
     <string name="status_bar_sensors_off">حسگرها خاموش</string>
-    <string name="status_bar_clock">ساعت</string>
     <string name="sunday">یکشنبه</string>
     <string name="monday">دوشنبه</string>
     <string name="tuesday">سه‌شنبه</string>
@@ -252,42 +234,23 @@
     <string name="friday">جمعه</string>
     <string name="saturday">شنبه</string>
     <!--Quick settings panel related-->
-    <string name="qs_mod_category_title">شماره نسخه پایین پنل تنظیمات سریع</string>
-    <string name="qs_footer_mod_title">تغییر شماره نسخه پایین پنل تنظیمات سریع</string>
-    <string name="qs_footer_text_value">متن مورد نظر را وارد کنید</string>
-    <string name="qs_footer_text_summary">خالی بگذارید تا کاملا حذف شود</string>
-    <string name="qs_footer_text_desc">برای اعمال، نمایشگر را خاموش/روشن کنید</string>
     <string name="qs_leveled_flashlight_title">کاشی تراز چراغ قوه</string>
     <string name="qs_flashlight_level_global_title">درجه نور چراغ قوه همه جا اعمال گردد</string>
-    <string name="qs_tile_vertical_title">نمایه به بالای کاشی منتقل شود</string>
     <string name="qs_tile_qty_title">تنظیمات سریع تعداد کاشی تنظیمات</string>
     <string name="qs_leveled_flashlight_summary">برای نمایش لغزنده، روی کاشی را طولانی فشار دهید.\nبه سخت‌افزار پشتیبانی‌شده نیاز دارد</string>
-    <string name="light_qs_title">رنگ پنل تنظیمات سریع بر اساس رنگبندی دستگاه</string>
     <string name="qs_pulldown_size">عرض پایین کشی سریع</string>
     <string name="qs_pulldown_switch_title">کشویی سریع پانل QS از نوار وضعیت</string>
     <string name="qs_pulldown_side_title">سمت پایین کشی سریع</string>
     <string name="qs_pulldown_category">تنظیمات سریع کشویی</string>
     <string name="qs_pullup_switch_title">تنظیمات سریع را با یک سوایپ ببندید</string>
-    <string name="qs_haptic_switch_title">لرزش در هنگام انتخاب تنظیمات سریع</string>
-    <string name="vibration_type_touch">شدت توسط تنظیمات لرزش لمسی سیستم تعریف شده است</string>
     <string name="qs_tile_qty_portrait">در جهت پرتره</string>
     <string name="qs_tile_qty_landscape">در جهت گیری منظره</string>
-    <string name="qs_mod_category_misc_title">متفرقه</string>
-    <string name="charging_info_on_qs">نمایش اطلاعات شارژ در پنل QS</string>
     <string name="qqs_rows_number">تعداد ردیف‌های ت. س سریع</string>
     <string name="qs_rows_number">تعداد ردیفهای تنظیمات سریع</string>
     <string name="qs_cols_number">تعداد ستونهای تنظیمات سریع</string>
-    <string name="qqs_tiles_number">حداکثر آیتمهای تنظیمات سریع در QQS (حداکثر 2 ردیف)</string>
     <string name="qs_tile_label_size">اندازه فونت تنظیمات سریع</string>
     <string name="qs_tile_secondary_label_size">اندازه فونت زیر نویس تنظیمات سریع</string>
-    <string name="QQS_brightness_category">تنظیمات نوار نور صفحه</string>
-    <string name="QS_auto_brightness_title">میانبر روشنایی تطبیقی</string>
-    <string name="QQS_brightness_title">نوار نور صفحه در پنل QQS</string>
-    <string name="QQS_brightness_bottom_title">نوار نور صفحه در پایین تنظیمات سریع باشد</string>
-    <string name="QS_brightness_disable_title">حذف نوار نور صفحه از تنظیمات سریع</string>
-    <string name="bs_thick_track">نوار نور صفحه ضخیمتر باشد</string>
     <string name="quick_settings_tiles_category">گزینه های تنظیمات سریع</string>
-    <string name="qs_tile_style_title">ظاهر تنظیمات سریع</string>
     <string name="qs_volume_unmute_title">مقدار نادیده گرفتن کاشی حجم</string>
     <!--Navigation bar related-->
     <string name="back_gesture_category_title">تنظیمات حرکت Back</string>
@@ -306,13 +269,10 @@
     <string name="three_button_right_title">دکمه سمت راست</string>
     <string name="hide_navbar_title">پنهان کردن نوار ناوبری</string>
     <string name="taskbar_as_recents_title">تبدیل نوار وظیفه را به نوار اخیر PixelXpert</string>
-    <string name="taskbar_hide_allapps_title">دکمه پنهان کردن همه برنامه‌ها</string>
     <string name="taskbar_enable_google_recents">فعال کردن اخیراً اندروید در نوار وظیفه</string>
     <string name="taskbar_height_title">ارتفاع نوار برنامه</string>
     <string name="taskbar_radius_title">گردی پایین نوار برنامه</string>
     <string name="colorpill">رنگ نوار ناوبری بر اساس رنگبندی سیستم</string>
-    <string name="reducekeyboard_title">فضای صفحه کلید برای ژست ها</string>
-    <string name="reducekeyboard">کاهش فاصله کیبورد و پایین صفحه</string>
     <string name="taskbar_status_title">نوار برنامه اندروید</string>
     <string name="taskbar_force_enable_title">فعال باشد</string>
     <string name="taskbar_force_disable_title">غیر فعال باشد</string>
@@ -343,9 +303,6 @@
     <string name="display_resolution_title">ابعاد صفحه نمایش</string>
     <string name="brightness_range_title">محدوده مجاز نور صفحه</string>
     <string name="brightness_range_not_linear">این محدوده خطی نیست: بعضی اوقات باید آزمون و خطا کنید</string>
-    <string name="separate_ring_notif_vol_title">حجم جداگانه برای زنگ و اعلان</string>
-    <string name="show_vol_level_title">درصد حجم در پانل صدا</string>
-    <string name="so_power_longpress_torch_title">کنترل چراغ قوه با نگهداشتن کلید Power</string>
     <string name="so_taptaptorch_title">استفاده از امکان کنترل چراغ قوه با دوضربه در صفحه قفل</string>
     <string name="so_taptaptorch_summary">برای دسترسی سریع به چراغ قوه، روی صفحه قفل دو ضربه سریع بزنید و نگه دارید</string>
     <string name="so_fingerprint_sensor_enabled">وقتی صفحه نمایش خاموش است حسگر اثر انگشت فعال باشد</string>
@@ -358,16 +315,12 @@
     <string name="force_aod_while_charging_title">مجبور کردن صفحه نمایش همیشه روشن هنگام شارژ</string>
     <string name="force_aod_while_charging_summary">وقتی دستگاه در حال شارژ شدن است، همیشه روشن بماند</string>
     <string name="doze_header">وقتی که صفحه نمایش خاموش است…</string>
-    <string name="custom_themed_icons_title">نمادهای با تم سفارشی</string>
     <string name="px_in_settings_title">PixelXpert را به موارد تنظیمات اضافه کنید</string>
     <string name="advanced_power_menu_title">منوی پیشرفته نیرو</string>
     <string name="sleep_on_flat_screen_title">صفحه نمایش را روی سطح صاف خاموش کنید</string>
     <string name="sleep_on_flat_screen_tile_title">روی سطح بخوابید</string>
     <string name="flat_screen_timeout_title">وقفه زمانی نمایشگر روی سطح صاف</string>
     <string name="flat_screen_timeout_respect_wakelock_title">به ویک لاک ها احترام بگذارید</string>
-    <string name="custom_themed_icons_off">نمادهای سفارشی غیرفعال است</string>
-    <string name="custom_themed_icons_on">نمادهای سفارشی فعال شد</string>
-    <string name="so_vol_longpress_skip">فشار طولانی دکمه های میزان صدا برای رد کردن موزیک</string>
     <string name="notifications_header">تنظیمات اعلان ها</string>
     <string name="expand_notifications_icons_title">افزودن دکمه باز و بسته کردن تمام اعلانها</string>
     <string name="disbale_ongoing_notif_dismiss_title">هرگز اعلان‌های جاری حذف نشوند</string>
@@ -375,8 +328,6 @@
     <string name="notif_default_expansion_title">گسترش پیش‌فرض اعلان</string>
     <string name="notif_always_expand">همیشه گسترش دهید</string>
     <string name="notif_always_collapse">همیشه فرو ریختن</string>
-    <string name="disable_overscroll">غیر فعال کردن حالت الاستیک اسکرول صفحه</string>
-    <string name="overscroll_on_summary">مهم: هر برنامه که این امکان مورد نیاز است باید در LSposed اضافه شود</string>
     <string name="control_flashlight_with_volume_keys">چراغ قوه را با دکمه های تنظیم صدا کنترل کنید</string>
     <string name="flashlight_fade_effect">جلوه محو شدن چراغ قوه</string>
     <string name="milliseconds">هزارم ثانیه</string>
@@ -392,7 +343,6 @@
     <string name="sync_ntp_failed">خطای اتصال سرور NTP!</string>
     <!-- Volume panel -->
     <string name="volume_panel_category">پنل صدا</string>
-    <string name="volume_dialog_timeout">مدت زمان نمایش پنجره صدا</string>
     <!-- Work/Clone profile -->
     <string name="work_clone_profile_header">نمایه کار/کلون</string>
     <string name="statusbar_long_press_app_switch">برای تغییر نمایه، نوار وضعیت را طولانی فشار دهید</string>
@@ -400,7 +350,6 @@
     <!-- Cloned apps bragging message -->
     <string name="settings_cloned_apps_active">از طریق <font fgcolor="#FF64A829"><b><u>Pixel Xpert</u></b></font> بدون محدودیت باز شد: حالشو ببر!</string>
     <!-- SystemUI hook -->
-    <string name="battery_info_button_title">اطلاعات باتری…</string>
     <string name="power_indication_error">خطا در واکشی داده‌های شارژ</string>
     <!-- Call section -->
     <string name="vibrate_on_call_active_title">لرزش در زمان پاسخ تماس خروجی</string>
@@ -414,9 +363,6 @@
     <string name="pull_down_right">راست</string>
     <!-- Battery styles -->
     <string name="word_default">پیش فرض</string>
-    <string name="battery_circle">دایره</string>
-    <string name="battery_dashed_circle">دایره خط چین</string>
-    <string name="battery_circle_filled">دایره تو پر</string>
     <!-- Clock position -->
     <string name="clock_default">چپ (پیش‌فرض)</string>
     <string name="clock_center">مرکز</string>
@@ -453,7 +399,6 @@
     <string name="depth_effect_alert_body">از یک کاغذدیواری مناسب برای صفحه قفل استفاده کنید که در آن عناصر پیش‌زمینه کل ساعت را در صفحه قفل شما مسدود نکنند و از جذابیت بصری و وضوح عملکرد در صفحه قفل شما اطمینان حاصل کنند.\n\nتوجه: %s.</string>
     <string name="depth_effect_ok_btn">باشه</string>
     <!-- Reboot alert -->
-    <string name="reboot_alert_body">برای اعمال تنظیمات به راه اندازی مجدد سیستم نیاز است</string>
     <!-- Menu Items -->
     <string name="menu_settings_title">ذخیره/بازیابی</string>
     <string name="menu_reset_defaults">بازنشانی تمام تنظیمات</string>
@@ -479,8 +424,6 @@
     <string name="update_flavor_title">نوع نسخه</string>
     <string name="stable_flavor">پایدار</string>
     <string name="update_type_title">نوع بسته</string>
-    <string name="full_type">کامل</string>
-    <string name="xposed_type">فقط Xposed</string>
     <string name="currentVersionTitle">نسخه نصب شده:</string>
     <string name="lastestVersionTitle">آخرین نسخه:</string>
     <string name="root_not_here">دسترسی root داده نشده است!</string>
@@ -494,7 +437,6 @@
     <string name="changelog_title">تغییرات</string>
     <string name="own_prefs_header">تنظیمات AOSPMods</string>
     <string name="language_title">زبان</string>
-    <string name="toggle_dark_apply">(برای اعمال، یک بار رنگ صفحه را تیره/روشن کنید)</string>
     <string name="gesture_nav_extra_cat">حرکات از پایین صفحه</string>
     <string name="gesture_nav_long_swipe_fc_title">بستن برنامه با کشیدن بالا از پایین تا بالای صفحه</string>
     <string name="gesture_nav_left_swipe_up_title">کشیدن بالا از سمت چپ پایین</string>
@@ -558,7 +500,6 @@
     <string name="torch">روشن کردن مشعل</string>
     <string name="camera">راه‌اندازی دوربین</string>
     <string name="assistant">راه‌اندازی دستیار</string>
-    <string name="do_not_disturb">مزاحم نشوید را تغییر دهید</string>
     <string name="pause_media">پخش/توقف رسانه</string>
     <string name="skip_media_next">کنترل رسانه - رد شوید</string>
     <string name="skip_media_prev">کنترل رسانه - قبلی</string>
@@ -590,4 +531,6 @@
     <string name="optimization_restart_needed_message">برای افزایش یکپارچگی سیستم، راه‌اندازی مجدد توصیه می‌شود</string>
     <string name="restart_postpone">بعداً</string>
     <string name="restart_now">راه‌اندازی دوباره</string>
+    <string name="watts">Watts</string>
+    <string name="fast_charging_threshold_title">Fast charging threshold</string>
 </resources>
