@@ -1,3 +1,6 @@
+**canary-460**  
+- Fixed hiding lockscreen customization pill  
+  
 **canary-459**  
 - A16QPR1: fixed the broken custom navigation gestures  
   
