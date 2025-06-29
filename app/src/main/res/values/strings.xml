@@ -440,6 +440,8 @@
     <string name="depth_effect_ok_btn">OK</string>
 
     <!-- Reboot alert -->
+    <string name="pending_actions">Pending actions</string>
+    <string name="btn_dismiss">Dismiss</string>
 
     <!-- Menu Items -->
     <string name="menu_settings_title">Import/Export</string>

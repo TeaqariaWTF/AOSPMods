@@ -4,9 +4,12 @@ import static android.app.NotificationManager.IMPORTANCE_DEFAULT;
 import static androidx.preference.PreferenceManager.getDefaultSharedPreferences;
 import static sh.siava.pixelxpert.R.string.update_channel_name;
 import static sh.siava.pixelxpert.ui.Constants.UPDATES_CHANNEL_ID;
+import static sh.siava.pixelxpert.ui.utils.ViewUtils.fadeIn;
+import static sh.siava.pixelxpert.ui.utils.ViewUtils.fadeOut;
 import static sh.siava.pixelxpert.utils.AppUtils.isLikelyPixelBuild;
 import static sh.siava.pixelxpert.utils.MiscUtils.REQUEST_EXPORT;
 import static sh.siava.pixelxpert.utils.MiscUtils.REQUEST_IMPORT;
+import static sh.siava.pixelxpert.utils.MiscUtils.weakVibrate;
 import static sh.siava.pixelxpert.utils.NavigationExtensionKt.navigateTo;
 
 import android.annotation.SuppressLint;
@@ -20,6 +23,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,13 +45,16 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.Objects;
 
+import javax.inject.Inject;
+
+import dagger.hilt.android.AndroidEntryPoint;
 import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.databinding.SettingsActivityBinding;
-import sh.siava.pixelxpert.xposed.modpacks.android.TargetOptimizer;
 import sh.siava.pixelxpert.service.tileServices.SleepOnSurfaceTileService;
 import sh.siava.pixelxpert.ui.fragments.HeaderFragment;
 import sh.siava.pixelxpert.ui.fragments.UpdateFragment;
+import sh.siava.pixelxpert.ui.misc.StateManager;
 import sh.siava.pixelxpert.ui.preferences.preferencesearch.SearchPreferenceResult;
 import sh.siava.pixelxpert.ui.preferences.preferencesearch.SearchPreferenceResultListener;
 import sh.siava.pixelxpert.utils.AppUtils;
@@ -55,7 +62,9 @@ import sh.siava.pixelxpert.utils.DisplayUtils;
 import sh.siava.pixelxpert.utils.PXPreferences;
 import sh.siava.pixelxpert.utils.PrefManager;
 import sh.siava.pixelxpert.utils.PreferenceHelper;
+import sh.siava.pixelxpert.xposed.modpacks.android.TargetOptimizer;
 
+@AndroidEntryPoint
 public class SettingsActivity extends BaseActivity implements PreferenceFragmentCompat.OnPreferenceStartFragmentCallback, SearchPreferenceResultListener {
 
 	private SettingsActivityBinding binding;
@@ -63,6 +72,9 @@ public class SettingsActivity extends BaseActivity implements PreferenceFragment
 	private NavController navControllerMain;
 	private NavController navControllerDetails;
 	private final boolean isTabletDevice = DisplayUtils.isTablet();
+
+	@Inject
+	StateManager stateManager;
 
 	private final BroadcastReceiver updateCheckReceiver = new BroadcastReceiver() {
 		@Override
@@ -129,6 +141,112 @@ public class SettingsActivity extends BaseActivity implements PreferenceFragment
 					.setMessage(R.string.incompatible_alert_body)
 					.setPositiveButton(R.string.incompatible_alert_ok_btn, (dialog, which) -> dialog.dismiss())
 					.show();
+		}
+
+		observeRestartFlag();
+		setupFloatingActionButtons();
+	}
+
+	private void observeRestartFlag() {
+		stateManager.getRequiresSystemUIRestart().observe(this, isRequired -> showOrHidePendingActionButton(binding, isRequired));
+	}
+
+	private void setupFloatingActionButtons() {
+		// Initially hide all FABs
+		binding.hideAll.hide();
+		binding.restartSystemui.hide();
+		binding.pendingActions.shrink();
+
+		// Show or hide the main pending actions FAB based on Dynamic flags
+		showOrHidePendingActionButton(
+				binding,
+				Boolean.TRUE.equals(stateManager.getRequiresSystemUIRestart().getValue())
+		);
+
+		// Pending Action FAB clicked
+		binding.pendingActions.setOnClickListener(v -> {
+			weakVibrate(binding.pendingActions);
+			showOrHideFabButtons();
+		});
+
+		// Hide All FAB clicked
+		binding.hideAll.setOnClickListener(v -> {
+			weakVibrate(binding.hideAll);
+			stateManager.setRequiresSystemUIRestart(false);
+		});
+
+		// Restart System UI FAB clicked
+		binding.restartSystemui.setOnClickListener(v -> {
+			weakVibrate(binding.restartSystemui);
+			stateManager.setRequiresSystemUIRestart(false);
+
+			new Handler(Looper.getMainLooper()).postDelayed(() -> AppUtils.restart("systemui"), 500);
+		});
+	}
+
+	private void showOrHideFabButtons() {
+		try {
+			boolean requiresSystemUIRestart = Boolean.TRUE.equals(stateManager.getRequiresSystemUIRestart().getValue());
+			boolean pendingActionsShown = binding.pendingActions.isShown();
+			boolean isAnyButtonShown;
+
+			// Hide All FAB logic
+			if (!binding.hideAll.isShown() && pendingActionsShown) {
+				binding.hideAll.show();
+				fadeIn(binding.hideAllText);
+				isAnyButtonShown = true;
+			} else {
+				binding.hideAll.hide();
+				fadeOut(binding.hideAllText);
+				isAnyButtonShown = false;
+			}
+
+			// Restart System UI FAB logic
+			if (!binding.restartSystemui.isShown() && requiresSystemUIRestart && pendingActionsShown) {
+				binding.restartSystemui.show();
+				fadeIn(binding.restartSystemuiText);
+				isAnyButtonShown = true;
+			} else {
+				binding.restartSystemui.hide();
+				fadeOut(binding.restartSystemuiText);
+			}
+
+			// Extend or shrink the main FAB based on visibility
+			if (isAnyButtonShown) {
+				binding.pendingActions.extend();
+			} else {
+				binding.pendingActions.shrink();
+			}
+		} catch (Exception ignored) {
+		}
+	}
+
+	public static void showOrHidePendingActionButton(SettingsActivityBinding binding, boolean requiresSystemUiRestart) {
+		try {
+			if (!requiresSystemUiRestart) {
+				binding.hideAll.hide();
+				fadeOut(binding.hideAllText);
+				binding.restartSystemui.hide();
+				fadeOut(binding.restartSystemuiText);
+				binding.pendingActions.hide();
+				binding.pendingActions.shrink();
+			} else {
+				// Restart System UI button visibility logic
+				if (binding.hideAll.isShown() && !binding.restartSystemui.isShown()) {
+					binding.restartSystemui.show();
+					fadeIn(binding.restartSystemuiText);
+				}
+
+				// Shrink or extend main FAB
+				if (!binding.hideAll.isShown()) {
+					binding.pendingActions.shrink();
+				} else {
+					binding.pendingActions.extend();
+				}
+
+				binding.pendingActions.show();
+			}
+		} catch (Exception ignored) {
 		}
 	}
 

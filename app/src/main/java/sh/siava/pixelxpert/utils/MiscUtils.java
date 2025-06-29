@@ -8,6 +8,8 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.text.method.LinkMovementMethod;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -38,9 +40,12 @@ import org.jspecify.annotations.NonNull;
 
 import java.util.Objects;
 
+import dagger.hilt.android.EntryPointAccessors;
 import sh.siava.pixelxpert.PixelXpert;
 import sh.siava.pixelxpert.R;
+import sh.siava.pixelxpert.di.StateManagerEntryPoint;
 import sh.siava.pixelxpert.ui.fragments.iconpack.IconPackFragment;
+import sh.siava.pixelxpert.ui.misc.StateManager;
 
 public class MiscUtils {
 
@@ -159,6 +164,11 @@ public class MiscUtils {
 		int itemID = item.getItemId();
 		NavController navController = NavHostFragment.findNavController(fragment);
 		SharedPreferences prefs = getDefaultSharedPreferences(activity.createDeviceProtectedStorageContext());
+		Context applicationContext = activity.getApplicationContext();
+
+		StateManager stateManager = EntryPointAccessors
+				.fromApplication(applicationContext, StateManagerEntryPoint.class)
+				.getStateManager();
 
 		if (itemID == android.R.id.home) {
 			navController.navigateUp();
@@ -173,6 +183,7 @@ public class MiscUtils {
 			AppUtils.restart("system");
 		} else if (itemID == R.id.menu_restartSysUI) {
 			AppUtils.restart("systemui");
+			stateManager.setRequiresSystemUIRestart(false);
 		} else if (itemID == R.id.menu_soft_restart) {
 			AppUtils.restart("zygote");
 		} else if (itemID == R.id.icon_pack_info) {
@@ -229,5 +240,13 @@ public class MiscUtils {
 				fragmentActivity.getOnBackPressedDispatcher().onBackPressed();
 			}
 		});
+	}
+
+	@SuppressWarnings("deprecation")
+	public static void weakVibrate(View view) {
+		Vibrator vibrator = (Vibrator) view.getContext().getSystemService(Context.VIBRATOR_SERVICE);
+		if (vibrator != null) {
+			vibrator.vibrate(VibrationEffect.createOneShot(30, VibrationEffect.DEFAULT_AMPLITUDE));
+		}
 	}
 }

@@ -4,6 +4,7 @@ import static androidx.preference.PreferenceManager.getDefaultSharedPreferences;
 import static sh.siava.pixelxpert.ui.preferences.preferencesearch.SearchPreferenceResult.highlightPreference;
 import static sh.siava.pixelxpert.utils.MiscUtils.setOnBackPressedDispatcherCallback;
 import static sh.siava.pixelxpert.utils.MiscUtils.setupToolbar;
+import static sh.siava.pixelxpert.utils.PreferenceHelper.checkIfRequiresSystemUIRestart;
 
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.os.Bundle;
@@ -30,7 +31,10 @@ import sh.siava.pixelxpert.R;
 public abstract class ControlledPreferenceFragmentCompat extends PreferenceFragmentCompat {
 
 	public ExtendedSharedPreferences mPreferences;
-	private final OnSharedPreferenceChangeListener changeListener = (sharedPreferences, key) -> updateScreen(key);
+	private final OnSharedPreferenceChangeListener changeListener = (sharedPreferences, key) -> {
+		updateScreen(key);
+		checkIfRequiresSystemUIRestart(getContext(), key);
+	};
 	private static boolean firstAppLaunch = true;
 
 	protected boolean isBackButtonEnabled() {

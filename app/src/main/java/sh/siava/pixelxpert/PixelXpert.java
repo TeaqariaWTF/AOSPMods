@@ -17,8 +17,10 @@ import com.topjohnwu.superuser.ipc.RootService;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
+import dagger.hilt.android.HiltAndroidApp;
 import sh.siava.pixelxpert.service.RootProvider;
 
+@HiltAndroidApp
 public class PixelXpert extends Application {
 
 	/** @noinspection unused*/
