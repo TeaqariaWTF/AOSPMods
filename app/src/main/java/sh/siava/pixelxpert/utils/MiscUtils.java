@@ -8,11 +8,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.VibrationEffect;
-import android.os.Vibrator;
 import android.text.method.LinkMovementMethod;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.HapticFeedbackConstants;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -242,11 +241,7 @@ public class MiscUtils {
 		});
 	}
 
-	@SuppressWarnings("deprecation")
 	public static void weakVibrate(View view) {
-		Vibrator vibrator = (Vibrator) view.getContext().getSystemService(Context.VIBRATOR_SERVICE);
-		if (vibrator != null) {
-			vibrator.vibrate(VibrationEffect.createOneShot(30, VibrationEffect.DEFAULT_AMPLITUDE));
-		}
+		view.performHapticFeedback(HapticFeedbackConstants.CLOCK_TICK);
 	}
 }

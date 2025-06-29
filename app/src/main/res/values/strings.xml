@@ -585,7 +585,7 @@
     <string name="soft_reboot_title">Soft Reboot</string>
     <string name="restart_systemui_title">Restart SystemUI</string>
 
-    <!--Optimization estart request-->
+    <!--Optimization restart request-->
     <string name="optimization_restart_needed_title">Restart Recommended</string>
     <string name="optimization_restart_needed_message">A reboot is recommended to increase system integration</string>
     <string name="restart_postpone">Later</string>

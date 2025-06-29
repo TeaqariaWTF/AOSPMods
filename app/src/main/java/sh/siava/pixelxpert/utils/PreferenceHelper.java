@@ -46,8 +46,15 @@ public class PreferenceHelper {
 				.getStateManager();
 
 		switch (key) {
+			case "DWallpaperEnabled":
+			case "displayOverride":
 			case "QSLabelScaleFactor":
 			case "QSSecondaryLabelScaleFactor":
+			case "DisableLockScreenPill":
+			case "ThreeButtonLayoutMod":
+			case "ThreeButtonLeft":
+			case "ThreeButtonCenter":
+			case "ThreeButtonRight":
 				stateManager.setRequiresSystemUIRestart(true);
 				break;
 		}
@@ -314,11 +321,11 @@ public class PreferenceHelper {
 
 			case "QSLabelScaleFactor":
 				float QSLabelScaleFactor = instance.mPreferences.getSliderFloat( "QSLabelScaleFactor", 0f);
-				return (QSLabelScaleFactor + 100) + "% " + "(" + fragmentCompat.getString(R.string.sysui_restart_needed) + ")";
+				return (QSLabelScaleFactor + 100) + "%";
 
 			case "QSSecondaryLabelScaleFactor":
 				float QSSecondaryLabelScaleFactor = instance.mPreferences.getSliderFloat( "QSSecondaryLabelScaleFactor", 0f);
-				return (QSSecondaryLabelScaleFactor + 100) + "% " + "(" + fragmentCompat.getString(R.string.sysui_restart_needed) + ")";
+				return (QSSecondaryLabelScaleFactor + 100) + "%";
 
 			case "GesPillWidthModPos":
 				return instance.mPreferences.getSliderInt("GesPillWidthModPos", 50) * 2 + fragmentCompat.getString(R.string.pill_width_summary);
