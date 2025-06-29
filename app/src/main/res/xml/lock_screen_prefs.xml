@@ -146,8 +146,7 @@
 		<sh.siava.pixelxpert.ui.preferences.MaterialSwitchPreference
 			android:defaultValue="false"
 			android:key="DisableLockScreenPill"
-			android:summaryOff="@string/general_off"
-			android:summaryOn="@string/general_on"
+			android:summary="@string/sysui_restart_needed"
 			android:title="@string/disable_lockscreen_pill_title"
 			app:iconSpaceReserved="false" />
 

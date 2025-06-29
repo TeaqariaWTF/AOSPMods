@@ -12,16 +12,13 @@ import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.getBooleanField;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
-import static sh.siava.pixelxpert.xposed.utils.SystemUtils.idOf;
 import static sh.siava.pixelxpert.xposed.utils.SystemUtils.sleep;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
-import android.view.View;
 
 import androidx.annotation.NonNull;
 
@@ -97,6 +94,7 @@ public class ScreenGestures extends XposedModPack {
 		ReflectedClass DozeTriggersClass = ReflectedClass.of("com.android.systemui.doze.DozeTriggers");
 		ReflectedClass PhoneStatusBarViewClass = ReflectedClass.of("com.android.systemui.statusbar.phone.PhoneStatusBarView");
 		ReflectedClass TriggerSensorClass = ReflectedClass.of("com.android.systemui.doze.DozeSensors$TriggerSensor");
+		ReflectedClass DefaultSettingsPopupMenuSectionClass = ReflectedClass.of("com.android.systemui.keyguard.ui.view.layout.sections.DefaultSettingsPopupMenuSection");
 
 		PhoneStatusBarViewClass
 				.before("onTouchEvent")
@@ -157,6 +155,14 @@ public class ScreenGestures extends XposedModPack {
 					}
 				});
 
+		DefaultSettingsPopupMenuSectionClass
+				.before("bindData") //we prevent binding to happen in the first place. otherwise, very hard to control
+				.run(param -> {
+					if(DisableLockScreenPill) {
+						param.setResult(null);
+					}
+				});
+
 		NotificationShadeWindowViewControllerClass
 				.afterConstruction()
 				.run(param -> new Thread(() -> {
@@ -170,34 +176,11 @@ public class ScreenGestures extends XposedModPack {
 					NotificationPanelViewController = param.thisObject;
 
 					mStatusBarKeyguardViewManager = getObjectField(param.thisObject, "mStatusBarKeyguardViewManager");
-
-					hookLockScreenCustomizePill();
 				});
 
 		NotificationPanelViewControllerClass
 				.after("createTouchHandler")
-				.run(param -> {
-					NotificationPanelViewController = param.thisObject;
-					hookLockScreenCustomizePill();
-				});
-	}
-
-	private void hookLockScreenCustomizePill() {
-		try {
-			View mView = (View) getObjectField(NotificationPanelViewController, "mView");
-
-			@SuppressLint("DiscouragedApi")
-			View longPressReceiver = mView.findViewById(idOf("keyguard_long_press"));
-			ReflectedClass.of(longPressReceiver.getClass())
-					.before("onTouchEvent")
-					.run(param -> {
-						if(param.thisObject == longPressReceiver && (turnedByTTT || DisableLockScreenPill))
-						{
-							param.setResult(false);
-						}
-					});
-		} catch (Throwable ignored){}
-
+				.run(param -> NotificationPanelViewController = param.thisObject);
 	}
 
 	private void showAmbientDisplay(Object dozeTrigger) {
