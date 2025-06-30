@@ -9,6 +9,7 @@ import javax.inject.Singleton;
 public class StateManager {
 
     private final MutableLiveData<Boolean> requiresSystemUIRestart = new MutableLiveData<>(false);
+    private final MutableLiveData<Boolean> requiresDeviceRestart = new MutableLiveData<>(false);
 
     public LiveData<Boolean> getRequiresSystemUIRestart() {
         return requiresSystemUIRestart;
@@ -16,5 +17,13 @@ public class StateManager {
 
     public void setRequiresSystemUIRestart(boolean value) {
         requiresSystemUIRestart.postValue(value);
+    }
+
+    public LiveData<Boolean> getRequiresDeviceRestart() {
+        return requiresDeviceRestart;
+    }
+
+    public void setRequiresDeviceRestart(boolean value) {
+        requiresDeviceRestart.postValue(value);
     }
 }

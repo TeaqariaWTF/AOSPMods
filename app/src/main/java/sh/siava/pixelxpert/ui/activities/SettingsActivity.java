@@ -44,6 +44,7 @@ import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import javax.inject.Inject;
 
@@ -148,19 +149,32 @@ public class SettingsActivity extends BaseActivity implements PreferenceFragment
 	}
 
 	private void observeRestartFlag() {
-		stateManager.getRequiresSystemUIRestart().observe(this, isRequired -> showOrHidePendingActionButton(binding, isRequired));
+		AtomicBoolean requiresSystemUiRestart = new AtomicBoolean(Boolean.TRUE.equals(stateManager.getRequiresSystemUIRestart().getValue()));
+		AtomicBoolean requiresDeviceRestart = new AtomicBoolean(Boolean.TRUE.equals(stateManager.getRequiresDeviceRestart().getValue()));
+
+		stateManager.getRequiresSystemUIRestart().observe(this, isRequired -> {
+			requiresSystemUiRestart.set(isRequired);
+			showOrHidePendingActionButton(binding, requiresSystemUiRestart.get(), requiresDeviceRestart.get());
+		});
+
+		stateManager.getRequiresDeviceRestart().observe(this, isRequired -> {
+			requiresDeviceRestart.set(isRequired);
+			showOrHidePendingActionButton(binding, requiresSystemUiRestart.get(), requiresDeviceRestart.get());
+		});
 	}
 
 	private void setupFloatingActionButtons() {
 		// Initially hide all FABs
 		binding.hideAll.hide();
 		binding.restartSystemui.hide();
+		binding.restartDevice.hide();
 		binding.pendingActions.shrink();
 
 		// Show or hide the main pending actions FAB based on Dynamic flags
 		showOrHidePendingActionButton(
 				binding,
-				Boolean.TRUE.equals(stateManager.getRequiresSystemUIRestart().getValue())
+				Boolean.TRUE.equals(stateManager.getRequiresSystemUIRestart().getValue()),
+				Boolean.TRUE.equals(stateManager.getRequiresDeviceRestart().getValue())
 		);
 
 		// Pending Action FAB clicked
@@ -173,6 +187,7 @@ public class SettingsActivity extends BaseActivity implements PreferenceFragment
 		binding.hideAll.setOnClickListener(v -> {
 			weakVibrate(binding.hideAll);
 			stateManager.setRequiresSystemUIRestart(false);
+			stateManager.setRequiresDeviceRestart(false);
 		});
 
 		// Restart System UI FAB clicked
@@ -182,11 +197,20 @@ public class SettingsActivity extends BaseActivity implements PreferenceFragment
 
 			new Handler(Looper.getMainLooper()).postDelayed(() -> AppUtils.restart("systemui"), 500);
 		});
+
+		// Restart Device FAB clicked
+		binding.restartDevice.setOnClickListener(v -> {
+			weakVibrate(binding.restartDevice);
+			stateManager.setRequiresDeviceRestart(false);
+
+			new Handler(Looper.getMainLooper()).postDelayed(() -> AppUtils.restart("system"), 500);
+		});
 	}
 
 	private void showOrHideFabButtons() {
 		try {
 			boolean requiresSystemUIRestart = Boolean.TRUE.equals(stateManager.getRequiresSystemUIRestart().getValue());
+			boolean requiresDeviceRestart = Boolean.TRUE.equals(stateManager.getRequiresDeviceRestart().getValue());
 			boolean pendingActionsShown = binding.pendingActions.isShown();
 			boolean isAnyButtonShown;
 
@@ -211,6 +235,16 @@ public class SettingsActivity extends BaseActivity implements PreferenceFragment
 				fadeOut(binding.restartSystemuiText);
 			}
 
+			// Restart Device FAB logic
+			if (!binding.restartDevice.isShown() && requiresDeviceRestart && pendingActionsShown) {
+				binding.restartDevice.show();
+				fadeIn(binding.restartDeviceText);
+				isAnyButtonShown = true;
+			} else {
+				binding.restartDevice.hide();
+				fadeOut(binding.restartDeviceText);
+			}
+
 			// Extend or shrink the main FAB based on visibility
 			if (isAnyButtonShown) {
 				binding.pendingActions.extend();
@@ -221,20 +255,38 @@ public class SettingsActivity extends BaseActivity implements PreferenceFragment
 		}
 	}
 
-	public static void showOrHidePendingActionButton(SettingsActivityBinding binding, boolean requiresSystemUiRestart) {
+	public static void showOrHidePendingActionButton(
+			SettingsActivityBinding binding,
+			boolean requiresSystemUiRestart,
+			boolean requiresDeviceRestart
+	) {
 		try {
-			if (!requiresSystemUiRestart) {
+			if (!requiresSystemUiRestart && !requiresDeviceRestart) {
 				binding.hideAll.hide();
 				fadeOut(binding.hideAllText);
 				binding.restartSystemui.hide();
 				fadeOut(binding.restartSystemuiText);
+				binding.restartDevice.hide();
+				fadeOut(binding.restartDeviceText);
 				binding.pendingActions.hide();
 				binding.pendingActions.shrink();
 			} else {
 				// Restart System UI button visibility logic
-				if (binding.hideAll.isShown() && !binding.restartSystemui.isShown()) {
+				if (binding.hideAll.isShown() && requiresSystemUiRestart && !binding.restartSystemui.isShown()) {
 					binding.restartSystemui.show();
 					fadeIn(binding.restartSystemuiText);
+				} else if (!requiresSystemUiRestart && binding.restartSystemui.isShown()) {
+					binding.restartSystemui.hide();
+					fadeOut(binding.restartSystemuiText);
+				}
+
+				// Restart Device button visibility logic
+				if (binding.hideAll.isShown() && requiresDeviceRestart && !binding.restartDevice.isShown()) {
+					binding.restartDevice.show();
+					fadeIn(binding.restartDeviceText);
+				} else if (!requiresDeviceRestart && binding.restartDevice.isShown()) {
+					binding.restartDevice.hide();
+					fadeOut(binding.restartDeviceText);
 				}
 
 				// Shrink or extend main FAB
