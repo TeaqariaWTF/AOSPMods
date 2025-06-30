@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
 
 	<dimen name="ui_container_radius">18dp</dimen>
 	<dimen name="ui_container_margin_side">16dp</dimen>
@@ -12,5 +12,8 @@
 	<dimen name="settingslib_illustration_width">380dp</dimen>
 	<dimen name="settingslib_illustration_height">300dp</dimen>
 
+	<!-- Extended Floating Action Button -->
+	<dimen name="fab_expanded_corner_radius">28dp</dimen>
+	<dimen name="fab_collapsed_corner_radius">16dp</dimen>
 
 </resources>

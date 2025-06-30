@@ -4,14 +4,13 @@ import static android.app.NotificationManager.IMPORTANCE_DEFAULT;
 import static androidx.preference.PreferenceManager.getDefaultSharedPreferences;
 import static sh.siava.pixelxpert.R.string.update_channel_name;
 import static sh.siava.pixelxpert.ui.Constants.UPDATES_CHANNEL_ID;
-import static sh.siava.pixelxpert.ui.utils.ViewUtils.fadeIn;
-import static sh.siava.pixelxpert.ui.utils.ViewUtils.fadeOut;
 import static sh.siava.pixelxpert.utils.AppUtils.isLikelyPixelBuild;
 import static sh.siava.pixelxpert.utils.MiscUtils.REQUEST_EXPORT;
 import static sh.siava.pixelxpert.utils.MiscUtils.REQUEST_IMPORT;
 import static sh.siava.pixelxpert.utils.MiscUtils.weakVibrate;
 import static sh.siava.pixelxpert.utils.NavigationExtensionKt.navigateTo;
 
+import android.animation.ValueAnimator;
 import android.annotation.SuppressLint;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -21,12 +20,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.Outline;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewOutlineProvider;
 
 import androidx.annotation.NonNull;
 import androidx.core.graphics.Insets;
@@ -217,32 +218,26 @@ public class SettingsActivity extends BaseActivity implements PreferenceFragment
 			// Hide All FAB logic
 			if (!binding.hideAll.isShown() && pendingActionsShown) {
 				binding.hideAll.show();
-				fadeIn(binding.hideAllText);
 				isAnyButtonShown = true;
 			} else {
 				binding.hideAll.hide();
-				fadeOut(binding.hideAllText);
 				isAnyButtonShown = false;
 			}
 
 			// Restart System UI FAB logic
 			if (!binding.restartSystemui.isShown() && requiresSystemUIRestart && pendingActionsShown) {
 				binding.restartSystemui.show();
-				fadeIn(binding.restartSystemuiText);
 				isAnyButtonShown = true;
 			} else {
 				binding.restartSystemui.hide();
-				fadeOut(binding.restartSystemuiText);
 			}
 
 			// Restart Device FAB logic
 			if (!binding.restartDevice.isShown() && requiresDeviceRestart && pendingActionsShown) {
 				binding.restartDevice.show();
-				fadeIn(binding.restartDeviceText);
 				isAnyButtonShown = true;
 			} else {
 				binding.restartDevice.hide();
-				fadeOut(binding.restartDeviceText);
 			}
 
 			// Extend or shrink the main FAB based on visibility
@@ -251,6 +246,8 @@ public class SettingsActivity extends BaseActivity implements PreferenceFragment
 			} else {
 				binding.pendingActions.shrink();
 			}
+
+			updateFabCornerRadius(binding);
 		} catch (Exception ignored) {
 		}
 	}
@@ -263,30 +260,24 @@ public class SettingsActivity extends BaseActivity implements PreferenceFragment
 		try {
 			if (!requiresSystemUiRestart && !requiresDeviceRestart) {
 				binding.hideAll.hide();
-				fadeOut(binding.hideAllText);
 				binding.restartSystemui.hide();
-				fadeOut(binding.restartSystemuiText);
 				binding.restartDevice.hide();
-				fadeOut(binding.restartDeviceText);
 				binding.pendingActions.hide();
 				binding.pendingActions.shrink();
+				updateFabCornerRadius(binding);
 			} else {
 				// Restart System UI button visibility logic
 				if (binding.hideAll.isShown() && requiresSystemUiRestart && !binding.restartSystemui.isShown()) {
 					binding.restartSystemui.show();
-					fadeIn(binding.restartSystemuiText);
 				} else if (!requiresSystemUiRestart && binding.restartSystemui.isShown()) {
 					binding.restartSystemui.hide();
-					fadeOut(binding.restartSystemuiText);
 				}
 
 				// Restart Device button visibility logic
 				if (binding.hideAll.isShown() && requiresDeviceRestart && !binding.restartDevice.isShown()) {
 					binding.restartDevice.show();
-					fadeIn(binding.restartDeviceText);
 				} else if (!requiresDeviceRestart && binding.restartDevice.isShown()) {
 					binding.restartDevice.hide();
-					fadeOut(binding.restartDeviceText);
 				}
 
 				// Shrink or extend main FAB
@@ -300,6 +291,34 @@ public class SettingsActivity extends BaseActivity implements PreferenceFragment
 			}
 		} catch (Exception ignored) {
 		}
+	}
+
+	private static void updateFabCornerRadius(SettingsActivityBinding binding) {
+		float expandedRadius = binding.getRoot().getContext().getResources().getDimension(R.dimen.fab_expanded_corner_radius);
+		float collapsedRadius = binding.getRoot().getContext().getResources().getDimension(R.dimen.fab_collapsed_corner_radius);
+
+		if (binding.pendingActions.isExtended()) {
+			animateCornerRadius(binding.pendingActions, collapsedRadius, expandedRadius);
+		} else {
+			animateCornerRadius(binding.pendingActions, expandedRadius, collapsedRadius);
+		}
+	}
+
+	private static void animateCornerRadius(View fab, float from, float to) {
+		ValueAnimator animator = ValueAnimator.ofFloat(from, to);
+		animator.setDuration(300);
+		animator.addUpdateListener(animation -> {
+			float radius = (float) animation.getAnimatedValue();
+			fab.setClipToOutline(true);
+			fab.setOutlineProvider(new ViewOutlineProvider() {
+				@Override
+				public void getOutline(View view, Outline outline) {
+					outline.setRoundRect(0, 0, view.getWidth(), view.getHeight(), radius);
+				}
+			});
+			fab.invalidateOutline();
+		});
+		animator.start();
 	}
 
 	@SuppressLint({"RestrictedApi", "NonConstantResourceId"})
