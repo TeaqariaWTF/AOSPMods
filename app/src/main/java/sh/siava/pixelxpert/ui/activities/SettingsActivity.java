@@ -167,8 +167,11 @@ public class SettingsActivity extends BaseActivity implements PreferenceFragment
 	private void setupFloatingActionButtons() {
 		// Initially hide all FABs
 		binding.hideAll.hide();
+		binding.hideAll.shrink();
 		binding.restartSystemui.hide();
+		binding.restartSystemui.shrink();
 		binding.restartDevice.hide();
+		binding.restartDevice.shrink();
 		binding.pendingActions.shrink();
 
 		// Show or hide the main pending actions FAB based on Dynamic flags
@@ -210,44 +213,56 @@ public class SettingsActivity extends BaseActivity implements PreferenceFragment
 
 	private void showOrHideFabButtons() {
 		try {
+			Handler handler = new Handler(Looper.getMainLooper());
 			boolean requiresSystemUIRestart = Boolean.TRUE.equals(stateManager.getRequiresSystemUIRestart().getValue());
 			boolean requiresDeviceRestart = Boolean.TRUE.equals(stateManager.getRequiresDeviceRestart().getValue());
-			boolean pendingActionsShown = binding.pendingActions.isShown();
-			boolean isAnyButtonShown;
+			boolean isPendingExtended = binding.pendingActions.isExtended();
 
-			// Hide All FAB logic
-			if (!binding.hideAll.isShown() && pendingActionsShown) {
-				binding.hideAll.show();
-				isAnyButtonShown = true;
-			} else {
-				binding.hideAll.hide();
-				isAnyButtonShown = false;
-			}
+			// Delay between each FAB animation
+			int delay = 40;
+			int[] currentDelay = {0};
 
-			// Restart System UI FAB logic
-			if (!binding.restartSystemui.isShown() && requiresSystemUIRestart && pendingActionsShown) {
-				binding.restartSystemui.show();
-				isAnyButtonShown = true;
-			} else {
-				binding.restartSystemui.hide();
-			}
-
-			// Restart Device FAB logic
-			if (!binding.restartDevice.isShown() && requiresDeviceRestart && pendingActionsShown) {
-				binding.restartDevice.show();
-				isAnyButtonShown = true;
-			} else {
-				binding.restartDevice.hide();
-			}
-
-			// Extend or shrink the main FAB based on visibility
-			if (isAnyButtonShown) {
+			if (!isPendingExtended) {
+				// Extend pending FAB
 				binding.pendingActions.extend();
-			} else {
-				binding.pendingActions.shrink();
-			}
+				updateFabCornerRadius(binding);
 
-			updateFabCornerRadius(binding);
+				// Show restartSystemui if required
+				if (requiresSystemUIRestart) {
+					handler.postDelayed(() -> binding.restartSystemui.show(), currentDelay[0] += delay);
+					handler.postDelayed(() -> binding.restartSystemui.extend(), currentDelay[0] += delay);
+				}
+
+				// Show restartDevice if required
+				if (requiresDeviceRestart) {
+					handler.postDelayed(() -> binding.restartDevice.show(), currentDelay[0] += delay);
+					handler.postDelayed(() -> binding.restartDevice.extend(), currentDelay[0] += delay);
+				}
+
+				// Show hideAll always
+				handler.postDelayed(() -> binding.hideAll.show(), currentDelay[0] += delay);
+				handler.postDelayed(() -> binding.hideAll.extend(), currentDelay[0] += delay);
+			} else {
+				// Shrink and hide in reverse order
+				handler.postDelayed(() -> binding.hideAll.shrink(), currentDelay[0] += delay);
+				handler.postDelayed(() -> binding.hideAll.hide(), currentDelay[0] += delay);
+
+				if (requiresDeviceRestart) {
+					handler.postDelayed(() -> binding.restartDevice.shrink(), currentDelay[0] += delay);
+					handler.postDelayed(() -> binding.restartDevice.hide(), currentDelay[0] += delay);
+				}
+
+				if (requiresSystemUIRestart) {
+					handler.postDelayed(() -> binding.restartSystemui.shrink(), currentDelay[0] += delay);
+					handler.postDelayed(() -> binding.restartSystemui.hide(), currentDelay[0] += delay);
+				}
+
+				// Finally shrink pending FAB
+				handler.postDelayed(() -> {
+					binding.pendingActions.shrink();
+					updateFabCornerRadius(binding);
+				}, currentDelay[0] += delay);
+			}
 		} catch (Exception ignored) {
 		}
 	}
