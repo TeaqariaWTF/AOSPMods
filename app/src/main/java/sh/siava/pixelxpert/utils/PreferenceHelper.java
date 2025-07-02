@@ -46,6 +46,7 @@ public class PreferenceHelper {
 				.getStateManager();
 
 		switch (key) {
+			// SystemUI restart
 			case "DWallpaperEnabled":
 			case "displayOverride":
 			case "QSLabelScaleFactor":
@@ -56,6 +57,11 @@ public class PreferenceHelper {
 			case "ThreeButtonCenter":
 			case "ThreeButtonRight":
 				stateManager.setRequiresSystemUIRestart(true);
+				break;
+
+			// Device restart
+			case "volumeStps":
+				stateManager.setRequiresDeviceRestart(true);
 				break;
 		}
 	}
