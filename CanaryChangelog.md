@@ -1,3 +1,6 @@
+**canary-461**  
+- Show FAB for pending actions when necessary  
+  
 **canary-460**  
 - Fixed hiding lockscreen customization pill  
   
