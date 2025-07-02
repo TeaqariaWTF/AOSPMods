@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import sh.siava.pixelxpert.annotations.ModPackPriority;
 import sh.siava.pixelxpert.xposed.XPrefs;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
@@ -23,6 +24,7 @@ import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
  * @noinspection RedundantThrows
  */
 @SystemUIModPack
+@ModPackPriority (priority = 1)
 public class BatteryDataProvider extends XposedModPack {
 	public static final int BATTERY_STATUS_DISCHARGING = 3;
 	public static final int MILLION = 1000000;

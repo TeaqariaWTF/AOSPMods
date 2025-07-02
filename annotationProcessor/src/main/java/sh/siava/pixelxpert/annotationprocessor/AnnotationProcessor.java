@@ -8,6 +8,8 @@ import javax.tools.JavaFileObject;
 
 import java.io.IOException;
 import java.io.Writer;
+import java.util.AbstractMap;
+import java.util.ArrayList;
 import java.util.Set;
 
 import sh.siava.pixelxpert.annotations.*;
@@ -57,23 +59,41 @@ public class AnnotationProcessor extends AbstractProcessor {
 	}
 
 	private void processModPacks(String targetPackage, Set<? extends Element> targetModPacks, Writer writer) throws IOException {
+		ArrayList<AbstractMap.SimpleEntry<Integer, Element>> modPackData = new ArrayList<>();
 		for (Element targetModPack : targetModPacks) {
-
-			String qualifiedName = ((TypeElement)targetModPack).getQualifiedName().toString();
-
-			boolean mainProcessPack = true, childProcessPack = false;
-			ChildProcessModPack childProcessData = targetModPack.getAnnotation(ChildProcessModPack.class);
-			String childProcessName = "";
-			if(childProcessData != null)
+			int priority = 99;
+			ModPackPriority modPackPriority = targetModPack.getAnnotation(ModPackPriority.class);
+			if(targetModPack.getAnnotation(ModPackPriority.class) != null)
 			{
-				childProcessPack = true;
-				childProcessName = childProcessData.processNameContains();
-				mainProcessPack = targetModPack.getAnnotation(MainProcessModPack.class) != null;
+				priority = modPackPriority.priority();
 			}
 
-			writer.write(String.format("\t\tresult.add(new ModPackData(%s.class, \"%s\", %s, %s, \"%s\"));\n", qualifiedName, targetPackage, mainProcessPack, childProcessPack, childProcessName));
-
-			new ModPackData(targetModPack.getClass(), targetPackage, mainProcessPack, childProcessPack, "");
+			modPackData.add(new AbstractMap.SimpleEntry<>(priority, targetModPack));
 		}
+
+		modPackData.sort(java.util.Map.Entry.comparingByKey());
+
+		modPackData.forEach(item ->
+		{
+			try {
+				TypeElement targetModPack = (TypeElement) item.getValue();
+
+				String qualifiedName = targetModPack.getQualifiedName().toString();
+
+				boolean mainProcessPack = true, childProcessPack = false;
+				ChildProcessModPack childProcessData = targetModPack.getAnnotation(ChildProcessModPack.class);
+				String childProcessName = "";
+				if(childProcessData != null)
+				{
+					childProcessPack = true;
+					childProcessName = childProcessData.processNameContains();
+					mainProcessPack = targetModPack.getAnnotation(MainProcessModPack.class) != null;
+				}
+
+				writer.write(String.format("\t\tresult.add(new ModPackData(%s.class, \"%s\", %s, %s, \"%s\"));\n", qualifiedName, targetPackage, mainProcessPack, childProcessPack, childProcessName));
+			} catch (Throwable e) {
+				throw new RuntimeException(e);
+			}
+		});
 	}
 }

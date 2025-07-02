@@ -10,12 +10,14 @@ import android.content.Context;
 import java.util.Arrays;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import sh.siava.pixelxpert.annotations.ModPackPriority;
 import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings({"RedundantThrows", "unused"})
 @SystemUIModPack
+@ModPackPriority(priority = 1)
 public class ThermalProvider extends XposedModPack {
 	public static final int CPU = 0;
 	public static final int GPU = 1;
