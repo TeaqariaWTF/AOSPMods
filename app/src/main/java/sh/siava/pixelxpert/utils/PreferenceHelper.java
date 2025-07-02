@@ -2,7 +2,6 @@ package sh.siava.pixelxpert.utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +16,7 @@ import java.util.List;
 
 import dagger.hilt.android.EntryPointAccessors;
 import sh.siava.pixelxpert.BuildConfig;
+import sh.siava.pixelxpert.PixelXpert;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.di.StateManagerEntryPoint;
 import sh.siava.pixelxpert.ui.misc.StateManager;
@@ -28,8 +28,8 @@ public class PreferenceHelper {
 
 	public static PreferenceHelper instance;
 
-	public static void init(ExtendedSharedPreferences prefs) {
-		new PreferenceHelper(prefs);
+	public static void init() {
+		new PreferenceHelper(PixelXpert.get().getDefaultPreferences());
 	}
 
 	private PreferenceHelper(ExtendedSharedPreferences prefs) {
@@ -373,9 +373,6 @@ public class PreferenceHelper {
 		return null;
 	}
 
-	/**
-	 *
-	 */
 	public static void setupPreference(Preference preference) {
 		try {
 			String key = preference.getKey();
@@ -392,10 +389,10 @@ public class PreferenceHelper {
 			switch (key) {
 				case "QSLabelScaleFactor":
 				case "QSSecondaryLabelScaleFactor":
-					((RangeSliderPreference) preference).slider.setLabelFormatter(value -> (value + 100) + "%");
+					((RangeSliderPreference) preference).setLabelFormatter(value -> (value + 100) + "%");
 					break;
 				case "FastChargingWattage":
-					((RangeSliderPreference) preference).slider.setLabelFormatter(new LabelFormatter() {
+					((RangeSliderPreference) preference).setLabelFormatter(new LabelFormatter() {
 						@NonNull
 						@Override
 						public String getFormattedValue(float value) {
@@ -405,11 +402,10 @@ public class PreferenceHelper {
 					break;
 
 				case "DWOpacity":
-					((RangeSliderPreference) preference).slider.setLabelFormatter(new LabelFormatter() {
+					((RangeSliderPreference) preference).setLabelFormatter(new LabelFormatter() {
 						@NonNull
 						@Override
 						public String getFormattedValue(float value) {
-							Log.d("adsfda", "getFormattedValue: " + key);
 							NumberFormat format = NumberFormat.getInstance();
 							format.setMaximumFractionDigits(1);
 							return String.format("%s%%", format.format(value*100/255));

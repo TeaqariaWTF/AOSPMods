@@ -37,7 +37,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
-import androidx.preference.PreferenceManager;
 
 import com.topjohnwu.superuser.Shell;
 
@@ -55,6 +54,7 @@ import br.tiagohm.markdownview.MarkdownView;
 import br.tiagohm.markdownview.css.InternalStyleSheet;
 import br.tiagohm.markdownview.css.styles.Github;
 import sh.siava.pixelxpert.BuildConfig;
+import sh.siava.pixelxpert.PixelXpert;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.databinding.UpdateFragmentBinding;
 import sh.siava.pixelxpert.xposed.utils.ModuleFolderOperations;
@@ -166,7 +166,7 @@ public class UpdateFragment extends BaseFragment {
 	}
 
 	private void applyPrefsToUpdate() {
-		ExtendedSharedPreferences prefs = ExtendedSharedPreferences.from(PreferenceManager.getDefaultSharedPreferences(requireContext().createDeviceProtectedStorageContext()));
+		ExtendedSharedPreferences prefs = PixelXpert.get().getDefaultPreferences();
 
 		int volumeStps = prefs.getSliderInt("volumeStps", 0);
 

@@ -1,6 +1,5 @@
 package sh.siava.pixelxpert.utils;
 
-import static androidx.preference.PreferenceManager.getDefaultSharedPreferences;
 import static sh.siava.pixelxpert.ui.Constants.UPDATE_AVAILABLE_ID;
 
 import android.app.NotificationChannel;
@@ -8,7 +7,6 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkCapabilities;
 import android.util.Log;
@@ -24,6 +22,7 @@ import com.google.common.util.concurrent.ListenableFuture;
 import com.topjohnwu.superuser.Shell;
 
 import sh.siava.pixelxpert.BuildConfig;
+import sh.siava.pixelxpert.PixelXpert;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.receivers.NotificationActionHandler;
 import sh.siava.pixelxpert.ui.activities.SettingsActivity;
@@ -38,7 +37,7 @@ public class UpdateWorker extends ListenableWorker {
 	@NonNull
 	@Override
 	public ListenableFuture<Result> startWork() {
-		SharedPreferences prefs = getDefaultSharedPreferences(mContext.createDeviceProtectedStorageContext());
+		ExtendedSharedPreferences prefs = PixelXpert.get().getDefaultPreferences();
 
 		boolean UpdateWifiOnly = prefs.getBoolean("UpdateWifiOnly", true);
 

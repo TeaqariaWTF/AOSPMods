@@ -1,6 +1,5 @@
 package sh.siava.pixelxpert.utils;
 
-import static androidx.preference.PreferenceManager.getDefaultSharedPreferences;
 import static sh.siava.pixelxpert.ui.preferences.preferencesearch.SearchPreferenceResult.highlightPreference;
 import static sh.siava.pixelxpert.utils.MiscUtils.setOnBackPressedDispatcherCallback;
 import static sh.siava.pixelxpert.utils.MiscUtils.setupToolbar;
@@ -26,6 +25,7 @@ import com.google.android.material.appbar.AppBarLayout;
 
 import java.util.Objects;
 
+import sh.siava.pixelxpert.PixelXpert;
 import sh.siava.pixelxpert.R;
 
 public abstract class ControlledPreferenceFragmentCompat extends PreferenceFragmentCompat {
@@ -119,7 +119,7 @@ public abstract class ControlledPreferenceFragmentCompat extends PreferenceFragm
 	@NonNull
 	@Override
 	public RecyclerView.Adapter<?> onCreateAdapter(@NonNull PreferenceScreen preferenceScreen) {
-		mPreferences = ExtendedSharedPreferences.from(getDefaultSharedPreferences(requireContext().createDeviceProtectedStorageContext()));
+		mPreferences = PixelXpert.get().getDefaultPreferences();
 
 		mPreferences.registerOnSharedPreferenceChangeListener(changeListener);
 

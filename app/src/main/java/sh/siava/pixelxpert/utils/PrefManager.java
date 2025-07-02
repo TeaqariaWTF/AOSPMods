@@ -75,8 +75,4 @@ public class PrefManager {
 		}
 		return editor.commit();
 	}
-
-	public static void clearPrefs(SharedPreferences preferences) {
-		preferences.edit().clear().commit();
-	}
 }

@@ -1,6 +1,5 @@
 package sh.siava.pixelxpert.utils;
 
-import static androidx.preference.PreferenceManager.getDefaultSharedPreferences;
 import static sh.siava.pixelxpert.ui.Constants.PX_ICON_PACK_REPO;
 import static sh.siava.pixelxpert.utils.TextUtils.getClickableText;
 
@@ -162,7 +161,7 @@ public class MiscUtils {
 	public static void setOnOptionsItemSelected(MenuItem item, Activity activity, Fragment fragment) {
 		int itemID = item.getItemId();
 		NavController navController = NavHostFragment.findNavController(fragment);
-		SharedPreferences prefs = getDefaultSharedPreferences(activity.createDeviceProtectedStorageContext());
+		SharedPreferences prefs = PixelXpert.get().getDefaultPreferences();
 		Context applicationContext = activity.getApplicationContext();
 
 		StateManager stateManager = EntryPointAccessors
@@ -172,7 +171,7 @@ public class MiscUtils {
 		if (itemID == android.R.id.home) {
 			navController.navigateUp();
 		} else if (itemID == R.id.menu_clearPrefs) {
-			PrefManager.clearPrefs(prefs);
+			PixelXpert.get().initiatePreferences(true);
 			AppUtils.restart("systemui");
 		} else if (itemID == R.id.menu_exportPrefs) {
 			importExportSettings(activity, true);

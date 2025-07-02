@@ -1,7 +1,6 @@
 package sh.siava.pixelxpert.ui.activities;
 
 import static android.app.NotificationManager.IMPORTANCE_DEFAULT;
-import static androidx.preference.PreferenceManager.getDefaultSharedPreferences;
 import static sh.siava.pixelxpert.R.string.update_channel_name;
 import static sh.siava.pixelxpert.ui.Constants.UPDATES_CHANNEL_ID;
 import static sh.siava.pixelxpert.ui.utils.ViewUtils.fadeIn;
@@ -49,6 +48,7 @@ import javax.inject.Inject;
 
 import dagger.hilt.android.AndroidEntryPoint;
 import sh.siava.pixelxpert.BuildConfig;
+import sh.siava.pixelxpert.PixelXpert;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.databinding.SettingsActivityBinding;
 import sh.siava.pixelxpert.service.tileServices.SleepOnSurfaceTileService;
@@ -93,7 +93,7 @@ public class SettingsActivity extends BaseActivity implements PreferenceFragment
 		createNotificationChannel();
 		setupNavigation(savedInstanceState);
 
-		PreferenceHelper.init(PXPreferences.getPrefs());
+		PreferenceHelper.init();
 
 		if (getIntent() != null) {
 			if (getIntent().getBooleanExtra("updateTapped", false)) {
@@ -341,13 +341,16 @@ public class SettingsActivity extends BaseActivity implements PreferenceFragment
 
 		if (data == null) return; //user hit cancel. Nothing to do
 
-		SharedPreferences prefs = getDefaultSharedPreferences(createDeviceProtectedStorageContext());
+		SharedPreferences prefs = PixelXpert.get().getDefaultPreferences();
 		switch (requestCode) {
 			case REQUEST_IMPORT:
 				try {
-					//noinspection DataFlowIssue
+					PixelXpert.get().setPrefsValidity(false);
 					PrefManager.importPath(prefs, getContentResolver().openInputStream(data.getData()));
+					PixelXpert.get().initiatePreferences(false);
+
 					AppUtils.restart("systemui");
+					recreate();
 				} catch (Exception ignored) {
 				}
 				break;

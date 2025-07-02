@@ -1,24 +1,48 @@
 package sh.siava.pixelxpert.utils;
 
 import android.content.SharedPreferences;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import sh.siava.pixelxpert.PixelXpert;
 import sh.siava.rangesliderpreference.RangeSliderPreference;
 
 public class ExtendedSharedPreferences implements SharedPreferences {
+	public static final String IS_PREFS_INITIATED_KEY = "IsPrefsInitiated";
 	private final SharedPreferences prefs;
+	public List<OnSharedPreferenceChangeListener> mOnSharedPreferenceChangeListeners = new ArrayList<>();
+	boolean mIsPrefsInitiated;
+
+	//must be a field or will be GCed
+	OnSharedPreferenceChangeListener listener = (sharedPreferences, key) -> {
+		if(IS_PREFS_INITIATED_KEY.equals(key))
+		{
+			mIsPrefsInitiated = getBoolean(IS_PREFS_INITIATED_KEY, false);
+		}
+
+		if(mIsPrefsInitiated && !mOnSharedPreferenceChangeListeners.isEmpty())
+		{
+			mOnSharedPreferenceChangeListeners.forEach(listener -> listener.onSharedPreferenceChanged(sharedPreferences, key));
+		}
+	};
 	public static ExtendedSharedPreferences from(SharedPreferences prefs)
 	{
 		return new ExtendedSharedPreferences(prefs);
 	}
 	private ExtendedSharedPreferences(SharedPreferences prefs)
 	{
+		Log.d(PixelXpert.TAG, "ExtendedSharedPreferences: init");
 		this.prefs = prefs;
+
+		mIsPrefsInitiated = prefs.getBoolean(IS_PREFS_INITIATED_KEY, false);
+
+		prefs.registerOnSharedPreferenceChangeListener(listener);
 	}
 	public int getSliderInt(String key, int defaultVal)
 	{
@@ -84,11 +108,11 @@ public class ExtendedSharedPreferences implements SharedPreferences {
 
 	@Override
 	public void registerOnSharedPreferenceChangeListener(OnSharedPreferenceChangeListener listener) {
-		prefs.registerOnSharedPreferenceChangeListener(listener);
+		mOnSharedPreferenceChangeListeners.add(listener);
 	}
 
 	@Override
 	public void unregisterOnSharedPreferenceChangeListener(OnSharedPreferenceChangeListener listener) {
-		prefs.unregisterOnSharedPreferenceChangeListener(listener);
+		mOnSharedPreferenceChangeListeners.remove(listener);
 	}
 }

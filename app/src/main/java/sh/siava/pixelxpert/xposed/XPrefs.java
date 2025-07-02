@@ -13,7 +13,7 @@ public class XPrefs {
 	@SuppressLint("StaticFieldLeak")
 	public static ExtendedRemotePreferences Xprefs;
 	public static final String MagiskRoot = "/data/adb/modules/PixelXpert";
-	private static String packageName;
+	public static String packageName;
 
 	private static final OnSharedPreferenceChangeListener listener = (sharedPreferences, key) -> loadEverything(packageName, key);
 	public static void init(Context context) {

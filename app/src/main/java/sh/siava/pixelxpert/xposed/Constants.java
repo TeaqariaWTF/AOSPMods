@@ -8,6 +8,7 @@ import android.content.Intent;
 import java.util.Arrays;
 import java.util.List;
 
+import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.xposed.utils.BootLoopProtector;
 
 public final class Constants {
@@ -19,6 +20,8 @@ public final class Constants {
 	public static final String ACTION_CHECK_XPOSED_ENABLED = APPLICATION_ID + ".ACTION_CHECK_XPOSED_ENABLED";
 	public static final String ACTION_XPOSED_CONFIRMED = APPLICATION_ID + ".ACTION_XPOSED_CONFIRMED";
 	public static final String ACTION_KSU_ACQUIRE_ROOT = APPLICATION_ID + "ACTION_KSU_ACQUIRE_ROOT";
+
+	public static String DEFAULT_PREFS_FILE_NAME = BuildConfig.APPLICATION_ID + "_preferences";
 
 	//None of these are used for matching package names during modpack loading. package names must be defined in respective annotations
 	public static final String SYSTEM_UI_PACKAGE = "com.android.systemui";
