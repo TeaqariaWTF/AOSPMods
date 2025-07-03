@@ -1,3 +1,6 @@
+**canary-462**  
+- Fixed framework modpacks not loading in 461  
+  
 **canary-461**  
 - Show FAB for pending actions when necessary  
   
