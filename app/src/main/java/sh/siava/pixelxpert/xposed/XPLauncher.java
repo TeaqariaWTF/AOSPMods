@@ -69,8 +69,8 @@ public class XPLauncher implements ServiceConnection {
 
 	public void handleLoadPackage(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		try {
-			mIsChildProcess = lpParam.processName.contains(":");
 			processName = lpParam.processName;
+			mIsChildProcess = processName.contains(":");
 		} catch (Throwable ignored) {
 			mIsChildProcess = false;
 		}
@@ -139,7 +139,7 @@ public class XPLauncher implements ServiceConnection {
 		ModPacks.getModPacks()
 				.forEach(modPackData -> {
 					if((modPackData.targetPackage.equals(lpParam.packageName) || modPackData.targetPackage.isEmpty() /*common mod packs*/)
-					&& ((mIsChildProcess && modPackData.targetsChildProcess && lpParam.processName.contains(modPackData.childProcessName))
+					&& ((mIsChildProcess && modPackData.targetsChildProcess && processName.contains(modPackData.childProcessName))
 						|| (!mIsChildProcess && modPackData.targetsMainProcess)))
 					{
 						//noinspection unchecked
@@ -213,6 +213,8 @@ public class XPLauncher implements ServiceConnection {
 				SystemUtils.threadSleep(1000);
 			}
 		}
+
+		XPrefs.onContentProviderLoaded();
 
 		log(String.format("Loading PixelXpert version: %s on %s", BuildConfig.VERSION_NAME, lpParam.packageName));
 		try {

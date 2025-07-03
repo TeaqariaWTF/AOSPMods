@@ -7,12 +7,13 @@ import android.content.Context;
 import com.crossbowffs.remotepreferences.RemotePreferences;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import sh.siava.rangesliderpreference.RangeSliderPreference;
 
 public class ExtendedRemotePreferences extends RemotePreferences {
-	public List<OnSharedPreferenceChangeListener> mOnSharedPreferenceChangeListeners = new ArrayList<>();
+	public List<OnSharedPreferenceChangeListener> mOnSharedPreferenceChangeListeners = Collections.synchronizedList(new ArrayList<>());
 	boolean mIsPrefsInitiated;
 
 	//must be declared as field or it will be disposed by GC
@@ -27,25 +28,23 @@ public class ExtendedRemotePreferences extends RemotePreferences {
 			mOnSharedPreferenceChangeListeners.forEach(listener -> listener.onSharedPreferenceChanged(sharedPreferences, key));
 		}
 	};
+	private boolean mListenerRegistered = false;
 
 	/** @noinspection unused*/
 	public ExtendedRemotePreferences(Context context, String authority, String prefFileName) {
 		super(context, authority, prefFileName);
-
-		initListener();
 	}
 
 	public ExtendedRemotePreferences(Context context, String authority, String prefFileName, boolean strictMode) {
 		super(context, authority, prefFileName, strictMode);
-
-		initListener();
 	}
 
 	private void initListener() {
 		mIsPrefsInitiated = super.getBoolean(IS_PREFS_INITIATED_KEY, false);
 
-
 		super.registerOnSharedPreferenceChangeListener(l);
+
+		mListenerRegistered = true;
 	}
 
 	public int getSliderInt(String key, int defaultVal)
@@ -65,6 +64,9 @@ public class ExtendedRemotePreferences extends RemotePreferences {
 
 	@Override
 	public void registerOnSharedPreferenceChangeListener(OnSharedPreferenceChangeListener listener) {
+		if(!mListenerRegistered)
+			initListener();
+
 		mOnSharedPreferenceChangeListeners.add(listener);
 	}
 
@@ -72,5 +74,4 @@ public class ExtendedRemotePreferences extends RemotePreferences {
 	public void unregisterOnSharedPreferenceChangeListener(OnSharedPreferenceChangeListener listener) {
 		mOnSharedPreferenceChangeListeners.remove(listener);
 	}
-
 }

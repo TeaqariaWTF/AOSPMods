@@ -9,7 +9,6 @@ import sh.siava.pixelxpert.xposed.utils.ExtendedRemotePreferences;
 
 
 public class XPrefs {
-
 	@SuppressLint("StaticFieldLeak")
 	public static ExtendedRemotePreferences Xprefs;
 	public static final String MagiskRoot = "/data/adb/modules/PixelXpert";
@@ -20,10 +19,12 @@ public class XPrefs {
 		packageName = context.getPackageName();
 
 		Xprefs = new ExtendedRemotePreferences(context, BuildConfig.APPLICATION_ID, BuildConfig.APPLICATION_ID + "_preferences", true);
-
-		Xprefs.registerOnSharedPreferenceChangeListener(listener);
 	}
 
+	public static void onContentProviderLoaded() {
+		loadEverything(packageName);
+		Xprefs.registerOnSharedPreferenceChangeListener(listener);
+	}
 
 	public static void loadEverything(String packageName, String... key) {
 		if (key.length > 0 && (key[0] == null || Constants.PREF_UPDATE_EXCLUSIONS.stream().anyMatch(exclusion -> key[0].startsWith(exclusion))))
@@ -34,6 +35,7 @@ public class XPrefs {
 		XPLauncher.runningMods.forEach(thisMod -> thisMod.onPreferenceUpdated(key));
 	}
 
+	/** @noinspection unused*/
 	public static void setPackagePrefs(String packageName) {
 	}
 }
