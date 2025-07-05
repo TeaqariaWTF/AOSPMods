@@ -129,6 +129,8 @@ public class XPLauncher implements ServiceConnection {
 		XPrefs.setPackagePrefs(lpParam.packageName);
 
 		loadModPacks(lpParam);
+
+		XPrefs.onContentProviderLoaded();
 	}
 
 	private void loadModPacks(XC_LoadPackage.LoadPackageParam lpParam) {
@@ -213,8 +215,6 @@ public class XPLauncher implements ServiceConnection {
 				SystemUtils.threadSleep(1000);
 			}
 		}
-
-		XPrefs.onContentProviderLoaded();
 
 		log(String.format("Loading PixelXpert version: %s on %s", BuildConfig.VERSION_NAME, lpParam.packageName));
 		try {

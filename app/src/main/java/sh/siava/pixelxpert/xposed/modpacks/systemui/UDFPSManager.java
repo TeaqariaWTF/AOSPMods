@@ -41,6 +41,8 @@ public class UDFPSManager extends XposedModPack {
 		transparentBG = Xprefs.getBoolean("fingerprint_circle_hide", false);
 		transparentFG = Xprefs.getBoolean("fingerprint_icon_hide", false);
 
+		if(Key.length == 0) return;
+
 		switch (Key[0])
 		{
 			case "fingerprint_circle_hide":

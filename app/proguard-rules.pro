@@ -15,11 +15,9 @@
 
 # Xposed
 -keep class de.robv.android.xposed.**
--keep class sh.siava.pixelxpert.XPEntry
--keepnames class sh.siava.pixelxpert.xposed.**
--keep class sh.siava.pixelxpert.xposed.** {
-    <init>(android.content.Context);
-}
+
+# PixelXpert - for debug and trace
+-keep class sh.siava.pixelxpert.** { public protected private *; }
 
 # AndroidX
 -keepnames class androidx.compose.ui.**
@@ -39,16 +37,11 @@
     public static final ** CREATOR;
 }
 
-# Root Service
--keep class sh.siava.pixelxpert.service.RootProviderProxy { *; }
--keep class sh.siava.pixelxpert.IRootProviderProxy { *; }
-
 # Services
 -keep interface **.I* { *; }
 -keep class **.I*$Stub { *; }
 -keep class **.I*$Stub$Proxy { *; }
--keep class sh.siava.pixelxpert.service.*
-
+-keep class sh.siava.pixelxpert.service.* { *; }
 
 # Keep all inner classes and their names within the specified package
 # but allow optimization of their internal code
