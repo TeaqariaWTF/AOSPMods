@@ -1,3 +1,6 @@
+**canary-463**  
+- Fixed an internal error  
+  
 **canary-462**  
 - Fixed framework modpacks not loading in 461  
   
