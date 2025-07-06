@@ -399,6 +399,8 @@
     <string name="depth_effect_alert_body">Käytä sopivaa lukitusnäytön taustakuvaa, jossa etuosat eivät estä koko kellon lukitusnäytöllä, varmistaen sekä visuaalisen vetovoiman että toiminnallisen selkeyden lukitusnäytöllä.\n\nHuomautus: %s</string>
     <string name="depth_effect_ok_btn">Ok</string>
     <!-- Reboot alert -->
+    <string name="pending_actions">Pending actions</string>
+    <string name="btn_dismiss">Dismiss</string>
     <!-- Menu Items -->
     <string name="menu_settings_title">Tuonti ja vienti</string>
     <string name="menu_reset_defaults">Nollaa kaikki asetukset</string>
@@ -526,7 +528,7 @@
     <string name="reboot_bootloader_title">Reboot to Bootloader</string>
     <string name="soft_reboot_title">Soft Reboot</string>
     <string name="restart_systemui_title">Restart SystemUI</string>
-    <!--Optimization estart request-->
+    <!--Optimization restart request-->
     <string name="optimization_restart_needed_title">Restart Recommended</string>
     <string name="optimization_restart_needed_message">A reboot is recommended to increase system integration</string>
     <string name="restart_postpone">Later</string>

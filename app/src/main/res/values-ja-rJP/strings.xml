@@ -399,6 +399,8 @@
     <string name="depth_effect_alert_body">被写体深度エフェクトを利用するには、時計全体を覆わない壁紙を使用してください\n\n注: %s</string>
     <string name="depth_effect_ok_btn">OK</string>
     <!-- Reboot alert -->
+    <string name="pending_actions">Pending actions</string>
+    <string name="btn_dismiss">Dismiss</string>
     <!-- Menu Items -->
     <string name="menu_settings_title">インポート/エクスポート</string>
     <string name="menu_reset_defaults">すべての設定をリセット</string>
@@ -526,7 +528,7 @@
     <string name="reboot_bootloader_title">Reboot to Bootloader</string>
     <string name="soft_reboot_title">Soft Reboot</string>
     <string name="restart_systemui_title">Restart SystemUI</string>
-    <!--Optimization estart request-->
+    <!--Optimization restart request-->
     <string name="optimization_restart_needed_title">Restart Recommended</string>
     <string name="optimization_restart_needed_message">A reboot is recommended to increase system integration</string>
     <string name="restart_postpone">Later</string>

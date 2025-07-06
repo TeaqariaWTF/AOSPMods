@@ -399,6 +399,8 @@
     <string name="depth_effect_alert_body">使用適合的鎖定畫面壁紙，其前景元素不會完全遮擋鎖定畫面的時鐘，確保鎖定畫面既具視覺吸引力又清晰易讀。\n\nNote: %s.</string>
     <string name="depth_effect_ok_btn">確認</string>
     <!-- Reboot alert -->
+    <string name="pending_actions">Pending actions</string>
+    <string name="btn_dismiss">Dismiss</string>
     <!-- Menu Items -->
     <string name="menu_settings_title">匯入/匯出</string>
     <string name="menu_reset_defaults">重置所有設定</string>
@@ -526,7 +528,7 @@
     <string name="reboot_bootloader_title">重啟到 BootLoader</string>
     <string name="soft_reboot_title">軟重啟</string>
     <string name="restart_systemui_title">重啟系統介面</string>
-    <!--Optimization estart request-->
+    <!--Optimization restart request-->
     <string name="optimization_restart_needed_title">Restart Recommended</string>
     <string name="optimization_restart_needed_message">A reboot is recommended to increase system integration</string>
     <string name="restart_postpone">Later</string>

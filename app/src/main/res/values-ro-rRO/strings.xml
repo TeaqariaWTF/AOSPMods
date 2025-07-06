@@ -399,6 +399,8 @@
     <string name="depth_effect_alert_body">Utilizează o imagine de fundal a ecranului de blocare adecvată în cazul în care elementele din prim-plan nu obstrucționează întregul ceas pe ecranul de blocare, asigurând atractivități vizuale și a clarități funcționale pe ecranul de blocare.\n\nNotă: %s.</string>
     <string name="depth_effect_ok_btn">OK</string>
     <!-- Reboot alert -->
+    <string name="pending_actions">Pending actions</string>
+    <string name="btn_dismiss">Dismiss</string>
     <!-- Menu Items -->
     <string name="menu_settings_title">Import/Export</string>
     <string name="menu_reset_defaults">Reinițializare setări</string>
@@ -526,7 +528,7 @@
     <string name="reboot_bootloader_title">Repornire în Bootloader</string>
     <string name="soft_reboot_title">Repornire rapidă</string>
     <string name="restart_systemui_title">Repornire SystemUI</string>
-    <!--Optimization estart request-->
+    <!--Optimization restart request-->
     <string name="optimization_restart_needed_title">Repornire recomandată</string>
     <string name="optimization_restart_needed_message">Se recomandă o repornire pentru a spori integrarea sistemului</string>
     <string name="restart_postpone">Mai târziu</string>

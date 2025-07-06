@@ -399,6 +399,8 @@
     <string name="depth_effect_alert_body">Ön plan öğelerinin kilit ekranınızdaki saatin tamamını engellemediği, hem görsel çekicilik hem de işlevsel netlik sağlayan uygun bir kilit ekranı duvar kağıdı kullanın.\n\nNot: %s.</string>
     <string name="depth_effect_ok_btn">Tamam</string>
     <!-- Reboot alert -->
+    <string name="pending_actions">Bekleyen işlemler</string>
+    <string name="btn_dismiss">Yoksay</string>
     <!-- Menu Items -->
     <string name="menu_settings_title">İçe/Dışa Aktar</string>
     <string name="menu_reset_defaults">Tüm ayarları sıfırla</string>
@@ -526,7 +528,7 @@
     <string name="reboot_bootloader_title">Bootloader\'a yeniden başlat</string>
     <string name="soft_reboot_title">Hızlı Yeniden Başlatma</string>
     <string name="restart_systemui_title">SystemUI\'yi Yeniden Başlat</string>
-    <!--Optimization estart request-->
+    <!--Optimization restart request-->
     <string name="optimization_restart_needed_title">Yeniden Başlatma Önerilir</string>
     <string name="optimization_restart_needed_message">Sistem entegrasyonunu artırmak için yeniden başlatma önerilir</string>
     <string name="restart_postpone">Daha Sonra</string>

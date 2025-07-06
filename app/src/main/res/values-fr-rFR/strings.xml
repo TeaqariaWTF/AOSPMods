@@ -399,6 +399,8 @@
     <string name="depth_effect_alert_body">Utilisez un fond d\'écran de verrouillage approprié où les éléments de premier plan n\'obstruent pas l\'intégralité de l\'horloge sur votre écran de verrouillage, garantissant à la fois l\'attrait visuel et la clarté fonctionnelle de votre écran de verrouillage.\n\nRemarque: %s.</string>
     <string name="depth_effect_ok_btn">OK</string>
     <!-- Reboot alert -->
+    <string name="pending_actions">Pending actions</string>
+    <string name="btn_dismiss">Dismiss</string>
     <!-- Menu Items -->
     <string name="menu_settings_title">Importer/exporter</string>
     <string name="menu_reset_defaults">Réinitialiser tous les paramètres</string>
@@ -526,7 +528,7 @@
     <string name="reboot_bootloader_title">Redémarrer dans le Bootloader</string>
     <string name="soft_reboot_title">Redémarrage logiciel</string>
     <string name="restart_systemui_title">Redémarrer l’interface système</string>
-    <!--Optimization estart request-->
+    <!--Optimization restart request-->
     <string name="optimization_restart_needed_title">Redémarrage recommandé</string>
     <string name="optimization_restart_needed_message">Un redémarrage est recommandé pour améliorer l\'intégration du système</string>
     <string name="restart_postpone">Plus tard</string>

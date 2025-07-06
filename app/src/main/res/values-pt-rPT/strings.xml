@@ -399,6 +399,8 @@
     <string name="depth_effect_alert_body">Use um papel de parede de tela de bloqueio adequado, onde os elementos do primeiro plano não obstruam todo o relógio da tela de bloqueio, garantindo apelo visual e clareza funcional na tela de bloqueio.\n\nObservação: %s.</string>
     <string name="depth_effect_ok_btn">OK</string>
     <!-- Reboot alert -->
+    <string name="pending_actions">Ações pendentes</string>
+    <string name="btn_dismiss">Dispensar</string>
     <!-- Menu Items -->
     <string name="menu_settings_title">Importar/Exportar</string>
     <string name="menu_reset_defaults">Restaurar todas as definições</string>
@@ -526,7 +528,7 @@
     <string name="reboot_bootloader_title">Reiniciar para o bootloader</string>
     <string name="soft_reboot_title">Reinício Suave</string>
     <string name="restart_systemui_title">Reiniciar IU do Sistema</string>
-    <!--Optimization estart request-->
+    <!--Optimization restart request-->
     <string name="optimization_restart_needed_title">Reiniciar recomendado</string>
     <string name="optimization_restart_needed_message">Recomenda-se reiniciar o sistema para aumentar a integração</string>
     <string name="restart_postpone">Mais tarde</string>

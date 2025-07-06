@@ -399,6 +399,8 @@
     <string name="depth_effect_alert_body">Sử dụng hình nền màn hình khóa phù hợp trong đó các thành phần nền trước không cản trở toàn bộ đồng hồ trên màn hình khóa của bạn, đảm bảo vừa hấp dẫn về mặt hình ảnh vừa đảm bảo tính rõ ràng về mặt chức năng trên màn hình khóa.\n\nLưu ý: %s.</string>
     <string name="depth_effect_ok_btn">Đồng ý</string>
     <!-- Reboot alert -->
+    <string name="pending_actions">Pending actions</string>
+    <string name="btn_dismiss">Dismiss</string>
     <!-- Menu Items -->
     <string name="menu_settings_title">Nhập/Xuất cài đặt</string>
     <string name="menu_reset_defaults">Đặt lại tất cả các thiết lập</string>
@@ -526,7 +528,7 @@
     <string name="reboot_bootloader_title">Khởi động lại vào Bootloader</string>
     <string name="soft_reboot_title">Khởi động mềm</string>
     <string name="restart_systemui_title">Khởi động lại SystemUI</string>
-    <!--Optimization estart request-->
+    <!--Optimization restart request-->
     <string name="optimization_restart_needed_title">Khuyến nghị khởi động lại</string>
     <string name="optimization_restart_needed_message">Khởi động lại là khuyến nghị tăng tính tích hợp hệ thống</string>
     <string name="restart_postpone">Để sau</string>

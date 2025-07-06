@@ -399,6 +399,8 @@
     <string name="depth_effect_alert_body">Usa un fondo de pantalla de bloqueo adecuado donde los elementos de primer plano no obstruyen todo el reloj en tu pantalla de bloqueo, asegurando tanto el atractivo visual como la claridad funcional en la pantalla de bloqueo.\n\nNota: %s.</string>
     <string name="depth_effect_ok_btn">Ok</string>
     <!-- Reboot alert -->
+    <string name="pending_actions">Acciones pendientes</string>
+    <string name="btn_dismiss">Descartar</string>
     <!-- Menu Items -->
     <string name="menu_settings_title">Importar/Exportar</string>
     <string name="menu_reset_defaults">Restablecer todos los ajustes</string>
@@ -526,7 +528,7 @@
     <string name="reboot_bootloader_title">Reiniciar en bootloader</string>
     <string name="soft_reboot_title">Reinicio rápido</string>
     <string name="restart_systemui_title">Reiniciar SystemUI</string>
-    <!--Optimization estart request-->
+    <!--Optimization restart request-->
     <string name="optimization_restart_needed_title">Se recomienda un reinicio</string>
     <string name="optimization_restart_needed_message">Se recomienda un reinicio para aumentar la integración del sistema</string>
     <string name="restart_postpone">Más tarde</string>
