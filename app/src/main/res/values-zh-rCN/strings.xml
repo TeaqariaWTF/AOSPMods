@@ -399,6 +399,8 @@
     <string name="depth_effect_alert_body">使用合适的锁屏壁纸，让前台元素不会阻挡您锁屏上的整个时钟， 确保您锁屏界面的视觉吸引力和功能清晰度。\n\n注：%s.</string>
     <string name="depth_effect_ok_btn">确定</string>
     <!-- Reboot alert -->
+    <string name="pending_actions">Pending actions</string>
+    <string name="btn_dismiss">Dismiss</string>
     <!-- Menu Items -->
     <string name="menu_settings_title">导入/导出</string>
     <string name="menu_reset_defaults">重置所有设置</string>
@@ -526,7 +528,7 @@
     <string name="reboot_bootloader_title">重启到 BootLoader</string>
     <string name="soft_reboot_title">软重启</string>
     <string name="restart_systemui_title">重启系统界面</string>
-    <!--Optimization estart request-->
+    <!--Optimization restart request-->
     <string name="optimization_restart_needed_title">建议重启</string>
     <string name="optimization_restart_needed_message">建议重启以提高系统集成度</string>
     <string name="restart_postpone">稍后重启</string>

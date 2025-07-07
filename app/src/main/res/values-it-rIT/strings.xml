@@ -399,6 +399,8 @@
     <string name="depth_effect_alert_body">Usa uno sfondo adatto alla schermata di blocco in cui gli elementi di primo piano non ostacolano l\'intero orologio sulla schermata di blocco, garantendo sia il fascino visivo che la chiarezza funzionale sulla schermata di blocco.\n\nNota: %s.</string>
     <string name="depth_effect_ok_btn">OK</string>
     <!-- Reboot alert -->
+    <string name="pending_actions">Azioni in sospeso</string>
+    <string name="btn_dismiss">Scarta</string>
     <!-- Menu Items -->
     <string name="menu_settings_title">Importa/Esporta</string>
     <string name="menu_reset_defaults">Resetta tutte le impostazioni</string>
@@ -526,7 +528,7 @@
     <string name="reboot_bootloader_title">Riavvia in Bootloader</string>
     <string name="soft_reboot_title">Riavvio veloce</string>
     <string name="restart_systemui_title">Riavvia SystemUI</string>
-    <!--Optimization estart request-->
+    <!--Optimization restart request-->
     <string name="optimization_restart_needed_title">Riavvio consigliato</string>
     <string name="optimization_restart_needed_message">Si raccomanda un riavvio per aumentare l\'integrazione del sistema</string>
     <string name="restart_postpone">Più tardi</string>

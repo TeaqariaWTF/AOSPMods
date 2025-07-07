@@ -399,6 +399,8 @@
     <string name="depth_effect_alert_body">از یک کاغذدیواری مناسب برای صفحه قفل استفاده کنید که در آن عناصر پیش‌زمینه کل ساعت را در صفحه قفل شما مسدود نکنند و از جذابیت بصری و وضوح عملکرد در صفحه قفل شما اطمینان حاصل کنند.\n\nتوجه: %s.</string>
     <string name="depth_effect_ok_btn">باشه</string>
     <!-- Reboot alert -->
+    <string name="pending_actions">Pending actions</string>
+    <string name="btn_dismiss">Dismiss</string>
     <!-- Menu Items -->
     <string name="menu_settings_title">ذخیره/بازیابی</string>
     <string name="menu_reset_defaults">بازنشانی تمام تنظیمات</string>
@@ -526,7 +528,7 @@
     <string name="reboot_bootloader_title">راه‌اندازی مجدد به بوت‌لودر</string>
     <string name="soft_reboot_title">راه‌اندازی مجدد نرم</string>
     <string name="restart_systemui_title">راه‌اندازی مجدد رابط سیستم</string>
-    <!--Optimization estart request-->
+    <!--Optimization restart request-->
     <string name="optimization_restart_needed_title">راه اندازی مجدد توصیه می شود</string>
     <string name="optimization_restart_needed_message">برای افزایش یکپارچگی سیستم، راه‌اندازی مجدد توصیه می‌شود</string>
     <string name="restart_postpone">بعداً</string>
