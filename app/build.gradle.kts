@@ -1,3 +1,4 @@
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.io.FileInputStream
 import java.util.Properties
 
@@ -8,8 +9,13 @@ plugins {
 	alias(libs.plugins.hilt.android)
 }
 
-android {
+kotlin {
+	compilerOptions {
+		jvmTarget = JvmTarget.JVM_17
+	}
+}
 
+android {
 	namespace = "sh.siava.pixelxpert"
 	compileSdk = 36
 
@@ -71,6 +77,7 @@ android {
 
 	buildFeatures{
 		viewBinding = true
+		buildConfig = true
 		aidl = true
 	}
 
@@ -80,9 +87,7 @@ android {
 		sourceCompatibility = JavaVersion.VERSION_17
 		targetCompatibility = JavaVersion.VERSION_17
 	}
-	kotlinOptions {
-		jvmTarget = "17"
-	}
+
 	packaging {
 		jniLibs.excludes += setOf(
 			"**/libpytorch_jni_lite.so"

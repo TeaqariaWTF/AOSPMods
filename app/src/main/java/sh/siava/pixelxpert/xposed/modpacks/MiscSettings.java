@@ -71,7 +71,7 @@ public class MiscSettings extends XposedModPack {
 		float displayOverride = Xprefs.getSliderFloat( "displayOverride", 100f) / 100f;
 		XPLauncher.enqueueProxyCommand(proxy -> {
 			try {
-				String sizeResult = proxy.runCommand("wm size")[0];
+				String sizeResult = proxy.runRootCommand("wm size")[0];
 
 				String[] physicalSizes = sizeResult.replace("Physical size: ", "").split("x");
 				int w = Integer.parseInt(physicalSizes[0]);
@@ -80,7 +80,7 @@ public class MiscSettings extends XposedModPack {
 				int overrideW = Math.round(w * displayOverride);
 				int overrideH = Math.round(h * displayOverride);
 
-				proxy.runCommand(String.format("wm size %sx%s", overrideW, overrideH));
+				proxy.runRootCommand(String.format("wm size %sx%s", overrideW, overrideH));
 			} catch (RemoteException e) {
 				throw new RuntimeException(e);
 			}
@@ -99,7 +99,7 @@ public class MiscSettings extends XposedModPack {
 				boolean SysUITunerEnabled = Xprefs.getBoolean("sysui_tuner", false);
 				String mode = (SysUITunerEnabled) ? "enable" : "disable";
 
-				proxy.runCommand("pm " + mode + " com.android.systemui/.tuner.TunerActivity");
+				proxy.runRootCommand("pm " + mode + " com.android.systemui/.tuner.TunerActivity");
 			} catch (Exception ignored) {}
 		});
 	}

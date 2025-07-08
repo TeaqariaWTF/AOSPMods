@@ -26,11 +26,11 @@ import java.util.concurrent.TimeUnit;
 
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.BuildConfig;
-import sh.siava.pixelxpert.IRootProviderProxy;
+import sh.siava.pixelxpert.IPixelXpertProxy;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
-import sh.siava.pixelxpert.service.RootProviderProxy;
+import sh.siava.pixelxpert.service.PixelXpertProxy;
 
 @SuppressWarnings("RedundantThrows")
 public class XPLauncher implements ServiceConnection {
@@ -44,7 +44,7 @@ public class XPLauncher implements ServiceConnection {
 	static XPLauncher instance;
 
 	private CountDownLatch rootProxyCountdown = new CountDownLatch(1);
-	private static IRootProviderProxy rootProxyIPC;
+	private static IPixelXpertProxy rootProxyIPC;
 	private static final Queue<ProxyRunnable> proxyQueue = new LinkedList<>();
 
 	/**
@@ -54,7 +54,7 @@ public class XPLauncher implements ServiceConnection {
 		instance = this;
 	}
 
-	public static IRootProviderProxy getRootProviderProxy() {
+	public static IPixelXpertProxy getRootProviderProxy() {
 		if (rootProxyIPC == null) {
 			instance.rootProxyCountdown = new CountDownLatch(1);
 			instance.forceConnectRootService();
@@ -184,7 +184,7 @@ public class XPLauncher implements ServiceConnection {
 	private void connectRootService() {
 		try {
 			Intent intent = new Intent();
-			intent.setComponent(new ComponentName(APPLICATION_ID, RootProviderProxy.class.getName()));
+			intent.setComponent(new ComponentName(APPLICATION_ID, PixelXpertProxy.class.getName()));
 			mContext.bindService(intent, instance, Context.BIND_AUTO_CREATE | Context.BIND_ADJUST_WITH_ACTIVITY);
 		} catch (Throwable t) {
 			log(t);
@@ -193,7 +193,7 @@ public class XPLauncher implements ServiceConnection {
 
 	@Override
 	public void onServiceConnected(ComponentName name, IBinder service) {
-		rootProxyIPC = IRootProviderProxy.Stub.asInterface(service);
+		rootProxyIPC = IPixelXpertProxy.Stub.asInterface(service);
 		rootProxyCountdown.countDown();
 
 		synchronized (proxyQueue) {
@@ -248,6 +248,6 @@ public class XPLauncher implements ServiceConnection {
 	}
 
 	public interface ProxyRunnable {
-		void run(IRootProviderProxy proxy) throws RemoteException;
+		void run(IPixelXpertProxy proxy) throws RemoteException;
 	}
 }

@@ -18,21 +18,21 @@ import com.topjohnwu.superuser.Shell;
 import java.util.Arrays;
 import java.util.List;
 
-import sh.siava.pixelxpert.IRootProviderProxy;
+import sh.siava.pixelxpert.IPixelXpertProxy;
 import sh.siava.pixelxpert.PixelXpert;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.xposed.Constants;
 import sh.siava.pixelxpert.utils.PyTorchSegmentor;
 import sh.siava.pixelxpert.utils.MLKitSegmentor;
 
-public class RootProviderProxy extends Service {
+public class PixelXpertProxy extends Service {
 	@Nullable
 	@Override
 	public IBinder onBind(Intent intent) {
-		return new RootProviderProxyIPC(this);
+		return new PixelXpertProxyIPC(this);
 	}
 
-	class RootProviderProxyIPC extends IRootProviderProxy.Stub
+	class PixelXpertProxyIPC extends IPixelXpertProxy.Stub
 	{
 		/** @noinspection unused*/
 		String TAG = getClass().getSimpleName();
@@ -40,7 +40,7 @@ public class RootProviderProxy extends Service {
 		private final List<String> rootAllowedPacks;
 		private final boolean rootGranted;
 
-		private RootProviderProxyIPC(Context context)
+		private PixelXpertProxyIPC(Context context)
 		{
 			try {
 				Shell.setDefaultBuilder(Shell.Builder.create().setFlags(Shell.FLAG_MOUNT_MASTER));
@@ -58,7 +58,7 @@ public class RootProviderProxy extends Service {
 
 		/** @noinspection RedundantThrows*/
 		@Override
-		public String[] runCommand(String command) throws RemoteException {
+		public String[] runRootCommand(String command) throws RemoteException {
 			try {
 				ensureEnvironment();
 

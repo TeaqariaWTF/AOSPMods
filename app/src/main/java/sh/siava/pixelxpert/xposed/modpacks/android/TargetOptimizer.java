@@ -43,7 +43,7 @@ public class TargetOptimizer extends XposedModPack {
 
 				Arrays.asList(targetPacks).forEach(target ->
 						XPLauncher.enqueueProxyCommand(proxy ->
-								proxy.runCommand(String.format("cmd package compile -m speed -f %s", target))));
+								proxy.runRootCommand(String.format("cmd package compile -m speed -f %s", target))));
 
 				Xprefs.edit()
 						.putBoolean(SYSTEM_RESTART_PENDING_KEY, true)

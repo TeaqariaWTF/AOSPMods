@@ -113,7 +113,7 @@ public class SystemUtils {
 	{
 		XPLauncher.enqueueProxyCommand(proxy -> {
 			try {
-				proxy.runCommand(command);
+				proxy.runRootCommand(command);
 			} catch (Throwable ignored) {}
 		});
 	}
@@ -556,9 +556,9 @@ public class SystemUtils {
 					}
 					darkSwitching = true;
 
-					proxy.runCommand("cmd uimode night " + (isDark ? "no" : "yes"));
+					proxy.runRootCommand("cmd uimode night " + (isDark ? "no" : "yes"));
 					threadSleep(1000);
-					proxy.runCommand("cmd uimode night " + (isDark ? "yes" : "no"));
+					proxy.runRootCommand("cmd uimode night " + (isDark ? "yes" : "no"));
 
 					threadSleep(500);
 					darkSwitching = false;

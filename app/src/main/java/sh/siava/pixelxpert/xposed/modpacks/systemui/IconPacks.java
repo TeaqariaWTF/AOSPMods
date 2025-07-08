@@ -110,7 +110,7 @@ public class IconPacks extends XposedModPack {
 	}
 
 	private void refreshUI() {
-		XPLauncher.enqueueProxyCommand(proxy -> proxy.runCommand("cmd overlay disable com.google.android.systemui.gxoverlay; cmd overlay enable com.google.android.systemui.gxoverlay"));
+		XPLauncher.enqueueProxyCommand(proxy -> proxy.runRootCommand("cmd overlay disable com.google.android.systemui.gxoverlay; cmd overlay enable com.google.android.systemui.gxoverlay"));
 	}
 
 	/** @noinspection SameParameterValue*/
