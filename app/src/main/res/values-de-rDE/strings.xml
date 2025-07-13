@@ -4,7 +4,7 @@
     <string name="app_themed_icon_title">Alternative AOSP Mods-Symbole aktivieren</string>
     <string name="xposed_desc">Anpassungen für Google Pixel-Geräte</string>
     <string name="volume_tile_title">Medienlautstärke</string>
-    <string name="sliding_tile_subtitle">Tap to adjust</string>
+    <string name="sliding_tile_subtitle">Berühren zum Anpassen</string>
     <string name="app_switch_tile_title">App-Profil wechseln</string>
     <string name="hide_default">Verstecken (Standard)</string>
     <string name="percent_of_default_size">% von der Standard Größe</string>
@@ -21,7 +21,7 @@
     <string name="notification_channel_update_desc">Dieser Kanal zeigt Benachrichtigungen über die neuesten Updates.</string>
     <string name="new_update_title">Update verfügbar</string>
     <string name="new_update_desc">Eine neue Version von PixelXpert ist verfügbar</string>
-    <string name="skip_this_update">Skip this update</string>
+    <string name="skip_this_update">Überspringe dieses Update</string>
     <string name="browser_not_found">Browser nicht gefunden</string>
     <string name="settings_general_section_title">Allgemein</string>
     <string name="settings_update_section_title">Update</string>
@@ -38,7 +38,7 @@
     <string name="usage_summary">Wiki-Seite öffnen</string>
     <string name="crowdin_title">In Deine Sprache übersetzen</string>
     <string name="crowdin_summary">Hilf uns, %s in deine eigene Sprache zu übersetzen</string>
-    <string name="nothing_to_show">Nothing to show</string>
+    <string name="nothing_to_show">Nichts zu sehen</string>
     <!--Category titles-->
     <string name="lockscreen_header_title">Sperrbildschirm</string>
     <string name="lockscreen_header_summary">Ändere deinen Keyguard nach deinem Geschmack</string>
@@ -65,7 +65,7 @@
     <string name="hotspot_disable_approval_title">Hotspot Verbindungsprobleme Umweg</string>
     <string name="hotspot_disable_approval_summary">Erlauben nicht gestattete Klienten sich zu verbinden</string>
     <!--Lock screen related-->
-    <string name="depth_wallpaper_options">Depth effect wallpaper</string>
+    <string name="depth_wallpaper_options">Tiefen-Effekt Hintergrundbild</string>
     <string name="depth_wallpaper_title">Tiefeffekt bei Hintergrundbild</string>
     <string name="depth_wallpaper_summary">Vordergrund des Hintergrundbildes dynamisch mit der Uhr integrieren</string>
     <string name="depth_wallpaper_ai_model_title">Bevorzugtes KI-Modell</string>
@@ -75,7 +75,7 @@
     <string name="depth_wallpaper_model_not_available">KI Modell ist (noch) nicht auf dem Gerät verfügbar</string>
     <string name="ls_general_options">Sperrbildschirm-Optionen</string>
     <string name="hide_avatar_title">Benutzer-Avatar entfernen (Mehrbenutzermodus)</string>
-    <string name="fingerprint_options">Fingerprint</string>
+    <string name="fingerprint_options">Fingerabdruck</string>
     <string name="transparent_fingerprint_circle">Verstecke den Kreis um das Fingerabdrucksymbol</string>
     <string name="transparent_fingerprint_circle_off">Kreis um das Fingerabdrucksymbol wird angezeigt</string>
     <string name="transparent_fingerprint_circle_on">Kreis um das Fingerabdrucksymbol wird versteckt</string>
