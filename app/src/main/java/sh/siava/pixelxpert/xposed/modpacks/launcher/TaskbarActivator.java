@@ -166,6 +166,7 @@ public class TaskbarActivator extends XposedModPack {
 		ReflectedClass TaskbarStashControllerClass = ReflectedClass.of("com.android.launcher3.taskbar.TaskbarStashController");
 		ReflectedClass QuickSwitchStateClass = ReflectedClass.of("com.android.launcher3.uioverrides.states.QuickSwitchState");
 		ReflectedClass TaskbarUiControllerClass = ReflectedClass.of("com.android.launcher3.taskbar.FallbackTaskbarUIController");
+		ReflectedClass TaskbarProfileClass = ReflectedClass.of("com.android.launcher3.deviceprofile.TaskbarProfile");
 
 		mIsA16Plus = !RecentAppsControllerClass.findMethods(Pattern.compile("computeShownRecentTasks")).isEmpty();
 
@@ -272,15 +273,27 @@ public class TaskbarActivator extends XposedModPack {
 
 						Resources res = mContext.getResources();
 
-						setObjectField(param.thisObject, taskbarHeightField, res.getDimensionPixelSize(dimenIdOf("taskbar_size")));
-						setObjectField(param.thisObject, stashedTaskbarHeightField, res.getDimensionPixelSize(dimenIdOf("taskbar_stashed_size")));
+						try {
+							setObjectField(param.thisObject, taskbarHeightField, res.getDimensionPixelSize(dimenIdOf("taskbar_size")));
+							setObjectField(param.thisObject, stashedTaskbarHeightField, res.getDimensionPixelSize(dimenIdOf("taskbar_stashed_size")));
 
-						if (taskbarHeightOverride != 1f) {
-							setObjectField(param.thisObject, taskbarHeightField, Math.round(getIntField(param.thisObject, taskbarHeightField) * taskbarHeightOverride));
+
+							if (taskbarHeightOverride != 1f) {
+								setObjectField(param.thisObject, taskbarHeightField, Math.round(getIntField(param.thisObject, taskbarHeightField) * taskbarHeightOverride));
+							}
 						}
+						catch (Throwable ignored){} //replaced with gettaskbarprofile thing
 					}
 				});
 
+		TaskbarProfileClass
+				.after("getHeight")
+				.run(param -> {
+					if(taskbarMode == TASKBAR_ON && taskbarHeightOverride != 1f)
+					{
+						param.setResult(Math.round((int)param.getResult() * taskbarHeightOverride));
+					}
+				});
 
 		RecentAppsControllerClass.afterConstruction().run(param -> {
 			if (GoogleRecents || (taskbarMode == TASKBAR_ON && TaskbarAsRecents && mIsA16Plus)) { //on 16+ we use the builtin recent tasks
