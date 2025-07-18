@@ -1,6 +1,5 @@
 package sh.siava.pixelxpert.xposed.modpacks.systemui;
 
-import static de.robv.android.xposed.XposedBridge.log;
 import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.getBooleanField;
 import static de.robv.android.xposed.XposedHelpers.getIntField;
@@ -27,6 +26,8 @@ import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
 @ModPackPriority (priority = 1)
 public class BatteryDataProvider extends XposedModPack {
 	public static final int BATTERY_STATUS_DISCHARGING = 3;
+	public static final String EXTRA_MAX_CHARGING_CURRENT = "max_charging_current";
+	public static final String EXTRA_MAX_CHARGING_VOLTAGE = "max_charging_voltage";
 	public static final int MILLION = 1000000;
 	public static final int USB_5_WATT = 5;
 	public static final int CHARGING_SLOW = 1;
@@ -83,6 +84,7 @@ public class BatteryDataProvider extends XposedModPack {
 					fireBatteryInfoChanged();
 				});
 
+		//old way. removed in new versions. must go away
 		BatteryStatusClass
 				.before("getChargingSpeed")
 				.run(param -> {
@@ -95,11 +97,37 @@ public class BatteryDataProvider extends XposedModPack {
 				});
 
 		BatteryStatusClass
+				.before("calculateChargingSpeed").run(param -> {
+					if(FastChargingWattage <= USB_5_WATT)
+						return; //it's default value
+
+					int curr = (int) param.args[0];
+					int volt = (int) param.args[1];
+
+					if(volt < 0)
+					{
+						volt = 5000000;
+					}
+
+					if(curr > 0)
+					{
+						int wattage = Math.round(volt * curr * .000001f);
+						if(wattage >= FastChargingWattage)
+							param.setResult(CHARGING_FAST);
+						//else: leave it for the original method to decide
+					}
+				});
+
+		BatteryStatusClass
 				.afterConstruction()
 				.run(param -> {
-					mIsFastCharging = callMethod(param.thisObject, "getChargingSpeed", mContext).equals(CHARGING_FAST);
 
-					if (param.args.length > 0 && (param.args[0] instanceof Intent)) {
+					if (param.args.length > 0 && (param.args[0] instanceof Intent batteryIntent)) {
+						int current = batteryIntent.getIntExtra(EXTRA_MAX_CHARGING_CURRENT, -1);
+						int voltage = batteryIntent.getIntExtra(EXTRA_MAX_CHARGING_VOLTAGE, -1);
+
+						mIsFastCharging = callMethod(param.thisObject, "calculateChargingSpeed", current, voltage, mContext).equals(CHARGING_FAST);
+
 						onBatteryStatusChanged((int) getObjectField(param.thisObject, "status"), (Intent) param.args[0]);
 					}
 				});
