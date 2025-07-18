@@ -1,3 +1,7 @@
+**canary-464**  
+- A16qpr1b3: Fixed taskbar height option  
+- A16qpr1b3: Fixed battery data provider  
+  
 **canary-463**  
 - Fixed an internal error  
   
