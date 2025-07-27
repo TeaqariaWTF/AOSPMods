@@ -4,7 +4,7 @@
     <string name="app_themed_icon_title">Biểu tượng theo chủ đề thay thế</string>
     <string name="xposed_desc">Các tùy chỉnh cho thiết bị Google Pixel</string>
     <string name="volume_tile_title">Âm lượng đa phương tiện</string>
-    <string name="sliding_tile_subtitle">Tap to adjust</string>
+    <string name="sliding_tile_subtitle">Nhấn để điều chỉnh</string>
     <string name="app_switch_tile_title">Chuyển hồ sơ ứng dụng</string>
     <string name="hide_default">Ẩn (Mặc định)</string>
     <string name="percent_of_default_size">% kích thước mặc định</string>
@@ -399,8 +399,8 @@
     <string name="depth_effect_alert_body">Sử dụng hình nền màn hình khóa phù hợp trong đó các thành phần nền trước không cản trở toàn bộ đồng hồ trên màn hình khóa của bạn, đảm bảo vừa hấp dẫn về mặt hình ảnh vừa đảm bảo tính rõ ràng về mặt chức năng trên màn hình khóa.\n\nLưu ý: %s.</string>
     <string name="depth_effect_ok_btn">Đồng ý</string>
     <!-- Reboot alert -->
-    <string name="pending_actions">Pending actions</string>
-    <string name="btn_dismiss">Dismiss</string>
+    <string name="pending_actions">Hành động chờ xử lý</string>
+    <string name="btn_dismiss">Bỏ qua</string>
     <!-- Menu Items -->
     <string name="menu_settings_title">Nhập/Xuất cài đặt</string>
     <string name="menu_reset_defaults">Đặt lại tất cả các thiết lập</string>
@@ -533,6 +533,6 @@
     <string name="optimization_restart_needed_message">Khởi động lại là khuyến nghị tăng tính tích hợp hệ thống</string>
     <string name="restart_postpone">Để sau</string>
     <string name="restart_now">Khởi động lại ngay</string>
-    <string name="watts">Watts</string>
-    <string name="fast_charging_threshold_title">Fast charging threshold</string>
+    <string name="watts">W</string>
+    <string name="fast_charging_threshold_title">Ngưỡng sạc nhanh</string>
 </resources>
