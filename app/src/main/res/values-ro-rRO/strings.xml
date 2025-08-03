@@ -399,8 +399,8 @@
     <string name="depth_effect_alert_body">Utilizează o imagine de fundal a ecranului de blocare adecvată în cazul în care elementele din prim-plan nu obstrucționează întregul ceas pe ecranul de blocare, asigurând atractivități vizuale și a clarități funcționale pe ecranul de blocare.\n\nNotă: %s.</string>
     <string name="depth_effect_ok_btn">OK</string>
     <!-- Reboot alert -->
-    <string name="pending_actions">Pending actions</string>
-    <string name="btn_dismiss">Dismiss</string>
+    <string name="pending_actions">Acțiuni în așteptare</string>
+    <string name="btn_dismiss">Renunță</string>
     <!-- Menu Items -->
     <string name="menu_settings_title">Import/Export</string>
     <string name="menu_reset_defaults">Reinițializare setări</string>

@@ -399,8 +399,8 @@
     <string name="depth_effect_alert_body">Используйте подходящие обои экрана блокировки, где элементы переднего плана не препятствуют часам на экране блокировки, обеспечивающие визуальную привлекательность и функциональность на экране блокировки.\n\nПримечание: %s.</string>
     <string name="depth_effect_ok_btn">ОК</string>
     <!-- Reboot alert -->
-    <string name="pending_actions">Pending actions</string>
-    <string name="btn_dismiss">Dismiss</string>
+    <string name="pending_actions">Ожидает действий</string>
+    <string name="btn_dismiss">Отменить</string>
     <!-- Menu Items -->
     <string name="menu_settings_title">Импорт/Экспорт</string>
     <string name="menu_reset_defaults">Сбросить все настройки</string>
@@ -533,6 +533,6 @@
     <string name="optimization_restart_needed_message">Рекомендуется перезагрузка для увеличения системной интеграции</string>
     <string name="restart_postpone">Позже</string>
     <string name="restart_now">Перезагрузить сейчас</string>
-    <string name="watts">Watts</string>
-    <string name="fast_charging_threshold_title">Fast charging threshold</string>
+    <string name="watts">Ваты</string>
+    <string name="fast_charging_threshold_title">Порог быстрой зарядки</string>
 </resources>
