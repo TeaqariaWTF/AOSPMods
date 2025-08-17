@@ -4,7 +4,7 @@
     <string name="app_themed_icon_title">نماد تم جایگزین</string>
     <string name="xposed_desc">شخصی سازی گوشی های گوگل پیکسل</string>
     <string name="volume_tile_title">صدای موسیقی</string>
-    <string name="sliding_tile_subtitle">Tap to adjust</string>
+    <string name="sliding_tile_subtitle">برای تنظیم ضربه بزنید</string>
     <string name="app_switch_tile_title">تغییر پروفایل برنامه</string>
     <string name="hide_default">پنهان (پیش‌فرض)</string>
     <string name="percent_of_default_size">% اندازه پیش فرض</string>
@@ -399,8 +399,8 @@
     <string name="depth_effect_alert_body">از یک کاغذدیواری مناسب برای صفحه قفل استفاده کنید که در آن عناصر پیش‌زمینه کل ساعت را در صفحه قفل شما مسدود نکنند و از جذابیت بصری و وضوح عملکرد در صفحه قفل شما اطمینان حاصل کنند.\n\nتوجه: %s.</string>
     <string name="depth_effect_ok_btn">باشه</string>
     <!-- Reboot alert -->
-    <string name="pending_actions">Pending actions</string>
-    <string name="btn_dismiss">Dismiss</string>
+    <string name="pending_actions">اقدامات در انتظار</string>
+    <string name="btn_dismiss">رد کردن</string>
     <!-- Menu Items -->
     <string name="menu_settings_title">ذخیره/بازیابی</string>
     <string name="menu_reset_defaults">بازنشانی تمام تنظیمات</string>
@@ -533,6 +533,6 @@
     <string name="optimization_restart_needed_message">برای افزایش یکپارچگی سیستم، راه‌اندازی مجدد توصیه می‌شود</string>
     <string name="restart_postpone">بعداً</string>
     <string name="restart_now">راه‌اندازی دوباره</string>
-    <string name="watts">Watts</string>
-    <string name="fast_charging_threshold_title">Fast charging threshold</string>
+    <string name="watts">وات</string>
+    <string name="fast_charging_threshold_title">آستانه شارژ سریع</string>
 </resources>
