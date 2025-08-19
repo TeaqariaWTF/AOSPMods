@@ -46,6 +46,7 @@ public class XPLauncher implements ServiceConnection {
 	private CountDownLatch rootProxyCountdown = new CountDownLatch(1);
 	private static IPixelXpertProxy rootProxyIPC;
 	private static final Queue<ProxyRunnable> proxyQueue = new LinkedList<>();
+	private static boolean TELECOM_SERVER_LOADED = false;
 
 	/**
 	 * @noinspection FieldCanBeLocal
@@ -101,7 +102,10 @@ public class XPLauncher implements ServiceConnection {
 					.after("newApplication")
 					.run(param -> {
 						try {
-							if (mContext == null || lpParam.packageName.equals(Constants.TELECOM_SERVER_PACKAGE)) { //telecom service launches as a secondary process in framework, but has its own package name. context is not null when it loads
+							if (mContext == null || (lpParam.packageName.equals(Constants.TELECOM_SERVER_PACKAGE) && !TELECOM_SERVER_LOADED)) { //telecom service launches as a secondary process in framework, but has its own package name. context is not null when it loads
+								if(lpParam.packageName.equals(Constants.TELECOM_SERVER_PACKAGE))
+									TELECOM_SERVER_LOADED = true;
+
 								mContext = (Context) param.args[param.args.length - 1];
 
 								ResourceManager.modRes = mContext.createPackageContext(APPLICATION_ID, CONTEXT_IGNORE_SECURITY)
@@ -114,7 +118,6 @@ public class XPLauncher implements ServiceConnection {
 						} catch (Throwable t) {
 							log(t);
 						}
-
 					});
 		}
 	}
@@ -224,7 +227,6 @@ public class XPLauncher implements ServiceConnection {
 
 		onXPrefsReady(lpParam);
 	}
-
 
 	@Override
 	public void onServiceDisconnected(ComponentName name) {

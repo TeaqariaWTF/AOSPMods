@@ -1,7 +1,6 @@
 package sh.siava.pixelxpert.utils;
 
 import android.content.SharedPreferences;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -11,7 +10,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import sh.siava.pixelxpert.PixelXpert;
 import sh.siava.rangesliderpreference.RangeSliderPreference;
 
 public class ExtendedSharedPreferences implements SharedPreferences {
@@ -38,7 +36,6 @@ public class ExtendedSharedPreferences implements SharedPreferences {
 	}
 	private ExtendedSharedPreferences(SharedPreferences prefs)
 	{
-		Log.d(PixelXpert.TAG, "ExtendedSharedPreferences: init");
 		this.prefs = prefs;
 
 		mIsPrefsInitiated = prefs.getBoolean(IS_PREFS_INITIATED_KEY, false);
