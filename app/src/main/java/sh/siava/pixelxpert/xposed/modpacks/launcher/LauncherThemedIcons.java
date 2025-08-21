@@ -1,6 +1,7 @@
 package sh.siava.pixelxpert.xposed.modpacks.launcher;
 
 import static de.robv.android.xposed.XposedHelpers.callMethod;
+import static de.robv.android.xposed.XposedHelpers.findFieldIfExists;
 import static de.robv.android.xposed.XposedHelpers.getAdditionalInstanceField;
 import static de.robv.android.xposed.XposedHelpers.getIntField;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
@@ -44,6 +45,15 @@ public class LauncherThemedIcons extends XposedModPack {
 	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		ReflectedClass BaseIconFactoryClass = ReflectedClass.of("com.android.launcher3.icons.BaseIconFactory");
 		ReflectedClass LauncherAppStateClass = ReflectedClass.of("com.android.launcher3.LauncherAppState");
+
+		if(findFieldIfExists(BaseIconFactoryClass.getClazz(), "mIconBitmapSize") == null)
+		{
+			//it's 16qpr2 with built-in generator - no need to patch
+			Xprefs.edit().putBoolean("DisableThemedIconsPref", true).apply();
+			return;
+		}
+
+		Xprefs.edit().putBoolean("DisableThemedIconsPref", false).apply();
 
 		LauncherAppStateClass
 				.afterConstruction()
