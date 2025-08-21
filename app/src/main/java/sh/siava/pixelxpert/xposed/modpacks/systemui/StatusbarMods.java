@@ -68,7 +68,6 @@ import sh.siava.pixelxpert.xposed.Constants;
 import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.utils.NetworkTraffic;
-import sh.siava.pixelxpert.xposed.utils.NotificationIconContainerOverride;
 import sh.siava.pixelxpert.xposed.utils.ShyLinearLayout;
 import sh.siava.pixelxpert.xposed.utils.StringFormatter;
 import sh.siava.pixelxpert.xposed.utils.StringFormatter.FormattedStringCallback;
@@ -90,7 +89,7 @@ public class StatusbarMods extends XposedModPack {
 
 	private static final int AM_PM_STYLE_SMALL = 1;
 	private static final int AM_PM_STYLE_GONE = 2;
-	private int leftClockPadding = 0, rightClockPadding = 0;
+	private final int leftClockPadding, rightClockPadding;
 	private static int clockPosition = POSITION_LEFT;
 	private static int mAmPmStyle = AM_PM_STYLE_GONE;
 	private static boolean mShowSeconds = false;
@@ -601,13 +600,6 @@ public class StatusbarMods extends XposedModPack {
 		NotificationIconContainerClass
 				.after("onMeasure")
 				.run(param -> setObjectField(param.thisObject, "mIsStaticLayout", true));
-
-		NotificationIconContainerClass
-				.before("calculateIconXTranslations")
-				.run(param -> {
-					NotificationIconContainerOverride.calculateIconXTranslations(param);
-					param.setResult(null);
-				});
 
 		//endregion
 
