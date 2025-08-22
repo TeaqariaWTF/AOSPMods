@@ -1,3 +1,9 @@
+**canary-465**  
+- A16QPR2b1: fixed taskbar and removed deprecated features  
+- A16QPR2b1: leaving themed icon generation to the built-in mechanism  
+- A16QPR2b1: fixed notification icon logcat errors  
+- Fixed a boot time error  
+  
 **canary-464**  
 - A16qpr1b3: Fixed taskbar height option  
 - A16qpr1b3: Fixed battery data provider  
