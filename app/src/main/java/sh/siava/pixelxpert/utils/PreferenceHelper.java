@@ -70,10 +70,12 @@ public class PreferenceHelper {
 		if (instance == null) return true;
 
 		switch (key) {
+			case "ForceThemedLauncherIcons":
+				return !instance.mPreferences.getBoolean("DisableThemedIconsPref", false);
+
 			case "TaskbarAsRecents":
 			case "taskbarHeightOverride":
 			case "TaskbarRadiusOverride":
-			case "TaskbarTransient":
 				int taskBarMode = Integer.parseInt(instance.mPreferences.getString("taskBarMode", "0"));
 				return taskBarMode == 1;
 

@@ -13,34 +13,12 @@
           <theme>@android:style/Theme.Material.Light</theme>
         </config>
       </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout-land/update_fragment.xml">
-        <config>
-          <theme>@style/AppTheme.PixelXpert</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout-night/settings_activity.xml">
-        <config>
-          <night>night</night>
-          <theme>@style/AppTheme.PixelXpert</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout-night/view_header_expandable.xml">
-        <config>
-          <night>night</night>
-          <theme>@style/AppTheme.PixelXpert</theme>
-        </config>
-      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_icon_pack.xml">
         <config>
           <theme>@style/AppTheme.PixelXpert</theme>
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/settings_activity.xml">
-        <config>
-          <theme>@style/AppTheme.PixelXpert</theme>
-        </config>
-      </layout>
-      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/settings_activity_land.xml">
         <config>
           <theme>@style/AppTheme.PixelXpert</theme>
         </config>
@@ -105,6 +83,11 @@
           <theme>@style/AppTheme.PixelXpert</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/xml/taskbar_prefs.xml">
+        <config>
+          <theme>@style/AppTheme.PixelXpert</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/app/src/main/res/xml/theming_prefs.xml">
         <config>
           <theme>@style/AppTheme.PixelXpert</theme>
@@ -116,29 +99,12 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4fb06cc4-2552-4377-a1ed-ab85eacd6385" name="Changes" comment="Move taskbar options to a separate page&#10;also add some missing items in search option">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/sh/siava/pixelxpert/ui/fragments/BlankFragment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/sh/siava/pixelxpert/utils/DisplayUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/sh/siava/pixelxpert/utils/TextUtils.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/fragment_blank.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph_tablet_details.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph_tablet_main.xml" afterDir="false" />
+    <list default="true" id="4fb06cc4-2552-4377-a1ed-ab85eacd6385" name="Changes" comment="CHANGELOG: A16QPR2b1: fixed taskbar and removed deprecated features">
+      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/sh/siava/pixelxpert/ui/activities/BaseActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/sh/siava/pixelxpert/ui/activities/BaseActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/sh/siava/pixelxpert/ui/activities/SettingsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/sh/siava/pixelxpert/ui/activities/SettingsActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/sh/siava/pixelxpert/ui/activities/SplashScreenActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/sh/siava/pixelxpert/ui/activities/SplashScreenActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/sh/siava/pixelxpert/ui/fragments/HeaderFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/sh/siava/pixelxpert/ui/fragments/HeaderFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/sh/siava/pixelxpert/ui/fragments/UpdateFragment.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/sh/siava/pixelxpert/ui/fragments/UpdateFragment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/sh/siava/pixelxpert/ui/preferences/Utils.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/sh/siava/pixelxpert/ui/preferences/Utils.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/sh/siava/pixelxpert/utils/ControlledPreferenceFragmentCompat.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/sh/siava/pixelxpert/utils/ControlledPreferenceFragmentCompat.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/sh/siava/pixelxpert/utils/NavigationExtension.kt" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/sh/siava/pixelxpert/utils/NavigationExtension.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout-land/update_fragment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout-night/settings_activity.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout-night/settings_activity.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw600dp/update_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/update_fragment_land.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout-sw720dp/update_fragment.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/settings_activity.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/settings_activity.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/update_fragment.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/update_fragment.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/navigation/nav_graph_phone.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/sh/siava/pixelxpert/utils/PreferenceHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/sh/siava/pixelxpert/utils/PreferenceHelper.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +114,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=LocalEmulator, isTemplate=false, identifier=path=C:\Users\Mahmud\.android\avd\Pixel_Tablet.avd)]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[DeviceId(pluginId=PhysicalDevice, isTemplate=false, identifier=serial=48191FDAP004DF)]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -196,7 +162,7 @@
     </option>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="stable" />
+        <entry key="$PROJECT_DIR$" value="ddc4cd602da5971da0a7997351e146add4ea3760" />
         <entry key="$PROJECT_DIR$/Submodules/RangeSliderPreference" value="main" />
       </map>
     </option>
@@ -324,38 +290,38 @@
     <option name="showMembers" value="true" />
     <option name="showVisibilityIcons" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Android App.app.executor": "Run",
-    "ApkExportedModule": "PixelXpert.app",
-    "ExportApk.ApkPathForPixelXpert.app": "C:\\Users\\83018\\Documents\\GitHub\\PixelXpert\\app",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "com.android.tools.idea.streaming.zoom.toolbar.visible": "false",
-    "com.codeium.enabled": "true",
-    "com.google.services.firebase.aqiPopupShown": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "tablet",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/83018/Documents/GitHub/api",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.2",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "show.do.not.copy.http.proxy.settings.to.gradle": "true",
-    "vcs.patch.to.clipboard": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Android App.app.executor&quot;: &quot;Run&quot;,
+    &quot;ApkExportedModule&quot;: &quot;PixelXpert.app&quot;,
+    &quot;ExportApk.ApkPathForPixelXpert.app&quot;: &quot;C:\\Users\\83018\\Documents\\GitHub\\PixelXpert\\app&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;com.android.tools.idea.streaming.zoom.toolbar.visible&quot;: &quot;false&quot;,
+    &quot;com.codeium.enabled&quot;: &quot;true&quot;,
+    &quot;com.google.services.firebase.aqiPopupShown&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;canary&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/83018/Documents/GitHub/api&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;http.proxy&quot;,
+    &quot;show.do.not.copy.http.proxy.settings.to.gradle&quot;: &quot;true&quot;,
+    &quot;vcs.patch.to.clipboard&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "ExportApk.BuildVariants": [
-      "release"
+  &quot;keyToStringList&quot;: {
+    &quot;ExportApk.BuildVariants&quot;: [
+      &quot;release&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="PsdUISettings">
     <option name="MODULE_TAB" value="Default Config" />
     <option name="BUILD_VARIANTS_TAB" value="Flavors" />
@@ -375,6 +341,7 @@
       <recent name="C:\Users\83018\Documents\GitHub\PixelXpert\removebg1" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\83018\Documents\GitHub\PixelXpert\.github" />
       <recent name="C:\Users\83018\Documents\GitHub\PixelXpert\app\resources" />
       <recent name="C:\Users\83018\Documents\GitHub\PixelXpert\app\src\main\java\sh\siava\pixelxpert\utils" />
     </key>
@@ -461,134 +428,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1723700480365</updated>
-    </task>
-    <task id="LOCAL-00103" summary="CHANGELOG: Added option (theming section) to modify system icons via &quot;Icon Pack&quot;s. Most of the credit goes to @DHD2280 and @Mahmud0808.">
-      <option name="closed" value="true" />
-      <created>1732109059517</created>
-      <option name="number" value="00103" />
-      <option name="presentableId" value="LOCAL-00103" />
-      <option name="project" value="LOCAL" />
-      <updated>1732109059517</updated>
-    </task>
-    <task id="LOCAL-00104" summary="revert java to 17">
-      <option name="closed" value="true" />
-      <created>1732109739390</created>
-      <option name="number" value="00104" />
-      <option name="presentableId" value="LOCAL-00104" />
-      <option name="project" value="LOCAL" />
-      <updated>1732109739391</updated>
-    </task>
-    <task id="LOCAL-00105" summary="Better handling of statusbar text color changes">
-      <option name="closed" value="true" />
-      <created>1732714597625</created>
-      <option name="number" value="00105" />
-      <option name="presentableId" value="LOCAL-00105" />
-      <option name="project" value="LOCAL" />
-      <updated>1732714597625</updated>
-    </task>
-    <task id="LOCAL-00106" summary="CHANGELOG: Improved the iconpack apply logic">
-      <option name="closed" value="true" />
-      <created>1732961436278</created>
-      <option name="number" value="00106" />
-      <option name="presentableId" value="LOCAL-00106" />
-      <option name="project" value="LOCAL" />
-      <updated>1732961436278</updated>
-    </task>
-    <task id="LOCAL-00107" summary="CHANGELOG: Added search to icons page">
-      <option name="closed" value="true" />
-      <created>1732961634573</created>
-      <option name="number" value="00107" />
-      <option name="presentableId" value="LOCAL-00107" />
-      <option name="project" value="LOCAL" />
-      <updated>1732961634573</updated>
-    </task>
-    <task id="LOCAL-00108" summary="removed QR tile color invert mod">
-      <option name="closed" value="true" />
-      <created>1733050322816</created>
-      <option name="number" value="00108" />
-      <option name="presentableId" value="LOCAL-00108" />
-      <option name="project" value="LOCAL" />
-      <updated>1733050322817</updated>
-    </task>
-    <task id="LOCAL-00109" summary="Fixed app FC during iconpack onresume">
-      <option name="closed" value="true" />
-      <created>1733293912422</created>
-      <option name="number" value="00109" />
-      <option name="presentableId" value="LOCAL-00109" />
-      <option name="project" value="LOCAL" />
-      <updated>1733293912422</updated>
-    </task>
-    <task id="LOCAL-00110" summary="CHANGELOG: A15: Fixed taskbar in landscape mode">
-      <option name="closed" value="true" />
-      <created>1733551147174</created>
-      <option name="number" value="00110" />
-      <option name="presentableId" value="LOCAL-00110" />
-      <option name="project" value="LOCAL" />
-      <updated>1733551147175</updated>
-    </task>
-    <task id="LOCAL-00111" summary="agp update">
-      <option name="closed" value="true" />
-      <created>1733551173426</created>
-      <option name="number" value="00111" />
-      <option name="presentableId" value="LOCAL-00111" />
-      <option name="project" value="LOCAL" />
-      <updated>1733551173426</updated>
-    </task>
-    <task id="LOCAL-00112" summary="resolved conflicts and added support for A15 compose type view">
-      <option name="closed" value="true" />
-      <created>1733636985371</created>
-      <option name="number" value="00112" />
-      <option name="presentableId" value="LOCAL-00112" />
-      <option name="project" value="LOCAL" />
-      <updated>1733636985371</updated>
-    </task>
-    <task id="LOCAL-00113" summary="CHANGELOG: Added option to show volume level percentage while adjusting them">
-      <option name="closed" value="true" />
-      <created>1733637545811</created>
-      <option name="number" value="00113" />
-      <option name="presentableId" value="LOCAL-00113" />
-      <option name="project" value="LOCAL" />
-      <updated>1733637545811</updated>
-    </task>
-    <task id="LOCAL-00114" summary="removed unused strings">
-      <option name="closed" value="true" />
-      <created>1733638139464</created>
-      <option name="number" value="00114" />
-      <option name="presentableId" value="LOCAL-00114" />
-      <option name="project" value="LOCAL" />
-      <updated>1733638139465</updated>
-    </task>
-    <task id="LOCAL-00115" summary="CHANGELOG: Added option to sleep when put on flat surface (Misc)">
-      <option name="closed" value="true" />
-      <created>1733748577474</created>
-      <option name="number" value="00115" />
-      <option name="presentableId" value="LOCAL-00115" />
-      <option name="project" value="LOCAL" />
-      <updated>1733748577474</updated>
-    </task>
-    <task id="LOCAL-00116" summary="CHANGELOG: Improved the 'sleep on flat surface' feature">
-      <option name="closed" value="true" />
-      <created>1733835779890</created>
-      <option name="number" value="00116" />
-      <option name="presentableId" value="LOCAL-00116" />
-      <option name="project" value="LOCAL" />
-      <updated>1733835779890</updated>
-    </task>
-    <task id="LOCAL-00117" summary="CHANGELOG: Fixed 'sleep on flat surface' unintentional sleeps">
-      <option name="closed" value="true" />
-      <created>1733899048595</created>
-      <option name="number" value="00117" />
-      <option name="presentableId" value="LOCAL-00117" />
-      <option name="project" value="LOCAL" />
-      <updated>1733899048595</updated>
-    </task>
-    <task id="LOCAL-00118" summary="code optimization">
-      <option name="closed" value="true" />
-      <created>1733900775330</created>
-      <option name="number" value="00118" />
-      <option name="presentableId" value="LOCAL-00118" />
-      <option name="project" value="LOCAL" />
-      <updated>1733900775330</updated>
     </task>
     <task id="LOCAL-00119" summary="Added reflection helper classes">
       <option name="closed" value="true" />
@@ -854,7 +693,135 @@
       <option name="project" value="LOCAL" />
       <updated>1737004320149</updated>
     </task>
-    <option name="localTasksCounter" value="152" />
+    <task id="LOCAL-00152" summary="CHANGELOG: Fixed framework modpacks not loading in 461">
+      <option name="closed" value="true" />
+      <created>1751530531388</created>
+      <option name="number" value="00152" />
+      <option name="presentableId" value="LOCAL-00152" />
+      <option name="project" value="LOCAL" />
+      <updated>1751530531389</updated>
+    </task>
+    <task id="LOCAL-00153" summary="CHANGELOG: Fixed framework modpacks not loading in 461">
+      <option name="closed" value="true" />
+      <created>1751530555448</created>
+      <option name="number" value="00153" />
+      <option name="presentableId" value="LOCAL-00153" />
+      <option name="project" value="LOCAL" />
+      <updated>1751530555448</updated>
+    </task>
+    <task id="LOCAL-00154" summary="CHANGELOG: Fixed an internal error">
+      <option name="closed" value="true" />
+      <created>1751694621101</created>
+      <option name="number" value="00154" />
+      <option name="presentableId" value="LOCAL-00154" />
+      <option name="project" value="LOCAL" />
+      <updated>1751694621101</updated>
+    </task>
+    <task id="LOCAL-00155" summary="CHANGELOG: Fixed an internal error">
+      <option name="closed" value="true" />
+      <created>1751694643229</created>
+      <option name="number" value="00155" />
+      <option name="presentableId" value="LOCAL-00155" />
+      <option name="project" value="LOCAL" />
+      <updated>1751694643229</updated>
+    </task>
+    <task id="LOCAL-00156" summary="updated PX banner">
+      <option name="closed" value="true" />
+      <created>1751894873275</created>
+      <option name="number" value="00156" />
+      <option name="presentableId" value="LOCAL-00156" />
+      <option name="project" value="LOCAL" />
+      <updated>1751894873275</updated>
+    </task>
+    <task id="LOCAL-00157" summary="dependency update and code refactor">
+      <option name="closed" value="true" />
+      <created>1751971826188</created>
+      <option name="number" value="00157" />
+      <option name="presentableId" value="LOCAL-00157" />
+      <option name="project" value="LOCAL" />
+      <updated>1751971826188</updated>
+    </task>
+    <task id="LOCAL-00158" summary="added installation blocker for older builds">
+      <option name="closed" value="true" />
+      <created>1752402307087</created>
+      <option name="number" value="00158" />
+      <option name="presentableId" value="LOCAL-00158" />
+      <option name="project" value="LOCAL" />
+      <updated>1752402307087</updated>
+    </task>
+    <task id="LOCAL-00159" summary="CHANGELOG: A16qpr1b3: Fixed battery data provider">
+      <option name="closed" value="true" />
+      <created>1752845084538</created>
+      <option name="number" value="00159" />
+      <option name="presentableId" value="LOCAL-00159" />
+      <option name="project" value="LOCAL" />
+      <updated>1752845084538</updated>
+    </task>
+    <task id="LOCAL-00160" summary="CHANGELOG: A16qpr1b3: Fixed taskbar height option">
+      <option name="closed" value="true" />
+      <created>1752845774825</created>
+      <option name="number" value="00160" />
+      <option name="presentableId" value="LOCAL-00160" />
+      <option name="project" value="LOCAL" />
+      <updated>1752845774825</updated>
+    </task>
+    <task id="LOCAL-00161" summary="CHANGELOG: A16qpr1b3: Fixed taskbar height option">
+      <option name="closed" value="true" />
+      <created>1752845797849</created>
+      <option name="number" value="00161" />
+      <option name="presentableId" value="LOCAL-00161" />
+      <option name="project" value="LOCAL" />
+      <updated>1752845797849</updated>
+    </task>
+    <task id="LOCAL-00162" summary="CHANGELOG: Fixed a boot time error">
+      <option name="closed" value="true" />
+      <created>1755600418621</created>
+      <option name="number" value="00162" />
+      <option name="presentableId" value="LOCAL-00162" />
+      <option name="project" value="LOCAL" />
+      <updated>1755600418622</updated>
+    </task>
+    <task id="LOCAL-00163" summary="dependency bump">
+      <option name="closed" value="true" />
+      <created>1755754015014</created>
+      <option name="number" value="00163" />
+      <option name="presentableId" value="LOCAL-00163" />
+      <option name="project" value="LOCAL" />
+      <updated>1755754015015</updated>
+    </task>
+    <task id="LOCAL-00164" summary="CHANGELOG: A16QPR2b1: fixed notification icon logcat errors">
+      <option name="closed" value="true" />
+      <created>1755754064979</created>
+      <option name="number" value="00164" />
+      <option name="presentableId" value="LOCAL-00164" />
+      <option name="project" value="LOCAL" />
+      <updated>1755754064979</updated>
+    </task>
+    <task id="LOCAL-00165" summary="CHANGELOG: A16QPR2b1: leaving themed icon generation to the built-in mechanism">
+      <option name="closed" value="true" />
+      <created>1755756253690</created>
+      <option name="number" value="00165" />
+      <option name="presentableId" value="LOCAL-00165" />
+      <option name="project" value="LOCAL" />
+      <updated>1755756253690</updated>
+    </task>
+    <task id="LOCAL-00166" summary="CHANGELOG: A16QPR2b1: leaving themed icon generation to the built-in mechanism">
+      <option name="closed" value="true" />
+      <created>1755756567401</created>
+      <option name="number" value="00166" />
+      <option name="presentableId" value="LOCAL-00166" />
+      <option name="project" value="LOCAL" />
+      <updated>1755756567401</updated>
+    </task>
+    <task id="LOCAL-00167" summary="CHANGELOG: A16QPR2b1: fixed taskbar and removed deprecated features">
+      <option name="closed" value="true" />
+      <created>1755840814866</created>
+      <option name="number" value="00167" />
+      <option name="presentableId" value="LOCAL-00167" />
+      <option name="project" value="LOCAL" />
+      <updated>1755840814866</updated>
+    </task>
+    <option name="localTasksCounter" value="168" />
     <servers />
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -892,19 +859,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
-    <MESSAGE value="migrated some mods to new hook code style" />
-    <MESSAGE value="finished migration of hooks to new style" />
-    <MESSAGE value="CHANGELOG: UI updates" />
-    <MESSAGE value="continued: migrated missed hooks to new system" />
-    <MESSAGE value="--" />
-    <MESSAGE value="temp" />
-    <MESSAGE value="CHANGELOG: Fixed light theme since canary 411" />
-    <MESSAGE value="BatteryDataProvider: matching new constructor changes" />
-    <MESSAGE value="CHANGELOG: A15QPR2B2: Fixed recents taskbar" />
-    <MESSAGE value="CHANGELOG: A15QPR2 and A16: Fixed hiding privacy indicators" />
-    <MESSAGE value="CHANGELOG: Fixed random preferences shown on the app" />
-    <MESSAGE value="CHANGELOG: A15QPR2 &amp; A16: Fixed hiding privacy indicators" />
-    <MESSAGE value="CHANGELOG: QS Light theme: fixed icon colors during/after longpress" />
     <MESSAGE value="CHANGELOG:" />
     <MESSAGE value="CHANGELOG: Taskbar in normal mode now shows all apps button" />
     <MESSAGE value="QS light theme: changed the way icon color is handled" />
@@ -917,19 +871,32 @@
     <MESSAGE value="diverting the sleep on surface tile to the app" />
     <MESSAGE value="code cleanup" />
     <MESSAGE value="QS sliding tiles migration to sliding tile superclass" />
-    <option name="LAST_COMMIT_MESSAGE" value="QS sliding tiles migration to sliding tile superclass" />
+    <MESSAGE value="Move taskbar options to a separate page&#10;also add some missing items in search option" />
+    <MESSAGE value="CHANGELOG: Fixed framework modpacks not loading in 461" />
+    <MESSAGE value="CHANGELOG: Fixed an internal error" />
+    <MESSAGE value="updated PX banner" />
+    <MESSAGE value="dependency update and code refactor" />
+    <MESSAGE value="added installation blocker for older builds" />
+    <MESSAGE value="CHANGELOG: A16qpr1b3: Fixed battery data provider" />
+    <MESSAGE value="CHANGELOG: A16qpr1b3: Fixed taskbar height option" />
+    <MESSAGE value="CHANGELOG: Fixed a boot time error" />
+    <MESSAGE value="dependency bump" />
+    <MESSAGE value="CHANGELOG: A16QPR2b1: fixed notification icon logcat errors" />
+    <MESSAGE value="CHANGELOG: A16QPR2b1: leaving themed icon generation to the built-in mechanism" />
+    <MESSAGE value="CHANGELOG: A16QPR2b1: fixed taskbar and removed deprecated features" />
+    <option name="LAST_COMMIT_MESSAGE" value="CHANGELOG: A16QPR2b1: fixed taskbar and removed deprecated features" />
   </component>
   <component name="play_dynamic_filters_status">
     <option name="appIdToCheckInfo">
       <map>
         <entry key="sh.siava.pixelxpert">
           <value>
-            <CheckInfo lastCheckTimestamp="1746528237151" />
+            <CheckInfo lastCheckTimestamp="1755839967452" />
           </value>
         </entry>
         <entry key="sh.siava.pixelxpert.test">
           <value>
-            <CheckInfo lastCheckTimestamp="1746528237184" />
+            <CheckInfo lastCheckTimestamp="1755839967451" />
           </value>
         </entry>
         <entry key="sh.siava.rangesliderpreference.test">
