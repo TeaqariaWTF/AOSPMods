@@ -399,7 +399,7 @@
     <string name="depth_effect_alert_body">使用合适的锁屏壁纸，让前台元素不会阻挡您锁屏上的整个时钟， 确保您锁屏界面的视觉吸引力和功能清晰度。\n\n注：%s.</string>
     <string name="depth_effect_ok_btn">确定</string>
     <!-- Reboot alert -->
-    <string name="pending_actions">Pending actions</string>
+    <string name="pending_actions"></string>
     <string name="btn_dismiss">Dismiss</string>
     <!-- Menu Items -->
     <string name="menu_settings_title">导入/导出</string>
