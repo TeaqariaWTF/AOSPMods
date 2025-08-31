@@ -400,7 +400,7 @@
     <string name="depth_effect_ok_btn">باشه</string>
     <!-- Reboot alert -->
     <string name="pending_actions">اقدامات در انتظار</string>
-    <string name="btn_dismiss">رد کردن</string>
+    <string name="btn_dismiss">رد</string>
     <!-- Menu Items -->
     <string name="menu_settings_title">ذخیره/بازیابی</string>
     <string name="menu_reset_defaults">بازنشانی تمام تنظیمات</string>
