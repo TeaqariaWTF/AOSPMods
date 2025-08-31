@@ -46,11 +46,8 @@ public class ScreenshotManager extends XposedModPack {
 	@Override
 	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
 		ReflectedClass ScreenshotControllerClass = ReflectedClass.ofIfPossible("com.android.systemui.screenshot.ScreenshotController");
-		ReflectedClass CaptureArgsClass = ReflectedClass.ofIfPossible("android.window.ScreenCapture.CaptureArgs"); //A14
-		if(CaptureArgsClass.getClazz() == null)
-		{
-			CaptureArgsClass = ReflectedClass.of("android.view.SurfaceControl$DisplayCaptureArgs"); //A13
-		}
+		ReflectedClass NewCaptureArgsClass = ReflectedClass.ofIfPossible("android.window.ScreenCaptureInternal.CaptureArgs"); //A16QPR2
+		ReflectedClass CaptureArgsClass = ReflectedClass.ofIfPossible("android.window.ScreenCapture.CaptureArgs"); //A16QPR1
 
 		ReflectedClass.of(UserManager.class)
 				.before("getUserInfo")
@@ -66,6 +63,14 @@ public class ScreenshotManager extends XposedModPack {
 							param.setResult(false);
 					});
 		}
+
+		NewCaptureArgsClass
+				.afterConstruction()
+				.run(param -> {
+					if(ScreenshotChordInsecure) {
+						setObjectField(param.thisObject, "mSecureContentPolicy", 1); //No source available. but apparently 1 works.
+					}
+				});
 
 		CaptureArgsClass
 				.afterConstruction()
