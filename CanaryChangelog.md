@@ -1,3 +1,6 @@
+**canary-466**  
+- A16QPR2b1: fixed screenshot from secure content  
+  
 **canary-465**  
 - A16QPR2b1: fixed taskbar and removed deprecated features  
 - A16QPR2b1: leaving themed icon generation to the built-in mechanism  
