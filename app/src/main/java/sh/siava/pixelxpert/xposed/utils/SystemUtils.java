@@ -28,7 +28,10 @@ import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraManager;
 import android.hardware.camera2.CameraManager.TorchCallback;
 import android.hardware.camera2.CameraMetadata;
+import android.media.AudioDeviceCallback;
+import android.media.AudioDeviceInfo;
 import android.media.AudioManager;
+import android.media.AudioPlaybackConfiguration;
 import android.net.ConnectivityManager;
 import android.net.wifi.WifiManager;
 import android.os.Handler;
@@ -49,6 +52,7 @@ import org.jetbrains.annotations.Contract;
 
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.List;
 
 import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.xposed.XPLauncher;
@@ -279,22 +283,43 @@ public class SystemUtils {
 	}
 
 	private void registerVolumeChangeReceiver() {
+		getAudioManager().registerAudioDeviceCallback(new AudioDeviceCallback() {
+			@Override
+			public void onAudioDevicesAdded(AudioDeviceInfo[] addedDevices) {
+				fireVolumeRefresh();
+			}
+
+			@Override
+			public void onAudioDevicesRemoved(AudioDeviceInfo[] removedDevices) {
+				fireVolumeRefresh();
+			}
+		}, null);
+
+		getAudioManager().registerAudioPlaybackCallback(new AudioManager.AudioPlaybackCallback() {
+			@Override
+			public void onPlaybackConfigChanged(List<AudioPlaybackConfiguration> configs) {
+				fireVolumeRefresh();
+			}
+		}, null);
+
 		BroadcastReceiver volChangeReceiver = new BroadcastReceiver() {
 			@Override
 			public void onReceive(Context context, Intent intent) {
 				if(intent.getIntExtra(EXTRA_VOLUME_STREAM_TYPE, -1) == STREAM_MUSIC)
 				{
-					int newLevel = intent.getIntExtra(EXTRA_VOLUME_STREAM_VALUE, 0);
-					for(ChangeListener listener : mVolumeChangeListeners)
-					{
-						listener.onChanged(newLevel);
-					}
+					fireVolumeRefresh();
 				}
 			}
 		};
 
 		IntentFilter volumeFilter = new IntentFilter("android.media.VOLUME_CHANGED_ACTION");
 		mContext.registerReceiver(volChangeReceiver, volumeFilter, RECEIVER_EXPORTED);
+	}
+
+	private void fireVolumeRefresh()
+	{
+		int level = getAudioManager().getStreamVolume(STREAM_MUSIC);
+		mVolumeChangeListeners.forEach(l -> l.onChanged(level));
 	}
 	public static void registerFlashlightLevelListener(ChangeListener listener)
 	{

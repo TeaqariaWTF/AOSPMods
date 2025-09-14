@@ -9,9 +9,17 @@ import static sh.siava.pixelxpert.xposed.utils.SystemUtils.registerVolumeChangeL
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Icon;
+import android.media.AudioDeviceInfo;
+import android.media.AudioPlaybackConfiguration;
 import android.service.quicksettings.Tile;
 
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
+
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import sh.siava.pixelxpert.BuildConfig;
+import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.utils.AlertSlider;
@@ -64,7 +72,7 @@ public class VolumeTile extends XposedModPack {
 				.run(param -> {
 					if(param.thisObject == mTile)
 					{
-						registerVolumeChangeListener(newVal -> updateTile());
+						registerVolumeChangeListener(this::updateTile);
 						updateTile();
 					}
 				});
@@ -112,11 +120,46 @@ public class VolumeTile extends XposedModPack {
 				});
 	}
 
-	private void updateTile() {
+	private void updateTile(int value) {
 		Tile mTile = (Tile) getObjectField(this.mTile, "mTile");
-		mTile.setState(SystemUtils.AudioManager().isStreamMute(STREAM_MUSIC) ? Tile.STATE_INACTIVE : Tile.STATE_ACTIVE);
+
+		setIcon(mTile, value);
+
+		mTile.setState(value == 0 ? Tile.STATE_INACTIVE : Tile.STATE_ACTIVE);
 
 		callMethod(this.mTile, "refreshState", new Object[]{null});
+	}
+
+	private static void setIcon(Tile mTile, int volume) {
+		List<AudioPlaybackConfiguration> activeConfigurations = AudioManager().getActivePlaybackConfigurations();
+
+		AtomicBoolean typeBT = new AtomicBoolean(false);
+		activeConfigurations.forEach(config -> {
+			//noinspection deprecation
+			AudioDeviceInfo deviceInfo = config.getAudioDeviceInfo();
+			if (deviceInfo != null) {
+				int deviceType = deviceInfo.getType();
+				if (deviceType == AudioDeviceInfo.TYPE_BLUETOOTH_A2DP || deviceType == AudioDeviceInfo.TYPE_BLUETOOTH_SCO) {
+					typeBT.set(true);
+				}
+			}
+		});
+
+		int resId = typeBT.get()
+				? volume == 0
+					? R.drawable.ic_volume_bt_mute
+					: R.drawable.ic_volume_bt
+				: volume == 0
+					? R.drawable.ic_volume_mute
+					: R.drawable.ic_volume;
+
+		mTile.setIcon(
+				Icon.createWithResource(
+						BuildConfig.APPLICATION_ID, resId));
+	}
+
+	private void updateTile() {
+		updateTile(SystemUtils.AudioManager().getStreamVolume(STREAM_MUSIC));
 	}
 
 	private boolean handleVolumeLongClick() throws Throwable {
