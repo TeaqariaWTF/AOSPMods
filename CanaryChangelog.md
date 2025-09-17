@@ -1,3 +1,6 @@
+**canary-467**  
+- Volume tile now supports BT audio  
+  
 **canary-466**  
 - A16QPR2b1: fixed screenshot from secure content  
   
