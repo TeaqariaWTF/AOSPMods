@@ -283,18 +283,6 @@ public class SystemUtils {
 	}
 
 	private void registerVolumeChangeReceiver() {
-		getAudioManager().registerAudioDeviceCallback(new AudioDeviceCallback() {
-			@Override
-			public void onAudioDevicesAdded(AudioDeviceInfo[] addedDevices) {
-				fireVolumeRefresh();
-			}
-
-			@Override
-			public void onAudioDevicesRemoved(AudioDeviceInfo[] removedDevices) {
-				fireVolumeRefresh();
-			}
-		}, null);
-
 		getAudioManager().registerAudioPlaybackCallback(new AudioManager.AudioPlaybackCallback() {
 			@Override
 			public void onPlaybackConfigChanged(List<AudioPlaybackConfiguration> configs) {
@@ -855,5 +843,4 @@ public class SystemUtils {
 	{
 		return mContext.getResources().getIdentifier(name, type, mContext.getPackageName());
 	}
-
 }
