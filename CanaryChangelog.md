@@ -1,3 +1,6 @@
+**canary-468**  
+- VolumeTile: volume icon now shows the value  
+  
 **canary-467**  
 - Volume tile now supports BT audio  
   
