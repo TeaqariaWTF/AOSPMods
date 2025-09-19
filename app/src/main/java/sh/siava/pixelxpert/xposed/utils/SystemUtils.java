@@ -28,8 +28,6 @@ import android.hardware.camera2.CameraCharacteristics;
 import android.hardware.camera2.CameraManager;
 import android.hardware.camera2.CameraManager.TorchCallback;
 import android.hardware.camera2.CameraMetadata;
-import android.media.AudioDeviceCallback;
-import android.media.AudioDeviceInfo;
 import android.media.AudioManager;
 import android.media.AudioPlaybackConfiguration;
 import android.net.ConnectivityManager;
@@ -311,7 +309,8 @@ public class SystemUtils {
 	}
 	public static void registerFlashlightLevelListener(ChangeListener listener)
 	{
-		instance.mFlashlightLevelListeners.add(listener);
+		if(!instance.mFlashlightLevelListeners.contains(listener))
+			instance.mFlashlightLevelListeners.add(listener);
 	}
 
 	public static void unregisterFlashlightLevelListener(ChangeListener listener)
