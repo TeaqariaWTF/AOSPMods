@@ -1,3 +1,6 @@
+**canary-469**  
+- FlashlightTile icon now shows the current level  
+  
 **canary-468**  
 - VolumeTile: volume icon now shows the value  
   
