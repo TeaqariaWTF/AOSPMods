@@ -1,3 +1,6 @@
+**canary-470**  
+- A16qpr2b2: Fixed navigation gestures  
+  
 **canary-469**  
 - FlashlightTile icon now shows the current level  
   
