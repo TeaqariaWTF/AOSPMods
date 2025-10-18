@@ -1,3 +1,6 @@
+**canary-471**  
+- A16QPR2b2: fixed navigation gestures  
+  
 **canary-470**  
 - A16qpr2b2: Fixed navigation gestures  
   
