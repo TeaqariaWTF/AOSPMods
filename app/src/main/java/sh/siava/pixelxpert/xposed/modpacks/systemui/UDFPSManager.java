@@ -53,7 +53,7 @@ public class UDFPSManager extends XposedModPack {
 
 		ReadonlyStateFlowClass = ReflectedClass.of("kotlinx.coroutines.flow.ReadonlyStateFlow");
 
-				DeviceEntryIconViewModelClass
+		DeviceEntryIconViewModelClass
 				.afterConstruction()
 				.run(param -> {
 					if((transparentBG && !transparentFG)) {
