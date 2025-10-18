@@ -15,6 +15,7 @@ import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
 import static sh.siava.pixelxpert.xposed.utils.SystemUtils.dimenIdOf;
 import static sh.siava.pixelxpert.xposed.utils.SystemUtils.idOf;
 import static sh.siava.pixelxpert.xposed.utils.SystemUtils.resourceIdOf;
+import static sh.siava.pixelxpert.xposed.utils.toolkit.ObjectTools.getStateFlowImplOf;
 import static sh.siava.pixelxpert.xposed.utils.toolkit.ReflectionTools.reAddView;
 
 import android.animation.LayoutTransition;
@@ -733,15 +734,13 @@ public class StatusbarMods extends XposedModPack {
 			ReflectedClass MobileIconInteractorImplClass = ReflectedClass.of("com.android.systemui.statusbar.pipeline.mobile.domain.interactor.MobileIconInteractorImpl");
 
 			//we must use the classes defined in the apk. using our own will fail
-			ReflectedClass StateFlowImplClass = ReflectedClass.of("kotlinx.coroutines.flow.StateFlowImpl");
 			ReflectedClass ReadonlyStateFlowClass = ReflectedClass.of("kotlinx.coroutines.flow.ReadonlyStateFlow");
 
 			MobileIconInteractorImplClass
 					.afterConstruction()
 					.run(param -> {
 						if (HideRoamingState) {
-							Object notRoamingFlow = StateFlowImplClass.getClazz().getConstructor(Object.class).newInstance(false);
-							setObjectField(param.thisObject, "isRoaming", ReadonlyStateFlowClass.getClazz().getConstructors()[0].newInstance(notRoamingFlow));
+							setObjectField(param.thisObject, "isRoaming", ReadonlyStateFlowClass.getClazz().getConstructors()[0].newInstance(getStateFlowImplOf(false)));
 						}
 					});
 		} catch (Throwable ignored) {
