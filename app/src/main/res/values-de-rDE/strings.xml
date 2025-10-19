@@ -269,7 +269,7 @@
     <string name="three_button_right_title">Rechter Knopf</string>
     <string name="hide_navbar_title">Verstecke Gestennavigationsleiste</string>
     <string name="taskbar_as_recents_title">Konvertieren Sie die Taskbar zu PixelXpert\'s Recents-Leiste</string>
-    <string name="taskbar_enable_google_recents">Enable Android recents on the Taskbar</string>
+    <string name="taskbar_enable_google_recents">Aktiviere Android Recents in der Taskleiste</string>
     <string name="taskbar_height_title">Höhe der Taskleiste</string>
     <string name="taskbar_radius_title">Taskleisten-Eckenradius</string>
     <string name="colorpill">Gestennavigationsleisten in Akzentfarbe</string>
@@ -277,9 +277,9 @@
     <string name="taskbar_force_enable_title">erzwinge Ein</string>
     <string name="taskbar_force_disable_title">erzwinge Aus</string>
     <string name="taskbar_transient_title">Automatisches Ausblenden </string>
-    <string name="taskbar_on_launcher_title">Show on home</string>
+    <string name="taskbar_on_launcher_title">Auf Startseite anzeigen</string>
     <string name="remap_physical_buttons_title">Physikalische Tasten Remap</string>
-    <string name="taskbar_on_ime_title">Show with keyboard open</string>
+    <string name="taskbar_on_ime_title">Mit der Tastatur offen anzeigen</string>
     <!-- Package manager -->
     <string name="pm_bypass_signature_title">Umgehen der Paketsignaturprüfung</string>
     <string name="pm_allow_downgrade_title">Downgrade von Anwendungen zulassen</string>
@@ -295,8 +295,8 @@
     <string name="allow_all_screen_rotations_summary">Ignoriert auch die schwebende Schaltfläche für die manuelle Drehung</string>
     <string name="force_no_cutout">Kameraausschnitt ignorieren</string>
     <string name="clear_all_reposition_title">Fügen Sie \'alles löschen\' unten auf die Recents-Leiste</string>
-    <string name="force_themed_icons_title">Auto-generate missing themed icons</string>
-    <string name="force_themed_icons_summary">Pixel launcher only</string>
+    <string name="force_themed_icons_title">Fehlende Icons automatisch generieren</string>
+    <string name="force_themed_icons_summary">Nur Pixel Launcher</string>
     <string name="volume_button_step_title">Lautstärkeschritte (0 bis 100%)</string>
     <string name="display_resolution_switch_title">Bildschirmauflösung ändern</string>
     <string name="display_resolution_switch_summary">Bevor Sie dies aktivieren, stellen Sie sicher, dass alle Displaygrößen/dpi-Änderungen auf Standard zurückgesetzt wurden</string>
@@ -316,7 +316,7 @@
     <string name="force_aod_while_charging_summary">AOD während des Ladevorgangs aktiviert lassen</string>
     <string name="doze_header">Während der Bildschirm aus ist…</string>
     <string name="px_in_settings_title">PixelXpert zu Einstellungselementen hinzufügen</string>
-    <string name="advanced_power_menu_title">Advanced power menu</string>
+    <string name="advanced_power_menu_title">Erweitertes Ein-/Ausmenü</string>
     <string name="sleep_on_flat_screen_title">Bildschirm auf flache Oberfläche ausschalten</string>
     <string name="sleep_on_flat_screen_tile_title">Auf Oberfläche schlafen</string>
     <string name="flat_screen_timeout_title">Bildschirm-Timeout auf flachen Oberflächen</string>
@@ -329,7 +329,7 @@
     <string name="notif_always_expand">Immer erweitern</string>
     <string name="notif_always_collapse">Immer einklappen</string>
     <string name="control_flashlight_with_volume_keys">Taschenlampe mit Lautstärketasten steuern</string>
-    <string name="flashlight_fade_effect">Flashlight fade effect</string>
+    <string name="flashlight_fade_effect">Taschenlampe verblas Effekt</string>
     <string name="milliseconds">Millisekunden</string>
     <string name="duration_seconds">%d Sekunden</string>
     <string name="hours">Stunden</string>
@@ -399,8 +399,8 @@
     <string name="depth_effect_alert_body">Verwenden Sie einen geeigneten Sperrbildschirm-Hintergrund, bei dem die Vordergrundelemente nicht die gesamte Uhr auf Ihrem Sperrbildschirm behindern, Damit sowohl visuelle als auch funktionale Klarheit auf Ihrem Sperrbildschirm gewährleistet sind.\n\nHinweis: %s.</string>
     <string name="depth_effect_ok_btn">Ok</string>
     <!-- Reboot alert -->
-    <string name="pending_actions">Pending actions</string>
-    <string name="btn_dismiss">Dismiss</string>
+    <string name="pending_actions">Ausstehende Aufgaben</string>
+    <string name="btn_dismiss">Schließen</string>
     <!-- Menu Items -->
     <string name="menu_settings_title">Importieren/Exportieren</string>
     <string name="menu_reset_defaults">Alle Einstellungen zurücksetzen</string>
@@ -418,7 +418,7 @@
     <string name="download_channel_name">Downloads</string>
     <string name="assets_download_title">Dateien herunterladen</string>
     <string name="assets_download_body">Begleitdateien werden heruntergeladen</string>
-    <string name="assets_download_size_body">Progress: %s</string>
+    <string name="assets_download_size_body">Fortschritt: %s</string>
     <string name="update_notification_title">Update heruntergeladen</string>
     <string name="update_notification_text">Zum Installieren hier tippen</string>
     <string name="download_failed">Der Download des Updates ist fehlgeschlagen </string>
@@ -524,15 +524,15 @@
     <string name="icon_pack_disclaimer_title">Haftungsausschluss</string>
     <string name="icon_pack_disclaimer_desc">Icon-Pakete werden nicht von PixelXpert entwickelt oder verteilt. Das PixelXpert-Team kann daher keine Icon-Pakete unterstützen. Unterstützung dafür, wie PixelXpert Icon-Pakete behandelt, wird nur den jeweiligen Paketentwicklern zur Verfügung gestellt.\n\nFür Anweisungen, wie man ein Icon Pack kompiliert, lesen Sie bitte die Anleitung hier: %s</string>
     <!--Advanced power options-->
-    <string name="advanced_option_button_title">Advanced…</string>
-    <string name="reboot_bootloader_title">Reboot to Bootloader</string>
-    <string name="soft_reboot_title">Soft Reboot</string>
-    <string name="restart_systemui_title">Restart SystemUI</string>
+    <string name="advanced_option_button_title">Erweiterte…</string>
+    <string name="reboot_bootloader_title">Zum Bootloader Neustarten</string>
+    <string name="soft_reboot_title">Schneller Neustart</string>
+    <string name="restart_systemui_title">SystemUI neustarten</string>
     <!--Optimization restart request-->
-    <string name="optimization_restart_needed_title">Restart Recommended</string>
-    <string name="optimization_restart_needed_message">A reboot is recommended to increase system integration</string>
-    <string name="restart_postpone">Later</string>
-    <string name="restart_now">Reboot now</string>
-    <string name="watts">Watts</string>
-    <string name="fast_charging_threshold_title">Fast charging threshold</string>
+    <string name="optimization_restart_needed_title">Neustart empfohlen</string>
+    <string name="optimization_restart_needed_message">Ein Neustart wird empfohlen, um die Systemintegration zu erhöhen</string>
+    <string name="restart_postpone">Später</string>
+    <string name="restart_now">Neustarten</string>
+    <string name="watts">Watt</string>
+    <string name="fast_charging_threshold_title">Schnelle Ladeschwelle</string>
 </resources>
