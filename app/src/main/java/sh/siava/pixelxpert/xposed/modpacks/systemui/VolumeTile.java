@@ -28,13 +28,13 @@ import java.util.Objects;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.R;
+import sh.siava.pixelxpert.service.tileServices.VolumeTileService;
 import sh.siava.pixelxpert.xposed.ResourceManager;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.utils.AlertSlider;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
-import sh.siava.pixelxpert.service.tileServices.VolumeTileService;
 
 /** @noinspection DataFlowIssue*/
 @SystemUIModPack
@@ -44,8 +44,9 @@ public class VolumeTile extends XposedModPack {
 
 	private static final String TAG = "VolumeTileXposed";
 	private Object mTile;
-	private boolean mNextTileIsVolume;
 	private boolean mLastDeviceBT = false;
+	private boolean mNextTileIsVolume = false;
+
 	public VolumeTile(Context context) {
 		super(context);
 	}
@@ -64,20 +65,19 @@ public class VolumeTile extends XposedModPack {
 				.before("createTile")
 				.run(param -> {
 					String arg = (String) param.args[0];
-					if(arg.contains(VolumeTileService.class.getSimpleName()))
-					{
+					if(arg.contains(VolumeTileService.class.getSimpleName())) {
 						mNextTileIsVolume = true;
 					}
 				});
 
-		CustomTileClass
-				.beforeConstruction()
+		QSFactoryImplClass
+				.after("createTile")
 				.run(param -> {
-					if(mNextTileIsVolume)
+					String arg = (String) param.args[0];
+					if(arg.contains(VolumeTileService.class.getSimpleName()))
 					{
-						mTile = param.thisObject;
 						mNextTileIsVolume = false;
-
+						mTile = param.getResult();
 						AudioManager().registerAudioDeviceCallback(new AudioDeviceCallback() {
 							@Override
 							public void onAudioDevicesAdded(AudioDeviceInfo[] addedDevices) {
@@ -103,14 +103,7 @@ public class VolumeTile extends XposedModPack {
 								}
 							}
 						}, null);
-					}
-				});
 
-		CustomTileClass
-				.afterConstruction()
-				.run(param -> {
-					if(param.thisObject == mTile)
-					{
 						registerVolumeChangeListener(this::updateTile);
 						updateTile(); // Initial update
 					}
@@ -119,7 +112,7 @@ public class VolumeTile extends XposedModPack {
 		CustomTileClass
 				.after("newTileState")
 				.run(param -> {
-					if(param.thisObject == mTile)
+					if(mNextTileIsVolume)
 					{
 						Object state = param.getResult();
 						setObjectField(state, "handlesSecondaryClick", true);
