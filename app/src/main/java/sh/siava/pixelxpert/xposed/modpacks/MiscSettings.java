@@ -56,6 +56,9 @@ public class MiscSettings extends XposedModPack {
 					break;
 				case "force_volte":
 					force_volte();
+					case "force_hotspot":
+					force_hotspot();
+					break;
 			}
 		} else {
 			//startup jobs
@@ -66,6 +69,16 @@ public class MiscSettings extends XposedModPack {
 			setVolumeSteps();
 
 			force_volte();
+
+			force_hotspot();
+		}
+	}
+
+	private void force_hotspot()
+	{
+		if(Xprefs.getBoolean("force_hotspot", false))
+		{
+			XPLauncher.enqueueProxyCommand(proxy -> proxy.runRootCommand("cmd wifi force-country-code enabled US"));
 		}
 	}
 
@@ -116,5 +129,6 @@ public class MiscSettings extends XposedModPack {
 	}
 
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {}
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	}
 }

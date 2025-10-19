@@ -70,6 +70,7 @@
     <string name="hotspot_max_client_title">Maximum clients</string>
     <string name="hotspot_disable_approval_title">Hotspot connectivity issues workaround</string>
     <string name="hotspot_disable_approval_summary">Allow non-\"pre-approved\" clients to connect seamlessly</string>
+    <string name="hotspot_force_unsupported_regions">Remove hotspot limitations in unsupported regions</string>
 
     <!--Lock screen related-->
     <string name="depth_wallpaper_options">Depth effect wallpaper</string>
