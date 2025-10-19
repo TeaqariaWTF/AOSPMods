@@ -1,3 +1,6 @@
+**canary-475**  
+- A16QPR2b3: Fixed taskbar in recent mode  
+  
 **canary-474**  
 - [Phone & Dialer] Added option to force-enable VoLTE/NR in unsupported regions  
   
