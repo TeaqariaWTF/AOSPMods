@@ -1,3 +1,6 @@
+**canary-472**  
+- A16QPR2b3: fixed fingerprint icon colors on lockscreen  
+  
 **canary-471**  
 - A16QPR2b2: fixed navigation gestures  
   
