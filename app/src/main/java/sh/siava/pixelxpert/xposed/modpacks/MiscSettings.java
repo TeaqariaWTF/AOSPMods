@@ -54,6 +54,8 @@ public class MiscSettings extends XposedModPack {
 				case "volumeStps":
 					setVolumeSteps();
 					break;
+				case "force_volte":
+					force_volte();
 			}
 		} else {
 			//startup jobs
@@ -62,6 +64,15 @@ public class MiscSettings extends XposedModPack {
 			updateSysUITuner();
 
 			setVolumeSteps();
+
+			force_volte();
+		}
+	}
+
+	private void force_volte() {
+		if(Xprefs.getBoolean("force_volte", false))
+		{
+			XPLauncher.enqueueProxyCommand(proxy -> proxy.runRootCommand("setprop persist.dbg.volte_avail_ovr 1; setprop persist.dbg.vonr_avail_ovr 1"));
 		}
 	}
 
@@ -105,6 +116,5 @@ public class MiscSettings extends XposedModPack {
 	}
 
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
-	}
+	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {}
 }
