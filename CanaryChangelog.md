@@ -1,3 +1,6 @@
+**canary-474**  
+- [Phone & Dialer] Added option to force-enable VoLTE/NR in unsupported regions  
+  
 **canary-473**  
 - A16QPR2b3: fixed hiding the privacy chips  
 - A16QPR2b3: fixed volume tile  
