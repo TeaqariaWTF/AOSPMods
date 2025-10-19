@@ -23,8 +23,8 @@ import androidx.core.content.res.ResourcesCompat;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.xposed.ResourceManager;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.utils.AlertSlider;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
@@ -76,9 +76,11 @@ public class FlashlightTile extends XposedModPack {
 		ReflectedClass DrawableIconClass = ReflectedClass.of("com.android.systemui.qs.tileimpl.QSTileImpl$DrawableIcon");
 
 		FlashlightTileClass
-				.beforeConstruction()
-				.run(param -> mTile = param.thisObject);
-
+				.before("newTileState") //constructor is optimized. this is a good substitute
+				.run(param -> {
+					if(mTile == null)
+						mTile = param.thisObject;
+				});
 
 		FlashlightTileClass
 				.before("handleClick")
