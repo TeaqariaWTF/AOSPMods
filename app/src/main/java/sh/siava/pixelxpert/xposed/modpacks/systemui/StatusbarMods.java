@@ -66,8 +66,8 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.xposed.Constants;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.utils.NetworkTraffic;
 import sh.siava.pixelxpert.xposed.utils.ShyLinearLayout;
 import sh.siava.pixelxpert.xposed.utils.StringFormatter;
@@ -554,8 +554,8 @@ public class StatusbarMods extends XposedModPack {
 		//endregion
 
 		//region privacy chip
-		PrivacyItemClass //A16
-				.afterConstruction()
+		PrivacyItemClass //A16 //qpr2b2 has removed the constructor, but it does do a distinct thing before using them. (Sunglass + roll emoji goes here)
+				.before("hashCode")
 				.run(param -> {
 					if(HidePrivacyChip)
 					{
