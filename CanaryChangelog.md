@@ -1,3 +1,7 @@
+**canary-476**  
+- A16QPR2b3: Fixed hiding the mobile roaming indicator  
+- Portable hotspot: added option to bypass limitations in unsupported regions  
+  
 **canary-475**  
 - A16QPR2b3: Fixed taskbar in recent mode  
   
