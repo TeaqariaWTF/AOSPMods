@@ -730,23 +730,18 @@ public class StatusbarMods extends XposedModPack {
 				});
 
 		//region mobile roaming
-		try { //A14QPR3
-			ReflectedClass MobileIconInteractorImplClass = ReflectedClass.of("com.android.systemui.statusbar.pipeline.mobile.domain.interactor.MobileIconInteractorImpl");
+		ReflectedClass MobileIconsInteractorImplClass = ReflectedClass.of("com.android.systemui.statusbar.pipeline.mobile.domain.interactor.MobileIconsInteractorImpl");
 
-			//we must use the classes defined in the apk. using our own will fail
-			ReflectedClass ReadonlyStateFlowClass = ReflectedClass.of("kotlinx.coroutines.flow.ReadonlyStateFlow");
+		//we must use the classes defined in the apk. using our own will fail
+		ReflectedClass ReadonlyStateFlowClass = ReflectedClass.of("kotlinx.coroutines.flow.ReadonlyStateFlow");
 
-			MobileIconInteractorImplClass
-					.afterConstruction()
-					.run(param -> {
-						if (HideRoamingState) {
-							setObjectField(param.thisObject, "isRoaming", ReadonlyStateFlowClass.getClazz().getConstructors()[0].newInstance(getStateFlowImplOf(false)));
-						}
-					});
-		} catch (Throwable ignored) {
-			
-
-		}
+		MobileIconsInteractorImplClass
+				.after("getMobileConnectionInteractorForSubId")
+				.run(param -> {
+					if (HideRoamingState) {
+						setObjectField(param.getResult(), "isRoaming", ReadonlyStateFlowClass.getClazz().getConstructors()[0].newInstance(getStateFlowImplOf(false)));
+					}
+				});
 		//endregion
 	}
 
