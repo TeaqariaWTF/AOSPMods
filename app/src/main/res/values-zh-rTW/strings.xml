@@ -33,7 +33,7 @@
     <string name="update_over_wifi_title">Check updates over WiFi only</string>
     <string name="update_over_wifi_summary">Check for updates in background only when connected to wifi</string>
     <string name="github_repo_title">GitHub repository</string>
-    <string name="telegram_group_title">Telegram group</string>
+    <string name="telegram_group_title">Telegram channel</string>
     <string name="usage_title">Usage</string>
     <string name="usage_summary">Open wiki page</string>
     <string name="crowdin_title">翻譯成你的語言</string>
@@ -64,6 +64,7 @@
     <string name="hotspot_max_client_title">最大接入數</string>
     <string name="hotspot_disable_approval_title">Hotspot 連線問題的解決方法</string>
     <string name="hotspot_disable_approval_summary">允許非「預先批准」客戶端無縫連線</string>
+    <string name="hotspot_force_unsupported_regions">Remove hotspot limitations in unsupported regions</string>
     <!--Lock screen related-->
     <string name="depth_wallpaper_options">深度效果的壁紙</string>
     <string name="depth_wallpaper_title">深度效果壁紙</string>
@@ -357,6 +358,7 @@
     <string name="vibration_type_notification">強度由系統通知振動設定定義</string>
     <string name="dialer_mute_record_message_title">Remove call recording announcement</string>
     <string name="dialer_mute_record_message_summary">Only applies to Google phone app with call recording enabled</string>
+    <string name="radio_force_volte_nr">Force VoLTE/NR in unsupported regions</string>
     <!-- Arrays strings -->
     <!-- Quick pull down -->
     <string name="pull_down_left">左側</string>

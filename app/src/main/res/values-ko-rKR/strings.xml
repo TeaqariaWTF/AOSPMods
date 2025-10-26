@@ -33,7 +33,7 @@
     <string name="update_over_wifi_title">Wi-Fi를 통해서만 업데이트 확인</string>
     <string name="update_over_wifi_summary">Wi-Fi에 연결된 경우에만 백그라운드에서 업데이트를 확인하세요.</string>
     <string name="github_repo_title">GitHub 저장소</string>
-    <string name="telegram_group_title">전보 그룹</string>
+    <string name="telegram_group_title">Telegram channel</string>
     <string name="usage_title">용법</string>
     <string name="usage_summary">위키 페이지 열기</string>
     <string name="crowdin_title">당신의 언어로 번역하세요</string>
@@ -64,6 +64,7 @@
     <string name="hotspot_max_client_title">최대 사용자</string>
     <string name="hotspot_disable_approval_title">핫스팟 연결 문제 해결하기</string>
     <string name="hotspot_disable_approval_summary">\"사전 승인\"되지 않은 사용자도 원활하게 연결할 수 있도록 허용</string>
+    <string name="hotspot_force_unsupported_regions">Remove hotspot limitations in unsupported regions</string>
     <!--Lock screen related-->
     <string name="depth_wallpaper_options">배경화면 심도 효과</string>
     <string name="depth_wallpaper_title">배경화면 심도 효과</string>
@@ -357,6 +358,7 @@
     <string name="vibration_type_notification">시스템 알림 진동 설정에 따른 강도</string>
     <string name="dialer_mute_record_message_title">통화 녹음 알림 제거</string>
     <string name="dialer_mute_record_message_summary">통화 녹음이 활성화된 구글 전화 앱에서만 적용됩니다</string>
+    <string name="radio_force_volte_nr">Force VoLTE/NR in unsupported regions</string>
     <!-- Arrays strings -->
     <!-- Quick pull down -->
     <string name="pull_down_left">왼쪽</string>

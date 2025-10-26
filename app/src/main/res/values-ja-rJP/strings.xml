@@ -33,7 +33,7 @@
     <string name="update_over_wifi_title">WiFi 経由でのみアップデートを確認する</string>
     <string name="update_over_wifi_summary">Wi-Fi に接続している場合にのみバックグラウンドでアップデートを確認する</string>
     <string name="github_repo_title">GitHub リポジトリ</string>
-    <string name="telegram_group_title">Telegram グループ</string>
+    <string name="telegram_group_title">Telegram channel</string>
     <string name="usage_title">使用法</string>
     <string name="usage_summary">ウィキページを開く</string>
     <string name="crowdin_title">翻訳</string>
@@ -64,6 +64,7 @@
     <string name="hotspot_max_client_title">最大クライアント数</string>
     <string name="hotspot_disable_approval_title">アクセスポイント接続の問題を回避</string>
     <string name="hotspot_disable_approval_summary">事前に承認されていないクライアントがシームレスに接続できるようにする</string>
+    <string name="hotspot_force_unsupported_regions">Remove hotspot limitations in unsupported regions</string>
     <!--Lock screen related-->
     <string name="depth_wallpaper_options">壁紙の被写体深度エフェクト</string>
     <string name="depth_wallpaper_title">被写体深度エフェクト</string>
@@ -357,6 +358,7 @@
     <string name="vibration_type_notification">システム通知の振動設定によって定義される強度</string>
     <string name="dialer_mute_record_message_title">通話録音アナウンスを削除する</string>
     <string name="dialer_mute_record_message_summary">通話録音が有効になっている Google 電話アプリにのみ適用されます</string>
+    <string name="radio_force_volte_nr">Force VoLTE/NR in unsupported regions</string>
     <!-- Arrays strings -->
     <!-- Quick pull down -->
     <string name="pull_down_left">左</string>

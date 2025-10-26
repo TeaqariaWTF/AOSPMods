@@ -33,7 +33,7 @@
     <string name="update_over_wifi_title">Kontrollera endast uppdateringar via WiFi</string>
     <string name="update_over_wifi_summary">Sök efter uppdateringar i bakgrunden endast när du är ansluten till wifi</string>
     <string name="github_repo_title">GitHub-förråd</string>
-    <string name="telegram_group_title">Telegram grupp</string>
+    <string name="telegram_group_title">Telegram channel</string>
     <string name="usage_title">Användande</string>
     <string name="usage_summary">Öppna wikisidan</string>
     <string name="crowdin_title">Översätt till ditt språk</string>
@@ -64,6 +64,7 @@
     <string name="hotspot_max_client_title">Maximalt antal kunder</string>
     <string name="hotspot_disable_approval_title">Hotspot konnektivitet problem workaround</string>
     <string name="hotspot_disable_approval_summary">Tillåt icke-\"förgodkända\" klienter att ansluta sömlöst</string>
+    <string name="hotspot_force_unsupported_regions">Remove hotspot limitations in unsupported regions</string>
     <!--Lock screen related-->
     <string name="depth_wallpaper_options">Depth effect wallpaper</string>
     <string name="depth_wallpaper_title">Djup effekt bakgrundsbild</string>
@@ -357,6 +358,7 @@
     <string name="vibration_type_notification">Intensitet definieras av vibrationsinställningar för systemaviseringar</string>
     <string name="dialer_mute_record_message_title">Ta bort meddelande om samtalsinspelning</string>
     <string name="dialer_mute_record_message_summary">Gäller endast Googles telefonapp med samtalsinspelning aktiverad</string>
+    <string name="radio_force_volte_nr">Force VoLTE/NR in unsupported regions</string>
     <!-- Arrays strings -->
     <!-- Quick pull down -->
     <string name="pull_down_left">Vänster</string>
