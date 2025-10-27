@@ -460,7 +460,7 @@ public class StatusbarMods extends XposedModPack {
 		mContext.registerReceiver(mAppProfileSwitchReceiver, filter, Context.RECEIVER_EXPORTED);
 
 		//region needed classes
-		ReflectedClass QSSecurityFooterUtilsClass = ReflectedClass.of("com.android.systemui.qs.QSSecurityFooterUtils");
+		ReflectedClass FooterActionsInteractorImplClass = ReflectedClass.of("com.android.systemui.qs.footer.domain.interactor.FooterActionsInteractorImpl");
 		ReflectedClass ClockClass = ReflectedClass.of("com.android.systemui.statusbar.policy.Clock");
 		ReflectedClass PhoneStatusBarViewClass = ReflectedClass.of("com.android.systemui.statusbar.phone.PhoneStatusBarView");
 		ReflectedClass NotificationIconContainerClass = ReflectedClass.of("com.android.systemui.statusbar.phone.NotificationIconContainer");
@@ -617,10 +617,12 @@ public class StatusbarMods extends XposedModPack {
 				}, 2000));
 
 		//stealing a working activity starter
-		QSSecurityFooterUtilsClass
+		FooterActionsInteractorImplClass
 				.afterConstruction()
-				.run(param -> mActivityStarter = getObjectField(param.thisObject, "mActivityStarter"));
-
+				.run(param -> {
+					Object qsSecurityFooterUtils = getObjectField(param.thisObject, "qsSecurityFooterUtils");
+					mActivityStarter = getObjectField(qsSecurityFooterUtils, "mActivityStarter");
+				});
 
 		final ClickListener clickListener = new ClickListener();
 
