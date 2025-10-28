@@ -1,3 +1,7 @@
+**canary-477**  
+- A16QPR2b3: Fixed muting the screenshot sound  
+- A16QPR2b3: Fixed depth effect on wallpaper  
+  
 **canary-476**  
 - A16QPR2b3: Fixed hiding the mobile roaming indicator  
 - Portable hotspot: added option to bypass limitations in unsupported regions  

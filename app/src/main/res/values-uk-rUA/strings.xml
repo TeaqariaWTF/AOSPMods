@@ -33,7 +33,7 @@
     <string name="update_over_wifi_title">Перевіряйте оновлення лише через Wi-Fi</string>
     <string name="update_over_wifi_summary">Перевіряти наявність оновлень у фоновому режимі лише під час підключення до Wi-Fi</string>
     <string name="github_repo_title">Репозиторій GitHub</string>
-    <string name="telegram_group_title">Група Telegram</string>
+    <string name="telegram_group_title">Telegram channel</string>
     <string name="usage_title">Використання</string>
     <string name="usage_summary">Відкрити вікі-сторінку</string>
     <string name="crowdin_title">Перекладіть на свою мову</string>
@@ -64,6 +64,7 @@
     <string name="hotspot_max_client_title">Максимум клієнтів</string>
     <string name="hotspot_disable_approval_title">Обхід проблем із підключенням до точки доступу</string>
     <string name="hotspot_disable_approval_summary">Дозволити безперешкодно підключатися \"попередньо не схваленим\" користувачам</string>
+    <string name="hotspot_force_unsupported_regions">Remove hotspot limitations in unsupported regions</string>
     <!--Lock screen related-->
     <string name="depth_wallpaper_options">Ефект глибини шпалер</string>
     <string name="depth_wallpaper_title">Шпалери з ефектом глибини</string>
@@ -357,6 +358,7 @@
     <string name="vibration_type_notification">Інтенсивність визначається налаштуваннями вібрації сповіщень системи</string>
     <string name="dialer_mute_record_message_title">Видалити повідомлення про запис розмови</string>
     <string name="dialer_mute_record_message_summary">Застосовується лише до телефонної програми Google із увімкненим записом дзвінків</string>
+    <string name="radio_force_volte_nr">Force VoLTE/NR in unsupported regions</string>
     <!-- Arrays strings -->
     <!-- Quick pull down -->
     <string name="pull_down_left">Ліворуч</string>
