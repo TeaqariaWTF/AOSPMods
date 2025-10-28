@@ -78,7 +78,7 @@ import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ResourceTools;
 
 /**
- * @noinspection RedundantThrows
+ * @noinspection v
  */
 @SystemUIModPack
 public class StatusbarMods extends XposedModPack {
@@ -460,7 +460,6 @@ public class StatusbarMods extends XposedModPack {
 		mContext.registerReceiver(mAppProfileSwitchReceiver, filter, Context.RECEIVER_EXPORTED);
 
 		//region needed classes
-		ReflectedClass FooterActionsInteractorImplClass = ReflectedClass.of("com.android.systemui.qs.footer.domain.interactor.FooterActionsInteractorImpl");
 		ReflectedClass ClockClass = ReflectedClass.of("com.android.systemui.statusbar.policy.Clock");
 		ReflectedClass PhoneStatusBarViewClass = ReflectedClass.of("com.android.systemui.statusbar.phone.PhoneStatusBarView");
 		ReflectedClass NotificationIconContainerClass = ReflectedClass.of("com.android.systemui.statusbar.phone.NotificationIconContainer");
@@ -475,6 +474,7 @@ public class StatusbarMods extends XposedModPack {
 		ReflectedClass KeyguardStateControllerImplClass = ReflectedClass.of("com.android.systemui.statusbar.policy.KeyguardStateControllerImpl");
 		ReflectedClass StatusBarIconControllerImplClass = ReflectedClass.of("com.android.systemui.statusbar.phone.ui.StatusBarIconControllerImpl");
 		ReflectedClass ShadeHeaderControllerClass = ReflectedClass.of("com.android.systemui.shade.ShadeHeaderController");
+		ReflectedClass ActivityStarterImplClass = ReflectedClass.of("com.android.systemui.statusbar.phone.ActivityStarterImpl");
 		//endregion
 
 
@@ -617,11 +617,11 @@ public class StatusbarMods extends XposedModPack {
 				}, 2000));
 
 		//stealing a working activity starter
-		FooterActionsInteractorImplClass
+		ActivityStarterImplClass
 				.afterConstruction()
 				.run(param -> {
-					Object qsSecurityFooterUtils = getObjectField(param.thisObject, "qsSecurityFooterUtils");
-					mActivityStarter = getObjectField(qsSecurityFooterUtils, "mActivityStarter");
+					if(mActivityStarter == null)
+						mActivityStarter = param.thisObject;
 				});
 
 		final ClickListener clickListener = new ClickListener();
