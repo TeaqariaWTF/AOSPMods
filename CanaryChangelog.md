@@ -1,3 +1,6 @@
+**canary-478**  
+- A16QPR2b3: Fixed System crash while long-pressing the qs clock  
+  
 **canary-477**  
 - A16QPR2b3: Fixed muting the screenshot sound  
 - A16QPR2b3: Fixed depth effect on wallpaper  
