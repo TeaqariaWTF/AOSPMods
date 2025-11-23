@@ -25,7 +25,6 @@ android {
 		targetSdk = 36
 		versionCode = 477
 		versionName = "canary-477"
-		setProperty("archivesBaseName", "PixelXpert.apk")
 		ndk {
 			//noinspection ChromeOsAbiSupport
 			abiFilters.add("arm64-v8a")
