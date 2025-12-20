@@ -52,7 +52,7 @@ public class GestureNavbarManager extends XposedModPack {
 		//region back gesture
 		//A16 QPR2 - The class doesn't have a visible constructor anymore, thus replacement method
 		EdgeBackGestureHandlerClass
-				.before("createLayoutParams")
+				.before("updateIsEnabled")
 				.run(param -> EdgeBackGestureHandler = param.thisObject);
 
 		BackPanelControllerClass
