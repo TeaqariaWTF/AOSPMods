@@ -269,6 +269,7 @@
     <string name="three_button_center_title">Κεντρικό κουμπί</string>
     <string name="three_button_right_title">Δεξί κουμπί</string>
     <string name="hide_navbar_title">Απόκρυψη γραμμής πλοήγησης</string>
+    <string name="hide_navbar_insets_title">Απόκρυψη ενθέτων γραμμής πλοήγησης</string>
     <string name="taskbar_as_recents_title">Convert Taskbar to PixelXpert recents bar</string>
     <string name="taskbar_enable_google_recents">Enable Android recents on the Taskbar</string>
     <string name="taskbar_height_title">Ύψος γραμμής εργασιών</string>

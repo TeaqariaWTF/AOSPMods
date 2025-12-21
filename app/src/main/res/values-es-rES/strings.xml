@@ -269,6 +269,7 @@
     <string name="three_button_center_title">Botón central</string>
     <string name="three_button_right_title">Botón derecho</string>
     <string name="hide_navbar_title">Ocultar barra de navegación</string>
+    <string name="hide_navbar_insets_title">Ocultar inserciones de la barra de navegación</string>
     <string name="taskbar_as_recents_title">Convierte la barra de tareas a la barra de recientes PixelXpert</string>
     <string name="taskbar_enable_google_recents">Activar recientes de Android en la barra de tareas</string>
     <string name="taskbar_height_title">Altura de la barra de tareas</string>

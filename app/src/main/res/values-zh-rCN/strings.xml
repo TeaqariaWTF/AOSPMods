@@ -269,6 +269,7 @@
     <string name="three_button_center_title">中按钮</string>
     <string name="three_button_right_title">右按钮</string>
     <string name="hide_navbar_title">隐藏小白条</string>
+    <string name="hide_navbar_insets_title">隐藏导航栏插入</string>
     <string name="taskbar_as_recents_title">将任务栏替换为 PixelXpert 最近任务栏</string>
     <string name="taskbar_enable_google_recents">在任务栏上启用 Android 最近任务</string>
     <string name="taskbar_height_title">任务栏高度</string>

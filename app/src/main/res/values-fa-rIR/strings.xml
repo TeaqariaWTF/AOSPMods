@@ -269,6 +269,7 @@
     <string name="three_button_center_title">دکمه وسط</string>
     <string name="three_button_right_title">دکمه سمت راست</string>
     <string name="hide_navbar_title">پنهان کردن نوار ناوبری</string>
+    <string name="hide_navbar_insets_title">پنهان کردن ورودی نوار ناوبری</string>
     <string name="taskbar_as_recents_title">تبدیل نوار وظیفه را به نوار اخیر PixelXpert</string>
     <string name="taskbar_enable_google_recents">فعال کردن اخیراً اندروید در نوار وظیفه</string>
     <string name="taskbar_height_title">ارتفاع نوار برنامه</string>

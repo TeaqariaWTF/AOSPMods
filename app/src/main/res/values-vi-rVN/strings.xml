@@ -269,6 +269,7 @@
     <string name="three_button_center_title">Phím trung tâm</string>
     <string name="three_button_right_title">Phím bên phải</string>
     <string name="hide_navbar_title">Ẩn thanh điều hướng</string>
+    <string name="hide_navbar_insets_title">Ẩn thanh điều hướng insets</string>
     <string name="taskbar_as_recents_title">Chuyển đổi Thanh tác vụ thành Thanh gần đây PixelXpert</string>
     <string name="taskbar_enable_google_recents">Bật ứng dụng gần đây trên Thanh tác vụ</string>
     <string name="taskbar_height_title">Chiều cao thanh tác vụ</string>

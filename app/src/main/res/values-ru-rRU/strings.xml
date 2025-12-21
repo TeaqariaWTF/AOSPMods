@@ -269,6 +269,7 @@
     <string name="three_button_center_title">Центральная кнопка</string>
     <string name="three_button_right_title">Правая кнопка</string>
     <string name="hide_navbar_title">Скрыть панель жестов</string>
+    <string name="hide_navbar_insets_title">Скрыть область панели навигации</string>
     <string name="taskbar_as_recents_title">Преобразование панели задач в панель недавних PixelXpert</string>
     <string name="taskbar_enable_google_recents">Использовать недавние приложения Android на панели задач</string>
     <string name="taskbar_height_title">Высота панели задач</string>
