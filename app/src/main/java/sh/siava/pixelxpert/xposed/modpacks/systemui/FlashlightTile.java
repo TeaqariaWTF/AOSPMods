@@ -39,9 +39,10 @@ public class FlashlightTile extends XposedModPack {
 	private final SystemUtils.ChangeListener mFlashLevelListener = new SystemUtils.ChangeListener() {
 		@Override
 		public void onChanged(int newVal) {
-			mLevelDrawable.updateState(newVal);
-			callMethod(mTile, "refreshState");
-
+			if(mTile != null) {
+				mLevelDrawable.updateState(newVal);
+				callMethod(mTile, "refreshState");
+			}
 		}
 	};
 
