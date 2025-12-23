@@ -1,3 +1,9 @@
+**canary-480**  
+- A16QPR3b1 - fixed network traffic on statusbar  
+- A16QPR3b1 - fixed notification expand/collapse buttons  
+- A16QPR3b1 - fixed sysui crash on flashlight change  
+- A16QPR3b1 - fixed back gesture detection  
+  
 **canary-479**  
 - A16QRP2: Fixed navigation pill mods  
   

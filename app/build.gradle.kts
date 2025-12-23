@@ -23,8 +23,8 @@ android {
 		applicationId = "sh.siava.pixelxpert"
 		minSdk = 36
 		targetSdk = 36
-		versionCode = 479
-		versionName = "canary-479"
+		versionCode = 480
+		versionName = "canary-480"
 		ndk {
 			//noinspection ChromeOsAbiSupport
 			abiFilters.add("arm64-v8a")
