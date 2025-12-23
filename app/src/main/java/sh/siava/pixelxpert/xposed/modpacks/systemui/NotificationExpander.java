@@ -13,9 +13,6 @@ import static sh.siava.pixelxpert.xposed.utils.toolkit.ReflectionTools.reAddView
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -27,7 +24,6 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
-import androidx.core.graphics.ColorUtils;
 
 import java.util.Collection;
 import java.util.regex.Pattern;
@@ -35,8 +31,8 @@ import java.util.regex.Pattern;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.xposed.ResourceManager;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
@@ -188,26 +184,8 @@ public class NotificationExpander extends XposedModPack {
 								mContext.getPackageName()),
 						mContext.getTheme());
 
-				@SuppressLint("DiscouragedApi")
-				Color foregroundColor = Color.valueOf(
-						res.getColor(
-								res.getIdentifier(
-										"surface_effect_1",
-										"color",
-										"android"),
-								mContext.getTheme()));
-
-				backgroundShape.setAlpha((int) (foregroundColor.alpha() * 255.0f));
-
-				PorterDuffColorFilter porterDuffColorFilter = new PorterDuffColorFilter(
-						ColorUtils.setAlphaComponent(
-								foregroundColor.toArgb(),
-								255),
-						PorterDuff.Mode.SRC_ATOP);
-
-				backgroundShape.setColorFilter(porterDuffColorFilter);
-
 				ExpandBtn.setBackground(backgroundShape);
+				backgroundShape.setColorFilter(clearAllButton.getBackground().getColorFilter());
 				CollapseBtn.setBackground(backgroundShape);
 
 				int textColor =  clearAllButton.getCurrentTextColor();
