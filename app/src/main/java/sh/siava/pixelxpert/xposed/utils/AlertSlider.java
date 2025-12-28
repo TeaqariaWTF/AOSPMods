@@ -5,6 +5,7 @@ import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static de.robv.android.xposed.XposedHelpers.setObjectField;
+import static sh.siava.pixelxpert.xposed.utils.SystemUtils.idOf;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -67,7 +68,8 @@ public abstract class AlertSlider implements SystemUtils.ChangeListener {
 		Map slidersMaps = (Map) getObjectField(sliderLayout, "mSideToSliderMap");
 		View sliderView = (View) slidersMaps.values().iterator().next();
 
-		((TextView) getObjectField(sliderView, "mTitle")).setText(" "); //setting the title to blank
+		TextView mTitle = sliderView.findViewById(idOf("ambient_volume_slider_title"));
+		mTitle.setText(" "); //setting the title to blank
 
 		FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT);
 		lp.gravity = Gravity.TOP | Gravity.CENTER_HORIZONTAL;
