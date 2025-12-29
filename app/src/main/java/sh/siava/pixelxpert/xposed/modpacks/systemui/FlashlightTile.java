@@ -20,6 +20,9 @@ import android.graphics.drawable.Drawable;
 import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
 
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.regex.Pattern;
+
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.xposed.ResourceManager;
@@ -75,6 +78,31 @@ public class FlashlightTile extends XposedModPack {
 		ReflectedClass FlashlightTileClass = ReflectedClass.of("com.android.systemui.qs.tiles.FlashlightTile");
 		ReflectedClass QSTileImplClass = ReflectedClass.of("com.android.systemui.qs.tileimpl.QSTileImpl");
 		ReflectedClass DrawableIconClass = ReflectedClass.of("com.android.systemui.qs.tileimpl.QSTileImpl$DrawableIcon");
+		ReflectedClass FlashlightRepositoryImplMethod = ReflectedClass.of("com.android.systemui.flashlight.data.repository.FlashlightRepositoryImpl");
+
+		FlashlightRepositoryImplMethod //loading last flash pct upon sysui restart - SystemUI builtin leveled tile
+				.after("loadFlashlightInfo")
+				.run(param -> {
+					if(leveledFlashTile) {
+						String getCurrentUserIdMethodName = FlashlightRepositoryImplMethod.findMethods(Pattern.compile("getCurrentUserId.*", Pattern.CASE_INSENSITIVE)).iterator().next().getName();
+						int currentUserId = (int) callMethod(param.thisObject, getCurrentUserIdMethodName);
+
+						@SuppressWarnings("unchecked") ConcurrentHashMap<Integer, Integer> defaultEnabledLevelForUser = (ConcurrentHashMap<Integer, Integer>) getObjectField(param.thisObject, "defaultEnabledLevelForUser");
+
+						defaultEnabledLevelForUser.put(currentUserId, getFlashlightLevel(Xprefs.getInt("flashPCT", 50) / 100f));
+					}
+				});
+		FlashlightRepositoryImplMethod //saving flash level to SystemUI builtin leveled tile
+				.after("setLevel")
+				.run(param -> {
+					if(leveledFlashTile) {
+						boolean persist = (boolean) param.args[1];
+						if (persist) {
+							int level = (int) param.args[0];
+							new Thread(() -> Xprefs.edit().putInt("flashPCT", Math.round((level * 100f) / getMaxFlashLevel())).apply()).start();
+						}
+					}
+				});
 
 		FlashlightTileClass
 				.before("newTileState") //constructor is optimized. this is a good substitute
