@@ -1,3 +1,6 @@
+**canary-482**  
+- A16QPR3b1 - fixed volume tile long press  
+  
 **canary-481**  
 - A16QPR3b1 - fixed easyUnlock  
 - A16QPR3b1 - fixed module not recognizing qpr3  
