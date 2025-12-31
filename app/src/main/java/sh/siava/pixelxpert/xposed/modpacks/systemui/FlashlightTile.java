@@ -16,6 +16,7 @@ import android.graphics.ColorFilter;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
+import android.hardware.camera2.CameraManager;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
@@ -78,13 +79,45 @@ public class FlashlightTile extends XposedModPack {
 		ReflectedClass FlashlightTileClass = ReflectedClass.of("com.android.systemui.qs.tiles.FlashlightTile");
 		ReflectedClass QSTileImplClass = ReflectedClass.of("com.android.systemui.qs.tileimpl.QSTileImpl");
 		ReflectedClass DrawableIconClass = ReflectedClass.of("com.android.systemui.qs.tileimpl.QSTileImpl$DrawableIcon");
-		ReflectedClass FlashlightRepositoryImplMethod = ReflectedClass.of("com.android.systemui.flashlight.data.repository.FlashlightRepositoryImpl");
+		ReflectedClass FlashlightRepositoryImplClass = ReflectedClass.of("com.android.systemui.flashlight.data.repository.FlashlightRepositoryImpl");
+		ReflectedClass FlashlightTileWithLevelClass = ReflectedClass.of("com.android.systemui.qs.tiles.FlashlightTileWithLevel");
 
-		FlashlightRepositoryImplMethod //loading last flash pct upon sysui restart - SystemUI builtin leveled tile
+		ReflectedClass.of(CameraManager.class)
+				.before("turnOnTorchWithStrengthLevel")
+				.run(param -> {
+					if(AnimateFlashlight) {
+						int level = (int) param.args[1];
+						SystemUtils.setFlash(true, level, !isFlashOn());
+						param.setResult(false);
+					}
+				});
+
+		FlashlightTileWithLevelClass
+				.after("handleUpdateState")
+				.run(param -> {
+					if(leveledFlashTile) {
+						if(mTile == null)
+						{
+							mTile = param.thisObject;
+						}
+
+						Object state = param.args[0];
+
+						boolean isEnabled = (boolean) getObjectField(state, "value");
+
+						if(isEnabled)
+						{
+							Object icon = DrawableIconClass.getClazz().getConstructors()[0].newInstance(mLevelDrawable);
+							setObjectField(state, "icon", icon);
+						}
+					}
+				});
+
+		FlashlightRepositoryImplClass //loading last flash pct upon sysui restart - SystemUI builtin leveled tile
 				.after("loadFlashlightInfo")
 				.run(param -> {
 					if(leveledFlashTile) {
-						String getCurrentUserIdMethodName = FlashlightRepositoryImplMethod.findMethods(Pattern.compile("getCurrentUserId.*", Pattern.CASE_INSENSITIVE)).iterator().next().getName();
+						String getCurrentUserIdMethodName = FlashlightRepositoryImplClass.findMethods(Pattern.compile("getCurrentUserId.*", Pattern.CASE_INSENSITIVE)).iterator().next().getName();
 						int currentUserId = (int) callMethod(param.thisObject, getCurrentUserIdMethodName);
 
 						@SuppressWarnings("unchecked") ConcurrentHashMap<Integer, Integer> defaultEnabledLevelForUser = (ConcurrentHashMap<Integer, Integer>) getObjectField(param.thisObject, "defaultEnabledLevelForUser");
@@ -92,7 +125,7 @@ public class FlashlightTile extends XposedModPack {
 						defaultEnabledLevelForUser.put(currentUserId, getFlashlightLevel(Xprefs.getInt("flashPCT", 50) / 100f));
 					}
 				});
-		FlashlightRepositoryImplMethod //saving flash level to SystemUI builtin leveled tile
+		FlashlightRepositoryImplClass //saving flash level to SystemUI builtin leveled tile
 				.after("setLevel")
 				.run(param -> {
 					if(leveledFlashTile) {

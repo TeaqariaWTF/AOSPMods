@@ -54,12 +54,13 @@ import java.util.List;
 
 import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.xposed.XPLauncher;
+import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedMethod;
 
 public class SystemUtils {
 	private static final int THREAD_PRIORITY_BACKGROUND = 10;
 	public static final String EXTRA_VOLUME_STREAM_TYPE = "android.media.EXTRA_VOLUME_STREAM_TYPE";
 	public static final String EXTRA_VOLUME_STREAM_VALUE = "android.media.EXTRA_VOLUME_STREAM_VALUE";
-	public static final String ACTION_FLASH_LEVEL_CHANGED = BuildConfig.APPLICATION_ID + ".action.FLASH_LEVEL_CHANGED";
 
 	public static final int FADE_DURATION = 500;
 
@@ -383,7 +384,7 @@ public class SystemUtils {
 			ValueAnimator valueAnimator = ValueAnimator
 					.ofInt(0, level)
 					.setDuration(FADE_DURATION);
-			valueAnimator.addUpdateListener(animation -> setFlashLevel(true, (Integer) animation.getAnimatedValue(), false));
+			valueAnimator.addUpdateListener(animation -> setFlashLevel(true, (Integer) animation.getAnimatedValue()));
 			valueAnimator.start();
 		});
 	}
@@ -393,7 +394,7 @@ public class SystemUtils {
 			ValueAnimator valueAnimator = ValueAnimator
 					.ofInt(getFlashStrengthInternal(), 0)
 					.setDuration(500);
-			valueAnimator.addUpdateListener(animation -> setFlashLevel(true, (Integer) animation.getAnimatedValue(), false));
+			valueAnimator.addUpdateListener(animation -> setFlashLevel(true, (Integer) animation.getAnimatedValue()));
 			valueAnimator.addListener(new AnimatorListenerAdapter() {
 				@Override
 				public void onAnimationEnd(Animator animation) {
@@ -471,22 +472,21 @@ public class SystemUtils {
 			}
 		}
 		else {
-			setFlashLevel(enabled, level, true);
+			setFlashLevel(enabled, level);
 		}
 	}
 
-		private void setFlashLevel(boolean enabled, int level, boolean broadcast) {
+		private void setFlashLevel(boolean enabled, int level) {
 		try {
 			String flashID = getFlashID(getCameraManager());
 			if (enabled) {
 				if (supportsFlashLevels()) //good news. we can set levels
 				{
-					getCameraManager().turnOnTorchWithStrengthLevel(flashID,Math.max(level, 1));
-
-					if(broadcast)
-					{
-						mContext.sendBroadcast(new Intent(ACTION_FLASH_LEVEL_CHANGED));
-					}
+					ReflectedMethod.ofName( //16QPR3 leveled flashlight uses this method and we hook it. have to run it manually
+							ReflectedClass.of(CameraManager.class),
+							"turnOnTorchWithStrengthLevel").invokeOriginal(getCameraManager(),
+							flashID,
+							Math.max(level, 1));
 				} else //flash doesn't support levels: go normal
 				{
 					setFlashInternalNoLevel(true, false);
@@ -503,6 +503,7 @@ public class SystemUtils {
 	}
 
 	private void informFlashListeners() {
+		log("change in flash");
 		for(ChangeListener listener : mFlashlightLevelListeners)
 		{
 			listener.onChanged(getFlashStrengthInternal());
@@ -744,15 +745,12 @@ public class SystemUtils {
 					}
 				}, mHandler);
 
-				mContext.registerReceiver(
-						new BroadcastReceiver() {
-							@Override
-							public void onReceive(Context context, Intent intent) {
-								informFlashListeners();
-							}
-						},
-						new IntentFilter(ACTION_FLASH_LEVEL_CHANGED),
-						RECEIVER_EXPORTED);
+				mCameraManager.registerTorchCallback(new TorchCallback() {
+					@Override
+					public void onTorchStrengthLevelChanged(@NonNull String cameraId, int newStrengthLevel) {
+						informFlashListeners();
+					}
+				}, mHandler);
 			} catch (Throwable t) {
 				mCameraManager = null;
 				if (BuildConfig.DEBUG) {
