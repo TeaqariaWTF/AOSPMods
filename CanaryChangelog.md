@@ -1,3 +1,6 @@
+**canary-483**  
+- A16QPR3b1 - Adopted the new flashlight tile to PX  
+  
 **canary-482**  
 - A16QPR3b1 - fixed volume tile long press  
   
