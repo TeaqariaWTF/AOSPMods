@@ -205,7 +205,7 @@ public class ReflectedClass
 					StackTraceElement element = Thread.currentThread().getStackTrace()[2];
 					String callingClassName = element.getClassName();
 					int lineNumber = element.getLineNumber();
-					log(String.format("%s line %d: Hook to %s before method %s size = %d", callingClassName,lineNumber, clazz.getName(), method.getName(), unhooks.size()));
+					log(String.format("%s line %d: Hook to %s before method %s size = %d", callingClassName,lineNumber, clazz.getName(), methodName, unhooks.size()));
 				}
 			}
 			return unhooks;
