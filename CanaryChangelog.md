@@ -1,3 +1,6 @@
+**canary-485**  
+- A16qpr3b1 - Fixed taskbar in recents mode  
+  
 **canary-484**  
 - Improved notification collapse/expand buttons + fixed colors  
   
