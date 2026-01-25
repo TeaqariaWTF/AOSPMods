@@ -173,7 +173,8 @@ public class TaskbarActivator extends XposedModPack {
 									getObjectField(instance, "mTaskbarInsetsComputer").getClass())
 							.before("onComputeInternalInsets")
 							.run(param -> {
-								onComputeInternalInsets(instance, param.args[0]);
+								//doesn't seem to reach its end at all. may for desktop mode?
+//								onComputeInternalInsets(instance, param.args[0]);
 								param.setResult(null);
 							});
 				});
@@ -339,9 +340,11 @@ public class TaskbarActivator extends XposedModPack {
 	{
 		return !((boolean) callMethod(mCurrentTopTask, "isHomeTask"));
 	}
+	@SuppressWarnings("unused")
 	public void onComputeInternalInsets(Object thisObject, Object internalInsetsInfo) {
 		Object mOverlayController = getObjectField(getObjectField(thisObject, "mContainer"), "mOverlayController");
 		Object mOverlayContext = getObjectField(mOverlayController, "mOverlayContext");
+		if (mOverlayContext == null) return;
 		Object mDragController = getObjectField(mOverlayContext, "mDragController");
 		Object mTaskbarContext = getObjectField(mOverlayController, "mTaskbarContext");
 		Object mControllers = getObjectField(mTaskbarContext, "mControllers");
