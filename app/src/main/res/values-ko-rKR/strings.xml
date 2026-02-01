@@ -33,7 +33,7 @@
     <string name="update_over_wifi_title">Wi-Fi를 통해서만 업데이트 확인</string>
     <string name="update_over_wifi_summary">Wi-Fi에 연결된 경우에만 백그라운드에서 업데이트를 확인하세요.</string>
     <string name="github_repo_title">GitHub 저장소</string>
-    <string name="telegram_group_title">Telegram channel</string>
+    <string name="telegram_group_title">텔레그램 채널</string>
     <string name="usage_title">용법</string>
     <string name="usage_summary">위키 페이지 열기</string>
     <string name="crowdin_title">당신의 언어로 번역하세요</string>
