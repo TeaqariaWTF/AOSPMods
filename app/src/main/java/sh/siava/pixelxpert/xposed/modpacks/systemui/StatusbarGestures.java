@@ -182,7 +182,13 @@ public class StatusbarGestures extends XposedModPack {
 	}
 
 	private void collapseQS() {
-		callMethod(NotificationPanelViewController, "collapse", 1f, true);
+		try
+		{
+			callMethod(NotificationPanelViewController, "collapse", true, 1f);
+		}
+		catch (Throwable ignored) {
+			callMethod(NotificationPanelViewController, "collapse", 1f, true);
+		}
 	}
 
 	private class LongpressListener implements GestureDetector.OnGestureListener {
