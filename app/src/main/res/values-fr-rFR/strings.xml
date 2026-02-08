@@ -33,7 +33,7 @@
     <string name="update_over_wifi_title">Vérifier les mises à jour via WiFi uniquement</string>
     <string name="update_over_wifi_summary">Vérifiez les mises à jour en arrière-plan uniquement lorsque vous êtes connecté au wifi</string>
     <string name="github_repo_title">Dépôt GitHub</string>
-    <string name="telegram_group_title">Telegram channel</string>
+    <string name="telegram_group_title">Canal Telegram</string>
     <string name="usage_title">Usage</string>
     <string name="usage_summary">Ouvrir la page wiki</string>
     <string name="crowdin_title">Traduire dans votre langue</string>
@@ -64,7 +64,7 @@
     <string name="hotspot_max_client_title">Clientèle maximale</string>
     <string name="hotspot_disable_approval_title">Solution aux problèmes de connectivité du hotspot</string>
     <string name="hotspot_disable_approval_summary">Permettre aux clients non \"pré-approuvés\" de se connecter de manière transparente</string>
-    <string name="hotspot_force_unsupported_regions">Remove hotspot limitations in unsupported regions</string>
+    <string name="hotspot_force_unsupported_regions">Supprimer les restrictions relatives aux hotspots dans les régions non prises en charge</string>
     <!--Lock screen related-->
     <string name="depth_wallpaper_options">Effet de profondeur du fond d\'écran</string>
     <string name="depth_wallpaper_title">Effet de profondeur du fond d\'écran</string>
@@ -358,7 +358,7 @@
     <string name="vibration_type_notification">L’intensité de vibration est celle définie par les paramètres de notifications de l’appareil</string>
     <string name="dialer_mute_record_message_title">Supprimer l\'annonce d\'enregistrement d\'appel</string>
     <string name="dialer_mute_record_message_summary">S\'applique uniquement à l\'application téléphonique Google avec l\'enregistrement des appels activé</string>
-    <string name="radio_force_volte_nr">Force VoLTE/NR in unsupported regions</string>
+    <string name="radio_force_volte_nr">Forcer VoLTE/NR dans les régions non prises en charge</string>
     <!-- Arrays strings -->
     <!-- Quick pull down -->
     <string name="pull_down_left">Gauche</string>
@@ -401,8 +401,8 @@
     <string name="depth_effect_alert_body">Utilisez un fond d\'écran de verrouillage approprié où les éléments de premier plan n\'obstruent pas l\'intégralité de l\'horloge sur votre écran de verrouillage, garantissant à la fois l\'attrait visuel et la clarté fonctionnelle de votre écran de verrouillage.\n\nRemarque: %s.</string>
     <string name="depth_effect_ok_btn">OK</string>
     <!-- Reboot alert -->
-    <string name="pending_actions">Pending actions</string>
-    <string name="btn_dismiss">Dismiss</string>
+    <string name="pending_actions">Actions en attente</string>
+    <string name="btn_dismiss">Effacer</string>
     <!-- Menu Items -->
     <string name="menu_settings_title">Importer/exporter</string>
     <string name="menu_reset_defaults">Réinitialiser tous les paramètres</string>
@@ -536,5 +536,5 @@
     <string name="restart_postpone">Plus tard</string>
     <string name="restart_now">Redémarrer maintenant</string>
     <string name="watts">Watts</string>
-    <string name="fast_charging_threshold_title">Fast charging threshold</string>
+    <string name="fast_charging_threshold_title">Seuil de recharge rapide</string>
 </resources>
