@@ -15,6 +15,7 @@ import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import java.lang.reflect.InvocationHandler;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.List;
@@ -52,9 +53,8 @@ public abstract class AlertSlider implements SystemUtils.ChangeListener {
 
 	private void createSliderDialog() throws Throwable {
 		ReflectedClass AmbientVolumeLayoutClass = ReflectedClass.of("com.android.systemui.accessibility.hearingaid.AmbientVolumeLayout");
-		ReflectedClass SystemUIDialogClass = ReflectedClass.of("com.android.systemui.statusbar.phone.SystemUIDialog");
 
-		sliderDialog = (AlertDialog) SystemUIDialogClass.getClazz().getConstructor(Context.class).newInstance(context);
+		sliderDialog = getSystemUIDialog();
 
 		FrameLayout contentFrameLayout = new FrameLayout(context);
 		contentFrameLayout.setLayoutParams(new FrameLayout.LayoutParams(MATCH_PARENT, WRAP_CONTENT));
@@ -95,6 +95,25 @@ public abstract class AlertSlider implements SystemUtils.ChangeListener {
 		dialogInternalContainer.addView(contentFrameLayout);
 
 		eventCallback.onCreate(this);
+	}
+
+	private AlertDialog getSystemUIDialog() throws IllegalAccessException, InstantiationException, InvocationTargetException, NoSuchMethodException {
+		try
+		{
+			ReflectedClass SystemUIDialogClass = ReflectedClass.of("com.android.systemui.statusbar.phone.SystemUIDialog");
+			return (AlertDialog) SystemUIDialogClass.getClazz().getConstructor(Context.class).newInstance(context);
+		}
+		catch (Throwable ignored){}
+
+		ReflectedClass SystemUIDialogFactoryClass = ReflectedClass.of("com.android.systemui.statusbar.phone.SystemUIDialog$Factory");
+
+		Object factory = SystemUIDialogFactoryClass.getClazz().getConstructors()[0].newInstance(context,
+				SystemUIDependencyProvider.get("com.android.systemui.statusbar.phone.SystemUIDialogManager"),
+				SystemUIDependencyProvider.get("com.android.systemui.broadcast.BroadcastDispatcher"),
+				SystemUIDependencyProvider.get("com.android.systemui.animation.DialogTransitionAnimator"),
+				null);
+
+		return  (AlertDialog) callMethod(factory, "create");
 	}
 
 	/** @noinspection SameParameterValue*/
