@@ -22,7 +22,7 @@ public class SystemUIDependencyProvider {
 	}
 
 	private static void getInstance() {
-		ReflectedClass d = ReflectedClass.of("com.android.systemui.Dependency");
-		sDependency = getStaticObjectField(d.getClazz(), "sDependency");
+		ReflectedClass DependencyClass = ReflectedClass.of("com.android.systemui.Dependency");
+		sDependency = getStaticObjectField(DependencyClass.getClazz(), "sDependency");
 	}
 }
