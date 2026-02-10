@@ -1,3 +1,8 @@
+**canary-486**  
+- A16qpr3b2 - Fixed volume tile slider  
+- A16qpr3b2 - Fixed quick qs pull-up  
+- A16qpr3b1 - Fixed a bug in taskbar  
+  
 **canary-485**  
 - A16qpr3b1 - Fixed taskbar in recents mode  
   
