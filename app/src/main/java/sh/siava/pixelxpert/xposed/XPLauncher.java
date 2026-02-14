@@ -2,6 +2,8 @@ package sh.siava.pixelxpert.xposed;
 
 import static android.content.Context.CONTEXT_IGNORE_SECURITY;
 import static de.robv.android.xposed.XposedBridge.log;
+import static de.robv.android.xposed.XposedHelpers.getObjectField;
+import static de.robv.android.xposed.XposedHelpers.setObjectField;
 import static sh.siava.pixelxpert.BuildConfig.APPLICATION_ID;
 import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
 import static sh.siava.pixelxpert.xposed.utils.BootLoopProtector.isBootLooped;
@@ -28,9 +30,9 @@ import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.IPixelXpertProxy;
 import sh.siava.pixelxpert.R;
+import sh.siava.pixelxpert.service.PixelXpertProxy;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
-import sh.siava.pixelxpert.service.PixelXpertProxy;
 
 @SuppressWarnings("RedundantThrows")
 public class XPLauncher implements ServiceConnection {
@@ -76,6 +78,8 @@ public class XPLauncher implements ServiceConnection {
 			mIsChildProcess = false;
 		}
 
+		hook17BetaAudioManagerSRWorkaround(lpParam);
+
 		if (lpParam.packageName.equals(Constants.SYSTEM_FRAMEWORK_PACKAGE)) {
 			ReflectedClass PhoneWindowManagerClass = ReflectedClass.of("com.android.server.policy.PhoneWindowManager");
 
@@ -120,6 +124,16 @@ public class XPLauncher implements ServiceConnection {
 						}
 					});
 		}
+	}
+
+	private static void hook17BetaAudioManagerSRWorkaround(XC_LoadPackage.LoadPackageParam lpParam) {
+		ReflectedClass.of("android.media.AudioManager", lpParam.classLoader)
+				.before("requestAudioFocus")
+				.run(param -> {
+					if(getObjectField(param.thisObject, "mApplicationContext") == null) {
+						setObjectField(param.thisObject, "mApplicationContext", getObjectField(param.thisObject, "mOriginalContext"));
+					}
+				});
 	}
 
 	private void onXPrefsReady(XC_LoadPackage.LoadPackageParam lpParam) {
