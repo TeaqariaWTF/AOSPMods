@@ -1,3 +1,6 @@
+**canary-487**  
+- A17b1: (emergency workaround) Fixed soft reboot when making calls  
+  
 **canary-486**  
 - A16qpr3b2 - Fixed volume tile slider  
 - A16qpr3b2 - Fixed quick qs pull-up  
