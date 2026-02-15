@@ -24,8 +24,8 @@ import java.util.Optional;
 import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.callbacks.XC_LoadPackage;
 import sh.siava.pixelxpert.xposed.Constants;
-import sh.siava.pixelxpert.xposed.annotations.LauncherModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
+import sh.siava.pixelxpert.xposed.annotations.LauncherModPack;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
 
@@ -61,7 +61,6 @@ public class CustomNavGestures extends XposedModPack {
 	private static boolean FCLongSwipeEnabled = false;
 	private Object mSystemUIProxy = null;
 	private static int leftSwipeUpAction = NO_ACTION, rightSwipeUpAction = NO_ACTION, twoFingerSwipeUpAction = NO_ACTION;
-	private Object mSysUiProxy;
 	private Object currentFocusedTask = null;
 	private boolean mTasksIsList = false;
 
@@ -97,18 +96,11 @@ public class CustomNavGestures extends XposedModPack {
 			LauncherInputConsumerClass = ReflectedClass.ofIfPossible("com.android.quickstep.inputconsumers.OverviewInputConsumer");
 		}
 		ReflectedClass SystemUiProxyClass = ReflectedClass.of("com.android.quickstep.SystemUiProxy");
-		ReflectedClass RecentTasksListClass = ReflectedClass.of("com.android.quickstep.RecentTasksList");
-
-
 
 		//noinspection DataFlowIssue
 		Rect displayBounds = SystemUtils.WindowManager().getMaximumWindowMetrics().getBounds();
 		displayW = Math.min(displayBounds.width(), displayBounds.height());
 		displayH = Math.max(displayBounds.width(), displayBounds.height());
-
-		RecentTasksListClass
-				.afterConstruction()
-				.run(param -> mSysUiProxy = getObjectField(param.thisObject, "mSysUiProxy"));
 
 		SystemUiProxyClass
 				.afterConstruction()
@@ -217,7 +209,7 @@ public class CustomNavGestures extends XposedModPack {
 		try
 		{
 			ArrayList<?> recentTaskList = (ArrayList<?>) callMethod(
-					mSysUiProxy,
+					mSystemUIProxy,
 					"getRecentTasks",
 					1,
 					callMethod(Process.myUserHandle(), "getIdentifier"));
