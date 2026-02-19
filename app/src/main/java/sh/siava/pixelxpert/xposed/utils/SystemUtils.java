@@ -503,7 +503,6 @@ public class SystemUtils {
 	}
 
 	private void informFlashListeners() {
-		log("change in flash");
 		for(ChangeListener listener : mFlashlightLevelListeners)
 		{
 			listener.onChanged(getFlashStrengthInternal());
