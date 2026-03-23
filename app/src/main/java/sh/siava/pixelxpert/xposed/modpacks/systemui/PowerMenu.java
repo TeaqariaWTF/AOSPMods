@@ -21,13 +21,13 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.util.ArrayList;
 
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.R;
-import sh.siava.pixelxpert.xposed.ResourceManager;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
+import sh.siava.pixelxpert.xposed.XPLauncher;
 import sh.siava.pixelxpert.xposed.XposedModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 @SystemUIModPack
 public class PowerMenu extends XposedModPack {
@@ -44,7 +44,7 @@ public class PowerMenu extends XposedModPack {
 	}
 
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		ReflectedClass GlobalActionsDialogLiteClass = ReflectedClass.of("com.android.systemui.globalactions.GlobalActionsDialogLite");
 		ReflectedClass PowerOptionsAction = ReflectedClass.of("com.android.systemui.globalactions.GlobalActionsDialogLite$PowerOptionsAction");
 		mLongPressActionInterface = ReflectedClass.of("com.android.systemui.globalactions.GlobalActionsDialogLite$LongPressAction");
@@ -79,7 +79,7 @@ public class PowerMenu extends XposedModPack {
 
 	private String getString(int id)
 	{
-		return ResourceManager.modRes.getString(id);
+		return XPLauncher.moduleResources.getString(id);
 	}
 
 	private Object getAction(PXCustomAction action)

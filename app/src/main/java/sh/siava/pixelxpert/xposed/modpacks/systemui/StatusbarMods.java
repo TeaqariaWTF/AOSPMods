@@ -16,7 +16,7 @@ import static sh.siava.pixelxpert.xposed.utils.SystemUtils.dimenIdOf;
 import static sh.siava.pixelxpert.xposed.utils.SystemUtils.idOf;
 import static sh.siava.pixelxpert.xposed.utils.SystemUtils.resourceIdOf;
 import static sh.siava.pixelxpert.xposed.utils.toolkit.ObjectTools.getStateFlowImplOf;
-import static sh.siava.pixelxpert.xposed.utils.toolkit.ReflectionTools.reAddView;
+import static sh.siava.pixelxpert.xposed.utils.reflection.ReflectionTools.reAddView;
 
 import android.animation.LayoutTransition;
 import android.annotation.SuppressLint;
@@ -62,7 +62,7 @@ import java.util.concurrent.Executor;
 
 import javax.security.auth.callback.Callback;
 
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.xposed.Constants;
@@ -74,7 +74,7 @@ import sh.siava.pixelxpert.xposed.utils.StringFormatter;
 import sh.siava.pixelxpert.xposed.utils.StringFormatter.FormattedStringCallback;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
 import sh.siava.pixelxpert.xposed.utils.batteryStyles.BatteryBarView;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ResourceTools;
 
 /**
@@ -454,7 +454,7 @@ public class StatusbarMods extends XposedModPack {
 
 	@SuppressLint("DiscouragedApi")
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(Constants.ACTION_PROFILE_SWITCH_AVAILABLE);
 		mContext.registerReceiver(mAppProfileSwitchReceiver, filter, Context.RECEIVER_EXPORTED);

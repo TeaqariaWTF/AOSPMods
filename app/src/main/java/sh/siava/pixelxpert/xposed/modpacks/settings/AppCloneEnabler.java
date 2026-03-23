@@ -15,12 +15,12 @@ import android.view.Menu;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.R;
-import sh.siava.pixelxpert.xposed.ResourceManager;
-import sh.siava.pixelxpert.xposed.annotations.SettingsModPack;
+import sh.siava.pixelxpert.xposed.XPLauncher;
 import sh.siava.pixelxpert.xposed.XposedModPack;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.annotations.SettingsModPack;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 @SuppressWarnings({"RedundantThrows"})
 @SettingsModPack
@@ -39,7 +39,7 @@ public class AppCloneEnabler extends XposedModPack {
 
 	@SuppressLint("ResourceType")
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 
 		ReflectedClass ClonedAppsPreferenceControllerClass = ReflectedClass.of("com.android.settings.applications.ClonedAppsPreferenceController");
 		ReflectedClass AppStateClonedAppsBridgeClass = ReflectedClass.of("com.android.settings.applications.AppStateClonedAppsBridge");
@@ -119,7 +119,7 @@ public class AppCloneEnabler extends XposedModPack {
 					callMethod(
 							getObjectField(param.thisObject, "mPreference"),
 							"setSummary",
-							ResourceManager.modRes.getText(R.string.settings_cloned_apps_active));
+							XPLauncher.moduleResources.getText(R.string.settings_cloned_apps_active));
 
 					param.setResult(null);
 				});

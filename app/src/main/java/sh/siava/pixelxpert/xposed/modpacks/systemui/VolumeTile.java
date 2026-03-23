@@ -25,16 +25,16 @@ import androidx.core.content.res.ResourcesCompat;
 import java.util.List;
 import java.util.Objects;
 
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.service.tileServices.VolumeTileService;
-import sh.siava.pixelxpert.xposed.ResourceManager;
+import sh.siava.pixelxpert.xposed.XPLauncher;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.utils.AlertSlider;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 /** @noinspection DataFlowIssue*/
 @SystemUIModPack
@@ -56,7 +56,7 @@ public class VolumeTile extends XposedModPack {
 	}
 
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		ReflectedClass CustomTileClass = ReflectedClass.of("com.android.systemui.qs.external.CustomTile");
 		ReflectedClass QSFactoryImplClass = ReflectedClass.of("com.android.systemui.qs.tileimpl.QSFactoryImpl");
 		ReflectedClass QSTileImplClass = ReflectedClass.of("com.android.systemui.qs.tileimpl.QSTileImpl");
@@ -268,8 +268,8 @@ public class VolumeTile extends XposedModPack {
 
 	public static Icon createPercentageIcon(Context context, int currentValue, int minValue, int maxValue, int filledResId, int outlineResId, float paddingTopPercent, float paddingBottomPercent) {
 		try {
-			Drawable filledDrawable = ResourcesCompat.getDrawable(ResourceManager.modRes, filledResId, context.getTheme());
-			Drawable outlineDrawable = ResourcesCompat.getDrawable(ResourceManager.modRes, outlineResId, context.getTheme());
+			Drawable filledDrawable = ResourcesCompat.getDrawable(XPLauncher.moduleResources, filledResId, context.getTheme());
+			Drawable outlineDrawable = ResourcesCompat.getDrawable(XPLauncher.moduleResources, outlineResId, context.getTheme());
 
 			int width = filledDrawable.getIntrinsicWidth();
 			int height = filledDrawable.getIntrinsicHeight();

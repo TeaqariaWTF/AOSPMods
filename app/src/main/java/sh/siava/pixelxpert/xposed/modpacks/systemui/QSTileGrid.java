@@ -6,22 +6,25 @@ import static de.robv.android.xposed.XposedHelpers.setAdditionalInstanceField;
 import static de.robv.android.xposed.XposedHelpers.setObjectField;
 import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
 
+
+
+
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 
-
 import java.util.Set;
 
-import de.robv.android.xposed.XC_MethodHook;
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
+import io.github.libxposed.api.XposedInterface;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.xposed.XposedModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
-import sh.siava.pixelxpert.xposed.utils.toolkit.FakeIntegerResource;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ComposeFontUtils;
+import sh.siava.pixelxpert.xposed.utils.toolkit.FakeIntegerResource;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
 @SystemUIModPack
@@ -74,7 +77,7 @@ public class QSTileGrid extends XposedModPack {
 
 	@SuppressLint("DiscouragedApi")
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		ReflectedClass PaginatedGridLayoutClass = ReflectedClass.ofIfPossible("com.android.systemui.qs.panels.ui.compose.PaginatedGridLayout");
 		ReflectedClass QSColumnsRepositoryClass = ReflectedClass.ofIfPossible("com.android.systemui.qs.panels.data.repository.QSColumnsRepository");
 		ReflectedClass QuickQuickSettingsRowRepositoryClass = ReflectedClass.ofIfPossible("com.android.systemui.qs.panels.data.repository.QuickQuickSettingsRowRepository");
@@ -82,7 +85,7 @@ public class QSTileGrid extends XposedModPack {
 
 		//region expressive compose UI rows
 		//noinspection unchecked
-		final Set<XC_MethodHook.Unhook>[] QSRowsHooks = new Set[1];
+		final Set<XposedInterface.HookHandle>[] QSRowsHooks = new Set[1];
 
 		PaginatedGridLayoutClass
 				.before("TileGrid")
@@ -127,7 +130,7 @@ public class QSTileGrid extends XposedModPack {
 				.after("TileGrid")
 				.run(param -> {
 					try {
-						QSRowsHooks[0].forEach(XC_MethodHook.Unhook::unhook);
+						QSRowsHooks[0].forEach(XposedInterface.HookHandle::unhook);
 					}
 					finally {
 						QSRowsHooks[0] = null;

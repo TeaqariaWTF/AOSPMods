@@ -3,6 +3,8 @@ package sh.siava.pixelxpert.xposed.modpacks.systemui;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static de.robv.android.xposed.XposedHelpers.setObjectField;
 import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
+
+
 import static sh.siava.pixelxpert.xposed.utils.toolkit.ObjectTools.getStateFlowImplOf;
 
 import android.content.Context;
@@ -11,10 +13,10 @@ import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
 @SystemUIModPack
@@ -47,7 +49,7 @@ public class UDFPSManager extends XposedModPack {
 	}
 
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) {
 		ReflectedClass DeviceEntryIconViewClass = ReflectedClass.of("com.android.systemui.keyguard.ui.view.DeviceEntryIconView");
 		ReflectedClass DeviceEntryIconViewModelClass = ReflectedClass.of("com.android.systemui.keyguard.ui.viewmodel.DeviceEntryIconViewModel");
 

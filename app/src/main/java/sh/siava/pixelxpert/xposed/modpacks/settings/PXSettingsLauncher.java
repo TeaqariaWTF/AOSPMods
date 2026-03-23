@@ -14,13 +14,13 @@ import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.R;
-import sh.siava.pixelxpert.xposed.ResourceManager;
-import sh.siava.pixelxpert.xposed.annotations.SettingsModPack;
+import sh.siava.pixelxpert.xposed.XPLauncher;
 import sh.siava.pixelxpert.xposed.XposedModPack;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.annotations.SettingsModPack;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
 @SettingsModPack
@@ -41,7 +41,7 @@ public class PXSettingsLauncher extends XposedModPack {
 	}
 
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		ReflectedClass HomepagePreferenceClass = ReflectedClass.of("com.android.settings.widget.HomepagePreference");
 		ReflectedClass TopLevelSettingsClass = ReflectedClass.of("com.android.settings.homepage.TopLevelSettings");
 		ReflectedClass OnPreferenceClickListenerInterface = ReflectedClass.of("androidx.preference.Preference$OnPreferenceClickListener");
@@ -73,12 +73,12 @@ public class PXSettingsLauncher extends XposedModPack {
 						Object PXPreference = HomepagePreferenceClass.getClazz().getConstructor(Context.class).newInstance(mContext);
 
 						callMethod(PXPreference, "setIcon",
-								ResourcesCompat.getDrawable(ResourceManager.modRes,
+								ResourcesCompat.getDrawable(XPLauncher.moduleResources,
 										mExpressiveTheme
 												? R.mipmap.ic_launcher
 												: R.drawable.ic_notification_foreground,
 										mContext.getTheme()));
-						callMethod(PXPreference, "setTitle", ResourceManager.modRes.getString(R.string.app_name));
+						callMethod(PXPreference, "setTitle", XPLauncher.moduleResources.getString(R.string.app_name));
 
 						Object onClickListener = Proxy.newProxyInstance(
 								OnPreferenceClickListenerInterface.getClazz().getClassLoader(),
@@ -88,7 +88,7 @@ public class PXSettingsLauncher extends XposedModPack {
 						setObjectField(PXPreference, "mOnClickListener", onClickListener);
 
 						if (mNewSettings) {
-							callMethod(PXPreference, "setSummary", ResourceManager.modRes.getString(R.string.xposed_desc));
+							callMethod(PXPreference, "setSummary", XPLauncher.moduleResources.getString(R.string.xposed_desc));
 							Object PXPreferenceCategory = PreferenceCategoryClass.getClazz().getConstructor(Context.class).newInstance(mContext);
 
 							setObjectField(PXPreferenceCategory,

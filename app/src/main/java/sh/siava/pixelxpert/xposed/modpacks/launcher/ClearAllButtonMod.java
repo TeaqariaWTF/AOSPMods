@@ -19,13 +19,13 @@ import androidx.core.content.res.ResourcesCompat;
 
 import java.lang.reflect.Method;
 
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.R;
-import sh.siava.pixelxpert.xposed.annotations.LauncherModPack;
-import sh.siava.pixelxpert.xposed.ResourceManager;
+import sh.siava.pixelxpert.xposed.XPLauncher;
 import sh.siava.pixelxpert.xposed.XposedModPack;
+import sh.siava.pixelxpert.xposed.annotations.LauncherModPack;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
 @LauncherModPack
@@ -49,7 +49,7 @@ public class ClearAllButtonMod extends XposedModPack {
 	}
 
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		ReflectedClass OverviewActionsViewClass = ReflectedClass.of("com.android.quickstep.views.OverviewActionsView");
 		ReflectedClass RecentsViewClass = ReflectedClass.of("com.android.quickstep.views.RecentsView");
 		Method dismissAllTasksMethod = findMethodBestMatch(RecentsViewClass.getClazz(), "dismissAllTasks", View.class);
@@ -82,7 +82,7 @@ public class ClearAllButtonMod extends XposedModPack {
 					clearAllButton = new FrameLayout(mContext);
 
 					clearAllIcon = new ImageView(mContext);
-					clearAllIcon.setImageDrawable(ResourcesCompat.getDrawable(ResourceManager.modRes, R.drawable.ic_clear_all, mContext.getTheme()));
+					clearAllIcon.setImageDrawable(ResourcesCompat.getDrawable(XPLauncher.moduleResources, R.drawable.ic_clear_all, mContext.getTheme()));
 					clearAllIcon.getDrawable().setTintList(getThemedColor(mContext));
 					clearAllButton.addView(clearAllIcon);
 

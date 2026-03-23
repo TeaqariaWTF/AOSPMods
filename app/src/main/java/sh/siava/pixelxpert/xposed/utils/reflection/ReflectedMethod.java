@@ -1,14 +1,15 @@
-package sh.siava.pixelxpert.xposed.utils.toolkit;
+package sh.siava.pixelxpert.xposed.utils.reflection;
 
 import static de.robv.android.xposed.XposedBridge.invokeOriginalMethod;
 import static de.robv.android.xposed.XposedHelpers.findMethodExact;
+
 
 import java.lang.reflect.Method;
 import java.util.Collection;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-import de.robv.android.xposed.XC_MethodHook;
+import io.github.libxposed.api.XposedInterface;
 
 /** @noinspection unused*/
 public class ReflectedMethod {
@@ -32,14 +33,14 @@ public class ReflectedMethod {
 		return new ReflectedMethod(findMethod(reflectedClass.getClazz(), exactName));
 	}
 
-	public Collection<? extends XC_MethodHook.Unhook> beforeThat(ReflectedClass.ReflectionConsumer consumer)
+	public Collection<XposedInterface.HookHandle> beforeThat(ReflectedClass.ReflectionConsumer consumer)
 	{
 		return ReflectedClass.of(method.getClass())
 				.before(method)
 				.run(consumer);
 	}
 
-	public Set<XC_MethodHook.Unhook> afterThat(ReflectedClass.ReflectionConsumer consumer)
+	public Set<XposedInterface.HookHandle> afterThat(ReflectedClass.ReflectionConsumer consumer)
 	{
 		return ReflectedClass.of(method.getClass())
 				.after(method)

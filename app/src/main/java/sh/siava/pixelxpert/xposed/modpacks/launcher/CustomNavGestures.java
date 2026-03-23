@@ -7,6 +7,11 @@ import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static de.robv.android.xposed.XposedHelpers.setObjectField;
 import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
 
+
+
+
+
+
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -21,13 +26,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import de.robv.android.xposed.XC_MethodHook;
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.xposed.Constants;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.annotations.LauncherModPack;
+import sh.siava.pixelxpert.xposed.utils.reflection.HookHelper;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 /** @noinspection ConstantValue*/
 @SuppressWarnings("RedundantThrows")
@@ -88,7 +93,7 @@ public class CustomNavGestures extends XposedModPack {
 	}
 
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		ReflectedClass OtherActivityInputConsumerClass = ReflectedClass.of("com.android.quickstep.inputconsumers.OtherActivityInputConsumer"); //When apps are open
 		ReflectedClass LauncherInputConsumerClass = ReflectedClass.ofIfPossible("com.android.quickstep.inputconsumers.LauncherInputConsumer"); //When on Home screen and Recents
 		if(LauncherInputConsumerClass.getClazz() == null)
@@ -115,7 +120,7 @@ public class CustomNavGestures extends XposedModPack {
 				.run(param -> onMotionEvent(param, true));
 	}
 
-	private void onMotionEvent(XC_MethodHook.MethodHookParam param, boolean isOverViewListener) {
+	private void onMotionEvent(HookHelper.RunParam param, boolean isOverViewListener) {
 		MotionEvent e = (MotionEvent) param.args[0];
 
 		boolean mPassedWindowMoveSlop = isOverViewListener //if it's overview page (read: home page) we don't need this. true is good

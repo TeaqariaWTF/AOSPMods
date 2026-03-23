@@ -8,12 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.xposed.XposedModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.utils.FlexStatusIconContainer;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
 @SystemUIModPack
@@ -37,7 +37,7 @@ public class MultiStatusbarRows extends XposedModPack {
 	}
 
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		ReflectedClass IconManagerClass = ReflectedClass.ofIfPossible("com.android.systemui.statusbar.phone.ui.IconManager");
 		if(IconManagerClass.getClazz() == null) //pre 15beta3
 		{

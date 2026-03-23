@@ -3,13 +3,14 @@ package sh.siava.pixelxpert.xposed.modpacks.systemui;
 import static de.robv.android.xposed.XposedHelpers.setObjectField;
 import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
 
+
 import android.content.Context;
 import android.service.notification.StatusBarNotification;
 
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.xposed.XposedModPack;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
 @SystemUIModPack
@@ -33,7 +34,7 @@ public class NotificationManager extends XposedModPack {
 	}
 
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		ReflectedClass HeadsUpManagerClass = ReflectedClass.of("com.android.systemui.statusbar.notification.headsup.HeadsUpManagerImpl");
 
 		HeadsUpManagerClass

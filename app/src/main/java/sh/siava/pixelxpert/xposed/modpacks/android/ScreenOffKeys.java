@@ -12,6 +12,9 @@ import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static de.robv.android.xposed.XposedHelpers.setObjectField;
 import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
+
+
+
 import static sh.siava.pixelxpert.xposed.utils.SystemUtils.AudioManager;
 import static sh.siava.pixelxpert.xposed.utils.SystemUtils.CameraManager;
 import static sh.siava.pixelxpert.xposed.utils.SystemUtils.PowerManager;
@@ -32,12 +35,12 @@ import android.view.ViewConfiguration;
 
 import org.apache.commons.lang3.SystemProperties;
 
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.xposed.annotations.FrameworkModPack;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.xposed.XposedModPack;
+import sh.siava.pixelxpert.xposed.annotations.FrameworkModPack;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedMethod;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedMethod;
 
 @SuppressWarnings("RedundantThrows")
 @FrameworkModPack
@@ -109,7 +112,7 @@ public class ScreenOffKeys extends XposedModPack {
 	}
 
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		try {
 			ReflectedClass PhoneWindowManagerClass = ReflectedClass.of("com.android.server.policy.PhoneWindowManager");
 			ReflectedClass PowerKeyRuleClass = ReflectedClass.of("com.android.server.policy.PhoneWindowManager$PowerKeyRule");

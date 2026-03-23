@@ -5,12 +5,15 @@ import static de.robv.android.xposed.XposedHelpers.getIntField;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
 
+
+
+
 import android.content.Context;
 
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.xposed.annotations.FrameworkModPack;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.xposed.XposedModPack;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.annotations.FrameworkModPack;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
 @FrameworkModPack
@@ -30,7 +33,7 @@ public class ScreenRotation extends XposedModPack {
 		allScreenRotations = Xprefs.getBoolean("allScreenRotations", false);
 	}
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		try {
 			ReflectedClass DisplayRotationClass = ReflectedClass.of("com.android.server.wm.DisplayRotation");
 

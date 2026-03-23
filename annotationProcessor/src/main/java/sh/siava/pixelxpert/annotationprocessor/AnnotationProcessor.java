@@ -1,18 +1,24 @@
 package sh.siava.pixelxpert.annotationprocessor;
 
-import javax.annotation.processing.*;
-import javax.lang.model.SourceVersion;
-import javax.lang.model.element.Element;
-import javax.lang.model.element.TypeElement;
-import javax.tools.JavaFileObject;
-
 import java.io.IOException;
 import java.io.Writer;
 import java.util.AbstractMap;
 import java.util.ArrayList;
 import java.util.Set;
 
-import sh.siava.pixelxpert.annotations.*;
+import javax.annotation.processing.AbstractProcessor;
+import javax.annotation.processing.RoundEnvironment;
+import javax.annotation.processing.SupportedAnnotationTypes;
+import javax.annotation.processing.SupportedSourceVersion;
+import javax.lang.model.SourceVersion;
+import javax.lang.model.element.Element;
+import javax.lang.model.element.TypeElement;
+import javax.tools.JavaFileObject;
+
+import sh.siava.pixelxpert.annotations.BaseModPack;
+import sh.siava.pixelxpert.annotations.ChildProcessModPack;
+import sh.siava.pixelxpert.annotations.MainProcessModPack;
+import sh.siava.pixelxpert.annotations.ModPackPriority;
 
 @SupportedAnnotationTypes("sh.siava.pixelxpert.annotations.BaseModPack")
 @SupportedSourceVersion(SourceVersion.RELEASE_17)
@@ -33,7 +39,6 @@ public class AnnotationProcessor extends AbstractProcessor {
 						import java.util.*;
 						
 						import sh.siava.pixelxpert.annotations.*;
-						import sh.siava.pixelxpert.xposed.modpacks.dialer.*;
 						public class ModPacks {
 						\tpublic static List<ModPackData> getModPacks() {
 						\t\tList<ModPackData> result = new ArrayList<>();

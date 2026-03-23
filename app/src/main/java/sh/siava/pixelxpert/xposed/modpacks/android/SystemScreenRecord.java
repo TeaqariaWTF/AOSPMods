@@ -1,16 +1,17 @@
 package sh.siava.pixelxpert.xposed.modpacks.android;
 
+
 import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
 
 import android.content.Context;
 import android.os.Binder;
 
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.xposed.Constants;
-import sh.siava.pixelxpert.xposed.annotations.FrameworkModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.annotations.FrameworkModPack;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
 @FrameworkModPack
@@ -27,7 +28,7 @@ public class SystemScreenRecord extends XposedModPack {
 	}
 
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		try {
 			ReflectedClass DisplayManagerServiceClass = ReflectedClass.of("com.android.server.display.DisplayManagerService");
 

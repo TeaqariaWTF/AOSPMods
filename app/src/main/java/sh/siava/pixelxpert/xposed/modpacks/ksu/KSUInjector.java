@@ -1,6 +1,8 @@
 package sh.siava.pixelxpert.xposed.modpacks.ksu;
 
 import static android.content.Context.RECEIVER_EXPORTED;
+
+
 import static de.robv.android.xposed.XposedHelpers.callMethod;
 
 import android.app.Activity;
@@ -18,14 +20,14 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.xposed.Constants;
-import sh.siava.pixelxpert.xposed.annotations.KSUModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
+import sh.siava.pixelxpert.xposed.annotations.KSUModPack;
 import sh.siava.pixelxpert.xposed.annotations.KSUNextModPack;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 /**
  * @noinspection RedundantThrows
@@ -44,8 +46,8 @@ public class KSUInjector extends XposedModPack {
 	public void onPreferenceUpdated(String... Key) {}
 
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
-		String packageName = lpParam.packageName; // Can be KSU or KSU Next
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
+		String packageName = PRParam.getPackageName(); // Can be KSU or KSU Next
 		ReflectedClass MainActivityClass = ReflectedClass.of(packageName + ".ui.MainActivity");
 		NativesClass = ReflectedClass.of(packageName + ".Natives");
 		ProfileClass = ReflectedClass.of(packageName + ".Natives$Profile");

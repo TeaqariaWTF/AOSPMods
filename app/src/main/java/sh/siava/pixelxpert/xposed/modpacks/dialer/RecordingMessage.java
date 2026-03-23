@@ -6,11 +6,11 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
 
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.xposed.annotations.DialerModPack;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.xposed.XposedModPack;
+import sh.siava.pixelxpert.xposed.annotations.DialerModPack;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
 @DialerModPack
@@ -33,7 +33,7 @@ public class RecordingMessage extends XposedModPack {
 
 	@SuppressLint("DiscouragedApi")
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		int call_recording_starting_voice = mContext.getResources().getIdentifier("call_recording_starting_voice", "string", mContext.getPackageName());
 		int call_recording_ending_voice = mContext.getResources().getIdentifier("call_recording_ending_voice", "string", mContext.getPackageName());
 

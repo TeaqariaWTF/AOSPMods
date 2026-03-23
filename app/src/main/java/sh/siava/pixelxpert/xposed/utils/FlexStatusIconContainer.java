@@ -2,6 +2,8 @@ package sh.siava.pixelxpert.xposed.utils;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static de.robv.android.xposed.XposedBridge.log;
+
+
 import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.findFieldIfExists;
 import static de.robv.android.xposed.XposedHelpers.setObjectField;
@@ -26,7 +28,7 @@ import androidx.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 /** A LinearLayout that measures its available space and aligns its statusbar icons
  *  in a way that the can either fit in a row, or fits them in different rows to use maximum

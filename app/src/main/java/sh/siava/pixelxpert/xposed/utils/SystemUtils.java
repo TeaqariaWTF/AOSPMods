@@ -6,6 +6,8 @@ import static android.media.AudioManager.STREAM_MUSIC;
 import static java.lang.Math.round;
 import static de.robv.android.xposed.XposedBridge.invokeOriginalMethod;
 import static de.robv.android.xposed.XposedBridge.log;
+
+
 import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.getStaticObjectField;
 import static sh.siava.pixelxpert.xposed.Constants.SYSTEM_UI_PACKAGE;
@@ -54,8 +56,8 @@ import java.util.List;
 
 import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.xposed.XPLauncher;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedMethod;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedMethod;
 
 public class SystemUtils {
 	private static final int THREAD_PRIORITY_BACKGROUND = 10;

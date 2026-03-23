@@ -1,14 +1,15 @@
 package sh.siava.pixelxpert.xposed.modpacks.android;
 
+
 import static de.robv.android.xposed.XposedHelpers.setObjectField;
 import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
 
 import android.content.Context;
 
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.xposed.annotations.FrameworkModPack;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.xposed.XposedModPack;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.annotations.FrameworkModPack;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
 @FrameworkModPack
@@ -33,7 +34,7 @@ public class HotSpotController extends XposedModPack {
 		hotSpotMaxClients = clients;
 	}
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		try {
 			ReflectedClass SoftApConfiguration = ReflectedClass.of("android.net.wifi.SoftApConfiguration");
 

@@ -1,11 +1,10 @@
-package sh.siava.pixelxpert.xposed.utils.toolkit;
+package sh.siava.pixelxpert.xposed.utils.reflection;
 
-import static de.robv.android.xposed.XposedBridge.hookAllConstructors;
-import static de.robv.android.xposed.XposedBridge.hookAllMethods;
-import static de.robv.android.xposed.XposedBridge.hookMethod;
-import static de.robv.android.xposed.XposedBridge.log;
 import static de.robv.android.xposed.XposedHelpers.findClass;
 import static de.robv.android.xposed.XposedHelpers.findClassIfExists;
+import static sh.siava.pixelxpert.xposed.utils.reflection.HookHelper.hookAllMethods;
+import static sh.siava.pixelxpert.xposed.utils.reflection.HookHelper.hookMethod;
+import static sh.siava.pixelxpert.xposed.utils.toolkit.Logger.log;
 
 import android.annotation.SuppressLint;
 import android.util.ArraySet;
@@ -19,14 +18,15 @@ import java.util.Collections;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-import de.robv.android.xposed.XC_MethodHook;
 import de.robv.android.xposed.XposedHelpers;
+import io.github.libxposed.api.XposedInterface;
 
 /** @noinspection unused*/
 public class ReflectedClass
 {
 
 	private static ClassLoader defaultClassloader = null;
+	private static XposedInterface defaultXposedInterface;
 	private static final boolean FLAG_DEBUG_HOOKS = false;
 	Class<?> clazz;
 	public ReflectedClass(Class<?> clazz)
@@ -38,13 +38,11 @@ public class ReflectedClass
 		return new ReflectedClass(clazz);
 	}
 
-	public static ReflectedClass of(String name, ClassLoader loader)
-	{
+	public static ReflectedClass of(String name, ClassLoader loader) {
 		return new ReflectedClass(findClass(name, loader));
 	}
 
-	public static ReflectedClass of(String name)
-	{
+	public static ReflectedClass of(String name) {
 		return ReflectedClass.of(name, defaultClassloader);
 	}
 
@@ -53,9 +51,16 @@ public class ReflectedClass
 		defaultClassloader = classloader;
 	}
 
+	public static void setDefaultXposedInterface(XposedInterface xposedInterface)
+	{
+		defaultXposedInterface = xposedInterface;
+	}
+
+
 	public void dumpStructure() {
 		Method[] ms = clazz.getDeclaredMethods();
 		log("Class: " + clazz.getName());
+		//noinspection DataFlowIssue
 		log("extends: " + clazz.getSuperclass().getName());
 		log("Subclasses:");
 		Class<?>[] scs = clazz.getClasses();
@@ -169,155 +174,136 @@ public class ReflectedClass
 			this.method = method;
 		}
 
-		protected Set<XC_MethodHook.Unhook> runBefore(ReflectionConsumer consumer)
+		protected Set<XposedInterface.HookHandle> runBefore(XposedInterface xposedInterface, ReflectionConsumer consumer)
 		{
-			return runBefore(consumer, false);
+			return runBefore(xposedInterface, consumer, false);
 		}
 
 		/** @noinspection SameParameterValue*/
 		@SuppressLint("DefaultLocale")
-		protected Set<XC_MethodHook.Unhook> runBefore(ReflectionConsumer consumer, boolean log)
+		protected Set<XposedInterface.HookHandle> runBefore(XposedInterface xposedInterface, ReflectionConsumer consumer, boolean log)
 		{
 			if(clazz == null) return new ArraySet<>();
 
-			Set<XC_MethodHook.Unhook> unhooks;
+			Set<XposedInterface.HookHandle> unhooks;
 			if(isConstructor)
 			{
-				unhooks = hookAllConstructors(clazz, new XC_MethodHook() {
-					@Override
-					protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-						if(log)
-						{
-							log(param.method.getName() + " called");
-						}
-						consumer.run(param);
+				unhooks = HookHelper.hookAllConstructors(clazz, param -> {
+					if(log)
+					{
+						log(param.method.getName() + " called");
 					}
-				});
+					consumer.run(param);
+				}, true, xposedInterface);
 
 				if(log || FLAG_DEBUG_HOOKS)
 				{
 					StackTraceElement element = Thread.currentThread().getStackTrace()[2];
 					String callingClassName = element.getClassName();
 					int lineNumber = element.getLineNumber();
-					log(String.format("%s line %d: Hook to before constructor of %s size = %d", callingClassName,lineNumber, clazz.getName(), unhooks.size()));
+					log(String.format("%s line %XPLauncher: Hook to before constructor of %s size = %XPLauncher", callingClassName,lineNumber, clazz.getName(), unhooks.size()));
 				}
 			}
 			else if(method != null)
 			{
-				unhooks = Collections.singleton(hookMethod(method, new XC_MethodHook() {
-					@Override
-					protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-						if(log)
-						{
-							log(param.method.getName() + " called");
-						}
-						consumer.run(param);
+				unhooks = Collections.singleton(hookMethod(method, param -> {
+					if(log)
+					{
+						log(param.method.getName() + " called");
 					}
-				}));
+					consumer.run(param);
+				}, true, xposedInterface));
 
 				if(log || FLAG_DEBUG_HOOKS)
 				{
 					StackTraceElement element = Thread.currentThread().getStackTrace()[2];
 					String callingClassName = element.getClassName();
 					int lineNumber = element.getLineNumber();
-					log(String.format("%s line %d: Hook to %s before method %s size = %d", callingClassName,lineNumber, clazz.getName(), method.getName(), unhooks.size()));
+					log(String.format("%s line %XPLauncher: Hook to %s before method %s size = %XPLauncher", callingClassName,lineNumber, clazz.getName(), method.getName(), unhooks.size()));
 				}
 			}
 			else
 			{
-				unhooks = hookAllMethods(clazz, methodName, new XC_MethodHook() {
-					@Override
-					protected void beforeHookedMethod(MethodHookParam param) throws Throwable {
-						if(log)
-						{
-							log(param.method.getName() + " called");
-						}
-						consumer.run(param);
+				unhooks = hookAllMethods(clazz, methodName, param -> {
+					if(log)
+					{
+						log(param.method.getName() + " called");
 					}
-				});
-
+					consumer.run(param);
+				}, true, xposedInterface);
+				
 				if(log || FLAG_DEBUG_HOOKS)
 				{
 					StackTraceElement element = Thread.currentThread().getStackTrace()[2];
 					String callingClassName = element.getClassName();
 					int lineNumber = element.getLineNumber();
-					log(String.format("%s line %d: Hook to %s before method %s size = %d", callingClassName,lineNumber, clazz.getName(), methodName, unhooks.size()));
+					log(String.format("%s line %XPLauncher: Hook to %s before method %s size = %XPLauncher", callingClassName,lineNumber, clazz.getName(), methodName, unhooks.size()));
 				}
 			}
 			return unhooks;
 		}
 
-		protected Set<XC_MethodHook.Unhook> runAfter(ReflectionConsumer consumer)
+		protected Set<XposedInterface.HookHandle> runAfter(XposedInterface xposedInterface, ReflectionConsumer consumer)
 		{
-			return runAfter(consumer ,false);
+			return runAfter(xposedInterface, consumer ,false);
 		}
 		@SuppressLint("DefaultLocale")
-		protected Set<XC_MethodHook.Unhook> runAfter(ReflectionConsumer consumer, boolean log)
+		protected Set<XposedInterface.HookHandle> runAfter(XposedInterface xposedInterface, ReflectionConsumer consumer, boolean log)
 		{
 			if(clazz == null) return new ArraySet<>();
 
-			Set<XC_MethodHook.Unhook> unhooks;
+			Set<XposedInterface.HookHandle> unhooks;
 			if(isConstructor)
 			{
-				unhooks = hookAllConstructors(clazz, new XC_MethodHook() {
-					@Override
-					protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-						if(log)
-						{
-							log(param.method.getName() + " called");
-						}
-						consumer.run(param);
+				unhooks = HookHelper.hookAllConstructors(clazz, param -> {
+					if(log)
+					{
+						log(param.method.getName() + " called");
 					}
-				});
+					consumer.run(param);
+				}, false, xposedInterface);
 
 				if(log || FLAG_DEBUG_HOOKS)
 				{
 					StackTraceElement element = Thread.currentThread().getStackTrace()[2];
 					String callingClassName = element.getClassName();
 					int lineNumber = element.getLineNumber();
-					log(String.format("%s line %d: Hook to after constructor of %s size = %d", callingClassName,lineNumber, clazz.getName(), unhooks.size()));
+					log(String.format("%s line %XPLauncher: Hook to after constructor of %s size = %XPLauncher", callingClassName,lineNumber, clazz.getName(), unhooks.size()));
 				}
 			}
 			else if(method != null)
 			{
-				unhooks = Collections.singleton(hookMethod(method, new XC_MethodHook() {
-					@Override
-					protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-						if(log)
-						{
-							log(param.method.getName() + " called");
-						}
-						consumer.run(param);
+				unhooks = Collections.singleton(hookMethod(method, param -> {
+					if(log)
+					{
+						log(param.method.getName() + " called");
 					}
-				}));
+					consumer.run(param);
+				}, false, xposedInterface));
 
 				if(log || FLAG_DEBUG_HOOKS)
 				{
 					StackTraceElement element = Thread.currentThread().getStackTrace()[2];
 					String callingClassName = element.getClassName();
 					int lineNumber = element.getLineNumber();
-					log(String.format("%s line %d: Hook to %s after method %s size = %d", callingClassName,lineNumber, clazz.getName(), method.getName(), unhooks.size()));
+					log(String.format("%s line %XPLauncher: Hook to %s after method %s size = %XPLauncher", callingClassName,lineNumber, clazz.getName(), method.getName(), unhooks.size()));
 				}
 			}
 			else
 			{
-				unhooks = hookAllMethods(clazz, methodName, new XC_MethodHook() {
-					@Override
-					protected void afterHookedMethod(MethodHookParam param) throws Throwable {
-						if(log)
-						{
-							log(param.method.getName() + " called");
-						}
-						consumer.run(param);
+				unhooks = hookAllMethods(clazz, methodName, param -> {
+					if (log) {
+						log(param.method.getName() + " called");
 					}
-				});
+					consumer.run(param);
+				}, false, xposedInterface);
 
 				if(log || FLAG_DEBUG_HOOKS)
 				{
 					StackTraceElement element = Thread.currentThread().getStackTrace()[2];
 					String callingClassName = element.getClassName();
 					int lineNumber = element.getLineNumber();
-					log(String.format("%s line %d: Hook to %s after method %s size = %d", callingClassName,lineNumber, clazz.getName(), methodName, unhooks.size()));
+					log(String.format("%s line %XPLauncher: Hook to %s after method %s size = %XPLauncher", callingClassName,lineNumber, clazz.getName(), methodName, unhooks.size()));
 				}
 			}
 			return unhooks;
@@ -331,14 +317,24 @@ public class ReflectedClass
 			super(clazz, name, method, isConstructor);
 		}
 
-		public Set<XC_MethodHook.Unhook> run(ReflectionConsumer consumer)
+		public Set<XposedInterface.HookHandle> run(ReflectionConsumer consumer)
 		{
-			return runBefore(consumer, false);
+			return runBefore(defaultXposedInterface, consumer, false);
 		}
 
-		public Set<XC_MethodHook.Unhook> run(ReflectionConsumer consumer, boolean log)
+		public Set<XposedInterface.HookHandle> run(ReflectionConsumer consumer, boolean log)
 		{
-			return runBefore(consumer, log);
+			return runBefore(defaultXposedInterface, consumer, log);
+		}
+
+		public Set<XposedInterface.HookHandle> run(XposedInterface xposedInterface, ReflectionConsumer consumer)
+		{
+			return runBefore(xposedInterface, consumer, false);
+		}
+
+		public Set<XposedInterface.HookHandle> run(XposedInterface xposedInterface, ReflectionConsumer consumer, boolean log)
+		{
+			return runBefore(xposedInterface, consumer, log);
 		}
 	}
 
@@ -350,10 +346,15 @@ public class ReflectedClass
 			findMethods(clazz, namePattern).forEach(method -> datas.add(new BeforeMethodData(clazz, method.getName(),null, false)));
 		}
 
-		public Set<XC_MethodHook.Unhook> run(ReflectionConsumer consumer)
+		public Set<XposedInterface.HookHandle> run(ReflectionConsumer consumer)
 		{
-			Set<XC_MethodHook.Unhook> unhooks = new ArraySet<>();
-			datas.forEach(data -> unhooks.addAll(data.run(consumer)));
+			return run(defaultXposedInterface, consumer);
+		}
+
+		public Set<XposedInterface.HookHandle> run(XposedInterface xposedInterface, ReflectionConsumer consumer)
+		{
+			Set<XposedInterface.HookHandle> unhooks = new ArraySet<>();
+			datas.forEach(data -> unhooks.addAll(data.run(xposedInterface, consumer)));
 			return unhooks;
 		}
 	}
@@ -366,10 +367,15 @@ public class ReflectedClass
 			findMethods(clazz, namePattern).forEach(method -> datas.add(new AfterMethodData(clazz, method.getName(), null,false)));
 		}
 
-		public Set<XC_MethodHook.Unhook> run(ReflectionConsumer consumer)
+		public Set<XposedInterface.HookHandle> run(ReflectionConsumer consumer)
 		{
-			Set<XC_MethodHook.Unhook> unhooks = new ArraySet<>();
-			datas.forEach(data -> unhooks.addAll(data.run(consumer)));
+			return run(defaultXposedInterface, consumer);
+		}
+
+		public Set<XposedInterface.HookHandle> run(XposedInterface xposedInterface, ReflectionConsumer consumer)
+		{
+			Set<XposedInterface.HookHandle> unhooks = new ArraySet<>();
+			datas.forEach(data -> unhooks.addAll(data.run(xposedInterface, consumer)));
 			return unhooks;
 		}
 	}
@@ -397,14 +403,24 @@ public class ReflectedClass
 			super(clazz, name, method, isConstructor);
 		}
 
-		public Set<XC_MethodHook.Unhook> run(ReflectionConsumer consumer)
+		public Set<XposedInterface.HookHandle> run(ReflectionConsumer consumer)
 		{
-			return runAfter(consumer, false);
+			return runAfter(defaultXposedInterface, consumer, false);
 		}
 
-		public Set<XC_MethodHook.Unhook> run(ReflectionConsumer consumer, boolean log)
+		public Set<XposedInterface.HookHandle> run(XposedInterface xposedInterface, ReflectionConsumer consumer)
 		{
-			return runAfter(consumer, log);
+			return runAfter(xposedInterface, consumer, false);
+		}
+
+		public Set<XposedInterface.HookHandle> run(ReflectionConsumer consumer, boolean log)
+		{
+			return runAfter(defaultXposedInterface, consumer, log);
+		}
+
+		public Set<XposedInterface.HookHandle> run(XposedInterface xposedInterface, ReflectionConsumer consumer, boolean log)
+		{
+			return runAfter(xposedInterface, consumer, log);
 		}
 	}
 
@@ -417,16 +433,18 @@ public class ReflectedClass
 	 */
 	public void findFirstInstance(InstanceFoundCallback foundCallback)
 	{
-		Set<XC_MethodHook.Unhook> unhooks = new ArraySet<>();
+		findFirstInstance(defaultXposedInterface, foundCallback);
+	}
+
+	public void findFirstInstance(XposedInterface xposedInterface, InstanceFoundCallback foundCallback)
+	{
+		Set<XposedInterface.HookHandle> unhooks = new ArraySet<>();
 		findMethods(Pattern.compile(".+"))
-				.forEach(
-						method -> unhooks.addAll(
-								before(method)
-										.run(param -> {
-											unhooks.forEach(XC_MethodHook.Unhook::unhook);
-											unhooks.clear();
-											foundCallback.onInstanceCaptured(param.thisObject);
-										})));
+				.forEach(method -> unhooks.addAll(before(method).run(xposedInterface, param -> {
+					unhooks.forEach(XposedInterface.HookHandle::unhook);
+					unhooks.clear();
+					foundCallback.onInstanceCaptured(param.thisObject);
+				})));
 	}
 
 	public interface InstanceFoundCallback
@@ -437,6 +455,6 @@ public class ReflectedClass
 
 	public interface ReflectionConsumer
 	{
-		void run(XC_MethodHook.MethodHookParam param) throws Throwable;
+		void run(HookHelper.RunParam param) throws Throwable;
 	}
 }

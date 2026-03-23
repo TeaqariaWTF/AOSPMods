@@ -4,6 +4,7 @@ import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
 import static sh.siava.pixelxpert.xposed.modpacks.systemui.StatusbarMods.APP_SWITCH_SLOT;
 
+
 import android.content.Context;
 import android.util.ArraySet;
 import android.view.View;
@@ -11,10 +12,10 @@ import android.view.View;
 import java.util.ArrayList;
 import java.util.Set;
 
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.xposed.XposedModPack;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 @SystemUIModPack
 public class StatusIconTuner extends XposedModPack {
@@ -42,7 +43,7 @@ public class StatusIconTuner extends XposedModPack {
 	}
 
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		ReflectedClass IconManagerClass = ReflectedClass.ofIfPossible("com.android.systemui.statusbar.phone.ui.IconManager");
 		if(IconManagerClass.getClazz() == null) //pre 15beta3
 		{

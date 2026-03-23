@@ -11,15 +11,15 @@ import android.os.Binder;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.xposed.Constants;
-import sh.siava.pixelxpert.xposed.annotations.FrameworkModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.annotations.FrameworkModPack;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 /**
- * @noinspection RedundantThrows
+ * @noinspection RedundantThrows, ConstantValue
  */
 @FrameworkModPack
 public class PackageManager extends XposedModPack {
@@ -65,7 +65,7 @@ public class PackageManager extends XposedModPack {
 	}
 
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		try {
 			ReflectedClass InstallPackageHelperClass = ReflectedClass.of("com.android.server.pm.InstallPackageHelper");
 			ReflectedClass PackageManagerServiceUtilsClass = ReflectedClass.of("com.android.server.pm.PackageManagerServiceUtils");
@@ -79,6 +79,7 @@ public class PackageManager extends XposedModPack {
 						.run(param -> {
 							String action = ((Intent) param.args[0]).getAction();
 
+							//noinspection DataFlowIssue
 							if (action.startsWith(BuildConfig.APPLICATION_ID + ".ACTION")) {
 								param.setResult(null);
 							}

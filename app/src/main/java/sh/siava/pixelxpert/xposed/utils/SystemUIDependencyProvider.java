@@ -1,9 +1,12 @@
 package sh.siava.pixelxpert.xposed.utils;
 
+
+
+
 import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.getStaticObjectField;
 
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 public class SystemUIDependencyProvider {
 	private static Object sDependency;

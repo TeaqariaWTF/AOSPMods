@@ -1,4 +1,4 @@
-package sh.siava.pixelxpert.xposed.utils.toolkit;
+package sh.siava.pixelxpert.xposed.utils.reflection;
 
 import static de.robv.android.xposed.XposedBridge.log;
 

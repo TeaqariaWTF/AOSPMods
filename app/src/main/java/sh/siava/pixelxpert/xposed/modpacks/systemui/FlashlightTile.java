@@ -24,15 +24,15 @@ import androidx.core.content.res.ResourcesCompat;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.regex.Pattern;
 
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.R;
-import sh.siava.pixelxpert.xposed.ResourceManager;
+import sh.siava.pixelxpert.xposed.XPLauncher;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.utils.AlertSlider;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedMethod;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedMethod;
 
 @SystemUIModPack
 public class FlashlightTile extends XposedModPack {
@@ -75,7 +75,7 @@ public class FlashlightTile extends XposedModPack {
 	}
 
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		ReflectedClass FlashlightTileClass = ReflectedClass.of("com.android.systemui.qs.tiles.FlashlightTile");
 		ReflectedClass QSTileImplClass = ReflectedClass.of("com.android.systemui.qs.tileimpl.QSTileImpl");
 		ReflectedClass DrawableIconClass = ReflectedClass.of("com.android.systemui.qs.tileimpl.QSTileImpl$DrawableIcon");
@@ -176,7 +176,7 @@ public class FlashlightTile extends XposedModPack {
 							setObjectField(state, "icon", icon);
 						}
 
-						String subTitle = ResourceManager.modRes.getString(R.string.sliding_tile_subtitle);
+						String subTitle = XPLauncher.moduleResources.getString(R.string.sliding_tile_subtitle);
 						setObjectField(state, "secondaryLabel", subTitle);
 					}
 				});
@@ -300,12 +300,12 @@ public class FlashlightTile extends XposedModPack {
 			this.mOutlineDeadZoneTopPercent = outlineDeadZoneTopPercent;
 
 			if (this.mLoadedFilledDrawable == null || this.mFilledResId != filledResId) {
-				this.mLoadedFilledDrawable = ResourcesCompat.getDrawable(ResourceManager.modRes, filledResId, mContext.getTheme());
+				this.mLoadedFilledDrawable = ResourcesCompat.getDrawable(XPLauncher.moduleResources, filledResId, mContext.getTheme());
 			}
 			this.mFilledResId = filledResId;
 
 			if (this.mLoadedOutlineDrawable == null || this.mOutlineResId != outlineResId) {
-				this.mLoadedOutlineDrawable = ResourcesCompat.getDrawable(ResourceManager.modRes, outlineResId, mContext.getTheme());
+				this.mLoadedOutlineDrawable = ResourcesCompat.getDrawable(XPLauncher.moduleResources, outlineResId, mContext.getTheme());
 			}
 			this.mOutlineResId = outlineResId;
 

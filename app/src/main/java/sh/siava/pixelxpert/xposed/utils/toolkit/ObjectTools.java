@@ -1,5 +1,7 @@
 package sh.siava.pixelxpert.xposed.utils.toolkit;
 
+
+
 import static de.robv.android.xposed.XposedHelpers.setObjectField;
 
 import android.graphics.Color;
@@ -21,6 +23,7 @@ import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
 import sh.siava.pixelxpert.xposed.utils.NetworkTraffic;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 /** @noinspection unused, RedundantThrows */
 @SuppressWarnings("CommentedOutCode")

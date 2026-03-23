@@ -5,11 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.xposed.Constants;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
-import sh.siava.pixelxpert.xposed.XposedModPack;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.utils.AppUtils;
+import sh.siava.pixelxpert.xposed.Constants;
+import sh.siava.pixelxpert.xposed.XposedModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 
 @SystemUIModPack
 public class KSURootReceiver extends XposedModPack {
@@ -21,7 +21,7 @@ public class KSURootReceiver extends XposedModPack {
 	public void onPreferenceUpdated(String... Key) {}
 
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		BroadcastReceiver broadcastReceiver = new BroadcastReceiver() {
 			@Override
 			public void onReceive(Context context, Intent intent) {

@@ -38,6 +38,7 @@ workRuntime = "2.11.0"
 kotlin = "2.2.21"
 ksp = "2.3.2"
 hilt = "2.57.2"
+lsposed = "101.0.0"
 
 [libraries]
 androidx-activity = { module = "androidx.activity:activity", version.ref = "activity" }
@@ -79,6 +80,8 @@ prdownloader = { module = "com.github.amitshekhariitbhu:PRDownloader", version.r
 pytorch_android_lite = { module = "org.pytorch:pytorch_android_lite", version.ref = "pytorch_android_torchvision_lite" }
 pytorch_android_torchvision_lite = { module = "org.pytorch:pytorch_android_torchvision_lite", version.ref = "pytorch_android_torchvision_lite" }
 remotepreferences = { module = "com.crossbowffs.remotepreferences:remotepreferences", version.ref = "remotepreferences" }
+lsposed-api = { module = "io.github.libxposed:api", version.ref = "lsposed" }
+lsposed-service = { module = "io.github.libxposed:service", version.ref = "lsposed" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

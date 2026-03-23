@@ -8,8 +8,12 @@ import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static de.robv.android.xposed.XposedHelpers.setAdditionalInstanceField;
 import static sh.siava.pixelxpert.xposed.Constants.AI_METHOD_MLKIT;
 import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
+
+
+
+
 import static sh.siava.pixelxpert.xposed.utils.SystemUtils.idOf;
-import static sh.siava.pixelxpert.xposed.utils.toolkit.ReflectionTools.reAddView;
+import static sh.siava.pixelxpert.xposed.utils.reflection.ReflectionTools.reAddView;
 
 import android.annotation.SuppressLint;
 import android.app.WallpaperManager;
@@ -33,13 +37,13 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.Arrays;
 
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.xposed.Constants;
 import sh.siava.pixelxpert.xposed.XPLauncher;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectionTools;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectionTools;
 
 /** @noinspection RedundantThrows, SameParameterValue */
 @SystemUIModPack
@@ -71,7 +75,7 @@ public class DepthWallpaper extends XposedModPack {
 	}
 
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		ReflectedClass CanvasEngineClass = ReflectedClass.of("com.android.systemui.wallpapers.ImageWallpaper$CanvasEngine");
 		ReflectedClass ScrimViewClass = ReflectedClass.of("com.android.systemui.scrim.ScrimView");
 		ReflectedClass NotificationPanelViewControllerClass = ReflectedClass.of("com.android.systemui.shade.NotificationPanelViewController");

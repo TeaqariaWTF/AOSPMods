@@ -4,11 +4,11 @@ import android.content.Context;
 import android.os.UserHandle;
 
 import de.robv.android.xposed.XposedHelpers;
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.BuildConfig;
-import sh.siava.pixelxpert.xposed.annotations.LauncherModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.annotations.LauncherModPack;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
 @LauncherModPack
@@ -23,7 +23,7 @@ public class PixelXpertIconUpdater extends XposedModPack {
 	public void onPreferenceUpdated(String... Key) {}
 
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		ReflectedClass LauncherModelClass = ReflectedClass.of("com.android.launcher3.LauncherModel");
 		ReflectedClass BaseActivityClass = ReflectedClass.of("com.android.launcher3.BaseActivity");
 

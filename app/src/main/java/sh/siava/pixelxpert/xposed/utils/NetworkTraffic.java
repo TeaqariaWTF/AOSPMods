@@ -39,7 +39,7 @@ import androidx.core.content.res.ResourcesCompat;
 import java.lang.ref.WeakReference;
 
 import sh.siava.pixelxpert.R;
-import sh.siava.pixelxpert.xposed.ResourceManager;
+import sh.siava.pixelxpert.xposed.XPLauncher;
 import sh.siava.pixelxpert.xposed.modpacks.systemui.StatusbarMods;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ObjectTools;
 
@@ -262,7 +262,7 @@ public class NetworkTraffic extends FrameLayout {
 
 	@SuppressLint("DiscouragedApi")
 	private void setIndicatorMode() {
-		Resources res = ResourceManager.modRes;
+		Resources res = XPLauncher.moduleResources;
 
 		TypedValue typedValue = new TypedValue();
 		mContext.getResources().getValue(mContext.getResources().getIdentifier("status_bar_icon_scale_factor", "dimen", mContext.getPackageName()), typedValue, true);

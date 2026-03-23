@@ -25,12 +25,12 @@ import androidx.annotation.NonNull;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import de.robv.android.xposed.XC_MethodHook;
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.xposed.XposedModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
+import sh.siava.pixelxpert.xposed.utils.reflection.HookHelper;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
 @SystemUIModPack
@@ -80,7 +80,7 @@ public class ScreenGestures extends XposedModPack {
 	}
 
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		mLockscreenDoubleTapToSleep = new GestureDetector(mContext, new GestureDetector.SimpleOnGestureListener() {
 			@Override
 			public boolean onDoubleTap(@NonNull MotionEvent e) {
@@ -190,7 +190,7 @@ public class ScreenGestures extends XposedModPack {
 				callMethod(dozeTrigger, "requestPulse", PULSE_REASON_INTENT, false /* performedProxCheck */, null /* onPulseSuppressedListener */));
 	}
 
-	private void setHooks(XC_MethodHook.MethodHookParam param) {
+	private void setHooks(HookHelper.RunParam param) {
 		Object mPulsingWakeupGestureHandler = getObjectField(param.thisObject, "mPulsingWakeupGestureHandler");//A13 R18
 
 		Object mListener = getObjectField(mPulsingWakeupGestureHandler, "mListener");

@@ -168,4 +168,7 @@ dependencies {
 
 	implementation(libs.hilt.android)
 	ksp(libs.hilt.android.compiler)
+
+	compileOnly(libs.lsposed.api)
+	implementation(libs.lsposed.service)
 }

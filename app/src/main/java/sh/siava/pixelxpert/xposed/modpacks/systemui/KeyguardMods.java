@@ -38,15 +38,15 @@ import androidx.constraintlayout.widget.ConstraintSet;
 import java.lang.ref.WeakReference;
 import java.util.regex.Pattern;
 
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.R;
-import sh.siava.pixelxpert.xposed.ResourceManager;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
+import sh.siava.pixelxpert.xposed.XPLauncher;
 import sh.siava.pixelxpert.xposed.XposedModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.utils.StringFormatter;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectionTools;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectionTools;
 
 @SuppressWarnings("RedundantThrows")
 @SystemUIModPack
@@ -150,7 +150,7 @@ public class KeyguardMods extends XposedModPack {
 
 	@SuppressLint({"DiscouragedApi", "DefaultLocale"})
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		ReflectedClass CarrierTextControllerClass = ReflectedClass.of("com.android.keyguard.CarrierTextController");
 		ReflectedClass KeyguardIndicationControllerClass = ReflectedClass.of("com.android.systemui.statusbar.KeyguardIndicationController");
 		ReflectedClass ScrimControllerClass = ReflectedClass.of("com.android.systemui.statusbar.phone.ScrimController");
@@ -409,7 +409,7 @@ public class KeyguardMods extends XposedModPack {
 		}
 		catch (Throwable ignored)
 		{
-			return ResourceManager.modRes.getString(R.string.power_indication_error);
+			return XPLauncher.moduleResources.getString(R.string.power_indication_error);
 		}
 	}
 

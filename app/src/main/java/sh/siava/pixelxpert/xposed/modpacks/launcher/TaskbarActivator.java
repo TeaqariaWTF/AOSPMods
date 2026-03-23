@@ -7,6 +7,12 @@ import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static de.robv.android.xposed.XposedHelpers.getStaticObjectField;
 import static de.robv.android.xposed.XposedHelpers.setObjectField;
 import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
+
+
+
+
+
+
 import static sh.siava.pixelxpert.xposed.utils.SystemUtils.idOf;
 
 import android.annotation.SuppressLint;
@@ -19,12 +25,12 @@ import java.util.List;
 import java.util.Set;
 import java.util.regex.Pattern;
 
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.annotations.LauncherModPack;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass.ReflectionConsumer;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass.ReflectionConsumer;
 
 @LauncherModPack
 public class TaskbarActivator extends XposedModPack {
@@ -113,7 +119,7 @@ public class TaskbarActivator extends XposedModPack {
 
 	@SuppressLint("DiscouragedApi")
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		ReflectedClass DeviceProfileBuilderClass = ReflectedClass.of("com.android.launcher3.DeviceProfile$Builder");
 		ReflectedClass TaskbarActivityContextClass = ReflectedClass.of("com.android.launcher3.taskbar.TaskbarActivityContext");
 //		ReflectedClass LauncherModelClass = ReflectedClass.of("com.android.launcher3.LauncherModel");

@@ -1,5 +1,7 @@
 package sh.siava.pixelxpert.xposed.modpacks.android;
 
+
+
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static de.robv.android.xposed.XposedHelpers.getStaticObjectField;
 import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
@@ -10,11 +12,11 @@ import android.content.res.Configuration;
 import android.graphics.Rect;
 import android.view.DisplayCutout;
 
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import io.github.libxposed.api.XposedModuleInterface;
+import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.annotations.FrameworkModPack;
 import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
-import sh.siava.pixelxpert.xposed.XposedModPack;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 
 //We are playing in system framework. should be extra cautious..... many try-catchs, still not enough!
@@ -67,7 +69,7 @@ public class StatusbarSize extends XposedModPack {
 	}
 
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		try {
 			try {
 				ReflectedClass WmDisplayCutoutClass = ReflectedClass.of("com.android.server.wm.utils.WmDisplayCutout");

@@ -8,6 +8,11 @@ import static de.robv.android.xposed.XposedHelpers.getLongField;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
 
+
+
+
+
+
 import android.content.Context;
 import android.hardware.SensorEvent;
 import android.os.SystemClock;
@@ -17,11 +22,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import de.robv.android.xposed.XC_MethodHook;
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.xposed.annotations.FrameworkModPack;
+import io.github.libxposed.api.XposedInterface;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.xposed.XposedModPack;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.annotations.FrameworkModPack;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 /** @noinspection RedundantThrows*/
 @FrameworkModPack
@@ -53,16 +58,16 @@ public class FaceUpScreenSleep extends XposedModPack {
 	}
 
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		ReflectedClass FaceDownDetectorClass = ReflectedClass.of("com.android.server.power.FaceDownDetector");
 		ReflectedClass PowerManagerServiceClass = ReflectedClass.of("com.android.server.power.PowerManagerService");
 
-		List<Set<XC_MethodHook.Unhook>> unHooks = new ArrayList<>();
+		List<Set<XposedInterface.HookHandle>> unHooks = new ArrayList<>();
 		unHooks.add(PowerManagerServiceClass
 				.after("updatePowerStateLocked")
 				.run(param -> {
 					mPowerManagerServiceInstance = param.thisObject;
-					unHooks.get(0).forEach(XC_MethodHook.Unhook::unhook);
+					unHooks.get(0).forEach(XposedInterface.HookHandle::unhook);
 					unHooks.clear();
 				}));
 

@@ -1,8 +1,8 @@
 package sh.siava.pixelxpert.xposed.modpacks.systemui;
 
-import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
 import static sh.siava.pixelxpert.utils.ThemePackMapping.DRAWABLE_MAPPING_KEY;
 import static sh.siava.pixelxpert.utils.ThemePackMapping.TYPE_DRAWABLE;
+import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -13,26 +13,26 @@ import android.graphics.drawable.Drawable;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.robv.android.xposed.XC_MethodHook;
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import io.github.libxposed.api.XposedInterface;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.BuildConfig;
-import sh.siava.pixelxpert.xposed.annotations.SettingsModPack;
-import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
-import sh.siava.pixelxpert.xposed.XPLauncher;
-import sh.siava.pixelxpert.xposed.XposedModPack;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedMethod;
 import sh.siava.pixelxpert.utils.ThemePackMapping.IDMapping;
 import sh.siava.pixelxpert.utils.ThemePackMapping.Mapping;
 import sh.siava.pixelxpert.utils.ThemePackMapping.OverlayID;
 import sh.siava.pixelxpert.utils.ThemePackMapping.OverlayIDName;
+import sh.siava.pixelxpert.xposed.XPLauncher;
+import sh.siava.pixelxpert.xposed.XposedModPack;
+import sh.siava.pixelxpert.xposed.annotations.SettingsModPack;
+import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedMethod;
 
 @SystemUIModPack
 @SettingsModPack
 public class IconPacks extends XposedModPack {
 	static IDMapping drawableMapping = new IDMapping();
 	private final PackageManager mPackageManager;
-	private final List<XC_MethodHook.Unhook> hooks = new ArrayList<>();
+	private final List<XposedInterface.HookHandle> hooks = new ArrayList<>();
 	private boolean mPackageLoaded = false;
 
 	public IconPacks(Context context) {
@@ -87,7 +87,7 @@ public class IconPacks extends XposedModPack {
 	}
 
 	private void unhookAll() {
-		for (XC_MethodHook.Unhook hook : hooks) {
+		for (XposedInterface.HookHandle hook : hooks) {
 			hook.unhook();
 		}
 		hooks.clear();
@@ -158,7 +158,7 @@ public class IconPacks extends XposedModPack {
 		return mContext.getResources().getIdentifier(resName, type, sourcePackage);
 	}
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		mPackageLoaded = true;
 		hookAll();
 	}

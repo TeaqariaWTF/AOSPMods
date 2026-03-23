@@ -281,7 +281,7 @@ public class PreferenceHelper {
 				long timeout = (long) (instance.mPreferences.getSliderFloat( "hotSpotTimeoutSecs", 0) * 1L);
 
 				return timeout > 0
-						? String.format("%d %s", timeout / 60, fragmentCompat.getString(R.string.minutes_word))
+						? String.format("%XPLauncher %s", timeout / 60, fragmentCompat.getString(R.string.minutes_word))
 						: fragmentCompat.getString(R.string.word_default);
 
 			case "hotSpotMaxClients":

@@ -1,10 +1,9 @@
 package sh.siava.pixelxpert.xposed;
 
-import static sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass.setDefaultClassloader;
-
 import android.content.Context;
 
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import io.github.libxposed.api.XposedInterface;
+import io.github.libxposed.api.XposedModuleInterface;
 
 public abstract class XposedModPack {
 	protected Context mContext;
@@ -15,10 +14,9 @@ public abstract class XposedModPack {
 
 	public abstract void onPreferenceUpdated(String... Key);
 
-	public final void onPackageLoadedInternal(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
-		setDefaultClassloader(lpParam.classLoader);
-		onPackageLoaded(lpParam);
+	public final void onPackageLoadedInternal(XposedModuleInterface.PackageReadyParam PRParam, XposedInterface xposedInterface) throws Throwable {
+		onPackageLoaded(PRParam);
 	}
 
-	public abstract void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable;
+	public abstract void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable;
 }

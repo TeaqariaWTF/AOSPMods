@@ -1,6 +1,8 @@
 package sh.siava.pixelxpert.xposed.modpacks.android;
 
 import static android.content.Context.RECEIVER_EXPORTED;
+
+
 import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.getIntField;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
@@ -19,12 +21,12 @@ import android.view.WindowManager;
 
 import java.util.List;
 
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.xposed.Constants;
-import sh.siava.pixelxpert.xposed.annotations.FrameworkModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
+import sh.siava.pixelxpert.xposed.annotations.FrameworkModPack;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
 @FrameworkModPack
@@ -117,7 +119,7 @@ public class PhoneWindowManager extends XposedModPack {
 
 	@SuppressLint("WrongConstant")
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		//noinspection unchecked
 		userHandleList = (List<UserHandle>) callMethod(SystemUtils.UserManager(), "getProfiles", true);
 

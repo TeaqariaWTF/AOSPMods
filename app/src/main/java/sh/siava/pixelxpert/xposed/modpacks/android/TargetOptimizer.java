@@ -7,12 +7,11 @@ import android.os.Build;
 
 import java.util.Arrays;
 
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.R;
-import sh.siava.pixelxpert.xposed.annotations.FrameworkModPack;
-import sh.siava.pixelxpert.xposed.ResourceManager;
 import sh.siava.pixelxpert.xposed.XPLauncher;
 import sh.siava.pixelxpert.xposed.XposedModPack;
+import sh.siava.pixelxpert.xposed.annotations.FrameworkModPack;
 
 @FrameworkModPack
 public class TargetOptimizer extends XposedModPack {
@@ -27,7 +26,7 @@ public class TargetOptimizer extends XposedModPack {
 	public void onPreferenceUpdated(String... Key) {}
 
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		if(Xprefs.getBoolean(SYSTEM_RESTART_PENDING_KEY, false)) {
 			Xprefs.edit()
 					.putBoolean(SYSTEM_RESTART_PENDING_KEY, false)
@@ -39,7 +38,7 @@ public class TargetOptimizer extends XposedModPack {
 		if(!Build.ID.equals(optimizedBuild))
 		{
 			try {
-				String[] targetPacks = ResourceManager.modRes.getStringArray(R.array.module_scope);
+				String[] targetPacks = XPLauncher.moduleResources.getStringArray(R.array.module_scope);
 
 				Arrays.asList(targetPacks).forEach(target ->
 						XPLauncher.enqueueProxyCommand(proxy ->

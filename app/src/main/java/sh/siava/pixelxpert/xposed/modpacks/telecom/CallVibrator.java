@@ -7,11 +7,11 @@ import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
 import android.content.Context;
 import android.os.VibrationEffect;
 
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
-import sh.siava.pixelxpert.xposed.annotations.TelecomServerModPack;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.xposed.XposedModPack;
+import sh.siava.pixelxpert.xposed.annotations.TelecomServerModPack;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
 @TelecomServerModPack
@@ -34,7 +34,7 @@ public class CallVibrator extends XposedModPack {
 		vibrateOnDrop = Xprefs.getBoolean("vibrateOnDrop", false);
 	}
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		try {
 			ReflectedClass InCallControllerClass = ReflectedClass.of("com.android.server.telecom.InCallController");
 

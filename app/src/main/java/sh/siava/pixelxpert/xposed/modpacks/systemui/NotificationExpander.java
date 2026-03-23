@@ -7,8 +7,8 @@ import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
 import static sh.siava.pixelxpert.xposed.utils.SystemUtils.idOf;
+import static sh.siava.pixelxpert.xposed.utils.reflection.ReflectionTools.reAddView;
 import static sh.siava.pixelxpert.xposed.utils.toolkit.ObjectTools.tryParseInt;
-import static sh.siava.pixelxpert.xposed.utils.toolkit.ReflectionTools.reAddView;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -26,12 +26,12 @@ import androidx.core.content.res.ResourcesCompat;
 import java.util.Collection;
 import java.util.regex.Pattern;
 
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.R;
-import sh.siava.pixelxpert.xposed.ResourceManager;
+import sh.siava.pixelxpert.xposed.XPLauncher;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
 @SystemUIModPack
@@ -67,7 +67,7 @@ public class NotificationExpander extends XposedModPack {
 	}
 
 	@Override
-	public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
 		ReflectedClass NotificationStackScrollLayoutClass = ReflectedClass.of("com.android.systemui.statusbar.notification.stack.NotificationStackScrollLayout");
 		ReflectedClass FooterViewButtonClass = ReflectedClass.of("com.android.systemui.statusbar.notification.row.FooterViewButton");
 		ReflectedClass NotifCollectionClass = ReflectedClass.ofIfPossible("com.android.systemui.statusbar.notification.collection.NotifCollection");
@@ -113,7 +113,7 @@ public class NotificationExpander extends XposedModPack {
 					reAddView(BtnLayout,FooterView.findViewById(idOf("history_button")));
 
 					ExpandBtn = (Button) FooterViewButtonClass.getClazz().getConstructor(Context.class).newInstance(mContext);
-					Drawable expandArrows = ResourcesCompat.getDrawable(ResourceManager.modRes, R.drawable.ic_expand, mContext.getTheme());
+					Drawable expandArrows = ResourcesCompat.getDrawable(XPLauncher.moduleResources, R.drawable.ic_expand, mContext.getTheme());
 					ExpandBtn.setForeground(expandArrows);
 
 					BtnLayout.addView(ExpandBtn);
@@ -127,7 +127,7 @@ public class NotificationExpander extends XposedModPack {
 					ExpandBtn.setOnClickListener(v -> expandAll(true));
 
 					CollapseBtn = (Button) FooterViewButtonClass.getClazz().getConstructor(Context.class).newInstance(mContext);
-					Drawable collapseArrows = ResourcesCompat.getDrawable(ResourceManager.modRes, R.drawable.ic_collapse, mContext.getTheme());
+					Drawable collapseArrows = ResourcesCompat.getDrawable(XPLauncher.moduleResources, R.drawable.ic_collapse, mContext.getTheme());
 					CollapseBtn.setForeground(collapseArrows);
 
 

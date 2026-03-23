@@ -142,7 +142,7 @@ public class PyTorchSegmentor {
 									logMessage.append(String.format(Locale.ENGLISH, "Connection Exception: %s\n", error.getConnectionException()));
 								}
 								if (error.isServerError()) {
-									logMessage.append(String.format(Locale.ENGLISH, "Response Code: %d\nServer Error Message: %s\n", error.getResponseCode(), error.getServerErrorMessage()));
+									logMessage.append(String.format(Locale.ENGLISH, "Response Code: %XPLauncher\nServer Error Message: %s\n", error.getResponseCode(), error.getServerErrorMessage()));
 								}
 
 								Log.e(TAG, logMessage.toString().trim());

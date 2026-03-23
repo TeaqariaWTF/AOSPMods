@@ -2,6 +2,8 @@ package sh.siava.pixelxpert.xposed.utils;
 
 import static android.view.ViewGroup.LayoutParams.MATCH_PARENT;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
+
+
 import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static de.robv.android.xposed.XposedHelpers.setObjectField;
@@ -21,7 +23,7 @@ import java.lang.reflect.Proxy;
 import java.util.List;
 import java.util.Map;
 
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 import sh.siava.pixelxpert.xposed.utils.toolkit.ResourceTools;
 
 public abstract class AlertSlider implements SystemUtils.ChangeListener {
