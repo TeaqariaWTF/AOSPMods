@@ -185,7 +185,7 @@
     <string name="sb_ignored_icons">Pasek stanu</string>
     <string name="sb_ignored_icons_statusbar">Wybierz ikony do ukrycia na pasku stanu</string>
     <string name="sb_kg_ignored_icons">Ekran blokady</string>
-    <string name="sb_ignored_icons_kg">Select which icon will be hidden in keyguard statusbar</string>
+    <string name="sb_ignored_icons_kg">Wybierz ikony do ukrycia na pasku stanu</string>
     <string name="sb_qs_ignored_icons">Szybkie ustawienia</string>
     <string name="sb_ignored_icons_qs">Wybierz ikony do ukrycia w panelu szybkich ustawień</string>
     <string name="status_bar_volte">VoLTE</string>
