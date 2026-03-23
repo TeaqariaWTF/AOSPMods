@@ -74,7 +74,7 @@ public class HookHelper {
 
 	private static Set<Executable> findConstructors(Class<?> clazz)
 	{
-		return new ArraySet<>(clazz.getConstructors());
+		return new ArraySet<>(clazz.getDeclaredConstructors());
 	}
 
 	private static Set<Method> findMethods(Class<?> clazz, String name) {
