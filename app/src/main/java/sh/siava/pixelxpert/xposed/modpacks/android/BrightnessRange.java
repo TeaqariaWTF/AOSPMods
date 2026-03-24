@@ -51,7 +51,7 @@ public class BrightnessRange extends XposedModPack {
 
 						param.args[0] = Math.min(
 								Math.max(
-										(float) param.args[0],
+										param.getArg(0),
 										minimumBrightnessLevel),
 								maximumBrightnessLevel);
 					});

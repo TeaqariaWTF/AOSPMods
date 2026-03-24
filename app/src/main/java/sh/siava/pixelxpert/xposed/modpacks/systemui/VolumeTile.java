@@ -64,7 +64,7 @@ public class VolumeTile extends XposedModPack {
 		QSFactoryImplClass
 				.before("createTile")
 				.run(param -> {
-					String arg = (String) param.args[0];
+					String arg = param.getArg(0);
 					if(arg.contains(VolumeTileService.class.getSimpleName())) {
 						mNextTileIsVolume = true;
 					}
