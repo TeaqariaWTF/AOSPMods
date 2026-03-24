@@ -12,30 +12,10 @@ import io.github.libxposed.api.XposedInterface;
 public class HookHelper {
 	public static Set<XposedInterface.HookHandle> hookAllConstructors(Class<?> hookClass, ReflectedClass.ReflectionConsumer callback, boolean runBefore, XposedInterface xposedInterface) {
 		ArraySet<XposedInterface.HookHandle> result = new ArraySet<>();
-		for(Executable constructor : findConstructors(hookClass)) {
-			result.add(
-			xposedInterface.hook(constructor)
-					.intercept(chain -> {
-						RunParam param = new RunParam();
-						param.args = chain.getArgs().toArray();
-						param.thisObject = chain.getThisObject();
-						param.method = chain.getExecutable();
-						if(runBefore)
-						{
-							callback.run(param);
-							if(param.isResultSet)
-								return param.result; //we won't proceed if result is already set
 
-							return chain.proceed(param.args);
-						}
-						else
-						{
-							param.result = chain.proceed(param.args);
-							callback.run(param);
-							return param.result;
-						}
-					}));
-		}
+		findConstructors(hookClass)
+				.forEach(constructor ->
+						         result.add(hookMethod(constructor, callback, runBefore, xposedInterface)));
 		return result;
 	}
 
@@ -50,10 +30,7 @@ public class HookHelper {
 	public static XposedInterface.HookHandle hookMethod(Executable hookMethod, ReflectedClass.ReflectionConsumer callback, boolean runBefore, XposedInterface xposedInterface) {
 		return xposedInterface.hook(hookMethod)
 				.intercept(chain -> {
-					RunParam param = new RunParam();
-					param.args = chain.getArgs().toArray();
-					param.thisObject = chain.getThisObject();
-					param.method = chain.getExecutable();
+					RunParam param = new RunParam(chain.getThisObject(), chain.getExecutable(), chain.getArgs().toArray());
 
 					if(runBefore)
 					{
@@ -81,6 +58,7 @@ public class HookHelper {
 		return Arrays.stream(clazz.getDeclaredMethods()).filter(m -> m.getName().equals(name)).collect(ArraySet::new, ArraySet::add, ArraySet::addAll);
 	}
 
+	@SuppressWarnings({"unused"})
 	public static class RunParam
 	{
 		public Object thisObject;
@@ -88,6 +66,12 @@ public class HookHelper {
 		public Object[] args;
 		private Object result;
 		private boolean isResultSet = false;
+		public RunParam(Object thisObject, Executable method, Object[] args)
+		{
+			this.thisObject = thisObject;
+			this.method = method;
+			this.args = args;
+		}
 		public void setResult(Object result)
 		{
 			isResultSet = true;
@@ -96,6 +80,11 @@ public class HookHelper {
 		public Object getResult()
 		{
 			return result;
+		}
+
+		@SuppressWarnings({"unchecked"})
+		public <T> T getArg(int index) {
+			return (T) args[index];
 		}
 	}
 }
