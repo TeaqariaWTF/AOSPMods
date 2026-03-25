@@ -45,10 +45,13 @@ import com.topjohnwu.superuser.ipc.RootService;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
 
+import io.github.libxposed.service.XposedService;
+import io.github.libxposed.service.XposedServiceHelper;
 import sh.siava.pixelxpert.IRootProviderService;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.databinding.FragmentHooksBinding;
@@ -68,6 +71,8 @@ public class HooksFragment extends BaseFragment {
 	private final List<String> hookedPackageList = new ArrayList<>();
 	private List<String> monitorPackageList;
 	private int dotCount = 0;
+	private XposedService mXposedService;
+	private List<String> mActiveScope = new ArrayList<>();
 	/**
 	 * @noinspection FieldCanBeLocal
 	 */
@@ -85,6 +90,30 @@ public class HooksFragment extends BaseFragment {
 	public void onCreate(@Nullable Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		XPrefs.init(requireContext());
+
+		XposedServiceHelper.registerListener(new XposedServiceHelper.OnServiceListener() {
+			@Override
+			public void onServiceBind(@NonNull XposedService service) {
+				mXposedService = service;
+				refreshScope();
+			}
+
+			@Override
+			public void onServiceDied(@NonNull XposedService service) {
+				mXposedService = null;
+			}
+		});
+	}
+
+	private void refreshScope() {
+		if(mXposedService != null)
+		{
+			mActiveScope = mXposedService.getScope();
+		}
+		else
+		{
+			mActiveScope = new ArrayList<>();
+		}
 	}
 
 	@Override
@@ -190,6 +219,28 @@ public class HooksFragment extends BaseFragment {
 			refreshListItem();
 		}
 	};
+
+	private void requestScopeActivation(String pkgName, ScopeResultCallback callback)
+	{
+		if(mXposedService == null)
+		{
+			callback.onFail(getString(R.string.lsposed_not_found));
+			return;
+		}
+		mXposedService.requestScope(Collections.singletonList(pkgName), new XposedService.OnScopeEventListener() {
+			@Override
+			public void onScopeRequestApproved(@NonNull List<String> approved) {
+				XposedService.OnScopeEventListener.super.onScopeRequestApproved(approved);
+				callback.onSuccess();
+			}
+
+			@Override
+			public void onScopeRequestFailed(@NonNull String message) {
+				XposedService.OnScopeEventListener.super.onScopeRequestFailed(message);
+				callback.onFail(message);
+			}
+		});
+	}
 
 	private void checkHookedPackages() {
 		hookedPackageList.clear();
@@ -402,6 +453,10 @@ public class HooksFragment extends BaseFragment {
 		}
 	}
 
+	private boolean isPackageEnabledInScope(String pkgName)
+	{
+		return mActiveScope.contains(pkgName);
+	}
 	private boolean checkLSPosedDB(String pkgName) {
 		try {
 			return mRootServiceIPC.checkLSPosedDB(pkgName);
@@ -473,5 +528,11 @@ public class HooksFragment extends BaseFragment {
 		} catch (Exception ignored) {
 		}
 		countDownTimer.cancel();
+	}
+
+	interface ScopeResultCallback
+	{
+		void onSuccess();
+		void onFail(String reason);
 	}
 }

@@ -523,6 +523,7 @@
     <string name="package_checking">Loading%s</string>
     <string name="package_activated">Package successfully activated</string>
     <string name="package_activation_failed">Package activation failed</string>
+    <string name="lsposed_not_found">LSPosed not installed</string>
     <string name="activate_in_lsposed">Activate in LSPosed</string>
     <string name="package_not_hook_enabled_info">The app is installed, but LSPosed is not configured to hook into it. Enable it by clicking \'%s\'.</string>
     <string name="package_hook_bootlooped_info">The hook for the app caused a bootloop, so it has been disabled to prevent further issues.</string>
