@@ -55,10 +55,10 @@ import io.github.libxposed.service.XposedServiceHelper;
 import sh.siava.pixelxpert.IRootProviderService;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.databinding.FragmentHooksBinding;
-import sh.siava.pixelxpert.xposed.Constants;
-import sh.siava.pixelxpert.xposed.XPrefs;
 import sh.siava.pixelxpert.service.RootProvider;
 import sh.siava.pixelxpert.utils.AppUtils;
+import sh.siava.pixelxpert.xposed.Constants;
+import sh.siava.pixelxpert.xposed.XPrefs;
 
 public class HooksFragment extends BaseFragment {
 
@@ -308,16 +308,22 @@ public class HooksFragment extends BaseFragment {
 			activateInLSPosed.setOnClickListener(view -> {
 				activateInLSPosed.setEnabled(false);
 				try {
-					if (mRootServiceIPC.activateInLSPosed(filteredPack.get(finalI))) {
-						activateInLSPosed.animate().setDuration(300).withEndAction(() -> activateInLSPosed.setVisibility(GONE)).start();
-						Toast.makeText(requireContext(), getText(R.string.package_activated), Toast.LENGTH_SHORT).show();
-						binding.rebootButton.show();
-						rebootPending = true;
-					} else {
-						Toast.makeText(requireContext(), getText(R.string.package_activation_failed), Toast.LENGTH_SHORT).show();
-						activateInLSPosed.setEnabled(true);
-					}
-				} catch (RemoteException e) {
+					requestScopeActivation(filteredPack.get(finalI), new ScopeResultCallback() {
+						@Override
+						public void onSuccess() {
+							activateInLSPosed.animate().setDuration(300).withEndAction(() -> activateInLSPosed.setVisibility(GONE)).start();
+							Toast.makeText(requireContext(), getText(R.string.package_activated), Toast.LENGTH_SHORT).show();
+							binding.rebootButton.show();
+							rebootPending = true;
+						}
+
+						@Override
+						public void onFail(String reason) {
+							Toast.makeText(requireContext(), getText(R.string.package_activation_failed), Toast.LENGTH_SHORT).show();
+							activateInLSPosed.setEnabled(true);
+						}
+					});
+				} catch (Exception e) {
 					Toast.makeText(requireContext(), getText(R.string.package_activation_failed), Toast.LENGTH_SHORT).show();
 					activateInLSPosed.setEnabled(true);
 					Log.e(TAG, e.toString());
@@ -403,7 +409,7 @@ public class HooksFragment extends BaseFragment {
 				if (!isAppInstalled(pkgName)) {
 					description = getText(R.string.package_not_found).toString();
 					reason = "";
-				} else if (!checkLSPosedDB(pkgName)) {
+				} else if (!isPackageEnabledInScope(pkgName)) {
 					description = getText(R.string.package_not_hook_enabled).toString();
 					reason = getString(R.string.package_not_hook_enabled_info, getString(R.string.activate_in_lsposed));
 				} else if (hasBootLooped(pkgName)) {
@@ -457,13 +463,6 @@ public class HooksFragment extends BaseFragment {
 	{
 		return mActiveScope.contains(pkgName);
 	}
-	private boolean checkLSPosedDB(String pkgName) {
-		try {
-			return mRootServiceIPC.checkLSPosedDB(pkgName);
-		} catch (RemoteException e) {
-			return false;
-		}
-	}
 
 	private boolean hasBootLooped(String pkgName) {
 		return XPrefs.Xprefs.getInt(String.format("%s%s", PACKAGE_STRIKE_KEY_KEY, pkgName), 0) >= 3;
@@ -512,12 +511,6 @@ public class HooksFragment extends BaseFragment {
 		if (savedInstanceState != null) {
 			rebootPending = savedInstanceState.getBoolean(reboot_key);
 		}
-	}
-
-	@Override
-	public void onStop() {
-		super.onStop();
-		countDownTimer.cancel();
 	}
 
 	@Override
