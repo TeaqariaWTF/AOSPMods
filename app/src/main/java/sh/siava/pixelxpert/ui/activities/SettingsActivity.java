@@ -95,6 +95,9 @@ public class SettingsActivity extends BaseActivity implements PreferenceFragment
 		createNotificationChannel();
 		setupNavigation(savedInstanceState);
 
+		//making sure XposedService is bound prior to hook fragment needing it
+		PixelXpert.get().getXposedService(service -> {});
+
 		PreferenceHelper.init();
 
 		if (getIntent() != null) {

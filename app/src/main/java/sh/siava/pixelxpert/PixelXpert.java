@@ -63,10 +63,15 @@ public class PixelXpert extends Application {
 		tryConnectRootService();
 		DynamicColors.applyToActivitiesIfAvailable(this);
 
+		tryConnectXposedService(service -> {});
+	}
+
+	private void tryConnectXposedService(XposedServiceCallback callback) {
 		XposedServiceHelper.registerListener(new XposedServiceHelper.OnServiceListener() {
 			@Override
 			public void onServiceBind(@NonNull XposedService service) {
 				mXposedService = service;
+				callback.serviceReady(service);
 			}
 
 			@Override
@@ -74,7 +79,6 @@ public class PixelXpert extends Application {
 				mXposedService = null;
 			}
 		});
-
 	}
 
 	public ExtendedSharedPreferences getDefaultPreferences()
@@ -179,7 +183,17 @@ public class PixelXpert extends Application {
 		}
 	}
 
-	public XposedService xposedService() {
-		return mXposedService;
+	public void getXposedService(XposedServiceCallback callback)
+	{
+		if(mXposedService != null) {
+			callback.serviceReady(mXposedService);
+			return;
+		}
+		tryConnectXposedService(callback);
+	}
+
+	public interface XposedServiceCallback
+	{
+		void serviceReady(XposedService service);
 	}
 }

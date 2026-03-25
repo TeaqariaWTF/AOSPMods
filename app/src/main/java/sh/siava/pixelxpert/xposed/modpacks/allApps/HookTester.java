@@ -2,6 +2,7 @@ package sh.siava.pixelxpert.xposed.modpacks.allApps;
 
 import static sh.siava.pixelxpert.xposed.Constants.ACTION_CHECK_XPOSED_ENABLED;
 import static sh.siava.pixelxpert.xposed.Constants.ACTION_XPOSED_CONFIRMED;
+import static sh.siava.pixelxpert.xposed.utils.toolkit.Logger.log;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -10,6 +11,7 @@ import android.content.IntentFilter;
 
 import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.BuildConfig;
+import sh.siava.pixelxpert.xposed.XPLauncher;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.annotations.CommonModPack;
 
@@ -30,11 +32,13 @@ public class HookTester extends XposedModPack {
 				new Thread(() -> {
 					Intent broadcast = new Intent(ACTION_XPOSED_CONFIRMED);
 
-					broadcast.putExtra("packageName", PRParam.getPackageName());
+					broadcast.putExtra("packageName", XPLauncher.isSystemServer ? "android" : PRParam.getPackageName());
 
 					broadcast.setPackage(BuildConfig.APPLICATION_ID);
 
 					mContext.sendBroadcast(broadcast);
+
+					log("PixelXpert hook test successful for " + broadcast.getStringExtra("packageName"));
 				}).start();
 			}
 		};

@@ -91,12 +91,10 @@ public class HooksFragment extends BaseFragment {
 		super.onCreate(savedInstanceState);
 		XPrefs.init(requireContext());
 
-		mXposedService = PixelXpert.get().xposedService();
-
-		if(mXposedService != null)
-		{
+		PixelXpert.get().getXposedService(service -> {
+			mXposedService = service;
 			refreshScope();
-		}
+		});
 	}
 
 	private void refreshScope() {
