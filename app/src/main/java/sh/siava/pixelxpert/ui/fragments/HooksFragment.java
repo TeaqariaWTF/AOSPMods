@@ -51,8 +51,8 @@ import java.util.List;
 import java.util.Objects;
 
 import io.github.libxposed.service.XposedService;
-import io.github.libxposed.service.XposedServiceHelper;
 import sh.siava.pixelxpert.IRootProviderService;
+import sh.siava.pixelxpert.PixelXpert;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.databinding.FragmentHooksBinding;
 import sh.siava.pixelxpert.service.RootProvider;
@@ -91,18 +91,12 @@ public class HooksFragment extends BaseFragment {
 		super.onCreate(savedInstanceState);
 		XPrefs.init(requireContext());
 
-		XposedServiceHelper.registerListener(new XposedServiceHelper.OnServiceListener() {
-			@Override
-			public void onServiceBind(@NonNull XposedService service) {
-				mXposedService = service;
-				refreshScope();
-			}
+		mXposedService = PixelXpert.get().xposedService();
 
-			@Override
-			public void onServiceDied(@NonNull XposedService service) {
-				mXposedService = null;
-			}
-		});
+		if(mXposedService != null)
+		{
+			refreshScope();
+		}
 	}
 
 	private void refreshScope() {
@@ -220,24 +214,24 @@ public class HooksFragment extends BaseFragment {
 		}
 	};
 
-	private void requestScopeActivation(String pkgName, ScopeResultCallback callback)
+	private void requestScopeActivation(String pkgName, XposedService.OnScopeEventListener callback)
 	{
 		if(mXposedService == null)
 		{
-			callback.onFail(getString(R.string.lsposed_not_found));
+			callback.onScopeRequestFailed(getString(R.string.lsposed_not_found));
 			return;
 		}
 		mXposedService.requestScope(Collections.singletonList(pkgName), new XposedService.OnScopeEventListener() {
 			@Override
 			public void onScopeRequestApproved(@NonNull List<String> approved) {
 				XposedService.OnScopeEventListener.super.onScopeRequestApproved(approved);
-				callback.onSuccess();
+				callback.onScopeRequestApproved(approved);
 			}
 
 			@Override
 			public void onScopeRequestFailed(@NonNull String message) {
 				XposedService.OnScopeEventListener.super.onScopeRequestFailed(message);
-				callback.onFail(message);
+				callback.onScopeRequestFailed(message);
 			}
 		});
 	}
@@ -308,19 +302,23 @@ public class HooksFragment extends BaseFragment {
 			activateInLSPosed.setOnClickListener(view -> {
 				activateInLSPosed.setEnabled(false);
 				try {
-					requestScopeActivation(filteredPack.get(finalI), new ScopeResultCallback() {
+					requestScopeActivation(filteredPack.get(finalI), new XposedService.OnScopeEventListener() {
 						@Override
-						public void onSuccess() {
-							activateInLSPosed.animate().setDuration(300).withEndAction(() -> activateInLSPosed.setVisibility(GONE)).start();
-							Toast.makeText(requireContext(), getText(R.string.package_activated), Toast.LENGTH_SHORT).show();
-							binding.rebootButton.show();
-							rebootPending = true;
+						public void onScopeRequestApproved(@NonNull List<String> approvedPacks) {
+							activateInLSPosed.post(() -> {
+								activateInLSPosed.animate().setDuration(300).withEndAction(() -> activateInLSPosed.setVisibility(GONE)).start();
+								Toast.makeText(requireContext(), getText(R.string.package_activated), Toast.LENGTH_SHORT).show();
+								binding.rebootButton.show();
+								rebootPending = true;
+							});
 						}
 
 						@Override
-						public void onFail(String reason) {
-							Toast.makeText(requireContext(), getText(R.string.package_activation_failed), Toast.LENGTH_SHORT).show();
-							activateInLSPosed.setEnabled(true);
+						public void onScopeRequestFailed(@NonNull String reason) {
+							activateInLSPosed.post(() -> {
+								Toast.makeText(requireContext(), getText(R.string.package_activation_failed), Toast.LENGTH_SHORT).show();
+								activateInLSPosed.setEnabled(true);
+							});
 						}
 					});
 				} catch (Exception e) {
@@ -432,13 +430,12 @@ public class HooksFragment extends BaseFragment {
 			if (!reason.isBlank()) {
 				TextView info = list.findViewById(R.id.reason);
 				info.setVisibility(VISIBLE);
-				info.setOnClickListener(view -> {
+				info.setOnClickListener(view ->
 					new MaterialAlertDialogBuilder(requireContext(), R.style.MaterialComponents_MaterialAlertDialog)
-							.setTitle(R.string.whats_wrong)
-							.setMessage(reason)
-							.setPositiveButton(R.string.okay, (dialog, which) -> dialog.dismiss())
-							.show();
-				});
+						.setTitle(R.string.whats_wrong)
+						.setMessage(reason)
+						.setPositiveButton(R.string.okay, (dialog, which) -> dialog.dismiss())
+						.show());
 			}
 		}
 	}
@@ -521,11 +518,5 @@ public class HooksFragment extends BaseFragment {
 		} catch (Exception ignored) {
 		}
 		countDownTimer.cancel();
-	}
-
-	interface ScopeResultCallback
-	{
-		void onSuccess();
-		void onFail(String reason);
 	}
 }
