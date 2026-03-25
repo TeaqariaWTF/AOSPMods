@@ -26,6 +26,7 @@ public class ReflectedClass
 {
 
 	private static ClassLoader defaultClassloader = null;
+	private static ClassLoader frameworkClassloader = null;
 	private static XposedInterface defaultXposedInterface;
 	private static final boolean FLAG_DEBUG_HOOKS = false;
 	Class<?> clazz;
@@ -39,11 +40,22 @@ public class ReflectedClass
 	}
 
 	public static ReflectedClass of(String name, ClassLoader loader) {
-		return new ReflectedClass(findClass(name, loader));
+		try {
+			return new ReflectedClass(findClass(name, loader));
+		}
+		catch (Throwable ignored)
+		{
+			return new ReflectedClass(findClass(name, frameworkClassloader));
+		}
 	}
 
 	public static ReflectedClass of(String name) {
 		return ReflectedClass.of(name, defaultClassloader);
+	}
+
+	public static void setFrameworkClassloader(ClassLoader frameworkClassloader)
+	{
+		ReflectedClass.frameworkClassloader = frameworkClassloader;
 	}
 
 	public static void setDefaultClassloader(ClassLoader classloader)
@@ -103,7 +115,12 @@ public class ReflectedClass
 
 	public static ReflectedClass ofIfPossible(String name, ClassLoader loader)
 	{
-		return new ReflectedClass(findClassIfExists(name, loader));
+		Class<?> result = findClassIfExists(name, loader);
+		if(result == null && frameworkClassloader != null)
+		{
+			result = findClassIfExists(name, frameworkClassloader);
+		}
+		return new ReflectedClass(result);
 	}
 
 	public static ReflectedClass ofIfPossible(String name)

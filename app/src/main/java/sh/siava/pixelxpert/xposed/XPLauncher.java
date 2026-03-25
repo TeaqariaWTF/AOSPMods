@@ -35,8 +35,8 @@ import sh.siava.pixelxpert.IPixelXpertProxy;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.service.PixelXpertProxy;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
-import sh.siava.pixelxpert.xposed.utils.toolkit.Logger;
 import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
+import sh.siava.pixelxpert.xposed.utils.toolkit.Logger;
 
 public class XPLauncher extends XposedModule implements ServiceConnection {
 	private boolean mIsChildProcess = false;
@@ -51,8 +51,6 @@ public class XPLauncher extends XposedModule implements ServiceConnection {
 	private CountDownLatch rootProxyCountdown = new CountDownLatch(1);
 	private static IPixelXpertProxy rootProxyIPC;
 	private static final Queue<ProxyRunnable> proxyQueue = new LinkedList<>();
-	private static boolean TELECOM_SERVER_LOADED = false;
-	private static ClassLoader frameworkClassloader;
 	public static Resources moduleResources;
 
 	public XPLauncher()
@@ -71,9 +69,7 @@ public class XPLauncher extends XposedModule implements ServiceConnection {
 	@Override
 	public void onSystemServerStarting(@NonNull XposedModuleInterface.SystemServerStartingParam SSSP)
 	{
-		frameworkClassloader = SSSP.getClassLoader();
-
-		ReflectedClass.setDefaultClassloader(frameworkClassloader);
+		ReflectedClass.setFrameworkClassloader(SSSP.getClassLoader());
 	}
 
 	private static void hook17BetaAudioManagerSRWorkaround(PackageReadyParam PRParam) {
@@ -89,13 +85,12 @@ public class XPLauncher extends XposedModule implements ServiceConnection {
 	@Override
 	public void onPackageReady(@NonNull PackageReadyParam PRParam){
 		ReflectedClass.setDefaultXposedInterface(this);
+		ReflectedClass.setDefaultClassloader(PRParam.getClassLoader());
 
 		hook17BetaAudioManagerSRWorkaround(PRParam);
 
 		if (isSystemServer) {
-			ReflectedClass.setDefaultClassloader(frameworkClassloader);
-
-			ReflectedClass PhoneWindowManagerClass = ReflectedClass.of("com.android.server.policy.PhoneWindowManager", frameworkClassloader);
+			ReflectedClass PhoneWindowManagerClass = ReflectedClass.of("com.android.server.policy.PhoneWindowManager");
 
 			PhoneWindowManagerClass
 					.before("init")
@@ -123,9 +118,7 @@ public class XPLauncher extends XposedModule implements ServiceConnection {
 					.run(this, param -> {
 				mIsChildProcess = !PRParam.isFirstPackage();
 				try {
-					if (mContext == null || (PRParam.getPackageName().equals(Constants.TELECOM_SERVER_PACKAGE) && !TELECOM_SERVER_LOADED)) { //telecom service launches as a secondary process in framework, but has its own package name. context is not null when it loads
-						if (PRParam.getPackageName().equals(Constants.TELECOM_SERVER_PACKAGE))
-							TELECOM_SERVER_LOADED = true;
+					if (mContext == null) {
 
 						mContext = (Context) param.args[param.args.length - 1];
 
