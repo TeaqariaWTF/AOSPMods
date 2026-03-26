@@ -176,7 +176,7 @@ public class XPLauncher extends XposedModule implements ServiceConnection {
 
 		ModPacks.getModPacks()
 				.forEach(modPackData -> {
-					if((modPackData.targetPackage.equals(PRParam.getPackageName()) || modPackData.targetPackage.isEmpty() /*common mod packs*/ || (modPackData.targetPackage.equals("android") && isSystemServer))
+					if((modPackData.targetPackage.equals(PRParam.getPackageName()) || modPackData.targetPackage.isEmpty() /*common mod packs*/ || (modPackData.targetPackage.equals(Constants.SYSTEM_FRAMEWORK_PACKAGE) && isSystemServer))
 							   && ((mIsChildProcess && modPackData.targetsChildProcess && processName.contains(modPackData.childProcessName))
 									       || (!mIsChildProcess && modPackData.targetsMainProcess)))
 					{

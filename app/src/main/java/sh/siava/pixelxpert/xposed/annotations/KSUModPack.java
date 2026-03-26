@@ -6,8 +6,9 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 import sh.siava.pixelxpert.annotations.BaseModPack;
+import sh.siava.pixelxpert.xposed.Constants;
 
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-@BaseModPack(targetPackage = "me.weishu.kernelsu")
+@BaseModPack(targetPackage = Constants.KSU_PACKAGE)
 public @interface KSUModPack { }

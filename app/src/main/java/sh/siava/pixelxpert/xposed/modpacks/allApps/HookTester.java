@@ -11,6 +11,7 @@ import android.content.IntentFilter;
 
 import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.BuildConfig;
+import sh.siava.pixelxpert.xposed.Constants;
 import sh.siava.pixelxpert.xposed.XPLauncher;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.annotations.CommonModPack;
@@ -32,7 +33,7 @@ public class HookTester extends XposedModPack {
 				new Thread(() -> {
 					Intent broadcast = new Intent(ACTION_XPOSED_CONFIRMED);
 
-					broadcast.putExtra("packageName", XPLauncher.isSystemServer ? "android" : PRParam.getPackageName());
+					broadcast.putExtra("packageName", XPLauncher.isSystemServer ? Constants.SYSTEM_FRAMEWORK_PACKAGE : PRParam.getPackageName());
 
 					broadcast.setPackage(BuildConfig.APPLICATION_ID);
 
