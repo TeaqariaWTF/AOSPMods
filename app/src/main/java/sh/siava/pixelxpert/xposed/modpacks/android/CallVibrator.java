@@ -1,4 +1,4 @@
-package sh.siava.pixelxpert.xposed.modpacks.telecom;
+package sh.siava.pixelxpert.xposed.modpacks.android;
 
 import static android.os.SystemClock.uptimeMillis;
 import static android.os.VibrationAttributes.USAGE_ACCESSIBILITY;
