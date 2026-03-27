@@ -8,13 +8,17 @@ import android.content.Context;
 import android.os.VibrationEffect;
 
 import io.github.libxposed.api.XposedModuleInterface;
+import sh.siava.pixelxpert.annotations.ChildProcessModPack;
+import sh.siava.pixelxpert.annotations.MainProcessModPack;
 import sh.siava.pixelxpert.xposed.XposedModPack;
-import sh.siava.pixelxpert.xposed.annotations.FrameworkModPack;
+import sh.siava.pixelxpert.xposed.annotations.TelecomServerModPack;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
 import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
-@FrameworkModPack
+@TelecomServerModPack
+@MainProcessModPack //telecom server shouldn't fall under child process checks
+@ChildProcessModPack(processNameContains = "")
 public class CallVibrator extends XposedModPack {
 	public static final int DIALING = 3;
 	public static final int ACTIVE = 5;

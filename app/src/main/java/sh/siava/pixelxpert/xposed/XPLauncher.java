@@ -51,6 +51,7 @@ public class XPLauncher extends XposedModule implements ServiceConnection {
 	private CountDownLatch rootProxyCountdown = new CountDownLatch(1);
 	private static IPixelXpertProxy rootProxyIPC;
 	private static final Queue<ProxyRunnable> proxyQueue = new LinkedList<>();
+	private static boolean TELECOM_SERVER_LOADED = false;
 	public static Resources moduleResources;
 
 	public XPLauncher()
@@ -89,7 +90,7 @@ public class XPLauncher extends XposedModule implements ServiceConnection {
 
 		hook17BetaAudioManagerSRWorkaround(PRParam);
 
-		if (isSystemServer) {
+		if (isSystemServer && !PRParam.getPackageName().equals(Constants.TELECOM_SERVER_PACKAGE)) {
 			ReflectedClass PhoneWindowManagerClass = ReflectedClass.of("com.android.server.policy.PhoneWindowManager");
 
 			PhoneWindowManagerClass
@@ -110,15 +111,17 @@ public class XPLauncher extends XposedModule implements ServiceConnection {
 							Logger.log(t);
 						}
 					});
-		} else {
-			ReflectedClass.setDefaultClassloader(PRParam.getClassLoader());
+		}
 
+		if(!isSystemServer || PRParam.getPackageName().equals(Constants.TELECOM_SERVER_PACKAGE)) {
 			ReflectedClass.of(Instrumentation.class)
 					.after("newApplication")
 					.run(this, param -> {
 				mIsChildProcess = !PRParam.isFirstPackage();
 				try {
-					if (mContext == null) {
+					if (mContext == null || (PRParam.getPackageName().equals(Constants.TELECOM_SERVER_PACKAGE) && !TELECOM_SERVER_LOADED)) {
+						if (PRParam.getPackageName().equals(Constants.TELECOM_SERVER_PACKAGE))
+							TELECOM_SERVER_LOADED = true;
 
 						mContext = (Context) param.args[param.args.length - 1];
 
