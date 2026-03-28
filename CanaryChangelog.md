@@ -1,3 +1,9 @@
+**canary-488**  
+- IMPORTANT NOTICE: This build will only run on the newest Lsposed API (Api 101). If you are not running the newest Lsposed module, this canary version will NOT work on your device  
+- A17b3: Fixed taskbar  
+- Migration to the new lsposed service for module activation  
+- (initial) migration to the new LSposed api 100  
+  
 **canary-487**  
 - A17b1: (emergency workaround) Fixed soft reboot when making calls  
   
