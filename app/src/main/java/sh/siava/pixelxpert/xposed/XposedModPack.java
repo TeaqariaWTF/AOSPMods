@@ -4,8 +4,9 @@ import android.content.Context;
 
 import io.github.libxposed.api.XposedInterface;
 import io.github.libxposed.api.XposedModuleInterface;
+import sh.siava.pixelxpert.xposed.utils.toolkit.Logger;
 
-public abstract class XposedModPack {
+public abstract class XposedModPack extends Logger {
 	protected Context mContext;
 
 	public XposedModPack(Context context) {
