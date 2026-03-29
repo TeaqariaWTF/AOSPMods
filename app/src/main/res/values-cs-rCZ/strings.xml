@@ -473,6 +473,7 @@
     <string name="package_checking">Načítání%s</string>
     <string name="package_activated">Balíček byl úspěšně aktivován</string>
     <string name="package_activation_failed">Aktivace balíčku se nezdařila</string>
+    <string name="lsposed_not_found">LSPosed not installed</string>
     <string name="activate_in_lsposed">Aktivujte v LSPosed</string>
     <string name="package_not_hook_enabled_info">Aplikace je nainstalována, ale LSPosed není nakonfigurován, aby do ní vložil. Povolte ji kliknutím na \'%s\'.</string>
     <string name="package_hook_bootlooped_info">Háček pro aplikaci způsobil bootloop, takže byl zakázán pro zabránění dalším problémům.</string>

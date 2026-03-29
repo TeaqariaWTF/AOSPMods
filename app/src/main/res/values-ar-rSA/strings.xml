@@ -473,6 +473,7 @@
     <string name="package_checking">تحميل%s</string>
     <string name="package_activated">تم تفعيل الحزمة بنجاح</string>
     <string name="package_activation_failed">فشل تنشيط الحزمة</string>
+    <string name="lsposed_not_found">LSPosed not installed</string>
     <string name="activate_in_lsposed">تنشيط في LSPosed</string>
     <string name="package_not_hook_enabled_info">تم تثبيت التطبيق، ولكن LSPosed لم يتم تكوينه للربط به. فعله بالنقر على \'%s\'.</string>
     <string name="package_hook_bootlooped_info">الرابط للتطبيق تسبب في حولية، لذلك تم تعطيله لمنع المزيد من المشاكل.</string>

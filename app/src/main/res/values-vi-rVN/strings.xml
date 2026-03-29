@@ -473,6 +473,7 @@
     <string name="package_checking">Đang tải%s</string>
     <string name="package_activated">Gói kích hoạt thành công</string>
     <string name="package_activation_failed">Kích hoạt gói không thành công</string>
+    <string name="lsposed_not_found">LSPosed not installed</string>
     <string name="activate_in_lsposed">Kích hoạt trong LSPosed</string>
     <string name="package_not_hook_enabled_info">Ứng dụng đã được cài đặt nhưng LPosed chưa được định cấu hình để kết nối với ứng dụng. Kích hoạt bằng cách nhấp vào \'%s\'.</string>
     <string name="package_hook_bootlooped_info">Móc nối của ứng dụng đã gây ra vòng lặp khởi động nên nó đã bị vô hiệu hóa để ngăn chặn các sự cố tiếp theo.</string>

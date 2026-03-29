@@ -473,6 +473,7 @@
     <string name="package_checking">Indlæser%s</string>
     <string name="package_activated">Pakken blev aktiveret</string>
     <string name="package_activation_failed">Pakkeaktivering mislykkedes</string>
+    <string name="lsposed_not_found">LSPosed not installed</string>
     <string name="activate_in_lsposed">Aktiver i LSPosed</string>
     <string name="package_not_hook_enabled_info">Appen er installeret, men LSPosed er ikke konfigureret til at tilslutte sig den. Aktiver den ved at klikke på \'%s\'.</string>
     <string name="package_hook_bootlooped_info">Krogen til appen forårsagede en bootloop, så det er blevet deaktiveret for at forhindre yderligere problemer.</string>

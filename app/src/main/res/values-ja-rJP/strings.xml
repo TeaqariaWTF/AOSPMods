@@ -473,6 +473,7 @@
     <string name="package_checking">%sを読み込み中</string>
     <string name="package_activated">パッケージが正常にアクティブ化されました</string>
     <string name="package_activation_failed">パッケージのアクティベーションに失敗しました</string>
+    <string name="lsposed_not_found">LSPosed not installed</string>
     <string name="activate_in_lsposed">LSPosed でアクティブ化する</string>
     <string name="package_not_hook_enabled_info">アプリがインストールされていますが、LSPosed はフックするように設定されていません。「%s」をクリックして有効にしてください。</string>
     <string name="package_hook_bootlooped_info">アプリのフックによりブートループが発生したため、さらなる問題を防ぐために無効化されています。</string>

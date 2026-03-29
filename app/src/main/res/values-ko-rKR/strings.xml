@@ -473,6 +473,7 @@
     <string name="package_checking">불러오는 중%s</string>
     <string name="package_activated">패키지가 성공적으로 활성화되었습니다.</string>
     <string name="package_activation_failed">패키지 활성화 실패</string>
+    <string name="lsposed_not_found">LSPosed not installed</string>
     <string name="activate_in_lsposed">LSPosed에서 활성화</string>
     <string name="package_not_hook_enabled_info">The app is installed, but LSPosed is not configured to hook into it. Enable it by clicking \'%s\'.</string>
     <string name="package_hook_bootlooped_info">The hook for the app caused a bootloop, so it has been disabled to prevent further issues.</string>

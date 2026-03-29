@@ -473,6 +473,7 @@
     <string name="package_checking">Φόρτωση%s</string>
     <string name="package_activated">Το πακέτο ενεργοποιήθηκε με επιτυχία</string>
     <string name="package_activation_failed">Η ενεργοποίηση του πακέτου απέτυχε</string>
+    <string name="lsposed_not_found">LSPosed not installed</string>
     <string name="activate_in_lsposed">Ενεργοποίηση στο LSPosed</string>
     <string name="package_not_hook_enabled_info">Η εφαρμογή είναι εγκατεστημένη, αλλά LSPosed δεν έχει ρυθμιστεί για να συνδέσετε σε αυτήν. Ενεργοποιήστε την κάνοντας κλικ στο \'%s\'.</string>
     <string name="package_hook_bootlooped_info">Το άγκιστρο για την εφαρμογή προκάλεσε ένα bootloop, οπότε έχει απενεργοποιηθεί για την πρόληψη περαιτέρω προβλημάτων.</string>

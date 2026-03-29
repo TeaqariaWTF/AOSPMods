@@ -473,6 +473,7 @@
     <string name="package_checking">Se încarcă%s</string>
     <string name="package_activated">Pachetul a fost activat cu succes</string>
     <string name="package_activation_failed">Activarea pachetului a eșuat</string>
+    <string name="lsposed_not_found">LSPosed not installed</string>
     <string name="activate_in_lsposed">Activează în LSPosed</string>
     <string name="package_not_hook_enabled_info">Aplicația este instalată, dar LSPosed nu este configurată pentru a fi atașată. Activeaz-o făcând clic pe \'%s\'.</string>
     <string name="package_hook_bootlooped_info">Atașarea aplicației a cauzat o buclă de pornire (bootloop), astfel încât a fost dezactivată pentru a preveni alte probleme.</string>
