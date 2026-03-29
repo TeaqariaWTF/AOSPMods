@@ -473,6 +473,7 @@
     <string name="package_checking">Завантаження%s</string>
     <string name="package_activated">Пакет успішно активований</string>
     <string name="package_activation_failed">Не вдалося активувати пакет</string>
+    <string name="lsposed_not_found">LSPosed not installed</string>
     <string name="activate_in_lsposed">Активувати в ЛСПосед</string>
     <string name="package_not_hook_enabled_info">Застосунок встановлено, але LSPosed не налаштовано на його перехоплення. Увімкніть його, натиснувши «%s».</string>
     <string name="package_hook_bootlooped_info">Перехоплення для застосунку спричиняло зациклення, тому його було вимкнено, щоб запобігти подальшим проблемам.</string>

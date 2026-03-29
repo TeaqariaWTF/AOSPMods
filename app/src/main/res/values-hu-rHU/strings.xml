@@ -473,6 +473,7 @@
     <string name="package_checking">Betöltés%s</string>
     <string name="package_activated">A csomag sikeresen aktiválva</string>
     <string name="package_activation_failed">A csomag aktiválása nem sikerült</string>
+    <string name="lsposed_not_found">LSPosed not installed</string>
     <string name="activate_in_lsposed">Aktiválás az LSPosedben</string>
     <string name="package_not_hook_enabled_info">The app is installed, but LSPosed is not configured to hook into it. Enable it by clicking \'%s\'.</string>
     <string name="package_hook_bootlooped_info">The hook for the app caused a bootloop, so it has been disabled to prevent further issues.</string>

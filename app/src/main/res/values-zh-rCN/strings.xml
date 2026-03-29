@@ -473,6 +473,7 @@
     <string name="package_checking">正在加载 %s</string>
     <string name="package_activated">软件包已成功启动</string>
     <string name="package_activation_failed">软件包启动失败</string>
+    <string name="lsposed_not_found">LSPosed not installed</string>
     <string name="activate_in_lsposed">在 LSposed 中启用</string>
     <string name="package_not_hook_enabled_info">应用已安装，但 LSPosed 中没有启用 hook。点击\'%s \'启用。</string>
     <string name="package_hook_bootlooped_info">应用的 hook 导致启动循环，因此它已被禁用，以防产生更多问题。</string>

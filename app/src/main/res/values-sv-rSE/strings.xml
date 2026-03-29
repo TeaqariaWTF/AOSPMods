@@ -473,6 +473,7 @@
     <string name="package_checking">Laddar%s</string>
     <string name="package_activated">Paketet har aktiverats</string>
     <string name="package_activation_failed">Paketaktiveringen misslyckades</string>
+    <string name="lsposed_not_found">LSPosed not installed</string>
     <string name="activate_in_lsposed">Aktivera i LSPosed</string>
     <string name="package_not_hook_enabled_info">Appen är installerad, men LSPosed är inte konfigurerad att ansluta till den. Aktivera den genom att klicka på \'%s\'.</string>
     <string name="package_hook_bootlooped_info">Appens krok orsakade en bootloop, så den har inaktiverats för att förhindra ytterligare problem.</string>

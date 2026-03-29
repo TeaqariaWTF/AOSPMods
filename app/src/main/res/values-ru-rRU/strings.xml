@@ -473,6 +473,7 @@
     <string name="package_checking">Загрузка%s</string>
     <string name="package_activated">Пакет успешно активирован</string>
     <string name="package_activation_failed">Не удалось активировать пакет</string>
+    <string name="lsposed_not_found">LSPosed not installed</string>
     <string name="activate_in_lsposed">Активировать в LSPosed</string>
     <string name="package_not_hook_enabled_info">Приложение установлено, но LSPosed не настроен для подключения к нему. Включите его, нажав \'%s\'.</string>
     <string name="package_hook_bootlooped_info">Перехват приложения вызвал циклическую перезагрузку, поэтому оно было отключено, чтобы предотвратить дальнейшие проблемы.</string>

@@ -473,6 +473,7 @@
     <string name="package_checking">Ladataan%s</string>
     <string name="package_activated">Paketti aktivoitu onnistuneesti</string>
     <string name="package_activation_failed">Paketin aktivointi epäonnistui</string>
+    <string name="lsposed_not_found">LSPosed not installed</string>
     <string name="activate_in_lsposed">Aktivoi LSPosedissa</string>
     <string name="package_not_hook_enabled_info">Sovellus on asennettu, mutta LSPosed ei ole konfiguroitu koukuttamaan sitä. Ota se käyttöön napsauttamalla \'%s\'.</string>
     <string name="package_hook_bootlooped_info">Sovelluksen koukku aiheutti käynnistyksen, joten se on poistettu käytöstä uusien ongelmien estämiseksi.</string>

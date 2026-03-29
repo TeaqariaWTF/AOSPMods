@@ -473,6 +473,7 @@
     <string name="package_checking">Laden%s</string>
     <string name="package_activated">Pakket succesvol geactiveerd</string>
     <string name="package_activation_failed">Pakketactivering mislukt</string>
+    <string name="lsposed_not_found">LSPosed not installed</string>
     <string name="activate_in_lsposed">Activeer in LSPosed</string>
     <string name="package_not_hook_enabled_info">De app is geïnstalleerd, maar Vervallen is niet geconfigureerd om er in te hken. Schakel het in door te klikken op \'%s\'.</string>
     <string name="package_hook_bootlooped_info">De haak voor de app veroorzaakte een bootloop, dus het is uitgeschakeld om verdere problemen te voorkomen.</string>

@@ -473,6 +473,7 @@
     <string name="package_checking">Cargando %s</string>
     <string name="package_activated">Paquete activado con éxito</string>
     <string name="package_activation_failed">Error en la activación del paquete</string>
+    <string name="lsposed_not_found">LSPosed no instalado</string>
     <string name="activate_in_lsposed">Activar en LSPosed</string>
     <string name="package_not_hook_enabled_info">La aplicación está instalada, pero LSPosed no está configurado para conectarla. Habilítelo haciendo clic en \'%s\'.</string>
     <string name="package_hook_bootlooped_info">El gancho para la aplicación causó un bucle de arranque, por lo que ha sido desactivado para evitar más problemas.</string>
