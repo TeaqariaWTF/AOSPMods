@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
  * If defined, it means the mod pack is targeting the child process, and not main process
  * If both child AND main process are targeted, {@link MainProcessModPack} must be defined alongside this annotation
  */
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(RetentionPolicy.SOURCE)
 @Target(ElementType.TYPE)
 public @interface ChildProcessModPack {
 	/**

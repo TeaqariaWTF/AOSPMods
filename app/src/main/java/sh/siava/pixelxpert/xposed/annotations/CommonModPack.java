@@ -7,7 +7,7 @@ import java.lang.annotation.Target;
 
 import sh.siava.pixelxpert.annotations.BaseModPack;
 
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(RetentionPolicy.SOURCE)
 @Target(ElementType.TYPE)
 @BaseModPack( targetPackage = "")
 public @interface CommonModPack { }

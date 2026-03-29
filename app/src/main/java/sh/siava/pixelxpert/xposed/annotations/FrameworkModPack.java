@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 import sh.siava.pixelxpert.annotations.BaseModPack;
 import sh.siava.pixelxpert.xposed.Constants;
 
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(RetentionPolicy.SOURCE)
 @Target(ElementType.TYPE)
 @BaseModPack(targetPackage = Constants.SYSTEM_FRAMEWORK_PACKAGE)
 public @interface FrameworkModPack { }

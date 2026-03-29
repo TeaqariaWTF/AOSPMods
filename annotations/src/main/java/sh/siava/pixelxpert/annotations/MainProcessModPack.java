@@ -9,7 +9,7 @@ import java.lang.annotation.Target;
  * By default, all mod packs are assumed {@link MainProcessModPack}. However, if {@link ChildProcessModPack} is defined, use this annotation
  * to show that main process must be targeted too. Otherwise, it's optional
  */
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(RetentionPolicy.SOURCE)
 @Target(ElementType.TYPE)
 public @interface MainProcessModPack {
 }
