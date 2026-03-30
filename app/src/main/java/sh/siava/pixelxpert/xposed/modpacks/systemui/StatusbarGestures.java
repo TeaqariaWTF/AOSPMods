@@ -4,8 +4,6 @@ import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
 
-
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Rect;
@@ -97,6 +95,15 @@ public class StatusbarGestures extends XposedModPack {
 		final long[] lastPullupTouchTime = {0};
 
 		NotificationPanelViewControllerClass
+				.before("onStatusBarLongPress")
+				.run(param -> {
+					if (StatusbarLongpressAppSwitch) {
+						sendAppSwitchBroadcast();
+						param.setResult(null);
+					}
+				});
+
+		NotificationPanelViewControllerClass
 				.afterConstruction()
 				.run(param -> {
 					NotificationPanelViewController = param.thisObject;
@@ -146,18 +153,12 @@ public class StatusbarGestures extends XposedModPack {
 				: x < region;
 	}
 
-	private void onStatusbarLongpress() {
-		if (StatusbarLongpressAppSwitch) {
-			sendAppSwitchBroadcast();
-		}
-	}
-
 	private void sendAppSwitchBroadcast() {
 		new Thread(() -> mContext.sendBroadcast(Constants.getAppProfileSwitchIntent())).start();
 	}
 
 	private GestureDetector.OnGestureListener getPullDownLPListener() {
-		return new LongpressListener(true) {
+		return new GestureListener() {
 			@Override
 			public boolean onFling(@Nullable MotionEvent e1, @NonNull MotionEvent e2, float velocityX, float velocityY) {
 				if (STATUSBAR_MODE_SHADE == (int) getObjectField(NotificationPanelViewController, "mBarState")
@@ -171,7 +172,7 @@ public class StatusbarGestures extends XposedModPack {
 	}
 
 	private GestureDetector.OnGestureListener getPullUpListener() {
-		return new LongpressListener(false) {
+		return new GestureListener() {
 			@Override
 			public boolean onFling(@Nullable MotionEvent e1, @NonNull MotionEvent e2, float velocityX, float velocityY) {
 				if (isValidFling(mDownEvent, e2, velocityY, -.15f, -.06f)) {
@@ -193,13 +194,7 @@ public class StatusbarGestures extends XposedModPack {
 		}
 	}
 
-	private class LongpressListener implements GestureDetector.OnGestureListener {
-		final boolean mDetectLongpress;
-
-		public LongpressListener(boolean detectLongpress) {
-			mDetectLongpress = detectLongpress;
-		}
-
+	private static class GestureListener implements GestureDetector.OnGestureListener {
 		@Override
 		public boolean onDown(@NonNull MotionEvent e) {
 			return false;
@@ -220,10 +215,7 @@ public class StatusbarGestures extends XposedModPack {
 		}
 
 		@Override
-		public void onLongPress(@NonNull MotionEvent e) {
-			if (mDetectLongpress)
-				onStatusbarLongpress();
-		}
+		public void onLongPress(@NonNull MotionEvent e) {}
 
 		@Override
 		public boolean onFling(@Nullable MotionEvent e1, @NonNull MotionEvent e2, float velocityX, float velocityY) {
