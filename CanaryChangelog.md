@@ -1,3 +1,7 @@
+**canary-489**  
+- Fixed muting the screenshot sound  
+- Statusbar long press to switch between app profiles no longer triggers QS  
+  
 **canary-488**  
 - IMPORTANT NOTICE: This build will only run on the newest Lsposed API (Api 101). If you are not running the newest Lsposed module, this canary version will NOT work on your device  
 - A17b3: Fixed taskbar  
