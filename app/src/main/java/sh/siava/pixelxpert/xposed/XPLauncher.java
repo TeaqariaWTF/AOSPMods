@@ -39,7 +39,6 @@ import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 import sh.siava.pixelxpert.xposed.utils.toolkit.Logger;
 
 public class XPLauncher extends XposedModule implements ServiceConnection {
-	private boolean mIsChildProcess = false;
 	public static String processName = "";
 	public static boolean isSystemServer = false;
 
@@ -117,7 +116,6 @@ public class XPLauncher extends XposedModule implements ServiceConnection {
 			ReflectedClass.of(Instrumentation.class)
 					.after("newApplication")
 					.run(this, param -> {
-				mIsChildProcess = !PRParam.isFirstPackage();
 				try {
 					if (mContext == null || (PRParam.getPackageName().equals(Constants.TELECOM_SERVER_PACKAGE) && !TELECOM_SERVER_LOADED)) {
 						if (PRParam.getPackageName().equals(Constants.TELECOM_SERVER_PACKAGE))
@@ -179,9 +177,10 @@ public class XPLauncher extends XposedModule implements ServiceConnection {
 
 		ModPacks.getModPacks()
 				.forEach(modPackData -> {
+					String partOfProcessName = modPackData.targetsMainProcess ? "" : modPackData.childProcessName;
+
 					if((modPackData.targetPackage.equals(PRParam.getPackageName()) || modPackData.targetPackage.isEmpty() /*common mod packs*/ || (modPackData.targetPackage.equals(Constants.SYSTEM_FRAMEWORK_PACKAGE) && isSystemServer))
-							   && ((mIsChildProcess && modPackData.targetsChildProcess && processName.contains(modPackData.childProcessName))
-									       || (!mIsChildProcess && modPackData.targetsMainProcess)))
+							   && processName.contains(partOfProcessName))
 					{
 						//noinspection unchecked
 						loadModPack((Class<? extends XposedModPack>) modPackData.clazz, PRParam);

@@ -4,9 +4,8 @@ import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static de.robv.android.xposed.XposedHelpers.setObjectField;
 import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
 
-
-
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.os.UserManager;
 
 import java.util.Collection;
@@ -81,6 +80,14 @@ public class ScreenshotManager extends XposedModPack {
 					}
 				});
 
+
+		//17 - much easier approach: killing mediaplayer totally
+		ReflectedClass.of(MediaPlayer.class)
+				.before("start")
+				.run(param -> {
+					if(disableScreenshotSound)
+						param.setResult(null);
+				});
 
 		//16 qpr2
 		TakeScreenshotExecutorImplClass
