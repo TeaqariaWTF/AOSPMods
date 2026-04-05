@@ -473,7 +473,7 @@
     <string name="package_checking">Laden%s</string>
     <string name="package_activated">Paket erfolgreich aktiviert</string>
     <string name="package_activation_failed">Die Paketaktivierung ist fehlgeschlagen</string>
-    <string name="lsposed_not_found">LSPosed not installed</string>
+    <string name="lsposed_not_found">LSPosed ist nicht installiert</string>
     <string name="activate_in_lsposed">In LSPosed aktivieren</string>
     <string name="package_not_hook_enabled_info">Die App ist installiert, aber LSPosed ist nicht so konfiguriert, dass sie in sie eingehängt wird. Aktivieren Sie sie durch Klicken auf \'%s\'.</string>
     <string name="package_hook_bootlooped_info">Der Hook für die App verursachte eine Bootschleife, daher wurde er deaktiviert, um weitere Probleme zu verhindern.</string>
