@@ -85,7 +85,6 @@ public class XPLauncher extends XposedModule implements ServiceConnection {
 	@Override
 	public void onPackageReady(@NonNull PackageReadyParam PRParam){
 		ReflectedClass.setDefaultXposedInterface(this);
-		ReflectedClass.setDefaultClassloader(PRParam.getClassLoader());
 
 		hook17BetaAudioManagerSRWorkaround(PRParam);
 
@@ -171,6 +170,8 @@ public class XPLauncher extends XposedModule implements ServiceConnection {
 	}
 
 	private void loadModPacks(PackageReadyParam PRParam) {
+		ReflectedClass.setDefaultClassloader(PRParam.getClassLoader());
+
 		if (Arrays.asList(moduleResources.getStringArray(R.array.root_requirement)).contains(PRParam.getPackageName())) {
 			forceConnectRootService();
 		}
