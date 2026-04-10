@@ -1,6 +1,5 @@
 package sh.siava.pixelxpert.xposed.modpacks.android;
 
-import static de.robv.android.xposed.XposedBridge.log;
 import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.getBooleanField;
 import static de.robv.android.xposed.XposedHelpers.getIntField;
@@ -8,14 +7,10 @@ import static de.robv.android.xposed.XposedHelpers.getLongField;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
 
-
-
-
-
-
 import android.content.Context;
 import android.hardware.SensorEvent;
 import android.os.SystemClock;
+import android.util.SparseArray;
 
 import java.time.Duration;
 import java.util.ArrayList;
@@ -29,6 +24,7 @@ import sh.siava.pixelxpert.xposed.annotations.FrameworkModPack;
 import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 /** @noinspection RedundantThrows*/
+//located in services.jar
 @FrameworkModPack
 public class FaceUpScreenSleep extends XposedModPack {
 	public static final float FACE_UP_Z_THRESHOLD = 9f;
@@ -44,6 +40,7 @@ public class FaceUpScreenSleep extends XposedModPack {
 	private static boolean SleepOnFlatScreen = false;
 	public static long FlatStandbyTimeMillis = 5000;
 	private static boolean SleepOnFlatRespectWakeLock = true;
+	private Object mGroupIDs;
 
 	public FaceUpScreenSleep(Context context) {
 		super(context);
@@ -74,6 +71,7 @@ public class FaceUpScreenSleep extends XposedModPack {
 		FaceDownDetectorClass
 				.after("onSensorChanged")
 				.run(param -> {
+					//noinspection ConstantValue
 					if(!SleepOnFlatScreen || getBooleanField(param.thisObject, "mFaceDown")) return; //device is already facing down or feature not enabled
 
 					SensorEvent event = (SensorEvent) param.args[0];
@@ -128,11 +126,28 @@ public class FaceUpScreenSleep extends XposedModPack {
 
 					if((currentTimeMillis - mLastSleepOrderMillis) > 5000) { //avoid multiple sleep orders
 						mLastSleepOrderMillis = currentTimeMillis;
-						callMethod(mPowerManagerServiceInstance, "goToSleepInternal", getObjectField(mPowerManagerServiceInstance, "DEFAULT_DISPLAY_GROUP_IDS"), SystemClock.uptimeMillis(), GO_TO_SLEEP_REASON_TIMEOUT, 0 /* flag */);
+						callMethod(mPowerManagerServiceInstance, "goToSleepInternal", getPowerGroupIDs(), SystemClock.uptimeMillis(), GO_TO_SLEEP_REASON_TIMEOUT, 0 /* flag */);
 					}
 				});
 	}
 
+	private Object getPowerGroupIDs() throws Throwable {
+		if(mGroupIDs != null)
+			return mGroupIDs;
+
+		ReflectedClass IntArrayClass = ReflectedClass.of("android.util.IntArray");
+		mGroupIDs = IntArrayClass.getClazz().getConstructor().newInstance();
+
+		SparseArray<?> mPowerGroups = (SparseArray<?>) getObjectField(mPowerManagerServiceInstance, "mPowerGroups");
+		for(int i = 0; i < mPowerGroups.size(); i++)
+		{
+			if((boolean) callMethod(mPowerGroups.valueAt(i), "isDefaultOrAdjacentGroup"))
+			{
+				callMethod(mGroupIDs, "add", callMethod(mPowerGroups.valueAt(i), "getGroupId"));
+			}
+		}
+		return mGroupIDs;
+	}
 	private void resetTime(String reason) {
 		if(FLAG_DEBUG)
 		{
