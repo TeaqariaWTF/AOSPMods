@@ -206,15 +206,15 @@ public class IconPackAdapter extends RecyclerView.Adapter<IconPackAdapter.ViewHo
 			inflater.inflate(R.menu.icon_pack_item_menu, popupMenu.getMenu());
 
 			popupMenu.setOnMenuItemClickListener(item -> {
-				switch (item.getItemId()) {
-					case R.id.app_info -> {
-						Intent intent = new Intent();
-						intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-						Uri uri = Uri.fromParts("package", pack.mPackageName, null);
-						intent.setData(uri);
-						context.startActivity(intent);
-					}
-					case R.id.show_icons -> showIconDialog(pack);
+				int itemId = item.getItemId();
+				if (itemId == R.id.app_info) {
+					Intent intent = new Intent();
+					intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+					Uri uri = Uri.fromParts("package", pack.mPackageName, null);
+					intent.setData(uri);
+					context.startActivity(intent);
+				} else if (itemId == R.id.show_icons) {
+					showIconDialog(pack);
 				}
 
 				return true;
@@ -285,8 +285,8 @@ public class IconPackAdapter extends RecyclerView.Adapter<IconPackAdapter.ViewHo
 		return Color.argb(alpha, red, green, blue);
 	}
 
-	public final int VIEW_TYPE_SINGLE = 0;
-	public final int VIEW_TYPE_TOP = 1;
-	public final int VIEW_TYPE_MIDDLE = 2;
-	public final int VIEW_TYPE_BOTTOM = 3;
+	public static final int VIEW_TYPE_SINGLE = 0;
+	public static final int VIEW_TYPE_TOP = 1;
+	public static final int VIEW_TYPE_MIDDLE = 2;
+	public static final int VIEW_TYPE_BOTTOM = 3;
 }

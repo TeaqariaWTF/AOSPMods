@@ -61,7 +61,8 @@
 # Keep all annotation types
 -keep @interface ** { *; }
 
-# Markdown View
--dontwarn java.awt.image.RGBImageFilter
--keep class br.tiagohm.markdownview.**
--keep class com.vladsch.flexmark.**
+# AndroidX Window
+-dontwarn androidx.window.extensions.area.ExtensionWindowAreaPresentation
+-dontwarn androidx.window.extensions.core.util.function.Consumer
+-dontwarn androidx.window.extensions.core.util.function.Function
+-dontwarn androidx.window.extensions.core.util.function.Predicate

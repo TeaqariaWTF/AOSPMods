@@ -1,10 +1,11 @@
+
+import com.android.build.api.artifact.SingleArtifact
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import java.io.FileInputStream
 import java.util.Properties
 
 plugins {
 	alias(libs.plugins.android.application)
-	alias(libs.plugins.kotlin.android)
 	alias(libs.plugins.devtools.ksp)
 	alias(libs.plugins.hilt.android)
 }
@@ -64,16 +65,6 @@ android {
 		}
 	}
 
-	applicationVariants.all {
-		val variant = this
-		variant.outputs
-			.map { it as com.android.build.gradle.internal.api.BaseVariantOutputImpl }
-			.forEach { output ->
-				val outputFileName = "PixelXpert.apk"
-				output.outputFileName = outputFileName
-			}
-	}
-
 	buildFeatures{
 		viewBinding = true
 		buildConfig = true
@@ -94,8 +85,37 @@ android {
 	}
 }
 
-dependencies {
+androidComponents {
+	val apkName = "PixelXpert.apk"
+	onVariants { variant ->
+		val artifactDir = variant.artifacts.get(SingleArtifact.APK)
 
+		tasks.named("preBuild").get().doLast {
+			artifactDir.get().asFile.listFiles()
+				.filter { it.name.equals(apkName) }
+				.forEach {
+					it.delete()
+				}
+		}
+
+		tasks.whenTaskAdded {
+			if (name.lowercase() == "assemble${variant.name.lowercase()}")
+			{
+				doLast {
+					artifactDir.get().asFile.listFiles()
+						.filter { it.extension == "apk" }
+						.forEach {
+							if (it.exists() && !it.name.equals(apkName)) {
+								it.renameTo(File(it.parent, apkName))
+							}
+						}
+				}
+			}
+		}
+	}
+}
+
+dependencies {
 	implementation(project(":annotations"))
 	annotationProcessor(project(":annotationProcessor"))
 	coreLibraryDesugaring(libs.desugar.jdk.libs)
@@ -133,7 +153,7 @@ dependencies {
 	implementation (libs.colorpicker) //Color Picker Component for UI
 	implementation (libs.persian.date.time) //Persian Calendar
 
-	implementation (libs.markdown) //Markdown reader
+//	implementation (libs.markdown) //Markdown reader
 
 	// Search Preference
 	implementation (libs.androidx.cardview)
@@ -171,4 +191,7 @@ dependencies {
 
 	compileOnly(libs.lsposed.api)
 	implementation(libs.lsposed.service)
+
+	//mark-down view for changelog
+	implementation(libs.markdownview.android)
 }

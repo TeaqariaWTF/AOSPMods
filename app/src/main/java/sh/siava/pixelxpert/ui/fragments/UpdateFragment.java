@@ -5,9 +5,10 @@ import static sh.siava.pixelxpert.ui.Constants.UPDATES_CHANNEL_ID;
 import static sh.siava.pixelxpert.ui.Constants.UPDATE_DOWNLOADED_ID;
 import static sh.siava.pixelxpert.ui.Constants.UPDATE_DOWNLOAD_FAILED_ID;
 import static sh.siava.pixelxpert.utils.AppUtils.installDoubleZip;
+import static sh.siava.pixelxpert.utils.UpdateWorker.showBadgeDrawable;
+
 import static sh.siava.pixelxpert.utils.MiscUtils.getColorFromAttribute;
 import static sh.siava.pixelxpert.utils.MiscUtils.intToHex;
-import static sh.siava.pixelxpert.utils.UpdateWorker.showBadgeDrawable;
 
 import android.annotation.SuppressLint;
 import android.app.DownloadManager;
@@ -26,9 +27,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -38,6 +36,7 @@ import androidx.annotation.NonNull;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import com.mukesh.MarkdownView;
 import com.topjohnwu.superuser.Shell;
 
 import java.io.File;
@@ -47,21 +46,18 @@ import java.net.URI;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Scanner;
+import java.util.function.Consumer;
 
-import javax.security.auth.callback.Callback;
-
-import br.tiagohm.markdownview.MarkdownView;
-import br.tiagohm.markdownview.css.InternalStyleSheet;
-import br.tiagohm.markdownview.css.styles.Github;
 import sh.siava.pixelxpert.BuildConfig;
 import sh.siava.pixelxpert.PixelXpert;
 import sh.siava.pixelxpert.R;
 import sh.siava.pixelxpert.databinding.UpdateFragmentBinding;
-import sh.siava.pixelxpert.xposed.utils.ModuleFolderOperations;
 import sh.siava.pixelxpert.ui.activities.SettingsActivity;
 import sh.siava.pixelxpert.utils.AppUtils;
 import sh.siava.pixelxpert.utils.DisplayUtils;
 import sh.siava.pixelxpert.utils.ExtendedSharedPreferences;
+import sh.siava.pixelxpert.xposed.utils.ModuleFolderOperations;
 
 
 public class UpdateFragment extends BaseFragment {
@@ -207,31 +203,26 @@ public class UpdateFragment extends BaseFragment {
 					requireActivity().runOnUiThread(() -> {
 						try {
 							MarkdownView mMarkdownView = view.findViewById(R.id.changelogView);
-							InternalStyleSheet css = new Github();
-							css.addRule("body, kbd", "background-color: " + intToHex(requireContext().getColor(R.color.changelog_bg)));
-							css.addRule("body, p, h1, h2, h3, h4, h5, h6, span, div", "color: " + intToHex(getColorFromAttribute(requireContext(), R.attr.colorOnSurface)));
-							css.addRule("kbd", "border-color: " + intToHex(requireContext().getColor(R.color.changelog_bg)));
-							css.addRule("kbd", "color: " + intToHex(getColorFromAttribute(requireContext(), R.attr.colorOnSurface)));
-							css.addRule("a", "color: " + intToHex(getColorFromAttribute(requireContext(), R.attr.colorPrimary)));
-							css.addRule(".container", "padding-right: 5px", "padding-left: 5px", "margin-right: auto", "margin-left: auto");
-							mMarkdownView.addStyleSheet(css);
-							mMarkdownView.setWebViewClient(new WebViewClient() {
-								@Override
-								public void onPageFinished(WebView view, String url) {
-									view.postVisualStateCallback(0, new WebView.VisualStateCallback() {
-										@Override
-										public void onComplete(long requestId) {
-											if (binding != null) {
-												binding.progressBar.post(() -> binding.progressBar.setVisibility(View.GONE));
-											}
+							
+							fetchChangelog((String) result.get("changelog"), (markdown) -> {
+								if (getActivity() != null) {
+									requireActivity().runOnUiThread(() -> {
+										if (binding != null) {
+											binding.progressBar.setVisibility(View.GONE);
 										}
+										String styledMarkdown = "<style>" +
+												"body { background-color: " + intToHex(requireContext().getColor(R.color.changelog_bg)) + "; " +
+												"color: " + intToHex(getColorFromAttribute(requireContext(), R.attr.colorOnSurface)) + "; " +
+												"font-family: sans-serif; padding: 10px; }" +
+												"h1, h2, h3, h4, h5, h6 { color: " + intToHex(getColorFromAttribute(requireContext(), R.attr.colorOnSurface)) + "; }" +
+												"a { color: " + intToHex(getColorFromAttribute(requireContext(), R.attr.colorPrimary)) + "; }" +
+												"code { background-color: rgba(0,0,0,0.1); padding: 2px 4px; border-radius: 4px; }" +
+												"pre { background-color: rgba(0,0,0,0.1); padding: 10px; border-radius: 8px; overflow-x: auto; }" +
+												"</style>" + markdown;
+										mMarkdownView.setMarkDownText(styledMarkdown);
 									});
 								}
 							});
-							mMarkdownView.getSettings().setJavaScriptEnabled(false);
-							mMarkdownView.getSettings().setCacheMode(WebSettings.LOAD_NO_CACHE);
-							mMarkdownView.getSettings().setDomStorageEnabled(false);
-							mMarkdownView.loadMarkdownFromUrl((String) result.get("changelog"));
 						} catch (Throwable ignored) {
 						}
 					});
@@ -350,6 +341,20 @@ public class UpdateFragment extends BaseFragment {
 		binding = null;
 	}
 
+	private void fetchChangelog(String url, Consumer<String> callback) {
+		new Thread(() -> {
+			try {
+				URL changelogURL = new URL(url);
+				Scanner s = new Scanner(changelogURL.openStream()).useDelimiter("\\A");
+				String result = s.hasNext() ? s.next() : "";
+				callback.accept(result);
+			} catch (Exception e) {
+				Log.e("UpdateFragment", "Error fetching changelog", e);
+				callback.accept("Error loading changelog.");
+			}
+		}).start();
+	}
+
 	@SuppressLint("MissingPermission")
 	public void notifyInstall() {
 		if (getContext() == null) {
@@ -377,7 +382,7 @@ public class UpdateFragment extends BaseFragment {
 		NotificationManagerCompat.from(getContext()).notify(UPDATE_DOWNLOADED_ID, builder.build());
 	}
 
-	public interface TaskDoneCallback extends Callback {
+	public interface TaskDoneCallback {
 		void onFinished(HashMap<String, Object> result);
 	}
 
