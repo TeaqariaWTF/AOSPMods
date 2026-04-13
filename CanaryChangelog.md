@@ -1,3 +1,6 @@
+**canary-490**  
+- A17b3: fixed auto sleep on face-up mode  
+  
 **canary-489**  
 - Fixed muting the screenshot sound  
 - Statusbar long press to switch between app profiles no longer triggers QS  
