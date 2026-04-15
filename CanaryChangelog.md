@@ -1,3 +1,6 @@
+****  
+- testing the new canary buildscript - no module changes  
+  
 **canary-490**  
 - A17b3: fixed auto sleep on face-up mode  
   
