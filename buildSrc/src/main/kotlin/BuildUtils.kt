@@ -84,6 +84,7 @@ fun incrementVersionLogic(
     
     if (!isStable) {
         props.setProperty("VERSION_CODE", newCode.toString())
+        props.setProperty("VERSION_NAME", targetVersionName)
         vFile.outputStream().use {
             props.store(it, "Updated via Gradle Task")
         }

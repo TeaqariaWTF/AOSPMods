@@ -1,6 +1,6 @@
 #!/bin/bash
 
-
+NEWVERNAME=$(cat version.properties | grep -i "VERSION_NAME" | cut -d = -f 2)
 
 echo "**$NEWVERNAME**  " > newChangeLog.md
 cat changeLog.md >> newChangeLog.md
