@@ -29,10 +29,10 @@ jobs:
       run: chmod +x .github/*.sh
 
     - name: Changelog Generation
-      run: .github/extractChanges.sh
+      run: .github/extractCanaryChanges.sh
 
     - name: Version Bump
-      run: .github/bumpVersion.sh ${{ github.run_id }}
+      run: .github/prepareCanaryChangelog.sh ${{ github.run_id }}
 
     - name: Gradlew Permissions
       run: chmod +x gradlew
@@ -48,22 +48,13 @@ jobs:
           fi
       
     - name: Gradle Build
-      run: ./gradlew assembleRelease
-
-    - name: Magisk Module Generation
-      run: .github/make_zip.sh
+      run: ./gradlew buildCanary -Pchannel=canary
 
     - name: Upload Xposed Artifact to Actions
       uses: actions/upload-artifact@v4.3.1
       with: 
         name: PixelXpert.zip
         path: output
-
-#    - name: Previous Release Deletion
-#      continue-on-error: true
-#      run: gh release delete canary_builds -y -R siavash79/PixelXpert
-#      env:
-#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Canary Binary Release
       uses: ncipollo/release-action@v1.14.0
@@ -84,7 +75,7 @@ jobs:
         push-branch: 'canary'
         commit-message: 'Version update: Release'
         force-add: 'true'
-        files: MagiskModBase/module.prop app/build.gradle.kts latestVersion.json CanaryChangelog.md latestCanary.json MagiskModuleUpdate_Xposed.json MagiskModuleUpdate_Full.json
+        files: MagiskModBase/module.prop version.properties latestVersion.json CanaryChangelog.md latestCanary.json MagiskModuleUpdate_Xposed.json MagiskModuleUpdate_Full.json
         name: GitHub
         email: PixelXpert@siava.sh
 

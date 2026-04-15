@@ -1,7 +1,7 @@
 # IntelliJ IDEA
 *.iml
 *.iws
-/.idea
+/.idea/*
 
 # Gradle files
 .gradle
@@ -39,3 +39,4 @@ local.properties
 /crowdin.properties
 /ReleaseKey.properties
 /.kotlin
+/.idea/
