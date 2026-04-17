@@ -9,7 +9,6 @@ import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.view.WindowManager;
 import android.widget.ImageView;
 
 import androidx.activity.EdgeToEdge;
@@ -36,6 +35,10 @@ public class SplashScreenActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		//making sure XposedService is bound prior to hook fragment needing it
+		PixelXpert.get().getXposedService(service -> {});
+
 		mBinding = ActivitySplashScreenBinding.inflate(getLayoutInflater());
 		setContentView(mBinding.getRoot());
 

@@ -15,6 +15,7 @@ import java.nio.charset.StandardCharsets;
 import java.util.regex.Pattern;
 import java.util.zip.ZipFile;
 
+import sh.siava.pixelxpert.PixelXpert;
 import sh.siava.pixelxpert.xposed.Constants;
 
 public class AppUtils {
@@ -36,6 +37,20 @@ public class AppUtils {
 				Shell.cmd(String.format("killall %s", what)).exec();
 		}
 	}
+
+	public static void restartSelf() {
+		Intent intent = PixelXpert.get().getBaseContext().getPackageManager()
+				                .getLaunchIntentForPackage(PixelXpert.get().getBaseContext().getPackageName());
+
+		if (intent != null) {
+			intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+			PixelXpert.get().startActivity(intent);
+		}
+
+		android.os.Process.killProcess(android.os.Process.myPid());
+		System.exit(0);
+	}
+
 
 	public static void runKSURootActivity(Context context, boolean launchApp)
 	{

@@ -1,5 +1,6 @@
 package sh.siava.pixelxpert;
 
+import static sh.siava.pixelxpert.utils.AppUtils.restartSelf;
 import static sh.siava.pixelxpert.xposed.Constants.DEFAULT_PREFS_FILE_NAME;
 
 import android.annotation.SuppressLint;
@@ -185,11 +186,28 @@ public class PixelXpert extends Application {
 
 	public void getXposedService(XposedServiceCallback callback)
 	{
-		if(mXposedService != null) {
-			callback.serviceReady(mXposedService);
-			return;
-		}
-		tryConnectXposedService(callback);
+		new Thread(() -> {
+			int counter = 0;
+			//we give it 1 second to bind to service. Otherwise, we'll FC
+			while (mXposedService == null && counter < 5)
+			{
+				counter++;
+				try {
+					//noinspection BusyWait
+					Thread.sleep(200);
+				} catch (InterruptedException e) {
+					throw new RuntimeException(e);
+				}
+			}
+			if(mXposedService != null) {
+				callback.serviceReady(mXposedService);
+			}
+			else
+			{
+				//Xposed Service can't be bound because of a bug of on their side. FC will fix it
+				restartSelf();
+			}
+		}).start();
 	}
 
 	public interface XposedServiceCallback
