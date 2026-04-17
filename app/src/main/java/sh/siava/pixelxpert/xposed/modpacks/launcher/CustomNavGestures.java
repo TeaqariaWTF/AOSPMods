@@ -7,11 +7,6 @@ import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static de.robv.android.xposed.XposedHelpers.setObjectField;
 import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
 
-
-
-
-
-
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -30,12 +25,12 @@ import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.xposed.Constants;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.annotations.LauncherModPack;
-import sh.siava.pixelxpert.xposed.utils.reflection.HookHelper;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
+import sh.siava.pixelxpert.xposed.utils.reflection.HookHelper;
 import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 /** @noinspection ConstantValue*/
-@SuppressWarnings("RedundantThrows")
+
 @LauncherModPack
 public class CustomNavGestures extends XposedModPack {
 	private static final int NO_ACTION = -1;
@@ -213,6 +208,11 @@ public class CustomNavGestures extends XposedModPack {
 	private void saveFocusedTask() {
 		try
 		{
+			if(getObjectField(mSystemUIProxy, "recentTasks") == null) //systemui service binder is detached for some reason
+			{
+				SystemUtils.killSelf();
+			}
+
 			ArrayList<?> recentTaskList = (ArrayList<?>) callMethod(
 					mSystemUIProxy,
 					"getRecentTasks",
@@ -308,7 +308,6 @@ public class CustomNavGestures extends XposedModPack {
 
 	private void killForeground() {
 		if(currentFocusedTask == null) return;
-
 
 		try
 		{
