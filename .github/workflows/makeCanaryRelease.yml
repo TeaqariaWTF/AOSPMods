@@ -24,15 +24,6 @@ jobs:
         java-version: '17'
         distribution: 'temurin'
         cache: gradle
-        
-    - name: Shell Scripts Permissions
-      run: chmod +x .github/*.sh
-
-    - name: Changelog Generation
-      run: .github/extractCanaryChanges.sh
-
-    - name: Version Bump
-      run: .github/prepareCanaryChangelog.sh ${{ github.run_id }}
 
     - name: Gradlew Permissions
       run: chmod +x gradlew
@@ -49,6 +40,15 @@ jobs:
       
     - name: Gradle Build
       run: ./gradlew buildCanary -Pchannel=canary
+
+    - name: Shell Scripts Permissions
+      run: chmod +x .github/*.sh
+
+    - name: Changelog Generation
+      run: .github/extractCanaryChanges.sh
+
+    - name: Version Bump
+      run: .github/prepareCanaryChangelog.sh ${{ github.run_id }}
 
     - name: Upload Xposed Artifact to Actions
       uses: actions/upload-artifact@v4.3.1
