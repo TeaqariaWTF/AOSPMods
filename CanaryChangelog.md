@@ -1,4 +1,4 @@
-****  
+**canary-492**  
 - Temporary workaround for hooks page not able to connect to Xposed service (until they fix it)  
   
 **canary-491**  
