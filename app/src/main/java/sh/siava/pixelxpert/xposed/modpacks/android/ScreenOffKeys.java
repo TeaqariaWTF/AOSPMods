@@ -12,9 +12,6 @@ import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static de.robv.android.xposed.XposedHelpers.setObjectField;
 import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
-
-
-
 import static sh.siava.pixelxpert.xposed.utils.SystemUtils.AudioManager;
 import static sh.siava.pixelxpert.xposed.utils.SystemUtils.CameraManager;
 import static sh.siava.pixelxpert.xposed.utils.SystemUtils.PowerManager;
@@ -34,6 +31,8 @@ import android.view.KeyEvent;
 import android.view.ViewConfiguration;
 
 import org.apache.commons.lang3.SystemProperties;
+
+import java.util.regex.Pattern;
 
 import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.xposed.XposedModPack;
@@ -84,6 +83,7 @@ public class ScreenOffKeys extends XposedModPack {
 	final Object mLock = new Object();
 	boolean mKeyIsDown = false;
 	boolean mLoopRan = false;
+	int mPowerReasonParam = 0;
 
 	public ScreenOffKeys(Context context) {
 		super(context);
@@ -160,13 +160,22 @@ public class ScreenOffKeys extends XposedModPack {
 							param.setResult(null);
 					});
 
-					PhoneWindowManagerClass
-							.before("startedWakingUp")
-							.run(param -> {
-								if ((int) param.args[param.args.length - 1] == WAKE_REASON_POWER_BUTTON) {
-									mWakeTime = SystemClock.uptimeMillis();
-								}
-							});
+			Class<?>[] params = PhoneWindowManagerClass.findMethods(Pattern.compile("startedWakingUp")).iterator().next().getParameterTypes();
+			for(int i = 0; i < params.length; i++)
+			{
+				if(params[i].equals(int.class))
+				{
+					mPowerReasonParam = i;
+				}
+			}
+
+			PhoneWindowManagerClass
+					.before("startedWakingUp")
+					.run(param -> {
+						if ((int) param.args[mPowerReasonParam] == WAKE_REASON_POWER_BUTTON) {
+							mWakeTime = SystemClock.uptimeMillis();
+						}
+					});
 
 			PhoneWindowManagerClass
 					.before("interceptKeyBeforeQueueing")
