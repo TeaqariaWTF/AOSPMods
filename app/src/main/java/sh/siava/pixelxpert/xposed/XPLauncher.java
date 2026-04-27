@@ -56,6 +56,7 @@ public class XPLauncher extends XposedModule implements ServiceConnection {
 	public XPLauncher()
 	{
 		instance = this;
+		Logger.setXposedInterface(this);
 	}
 
 	@Override
@@ -197,7 +198,7 @@ public class XPLauncher extends XposedModule implements ServiceConnection {
 			} catch (Throwable ignored) {
 			}
 
-			instance.onPackageLoadedInternal(PRParam, this);
+			instance.onPackageLoaded(PRParam);
 			runningMods.add(instance);
 		} catch (Throwable T) {
 			Logger.log("Start Error Dump - Occurred in " + thisClass.getName());
