@@ -1,3 +1,6 @@
+**canary-494**  
+- A17b4 - Fixed physical button remap when screen is off  
+  
 **canary-493**  
 - Fixing kill forground app (by pushing nexus launcher to work the way it should)  
   
