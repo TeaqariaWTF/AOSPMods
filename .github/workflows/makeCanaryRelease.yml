@@ -18,11 +18,11 @@ jobs:
     - name: Source Code Download
       run: git clone --branch canary --single-branch --recurse-submodules https://github.com/siavash79/PixelXpert.git .
       
-    - name: JDK 17 Setup
-      uses: actions/setup-java@v4.1.0
+    - name: JDK 21 Setup
+      uses: actions/setup-java@v5.2.0
       with:
-        java-version: '17'
-        distribution: 'temurin'
+        java-version: '21'
+        distribution: 'jetbrains'
         cache: gradle
 
     - name: Gradlew Permissions
@@ -51,13 +51,13 @@ jobs:
       run: .github/prepareCanaryChangelog.sh ${{ github.run_id }}
 
     - name: Upload Xposed Artifact to Actions
-      uses: actions/upload-artifact@v4.3.1
+      uses: actions/upload-artifact@v7.0.1
       with: 
         name: PixelXpert.zip
         path: output
 
     - name: Canary Binary Release
-      uses: ncipollo/release-action@v1.14.0
+      uses: ncipollo/release-action@v1.21.0
       with:
         tag: 'canary_builds'
         name: 'Latest Canary'
