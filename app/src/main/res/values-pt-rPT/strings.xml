@@ -186,8 +186,8 @@
     <string name="sb_ignored_icons_statusbar">Select which icon will be hidden in statusbar</string>
     <string name="sb_kg_ignored_icons">Lockscreen</string>
     <string name="sb_ignored_icons_kg">Select which icon will be hidden in keyguard statusbar</string>
-    <string name="sb_qs_ignored_icons">Quick Settings</string>
-    <string name="sb_ignored_icons_qs">Select which icon will be hidden in quick settings</string>
+    <string name="sb_qs_ignored_icons">Configurações Rápidas</string>
+    <string name="sb_ignored_icons_qs">Selecione o ícone que deseja ocultar nas configurações rápidas</string>
     <string name="status_bar_volte">VoLTE</string>
     <string name="status_bar_vowifi">VoWiFi</string>
     <string name="status_bar_no_calling">No Calling</string>
