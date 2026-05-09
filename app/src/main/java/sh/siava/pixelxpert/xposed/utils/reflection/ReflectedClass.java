@@ -218,7 +218,7 @@ public class ReflectedClass
 					StackTraceElement element = Thread.currentThread().getStackTrace()[2];
 					String callingClassName = element.getClassName();
 					int lineNumber = element.getLineNumber();
-					log(String.format("%s line %XPLauncher: Hook to before constructor of %s size = %XPLauncher", callingClassName,lineNumber, clazz.getName(), unhooks.size()));
+					log(String.format("%s line %d: Hook to before constructor of %s size = %d", callingClassName,lineNumber, clazz.getName(), unhooks.size()));
 				}
 			}
 			else if(method != null)
@@ -236,7 +236,7 @@ public class ReflectedClass
 					StackTraceElement element = Thread.currentThread().getStackTrace()[2];
 					String callingClassName = element.getClassName();
 					int lineNumber = element.getLineNumber();
-					log(String.format("%s line %XPLauncher: Hook to %s before method %s size = %XPLauncher", callingClassName,lineNumber, clazz.getName(), method.getName(), unhooks.size()));
+					log(String.format("%s line %d: Hook to %s before method %s size = %d", callingClassName,lineNumber, clazz.getName(), method.getName(), unhooks.size()));
 				}
 			}
 			else
@@ -254,7 +254,7 @@ public class ReflectedClass
 					StackTraceElement element = Thread.currentThread().getStackTrace()[2];
 					String callingClassName = element.getClassName();
 					int lineNumber = element.getLineNumber();
-					log(String.format("%s line %XPLauncher: Hook to %s before method %s size = %XPLauncher", callingClassName,lineNumber, clazz.getName(), methodName, unhooks.size()));
+					log(String.format("%s line %d: Hook to %s before method %s size = %d", callingClassName,lineNumber, clazz.getName(), methodName, unhooks.size()));
 				}
 			}
 			return unhooks;
@@ -285,7 +285,7 @@ public class ReflectedClass
 					StackTraceElement element = Thread.currentThread().getStackTrace()[2];
 					String callingClassName = element.getClassName();
 					int lineNumber = element.getLineNumber();
-					log(String.format("%s line %XPLauncher: Hook to after constructor of %s size = %XPLauncher", callingClassName,lineNumber, clazz.getName(), unhooks.size()));
+					log(String.format("%s line %d: Hook to after constructor of %s size = %d", callingClassName,lineNumber, clazz.getName(), unhooks.size()));
 				}
 			}
 			else if(method != null)
@@ -303,7 +303,7 @@ public class ReflectedClass
 					StackTraceElement element = Thread.currentThread().getStackTrace()[2];
 					String callingClassName = element.getClassName();
 					int lineNumber = element.getLineNumber();
-					log(String.format("%s line %XPLauncher: Hook to %s after method %s size = %XPLauncher", callingClassName,lineNumber, clazz.getName(), method.getName(), unhooks.size()));
+					log(String.format("%s line %d: Hook to %s after method %s size = %d", callingClassName,lineNumber, clazz.getName(), method.getName(), unhooks.size()));
 				}
 			}
 			else
@@ -320,7 +320,7 @@ public class ReflectedClass
 					StackTraceElement element = Thread.currentThread().getStackTrace()[2];
 					String callingClassName = element.getClassName();
 					int lineNumber = element.getLineNumber();
-					log(String.format("%s line %XPLauncher: Hook to %s after method %s size = %XPLauncher", callingClassName,lineNumber, clazz.getName(), methodName, unhooks.size()));
+					log(String.format("%s line %d: Hook to %s after method %s size = %d", callingClassName,lineNumber, clazz.getName(), methodName, unhooks.size()));
 				}
 			}
 			return unhooks;
