@@ -269,6 +269,7 @@
     <string name="three_button_center_title">中央のボタン</string>
     <string name="three_button_right_title">右のボタン</string>
     <string name="hide_navbar_title">ナビゲーションバーを非表示</string>
+    <string name="hide_navbar_insets_title">ナビゲーションバーのインセットを非表示にする</string>
     <string name="taskbar_as_recents_title">タスクバーをPixelXpertのアプリ履歴バーに切り替える</string>
     <string name="taskbar_enable_google_recents">タスクバーにアプリ履歴を表示する</string>
     <string name="taskbar_height_title">タスクバーの高さ</string>

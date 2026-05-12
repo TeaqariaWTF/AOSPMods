@@ -269,6 +269,7 @@
     <string name="three_button_center_title">Централно дугме</string>
     <string name="three_button_right_title">Десно дугме</string>
     <string name="hide_navbar_title">Сакриј траку за навигацију</string>
+    <string name="hide_navbar_insets_title">Сакриј уметке траке за навигацију</string>
     <string name="taskbar_as_recents_title">Convert Taskbar to PixelXpert recents bar</string>
     <string name="taskbar_enable_google_recents">Enable Android recents on the Taskbar</string>
     <string name="taskbar_height_title">Висина траке задатака</string>
