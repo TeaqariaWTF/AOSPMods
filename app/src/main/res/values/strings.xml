@@ -285,6 +285,7 @@
     <string name="three_button_right_title">Right button</string>
     <string name="pill_width_summary" translatable="false">@string/percent_of_default_size</string>
     <string name="hide_navbar_title">Hide navigation bar</string>
+    <string name="hide_navbar_insets_title">Hide navigation bar insets</string>
     <string name="taskbar_as_recents_title">Convert Taskbar to PixelXpert recents bar</string>
     <string name="taskbar_enable_google_recents">Enable Android recents on the Taskbar</string>
     <string name="taskbar_height_title">Taskbar height</string>

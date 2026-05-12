@@ -269,6 +269,7 @@
     <string name="three_button_center_title">Butonul de mijloc</string>
     <string name="three_button_right_title">Butonul din dreapta</string>
     <string name="hide_navbar_title">Ascunde bara de navigare</string>
+    <string name="hide_navbar_insets_title">Ascundeți inserțiile barei de navigare</string>
     <string name="taskbar_as_recents_title">Convertește bara de activități în bara de recente PixelXpert</string>
     <string name="taskbar_enable_google_recents">Activează Recente Android pe bara de activități</string>
     <string name="taskbar_height_title">Înălțime bară de activități</string>
@@ -473,7 +474,7 @@
     <string name="package_checking">Se încarcă%s</string>
     <string name="package_activated">Pachetul a fost activat cu succes</string>
     <string name="package_activation_failed">Activarea pachetului a eșuat</string>
-    <string name="lsposed_not_found">LSPosed not installed</string>
+    <string name="lsposed_not_found">LSPosed nu este instalat</string>
     <string name="activate_in_lsposed">Activează în LSPosed</string>
     <string name="package_not_hook_enabled_info">Aplicația este instalată, dar LSPosed nu este configurată pentru a fi atașată. Activeaz-o făcând clic pe \'%s\'.</string>
     <string name="package_hook_bootlooped_info">Atașarea aplicației a cauzat o buclă de pornire (bootloop), astfel încât a fost dezactivată pentru a preveni alte probleme.</string>

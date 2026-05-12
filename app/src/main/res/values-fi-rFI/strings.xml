@@ -269,6 +269,7 @@
     <string name="three_button_center_title">Keskipainike</string>
     <string name="three_button_right_title">Oikea painike</string>
     <string name="hide_navbar_title">Piilota navigointipalkki</string>
+    <string name="hide_navbar_insets_title">Piilota navigointipalkin sisäosat</string>
     <string name="taskbar_as_recents_title">Convert Taskbar to PixelXpert recents bar</string>
     <string name="taskbar_enable_google_recents">Enable Android recents on the Taskbar</string>
     <string name="taskbar_height_title">Tehtäväpalkin korkeus</string>
