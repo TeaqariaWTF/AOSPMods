@@ -152,4 +152,11 @@
 
 	</sh.siava.pixelxpert.ui.preferences.MaterialPreferenceCategory>
 
+	<sh.siava.pixelxpert.ui.preferences.MaterialSwitchPreference
+		android:defaultValue="false"
+		android:key="HideNavbarInsets"
+		android:summaryOff="@string/general_off"
+		android:summaryOn="@string/general_on"
+		android:title="@string/hide_navbar_insets_title"
+		app:iconSpaceReserved="false" />
 </PreferenceScreen>

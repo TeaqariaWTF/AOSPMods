@@ -2,18 +2,17 @@ package sh.siava.pixelxpert.xposed.modpacks.launcher;
 
 import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.WindowManager;
 
 import java.lang.reflect.Array;
 
 import de.robv.android.xposed.XposedHelpers;
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
+import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.annotations.LauncherModPack;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
-import sh.siava.pixelxpert.xposed.utils.toolkit.ReflectedClass;
+import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 @LauncherModPack
 public class HideNavigationBarInsets extends XposedModPack {
@@ -31,9 +30,8 @@ public class HideNavigationBarInsets extends XposedModPack {
         }
     }
 
-    @SuppressLint("DiscouragedApi")
     @Override
-    public void onPackageLoaded(XC_LoadPackage.LoadPackageParam lpParam) throws Throwable {
+    public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
         ReflectedClass TaskbarActivityContextClass = ReflectedClass.of("com.android.launcher3.taskbar.TaskbarActivityContext");
         TaskbarActivityContextClass
                 .before("notifyUpdateLayoutParams")
