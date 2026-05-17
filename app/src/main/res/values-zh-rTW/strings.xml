@@ -269,7 +269,7 @@
     <string name="three_button_center_title">中按鈕</string>
     <string name="three_button_right_title">右按鈕</string>
     <string name="hide_navbar_title">隱藏小白條</string>
-    <string name="hide_navbar_insets_title">隐藏导航栏插入</string>
+    <string name="hide_navbar_insets_title">Hide navigation bar insets</string>
     <string name="taskbar_as_recents_title">將工作列替換為最近工作列</string>
     <string name="taskbar_enable_google_recents">在工作列上啟用 Android 最近任務</string>
     <string name="taskbar_height_title">工作列高度</string>
