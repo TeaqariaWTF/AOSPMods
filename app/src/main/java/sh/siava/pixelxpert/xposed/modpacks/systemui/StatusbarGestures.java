@@ -19,6 +19,7 @@ import sh.siava.pixelxpert.xposed.Constants;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
+import sh.siava.pixelxpert.xposed.utils.reflection.HookHelper;
 import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
@@ -44,6 +45,7 @@ public class StatusbarGestures extends XposedModPack {
 	private MotionEvent mDownEvent;
 	@SuppressLint("StaticFieldLeak")
 	private static StatusbarGestures instance;
+	private Object ShadeInteractorSceneContainerImpl;
 
 	public StatusbarGestures(Context context) {
 		super(context);
@@ -71,8 +73,20 @@ public class StatusbarGestures extends XposedModPack {
 
 	@Override
 	public void onPackageLoaded(XposedModuleInterface.PackageReadyParam PRParam) throws Throwable {
-		ReflectedClass NotificationPanelViewControllerClass = ReflectedClass.of("com.android.systemui.shade.NotificationPanelViewController");
+		ReflectedClass NotificationPanelViewControllerClass = ReflectedClass.ofIfPossible("com.android.systemui.shade.NotificationPanelViewController"); //Pre 17QPR1
 		ReflectedClass PhoneStatusBarViewClass = ReflectedClass.of("com.android.systemui.statusbar.phone.PhoneStatusBarView");
+
+		//17QPR1
+		ReflectedClass ShadeInteractorSceneContainerImplClass = ReflectedClass.ofIfPossible("com.android.systemui.shade.domain.interactor.ShadeInteractorSceneContainerImpl");
+		ReflectedClass ShadeSurfaceImplClass = ReflectedClass.ofIfPossible("com.android.systemui.shade.ShadeSurfaceImpl");
+
+		ShadeSurfaceImplClass
+				.before("onStatusBarLongPress")
+				.run(this::onStatusBarLongPress);
+
+		ShadeInteractorSceneContainerImplClass
+				.afterConstruction()
+				.run(param -> ShadeInteractorSceneContainerImpl = param.thisObject);
 
 		mGestureDetector = new GestureDetector(mContext, getPullDownLPListener());
 
@@ -89,21 +103,15 @@ public class StatusbarGestures extends XposedModPack {
 					mGestureDetector.onTouchEvent(event);
 				});
 
-
 		GestureDetector pullUpDetector = new GestureDetector(mContext, getPullUpListener());
 
 		final long[] lastPullupTouchTime = {0};
 
-		NotificationPanelViewControllerClass
+		NotificationPanelViewControllerClass //Pre 17QPR1
 				.before("onStatusBarLongPress")
-				.run(param -> {
-					if (StatusbarLongpressAppSwitch) {
-						sendAppSwitchBroadcast();
-						param.setResult(null);
-					}
-				});
+				.run(this::onStatusBarLongPress);
 
-		NotificationPanelViewControllerClass
+		NotificationPanelViewControllerClass //Pre 17QPR1
 				.afterConstruction()
 				.run(param -> {
 					NotificationPanelViewController = param.thisObject;
@@ -129,6 +137,13 @@ public class StatusbarGestures extends XposedModPack {
 								}
 							});
 				});
+	}
+
+	private void onStatusBarLongPress(HookHelper.RunParam param) {
+		if (StatusbarLongpressAppSwitch) {
+			sendAppSwitchBroadcast();
+			param.setResult(null);
+		}
 	}
 
 	//speedfactor & heightfactor are based on display height
@@ -161,14 +176,25 @@ public class StatusbarGestures extends XposedModPack {
 		return new GestureListener() {
 			@Override
 			public boolean onFling(@Nullable MotionEvent e1, @NonNull MotionEvent e2, float velocityX, float velocityY) {
-				if (STATUSBAR_MODE_SHADE == (int) getObjectField(NotificationPanelViewController, "mBarState")
+				if (isStatusbarClosed()
 						&& isValidFling(e1, e2, velocityY, .15f, 0.01f)) {
-					callMethod(NotificationPanelViewController, "expandToQs");
+					if(NotificationPanelViewController != null) { //Pre 17QPR1
+						callMethod(NotificationPanelViewController, "expandToQs");
+					} else {
+						callMethod(ShadeInteractorSceneContainerImpl, "expandQuickSettingsShade", "asdf", null);
+					}
 					return true;
 				}
 				return false;
 			}
 		};
+	}
+
+	@SuppressWarnings("ConstantValue")
+	private boolean isStatusbarClosed()
+	{
+		return  (NotificationPanelViewController != null && STATUSBAR_MODE_SHADE == (int) getObjectField(NotificationPanelViewController, "mBarState")
+		||  ShadeInteractorSceneContainerImpl != null); //touch only gets here if statusbar is closed
 	}
 
 	private GestureDetector.OnGestureListener getPullUpListener() {
@@ -184,7 +210,7 @@ public class StatusbarGestures extends XposedModPack {
 		};
 	}
 
-	private void collapseQS() {
+	private void collapseQS() { //for now only used on pre 17QPR1
 		try
 		{
 			callMethod(NotificationPanelViewController, "collapse", true, 1f);
