@@ -269,7 +269,7 @@
     <string name="three_button_center_title">मध्य बटन</string>
     <string name="three_button_right_title">दायां बटन</string>
     <string name="hide_navbar_title">जेस्चर नेविगेशन बार छुपाएं</string>
-    <string name="hide_navbar_insets_title">नेविगेशन बार इनसेट छुपाएं</string>
+    <string name="hide_navbar_insets_title">Hide navigation bar insets</string>
     <string name="taskbar_as_recents_title">Convert Taskbar to PixelXpert recents bar</string>
     <string name="taskbar_enable_google_recents">Enable Android recents on the Taskbar</string>
     <string name="taskbar_height_title">टास्कबार की ऊंचाई</string>

@@ -269,7 +269,7 @@
     <string name="three_button_center_title">Orta düğme</string>
     <string name="three_button_right_title">Sağ düğme</string>
     <string name="hide_navbar_title">Gezinme çubuğunu gizle</string>
-    <string name="hide_navbar_insets_title">Gezinme çubuğu eklerini gizle</string>
+    <string name="hide_navbar_insets_title">Hide navigation bar insets</string>
     <string name="taskbar_as_recents_title">Görev çubuğunu PixelXpert son uygulamalar çubuğuna dönüştür</string>
     <string name="taskbar_enable_google_recents">Görev Çubuğunda Android son uygulamaları etkinleştir</string>
     <string name="taskbar_height_title">Görev çubuğu yüksekliği</string>

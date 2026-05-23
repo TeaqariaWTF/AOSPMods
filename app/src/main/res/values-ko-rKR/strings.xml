@@ -269,7 +269,7 @@
     <string name="three_button_center_title">가운데 버튼</string>
     <string name="three_button_right_title">오른쪽 버튼</string>
     <string name="hide_navbar_title">네비게이션 바 숨기기</string>
-    <string name="hide_navbar_insets_title">탐색 모음 삽입물 숨기기</string>
+    <string name="hide_navbar_insets_title">Hide navigation bar insets</string>
     <string name="taskbar_as_recents_title">Convert Taskbar to PixelXpert recents bar</string>
     <string name="taskbar_enable_google_recents">Enable Android recents on the Taskbar</string>
     <string name="taskbar_height_title">작업표시줄 높이</string>

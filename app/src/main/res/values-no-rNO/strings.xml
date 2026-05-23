@@ -269,7 +269,7 @@
     <string name="three_button_center_title">Midtknapp</string>
     <string name="three_button_right_title">Høyre knapp</string>
     <string name="hide_navbar_title">Skjul navigasjonslinjen</string>
-    <string name="hide_navbar_insets_title">Skjul navigasjonslinjeinnsatser</string>
+    <string name="hide_navbar_insets_title">Hide navigation bar insets</string>
     <string name="taskbar_as_recents_title">Convert Taskbar to PixelXpert recents bar</string>
     <string name="taskbar_enable_google_recents">Enable Android recents on the Taskbar</string>
     <string name="taskbar_height_title">Høyde på oppgavelinjen</string>

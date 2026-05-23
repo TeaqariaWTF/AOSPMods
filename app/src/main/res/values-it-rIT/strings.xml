@@ -269,7 +269,7 @@
     <string name="three_button_center_title">Pulsante centrale</string>
     <string name="three_button_right_title">Pulsante destro</string>
     <string name="hide_navbar_title">Nascondi NavBar</string>
-    <string name="hide_navbar_insets_title">Nascondi gli inserti della barra di navigazione</string>
+    <string name="hide_navbar_insets_title">Nascondi gli inset della barra di navigazione</string>
     <string name="taskbar_as_recents_title">Converti la barra delle applicazioni nella barra delle applicazioni recenti PixelXpert</string>
     <string name="taskbar_enable_google_recents">Abilita i recenti di Android sulla barra delle applicazioni</string>
     <string name="taskbar_height_title">Altezza taskbar</string>
