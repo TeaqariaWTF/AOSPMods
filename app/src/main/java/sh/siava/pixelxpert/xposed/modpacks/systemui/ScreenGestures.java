@@ -17,6 +17,7 @@ import static sh.siava.pixelxpert.xposed.utils.SystemUtils.sleep;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
+import android.os.SystemClock;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 
@@ -28,8 +29,8 @@ import java.util.TimerTask;
 import io.github.libxposed.api.XposedModuleInterface;
 import sh.siava.pixelxpert.xposed.XposedModPack;
 import sh.siava.pixelxpert.xposed.annotations.SystemUIModPack;
-import sh.siava.pixelxpert.xposed.utils.reflection.HookHelper;
 import sh.siava.pixelxpert.xposed.utils.SystemUtils;
+import sh.siava.pixelxpert.xposed.utils.reflection.HookHelper;
 import sh.siava.pixelxpert.xposed.utils.reflection.ReflectedClass;
 
 @SuppressWarnings("RedundantThrows")
@@ -63,6 +64,9 @@ public class ScreenGestures extends XposedModPack {
 	private static boolean DisableLockScreenPill = false;
 	private Object mStatusBarKeyguardViewManager;
 	private Object mDozeTouchTrigger;
+	private Object mKeyguardInteractor;
+	private Object mShadeInteractorSceneContainerImpl;
+	private long mLastKGSingleTap = 0;
 
 	public ScreenGestures(Context context) {
 		super(context);
@@ -96,19 +100,90 @@ public class ScreenGestures extends XposedModPack {
 		ReflectedClass TriggerSensorClass = ReflectedClass.of("com.android.systemui.doze.DozeSensors$TriggerSensor");
 		ReflectedClass DefaultSettingsPopupMenuSectionClass = ReflectedClass.of("com.android.systemui.keyguard.ui.view.layout.sections.DefaultSettingsPopupMenuSection");
 
+
+		//A17QPR1 Scene implementation
+		ReflectedClass SceneWindowRootViewClass = ReflectedClass.ofIfPossible("com.android.systemui.scene.ui.view.SceneWindowRootView");
+		ReflectedClass ShadeInteractorSceneContainerImplClass = ReflectedClass.ofIfPossible("com.android.systemui.shade.domain.interactor.ShadeInteractorSceneContainerImpl");
+		ReflectedClass PulsingGestureListenerClass = ReflectedClass.ofIfPossible("com.android.systemui.shade.PulsingGestureListener");
+		ReflectedClass KeyguardInteractorClass = ReflectedClass.of("com.android.systemui.keyguard.domain.interactor.KeyguardInteractor");
+		ReflectedClass SettingsMenuElementProviderClass = ReflectedClass.ofIfPossible("com.android.systemui.keyguard.ui.composable.elements.SettingsMenuElementProvider");
+
+		ShadeInteractorSceneContainerImplClass //used to know if shade is open or not
+				.afterConstruction()
+				.run(param -> mShadeInteractorSceneContainerImpl = param.thisObject);
+
+		PulsingGestureListenerClass //used to detect when a real single tap done on keyguard
+				.before("onSingleTapUp")
+				.run(param -> mLastKGSingleTap = SystemClock.uptimeMillis());
+
+		SettingsMenuElementProviderClass //preventing initialization of settings pill on startup
+				.before("SettingsMenu")
+				.run(param -> {
+					if(DisableLockScreenPill)
+						param.setResult(null);
+				});
+
+		KeyguardInteractorClass //used to know if KG is showing
+				.afterConstruction()
+				.run(param -> mKeyguardInteractor = param.thisObject);
+
+		SceneWindowRootViewClass //gestures on Scene implementation
+				.before("dispatchTouchEvent")
+				.run(param -> {
+					if(keyguardNotShowingCompose()) return;
+
+					MotionEvent ev = param.getArg(0);
+
+					int action = ev.getActionMasked();
+
+					if (isSingleTap() && action == ACTION_UP) {
+						if (doubleTapToSleepLockscreenEnabled && !isDozing)
+							sleep();
+					}
+
+					if (!holdScreenTorchEnabled) return;
+
+					if ((action == ACTION_DOWN || action == ACTION_MOVE)) {
+						if(turnedByTTT) //we really don't want to see swipe gestures during TTT
+						{
+							ev.setAction(ACTION_DOWN);
+						}
+						if (isSingleTap() && !SystemUtils.isFlashOn() && uptimeMillis() - ev.getDownTime() > HOLD_DURATION) {
+							turnedByTTT = true;
+
+							callMethod(SystemUtils.PowerManager(), "wakeUp", uptimeMillis());
+							SystemUtils.setFlash(true, false);
+							SystemUtils.vibrate(EFFECT_TICK, USAGE_ACCESSIBILITY);
+
+							new Thread(() -> { //if keyguard is dismissed for any reason (face or udfps touch), then:
+								while (turnedByTTT) {
+									try {
+										SystemUtils.threadSleep(200);
+										if (keyguardNotShowingCompose()) {
+											turnOffTTT();
+										}
+									} catch (Throwable ignored) {}
+								}
+							}).start();
+						}
+					}
+					else if (turnedByTTT) {
+						turnOffTTT();
+					}
+				});
+
 		PhoneStatusBarViewClass
 				.before("onTouchEvent")
 				.run(param -> {
 					if (!doubleTapToSleepStatusbarEnabled) return;
 
 					//double tap to sleep, statusbar only
-					if (!(boolean) getObjectField(NotificationPanelViewController, "mPulsing")
-							&& !(boolean) getObjectField(NotificationPanelViewController, "mDozing")
-							&& (int) getObjectField(NotificationPanelViewController, "mBarState") == SHADE
-							&& (boolean) callMethod(NotificationPanelViewController, "isFullyCollapsed")) {
+					//noinspection ConstantValue
+					if (NotificationPanelViewController == null || //if ViewController is null it means it's not initiated. meaning it's 17QPR1+
+							    (!(boolean) getObjectField(NotificationPanelViewController, "mPulsing") && !(boolean) getObjectField(NotificationPanelViewController, "mDozing") && (int) getObjectField(NotificationPanelViewController, "mBarState") == SHADE && (boolean) callMethod(NotificationPanelViewController, "isFullyCollapsed"))) {
 						mLockscreenDoubleTapToSleep.onTouchEvent((MotionEvent) param.args[param.args.length - 1]);
 					}
-				});
+		});
 
 		TriggerSensorClass
 				.afterConstruction()
@@ -166,8 +241,12 @@ public class ScreenGestures extends XposedModPack {
 		NotificationShadeWindowViewControllerClass
 				.afterConstruction()
 				.run(param -> new Thread(() -> {
-					SystemUtils.threadSleep(5000); //for some reason lsposed doesn't find methods in the class. so we'll hook to constructor and wait a bit!
-					setHooks(param);
+					try {
+						SystemUtils.threadSleep(5000); //for some reason lsposed doesn't find methods in the class. so we'll hook to constructor and wait a bit!
+						setHooks(param);
+					}
+					catch (Throwable ignored) //probably 17QPR1+
+					{}
 				}).start());
 
 		NotificationPanelViewControllerClass
@@ -188,6 +267,11 @@ public class ScreenGestures extends XposedModPack {
 
 		new Handler(Looper.getMainLooper()).post(() -> //call must be made from main thread
 				callMethod(dozeTrigger, "requestPulse", PULSE_REASON_INTENT, false /* performedProxCheck */, null /* onPulseSuppressedListener */));
+	}
+
+	private boolean isSingleTap()
+	{
+		return mLastKGSingleTap + HOLD_DURATION*2 > SystemClock.uptimeMillis();
 	}
 
 	private void setHooks(HookHelper.RunParam param) {
@@ -287,6 +371,13 @@ public class ScreenGestures extends XposedModPack {
 		} catch (Throwable ignored) {
 			return !getBooleanField(mStatusBarKeyguardViewManager, "mLastShowing");
 		}
+	}
+
+	private boolean keyguardNotShowingCompose()
+	{
+		return callMethod(getObjectField(mKeyguardInteractor, "isKeyguardShowing"), "getValue").equals(false)
+						|| callMethod(getObjectField(mKeyguardInteractor, "primaryBouncerShowing"), "getValue").equals(true)
+						|| (boolean) callMethod(callMethod(mShadeInteractorSceneContainerImpl, "isAnyExpanded"), "getValue");
 	}
 
 	private void turnOffTTT() {
