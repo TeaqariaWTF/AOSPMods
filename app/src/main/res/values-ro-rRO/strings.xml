@@ -269,7 +269,7 @@
     <string name="three_button_center_title">Butonul de mijloc</string>
     <string name="three_button_right_title">Butonul din dreapta</string>
     <string name="hide_navbar_title">Ascunde bara de navigare</string>
-    <string name="hide_navbar_insets_title">Hide navigation bar insets</string>
+    <string name="hide_navbar_insets_title">Ascunde inserturile barei de navigare</string>
     <string name="taskbar_as_recents_title">Convertește bara de activități în bara de recente PixelXpert</string>
     <string name="taskbar_enable_google_recents">Activează Recente Android pe bara de activități</string>
     <string name="taskbar_height_title">Înălțime bară de activități</string>
