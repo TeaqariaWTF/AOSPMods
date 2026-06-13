@@ -2,6 +2,8 @@ package sh.siava.pixelxpert.xposed.utils.reflection;
 
 import androidx.collection.ArraySet;
 
+import com.google.errorprone.annotations.CanIgnoreReturnValue;
+
 import java.lang.reflect.Executable;
 import java.lang.reflect.Method;
 import java.util.Arrays;
@@ -29,6 +31,7 @@ public class HookHelper {
 	}
 
 	@SuppressWarnings("unchecked")
+	@CanIgnoreReturnValue
 	public static <T> T callMethod(Object obj, String methodName, Object... args) {
 		return (T) XposedHelpers.callMethod(obj, methodName, args);
 	}

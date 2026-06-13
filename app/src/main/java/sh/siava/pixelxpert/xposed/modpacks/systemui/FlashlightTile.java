@@ -1,6 +1,5 @@
 package sh.siava.pixelxpert.xposed.modpacks.systemui;
 
-import static de.robv.android.xposed.XposedHelpers.callMethod;
 import static de.robv.android.xposed.XposedHelpers.getObjectField;
 import static de.robv.android.xposed.XposedHelpers.setObjectField;
 import static sh.siava.pixelxpert.xposed.XPrefs.Xprefs;
@@ -9,6 +8,7 @@ import static sh.siava.pixelxpert.xposed.utils.SystemUtils.getMaxFlashLevel;
 import static sh.siava.pixelxpert.xposed.utils.SystemUtils.isFlashOn;
 import static sh.siava.pixelxpert.xposed.utils.SystemUtils.registerFlashlightLevelListener;
 import static sh.siava.pixelxpert.xposed.utils.SystemUtils.unregisterFlashlightLevelListener;
+import static sh.siava.pixelxpert.xposed.utils.reflection.HookHelper.callMethod;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -118,7 +118,7 @@ public class FlashlightTile extends XposedModPack {
 				.run(param -> {
 					if(leveledFlashTile) {
 						String getCurrentUserIdMethodName = FlashlightRepositoryImplClass.findMethods(Pattern.compile("getCurrentUserId.*", Pattern.CASE_INSENSITIVE)).iterator().next().getName();
-						int currentUserId = (int) callMethod(param.thisObject, getCurrentUserIdMethodName);
+						int currentUserId = callMethod(param.thisObject, getCurrentUserIdMethodName);
 
 						@SuppressWarnings("unchecked") ConcurrentHashMap<Integer, Integer> defaultEnabledLevelForUser = (ConcurrentHashMap<Integer, Integer>) getObjectField(param.thisObject, "defaultEnabledLevelForUser");
 
@@ -221,7 +221,7 @@ public class FlashlightTile extends XposedModPack {
 
 			@Override
 			public void onStopTrackingTouch(Object slider) {
-				float value = (float) callMethod(slider, "getValue");
+				float value = callMethod(slider, "getValue");
 
 				new Thread(() -> Xprefs.edit()
 						.putInt("flashPCT",
