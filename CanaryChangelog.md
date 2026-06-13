@@ -1,3 +1,8 @@
+**canary-495**  
+- A17QPR1b3: Fixed statusbar gestures  
+- A17QPR1b3: Fixed Screen gestures and related system UI crash  
+- Added option to hide navigation bar insets (Thanks to eXtreames@Github)  
+  
 **canary-494**  
 - A17b4 - Fixed physical button remap when screen is off  
   
